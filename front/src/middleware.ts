@@ -16,7 +16,7 @@ export default function middleware (req: NextRequest) {
     }
 
     if(!session) {
-        return NextResponse.redirect(new URL('/auth/login', url))
+        return NextResponse.redirect(new URL('/', url))
     }
 }
 

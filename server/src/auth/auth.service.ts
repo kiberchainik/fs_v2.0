@@ -85,7 +85,6 @@ export class AuthService {
         ? await this.user.findById(account.userId)
         : null
         
-        console.log(user);
         if(user) {
             return this.saveSassion(req, user)
         }
@@ -141,7 +140,6 @@ export class AuthService {
                 const {password, ...user} = newUser
                 resolve({user})
             })
-            console.log(req.session);
         })
     }
 }

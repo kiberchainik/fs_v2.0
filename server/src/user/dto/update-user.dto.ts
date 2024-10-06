@@ -5,10 +5,6 @@ export class UpdateUserDto {
     @IsEmail({}, {message: 'Не верный формат email'})
     email: string
 
-    @IsNotEmpty({message: 'Email обязателен для указания'})
-    @IsString({message: 'Не верный формат email'})
-    name: string
-
     @IsBoolean({message: 'isTwoFactorEnabled must by boolean'})
     isTwoFactorEnabled: boolean
 }

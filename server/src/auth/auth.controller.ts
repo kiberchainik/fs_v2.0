@@ -45,7 +45,7 @@ export class AuthController {
     }
 
     await this.authService.extractProfileFromCode(req, provider, code)
-    console.log(req.session);
+    
     return res.redirect(`${this.config.getOrThrow<string>('ALLOWED_ORIGIN')}/dashboard/settings`)
   }
 

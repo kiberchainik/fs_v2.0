@@ -8,6 +8,7 @@ class UserService {
     }
 
     public async updateProfile(data: TypeSettingsSchema) {
+        
         return await api.patch<IUser>('users/profile', data)
     }
 }

@@ -11,10 +11,10 @@ export function useVerificationMutation () {
         mutationFn: (token:string | null) => verificationService.newVerification(token),
         onSuccess() {
             toast.success('Email confirmated successfully')
-            router.push('/auth/login')
+            router.push('/')
         },
         onError() {
-            router.push('/auth/login')
+            router.push('/auth/candidat')
         }
     })
 

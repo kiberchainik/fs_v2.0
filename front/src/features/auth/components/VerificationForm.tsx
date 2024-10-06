@@ -11,8 +11,10 @@ export function VerificationForm () {
     const token = searchParams.get('token')
 
     const { verification } = useVerificationMutation()
+    
+    useEffect(() => {
         verification(token)
-    useEffect(() => {}, [token])
+    }, [token])
 
     return <AuthWrapper heading="Email verificarion">
         <div><Loader /></div>

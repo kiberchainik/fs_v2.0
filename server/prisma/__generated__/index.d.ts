@@ -38,7 +38,7 @@ export namespace $Enums {
   ADMIN: 'ADMIN',
   MODERATOR: 'MODERATOR',
   CANDIDAT: 'CANDIDAT',
-  COMPANY: 'COMPANY'
+  AGENCY: 'AGENCY'
 };
 
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]

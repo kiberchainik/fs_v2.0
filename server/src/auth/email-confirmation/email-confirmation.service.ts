@@ -14,17 +14,17 @@ export class EmailConfirmationService {
         private readonly prisma: PrismaService,
         private readonly mail: MailService,
         private readonly user: UserService,
-        @Inject(forwardRef(() => AuthService))
-        private readonly auth:AuthService
+        @Inject(forwardRef(() => AuthService)) private readonly auth:AuthService
     ) {}
 
     async newVerificaion(req: Request, dto: ConfirmationDto) {
         const existToken = await this.prisma.tokens.findUnique({
             where: {
-                token: dto.toket,
+                token: dto.token,
                 type: TokenType.VERIFICATION
             }
         })
+console.log(existToken);
 
         if(!existToken) {
             throw new NotFoundException('Token verified not found')

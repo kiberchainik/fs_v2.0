@@ -3,7 +3,7 @@
 import { Button } from "@/shared/components/ui"
 import { useMutation } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
-import { FaDiscord, FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTelegram, FaYandex } from 'react-icons/fa'
+import { FaDiscord, FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTelegram } from 'react-icons/fa'
 import { authService } from "../services"
 
 export function AuthSocial () {

@@ -171,7 +171,7 @@ exports.UserRole = exports.$Enums.UserRole = {
   ADMIN: 'ADMIN',
   MODERATOR: 'MODERATOR',
   CANDIDAT: 'CANDIDAT',
-  COMPANY: 'COMPANY'
+  AGENCY: 'AGENCY'
 };
 
 exports.AuthMethod = exports.$Enums.AuthMethod = {

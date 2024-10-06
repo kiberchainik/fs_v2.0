@@ -80,5 +80,5 @@ enum UserRole {
   ADMIN
   MODERATOR
   CANDIDAT
-  COMPANY
+  AGENCY
 }

@@ -6,7 +6,7 @@ export const getMailerConfig = async (config:ConfigService):Promise<MailerOption
     transport: {
         host: config.getOrThrow<string>('EMAIL_HOST'),
         port: config.getOrThrow<number>('EMAIL_PORT'),
-        secure: !isDev(config),
+        secure: true, //!isDev(config),
         auth: {
             user: config.getOrThrow<string>('EMAIL_USER'),
             pass: config.getOrThrow<string>('EMAIL_PASSWORD')

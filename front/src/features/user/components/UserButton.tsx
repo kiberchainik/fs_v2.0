@@ -1,36 +1,52 @@
-import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
-import { useGetProfile, useLogoutMutation } from "../hooks";
-import { Avatar, AvatarFallback, AvatarImage, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Skeleton } from "@/shared/components/ui";
-import { LuLogOut } from "react-icons/lu";
-import { IUser } from "@/features/auth/types";
+import { LuLogOut } from 'react-icons/lu'
 
-interface UserButtonProps { 
-    user:IUser
-    isLoading:boolean
+import { IUser } from '@/features/auth/types'
+
+import {
+	Avatar,
+	AvatarFallback,
+	AvatarImage,
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+	Skeleton
+} from '@/shared/components/ui'
+
+import { useLogoutMutation } from '../hooks'
+
+interface UserButtonProps {
+	user: IUser
 }
 
-export function UserButton ({user, isLoading}:UserButtonProps) {
-    const {logout, isLoader} = useLogoutMutation()
+export function UserButton({ user }: UserButtonProps) {
+	const { logout, isLoader } = useLogoutMutation()
 
-    if(!user) return null
+	if (!user) return null
 
-    return <DropdownMenu>
-        <DropdownMenuTrigger>
-            <Avatar>
-                <AvatarImage src={user.picture} />
-                <AvatarFallback>
-                    {user.displayName.slice(0, 1)}
-                </AvatarFallback>
-            </Avatar>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className='w-40' align='end'>
-            <DropdownMenuItem disabled={isLoading} onClick={() => logout()}>
-                <LuLogOut className='mr-2 size-4' /> Logout
-            </DropdownMenuItem>
-        </DropdownMenuContent>
-    </DropdownMenu>
+	return (
+		<DropdownMenu>
+			<DropdownMenuTrigger>
+				<Avatar>
+					<AvatarImage src='/public/not-avatar.png' />
+					<AvatarFallback>
+						{user.email.slice(0, 1)}
+					</AvatarFallback>
+				</Avatar>
+			</DropdownMenuTrigger>
+			<DropdownMenuContent className='w-40' align='end'>
+				<DropdownMenuItem
+					disabled={isLoader}
+					onClick={() => logout()}
+				>
+					<LuLogOut className='mr-2 size-4' />
+					Выйти
+				</DropdownMenuItem>
+			</DropdownMenuContent>
+		</DropdownMenu>
+	)
 }
 
 export function UserButtonLoading() {
-    return <Skeleton className='h-10 w-10 rounded-full' />
+	return <Skeleton className='h-10 w-10 rounded-full' />
 }

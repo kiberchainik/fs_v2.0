@@ -32,8 +32,6 @@ export interface IUser {
     createdAt: string
     updatedAt: string
     email: string
-    displayName: string
-    picture: string
     role: IUserRole
     isVerified: boolean
     isTwoFactorEnabled: boolean

@@ -9,7 +9,7 @@ import { Dispatch, SetStateAction } from "react";
 export function useLoginMutation (setTowFactor: Dispatch<SetStateAction<boolean>>) {
     const router = useRouter()
     const {mutate: login, isPending: isLoading} = useMutation({
-        mutationKey: ['register user'],
+        mutationKey: ['login user'],
         mutationFn: ({
             values,
             recaptcha
