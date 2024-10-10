@@ -11,14 +11,18 @@ export class UserController {
   @HttpCode(HttpStatus.OK)
   @Get('profile')
   async getProfile (@CurrentUser('id') id:string) {
-    console.log(id);
-    
     const {password, ...user} = await this.userService.findById(id)
 
     return user
   }
 
   @Authorization()
+  @HttpCode(HttpStatus.OK)
+  @Get('user-short-data')
+  async getUserShortData (@CurrentUser('id') id:string) {
+    return await this.userService.getUserShortData(id)
+  }
+
   @HttpCode(HttpStatus.OK)
   @Get('profile/:id')
   async getProfileById (@Param('id') id:string) {

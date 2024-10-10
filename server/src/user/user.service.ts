@@ -24,6 +24,44 @@ export class UserService {
         return user
     }
 
+    async getUserShortData(id: string) {
+        const user = await this.prisma.user.findUnique({
+            where: {id},
+            select: {
+                email: true,
+                isVerified: true,
+                role: true,
+                candidatdata: {
+                    select: {
+                        firstname: true,
+                        surname: true,
+                        avatar: true
+                    }
+                },
+                agencydata: {
+                    select: {
+                        agency_name: true,
+                        logo: true
+                    }
+                }
+            }
+        })
+
+        if(!user) {
+            throw new NotFoundException('User not found!')
+        }
+
+        const data = {
+            role: user.role,
+            email: user.email,
+            isVerified: user.isVerified,
+            name: user.agencydata?.agency_name || user.candidatdata?.firstname,
+            avatar: user.agencydata?.logo || user.candidatdata?.avatar
+        }
+
+        return data
+    }
+
     async findByEmail(email: string) {
         const user = await this.prisma.user.findUnique({
             where: {email},
@@ -31,10 +69,6 @@ export class UserService {
                 authAccounts: true
             }
         })
-
-        // if(!user) {
-        //     throw new NotFoundException('User not found!')
-        // }
 
         return user
     }

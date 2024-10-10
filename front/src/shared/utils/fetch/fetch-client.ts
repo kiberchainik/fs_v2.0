@@ -61,9 +61,9 @@ export class FetchClient {
 				...this.headers
 			}
 		}
-
+		
 		const response: Response = await fetch(url, config)
-
+		
 		if (!response.ok) {
 			const error = (await response.json()) as
 				| { message: string }

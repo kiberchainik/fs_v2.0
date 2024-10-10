@@ -21,10 +21,130 @@ model User {
 
   authAccounts AuthAccount[]
 
+  agencydata   AgencyData?
+  candidatdata CandidatData?
+
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("users")
+}
+
+model CandidatData {
+  id         String         @id @default(uuid())
+  firstname  String
+  surname    String
+  birthday   String
+  phone      String
+  resident   String
+  about_my   String
+  avatar     String
+  createdAt  DateTime    @default(now()) @map("created_at")
+  updatedAt  DateTime    @updatedAt @map("updated_at")
+  userId     String         @unique @map("user_id")
+  courses    Courses[]
+  education  Education[]
+  experience Experience[]
+  hobbies    Hobbies[]
+  languages  Languages[]
+  skills     Skills[]
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("candidat_data")
+}
+
+model Education {
+  id         String         @id @default(uuid())
+  degree      String
+  school      String
+  grade       String?
+  startdate   DateTime @db.Date
+  enddate     DateTime @db.Date
+  description String?
+
+  candidate   CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  cdId        String          @map("candidate_id")
+}
+
+model Skills {
+  id         String         @id @default(uuid())
+  skill     String
+  level     SkillsLevel  @default(NONE)
+  cdId      String          @map("candidate_id")
+  candidate CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
+}
+
+model Experience {
+  id         String         @id @default(uuid())
+  company     String
+  contract    ContractType
+  location    String?
+  currently   Boolean      @default(false)
+  startDate   DateTime
+  endDate     DateTime
+  description String?
+  cdId        String          @map("candidate_id")
+  candidate   CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
+}
+
+model Languages {
+  id         String         @id @default(uuid())
+  language  String
+  level     LanguageLevel @default(BASIC)
+  cdId      String           @map("candidate_id")
+  candidate CandidatData  @relation(fields: [cdId], references: [id], onDelete: Cascade)
+}
+
+model Courses {
+  id         String         @id @default(uuid())
+  course      String
+  institution String
+  grade       String
+  startdate   DateTime
+  enddate     DateTime
+  cdId        String          @map("candidate_id")
+  candidate   CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
+}
+
+model Hobbies {
+  id         String         @id @default(uuid())
+  hobbie    String
+  cdId      String          @map("candidate_id")
+  candidate CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
+}
+
+model AgencyData {
+  id         String         @id @default(uuid())
+  agency_name String
+  slug        String     @unique
+  address     String
+  phone       String
+  p_iva_c_f   String
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+  userId      String        @unique @map("user_id")
+  about       String
+  logo        String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  branch      Branch[]
+  //jobOffers   jobOffers[]
+
+  @@map("agency_data")
+}
+
+model Branch {
+  id         String         @id @default(uuid())
+  name      String
+  email     String
+  phone     String
+  fax       String?
+  location  String
+  logo      String?
+  adId      String         @map("agency_id")
+  agency    AgencyData  @relation(fields: [adId], references: [id])
+  //jobOffers jobOffers[]
+
+  @@map("branches")
 }
 
 model AuthAccount {
@@ -81,4 +201,27 @@ enum UserRole {
   MODERATOR
   CANDIDAT
   AGENCY
+}
+
+enum SkillsLevel {
+  NONE
+  BEGINNER
+  EXPERIENCED
+  EXPERT
+}
+
+enum ContractType {
+  PARTTIME
+  SELFEMPLOYED
+  FREELANCE
+  CONTRACT
+  INTERNSHIP
+  APPRENTICESHIP
+}
+
+enum LanguageLevel {
+  NATIVESPEAKER
+  FLUENT
+  VERYGOOD
+  BASIC
 }

@@ -23,6 +23,10 @@ class AuthService {
         return response
     }
 
+    public async getProfile () {
+        return await api.get<IUser>('users/profile')
+    }
+
     public async oauthByprovider(provider: string) {
         const response = await api.get<{url:string}>(`auth/oauth/connect/${provider}`)
 

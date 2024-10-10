@@ -23,7 +23,9 @@ export function useLoginMutation (setTowFactor: Dispatch<SetStateAction<boolean>
                 setTowFactor(true)
             } else {
                 toast.success('Login successfully')
-                router.push('/dashboard/settings')
+                
+                localStorage.setItem('fs_role', data?.user.role.toLowerCase())
+                router.push(`/dashboard`)
             }
         },
         onError(error) {

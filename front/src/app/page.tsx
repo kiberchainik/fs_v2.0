@@ -3,6 +3,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div>Home page <Link href='/auth/login' className={buttonVariants()}>Login</Link></div>
+    <div className='flex gap-x-3'>
+      Main page
+    </div>
   );
 }

@@ -9,7 +9,7 @@ export class AuthGuard implements CanActivate {
         const request = context.switchToHttp().getRequest()
 
         if(typeof request.session.userId === 'undefined') {
-            throw new UnauthorizedException('You do not have access rights')
+            throw new UnauthorizedException('Доступ запрещен!')
         }
 
         const user = await this.user.findById(request.session.userId)

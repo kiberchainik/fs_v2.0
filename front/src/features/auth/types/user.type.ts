@@ -11,10 +11,6 @@ export enum AuthMethod {
     Yandex = 'YANDEX'
 }
 
-export interface IUserRole { 
-    role: UserRole
-}
-
 export interface IAccount {
     id: string
     createdAt: string
@@ -32,7 +28,7 @@ export interface IUser {
     createdAt: string
     updatedAt: string
     email: string
-    role: IUserRole
+    role: UserRole
     isVerified: boolean
     isTwoFactorEnabled: boolean
     method: AuthMethod

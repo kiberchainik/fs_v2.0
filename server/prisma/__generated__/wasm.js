@@ -131,6 +131,98 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.CandidatDataScalarFieldEnum = {
+  id: 'id',
+  firstname: 'firstname',
+  surname: 'surname',
+  birthday: 'birthday',
+  phone: 'phone',
+  resident: 'resident',
+  about_my: 'about_my',
+  avatar: 'avatar',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+};
+
+exports.Prisma.EducationScalarFieldEnum = {
+  id: 'id',
+  degree: 'degree',
+  school: 'school',
+  grade: 'grade',
+  startdate: 'startdate',
+  enddate: 'enddate',
+  description: 'description',
+  cdId: 'cdId'
+};
+
+exports.Prisma.SkillsScalarFieldEnum = {
+  id: 'id',
+  skill: 'skill',
+  level: 'level',
+  cdId: 'cdId'
+};
+
+exports.Prisma.ExperienceScalarFieldEnum = {
+  id: 'id',
+  company: 'company',
+  contract: 'contract',
+  location: 'location',
+  currently: 'currently',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  description: 'description',
+  cdId: 'cdId'
+};
+
+exports.Prisma.LanguagesScalarFieldEnum = {
+  id: 'id',
+  language: 'language',
+  level: 'level',
+  cdId: 'cdId'
+};
+
+exports.Prisma.CoursesScalarFieldEnum = {
+  id: 'id',
+  course: 'course',
+  institution: 'institution',
+  grade: 'grade',
+  startdate: 'startdate',
+  enddate: 'enddate',
+  cdId: 'cdId'
+};
+
+exports.Prisma.HobbiesScalarFieldEnum = {
+  id: 'id',
+  hobbie: 'hobbie',
+  cdId: 'cdId'
+};
+
+exports.Prisma.AgencyDataScalarFieldEnum = {
+  id: 'id',
+  agency_name: 'agency_name',
+  slug: 'slug',
+  address: 'address',
+  phone: 'phone',
+  p_iva_c_f: 'p_iva_c_f',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId',
+  about: 'about',
+  logo: 'logo'
+};
+
+exports.Prisma.BranchScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  fax: 'fax',
+  location: 'location',
+  logo: 'logo',
+  adId: 'adId'
+};
+
 exports.Prisma.AuthAccountScalarFieldEnum = {
   id: 'id',
   type: 'type',
@@ -184,6 +276,29 @@ exports.AuthMethod = exports.$Enums.AuthMethod = {
   DISCORD: 'DISCORD'
 };
 
+exports.SkillsLevel = exports.$Enums.SkillsLevel = {
+  NONE: 'NONE',
+  BEGINNER: 'BEGINNER',
+  EXPERIENCED: 'EXPERIENCED',
+  EXPERT: 'EXPERT'
+};
+
+exports.ContractType = exports.$Enums.ContractType = {
+  PARTTIME: 'PARTTIME',
+  SELFEMPLOYED: 'SELFEMPLOYED',
+  FREELANCE: 'FREELANCE',
+  CONTRACT: 'CONTRACT',
+  INTERNSHIP: 'INTERNSHIP',
+  APPRENTICESHIP: 'APPRENTICESHIP'
+};
+
+exports.LanguageLevel = exports.$Enums.LanguageLevel = {
+  NATIVESPEAKER: 'NATIVESPEAKER',
+  FLUENT: 'FLUENT',
+  VERYGOOD: 'VERYGOOD',
+  BASIC: 'BASIC'
+};
+
 exports.TokenType = exports.$Enums.TokenType = {
   VERIFICATION: 'VERIFICATION',
   TWO_FACTOR: 'TWO_FACTOR',
@@ -192,6 +307,15 @@ exports.TokenType = exports.$Enums.TokenType = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  CandidatData: 'CandidatData',
+  Education: 'Education',
+  Skills: 'Skills',
+  Experience: 'Experience',
+  Languages: 'Languages',
+  Courses: 'Courses',
+  Hobbies: 'Hobbies',
+  AgencyData: 'AgencyData',
+  Branch: 'Branch',
   AuthAccount: 'AuthAccount',
   Tokens: 'Tokens'
 };
