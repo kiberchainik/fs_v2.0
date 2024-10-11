@@ -4,6 +4,6 @@ export interface IUserMenuHeaderData {
     role: UserRole;
     email: string;
     isVerified: boolean;
-    name: string;
-    avatar: string;
+    name?: string;
+    avatar?: string;
 }

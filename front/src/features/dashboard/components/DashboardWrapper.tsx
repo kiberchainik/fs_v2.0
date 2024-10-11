@@ -1,27 +1,19 @@
 'use client'
 
-import { useGetProfile } from "../hooks/useGetProfile";
-import { Loader } from "@/shared/components/ui";
-import { IUser, UserRole } from "@/features/auth/types";
-import { useEffect, useState } from "react";
-import { LuLogOut } from "react-icons/lu";
+import { UserRole } from "@/features/auth/types";
 import { AgencySettings } from "@/features/agency/components";
 import { CandidatSettings } from "@/features/candidat/components";
+import { useStore } from "@tanstack/react-store";
+import { store } from "@/shared/store/store";
 
 export default function DashboardWrapper() {
-    const [userData, setUser] = useState<IUser>()
-    const {user} = useGetProfile()
+    const user = useStore(store, (store) => store.state.user);
 
-    useEffect(() => {
-        if(user) setUser(user)
-    }, [user])
-    
-    if(!userData) return null
+    if(!user) return null
     return (
         <>
-            {!userData && <Loader />}
-            {userData.role === UserRole.Agency && <AgencySettings />}
-            {userData.role === UserRole.Candidat && <CandidatSettings />}
+            {user.role === UserRole.Agency && <AgencySettings />}
+            {user.role === UserRole.Candidat && <CandidatSettings />}
         </>
     );
 }
