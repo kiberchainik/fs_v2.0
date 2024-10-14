@@ -18,7 +18,7 @@ export class RolesGuard implements CanActivate {
         if(!roles) return true
 
         if(!roles.includes(request.user.role)) {
-            throw new ForbiddenException('You do not have access rights')
+            throw new ForbiddenException('You do not have access permission')
         }
 
         return true

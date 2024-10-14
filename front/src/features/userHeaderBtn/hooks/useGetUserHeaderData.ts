@@ -1,19 +1,12 @@
 import { useQuery } from "@tanstack/react-query"
 import { userMenuService } from "../services/usermenu.service"
-import { useEffect } from "react"
-import { store } from "@/shared/store/store"
 
 export function useGetUserHeaderData () {
-    const {data: user, isLoading, error, isSuccess} = useQuery({
+    const {data: user, isFetching, error} = useQuery({
         queryKey: ['getUserHeaderData'],
-        queryFn: () => userMenuService.getUserShortData()
+        queryFn: () => userMenuService.getUserShortData(),
+        retry: 1
     })
 
-    useEffect(() => {
-        store.setState(() => {
-            return { state: { user } };
-        })
-    }, [isSuccess])
-
-    return {user, isLoading, error}
+    return {user, isFetching, error}
 }

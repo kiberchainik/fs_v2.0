@@ -105,6 +105,23 @@ export class FetchClient {
 		})
 	}
 
+	public async files<T>(
+		endpoint: string,
+		body?: Record<string, any>,
+		options: RequestOptions = {}
+	) {
+		console.log(body);
+		
+		return await this.request<T>(endpoint, 'POST', {
+			...options,
+			headers: {
+				'Content-Type': `multipart/form-data; boundary=ljhljkhljhj}`,
+				...(options?.headers || {})
+			},
+			...(!!body && { body: JSON.stringify(body) })
+		})
+	}
+
 	public put<T>(
 		endpoint: string,
 		body?: Record<string, any>,

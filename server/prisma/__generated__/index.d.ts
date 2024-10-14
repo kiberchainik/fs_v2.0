@@ -64,6 +64,26 @@ export type AgencyData = $Result.DefaultSelection<Prisma.$AgencyDataPayload>
  */
 export type Branch = $Result.DefaultSelection<Prisma.$BranchPayload>
 /**
+ * Model jobOffers
+ * 
+ */
+export type jobOffers = $Result.DefaultSelection<Prisma.$jobOffersPayload>
+/**
+ * Model jobTags
+ * 
+ */
+export type jobTags = $Result.DefaultSelection<Prisma.$jobTagsPayload>
+/**
+ * Model Category
+ * 
+ */
+export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
+/**
+ * Model Sectors
+ * 
+ */
+export type Sectors = $Result.DefaultSelection<Prisma.$SectorsPayload>
+/**
  * Model AuthAccount
  * 
  */
@@ -390,6 +410,46 @@ export class PrismaClient<
     * ```
     */
   get branch(): Prisma.BranchDelegate<ExtArgs>;
+
+  /**
+   * `prisma.jobOffers`: Exposes CRUD operations for the **jobOffers** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more JobOffers
+    * const jobOffers = await prisma.jobOffers.findMany()
+    * ```
+    */
+  get jobOffers(): Prisma.jobOffersDelegate<ExtArgs>;
+
+  /**
+   * `prisma.jobTags`: Exposes CRUD operations for the **jobTags** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more JobTags
+    * const jobTags = await prisma.jobTags.findMany()
+    * ```
+    */
+  get jobTags(): Prisma.jobTagsDelegate<ExtArgs>;
+
+  /**
+   * `prisma.category`: Exposes CRUD operations for the **Category** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Categories
+    * const categories = await prisma.category.findMany()
+    * ```
+    */
+  get category(): Prisma.CategoryDelegate<ExtArgs>;
+
+  /**
+   * `prisma.sectors`: Exposes CRUD operations for the **Sectors** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Sectors
+    * const sectors = await prisma.sectors.findMany()
+    * ```
+    */
+  get sectors(): Prisma.SectorsDelegate<ExtArgs>;
 
   /**
    * `prisma.authAccount`: Exposes CRUD operations for the **AuthAccount** model.
@@ -859,6 +919,10 @@ export namespace Prisma {
     Hobbies: 'Hobbies',
     AgencyData: 'AgencyData',
     Branch: 'Branch',
+    jobOffers: 'jobOffers',
+    jobTags: 'jobTags',
+    Category: 'Category',
+    Sectors: 'Sectors',
     AuthAccount: 'AuthAccount',
     Tokens: 'Tokens'
   };
@@ -876,7 +940,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "candidatData" | "education" | "skills" | "experience" | "languages" | "courses" | "hobbies" | "agencyData" | "branch" | "authAccount" | "tokens"
+      modelProps: "user" | "candidatData" | "education" | "skills" | "experience" | "languages" | "courses" | "hobbies" | "agencyData" | "branch" | "jobOffers" | "jobTags" | "category" | "sectors" | "authAccount" | "tokens"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1580,6 +1644,286 @@ export namespace Prisma {
           }
         }
       }
+      jobOffers: {
+        payload: Prisma.$jobOffersPayload<ExtArgs>
+        fields: Prisma.jobOffersFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.jobOffersFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobOffersPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.jobOffersFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobOffersPayload>
+          }
+          findFirst: {
+            args: Prisma.jobOffersFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobOffersPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.jobOffersFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobOffersPayload>
+          }
+          findMany: {
+            args: Prisma.jobOffersFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobOffersPayload>[]
+          }
+          create: {
+            args: Prisma.jobOffersCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobOffersPayload>
+          }
+          createMany: {
+            args: Prisma.jobOffersCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.jobOffersCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobOffersPayload>[]
+          }
+          delete: {
+            args: Prisma.jobOffersDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobOffersPayload>
+          }
+          update: {
+            args: Prisma.jobOffersUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobOffersPayload>
+          }
+          deleteMany: {
+            args: Prisma.jobOffersDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.jobOffersUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.jobOffersUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobOffersPayload>
+          }
+          aggregate: {
+            args: Prisma.JobOffersAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateJobOffers>
+          }
+          groupBy: {
+            args: Prisma.jobOffersGroupByArgs<ExtArgs>
+            result: $Utils.Optional<JobOffersGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.jobOffersCountArgs<ExtArgs>
+            result: $Utils.Optional<JobOffersCountAggregateOutputType> | number
+          }
+        }
+      }
+      jobTags: {
+        payload: Prisma.$jobTagsPayload<ExtArgs>
+        fields: Prisma.jobTagsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.jobTagsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobTagsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.jobTagsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobTagsPayload>
+          }
+          findFirst: {
+            args: Prisma.jobTagsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobTagsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.jobTagsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobTagsPayload>
+          }
+          findMany: {
+            args: Prisma.jobTagsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobTagsPayload>[]
+          }
+          create: {
+            args: Prisma.jobTagsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobTagsPayload>
+          }
+          createMany: {
+            args: Prisma.jobTagsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.jobTagsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobTagsPayload>[]
+          }
+          delete: {
+            args: Prisma.jobTagsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobTagsPayload>
+          }
+          update: {
+            args: Prisma.jobTagsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobTagsPayload>
+          }
+          deleteMany: {
+            args: Prisma.jobTagsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.jobTagsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.jobTagsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$jobTagsPayload>
+          }
+          aggregate: {
+            args: Prisma.JobTagsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateJobTags>
+          }
+          groupBy: {
+            args: Prisma.jobTagsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<JobTagsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.jobTagsCountArgs<ExtArgs>
+            result: $Utils.Optional<JobTagsCountAggregateOutputType> | number
+          }
+        }
+      }
+      Category: {
+        payload: Prisma.$CategoryPayload<ExtArgs>
+        fields: Prisma.CategoryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CategoryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CategoryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          findFirst: {
+            args: Prisma.CategoryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CategoryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          findMany: {
+            args: Prisma.CategoryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
+          }
+          create: {
+            args: Prisma.CategoryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          createMany: {
+            args: Prisma.CategoryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CategoryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>[]
+          }
+          delete: {
+            args: Prisma.CategoryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          update: {
+            args: Prisma.CategoryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          deleteMany: {
+            args: Prisma.CategoryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CategoryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.CategoryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryPayload>
+          }
+          aggregate: {
+            args: Prisma.CategoryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCategory>
+          }
+          groupBy: {
+            args: Prisma.CategoryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CategoryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CategoryCountArgs<ExtArgs>
+            result: $Utils.Optional<CategoryCountAggregateOutputType> | number
+          }
+        }
+      }
+      Sectors: {
+        payload: Prisma.$SectorsPayload<ExtArgs>
+        fields: Prisma.SectorsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SectorsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectorsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SectorsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectorsPayload>
+          }
+          findFirst: {
+            args: Prisma.SectorsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectorsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SectorsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectorsPayload>
+          }
+          findMany: {
+            args: Prisma.SectorsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectorsPayload>[]
+          }
+          create: {
+            args: Prisma.SectorsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectorsPayload>
+          }
+          createMany: {
+            args: Prisma.SectorsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SectorsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectorsPayload>[]
+          }
+          delete: {
+            args: Prisma.SectorsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectorsPayload>
+          }
+          update: {
+            args: Prisma.SectorsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectorsPayload>
+          }
+          deleteMany: {
+            args: Prisma.SectorsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SectorsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.SectorsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SectorsPayload>
+          }
+          aggregate: {
+            args: Prisma.SectorsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSectors>
+          }
+          groupBy: {
+            args: Prisma.SectorsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SectorsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SectorsCountArgs<ExtArgs>
+            result: $Utils.Optional<SectorsCountAggregateOutputType> | number
+          }
+        }
+      }
       AuthAccount: {
         payload: Prisma.$AuthAccountPayload<ExtArgs>
         fields: Prisma.AuthAccountFieldRefs
@@ -1989,10 +2333,12 @@ export namespace Prisma {
 
   export type AgencyDataCountOutputType = {
     branch: number
+    jobOffers: number
   }
 
   export type AgencyDataCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     branch?: boolean | AgencyDataCountOutputTypeCountBranchArgs
+    jobOffers?: boolean | AgencyDataCountOutputTypeCountJobOffersArgs
   }
 
   // Custom InputTypes
@@ -2011,6 +2357,204 @@ export namespace Prisma {
    */
   export type AgencyDataCountOutputTypeCountBranchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BranchWhereInput
+  }
+
+  /**
+   * AgencyDataCountOutputType without action
+   */
+  export type AgencyDataCountOutputTypeCountJobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: jobOffersWhereInput
+  }
+
+
+  /**
+   * Count Type BranchCountOutputType
+   */
+
+  export type BranchCountOutputType = {
+    jobOffers: number
+  }
+
+  export type BranchCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    jobOffers?: boolean | BranchCountOutputTypeCountJobOffersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BranchCountOutputType without action
+   */
+  export type BranchCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BranchCountOutputType
+     */
+    select?: BranchCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BranchCountOutputType without action
+   */
+  export type BranchCountOutputTypeCountJobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: jobOffersWhereInput
+  }
+
+
+  /**
+   * Count Type JobOffersCountOutputType
+   */
+
+  export type JobOffersCountOutputType = {
+    categories: number
+    sectors: number
+    tags: number
+  }
+
+  export type JobOffersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    categories?: boolean | JobOffersCountOutputTypeCountCategoriesArgs
+    sectors?: boolean | JobOffersCountOutputTypeCountSectorsArgs
+    tags?: boolean | JobOffersCountOutputTypeCountTagsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * JobOffersCountOutputType without action
+   */
+  export type JobOffersCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the JobOffersCountOutputType
+     */
+    select?: JobOffersCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * JobOffersCountOutputType without action
+   */
+  export type JobOffersCountOutputTypeCountCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryWhereInput
+  }
+
+  /**
+   * JobOffersCountOutputType without action
+   */
+  export type JobOffersCountOutputTypeCountSectorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SectorsWhereInput
+  }
+
+  /**
+   * JobOffersCountOutputType without action
+   */
+  export type JobOffersCountOutputTypeCountTagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: jobTagsWhereInput
+  }
+
+
+  /**
+   * Count Type JobTagsCountOutputType
+   */
+
+  export type JobTagsCountOutputType = {
+    jobOffers: number
+  }
+
+  export type JobTagsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    jobOffers?: boolean | JobTagsCountOutputTypeCountJobOffersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * JobTagsCountOutputType without action
+   */
+  export type JobTagsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the JobTagsCountOutputType
+     */
+    select?: JobTagsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * JobTagsCountOutputType without action
+   */
+  export type JobTagsCountOutputTypeCountJobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: jobOffersWhereInput
+  }
+
+
+  /**
+   * Count Type CategoryCountOutputType
+   */
+
+  export type CategoryCountOutputType = {
+    sectors: number
+    jobOffers: number
+    children: number
+  }
+
+  export type CategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sectors?: boolean | CategoryCountOutputTypeCountSectorsArgs
+    jobOffers?: boolean | CategoryCountOutputTypeCountJobOffersArgs
+    children?: boolean | CategoryCountOutputTypeCountChildrenArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryCountOutputType
+     */
+    select?: CategoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeCountSectorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SectorsWhereInput
+  }
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeCountJobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: jobOffersWhereInput
+  }
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeCountChildrenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryWhereInput
+  }
+
+
+  /**
+   * Count Type SectorsCountOutputType
+   */
+
+  export type SectorsCountOutputType = {
+    jobOffer: number
+  }
+
+  export type SectorsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    jobOffer?: boolean | SectorsCountOutputTypeCountJobOfferArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * SectorsCountOutputType without action
+   */
+  export type SectorsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SectorsCountOutputType
+     */
+    select?: SectorsCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * SectorsCountOutputType without action
+   */
+  export type SectorsCountOutputTypeCountJobOfferArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: jobOffersWhereInput
   }
 
 
@@ -10075,6 +10619,7 @@ export namespace Prisma {
     logo?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     branch?: boolean | AgencyData$branchArgs<ExtArgs>
+    jobOffers?: boolean | AgencyData$jobOffersArgs<ExtArgs>
     _count?: boolean | AgencyDataCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["agencyData"]>
 
@@ -10110,6 +10655,7 @@ export namespace Prisma {
   export type AgencyDataInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     branch?: boolean | AgencyData$branchArgs<ExtArgs>
+    jobOffers?: boolean | AgencyData$jobOffersArgs<ExtArgs>
     _count?: boolean | AgencyDataCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type AgencyDataIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10121,6 +10667,7 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       branch: Prisma.$BranchPayload<ExtArgs>[]
+      jobOffers: Prisma.$jobOffersPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -10500,6 +11047,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     branch<T extends AgencyData$branchArgs<ExtArgs> = {}>(args?: Subset<T, AgencyData$branchArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BranchPayload<ExtArgs>, T, "findMany"> | Null>
+    jobOffers<T extends AgencyData$jobOffersArgs<ExtArgs> = {}>(args?: Subset<T, AgencyData$jobOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10878,6 +11426,26 @@ export namespace Prisma {
   }
 
   /**
+   * AgencyData.jobOffers
+   */
+  export type AgencyData$jobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    where?: jobOffersWhereInput
+    orderBy?: jobOffersOrderByWithRelationInput | jobOffersOrderByWithRelationInput[]
+    cursor?: jobOffersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: JobOffersScalarFieldEnum | JobOffersScalarFieldEnum[]
+  }
+
+  /**
    * AgencyData without action
    */
   export type AgencyDataDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11081,6 +11649,8 @@ export namespace Prisma {
     logo?: boolean
     adId?: boolean
     agency?: boolean | AgencyDataDefaultArgs<ExtArgs>
+    jobOffers?: boolean | Branch$jobOffersArgs<ExtArgs>
+    _count?: boolean | BranchCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["branch"]>
 
   export type BranchSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -11108,6 +11678,8 @@ export namespace Prisma {
 
   export type BranchInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     agency?: boolean | AgencyDataDefaultArgs<ExtArgs>
+    jobOffers?: boolean | Branch$jobOffersArgs<ExtArgs>
+    _count?: boolean | BranchCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type BranchIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     agency?: boolean | AgencyDataDefaultArgs<ExtArgs>
@@ -11117,6 +11689,7 @@ export namespace Prisma {
     name: "Branch"
     objects: {
       agency: Prisma.$AgencyDataPayload<ExtArgs>
+      jobOffers: Prisma.$jobOffersPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -11492,6 +12065,7 @@ export namespace Prisma {
   export interface Prisma__BranchClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     agency<T extends AgencyDataDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AgencyDataDefaultArgs<ExtArgs>>): Prisma__AgencyDataClient<$Result.GetResult<Prisma.$AgencyDataPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    jobOffers<T extends Branch$jobOffersArgs<ExtArgs> = {}>(args?: Subset<T, Branch$jobOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11847,6 +12421,26 @@ export namespace Prisma {
   }
 
   /**
+   * Branch.jobOffers
+   */
+  export type Branch$jobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    where?: jobOffersWhereInput
+    orderBy?: jobOffersOrderByWithRelationInput | jobOffersOrderByWithRelationInput[]
+    cursor?: jobOffersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: JobOffersScalarFieldEnum | JobOffersScalarFieldEnum[]
+  }
+
+  /**
    * Branch without action
    */
   export type BranchDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11858,6 +12452,4103 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: BranchInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model jobOffers
+   */
+
+  export type AggregateJobOffers = {
+    _count: JobOffersCountAggregateOutputType | null
+    _avg: JobOffersAvgAggregateOutputType | null
+    _sum: JobOffersSumAggregateOutputType | null
+    _min: JobOffersMinAggregateOutputType | null
+    _max: JobOffersMaxAggregateOutputType | null
+  }
+
+  export type JobOffersAvgAggregateOutputType = {
+    views: number | null
+  }
+
+  export type JobOffersSumAggregateOutputType = {
+    views: number | null
+  }
+
+  export type JobOffersMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    slug: string | null
+    description: string | null
+    region: string | null
+    province: string | null
+    location: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    isValidate: boolean | null
+    views: number | null
+    agencyId: string | null
+    branchId: string | null
+  }
+
+  export type JobOffersMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    slug: string | null
+    description: string | null
+    region: string | null
+    province: string | null
+    location: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    isValidate: boolean | null
+    views: number | null
+    agencyId: string | null
+    branchId: string | null
+  }
+
+  export type JobOffersCountAggregateOutputType = {
+    id: number
+    title: number
+    slug: number
+    description: number
+    region: number
+    province: number
+    location: number
+    createdAt: number
+    updatedAt: number
+    isValidate: number
+    views: number
+    agencyId: number
+    branchId: number
+    _all: number
+  }
+
+
+  export type JobOffersAvgAggregateInputType = {
+    views?: true
+  }
+
+  export type JobOffersSumAggregateInputType = {
+    views?: true
+  }
+
+  export type JobOffersMinAggregateInputType = {
+    id?: true
+    title?: true
+    slug?: true
+    description?: true
+    region?: true
+    province?: true
+    location?: true
+    createdAt?: true
+    updatedAt?: true
+    isValidate?: true
+    views?: true
+    agencyId?: true
+    branchId?: true
+  }
+
+  export type JobOffersMaxAggregateInputType = {
+    id?: true
+    title?: true
+    slug?: true
+    description?: true
+    region?: true
+    province?: true
+    location?: true
+    createdAt?: true
+    updatedAt?: true
+    isValidate?: true
+    views?: true
+    agencyId?: true
+    branchId?: true
+  }
+
+  export type JobOffersCountAggregateInputType = {
+    id?: true
+    title?: true
+    slug?: true
+    description?: true
+    region?: true
+    province?: true
+    location?: true
+    createdAt?: true
+    updatedAt?: true
+    isValidate?: true
+    views?: true
+    agencyId?: true
+    branchId?: true
+    _all?: true
+  }
+
+  export type JobOffersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which jobOffers to aggregate.
+     */
+    where?: jobOffersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of jobOffers to fetch.
+     */
+    orderBy?: jobOffersOrderByWithRelationInput | jobOffersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: jobOffersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` jobOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` jobOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned jobOffers
+    **/
+    _count?: true | JobOffersCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: JobOffersAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: JobOffersSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: JobOffersMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: JobOffersMaxAggregateInputType
+  }
+
+  export type GetJobOffersAggregateType<T extends JobOffersAggregateArgs> = {
+        [P in keyof T & keyof AggregateJobOffers]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateJobOffers[P]>
+      : GetScalarType<T[P], AggregateJobOffers[P]>
+  }
+
+
+
+
+  export type jobOffersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: jobOffersWhereInput
+    orderBy?: jobOffersOrderByWithAggregationInput | jobOffersOrderByWithAggregationInput[]
+    by: JobOffersScalarFieldEnum[] | JobOffersScalarFieldEnum
+    having?: jobOffersScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: JobOffersCountAggregateInputType | true
+    _avg?: JobOffersAvgAggregateInputType
+    _sum?: JobOffersSumAggregateInputType
+    _min?: JobOffersMinAggregateInputType
+    _max?: JobOffersMaxAggregateInputType
+  }
+
+  export type JobOffersGroupByOutputType = {
+    id: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    createdAt: Date
+    updatedAt: Date
+    isValidate: boolean
+    views: number
+    agencyId: string
+    branchId: string | null
+    _count: JobOffersCountAggregateOutputType | null
+    _avg: JobOffersAvgAggregateOutputType | null
+    _sum: JobOffersSumAggregateOutputType | null
+    _min: JobOffersMinAggregateOutputType | null
+    _max: JobOffersMaxAggregateOutputType | null
+  }
+
+  type GetJobOffersGroupByPayload<T extends jobOffersGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<JobOffersGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof JobOffersGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], JobOffersGroupByOutputType[P]>
+            : GetScalarType<T[P], JobOffersGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type jobOffersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    slug?: boolean
+    description?: boolean
+    region?: boolean
+    province?: boolean
+    location?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    isValidate?: boolean
+    views?: boolean
+    agencyId?: boolean
+    branchId?: boolean
+    categories?: boolean | jobOffers$categoriesArgs<ExtArgs>
+    sectors?: boolean | jobOffers$sectorsArgs<ExtArgs>
+    tags?: boolean | jobOffers$tagsArgs<ExtArgs>
+    agency?: boolean | AgencyDataDefaultArgs<ExtArgs>
+    branch?: boolean | jobOffers$branchArgs<ExtArgs>
+    _count?: boolean | JobOffersCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["jobOffers"]>
+
+  export type jobOffersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    slug?: boolean
+    description?: boolean
+    region?: boolean
+    province?: boolean
+    location?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    isValidate?: boolean
+    views?: boolean
+    agencyId?: boolean
+    branchId?: boolean
+    agency?: boolean | AgencyDataDefaultArgs<ExtArgs>
+    branch?: boolean | jobOffers$branchArgs<ExtArgs>
+  }, ExtArgs["result"]["jobOffers"]>
+
+  export type jobOffersSelectScalar = {
+    id?: boolean
+    title?: boolean
+    slug?: boolean
+    description?: boolean
+    region?: boolean
+    province?: boolean
+    location?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    isValidate?: boolean
+    views?: boolean
+    agencyId?: boolean
+    branchId?: boolean
+  }
+
+  export type jobOffersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    categories?: boolean | jobOffers$categoriesArgs<ExtArgs>
+    sectors?: boolean | jobOffers$sectorsArgs<ExtArgs>
+    tags?: boolean | jobOffers$tagsArgs<ExtArgs>
+    agency?: boolean | AgencyDataDefaultArgs<ExtArgs>
+    branch?: boolean | jobOffers$branchArgs<ExtArgs>
+    _count?: boolean | JobOffersCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type jobOffersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    agency?: boolean | AgencyDataDefaultArgs<ExtArgs>
+    branch?: boolean | jobOffers$branchArgs<ExtArgs>
+  }
+
+  export type $jobOffersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "jobOffers"
+    objects: {
+      categories: Prisma.$CategoryPayload<ExtArgs>[]
+      sectors: Prisma.$SectorsPayload<ExtArgs>[]
+      tags: Prisma.$jobTagsPayload<ExtArgs>[]
+      agency: Prisma.$AgencyDataPayload<ExtArgs>
+      branch: Prisma.$BranchPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      slug: string
+      description: string
+      region: string
+      province: string
+      location: string
+      createdAt: Date
+      updatedAt: Date
+      isValidate: boolean
+      views: number
+      agencyId: string
+      branchId: string | null
+    }, ExtArgs["result"]["jobOffers"]>
+    composites: {}
+  }
+
+  type jobOffersGetPayload<S extends boolean | null | undefined | jobOffersDefaultArgs> = $Result.GetResult<Prisma.$jobOffersPayload, S>
+
+  type jobOffersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<jobOffersFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: JobOffersCountAggregateInputType | true
+    }
+
+  export interface jobOffersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['jobOffers'], meta: { name: 'jobOffers' } }
+    /**
+     * Find zero or one JobOffers that matches the filter.
+     * @param {jobOffersFindUniqueArgs} args - Arguments to find a JobOffers
+     * @example
+     * // Get one JobOffers
+     * const jobOffers = await prisma.jobOffers.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends jobOffersFindUniqueArgs>(args: SelectSubset<T, jobOffersFindUniqueArgs<ExtArgs>>): Prisma__jobOffersClient<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one JobOffers that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {jobOffersFindUniqueOrThrowArgs} args - Arguments to find a JobOffers
+     * @example
+     * // Get one JobOffers
+     * const jobOffers = await prisma.jobOffers.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends jobOffersFindUniqueOrThrowArgs>(args: SelectSubset<T, jobOffersFindUniqueOrThrowArgs<ExtArgs>>): Prisma__jobOffersClient<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first JobOffers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {jobOffersFindFirstArgs} args - Arguments to find a JobOffers
+     * @example
+     * // Get one JobOffers
+     * const jobOffers = await prisma.jobOffers.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends jobOffersFindFirstArgs>(args?: SelectSubset<T, jobOffersFindFirstArgs<ExtArgs>>): Prisma__jobOffersClient<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first JobOffers that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {jobOffersFindFirstOrThrowArgs} args - Arguments to find a JobOffers
+     * @example
+     * // Get one JobOffers
+     * const jobOffers = await prisma.jobOffers.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends jobOffersFindFirstOrThrowArgs>(args?: SelectSubset<T, jobOffersFindFirstOrThrowArgs<ExtArgs>>): Prisma__jobOffersClient<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more JobOffers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {jobOffersFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all JobOffers
+     * const jobOffers = await prisma.jobOffers.findMany()
+     * 
+     * // Get first 10 JobOffers
+     * const jobOffers = await prisma.jobOffers.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const jobOffersWithIdOnly = await prisma.jobOffers.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends jobOffersFindManyArgs>(args?: SelectSubset<T, jobOffersFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a JobOffers.
+     * @param {jobOffersCreateArgs} args - Arguments to create a JobOffers.
+     * @example
+     * // Create one JobOffers
+     * const JobOffers = await prisma.jobOffers.create({
+     *   data: {
+     *     // ... data to create a JobOffers
+     *   }
+     * })
+     * 
+     */
+    create<T extends jobOffersCreateArgs>(args: SelectSubset<T, jobOffersCreateArgs<ExtArgs>>): Prisma__jobOffersClient<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many JobOffers.
+     * @param {jobOffersCreateManyArgs} args - Arguments to create many JobOffers.
+     * @example
+     * // Create many JobOffers
+     * const jobOffers = await prisma.jobOffers.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends jobOffersCreateManyArgs>(args?: SelectSubset<T, jobOffersCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many JobOffers and returns the data saved in the database.
+     * @param {jobOffersCreateManyAndReturnArgs} args - Arguments to create many JobOffers.
+     * @example
+     * // Create many JobOffers
+     * const jobOffers = await prisma.jobOffers.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many JobOffers and only return the `id`
+     * const jobOffersWithIdOnly = await prisma.jobOffers.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends jobOffersCreateManyAndReturnArgs>(args?: SelectSubset<T, jobOffersCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a JobOffers.
+     * @param {jobOffersDeleteArgs} args - Arguments to delete one JobOffers.
+     * @example
+     * // Delete one JobOffers
+     * const JobOffers = await prisma.jobOffers.delete({
+     *   where: {
+     *     // ... filter to delete one JobOffers
+     *   }
+     * })
+     * 
+     */
+    delete<T extends jobOffersDeleteArgs>(args: SelectSubset<T, jobOffersDeleteArgs<ExtArgs>>): Prisma__jobOffersClient<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one JobOffers.
+     * @param {jobOffersUpdateArgs} args - Arguments to update one JobOffers.
+     * @example
+     * // Update one JobOffers
+     * const jobOffers = await prisma.jobOffers.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends jobOffersUpdateArgs>(args: SelectSubset<T, jobOffersUpdateArgs<ExtArgs>>): Prisma__jobOffersClient<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more JobOffers.
+     * @param {jobOffersDeleteManyArgs} args - Arguments to filter JobOffers to delete.
+     * @example
+     * // Delete a few JobOffers
+     * const { count } = await prisma.jobOffers.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends jobOffersDeleteManyArgs>(args?: SelectSubset<T, jobOffersDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more JobOffers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {jobOffersUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many JobOffers
+     * const jobOffers = await prisma.jobOffers.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends jobOffersUpdateManyArgs>(args: SelectSubset<T, jobOffersUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one JobOffers.
+     * @param {jobOffersUpsertArgs} args - Arguments to update or create a JobOffers.
+     * @example
+     * // Update or create a JobOffers
+     * const jobOffers = await prisma.jobOffers.upsert({
+     *   create: {
+     *     // ... data to create a JobOffers
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the JobOffers we want to update
+     *   }
+     * })
+     */
+    upsert<T extends jobOffersUpsertArgs>(args: SelectSubset<T, jobOffersUpsertArgs<ExtArgs>>): Prisma__jobOffersClient<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of JobOffers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {jobOffersCountArgs} args - Arguments to filter JobOffers to count.
+     * @example
+     * // Count the number of JobOffers
+     * const count = await prisma.jobOffers.count({
+     *   where: {
+     *     // ... the filter for the JobOffers we want to count
+     *   }
+     * })
+    **/
+    count<T extends jobOffersCountArgs>(
+      args?: Subset<T, jobOffersCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], JobOffersCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a JobOffers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {JobOffersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends JobOffersAggregateArgs>(args: Subset<T, JobOffersAggregateArgs>): Prisma.PrismaPromise<GetJobOffersAggregateType<T>>
+
+    /**
+     * Group by JobOffers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {jobOffersGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends jobOffersGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: jobOffersGroupByArgs['orderBy'] }
+        : { orderBy?: jobOffersGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, jobOffersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetJobOffersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the jobOffers model
+   */
+  readonly fields: jobOffersFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for jobOffers.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__jobOffersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    categories<T extends jobOffers$categoriesArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$categoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany"> | Null>
+    sectors<T extends jobOffers$sectorsArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$sectorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectorsPayload<ExtArgs>, T, "findMany"> | Null>
+    tags<T extends jobOffers$tagsArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$tagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobTagsPayload<ExtArgs>, T, "findMany"> | Null>
+    agency<T extends AgencyDataDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AgencyDataDefaultArgs<ExtArgs>>): Prisma__AgencyDataClient<$Result.GetResult<Prisma.$AgencyDataPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    branch<T extends jobOffers$branchArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$branchArgs<ExtArgs>>): Prisma__BranchClient<$Result.GetResult<Prisma.$BranchPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the jobOffers model
+   */ 
+  interface jobOffersFieldRefs {
+    readonly id: FieldRef<"jobOffers", 'String'>
+    readonly title: FieldRef<"jobOffers", 'String'>
+    readonly slug: FieldRef<"jobOffers", 'String'>
+    readonly description: FieldRef<"jobOffers", 'String'>
+    readonly region: FieldRef<"jobOffers", 'String'>
+    readonly province: FieldRef<"jobOffers", 'String'>
+    readonly location: FieldRef<"jobOffers", 'String'>
+    readonly createdAt: FieldRef<"jobOffers", 'DateTime'>
+    readonly updatedAt: FieldRef<"jobOffers", 'DateTime'>
+    readonly isValidate: FieldRef<"jobOffers", 'Boolean'>
+    readonly views: FieldRef<"jobOffers", 'Int'>
+    readonly agencyId: FieldRef<"jobOffers", 'String'>
+    readonly branchId: FieldRef<"jobOffers", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * jobOffers findUnique
+   */
+  export type jobOffersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    /**
+     * Filter, which jobOffers to fetch.
+     */
+    where: jobOffersWhereUniqueInput
+  }
+
+  /**
+   * jobOffers findUniqueOrThrow
+   */
+  export type jobOffersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    /**
+     * Filter, which jobOffers to fetch.
+     */
+    where: jobOffersWhereUniqueInput
+  }
+
+  /**
+   * jobOffers findFirst
+   */
+  export type jobOffersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    /**
+     * Filter, which jobOffers to fetch.
+     */
+    where?: jobOffersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of jobOffers to fetch.
+     */
+    orderBy?: jobOffersOrderByWithRelationInput | jobOffersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for jobOffers.
+     */
+    cursor?: jobOffersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` jobOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` jobOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of jobOffers.
+     */
+    distinct?: JobOffersScalarFieldEnum | JobOffersScalarFieldEnum[]
+  }
+
+  /**
+   * jobOffers findFirstOrThrow
+   */
+  export type jobOffersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    /**
+     * Filter, which jobOffers to fetch.
+     */
+    where?: jobOffersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of jobOffers to fetch.
+     */
+    orderBy?: jobOffersOrderByWithRelationInput | jobOffersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for jobOffers.
+     */
+    cursor?: jobOffersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` jobOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` jobOffers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of jobOffers.
+     */
+    distinct?: JobOffersScalarFieldEnum | JobOffersScalarFieldEnum[]
+  }
+
+  /**
+   * jobOffers findMany
+   */
+  export type jobOffersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    /**
+     * Filter, which jobOffers to fetch.
+     */
+    where?: jobOffersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of jobOffers to fetch.
+     */
+    orderBy?: jobOffersOrderByWithRelationInput | jobOffersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing jobOffers.
+     */
+    cursor?: jobOffersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` jobOffers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` jobOffers.
+     */
+    skip?: number
+    distinct?: JobOffersScalarFieldEnum | JobOffersScalarFieldEnum[]
+  }
+
+  /**
+   * jobOffers create
+   */
+  export type jobOffersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    /**
+     * The data needed to create a jobOffers.
+     */
+    data: XOR<jobOffersCreateInput, jobOffersUncheckedCreateInput>
+  }
+
+  /**
+   * jobOffers createMany
+   */
+  export type jobOffersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many jobOffers.
+     */
+    data: jobOffersCreateManyInput | jobOffersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * jobOffers createManyAndReturn
+   */
+  export type jobOffersCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many jobOffers.
+     */
+    data: jobOffersCreateManyInput | jobOffersCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * jobOffers update
+   */
+  export type jobOffersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    /**
+     * The data needed to update a jobOffers.
+     */
+    data: XOR<jobOffersUpdateInput, jobOffersUncheckedUpdateInput>
+    /**
+     * Choose, which jobOffers to update.
+     */
+    where: jobOffersWhereUniqueInput
+  }
+
+  /**
+   * jobOffers updateMany
+   */
+  export type jobOffersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update jobOffers.
+     */
+    data: XOR<jobOffersUpdateManyMutationInput, jobOffersUncheckedUpdateManyInput>
+    /**
+     * Filter which jobOffers to update
+     */
+    where?: jobOffersWhereInput
+  }
+
+  /**
+   * jobOffers upsert
+   */
+  export type jobOffersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    /**
+     * The filter to search for the jobOffers to update in case it exists.
+     */
+    where: jobOffersWhereUniqueInput
+    /**
+     * In case the jobOffers found by the `where` argument doesn't exist, create a new jobOffers with this data.
+     */
+    create: XOR<jobOffersCreateInput, jobOffersUncheckedCreateInput>
+    /**
+     * In case the jobOffers was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<jobOffersUpdateInput, jobOffersUncheckedUpdateInput>
+  }
+
+  /**
+   * jobOffers delete
+   */
+  export type jobOffersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    /**
+     * Filter which jobOffers to delete.
+     */
+    where: jobOffersWhereUniqueInput
+  }
+
+  /**
+   * jobOffers deleteMany
+   */
+  export type jobOffersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which jobOffers to delete
+     */
+    where?: jobOffersWhereInput
+  }
+
+  /**
+   * jobOffers.categories
+   */
+  export type jobOffers$categoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    where?: CategoryWhereInput
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    cursor?: CategoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * jobOffers.sectors
+   */
+  export type jobOffers$sectorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Sectors
+     */
+    select?: SectorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectorsInclude<ExtArgs> | null
+    where?: SectorsWhereInput
+    orderBy?: SectorsOrderByWithRelationInput | SectorsOrderByWithRelationInput[]
+    cursor?: SectorsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SectorsScalarFieldEnum | SectorsScalarFieldEnum[]
+  }
+
+  /**
+   * jobOffers.tags
+   */
+  export type jobOffers$tagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobTags
+     */
+    select?: jobTagsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobTagsInclude<ExtArgs> | null
+    where?: jobTagsWhereInput
+    orderBy?: jobTagsOrderByWithRelationInput | jobTagsOrderByWithRelationInput[]
+    cursor?: jobTagsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: JobTagsScalarFieldEnum | JobTagsScalarFieldEnum[]
+  }
+
+  /**
+   * jobOffers.branch
+   */
+  export type jobOffers$branchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Branch
+     */
+    select?: BranchSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: BranchInclude<ExtArgs> | null
+    where?: BranchWhereInput
+  }
+
+  /**
+   * jobOffers without action
+   */
+  export type jobOffersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model jobTags
+   */
+
+  export type AggregateJobTags = {
+    _count: JobTagsCountAggregateOutputType | null
+    _min: JobTagsMinAggregateOutputType | null
+    _max: JobTagsMaxAggregateOutputType | null
+  }
+
+  export type JobTagsMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+  }
+
+  export type JobTagsMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+  }
+
+  export type JobTagsCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    _all: number
+  }
+
+
+  export type JobTagsMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+  }
+
+  export type JobTagsMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+  }
+
+  export type JobTagsCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    _all?: true
+  }
+
+  export type JobTagsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which jobTags to aggregate.
+     */
+    where?: jobTagsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of jobTags to fetch.
+     */
+    orderBy?: jobTagsOrderByWithRelationInput | jobTagsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: jobTagsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` jobTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` jobTags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned jobTags
+    **/
+    _count?: true | JobTagsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: JobTagsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: JobTagsMaxAggregateInputType
+  }
+
+  export type GetJobTagsAggregateType<T extends JobTagsAggregateArgs> = {
+        [P in keyof T & keyof AggregateJobTags]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateJobTags[P]>
+      : GetScalarType<T[P], AggregateJobTags[P]>
+  }
+
+
+
+
+  export type jobTagsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: jobTagsWhereInput
+    orderBy?: jobTagsOrderByWithAggregationInput | jobTagsOrderByWithAggregationInput[]
+    by: JobTagsScalarFieldEnum[] | JobTagsScalarFieldEnum
+    having?: jobTagsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: JobTagsCountAggregateInputType | true
+    _min?: JobTagsMinAggregateInputType
+    _max?: JobTagsMaxAggregateInputType
+  }
+
+  export type JobTagsGroupByOutputType = {
+    id: string
+    name: string
+    slug: string
+    _count: JobTagsCountAggregateOutputType | null
+    _min: JobTagsMinAggregateOutputType | null
+    _max: JobTagsMaxAggregateOutputType | null
+  }
+
+  type GetJobTagsGroupByPayload<T extends jobTagsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<JobTagsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof JobTagsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], JobTagsGroupByOutputType[P]>
+            : GetScalarType<T[P], JobTagsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type jobTagsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    jobOffers?: boolean | jobTags$jobOffersArgs<ExtArgs>
+    _count?: boolean | JobTagsCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["jobTags"]>
+
+  export type jobTagsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }, ExtArgs["result"]["jobTags"]>
+
+  export type jobTagsSelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+  }
+
+  export type jobTagsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    jobOffers?: boolean | jobTags$jobOffersArgs<ExtArgs>
+    _count?: boolean | JobTagsCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type jobTagsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $jobTagsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "jobTags"
+    objects: {
+      jobOffers: Prisma.$jobOffersPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      slug: string
+    }, ExtArgs["result"]["jobTags"]>
+    composites: {}
+  }
+
+  type jobTagsGetPayload<S extends boolean | null | undefined | jobTagsDefaultArgs> = $Result.GetResult<Prisma.$jobTagsPayload, S>
+
+  type jobTagsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<jobTagsFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: JobTagsCountAggregateInputType | true
+    }
+
+  export interface jobTagsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['jobTags'], meta: { name: 'jobTags' } }
+    /**
+     * Find zero or one JobTags that matches the filter.
+     * @param {jobTagsFindUniqueArgs} args - Arguments to find a JobTags
+     * @example
+     * // Get one JobTags
+     * const jobTags = await prisma.jobTags.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends jobTagsFindUniqueArgs>(args: SelectSubset<T, jobTagsFindUniqueArgs<ExtArgs>>): Prisma__jobTagsClient<$Result.GetResult<Prisma.$jobTagsPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one JobTags that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {jobTagsFindUniqueOrThrowArgs} args - Arguments to find a JobTags
+     * @example
+     * // Get one JobTags
+     * const jobTags = await prisma.jobTags.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends jobTagsFindUniqueOrThrowArgs>(args: SelectSubset<T, jobTagsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__jobTagsClient<$Result.GetResult<Prisma.$jobTagsPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first JobTags that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {jobTagsFindFirstArgs} args - Arguments to find a JobTags
+     * @example
+     * // Get one JobTags
+     * const jobTags = await prisma.jobTags.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends jobTagsFindFirstArgs>(args?: SelectSubset<T, jobTagsFindFirstArgs<ExtArgs>>): Prisma__jobTagsClient<$Result.GetResult<Prisma.$jobTagsPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first JobTags that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {jobTagsFindFirstOrThrowArgs} args - Arguments to find a JobTags
+     * @example
+     * // Get one JobTags
+     * const jobTags = await prisma.jobTags.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends jobTagsFindFirstOrThrowArgs>(args?: SelectSubset<T, jobTagsFindFirstOrThrowArgs<ExtArgs>>): Prisma__jobTagsClient<$Result.GetResult<Prisma.$jobTagsPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more JobTags that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {jobTagsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all JobTags
+     * const jobTags = await prisma.jobTags.findMany()
+     * 
+     * // Get first 10 JobTags
+     * const jobTags = await prisma.jobTags.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const jobTagsWithIdOnly = await prisma.jobTags.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends jobTagsFindManyArgs>(args?: SelectSubset<T, jobTagsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobTagsPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a JobTags.
+     * @param {jobTagsCreateArgs} args - Arguments to create a JobTags.
+     * @example
+     * // Create one JobTags
+     * const JobTags = await prisma.jobTags.create({
+     *   data: {
+     *     // ... data to create a JobTags
+     *   }
+     * })
+     * 
+     */
+    create<T extends jobTagsCreateArgs>(args: SelectSubset<T, jobTagsCreateArgs<ExtArgs>>): Prisma__jobTagsClient<$Result.GetResult<Prisma.$jobTagsPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many JobTags.
+     * @param {jobTagsCreateManyArgs} args - Arguments to create many JobTags.
+     * @example
+     * // Create many JobTags
+     * const jobTags = await prisma.jobTags.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends jobTagsCreateManyArgs>(args?: SelectSubset<T, jobTagsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many JobTags and returns the data saved in the database.
+     * @param {jobTagsCreateManyAndReturnArgs} args - Arguments to create many JobTags.
+     * @example
+     * // Create many JobTags
+     * const jobTags = await prisma.jobTags.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many JobTags and only return the `id`
+     * const jobTagsWithIdOnly = await prisma.jobTags.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends jobTagsCreateManyAndReturnArgs>(args?: SelectSubset<T, jobTagsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobTagsPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a JobTags.
+     * @param {jobTagsDeleteArgs} args - Arguments to delete one JobTags.
+     * @example
+     * // Delete one JobTags
+     * const JobTags = await prisma.jobTags.delete({
+     *   where: {
+     *     // ... filter to delete one JobTags
+     *   }
+     * })
+     * 
+     */
+    delete<T extends jobTagsDeleteArgs>(args: SelectSubset<T, jobTagsDeleteArgs<ExtArgs>>): Prisma__jobTagsClient<$Result.GetResult<Prisma.$jobTagsPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one JobTags.
+     * @param {jobTagsUpdateArgs} args - Arguments to update one JobTags.
+     * @example
+     * // Update one JobTags
+     * const jobTags = await prisma.jobTags.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends jobTagsUpdateArgs>(args: SelectSubset<T, jobTagsUpdateArgs<ExtArgs>>): Prisma__jobTagsClient<$Result.GetResult<Prisma.$jobTagsPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more JobTags.
+     * @param {jobTagsDeleteManyArgs} args - Arguments to filter JobTags to delete.
+     * @example
+     * // Delete a few JobTags
+     * const { count } = await prisma.jobTags.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends jobTagsDeleteManyArgs>(args?: SelectSubset<T, jobTagsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more JobTags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {jobTagsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many JobTags
+     * const jobTags = await prisma.jobTags.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends jobTagsUpdateManyArgs>(args: SelectSubset<T, jobTagsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one JobTags.
+     * @param {jobTagsUpsertArgs} args - Arguments to update or create a JobTags.
+     * @example
+     * // Update or create a JobTags
+     * const jobTags = await prisma.jobTags.upsert({
+     *   create: {
+     *     // ... data to create a JobTags
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the JobTags we want to update
+     *   }
+     * })
+     */
+    upsert<T extends jobTagsUpsertArgs>(args: SelectSubset<T, jobTagsUpsertArgs<ExtArgs>>): Prisma__jobTagsClient<$Result.GetResult<Prisma.$jobTagsPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of JobTags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {jobTagsCountArgs} args - Arguments to filter JobTags to count.
+     * @example
+     * // Count the number of JobTags
+     * const count = await prisma.jobTags.count({
+     *   where: {
+     *     // ... the filter for the JobTags we want to count
+     *   }
+     * })
+    **/
+    count<T extends jobTagsCountArgs>(
+      args?: Subset<T, jobTagsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], JobTagsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a JobTags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {JobTagsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends JobTagsAggregateArgs>(args: Subset<T, JobTagsAggregateArgs>): Prisma.PrismaPromise<GetJobTagsAggregateType<T>>
+
+    /**
+     * Group by JobTags.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {jobTagsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends jobTagsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: jobTagsGroupByArgs['orderBy'] }
+        : { orderBy?: jobTagsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, jobTagsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetJobTagsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the jobTags model
+   */
+  readonly fields: jobTagsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for jobTags.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__jobTagsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    jobOffers<T extends jobTags$jobOffersArgs<ExtArgs> = {}>(args?: Subset<T, jobTags$jobOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the jobTags model
+   */ 
+  interface jobTagsFieldRefs {
+    readonly id: FieldRef<"jobTags", 'String'>
+    readonly name: FieldRef<"jobTags", 'String'>
+    readonly slug: FieldRef<"jobTags", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * jobTags findUnique
+   */
+  export type jobTagsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobTags
+     */
+    select?: jobTagsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobTagsInclude<ExtArgs> | null
+    /**
+     * Filter, which jobTags to fetch.
+     */
+    where: jobTagsWhereUniqueInput
+  }
+
+  /**
+   * jobTags findUniqueOrThrow
+   */
+  export type jobTagsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobTags
+     */
+    select?: jobTagsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobTagsInclude<ExtArgs> | null
+    /**
+     * Filter, which jobTags to fetch.
+     */
+    where: jobTagsWhereUniqueInput
+  }
+
+  /**
+   * jobTags findFirst
+   */
+  export type jobTagsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobTags
+     */
+    select?: jobTagsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobTagsInclude<ExtArgs> | null
+    /**
+     * Filter, which jobTags to fetch.
+     */
+    where?: jobTagsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of jobTags to fetch.
+     */
+    orderBy?: jobTagsOrderByWithRelationInput | jobTagsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for jobTags.
+     */
+    cursor?: jobTagsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` jobTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` jobTags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of jobTags.
+     */
+    distinct?: JobTagsScalarFieldEnum | JobTagsScalarFieldEnum[]
+  }
+
+  /**
+   * jobTags findFirstOrThrow
+   */
+  export type jobTagsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobTags
+     */
+    select?: jobTagsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobTagsInclude<ExtArgs> | null
+    /**
+     * Filter, which jobTags to fetch.
+     */
+    where?: jobTagsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of jobTags to fetch.
+     */
+    orderBy?: jobTagsOrderByWithRelationInput | jobTagsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for jobTags.
+     */
+    cursor?: jobTagsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` jobTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` jobTags.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of jobTags.
+     */
+    distinct?: JobTagsScalarFieldEnum | JobTagsScalarFieldEnum[]
+  }
+
+  /**
+   * jobTags findMany
+   */
+  export type jobTagsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobTags
+     */
+    select?: jobTagsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobTagsInclude<ExtArgs> | null
+    /**
+     * Filter, which jobTags to fetch.
+     */
+    where?: jobTagsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of jobTags to fetch.
+     */
+    orderBy?: jobTagsOrderByWithRelationInput | jobTagsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing jobTags.
+     */
+    cursor?: jobTagsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` jobTags from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` jobTags.
+     */
+    skip?: number
+    distinct?: JobTagsScalarFieldEnum | JobTagsScalarFieldEnum[]
+  }
+
+  /**
+   * jobTags create
+   */
+  export type jobTagsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobTags
+     */
+    select?: jobTagsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobTagsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a jobTags.
+     */
+    data: XOR<jobTagsCreateInput, jobTagsUncheckedCreateInput>
+  }
+
+  /**
+   * jobTags createMany
+   */
+  export type jobTagsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many jobTags.
+     */
+    data: jobTagsCreateManyInput | jobTagsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * jobTags createManyAndReturn
+   */
+  export type jobTagsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobTags
+     */
+    select?: jobTagsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many jobTags.
+     */
+    data: jobTagsCreateManyInput | jobTagsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * jobTags update
+   */
+  export type jobTagsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobTags
+     */
+    select?: jobTagsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobTagsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a jobTags.
+     */
+    data: XOR<jobTagsUpdateInput, jobTagsUncheckedUpdateInput>
+    /**
+     * Choose, which jobTags to update.
+     */
+    where: jobTagsWhereUniqueInput
+  }
+
+  /**
+   * jobTags updateMany
+   */
+  export type jobTagsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update jobTags.
+     */
+    data: XOR<jobTagsUpdateManyMutationInput, jobTagsUncheckedUpdateManyInput>
+    /**
+     * Filter which jobTags to update
+     */
+    where?: jobTagsWhereInput
+  }
+
+  /**
+   * jobTags upsert
+   */
+  export type jobTagsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobTags
+     */
+    select?: jobTagsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobTagsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the jobTags to update in case it exists.
+     */
+    where: jobTagsWhereUniqueInput
+    /**
+     * In case the jobTags found by the `where` argument doesn't exist, create a new jobTags with this data.
+     */
+    create: XOR<jobTagsCreateInput, jobTagsUncheckedCreateInput>
+    /**
+     * In case the jobTags was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<jobTagsUpdateInput, jobTagsUncheckedUpdateInput>
+  }
+
+  /**
+   * jobTags delete
+   */
+  export type jobTagsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobTags
+     */
+    select?: jobTagsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobTagsInclude<ExtArgs> | null
+    /**
+     * Filter which jobTags to delete.
+     */
+    where: jobTagsWhereUniqueInput
+  }
+
+  /**
+   * jobTags deleteMany
+   */
+  export type jobTagsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which jobTags to delete
+     */
+    where?: jobTagsWhereInput
+  }
+
+  /**
+   * jobTags.jobOffers
+   */
+  export type jobTags$jobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    where?: jobOffersWhereInput
+    orderBy?: jobOffersOrderByWithRelationInput | jobOffersOrderByWithRelationInput[]
+    cursor?: jobOffersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: JobOffersScalarFieldEnum | JobOffersScalarFieldEnum[]
+  }
+
+  /**
+   * jobTags without action
+   */
+  export type jobTagsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobTags
+     */
+    select?: jobTagsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobTagsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Category
+   */
+
+  export type AggregateCategory = {
+    _count: CategoryCountAggregateOutputType | null
+    _avg: CategoryAvgAggregateOutputType | null
+    _sum: CategorySumAggregateOutputType | null
+    _min: CategoryMinAggregateOutputType | null
+    _max: CategoryMaxAggregateOutputType | null
+  }
+
+  export type CategoryAvgAggregateOutputType = {
+    level: number | null
+  }
+
+  export type CategorySumAggregateOutputType = {
+    level: number | null
+  }
+
+  export type CategoryMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+    description: string | null
+    level: number | null
+    parentId: string | null
+  }
+
+  export type CategoryMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+    description: string | null
+    level: number | null
+    parentId: string | null
+  }
+
+  export type CategoryCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    description: number
+    level: number
+    parentId: number
+    _all: number
+  }
+
+
+  export type CategoryAvgAggregateInputType = {
+    level?: true
+  }
+
+  export type CategorySumAggregateInputType = {
+    level?: true
+  }
+
+  export type CategoryMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    description?: true
+    level?: true
+    parentId?: true
+  }
+
+  export type CategoryMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    description?: true
+    level?: true
+    parentId?: true
+  }
+
+  export type CategoryCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    description?: true
+    level?: true
+    parentId?: true
+    _all?: true
+  }
+
+  export type CategoryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Category to aggregate.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Categories
+    **/
+    _count?: true | CategoryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CategoryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CategorySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CategoryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CategoryMaxAggregateInputType
+  }
+
+  export type GetCategoryAggregateType<T extends CategoryAggregateArgs> = {
+        [P in keyof T & keyof AggregateCategory]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCategory[P]>
+      : GetScalarType<T[P], AggregateCategory[P]>
+  }
+
+
+
+
+  export type CategoryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryWhereInput
+    orderBy?: CategoryOrderByWithAggregationInput | CategoryOrderByWithAggregationInput[]
+    by: CategoryScalarFieldEnum[] | CategoryScalarFieldEnum
+    having?: CategoryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CategoryCountAggregateInputType | true
+    _avg?: CategoryAvgAggregateInputType
+    _sum?: CategorySumAggregateInputType
+    _min?: CategoryMinAggregateInputType
+    _max?: CategoryMaxAggregateInputType
+  }
+
+  export type CategoryGroupByOutputType = {
+    id: string
+    name: string
+    slug: string
+    description: string
+    level: number | null
+    parentId: string | null
+    _count: CategoryCountAggregateOutputType | null
+    _avg: CategoryAvgAggregateOutputType | null
+    _sum: CategorySumAggregateOutputType | null
+    _min: CategoryMinAggregateOutputType | null
+    _max: CategoryMaxAggregateOutputType | null
+  }
+
+  type GetCategoryGroupByPayload<T extends CategoryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CategoryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CategoryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CategoryGroupByOutputType[P]>
+            : GetScalarType<T[P], CategoryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    level?: boolean
+    parentId?: boolean
+    sectors?: boolean | Category$sectorsArgs<ExtArgs>
+    jobOffers?: boolean | Category$jobOffersArgs<ExtArgs>
+    parent?: boolean | Category$parentArgs<ExtArgs>
+    children?: boolean | Category$childrenArgs<ExtArgs>
+    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["category"]>
+
+  export type CategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    level?: boolean
+    parentId?: boolean
+    parent?: boolean | Category$parentArgs<ExtArgs>
+  }, ExtArgs["result"]["category"]>
+
+  export type CategorySelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    description?: boolean
+    level?: boolean
+    parentId?: boolean
+  }
+
+  export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    sectors?: boolean | Category$sectorsArgs<ExtArgs>
+    jobOffers?: boolean | Category$jobOffersArgs<ExtArgs>
+    parent?: boolean | Category$parentArgs<ExtArgs>
+    children?: boolean | Category$childrenArgs<ExtArgs>
+    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type CategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    parent?: boolean | Category$parentArgs<ExtArgs>
+  }
+
+  export type $CategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Category"
+    objects: {
+      sectors: Prisma.$SectorsPayload<ExtArgs>[]
+      jobOffers: Prisma.$jobOffersPayload<ExtArgs>[]
+      parent: Prisma.$CategoryPayload<ExtArgs> | null
+      children: Prisma.$CategoryPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      slug: string
+      description: string
+      level: number | null
+      parentId: string | null
+    }, ExtArgs["result"]["category"]>
+    composites: {}
+  }
+
+  type CategoryGetPayload<S extends boolean | null | undefined | CategoryDefaultArgs> = $Result.GetResult<Prisma.$CategoryPayload, S>
+
+  type CategoryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CategoryFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: CategoryCountAggregateInputType | true
+    }
+
+  export interface CategoryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Category'], meta: { name: 'Category' } }
+    /**
+     * Find zero or one Category that matches the filter.
+     * @param {CategoryFindUniqueArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CategoryFindUniqueArgs>(args: SelectSubset<T, CategoryFindUniqueArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Category that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {CategoryFindUniqueOrThrowArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CategoryFindUniqueOrThrowArgs>(args: SelectSubset<T, CategoryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Category that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindFirstArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CategoryFindFirstArgs>(args?: SelectSubset<T, CategoryFindFirstArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Category that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindFirstOrThrowArgs} args - Arguments to find a Category
+     * @example
+     * // Get one Category
+     * const category = await prisma.category.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CategoryFindFirstOrThrowArgs>(args?: SelectSubset<T, CategoryFindFirstOrThrowArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Categories that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Categories
+     * const categories = await prisma.category.findMany()
+     * 
+     * // Get first 10 Categories
+     * const categories = await prisma.category.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const categoryWithIdOnly = await prisma.category.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CategoryFindManyArgs>(args?: SelectSubset<T, CategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Category.
+     * @param {CategoryCreateArgs} args - Arguments to create a Category.
+     * @example
+     * // Create one Category
+     * const Category = await prisma.category.create({
+     *   data: {
+     *     // ... data to create a Category
+     *   }
+     * })
+     * 
+     */
+    create<T extends CategoryCreateArgs>(args: SelectSubset<T, CategoryCreateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Categories.
+     * @param {CategoryCreateManyArgs} args - Arguments to create many Categories.
+     * @example
+     * // Create many Categories
+     * const category = await prisma.category.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CategoryCreateManyArgs>(args?: SelectSubset<T, CategoryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Categories and returns the data saved in the database.
+     * @param {CategoryCreateManyAndReturnArgs} args - Arguments to create many Categories.
+     * @example
+     * // Create many Categories
+     * const category = await prisma.category.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Categories and only return the `id`
+     * const categoryWithIdOnly = await prisma.category.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CategoryCreateManyAndReturnArgs>(args?: SelectSubset<T, CategoryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Category.
+     * @param {CategoryDeleteArgs} args - Arguments to delete one Category.
+     * @example
+     * // Delete one Category
+     * const Category = await prisma.category.delete({
+     *   where: {
+     *     // ... filter to delete one Category
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CategoryDeleteArgs>(args: SelectSubset<T, CategoryDeleteArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Category.
+     * @param {CategoryUpdateArgs} args - Arguments to update one Category.
+     * @example
+     * // Update one Category
+     * const category = await prisma.category.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CategoryUpdateArgs>(args: SelectSubset<T, CategoryUpdateArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Categories.
+     * @param {CategoryDeleteManyArgs} args - Arguments to filter Categories to delete.
+     * @example
+     * // Delete a few Categories
+     * const { count } = await prisma.category.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CategoryDeleteManyArgs>(args?: SelectSubset<T, CategoryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Categories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Categories
+     * const category = await prisma.category.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CategoryUpdateManyArgs>(args: SelectSubset<T, CategoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Category.
+     * @param {CategoryUpsertArgs} args - Arguments to update or create a Category.
+     * @example
+     * // Update or create a Category
+     * const category = await prisma.category.upsert({
+     *   create: {
+     *     // ... data to create a Category
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Category we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CategoryUpsertArgs>(args: SelectSubset<T, CategoryUpsertArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Categories.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryCountArgs} args - Arguments to filter Categories to count.
+     * @example
+     * // Count the number of Categories
+     * const count = await prisma.category.count({
+     *   where: {
+     *     // ... the filter for the Categories we want to count
+     *   }
+     * })
+    **/
+    count<T extends CategoryCountArgs>(
+      args?: Subset<T, CategoryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CategoryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Category.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CategoryAggregateArgs>(args: Subset<T, CategoryAggregateArgs>): Prisma.PrismaPromise<GetCategoryAggregateType<T>>
+
+    /**
+     * Group by Category.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CategoryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CategoryGroupByArgs['orderBy'] }
+        : { orderBy?: CategoryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CategoryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCategoryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Category model
+   */
+  readonly fields: CategoryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Category.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    sectors<T extends Category$sectorsArgs<ExtArgs> = {}>(args?: Subset<T, Category$sectorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectorsPayload<ExtArgs>, T, "findMany"> | Null>
+    jobOffers<T extends Category$jobOffersArgs<ExtArgs> = {}>(args?: Subset<T, Category$jobOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findMany"> | Null>
+    parent<T extends Category$parentArgs<ExtArgs> = {}>(args?: Subset<T, Category$parentArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    children<T extends Category$childrenArgs<ExtArgs> = {}>(args?: Subset<T, Category$childrenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Category model
+   */ 
+  interface CategoryFieldRefs {
+    readonly id: FieldRef<"Category", 'String'>
+    readonly name: FieldRef<"Category", 'String'>
+    readonly slug: FieldRef<"Category", 'String'>
+    readonly description: FieldRef<"Category", 'String'>
+    readonly level: FieldRef<"Category", 'Int'>
+    readonly parentId: FieldRef<"Category", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Category findUnique
+   */
+  export type CategoryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category findUniqueOrThrow
+   */
+  export type CategoryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category findFirst
+   */
+  export type CategoryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Categories.
+     */
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category findFirstOrThrow
+   */
+  export type CategoryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Category to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Categories.
+     */
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category findMany
+   */
+  export type CategoryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter, which Categories to fetch.
+     */
+    where?: CategoryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Categories to fetch.
+     */
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Categories.
+     */
+    cursor?: CategoryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Categories from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Categories.
+     */
+    skip?: number
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category create
+   */
+  export type CategoryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Category.
+     */
+    data: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
+  }
+
+  /**
+   * Category createMany
+   */
+  export type CategoryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Categories.
+     */
+    data: CategoryCreateManyInput | CategoryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Category createManyAndReturn
+   */
+  export type CategoryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Categories.
+     */
+    data: CategoryCreateManyInput | CategoryCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Category update
+   */
+  export type CategoryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Category.
+     */
+    data: XOR<CategoryUpdateInput, CategoryUncheckedUpdateInput>
+    /**
+     * Choose, which Category to update.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category updateMany
+   */
+  export type CategoryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Categories.
+     */
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyInput>
+    /**
+     * Filter which Categories to update
+     */
+    where?: CategoryWhereInput
+  }
+
+  /**
+   * Category upsert
+   */
+  export type CategoryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Category to update in case it exists.
+     */
+    where: CategoryWhereUniqueInput
+    /**
+     * In case the Category found by the `where` argument doesn't exist, create a new Category with this data.
+     */
+    create: XOR<CategoryCreateInput, CategoryUncheckedCreateInput>
+    /**
+     * In case the Category was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CategoryUpdateInput, CategoryUncheckedUpdateInput>
+  }
+
+  /**
+   * Category delete
+   */
+  export type CategoryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    /**
+     * Filter which Category to delete.
+     */
+    where: CategoryWhereUniqueInput
+  }
+
+  /**
+   * Category deleteMany
+   */
+  export type CategoryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Categories to delete
+     */
+    where?: CategoryWhereInput
+  }
+
+  /**
+   * Category.sectors
+   */
+  export type Category$sectorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Sectors
+     */
+    select?: SectorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectorsInclude<ExtArgs> | null
+    where?: SectorsWhereInput
+    orderBy?: SectorsOrderByWithRelationInput | SectorsOrderByWithRelationInput[]
+    cursor?: SectorsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SectorsScalarFieldEnum | SectorsScalarFieldEnum[]
+  }
+
+  /**
+   * Category.jobOffers
+   */
+  export type Category$jobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    where?: jobOffersWhereInput
+    orderBy?: jobOffersOrderByWithRelationInput | jobOffersOrderByWithRelationInput[]
+    cursor?: jobOffersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: JobOffersScalarFieldEnum | JobOffersScalarFieldEnum[]
+  }
+
+  /**
+   * Category.parent
+   */
+  export type Category$parentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    where?: CategoryWhereInput
+  }
+
+  /**
+   * Category.children
+   */
+  export type Category$childrenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    where?: CategoryWhereInput
+    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
+    cursor?: CategoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
+  }
+
+  /**
+   * Category without action
+   */
+  export type CategoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Sectors
+   */
+
+  export type AggregateSectors = {
+    _count: SectorsCountAggregateOutputType | null
+    _min: SectorsMinAggregateOutputType | null
+    _max: SectorsMaxAggregateOutputType | null
+  }
+
+  export type SectorsMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+    categoryId: string | null
+  }
+
+  export type SectorsMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    slug: string | null
+    categoryId: string | null
+  }
+
+  export type SectorsCountAggregateOutputType = {
+    id: number
+    name: number
+    slug: number
+    categoryId: number
+    _all: number
+  }
+
+
+  export type SectorsMinAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    categoryId?: true
+  }
+
+  export type SectorsMaxAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    categoryId?: true
+  }
+
+  export type SectorsCountAggregateInputType = {
+    id?: true
+    name?: true
+    slug?: true
+    categoryId?: true
+    _all?: true
+  }
+
+  export type SectorsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Sectors to aggregate.
+     */
+    where?: SectorsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Sectors to fetch.
+     */
+    orderBy?: SectorsOrderByWithRelationInput | SectorsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SectorsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Sectors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Sectors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Sectors
+    **/
+    _count?: true | SectorsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SectorsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SectorsMaxAggregateInputType
+  }
+
+  export type GetSectorsAggregateType<T extends SectorsAggregateArgs> = {
+        [P in keyof T & keyof AggregateSectors]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSectors[P]>
+      : GetScalarType<T[P], AggregateSectors[P]>
+  }
+
+
+
+
+  export type SectorsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SectorsWhereInput
+    orderBy?: SectorsOrderByWithAggregationInput | SectorsOrderByWithAggregationInput[]
+    by: SectorsScalarFieldEnum[] | SectorsScalarFieldEnum
+    having?: SectorsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SectorsCountAggregateInputType | true
+    _min?: SectorsMinAggregateInputType
+    _max?: SectorsMaxAggregateInputType
+  }
+
+  export type SectorsGroupByOutputType = {
+    id: string
+    name: string
+    slug: string
+    categoryId: string
+    _count: SectorsCountAggregateOutputType | null
+    _min: SectorsMinAggregateOutputType | null
+    _max: SectorsMaxAggregateOutputType | null
+  }
+
+  type GetSectorsGroupByPayload<T extends SectorsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SectorsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SectorsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SectorsGroupByOutputType[P]>
+            : GetScalarType<T[P], SectorsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SectorsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    categoryId?: boolean
+    jobOffer?: boolean | Sectors$jobOfferArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+    _count?: boolean | SectorsCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sectors"]>
+
+  export type SectorsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    categoryId?: boolean
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sectors"]>
+
+  export type SectorsSelectScalar = {
+    id?: boolean
+    name?: boolean
+    slug?: boolean
+    categoryId?: boolean
+  }
+
+  export type SectorsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    jobOffer?: boolean | Sectors$jobOfferArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+    _count?: boolean | SectorsCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type SectorsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }
+
+  export type $SectorsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Sectors"
+    objects: {
+      jobOffer: Prisma.$jobOffersPayload<ExtArgs>[]
+      category: Prisma.$CategoryPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      slug: string
+      categoryId: string
+    }, ExtArgs["result"]["sectors"]>
+    composites: {}
+  }
+
+  type SectorsGetPayload<S extends boolean | null | undefined | SectorsDefaultArgs> = $Result.GetResult<Prisma.$SectorsPayload, S>
+
+  type SectorsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<SectorsFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: SectorsCountAggregateInputType | true
+    }
+
+  export interface SectorsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Sectors'], meta: { name: 'Sectors' } }
+    /**
+     * Find zero or one Sectors that matches the filter.
+     * @param {SectorsFindUniqueArgs} args - Arguments to find a Sectors
+     * @example
+     * // Get one Sectors
+     * const sectors = await prisma.sectors.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SectorsFindUniqueArgs>(args: SelectSubset<T, SectorsFindUniqueArgs<ExtArgs>>): Prisma__SectorsClient<$Result.GetResult<Prisma.$SectorsPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Sectors that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {SectorsFindUniqueOrThrowArgs} args - Arguments to find a Sectors
+     * @example
+     * // Get one Sectors
+     * const sectors = await prisma.sectors.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SectorsFindUniqueOrThrowArgs>(args: SelectSubset<T, SectorsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SectorsClient<$Result.GetResult<Prisma.$SectorsPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Sectors that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectorsFindFirstArgs} args - Arguments to find a Sectors
+     * @example
+     * // Get one Sectors
+     * const sectors = await prisma.sectors.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SectorsFindFirstArgs>(args?: SelectSubset<T, SectorsFindFirstArgs<ExtArgs>>): Prisma__SectorsClient<$Result.GetResult<Prisma.$SectorsPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Sectors that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectorsFindFirstOrThrowArgs} args - Arguments to find a Sectors
+     * @example
+     * // Get one Sectors
+     * const sectors = await prisma.sectors.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SectorsFindFirstOrThrowArgs>(args?: SelectSubset<T, SectorsFindFirstOrThrowArgs<ExtArgs>>): Prisma__SectorsClient<$Result.GetResult<Prisma.$SectorsPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Sectors that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectorsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Sectors
+     * const sectors = await prisma.sectors.findMany()
+     * 
+     * // Get first 10 Sectors
+     * const sectors = await prisma.sectors.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const sectorsWithIdOnly = await prisma.sectors.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SectorsFindManyArgs>(args?: SelectSubset<T, SectorsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectorsPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Sectors.
+     * @param {SectorsCreateArgs} args - Arguments to create a Sectors.
+     * @example
+     * // Create one Sectors
+     * const Sectors = await prisma.sectors.create({
+     *   data: {
+     *     // ... data to create a Sectors
+     *   }
+     * })
+     * 
+     */
+    create<T extends SectorsCreateArgs>(args: SelectSubset<T, SectorsCreateArgs<ExtArgs>>): Prisma__SectorsClient<$Result.GetResult<Prisma.$SectorsPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Sectors.
+     * @param {SectorsCreateManyArgs} args - Arguments to create many Sectors.
+     * @example
+     * // Create many Sectors
+     * const sectors = await prisma.sectors.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SectorsCreateManyArgs>(args?: SelectSubset<T, SectorsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Sectors and returns the data saved in the database.
+     * @param {SectorsCreateManyAndReturnArgs} args - Arguments to create many Sectors.
+     * @example
+     * // Create many Sectors
+     * const sectors = await prisma.sectors.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Sectors and only return the `id`
+     * const sectorsWithIdOnly = await prisma.sectors.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SectorsCreateManyAndReturnArgs>(args?: SelectSubset<T, SectorsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectorsPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Sectors.
+     * @param {SectorsDeleteArgs} args - Arguments to delete one Sectors.
+     * @example
+     * // Delete one Sectors
+     * const Sectors = await prisma.sectors.delete({
+     *   where: {
+     *     // ... filter to delete one Sectors
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SectorsDeleteArgs>(args: SelectSubset<T, SectorsDeleteArgs<ExtArgs>>): Prisma__SectorsClient<$Result.GetResult<Prisma.$SectorsPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Sectors.
+     * @param {SectorsUpdateArgs} args - Arguments to update one Sectors.
+     * @example
+     * // Update one Sectors
+     * const sectors = await prisma.sectors.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SectorsUpdateArgs>(args: SelectSubset<T, SectorsUpdateArgs<ExtArgs>>): Prisma__SectorsClient<$Result.GetResult<Prisma.$SectorsPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Sectors.
+     * @param {SectorsDeleteManyArgs} args - Arguments to filter Sectors to delete.
+     * @example
+     * // Delete a few Sectors
+     * const { count } = await prisma.sectors.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SectorsDeleteManyArgs>(args?: SelectSubset<T, SectorsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Sectors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectorsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Sectors
+     * const sectors = await prisma.sectors.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SectorsUpdateManyArgs>(args: SelectSubset<T, SectorsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Sectors.
+     * @param {SectorsUpsertArgs} args - Arguments to update or create a Sectors.
+     * @example
+     * // Update or create a Sectors
+     * const sectors = await prisma.sectors.upsert({
+     *   create: {
+     *     // ... data to create a Sectors
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Sectors we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SectorsUpsertArgs>(args: SelectSubset<T, SectorsUpsertArgs<ExtArgs>>): Prisma__SectorsClient<$Result.GetResult<Prisma.$SectorsPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Sectors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectorsCountArgs} args - Arguments to filter Sectors to count.
+     * @example
+     * // Count the number of Sectors
+     * const count = await prisma.sectors.count({
+     *   where: {
+     *     // ... the filter for the Sectors we want to count
+     *   }
+     * })
+    **/
+    count<T extends SectorsCountArgs>(
+      args?: Subset<T, SectorsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SectorsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Sectors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectorsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SectorsAggregateArgs>(args: Subset<T, SectorsAggregateArgs>): Prisma.PrismaPromise<GetSectorsAggregateType<T>>
+
+    /**
+     * Group by Sectors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SectorsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SectorsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SectorsGroupByArgs['orderBy'] }
+        : { orderBy?: SectorsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SectorsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSectorsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Sectors model
+   */
+  readonly fields: SectorsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Sectors.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SectorsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    jobOffer<T extends Sectors$jobOfferArgs<ExtArgs> = {}>(args?: Subset<T, Sectors$jobOfferArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findMany"> | Null>
+    category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Sectors model
+   */ 
+  interface SectorsFieldRefs {
+    readonly id: FieldRef<"Sectors", 'String'>
+    readonly name: FieldRef<"Sectors", 'String'>
+    readonly slug: FieldRef<"Sectors", 'String'>
+    readonly categoryId: FieldRef<"Sectors", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Sectors findUnique
+   */
+  export type SectorsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Sectors
+     */
+    select?: SectorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectorsInclude<ExtArgs> | null
+    /**
+     * Filter, which Sectors to fetch.
+     */
+    where: SectorsWhereUniqueInput
+  }
+
+  /**
+   * Sectors findUniqueOrThrow
+   */
+  export type SectorsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Sectors
+     */
+    select?: SectorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectorsInclude<ExtArgs> | null
+    /**
+     * Filter, which Sectors to fetch.
+     */
+    where: SectorsWhereUniqueInput
+  }
+
+  /**
+   * Sectors findFirst
+   */
+  export type SectorsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Sectors
+     */
+    select?: SectorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectorsInclude<ExtArgs> | null
+    /**
+     * Filter, which Sectors to fetch.
+     */
+    where?: SectorsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Sectors to fetch.
+     */
+    orderBy?: SectorsOrderByWithRelationInput | SectorsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Sectors.
+     */
+    cursor?: SectorsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Sectors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Sectors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Sectors.
+     */
+    distinct?: SectorsScalarFieldEnum | SectorsScalarFieldEnum[]
+  }
+
+  /**
+   * Sectors findFirstOrThrow
+   */
+  export type SectorsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Sectors
+     */
+    select?: SectorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectorsInclude<ExtArgs> | null
+    /**
+     * Filter, which Sectors to fetch.
+     */
+    where?: SectorsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Sectors to fetch.
+     */
+    orderBy?: SectorsOrderByWithRelationInput | SectorsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Sectors.
+     */
+    cursor?: SectorsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Sectors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Sectors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Sectors.
+     */
+    distinct?: SectorsScalarFieldEnum | SectorsScalarFieldEnum[]
+  }
+
+  /**
+   * Sectors findMany
+   */
+  export type SectorsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Sectors
+     */
+    select?: SectorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectorsInclude<ExtArgs> | null
+    /**
+     * Filter, which Sectors to fetch.
+     */
+    where?: SectorsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Sectors to fetch.
+     */
+    orderBy?: SectorsOrderByWithRelationInput | SectorsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Sectors.
+     */
+    cursor?: SectorsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Sectors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Sectors.
+     */
+    skip?: number
+    distinct?: SectorsScalarFieldEnum | SectorsScalarFieldEnum[]
+  }
+
+  /**
+   * Sectors create
+   */
+  export type SectorsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Sectors
+     */
+    select?: SectorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectorsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Sectors.
+     */
+    data: XOR<SectorsCreateInput, SectorsUncheckedCreateInput>
+  }
+
+  /**
+   * Sectors createMany
+   */
+  export type SectorsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Sectors.
+     */
+    data: SectorsCreateManyInput | SectorsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Sectors createManyAndReturn
+   */
+  export type SectorsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Sectors
+     */
+    select?: SectorsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many Sectors.
+     */
+    data: SectorsCreateManyInput | SectorsCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectorsIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Sectors update
+   */
+  export type SectorsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Sectors
+     */
+    select?: SectorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectorsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Sectors.
+     */
+    data: XOR<SectorsUpdateInput, SectorsUncheckedUpdateInput>
+    /**
+     * Choose, which Sectors to update.
+     */
+    where: SectorsWhereUniqueInput
+  }
+
+  /**
+   * Sectors updateMany
+   */
+  export type SectorsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Sectors.
+     */
+    data: XOR<SectorsUpdateManyMutationInput, SectorsUncheckedUpdateManyInput>
+    /**
+     * Filter which Sectors to update
+     */
+    where?: SectorsWhereInput
+  }
+
+  /**
+   * Sectors upsert
+   */
+  export type SectorsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Sectors
+     */
+    select?: SectorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectorsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Sectors to update in case it exists.
+     */
+    where: SectorsWhereUniqueInput
+    /**
+     * In case the Sectors found by the `where` argument doesn't exist, create a new Sectors with this data.
+     */
+    create: XOR<SectorsCreateInput, SectorsUncheckedCreateInput>
+    /**
+     * In case the Sectors was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SectorsUpdateInput, SectorsUncheckedUpdateInput>
+  }
+
+  /**
+   * Sectors delete
+   */
+  export type SectorsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Sectors
+     */
+    select?: SectorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectorsInclude<ExtArgs> | null
+    /**
+     * Filter which Sectors to delete.
+     */
+    where: SectorsWhereUniqueInput
+  }
+
+  /**
+   * Sectors deleteMany
+   */
+  export type SectorsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Sectors to delete
+     */
+    where?: SectorsWhereInput
+  }
+
+  /**
+   * Sectors.jobOffer
+   */
+  export type Sectors$jobOfferArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    where?: jobOffersWhereInput
+    orderBy?: jobOffersOrderByWithRelationInput | jobOffersOrderByWithRelationInput[]
+    cursor?: jobOffersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: JobOffersScalarFieldEnum | JobOffersScalarFieldEnum[]
+  }
+
+  /**
+   * Sectors without action
+   */
+  export type SectorsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Sectors
+     */
+    select?: SectorsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SectorsInclude<ExtArgs> | null
   }
 
 
@@ -13929,6 +18620,56 @@ export namespace Prisma {
   export type BranchScalarFieldEnum = (typeof BranchScalarFieldEnum)[keyof typeof BranchScalarFieldEnum]
 
 
+  export const JobOffersScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    slug: 'slug',
+    description: 'description',
+    region: 'region',
+    province: 'province',
+    location: 'location',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    isValidate: 'isValidate',
+    views: 'views',
+    agencyId: 'agencyId',
+    branchId: 'branchId'
+  };
+
+  export type JobOffersScalarFieldEnum = (typeof JobOffersScalarFieldEnum)[keyof typeof JobOffersScalarFieldEnum]
+
+
+  export const JobTagsScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug'
+  };
+
+  export type JobTagsScalarFieldEnum = (typeof JobTagsScalarFieldEnum)[keyof typeof JobTagsScalarFieldEnum]
+
+
+  export const CategoryScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug',
+    description: 'description',
+    level: 'level',
+    parentId: 'parentId'
+  };
+
+  export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
+  export const SectorsScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug',
+    categoryId: 'categoryId'
+  };
+
+  export type SectorsScalarFieldEnum = (typeof SectorsScalarFieldEnum)[keyof typeof SectorsScalarFieldEnum]
+
+
   export const AuthAccountScalarFieldEnum: {
     id: 'id',
     type: 'type',
@@ -14691,6 +19432,7 @@ export namespace Prisma {
     logo?: StringFilter<"AgencyData"> | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     branch?: BranchListRelationFilter
+    jobOffers?: JobOffersListRelationFilter
   }
 
   export type AgencyDataOrderByWithRelationInput = {
@@ -14707,6 +19449,7 @@ export namespace Prisma {
     logo?: SortOrder
     user?: UserOrderByWithRelationInput
     branch?: BranchOrderByRelationAggregateInput
+    jobOffers?: jobOffersOrderByRelationAggregateInput
   }
 
   export type AgencyDataWhereUniqueInput = Prisma.AtLeast<{
@@ -14726,6 +19469,7 @@ export namespace Prisma {
     logo?: StringFilter<"AgencyData"> | string
     user?: XOR<UserRelationFilter, UserWhereInput>
     branch?: BranchListRelationFilter
+    jobOffers?: JobOffersListRelationFilter
   }, "id" | "slug" | "userId">
 
   export type AgencyDataOrderByWithAggregationInput = {
@@ -14775,6 +19519,7 @@ export namespace Prisma {
     logo?: StringNullableFilter<"Branch"> | string | null
     adId?: StringFilter<"Branch"> | string
     agency?: XOR<AgencyDataRelationFilter, AgencyDataWhereInput>
+    jobOffers?: JobOffersListRelationFilter
   }
 
   export type BranchOrderByWithRelationInput = {
@@ -14787,6 +19532,7 @@ export namespace Prisma {
     logo?: SortOrderInput | SortOrder
     adId?: SortOrder
     agency?: AgencyDataOrderByWithRelationInput
+    jobOffers?: jobOffersOrderByRelationAggregateInput
   }
 
   export type BranchWhereUniqueInput = Prisma.AtLeast<{
@@ -14802,6 +19548,7 @@ export namespace Prisma {
     logo?: StringNullableFilter<"Branch"> | string | null
     adId?: StringFilter<"Branch"> | string
     agency?: XOR<AgencyDataRelationFilter, AgencyDataWhereInput>
+    jobOffers?: JobOffersListRelationFilter
   }, "id">
 
   export type BranchOrderByWithAggregationInput = {
@@ -14830,6 +19577,284 @@ export namespace Prisma {
     location?: StringWithAggregatesFilter<"Branch"> | string
     logo?: StringNullableWithAggregatesFilter<"Branch"> | string | null
     adId?: StringWithAggregatesFilter<"Branch"> | string
+  }
+
+  export type jobOffersWhereInput = {
+    AND?: jobOffersWhereInput | jobOffersWhereInput[]
+    OR?: jobOffersWhereInput[]
+    NOT?: jobOffersWhereInput | jobOffersWhereInput[]
+    id?: StringFilter<"jobOffers"> | string
+    title?: StringFilter<"jobOffers"> | string
+    slug?: StringFilter<"jobOffers"> | string
+    description?: StringFilter<"jobOffers"> | string
+    region?: StringFilter<"jobOffers"> | string
+    province?: StringFilter<"jobOffers"> | string
+    location?: StringFilter<"jobOffers"> | string
+    createdAt?: DateTimeFilter<"jobOffers"> | Date | string
+    updatedAt?: DateTimeFilter<"jobOffers"> | Date | string
+    isValidate?: BoolFilter<"jobOffers"> | boolean
+    views?: IntFilter<"jobOffers"> | number
+    agencyId?: StringFilter<"jobOffers"> | string
+    branchId?: StringNullableFilter<"jobOffers"> | string | null
+    categories?: CategoryListRelationFilter
+    sectors?: SectorsListRelationFilter
+    tags?: JobTagsListRelationFilter
+    agency?: XOR<AgencyDataRelationFilter, AgencyDataWhereInput>
+    branch?: XOR<BranchNullableRelationFilter, BranchWhereInput> | null
+  }
+
+  export type jobOffersOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    region?: SortOrder
+    province?: SortOrder
+    location?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    isValidate?: SortOrder
+    views?: SortOrder
+    agencyId?: SortOrder
+    branchId?: SortOrderInput | SortOrder
+    categories?: CategoryOrderByRelationAggregateInput
+    sectors?: SectorsOrderByRelationAggregateInput
+    tags?: jobTagsOrderByRelationAggregateInput
+    agency?: AgencyDataOrderByWithRelationInput
+    branch?: BranchOrderByWithRelationInput
+  }
+
+  export type jobOffersWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    slug?: string
+    AND?: jobOffersWhereInput | jobOffersWhereInput[]
+    OR?: jobOffersWhereInput[]
+    NOT?: jobOffersWhereInput | jobOffersWhereInput[]
+    title?: StringFilter<"jobOffers"> | string
+    description?: StringFilter<"jobOffers"> | string
+    region?: StringFilter<"jobOffers"> | string
+    province?: StringFilter<"jobOffers"> | string
+    location?: StringFilter<"jobOffers"> | string
+    createdAt?: DateTimeFilter<"jobOffers"> | Date | string
+    updatedAt?: DateTimeFilter<"jobOffers"> | Date | string
+    isValidate?: BoolFilter<"jobOffers"> | boolean
+    views?: IntFilter<"jobOffers"> | number
+    agencyId?: StringFilter<"jobOffers"> | string
+    branchId?: StringNullableFilter<"jobOffers"> | string | null
+    categories?: CategoryListRelationFilter
+    sectors?: SectorsListRelationFilter
+    tags?: JobTagsListRelationFilter
+    agency?: XOR<AgencyDataRelationFilter, AgencyDataWhereInput>
+    branch?: XOR<BranchNullableRelationFilter, BranchWhereInput> | null
+  }, "id" | "slug">
+
+  export type jobOffersOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    region?: SortOrder
+    province?: SortOrder
+    location?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    isValidate?: SortOrder
+    views?: SortOrder
+    agencyId?: SortOrder
+    branchId?: SortOrderInput | SortOrder
+    _count?: jobOffersCountOrderByAggregateInput
+    _avg?: jobOffersAvgOrderByAggregateInput
+    _max?: jobOffersMaxOrderByAggregateInput
+    _min?: jobOffersMinOrderByAggregateInput
+    _sum?: jobOffersSumOrderByAggregateInput
+  }
+
+  export type jobOffersScalarWhereWithAggregatesInput = {
+    AND?: jobOffersScalarWhereWithAggregatesInput | jobOffersScalarWhereWithAggregatesInput[]
+    OR?: jobOffersScalarWhereWithAggregatesInput[]
+    NOT?: jobOffersScalarWhereWithAggregatesInput | jobOffersScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"jobOffers"> | string
+    title?: StringWithAggregatesFilter<"jobOffers"> | string
+    slug?: StringWithAggregatesFilter<"jobOffers"> | string
+    description?: StringWithAggregatesFilter<"jobOffers"> | string
+    region?: StringWithAggregatesFilter<"jobOffers"> | string
+    province?: StringWithAggregatesFilter<"jobOffers"> | string
+    location?: StringWithAggregatesFilter<"jobOffers"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"jobOffers"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"jobOffers"> | Date | string
+    isValidate?: BoolWithAggregatesFilter<"jobOffers"> | boolean
+    views?: IntWithAggregatesFilter<"jobOffers"> | number
+    agencyId?: StringWithAggregatesFilter<"jobOffers"> | string
+    branchId?: StringNullableWithAggregatesFilter<"jobOffers"> | string | null
+  }
+
+  export type jobTagsWhereInput = {
+    AND?: jobTagsWhereInput | jobTagsWhereInput[]
+    OR?: jobTagsWhereInput[]
+    NOT?: jobTagsWhereInput | jobTagsWhereInput[]
+    id?: StringFilter<"jobTags"> | string
+    name?: StringFilter<"jobTags"> | string
+    slug?: StringFilter<"jobTags"> | string
+    jobOffers?: JobOffersListRelationFilter
+  }
+
+  export type jobTagsOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    jobOffers?: jobOffersOrderByRelationAggregateInput
+  }
+
+  export type jobTagsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: jobTagsWhereInput | jobTagsWhereInput[]
+    OR?: jobTagsWhereInput[]
+    NOT?: jobTagsWhereInput | jobTagsWhereInput[]
+    name?: StringFilter<"jobTags"> | string
+    slug?: StringFilter<"jobTags"> | string
+    jobOffers?: JobOffersListRelationFilter
+  }, "id">
+
+  export type jobTagsOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    _count?: jobTagsCountOrderByAggregateInput
+    _max?: jobTagsMaxOrderByAggregateInput
+    _min?: jobTagsMinOrderByAggregateInput
+  }
+
+  export type jobTagsScalarWhereWithAggregatesInput = {
+    AND?: jobTagsScalarWhereWithAggregatesInput | jobTagsScalarWhereWithAggregatesInput[]
+    OR?: jobTagsScalarWhereWithAggregatesInput[]
+    NOT?: jobTagsScalarWhereWithAggregatesInput | jobTagsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"jobTags"> | string
+    name?: StringWithAggregatesFilter<"jobTags"> | string
+    slug?: StringWithAggregatesFilter<"jobTags"> | string
+  }
+
+  export type CategoryWhereInput = {
+    AND?: CategoryWhereInput | CategoryWhereInput[]
+    OR?: CategoryWhereInput[]
+    NOT?: CategoryWhereInput | CategoryWhereInput[]
+    id?: StringFilter<"Category"> | string
+    name?: StringFilter<"Category"> | string
+    slug?: StringFilter<"Category"> | string
+    description?: StringFilter<"Category"> | string
+    level?: IntNullableFilter<"Category"> | number | null
+    parentId?: StringNullableFilter<"Category"> | string | null
+    sectors?: SectorsListRelationFilter
+    jobOffers?: JobOffersListRelationFilter
+    parent?: XOR<CategoryNullableRelationFilter, CategoryWhereInput> | null
+    children?: CategoryListRelationFilter
+  }
+
+  export type CategoryOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    level?: SortOrderInput | SortOrder
+    parentId?: SortOrderInput | SortOrder
+    sectors?: SectorsOrderByRelationAggregateInput
+    jobOffers?: jobOffersOrderByRelationAggregateInput
+    parent?: CategoryOrderByWithRelationInput
+    children?: CategoryOrderByRelationAggregateInput
+  }
+
+  export type CategoryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    slug?: string
+    AND?: CategoryWhereInput | CategoryWhereInput[]
+    OR?: CategoryWhereInput[]
+    NOT?: CategoryWhereInput | CategoryWhereInput[]
+    description?: StringFilter<"Category"> | string
+    level?: IntNullableFilter<"Category"> | number | null
+    parentId?: StringNullableFilter<"Category"> | string | null
+    sectors?: SectorsListRelationFilter
+    jobOffers?: JobOffersListRelationFilter
+    parent?: XOR<CategoryNullableRelationFilter, CategoryWhereInput> | null
+    children?: CategoryListRelationFilter
+  }, "id" | "name" | "slug">
+
+  export type CategoryOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    level?: SortOrderInput | SortOrder
+    parentId?: SortOrderInput | SortOrder
+    _count?: CategoryCountOrderByAggregateInput
+    _avg?: CategoryAvgOrderByAggregateInput
+    _max?: CategoryMaxOrderByAggregateInput
+    _min?: CategoryMinOrderByAggregateInput
+    _sum?: CategorySumOrderByAggregateInput
+  }
+
+  export type CategoryScalarWhereWithAggregatesInput = {
+    AND?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
+    OR?: CategoryScalarWhereWithAggregatesInput[]
+    NOT?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Category"> | string
+    name?: StringWithAggregatesFilter<"Category"> | string
+    slug?: StringWithAggregatesFilter<"Category"> | string
+    description?: StringWithAggregatesFilter<"Category"> | string
+    level?: IntNullableWithAggregatesFilter<"Category"> | number | null
+    parentId?: StringNullableWithAggregatesFilter<"Category"> | string | null
+  }
+
+  export type SectorsWhereInput = {
+    AND?: SectorsWhereInput | SectorsWhereInput[]
+    OR?: SectorsWhereInput[]
+    NOT?: SectorsWhereInput | SectorsWhereInput[]
+    id?: StringFilter<"Sectors"> | string
+    name?: StringFilter<"Sectors"> | string
+    slug?: StringFilter<"Sectors"> | string
+    categoryId?: StringFilter<"Sectors"> | string
+    jobOffer?: JobOffersListRelationFilter
+    category?: XOR<CategoryRelationFilter, CategoryWhereInput>
+  }
+
+  export type SectorsOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    categoryId?: SortOrder
+    jobOffer?: jobOffersOrderByRelationAggregateInput
+    category?: CategoryOrderByWithRelationInput
+  }
+
+  export type SectorsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    name?: string
+    slug?: string
+    AND?: SectorsWhereInput | SectorsWhereInput[]
+    OR?: SectorsWhereInput[]
+    NOT?: SectorsWhereInput | SectorsWhereInput[]
+    categoryId?: StringFilter<"Sectors"> | string
+    jobOffer?: JobOffersListRelationFilter
+    category?: XOR<CategoryRelationFilter, CategoryWhereInput>
+  }, "id" | "name" | "slug">
+
+  export type SectorsOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    categoryId?: SortOrder
+    _count?: SectorsCountOrderByAggregateInput
+    _max?: SectorsMaxOrderByAggregateInput
+    _min?: SectorsMinOrderByAggregateInput
+  }
+
+  export type SectorsScalarWhereWithAggregatesInput = {
+    AND?: SectorsScalarWhereWithAggregatesInput | SectorsScalarWhereWithAggregatesInput[]
+    OR?: SectorsScalarWhereWithAggregatesInput[]
+    NOT?: SectorsScalarWhereWithAggregatesInput | SectorsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Sectors"> | string
+    name?: StringWithAggregatesFilter<"Sectors"> | string
+    slug?: StringWithAggregatesFilter<"Sectors"> | string
+    categoryId?: StringWithAggregatesFilter<"Sectors"> | string
   }
 
   export type AuthAccountWhereInput = {
@@ -15561,6 +20586,7 @@ export namespace Prisma {
     logo: string
     user: UserCreateNestedOneWithoutAgencydataInput
     branch?: BranchCreateNestedManyWithoutAgencyInput
+    jobOffers?: jobOffersCreateNestedManyWithoutAgencyInput
   }
 
   export type AgencyDataUncheckedCreateInput = {
@@ -15576,6 +20602,7 @@ export namespace Prisma {
     about: string
     logo: string
     branch?: BranchUncheckedCreateNestedManyWithoutAgencyInput
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutAgencyInput
   }
 
   export type AgencyDataUpdateInput = {
@@ -15591,6 +20618,7 @@ export namespace Prisma {
     logo?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutAgencydataNestedInput
     branch?: BranchUpdateManyWithoutAgencyNestedInput
+    jobOffers?: jobOffersUpdateManyWithoutAgencyNestedInput
   }
 
   export type AgencyDataUncheckedUpdateInput = {
@@ -15606,6 +20634,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     logo?: StringFieldUpdateOperationsInput | string
     branch?: BranchUncheckedUpdateManyWithoutAgencyNestedInput
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutAgencyNestedInput
   }
 
   export type AgencyDataCreateManyInput = {
@@ -15658,6 +20687,7 @@ export namespace Prisma {
     location: string
     logo?: string | null
     agency: AgencyDataCreateNestedOneWithoutBranchInput
+    jobOffers?: jobOffersCreateNestedManyWithoutBranchInput
   }
 
   export type BranchUncheckedCreateInput = {
@@ -15669,6 +20699,7 @@ export namespace Prisma {
     location: string
     logo?: string | null
     adId: string
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutBranchInput
   }
 
   export type BranchUpdateInput = {
@@ -15680,6 +20711,7 @@ export namespace Prisma {
     location?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     agency?: AgencyDataUpdateOneRequiredWithoutBranchNestedInput
+    jobOffers?: jobOffersUpdateManyWithoutBranchNestedInput
   }
 
   export type BranchUncheckedUpdateInput = {
@@ -15691,6 +20723,7 @@ export namespace Prisma {
     location?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     adId?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutBranchNestedInput
   }
 
   export type BranchCreateManyInput = {
@@ -15723,6 +20756,300 @@ export namespace Prisma {
     location?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     adId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type jobOffersCreateInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    categories?: CategoryCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    agency: AgencyDataCreateNestedOneWithoutJobOffersInput
+    branch?: BranchCreateNestedOneWithoutJobOffersInput
+  }
+
+  export type jobOffersUncheckedCreateInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    agencyId: string
+    branchId?: string | null
+    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
+  }
+
+  export type jobOffersUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    agency?: AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput
+    branch?: BranchUpdateOneWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersCreateManyInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    agencyId: string
+    branchId?: string | null
+  }
+
+  export type jobOffersUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type jobOffersUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type jobTagsCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    jobOffers?: jobOffersCreateNestedManyWithoutTagsInput
+  }
+
+  export type jobTagsUncheckedCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutTagsInput
+  }
+
+  export type jobTagsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUpdateManyWithoutTagsNestedInput
+  }
+
+  export type jobTagsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutTagsNestedInput
+  }
+
+  export type jobTagsCreateManyInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type jobTagsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type jobTagsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoryCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    level?: number | null
+    sectors?: SectorsCreateNestedManyWithoutCategoryInput
+    jobOffers?: jobOffersCreateNestedManyWithoutCategoriesInput
+    parent?: CategoryCreateNestedOneWithoutChildrenInput
+    children?: CategoryCreateNestedManyWithoutParentInput
+  }
+
+  export type CategoryUncheckedCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    level?: number | null
+    parentId?: string | null
+    sectors?: SectorsUncheckedCreateNestedManyWithoutCategoryInput
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutCategoriesInput
+    children?: CategoryUncheckedCreateNestedManyWithoutParentInput
+  }
+
+  export type CategoryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    sectors?: SectorsUpdateManyWithoutCategoryNestedInput
+    jobOffers?: jobOffersUpdateManyWithoutCategoriesNestedInput
+    parent?: CategoryUpdateOneWithoutChildrenNestedInput
+    children?: CategoryUpdateManyWithoutParentNestedInput
+  }
+
+  export type CategoryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    sectors?: SectorsUncheckedUpdateManyWithoutCategoryNestedInput
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutCategoriesNestedInput
+    children?: CategoryUncheckedUpdateManyWithoutParentNestedInput
+  }
+
+  export type CategoryCreateManyInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    level?: number | null
+    parentId?: string | null
+  }
+
+  export type CategoryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type CategoryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type SectorsCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    jobOffer?: jobOffersCreateNestedManyWithoutSectorsInput
+    category: CategoryCreateNestedOneWithoutSectorsInput
+  }
+
+  export type SectorsUncheckedCreateInput = {
+    id?: string
+    name: string
+    slug: string
+    categoryId: string
+    jobOffer?: jobOffersUncheckedCreateNestedManyWithoutSectorsInput
+  }
+
+  export type SectorsUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    jobOffer?: jobOffersUpdateManyWithoutSectorsNestedInput
+    category?: CategoryUpdateOneRequiredWithoutSectorsNestedInput
+  }
+
+  export type SectorsUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
+    jobOffer?: jobOffersUncheckedUpdateManyWithoutSectorsNestedInput
+  }
+
+  export type SectorsCreateManyInput = {
+    id?: string
+    name: string
+    slug: string
+    categoryId: string
+  }
+
+  export type SectorsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SectorsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
   }
 
   export type AuthAccountCreateInput = {
@@ -16398,7 +21725,17 @@ export namespace Prisma {
     none?: BranchWhereInput
   }
 
+  export type JobOffersListRelationFilter = {
+    every?: jobOffersWhereInput
+    some?: jobOffersWhereInput
+    none?: jobOffersWhereInput
+  }
+
   export type BranchOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type jobOffersOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -16493,6 +21830,224 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type CategoryListRelationFilter = {
+    every?: CategoryWhereInput
+    some?: CategoryWhereInput
+    none?: CategoryWhereInput
+  }
+
+  export type SectorsListRelationFilter = {
+    every?: SectorsWhereInput
+    some?: SectorsWhereInput
+    none?: SectorsWhereInput
+  }
+
+  export type JobTagsListRelationFilter = {
+    every?: jobTagsWhereInput
+    some?: jobTagsWhereInput
+    none?: jobTagsWhereInput
+  }
+
+  export type BranchNullableRelationFilter = {
+    is?: BranchWhereInput | null
+    isNot?: BranchWhereInput | null
+  }
+
+  export type CategoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SectorsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type jobTagsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type jobOffersCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    region?: SortOrder
+    province?: SortOrder
+    location?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    isValidate?: SortOrder
+    views?: SortOrder
+    agencyId?: SortOrder
+    branchId?: SortOrder
+  }
+
+  export type jobOffersAvgOrderByAggregateInput = {
+    views?: SortOrder
+  }
+
+  export type jobOffersMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    region?: SortOrder
+    province?: SortOrder
+    location?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    isValidate?: SortOrder
+    views?: SortOrder
+    agencyId?: SortOrder
+    branchId?: SortOrder
+  }
+
+  export type jobOffersMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    region?: SortOrder
+    province?: SortOrder
+    location?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    isValidate?: SortOrder
+    views?: SortOrder
+    agencyId?: SortOrder
+    branchId?: SortOrder
+  }
+
+  export type jobOffersSumOrderByAggregateInput = {
+    views?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type jobTagsCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type jobTagsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type jobTagsMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type CategoryNullableRelationFilter = {
+    is?: CategoryWhereInput | null
+    isNot?: CategoryWhereInput | null
+  }
+
+  export type CategoryCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    level?: SortOrder
+    parentId?: SortOrder
+  }
+
+  export type CategoryAvgOrderByAggregateInput = {
+    level?: SortOrder
+  }
+
+  export type CategoryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    level?: SortOrder
+    parentId?: SortOrder
+  }
+
+  export type CategoryMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    description?: SortOrder
+    level?: SortOrder
+    parentId?: SortOrder
+  }
+
+  export type CategorySumOrderByAggregateInput = {
+    level?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type CategoryRelationFilter = {
+    is?: CategoryWhereInput
+    isNot?: CategoryWhereInput
+  }
+
+  export type SectorsCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    categoryId?: SortOrder
+  }
+
+  export type SectorsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    categoryId?: SortOrder
+  }
+
+  export type SectorsMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    slug?: SortOrder
+    categoryId?: SortOrder
+  }
+
   export type UserNullableRelationFilter = {
     is?: UserWhereInput | null
     isNot?: UserWhereInput | null
@@ -16540,22 +22095,6 @@ export namespace Prisma {
 
   export type AuthAccountSumOrderByAggregateInput = {
     expiresAt?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type EnumTokenTypeFilter<$PrismaModel = never> = {
@@ -17107,11 +22646,25 @@ export namespace Prisma {
     connect?: BranchWhereUniqueInput | BranchWhereUniqueInput[]
   }
 
+  export type jobOffersCreateNestedManyWithoutAgencyInput = {
+    create?: XOR<jobOffersCreateWithoutAgencyInput, jobOffersUncheckedCreateWithoutAgencyInput> | jobOffersCreateWithoutAgencyInput[] | jobOffersUncheckedCreateWithoutAgencyInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutAgencyInput | jobOffersCreateOrConnectWithoutAgencyInput[]
+    createMany?: jobOffersCreateManyAgencyInputEnvelope
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
   export type BranchUncheckedCreateNestedManyWithoutAgencyInput = {
     create?: XOR<BranchCreateWithoutAgencyInput, BranchUncheckedCreateWithoutAgencyInput> | BranchCreateWithoutAgencyInput[] | BranchUncheckedCreateWithoutAgencyInput[]
     connectOrCreate?: BranchCreateOrConnectWithoutAgencyInput | BranchCreateOrConnectWithoutAgencyInput[]
     createMany?: BranchCreateManyAgencyInputEnvelope
     connect?: BranchWhereUniqueInput | BranchWhereUniqueInput[]
+  }
+
+  export type jobOffersUncheckedCreateNestedManyWithoutAgencyInput = {
+    create?: XOR<jobOffersCreateWithoutAgencyInput, jobOffersUncheckedCreateWithoutAgencyInput> | jobOffersCreateWithoutAgencyInput[] | jobOffersUncheckedCreateWithoutAgencyInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutAgencyInput | jobOffersCreateOrConnectWithoutAgencyInput[]
+    createMany?: jobOffersCreateManyAgencyInputEnvelope
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
   }
 
   export type UserUpdateOneRequiredWithoutAgencydataNestedInput = {
@@ -17136,6 +22689,20 @@ export namespace Prisma {
     deleteMany?: BranchScalarWhereInput | BranchScalarWhereInput[]
   }
 
+  export type jobOffersUpdateManyWithoutAgencyNestedInput = {
+    create?: XOR<jobOffersCreateWithoutAgencyInput, jobOffersUncheckedCreateWithoutAgencyInput> | jobOffersCreateWithoutAgencyInput[] | jobOffersUncheckedCreateWithoutAgencyInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutAgencyInput | jobOffersCreateOrConnectWithoutAgencyInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutAgencyInput | jobOffersUpsertWithWhereUniqueWithoutAgencyInput[]
+    createMany?: jobOffersCreateManyAgencyInputEnvelope
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutAgencyInput | jobOffersUpdateWithWhereUniqueWithoutAgencyInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutAgencyInput | jobOffersUpdateManyWithWhereWithoutAgencyInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
   export type BranchUncheckedUpdateManyWithoutAgencyNestedInput = {
     create?: XOR<BranchCreateWithoutAgencyInput, BranchUncheckedCreateWithoutAgencyInput> | BranchCreateWithoutAgencyInput[] | BranchUncheckedCreateWithoutAgencyInput[]
     connectOrCreate?: BranchCreateOrConnectWithoutAgencyInput | BranchCreateOrConnectWithoutAgencyInput[]
@@ -17150,10 +22717,38 @@ export namespace Prisma {
     deleteMany?: BranchScalarWhereInput | BranchScalarWhereInput[]
   }
 
+  export type jobOffersUncheckedUpdateManyWithoutAgencyNestedInput = {
+    create?: XOR<jobOffersCreateWithoutAgencyInput, jobOffersUncheckedCreateWithoutAgencyInput> | jobOffersCreateWithoutAgencyInput[] | jobOffersUncheckedCreateWithoutAgencyInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutAgencyInput | jobOffersCreateOrConnectWithoutAgencyInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutAgencyInput | jobOffersUpsertWithWhereUniqueWithoutAgencyInput[]
+    createMany?: jobOffersCreateManyAgencyInputEnvelope
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutAgencyInput | jobOffersUpdateWithWhereUniqueWithoutAgencyInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutAgencyInput | jobOffersUpdateManyWithWhereWithoutAgencyInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
   export type AgencyDataCreateNestedOneWithoutBranchInput = {
     create?: XOR<AgencyDataCreateWithoutBranchInput, AgencyDataUncheckedCreateWithoutBranchInput>
     connectOrCreate?: AgencyDataCreateOrConnectWithoutBranchInput
     connect?: AgencyDataWhereUniqueInput
+  }
+
+  export type jobOffersCreateNestedManyWithoutBranchInput = {
+    create?: XOR<jobOffersCreateWithoutBranchInput, jobOffersUncheckedCreateWithoutBranchInput> | jobOffersCreateWithoutBranchInput[] | jobOffersUncheckedCreateWithoutBranchInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutBranchInput | jobOffersCreateOrConnectWithoutBranchInput[]
+    createMany?: jobOffersCreateManyBranchInputEnvelope
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type jobOffersUncheckedCreateNestedManyWithoutBranchInput = {
+    create?: XOR<jobOffersCreateWithoutBranchInput, jobOffersUncheckedCreateWithoutBranchInput> | jobOffersCreateWithoutBranchInput[] | jobOffersUncheckedCreateWithoutBranchInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutBranchInput | jobOffersCreateOrConnectWithoutBranchInput[]
+    createMany?: jobOffersCreateManyBranchInputEnvelope
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
   }
 
   export type AgencyDataUpdateOneRequiredWithoutBranchNestedInput = {
@@ -17164,10 +22759,80 @@ export namespace Prisma {
     update?: XOR<XOR<AgencyDataUpdateToOneWithWhereWithoutBranchInput, AgencyDataUpdateWithoutBranchInput>, AgencyDataUncheckedUpdateWithoutBranchInput>
   }
 
-  export type UserCreateNestedOneWithoutAuthAccountsInput = {
-    create?: XOR<UserCreateWithoutAuthAccountsInput, UserUncheckedCreateWithoutAuthAccountsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutAuthAccountsInput
-    connect?: UserWhereUniqueInput
+  export type jobOffersUpdateManyWithoutBranchNestedInput = {
+    create?: XOR<jobOffersCreateWithoutBranchInput, jobOffersUncheckedCreateWithoutBranchInput> | jobOffersCreateWithoutBranchInput[] | jobOffersUncheckedCreateWithoutBranchInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutBranchInput | jobOffersCreateOrConnectWithoutBranchInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutBranchInput | jobOffersUpsertWithWhereUniqueWithoutBranchInput[]
+    createMany?: jobOffersCreateManyBranchInputEnvelope
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutBranchInput | jobOffersUpdateWithWhereUniqueWithoutBranchInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutBranchInput | jobOffersUpdateManyWithWhereWithoutBranchInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutBranchNestedInput = {
+    create?: XOR<jobOffersCreateWithoutBranchInput, jobOffersUncheckedCreateWithoutBranchInput> | jobOffersCreateWithoutBranchInput[] | jobOffersUncheckedCreateWithoutBranchInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutBranchInput | jobOffersCreateOrConnectWithoutBranchInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutBranchInput | jobOffersUpsertWithWhereUniqueWithoutBranchInput[]
+    createMany?: jobOffersCreateManyBranchInputEnvelope
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutBranchInput | jobOffersUpdateWithWhereUniqueWithoutBranchInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutBranchInput | jobOffersUpdateManyWithWhereWithoutBranchInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type CategoryCreateNestedManyWithoutJobOffersInput = {
+    create?: XOR<CategoryCreateWithoutJobOffersInput, CategoryUncheckedCreateWithoutJobOffersInput> | CategoryCreateWithoutJobOffersInput[] | CategoryUncheckedCreateWithoutJobOffersInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutJobOffersInput | CategoryCreateOrConnectWithoutJobOffersInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+  }
+
+  export type SectorsCreateNestedManyWithoutJobOfferInput = {
+    create?: XOR<SectorsCreateWithoutJobOfferInput, SectorsUncheckedCreateWithoutJobOfferInput> | SectorsCreateWithoutJobOfferInput[] | SectorsUncheckedCreateWithoutJobOfferInput[]
+    connectOrCreate?: SectorsCreateOrConnectWithoutJobOfferInput | SectorsCreateOrConnectWithoutJobOfferInput[]
+    connect?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+  }
+
+  export type jobTagsCreateNestedManyWithoutJobOffersInput = {
+    create?: XOR<jobTagsCreateWithoutJobOffersInput, jobTagsUncheckedCreateWithoutJobOffersInput> | jobTagsCreateWithoutJobOffersInput[] | jobTagsUncheckedCreateWithoutJobOffersInput[]
+    connectOrCreate?: jobTagsCreateOrConnectWithoutJobOffersInput | jobTagsCreateOrConnectWithoutJobOffersInput[]
+    connect?: jobTagsWhereUniqueInput | jobTagsWhereUniqueInput[]
+  }
+
+  export type AgencyDataCreateNestedOneWithoutJobOffersInput = {
+    create?: XOR<AgencyDataCreateWithoutJobOffersInput, AgencyDataUncheckedCreateWithoutJobOffersInput>
+    connectOrCreate?: AgencyDataCreateOrConnectWithoutJobOffersInput
+    connect?: AgencyDataWhereUniqueInput
+  }
+
+  export type BranchCreateNestedOneWithoutJobOffersInput = {
+    create?: XOR<BranchCreateWithoutJobOffersInput, BranchUncheckedCreateWithoutJobOffersInput>
+    connectOrCreate?: BranchCreateOrConnectWithoutJobOffersInput
+    connect?: BranchWhereUniqueInput
+  }
+
+  export type CategoryUncheckedCreateNestedManyWithoutJobOffersInput = {
+    create?: XOR<CategoryCreateWithoutJobOffersInput, CategoryUncheckedCreateWithoutJobOffersInput> | CategoryCreateWithoutJobOffersInput[] | CategoryUncheckedCreateWithoutJobOffersInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutJobOffersInput | CategoryCreateOrConnectWithoutJobOffersInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+  }
+
+  export type SectorsUncheckedCreateNestedManyWithoutJobOfferInput = {
+    create?: XOR<SectorsCreateWithoutJobOfferInput, SectorsUncheckedCreateWithoutJobOfferInput> | SectorsCreateWithoutJobOfferInput[] | SectorsUncheckedCreateWithoutJobOfferInput[]
+    connectOrCreate?: SectorsCreateOrConnectWithoutJobOfferInput | SectorsCreateOrConnectWithoutJobOfferInput[]
+    connect?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+  }
+
+  export type jobTagsUncheckedCreateNestedManyWithoutJobOffersInput = {
+    create?: XOR<jobTagsCreateWithoutJobOffersInput, jobTagsUncheckedCreateWithoutJobOffersInput> | jobTagsCreateWithoutJobOffersInput[] | jobTagsUncheckedCreateWithoutJobOffersInput[]
+    connectOrCreate?: jobTagsCreateOrConnectWithoutJobOffersInput | jobTagsCreateOrConnectWithoutJobOffersInput[]
+    connect?: jobTagsWhereUniqueInput | jobTagsWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -17176,6 +22841,344 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type CategoryUpdateManyWithoutJobOffersNestedInput = {
+    create?: XOR<CategoryCreateWithoutJobOffersInput, CategoryUncheckedCreateWithoutJobOffersInput> | CategoryCreateWithoutJobOffersInput[] | CategoryUncheckedCreateWithoutJobOffersInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutJobOffersInput | CategoryCreateOrConnectWithoutJobOffersInput[]
+    upsert?: CategoryUpsertWithWhereUniqueWithoutJobOffersInput | CategoryUpsertWithWhereUniqueWithoutJobOffersInput[]
+    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    update?: CategoryUpdateWithWhereUniqueWithoutJobOffersInput | CategoryUpdateWithWhereUniqueWithoutJobOffersInput[]
+    updateMany?: CategoryUpdateManyWithWhereWithoutJobOffersInput | CategoryUpdateManyWithWhereWithoutJobOffersInput[]
+    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  }
+
+  export type SectorsUpdateManyWithoutJobOfferNestedInput = {
+    create?: XOR<SectorsCreateWithoutJobOfferInput, SectorsUncheckedCreateWithoutJobOfferInput> | SectorsCreateWithoutJobOfferInput[] | SectorsUncheckedCreateWithoutJobOfferInput[]
+    connectOrCreate?: SectorsCreateOrConnectWithoutJobOfferInput | SectorsCreateOrConnectWithoutJobOfferInput[]
+    upsert?: SectorsUpsertWithWhereUniqueWithoutJobOfferInput | SectorsUpsertWithWhereUniqueWithoutJobOfferInput[]
+    set?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+    disconnect?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+    delete?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+    connect?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+    update?: SectorsUpdateWithWhereUniqueWithoutJobOfferInput | SectorsUpdateWithWhereUniqueWithoutJobOfferInput[]
+    updateMany?: SectorsUpdateManyWithWhereWithoutJobOfferInput | SectorsUpdateManyWithWhereWithoutJobOfferInput[]
+    deleteMany?: SectorsScalarWhereInput | SectorsScalarWhereInput[]
+  }
+
+  export type jobTagsUpdateManyWithoutJobOffersNestedInput = {
+    create?: XOR<jobTagsCreateWithoutJobOffersInput, jobTagsUncheckedCreateWithoutJobOffersInput> | jobTagsCreateWithoutJobOffersInput[] | jobTagsUncheckedCreateWithoutJobOffersInput[]
+    connectOrCreate?: jobTagsCreateOrConnectWithoutJobOffersInput | jobTagsCreateOrConnectWithoutJobOffersInput[]
+    upsert?: jobTagsUpsertWithWhereUniqueWithoutJobOffersInput | jobTagsUpsertWithWhereUniqueWithoutJobOffersInput[]
+    set?: jobTagsWhereUniqueInput | jobTagsWhereUniqueInput[]
+    disconnect?: jobTagsWhereUniqueInput | jobTagsWhereUniqueInput[]
+    delete?: jobTagsWhereUniqueInput | jobTagsWhereUniqueInput[]
+    connect?: jobTagsWhereUniqueInput | jobTagsWhereUniqueInput[]
+    update?: jobTagsUpdateWithWhereUniqueWithoutJobOffersInput | jobTagsUpdateWithWhereUniqueWithoutJobOffersInput[]
+    updateMany?: jobTagsUpdateManyWithWhereWithoutJobOffersInput | jobTagsUpdateManyWithWhereWithoutJobOffersInput[]
+    deleteMany?: jobTagsScalarWhereInput | jobTagsScalarWhereInput[]
+  }
+
+  export type AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput = {
+    create?: XOR<AgencyDataCreateWithoutJobOffersInput, AgencyDataUncheckedCreateWithoutJobOffersInput>
+    connectOrCreate?: AgencyDataCreateOrConnectWithoutJobOffersInput
+    upsert?: AgencyDataUpsertWithoutJobOffersInput
+    connect?: AgencyDataWhereUniqueInput
+    update?: XOR<XOR<AgencyDataUpdateToOneWithWhereWithoutJobOffersInput, AgencyDataUpdateWithoutJobOffersInput>, AgencyDataUncheckedUpdateWithoutJobOffersInput>
+  }
+
+  export type BranchUpdateOneWithoutJobOffersNestedInput = {
+    create?: XOR<BranchCreateWithoutJobOffersInput, BranchUncheckedCreateWithoutJobOffersInput>
+    connectOrCreate?: BranchCreateOrConnectWithoutJobOffersInput
+    upsert?: BranchUpsertWithoutJobOffersInput
+    disconnect?: BranchWhereInput | boolean
+    delete?: BranchWhereInput | boolean
+    connect?: BranchWhereUniqueInput
+    update?: XOR<XOR<BranchUpdateToOneWithWhereWithoutJobOffersInput, BranchUpdateWithoutJobOffersInput>, BranchUncheckedUpdateWithoutJobOffersInput>
+  }
+
+  export type CategoryUncheckedUpdateManyWithoutJobOffersNestedInput = {
+    create?: XOR<CategoryCreateWithoutJobOffersInput, CategoryUncheckedCreateWithoutJobOffersInput> | CategoryCreateWithoutJobOffersInput[] | CategoryUncheckedCreateWithoutJobOffersInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutJobOffersInput | CategoryCreateOrConnectWithoutJobOffersInput[]
+    upsert?: CategoryUpsertWithWhereUniqueWithoutJobOffersInput | CategoryUpsertWithWhereUniqueWithoutJobOffersInput[]
+    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    update?: CategoryUpdateWithWhereUniqueWithoutJobOffersInput | CategoryUpdateWithWhereUniqueWithoutJobOffersInput[]
+    updateMany?: CategoryUpdateManyWithWhereWithoutJobOffersInput | CategoryUpdateManyWithWhereWithoutJobOffersInput[]
+    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  }
+
+  export type SectorsUncheckedUpdateManyWithoutJobOfferNestedInput = {
+    create?: XOR<SectorsCreateWithoutJobOfferInput, SectorsUncheckedCreateWithoutJobOfferInput> | SectorsCreateWithoutJobOfferInput[] | SectorsUncheckedCreateWithoutJobOfferInput[]
+    connectOrCreate?: SectorsCreateOrConnectWithoutJobOfferInput | SectorsCreateOrConnectWithoutJobOfferInput[]
+    upsert?: SectorsUpsertWithWhereUniqueWithoutJobOfferInput | SectorsUpsertWithWhereUniqueWithoutJobOfferInput[]
+    set?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+    disconnect?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+    delete?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+    connect?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+    update?: SectorsUpdateWithWhereUniqueWithoutJobOfferInput | SectorsUpdateWithWhereUniqueWithoutJobOfferInput[]
+    updateMany?: SectorsUpdateManyWithWhereWithoutJobOfferInput | SectorsUpdateManyWithWhereWithoutJobOfferInput[]
+    deleteMany?: SectorsScalarWhereInput | SectorsScalarWhereInput[]
+  }
+
+  export type jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput = {
+    create?: XOR<jobTagsCreateWithoutJobOffersInput, jobTagsUncheckedCreateWithoutJobOffersInput> | jobTagsCreateWithoutJobOffersInput[] | jobTagsUncheckedCreateWithoutJobOffersInput[]
+    connectOrCreate?: jobTagsCreateOrConnectWithoutJobOffersInput | jobTagsCreateOrConnectWithoutJobOffersInput[]
+    upsert?: jobTagsUpsertWithWhereUniqueWithoutJobOffersInput | jobTagsUpsertWithWhereUniqueWithoutJobOffersInput[]
+    set?: jobTagsWhereUniqueInput | jobTagsWhereUniqueInput[]
+    disconnect?: jobTagsWhereUniqueInput | jobTagsWhereUniqueInput[]
+    delete?: jobTagsWhereUniqueInput | jobTagsWhereUniqueInput[]
+    connect?: jobTagsWhereUniqueInput | jobTagsWhereUniqueInput[]
+    update?: jobTagsUpdateWithWhereUniqueWithoutJobOffersInput | jobTagsUpdateWithWhereUniqueWithoutJobOffersInput[]
+    updateMany?: jobTagsUpdateManyWithWhereWithoutJobOffersInput | jobTagsUpdateManyWithWhereWithoutJobOffersInput[]
+    deleteMany?: jobTagsScalarWhereInput | jobTagsScalarWhereInput[]
+  }
+
+  export type jobOffersCreateNestedManyWithoutTagsInput = {
+    create?: XOR<jobOffersCreateWithoutTagsInput, jobOffersUncheckedCreateWithoutTagsInput> | jobOffersCreateWithoutTagsInput[] | jobOffersUncheckedCreateWithoutTagsInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutTagsInput | jobOffersCreateOrConnectWithoutTagsInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type jobOffersUncheckedCreateNestedManyWithoutTagsInput = {
+    create?: XOR<jobOffersCreateWithoutTagsInput, jobOffersUncheckedCreateWithoutTagsInput> | jobOffersCreateWithoutTagsInput[] | jobOffersUncheckedCreateWithoutTagsInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutTagsInput | jobOffersCreateOrConnectWithoutTagsInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type jobOffersUpdateManyWithoutTagsNestedInput = {
+    create?: XOR<jobOffersCreateWithoutTagsInput, jobOffersUncheckedCreateWithoutTagsInput> | jobOffersCreateWithoutTagsInput[] | jobOffersUncheckedCreateWithoutTagsInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutTagsInput | jobOffersCreateOrConnectWithoutTagsInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutTagsInput | jobOffersUpsertWithWhereUniqueWithoutTagsInput[]
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutTagsInput | jobOffersUpdateWithWhereUniqueWithoutTagsInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutTagsInput | jobOffersUpdateManyWithWhereWithoutTagsInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutTagsNestedInput = {
+    create?: XOR<jobOffersCreateWithoutTagsInput, jobOffersUncheckedCreateWithoutTagsInput> | jobOffersCreateWithoutTagsInput[] | jobOffersUncheckedCreateWithoutTagsInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutTagsInput | jobOffersCreateOrConnectWithoutTagsInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutTagsInput | jobOffersUpsertWithWhereUniqueWithoutTagsInput[]
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutTagsInput | jobOffersUpdateWithWhereUniqueWithoutTagsInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutTagsInput | jobOffersUpdateManyWithWhereWithoutTagsInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type SectorsCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<SectorsCreateWithoutCategoryInput, SectorsUncheckedCreateWithoutCategoryInput> | SectorsCreateWithoutCategoryInput[] | SectorsUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: SectorsCreateOrConnectWithoutCategoryInput | SectorsCreateOrConnectWithoutCategoryInput[]
+    createMany?: SectorsCreateManyCategoryInputEnvelope
+    connect?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+  }
+
+  export type jobOffersCreateNestedManyWithoutCategoriesInput = {
+    create?: XOR<jobOffersCreateWithoutCategoriesInput, jobOffersUncheckedCreateWithoutCategoriesInput> | jobOffersCreateWithoutCategoriesInput[] | jobOffersUncheckedCreateWithoutCategoriesInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutCategoriesInput | jobOffersCreateOrConnectWithoutCategoriesInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type CategoryCreateNestedOneWithoutChildrenInput = {
+    create?: XOR<CategoryCreateWithoutChildrenInput, CategoryUncheckedCreateWithoutChildrenInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutChildrenInput
+    connect?: CategoryWhereUniqueInput
+  }
+
+  export type CategoryCreateNestedManyWithoutParentInput = {
+    create?: XOR<CategoryCreateWithoutParentInput, CategoryUncheckedCreateWithoutParentInput> | CategoryCreateWithoutParentInput[] | CategoryUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutParentInput | CategoryCreateOrConnectWithoutParentInput[]
+    createMany?: CategoryCreateManyParentInputEnvelope
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+  }
+
+  export type SectorsUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<SectorsCreateWithoutCategoryInput, SectorsUncheckedCreateWithoutCategoryInput> | SectorsCreateWithoutCategoryInput[] | SectorsUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: SectorsCreateOrConnectWithoutCategoryInput | SectorsCreateOrConnectWithoutCategoryInput[]
+    createMany?: SectorsCreateManyCategoryInputEnvelope
+    connect?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+  }
+
+  export type jobOffersUncheckedCreateNestedManyWithoutCategoriesInput = {
+    create?: XOR<jobOffersCreateWithoutCategoriesInput, jobOffersUncheckedCreateWithoutCategoriesInput> | jobOffersCreateWithoutCategoriesInput[] | jobOffersUncheckedCreateWithoutCategoriesInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutCategoriesInput | jobOffersCreateOrConnectWithoutCategoriesInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type CategoryUncheckedCreateNestedManyWithoutParentInput = {
+    create?: XOR<CategoryCreateWithoutParentInput, CategoryUncheckedCreateWithoutParentInput> | CategoryCreateWithoutParentInput[] | CategoryUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutParentInput | CategoryCreateOrConnectWithoutParentInput[]
+    createMany?: CategoryCreateManyParentInputEnvelope
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type SectorsUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<SectorsCreateWithoutCategoryInput, SectorsUncheckedCreateWithoutCategoryInput> | SectorsCreateWithoutCategoryInput[] | SectorsUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: SectorsCreateOrConnectWithoutCategoryInput | SectorsCreateOrConnectWithoutCategoryInput[]
+    upsert?: SectorsUpsertWithWhereUniqueWithoutCategoryInput | SectorsUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: SectorsCreateManyCategoryInputEnvelope
+    set?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+    disconnect?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+    delete?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+    connect?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+    update?: SectorsUpdateWithWhereUniqueWithoutCategoryInput | SectorsUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: SectorsUpdateManyWithWhereWithoutCategoryInput | SectorsUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: SectorsScalarWhereInput | SectorsScalarWhereInput[]
+  }
+
+  export type jobOffersUpdateManyWithoutCategoriesNestedInput = {
+    create?: XOR<jobOffersCreateWithoutCategoriesInput, jobOffersUncheckedCreateWithoutCategoriesInput> | jobOffersCreateWithoutCategoriesInput[] | jobOffersUncheckedCreateWithoutCategoriesInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutCategoriesInput | jobOffersCreateOrConnectWithoutCategoriesInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutCategoriesInput | jobOffersUpsertWithWhereUniqueWithoutCategoriesInput[]
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutCategoriesInput | jobOffersUpdateWithWhereUniqueWithoutCategoriesInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutCategoriesInput | jobOffersUpdateManyWithWhereWithoutCategoriesInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type CategoryUpdateOneWithoutChildrenNestedInput = {
+    create?: XOR<CategoryCreateWithoutChildrenInput, CategoryUncheckedCreateWithoutChildrenInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutChildrenInput
+    upsert?: CategoryUpsertWithoutChildrenInput
+    disconnect?: CategoryWhereInput | boolean
+    delete?: CategoryWhereInput | boolean
+    connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutChildrenInput, CategoryUpdateWithoutChildrenInput>, CategoryUncheckedUpdateWithoutChildrenInput>
+  }
+
+  export type CategoryUpdateManyWithoutParentNestedInput = {
+    create?: XOR<CategoryCreateWithoutParentInput, CategoryUncheckedCreateWithoutParentInput> | CategoryCreateWithoutParentInput[] | CategoryUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutParentInput | CategoryCreateOrConnectWithoutParentInput[]
+    upsert?: CategoryUpsertWithWhereUniqueWithoutParentInput | CategoryUpsertWithWhereUniqueWithoutParentInput[]
+    createMany?: CategoryCreateManyParentInputEnvelope
+    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    update?: CategoryUpdateWithWhereUniqueWithoutParentInput | CategoryUpdateWithWhereUniqueWithoutParentInput[]
+    updateMany?: CategoryUpdateManyWithWhereWithoutParentInput | CategoryUpdateManyWithWhereWithoutParentInput[]
+    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  }
+
+  export type SectorsUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<SectorsCreateWithoutCategoryInput, SectorsUncheckedCreateWithoutCategoryInput> | SectorsCreateWithoutCategoryInput[] | SectorsUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: SectorsCreateOrConnectWithoutCategoryInput | SectorsCreateOrConnectWithoutCategoryInput[]
+    upsert?: SectorsUpsertWithWhereUniqueWithoutCategoryInput | SectorsUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: SectorsCreateManyCategoryInputEnvelope
+    set?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+    disconnect?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+    delete?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+    connect?: SectorsWhereUniqueInput | SectorsWhereUniqueInput[]
+    update?: SectorsUpdateWithWhereUniqueWithoutCategoryInput | SectorsUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: SectorsUpdateManyWithWhereWithoutCategoryInput | SectorsUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: SectorsScalarWhereInput | SectorsScalarWhereInput[]
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutCategoriesNestedInput = {
+    create?: XOR<jobOffersCreateWithoutCategoriesInput, jobOffersUncheckedCreateWithoutCategoriesInput> | jobOffersCreateWithoutCategoriesInput[] | jobOffersUncheckedCreateWithoutCategoriesInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutCategoriesInput | jobOffersCreateOrConnectWithoutCategoriesInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutCategoriesInput | jobOffersUpsertWithWhereUniqueWithoutCategoriesInput[]
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutCategoriesInput | jobOffersUpdateWithWhereUniqueWithoutCategoriesInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutCategoriesInput | jobOffersUpdateManyWithWhereWithoutCategoriesInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type CategoryUncheckedUpdateManyWithoutParentNestedInput = {
+    create?: XOR<CategoryCreateWithoutParentInput, CategoryUncheckedCreateWithoutParentInput> | CategoryCreateWithoutParentInput[] | CategoryUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: CategoryCreateOrConnectWithoutParentInput | CategoryCreateOrConnectWithoutParentInput[]
+    upsert?: CategoryUpsertWithWhereUniqueWithoutParentInput | CategoryUpsertWithWhereUniqueWithoutParentInput[]
+    createMany?: CategoryCreateManyParentInputEnvelope
+    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
+    update?: CategoryUpdateWithWhereUniqueWithoutParentInput | CategoryUpdateWithWhereUniqueWithoutParentInput[]
+    updateMany?: CategoryUpdateManyWithWhereWithoutParentInput | CategoryUpdateManyWithWhereWithoutParentInput[]
+    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+  }
+
+  export type jobOffersCreateNestedManyWithoutSectorsInput = {
+    create?: XOR<jobOffersCreateWithoutSectorsInput, jobOffersUncheckedCreateWithoutSectorsInput> | jobOffersCreateWithoutSectorsInput[] | jobOffersUncheckedCreateWithoutSectorsInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutSectorsInput | jobOffersCreateOrConnectWithoutSectorsInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type CategoryCreateNestedOneWithoutSectorsInput = {
+    create?: XOR<CategoryCreateWithoutSectorsInput, CategoryUncheckedCreateWithoutSectorsInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutSectorsInput
+    connect?: CategoryWhereUniqueInput
+  }
+
+  export type jobOffersUncheckedCreateNestedManyWithoutSectorsInput = {
+    create?: XOR<jobOffersCreateWithoutSectorsInput, jobOffersUncheckedCreateWithoutSectorsInput> | jobOffersCreateWithoutSectorsInput[] | jobOffersUncheckedCreateWithoutSectorsInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutSectorsInput | jobOffersCreateOrConnectWithoutSectorsInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type jobOffersUpdateManyWithoutSectorsNestedInput = {
+    create?: XOR<jobOffersCreateWithoutSectorsInput, jobOffersUncheckedCreateWithoutSectorsInput> | jobOffersCreateWithoutSectorsInput[] | jobOffersUncheckedCreateWithoutSectorsInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutSectorsInput | jobOffersCreateOrConnectWithoutSectorsInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutSectorsInput | jobOffersUpsertWithWhereUniqueWithoutSectorsInput[]
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutSectorsInput | jobOffersUpdateWithWhereUniqueWithoutSectorsInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutSectorsInput | jobOffersUpdateManyWithWhereWithoutSectorsInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type CategoryUpdateOneRequiredWithoutSectorsNestedInput = {
+    create?: XOR<CategoryCreateWithoutSectorsInput, CategoryUncheckedCreateWithoutSectorsInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutSectorsInput
+    upsert?: CategoryUpsertWithoutSectorsInput
+    connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutSectorsInput, CategoryUpdateWithoutSectorsInput>, CategoryUncheckedUpdateWithoutSectorsInput>
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutSectorsNestedInput = {
+    create?: XOR<jobOffersCreateWithoutSectorsInput, jobOffersUncheckedCreateWithoutSectorsInput> | jobOffersCreateWithoutSectorsInput[] | jobOffersUncheckedCreateWithoutSectorsInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutSectorsInput | jobOffersCreateOrConnectWithoutSectorsInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutSectorsInput | jobOffersUpsertWithWhereUniqueWithoutSectorsInput[]
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutSectorsInput | jobOffersUpdateWithWhereUniqueWithoutSectorsInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutSectorsInput | jobOffersUpdateManyWithWhereWithoutSectorsInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutAuthAccountsInput = {
+    create?: XOR<UserCreateWithoutAuthAccountsInput, UserUncheckedCreateWithoutAuthAccountsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAuthAccountsInput
+    connect?: UserWhereUniqueInput
   }
 
   export type UserUpdateOneWithoutAuthAccountsNestedInput = {
@@ -17426,6 +23429,33 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedEnumTokenTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.TokenType | EnumTokenTypeFieldRefInput<$PrismaModel>
     in?: $Enums.TokenType[] | ListEnumTokenTypeFieldRefInput<$PrismaModel>
@@ -17487,6 +23517,7 @@ export namespace Prisma {
     about: string
     logo: string
     branch?: BranchCreateNestedManyWithoutAgencyInput
+    jobOffers?: jobOffersCreateNestedManyWithoutAgencyInput
   }
 
   export type AgencyDataUncheckedCreateWithoutUserInput = {
@@ -17501,6 +23532,7 @@ export namespace Prisma {
     about: string
     logo: string
     branch?: BranchUncheckedCreateNestedManyWithoutAgencyInput
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutAgencyInput
   }
 
   export type AgencyDataCreateOrConnectWithoutUserInput = {
@@ -17605,6 +23637,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     logo?: StringFieldUpdateOperationsInput | string
     branch?: BranchUpdateManyWithoutAgencyNestedInput
+    jobOffers?: jobOffersUpdateManyWithoutAgencyNestedInput
   }
 
   export type AgencyDataUncheckedUpdateWithoutUserInput = {
@@ -17619,6 +23652,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     logo?: StringFieldUpdateOperationsInput | string
     branch?: BranchUncheckedUpdateManyWithoutAgencyNestedInput
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutAgencyNestedInput
   }
 
   export type CandidatDataUpsertWithoutUserInput = {
@@ -18656,6 +24690,7 @@ export namespace Prisma {
     fax?: string | null
     location: string
     logo?: string | null
+    jobOffers?: jobOffersCreateNestedManyWithoutBranchInput
   }
 
   export type BranchUncheckedCreateWithoutAgencyInput = {
@@ -18666,6 +24701,7 @@ export namespace Prisma {
     fax?: string | null
     location: string
     logo?: string | null
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutBranchInput
   }
 
   export type BranchCreateOrConnectWithoutAgencyInput = {
@@ -18675,6 +24711,52 @@ export namespace Prisma {
 
   export type BranchCreateManyAgencyInputEnvelope = {
     data: BranchCreateManyAgencyInput | BranchCreateManyAgencyInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type jobOffersCreateWithoutAgencyInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    categories?: CategoryCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    branch?: BranchCreateNestedOneWithoutJobOffersInput
+  }
+
+  export type jobOffersUncheckedCreateWithoutAgencyInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    branchId?: string | null
+    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
+  }
+
+  export type jobOffersCreateOrConnectWithoutAgencyInput = {
+    where: jobOffersWhereUniqueInput
+    create: XOR<jobOffersCreateWithoutAgencyInput, jobOffersUncheckedCreateWithoutAgencyInput>
+  }
+
+  export type jobOffersCreateManyAgencyInputEnvelope = {
+    data: jobOffersCreateManyAgencyInput | jobOffersCreateManyAgencyInput[]
     skipDuplicates?: boolean
   }
 
@@ -18747,6 +24829,41 @@ export namespace Prisma {
     adId?: StringFilter<"Branch"> | string
   }
 
+  export type jobOffersUpsertWithWhereUniqueWithoutAgencyInput = {
+    where: jobOffersWhereUniqueInput
+    update: XOR<jobOffersUpdateWithoutAgencyInput, jobOffersUncheckedUpdateWithoutAgencyInput>
+    create: XOR<jobOffersCreateWithoutAgencyInput, jobOffersUncheckedCreateWithoutAgencyInput>
+  }
+
+  export type jobOffersUpdateWithWhereUniqueWithoutAgencyInput = {
+    where: jobOffersWhereUniqueInput
+    data: XOR<jobOffersUpdateWithoutAgencyInput, jobOffersUncheckedUpdateWithoutAgencyInput>
+  }
+
+  export type jobOffersUpdateManyWithWhereWithoutAgencyInput = {
+    where: jobOffersScalarWhereInput
+    data: XOR<jobOffersUpdateManyMutationInput, jobOffersUncheckedUpdateManyWithoutAgencyInput>
+  }
+
+  export type jobOffersScalarWhereInput = {
+    AND?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+    OR?: jobOffersScalarWhereInput[]
+    NOT?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+    id?: StringFilter<"jobOffers"> | string
+    title?: StringFilter<"jobOffers"> | string
+    slug?: StringFilter<"jobOffers"> | string
+    description?: StringFilter<"jobOffers"> | string
+    region?: StringFilter<"jobOffers"> | string
+    province?: StringFilter<"jobOffers"> | string
+    location?: StringFilter<"jobOffers"> | string
+    createdAt?: DateTimeFilter<"jobOffers"> | Date | string
+    updatedAt?: DateTimeFilter<"jobOffers"> | Date | string
+    isValidate?: BoolFilter<"jobOffers"> | boolean
+    views?: IntFilter<"jobOffers"> | number
+    agencyId?: StringFilter<"jobOffers"> | string
+    branchId?: StringNullableFilter<"jobOffers"> | string | null
+  }
+
   export type AgencyDataCreateWithoutBranchInput = {
     id?: string
     agency_name: string
@@ -18759,6 +24876,7 @@ export namespace Prisma {
     about: string
     logo: string
     user: UserCreateNestedOneWithoutAgencydataInput
+    jobOffers?: jobOffersCreateNestedManyWithoutAgencyInput
   }
 
   export type AgencyDataUncheckedCreateWithoutBranchInput = {
@@ -18773,11 +24891,58 @@ export namespace Prisma {
     userId: string
     about: string
     logo: string
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutAgencyInput
   }
 
   export type AgencyDataCreateOrConnectWithoutBranchInput = {
     where: AgencyDataWhereUniqueInput
     create: XOR<AgencyDataCreateWithoutBranchInput, AgencyDataUncheckedCreateWithoutBranchInput>
+  }
+
+  export type jobOffersCreateWithoutBranchInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    categories?: CategoryCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    agency: AgencyDataCreateNestedOneWithoutJobOffersInput
+  }
+
+  export type jobOffersUncheckedCreateWithoutBranchInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    agencyId: string
+    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
+  }
+
+  export type jobOffersCreateOrConnectWithoutBranchInput = {
+    where: jobOffersWhereUniqueInput
+    create: XOR<jobOffersCreateWithoutBranchInput, jobOffersUncheckedCreateWithoutBranchInput>
+  }
+
+  export type jobOffersCreateManyBranchInputEnvelope = {
+    data: jobOffersCreateManyBranchInput | jobOffersCreateManyBranchInput[]
+    skipDuplicates?: boolean
   }
 
   export type AgencyDataUpsertWithoutBranchInput = {
@@ -18803,6 +24968,7 @@ export namespace Prisma {
     about?: StringFieldUpdateOperationsInput | string
     logo?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutAgencydataNestedInput
+    jobOffers?: jobOffersUpdateManyWithoutAgencyNestedInput
   }
 
   export type AgencyDataUncheckedUpdateWithoutBranchInput = {
@@ -18817,6 +24983,680 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
     about?: StringFieldUpdateOperationsInput | string
     logo?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutAgencyNestedInput
+  }
+
+  export type jobOffersUpsertWithWhereUniqueWithoutBranchInput = {
+    where: jobOffersWhereUniqueInput
+    update: XOR<jobOffersUpdateWithoutBranchInput, jobOffersUncheckedUpdateWithoutBranchInput>
+    create: XOR<jobOffersCreateWithoutBranchInput, jobOffersUncheckedCreateWithoutBranchInput>
+  }
+
+  export type jobOffersUpdateWithWhereUniqueWithoutBranchInput = {
+    where: jobOffersWhereUniqueInput
+    data: XOR<jobOffersUpdateWithoutBranchInput, jobOffersUncheckedUpdateWithoutBranchInput>
+  }
+
+  export type jobOffersUpdateManyWithWhereWithoutBranchInput = {
+    where: jobOffersScalarWhereInput
+    data: XOR<jobOffersUpdateManyMutationInput, jobOffersUncheckedUpdateManyWithoutBranchInput>
+  }
+
+  export type CategoryCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    level?: number | null
+    sectors?: SectorsCreateNestedManyWithoutCategoryInput
+    parent?: CategoryCreateNestedOneWithoutChildrenInput
+    children?: CategoryCreateNestedManyWithoutParentInput
+  }
+
+  export type CategoryUncheckedCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    level?: number | null
+    parentId?: string | null
+    sectors?: SectorsUncheckedCreateNestedManyWithoutCategoryInput
+    children?: CategoryUncheckedCreateNestedManyWithoutParentInput
+  }
+
+  export type CategoryCreateOrConnectWithoutJobOffersInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutJobOffersInput, CategoryUncheckedCreateWithoutJobOffersInput>
+  }
+
+  export type SectorsCreateWithoutJobOfferInput = {
+    id?: string
+    name: string
+    slug: string
+    category: CategoryCreateNestedOneWithoutSectorsInput
+  }
+
+  export type SectorsUncheckedCreateWithoutJobOfferInput = {
+    id?: string
+    name: string
+    slug: string
+    categoryId: string
+  }
+
+  export type SectorsCreateOrConnectWithoutJobOfferInput = {
+    where: SectorsWhereUniqueInput
+    create: XOR<SectorsCreateWithoutJobOfferInput, SectorsUncheckedCreateWithoutJobOfferInput>
+  }
+
+  export type jobTagsCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type jobTagsUncheckedCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type jobTagsCreateOrConnectWithoutJobOffersInput = {
+    where: jobTagsWhereUniqueInput
+    create: XOR<jobTagsCreateWithoutJobOffersInput, jobTagsUncheckedCreateWithoutJobOffersInput>
+  }
+
+  export type AgencyDataCreateWithoutJobOffersInput = {
+    id?: string
+    agency_name: string
+    slug: string
+    address: string
+    phone: string
+    p_iva_c_f: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    about: string
+    logo: string
+    user: UserCreateNestedOneWithoutAgencydataInput
+    branch?: BranchCreateNestedManyWithoutAgencyInput
+  }
+
+  export type AgencyDataUncheckedCreateWithoutJobOffersInput = {
+    id?: string
+    agency_name: string
+    slug: string
+    address: string
+    phone: string
+    p_iva_c_f: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    about: string
+    logo: string
+    branch?: BranchUncheckedCreateNestedManyWithoutAgencyInput
+  }
+
+  export type AgencyDataCreateOrConnectWithoutJobOffersInput = {
+    where: AgencyDataWhereUniqueInput
+    create: XOR<AgencyDataCreateWithoutJobOffersInput, AgencyDataUncheckedCreateWithoutJobOffersInput>
+  }
+
+  export type BranchCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+    email: string
+    phone: string
+    fax?: string | null
+    location: string
+    logo?: string | null
+    agency: AgencyDataCreateNestedOneWithoutBranchInput
+  }
+
+  export type BranchUncheckedCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+    email: string
+    phone: string
+    fax?: string | null
+    location: string
+    logo?: string | null
+    adId: string
+  }
+
+  export type BranchCreateOrConnectWithoutJobOffersInput = {
+    where: BranchWhereUniqueInput
+    create: XOR<BranchCreateWithoutJobOffersInput, BranchUncheckedCreateWithoutJobOffersInput>
+  }
+
+  export type CategoryUpsertWithWhereUniqueWithoutJobOffersInput = {
+    where: CategoryWhereUniqueInput
+    update: XOR<CategoryUpdateWithoutJobOffersInput, CategoryUncheckedUpdateWithoutJobOffersInput>
+    create: XOR<CategoryCreateWithoutJobOffersInput, CategoryUncheckedCreateWithoutJobOffersInput>
+  }
+
+  export type CategoryUpdateWithWhereUniqueWithoutJobOffersInput = {
+    where: CategoryWhereUniqueInput
+    data: XOR<CategoryUpdateWithoutJobOffersInput, CategoryUncheckedUpdateWithoutJobOffersInput>
+  }
+
+  export type CategoryUpdateManyWithWhereWithoutJobOffersInput = {
+    where: CategoryScalarWhereInput
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyWithoutJobOffersInput>
+  }
+
+  export type CategoryScalarWhereInput = {
+    AND?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+    OR?: CategoryScalarWhereInput[]
+    NOT?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+    id?: StringFilter<"Category"> | string
+    name?: StringFilter<"Category"> | string
+    slug?: StringFilter<"Category"> | string
+    description?: StringFilter<"Category"> | string
+    level?: IntNullableFilter<"Category"> | number | null
+    parentId?: StringNullableFilter<"Category"> | string | null
+  }
+
+  export type SectorsUpsertWithWhereUniqueWithoutJobOfferInput = {
+    where: SectorsWhereUniqueInput
+    update: XOR<SectorsUpdateWithoutJobOfferInput, SectorsUncheckedUpdateWithoutJobOfferInput>
+    create: XOR<SectorsCreateWithoutJobOfferInput, SectorsUncheckedCreateWithoutJobOfferInput>
+  }
+
+  export type SectorsUpdateWithWhereUniqueWithoutJobOfferInput = {
+    where: SectorsWhereUniqueInput
+    data: XOR<SectorsUpdateWithoutJobOfferInput, SectorsUncheckedUpdateWithoutJobOfferInput>
+  }
+
+  export type SectorsUpdateManyWithWhereWithoutJobOfferInput = {
+    where: SectorsScalarWhereInput
+    data: XOR<SectorsUpdateManyMutationInput, SectorsUncheckedUpdateManyWithoutJobOfferInput>
+  }
+
+  export type SectorsScalarWhereInput = {
+    AND?: SectorsScalarWhereInput | SectorsScalarWhereInput[]
+    OR?: SectorsScalarWhereInput[]
+    NOT?: SectorsScalarWhereInput | SectorsScalarWhereInput[]
+    id?: StringFilter<"Sectors"> | string
+    name?: StringFilter<"Sectors"> | string
+    slug?: StringFilter<"Sectors"> | string
+    categoryId?: StringFilter<"Sectors"> | string
+  }
+
+  export type jobTagsUpsertWithWhereUniqueWithoutJobOffersInput = {
+    where: jobTagsWhereUniqueInput
+    update: XOR<jobTagsUpdateWithoutJobOffersInput, jobTagsUncheckedUpdateWithoutJobOffersInput>
+    create: XOR<jobTagsCreateWithoutJobOffersInput, jobTagsUncheckedCreateWithoutJobOffersInput>
+  }
+
+  export type jobTagsUpdateWithWhereUniqueWithoutJobOffersInput = {
+    where: jobTagsWhereUniqueInput
+    data: XOR<jobTagsUpdateWithoutJobOffersInput, jobTagsUncheckedUpdateWithoutJobOffersInput>
+  }
+
+  export type jobTagsUpdateManyWithWhereWithoutJobOffersInput = {
+    where: jobTagsScalarWhereInput
+    data: XOR<jobTagsUpdateManyMutationInput, jobTagsUncheckedUpdateManyWithoutJobOffersInput>
+  }
+
+  export type jobTagsScalarWhereInput = {
+    AND?: jobTagsScalarWhereInput | jobTagsScalarWhereInput[]
+    OR?: jobTagsScalarWhereInput[]
+    NOT?: jobTagsScalarWhereInput | jobTagsScalarWhereInput[]
+    id?: StringFilter<"jobTags"> | string
+    name?: StringFilter<"jobTags"> | string
+    slug?: StringFilter<"jobTags"> | string
+  }
+
+  export type AgencyDataUpsertWithoutJobOffersInput = {
+    update: XOR<AgencyDataUpdateWithoutJobOffersInput, AgencyDataUncheckedUpdateWithoutJobOffersInput>
+    create: XOR<AgencyDataCreateWithoutJobOffersInput, AgencyDataUncheckedCreateWithoutJobOffersInput>
+    where?: AgencyDataWhereInput
+  }
+
+  export type AgencyDataUpdateToOneWithWhereWithoutJobOffersInput = {
+    where?: AgencyDataWhereInput
+    data: XOR<AgencyDataUpdateWithoutJobOffersInput, AgencyDataUncheckedUpdateWithoutJobOffersInput>
+  }
+
+  export type AgencyDataUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    agency_name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    p_iva_c_f?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    about?: StringFieldUpdateOperationsInput | string
+    logo?: StringFieldUpdateOperationsInput | string
+    user?: UserUpdateOneRequiredWithoutAgencydataNestedInput
+    branch?: BranchUpdateManyWithoutAgencyNestedInput
+  }
+
+  export type AgencyDataUncheckedUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    agency_name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    p_iva_c_f?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    about?: StringFieldUpdateOperationsInput | string
+    logo?: StringFieldUpdateOperationsInput | string
+    branch?: BranchUncheckedUpdateManyWithoutAgencyNestedInput
+  }
+
+  export type BranchUpsertWithoutJobOffersInput = {
+    update: XOR<BranchUpdateWithoutJobOffersInput, BranchUncheckedUpdateWithoutJobOffersInput>
+    create: XOR<BranchCreateWithoutJobOffersInput, BranchUncheckedCreateWithoutJobOffersInput>
+    where?: BranchWhereInput
+  }
+
+  export type BranchUpdateToOneWithWhereWithoutJobOffersInput = {
+    where?: BranchWhereInput
+    data: XOR<BranchUpdateWithoutJobOffersInput, BranchUncheckedUpdateWithoutJobOffersInput>
+  }
+
+  export type BranchUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    fax?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: StringFieldUpdateOperationsInput | string
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    agency?: AgencyDataUpdateOneRequiredWithoutBranchNestedInput
+  }
+
+  export type BranchUncheckedUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    fax?: NullableStringFieldUpdateOperationsInput | string | null
+    location?: StringFieldUpdateOperationsInput | string
+    logo?: NullableStringFieldUpdateOperationsInput | string | null
+    adId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type jobOffersCreateWithoutTagsInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    categories?: CategoryCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsCreateNestedManyWithoutJobOfferInput
+    agency: AgencyDataCreateNestedOneWithoutJobOffersInput
+    branch?: BranchCreateNestedOneWithoutJobOffersInput
+  }
+
+  export type jobOffersUncheckedCreateWithoutTagsInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    agencyId: string
+    branchId?: string | null
+    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
+  }
+
+  export type jobOffersCreateOrConnectWithoutTagsInput = {
+    where: jobOffersWhereUniqueInput
+    create: XOR<jobOffersCreateWithoutTagsInput, jobOffersUncheckedCreateWithoutTagsInput>
+  }
+
+  export type jobOffersUpsertWithWhereUniqueWithoutTagsInput = {
+    where: jobOffersWhereUniqueInput
+    update: XOR<jobOffersUpdateWithoutTagsInput, jobOffersUncheckedUpdateWithoutTagsInput>
+    create: XOR<jobOffersCreateWithoutTagsInput, jobOffersUncheckedCreateWithoutTagsInput>
+  }
+
+  export type jobOffersUpdateWithWhereUniqueWithoutTagsInput = {
+    where: jobOffersWhereUniqueInput
+    data: XOR<jobOffersUpdateWithoutTagsInput, jobOffersUncheckedUpdateWithoutTagsInput>
+  }
+
+  export type jobOffersUpdateManyWithWhereWithoutTagsInput = {
+    where: jobOffersScalarWhereInput
+    data: XOR<jobOffersUpdateManyMutationInput, jobOffersUncheckedUpdateManyWithoutTagsInput>
+  }
+
+  export type SectorsCreateWithoutCategoryInput = {
+    id?: string
+    name: string
+    slug: string
+    jobOffer?: jobOffersCreateNestedManyWithoutSectorsInput
+  }
+
+  export type SectorsUncheckedCreateWithoutCategoryInput = {
+    id?: string
+    name: string
+    slug: string
+    jobOffer?: jobOffersUncheckedCreateNestedManyWithoutSectorsInput
+  }
+
+  export type SectorsCreateOrConnectWithoutCategoryInput = {
+    where: SectorsWhereUniqueInput
+    create: XOR<SectorsCreateWithoutCategoryInput, SectorsUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type SectorsCreateManyCategoryInputEnvelope = {
+    data: SectorsCreateManyCategoryInput | SectorsCreateManyCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type jobOffersCreateWithoutCategoriesInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    sectors?: SectorsCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    agency: AgencyDataCreateNestedOneWithoutJobOffersInput
+    branch?: BranchCreateNestedOneWithoutJobOffersInput
+  }
+
+  export type jobOffersUncheckedCreateWithoutCategoriesInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    agencyId: string
+    branchId?: string | null
+    sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
+  }
+
+  export type jobOffersCreateOrConnectWithoutCategoriesInput = {
+    where: jobOffersWhereUniqueInput
+    create: XOR<jobOffersCreateWithoutCategoriesInput, jobOffersUncheckedCreateWithoutCategoriesInput>
+  }
+
+  export type CategoryCreateWithoutChildrenInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    level?: number | null
+    sectors?: SectorsCreateNestedManyWithoutCategoryInput
+    jobOffers?: jobOffersCreateNestedManyWithoutCategoriesInput
+    parent?: CategoryCreateNestedOneWithoutChildrenInput
+  }
+
+  export type CategoryUncheckedCreateWithoutChildrenInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    level?: number | null
+    parentId?: string | null
+    sectors?: SectorsUncheckedCreateNestedManyWithoutCategoryInput
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutCategoriesInput
+  }
+
+  export type CategoryCreateOrConnectWithoutChildrenInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutChildrenInput, CategoryUncheckedCreateWithoutChildrenInput>
+  }
+
+  export type CategoryCreateWithoutParentInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    level?: number | null
+    sectors?: SectorsCreateNestedManyWithoutCategoryInput
+    jobOffers?: jobOffersCreateNestedManyWithoutCategoriesInput
+    children?: CategoryCreateNestedManyWithoutParentInput
+  }
+
+  export type CategoryUncheckedCreateWithoutParentInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    level?: number | null
+    sectors?: SectorsUncheckedCreateNestedManyWithoutCategoryInput
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutCategoriesInput
+    children?: CategoryUncheckedCreateNestedManyWithoutParentInput
+  }
+
+  export type CategoryCreateOrConnectWithoutParentInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutParentInput, CategoryUncheckedCreateWithoutParentInput>
+  }
+
+  export type CategoryCreateManyParentInputEnvelope = {
+    data: CategoryCreateManyParentInput | CategoryCreateManyParentInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SectorsUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: SectorsWhereUniqueInput
+    update: XOR<SectorsUpdateWithoutCategoryInput, SectorsUncheckedUpdateWithoutCategoryInput>
+    create: XOR<SectorsCreateWithoutCategoryInput, SectorsUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type SectorsUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: SectorsWhereUniqueInput
+    data: XOR<SectorsUpdateWithoutCategoryInput, SectorsUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type SectorsUpdateManyWithWhereWithoutCategoryInput = {
+    where: SectorsScalarWhereInput
+    data: XOR<SectorsUpdateManyMutationInput, SectorsUncheckedUpdateManyWithoutCategoryInput>
+  }
+
+  export type jobOffersUpsertWithWhereUniqueWithoutCategoriesInput = {
+    where: jobOffersWhereUniqueInput
+    update: XOR<jobOffersUpdateWithoutCategoriesInput, jobOffersUncheckedUpdateWithoutCategoriesInput>
+    create: XOR<jobOffersCreateWithoutCategoriesInput, jobOffersUncheckedCreateWithoutCategoriesInput>
+  }
+
+  export type jobOffersUpdateWithWhereUniqueWithoutCategoriesInput = {
+    where: jobOffersWhereUniqueInput
+    data: XOR<jobOffersUpdateWithoutCategoriesInput, jobOffersUncheckedUpdateWithoutCategoriesInput>
+  }
+
+  export type jobOffersUpdateManyWithWhereWithoutCategoriesInput = {
+    where: jobOffersScalarWhereInput
+    data: XOR<jobOffersUpdateManyMutationInput, jobOffersUncheckedUpdateManyWithoutCategoriesInput>
+  }
+
+  export type CategoryUpsertWithoutChildrenInput = {
+    update: XOR<CategoryUpdateWithoutChildrenInput, CategoryUncheckedUpdateWithoutChildrenInput>
+    create: XOR<CategoryCreateWithoutChildrenInput, CategoryUncheckedCreateWithoutChildrenInput>
+    where?: CategoryWhereInput
+  }
+
+  export type CategoryUpdateToOneWithWhereWithoutChildrenInput = {
+    where?: CategoryWhereInput
+    data: XOR<CategoryUpdateWithoutChildrenInput, CategoryUncheckedUpdateWithoutChildrenInput>
+  }
+
+  export type CategoryUpdateWithoutChildrenInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    sectors?: SectorsUpdateManyWithoutCategoryNestedInput
+    jobOffers?: jobOffersUpdateManyWithoutCategoriesNestedInput
+    parent?: CategoryUpdateOneWithoutChildrenNestedInput
+  }
+
+  export type CategoryUncheckedUpdateWithoutChildrenInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    sectors?: SectorsUncheckedUpdateManyWithoutCategoryNestedInput
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutCategoriesNestedInput
+  }
+
+  export type CategoryUpsertWithWhereUniqueWithoutParentInput = {
+    where: CategoryWhereUniqueInput
+    update: XOR<CategoryUpdateWithoutParentInput, CategoryUncheckedUpdateWithoutParentInput>
+    create: XOR<CategoryCreateWithoutParentInput, CategoryUncheckedCreateWithoutParentInput>
+  }
+
+  export type CategoryUpdateWithWhereUniqueWithoutParentInput = {
+    where: CategoryWhereUniqueInput
+    data: XOR<CategoryUpdateWithoutParentInput, CategoryUncheckedUpdateWithoutParentInput>
+  }
+
+  export type CategoryUpdateManyWithWhereWithoutParentInput = {
+    where: CategoryScalarWhereInput
+    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyWithoutParentInput>
+  }
+
+  export type jobOffersCreateWithoutSectorsInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    categories?: CategoryCreateNestedManyWithoutJobOffersInput
+    tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    agency: AgencyDataCreateNestedOneWithoutJobOffersInput
+    branch?: BranchCreateNestedOneWithoutJobOffersInput
+  }
+
+  export type jobOffersUncheckedCreateWithoutSectorsInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    agencyId: string
+    branchId?: string | null
+    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
+    tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
+  }
+
+  export type jobOffersCreateOrConnectWithoutSectorsInput = {
+    where: jobOffersWhereUniqueInput
+    create: XOR<jobOffersCreateWithoutSectorsInput, jobOffersUncheckedCreateWithoutSectorsInput>
+  }
+
+  export type CategoryCreateWithoutSectorsInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    level?: number | null
+    jobOffers?: jobOffersCreateNestedManyWithoutCategoriesInput
+    parent?: CategoryCreateNestedOneWithoutChildrenInput
+    children?: CategoryCreateNestedManyWithoutParentInput
+  }
+
+  export type CategoryUncheckedCreateWithoutSectorsInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    level?: number | null
+    parentId?: string | null
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutCategoriesInput
+    children?: CategoryUncheckedCreateNestedManyWithoutParentInput
+  }
+
+  export type CategoryCreateOrConnectWithoutSectorsInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutSectorsInput, CategoryUncheckedCreateWithoutSectorsInput>
+  }
+
+  export type jobOffersUpsertWithWhereUniqueWithoutSectorsInput = {
+    where: jobOffersWhereUniqueInput
+    update: XOR<jobOffersUpdateWithoutSectorsInput, jobOffersUncheckedUpdateWithoutSectorsInput>
+    create: XOR<jobOffersCreateWithoutSectorsInput, jobOffersUncheckedCreateWithoutSectorsInput>
+  }
+
+  export type jobOffersUpdateWithWhereUniqueWithoutSectorsInput = {
+    where: jobOffersWhereUniqueInput
+    data: XOR<jobOffersUpdateWithoutSectorsInput, jobOffersUncheckedUpdateWithoutSectorsInput>
+  }
+
+  export type jobOffersUpdateManyWithWhereWithoutSectorsInput = {
+    where: jobOffersScalarWhereInput
+    data: XOR<jobOffersUpdateManyMutationInput, jobOffersUncheckedUpdateManyWithoutSectorsInput>
+  }
+
+  export type CategoryUpsertWithoutSectorsInput = {
+    update: XOR<CategoryUpdateWithoutSectorsInput, CategoryUncheckedUpdateWithoutSectorsInput>
+    create: XOR<CategoryCreateWithoutSectorsInput, CategoryUncheckedCreateWithoutSectorsInput>
+    where?: CategoryWhereInput
+  }
+
+  export type CategoryUpdateToOneWithWhereWithoutSectorsInput = {
+    where?: CategoryWhereInput
+    data: XOR<CategoryUpdateWithoutSectorsInput, CategoryUncheckedUpdateWithoutSectorsInput>
+  }
+
+  export type CategoryUpdateWithoutSectorsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    jobOffers?: jobOffersUpdateManyWithoutCategoriesNestedInput
+    parent?: CategoryUpdateOneWithoutChildrenNestedInput
+    children?: CategoryUpdateManyWithoutParentNestedInput
+  }
+
+  export type CategoryUncheckedUpdateWithoutSectorsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutCategoriesNestedInput
+    children?: CategoryUncheckedUpdateManyWithoutParentNestedInput
   }
 
   export type UserCreateWithoutAuthAccountsInput = {
@@ -19133,6 +25973,21 @@ export namespace Prisma {
     logo?: string | null
   }
 
+  export type jobOffersCreateManyAgencyInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    branchId?: string | null
+  }
+
   export type BranchUpdateWithoutAgencyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -19141,6 +25996,7 @@ export namespace Prisma {
     fax?: NullableStringFieldUpdateOperationsInput | string | null
     location?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    jobOffers?: jobOffersUpdateManyWithoutBranchNestedInput
   }
 
   export type BranchUncheckedUpdateWithoutAgencyInput = {
@@ -19151,6 +26007,7 @@ export namespace Prisma {
     fax?: NullableStringFieldUpdateOperationsInput | string | null
     location?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutBranchNestedInput
   }
 
   export type BranchUncheckedUpdateManyWithoutAgencyInput = {
@@ -19161,6 +26018,413 @@ export namespace Prisma {
     fax?: NullableStringFieldUpdateOperationsInput | string | null
     location?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type jobOffersUpdateWithoutAgencyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    branch?: BranchUpdateOneWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateWithoutAgencyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutAgencyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type jobOffersCreateManyBranchInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    agencyId: string
+  }
+
+  export type jobOffersUpdateWithoutBranchInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    agency?: AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateWithoutBranchInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    agencyId?: StringFieldUpdateOperationsInput | string
+    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutBranchInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    agencyId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoryUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    sectors?: SectorsUpdateManyWithoutCategoryNestedInput
+    parent?: CategoryUpdateOneWithoutChildrenNestedInput
+    children?: CategoryUpdateManyWithoutParentNestedInput
+  }
+
+  export type CategoryUncheckedUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    sectors?: SectorsUncheckedUpdateManyWithoutCategoryNestedInput
+    children?: CategoryUncheckedUpdateManyWithoutParentNestedInput
+  }
+
+  export type CategoryUncheckedUpdateManyWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type SectorsUpdateWithoutJobOfferInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    category?: CategoryUpdateOneRequiredWithoutSectorsNestedInput
+  }
+
+  export type SectorsUncheckedUpdateWithoutJobOfferInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SectorsUncheckedUpdateManyWithoutJobOfferInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type jobTagsUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type jobTagsUncheckedUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type jobTagsUncheckedUpdateManyWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type jobOffersUpdateWithoutTagsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
+    agency?: AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput
+    branch?: BranchUpdateOneWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateWithoutTagsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutTagsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type SectorsCreateManyCategoryInput = {
+    id?: string
+    name: string
+    slug: string
+  }
+
+  export type CategoryCreateManyParentInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    level?: number | null
+  }
+
+  export type SectorsUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    jobOffer?: jobOffersUpdateManyWithoutSectorsNestedInput
+  }
+
+  export type SectorsUncheckedUpdateWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    jobOffer?: jobOffersUncheckedUpdateManyWithoutSectorsNestedInput
+  }
+
+  export type SectorsUncheckedUpdateManyWithoutCategoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type jobOffersUpdateWithoutCategoriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    agency?: AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput
+    branch?: BranchUpdateOneWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateWithoutCategoriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutCategoriesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type CategoryUpdateWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    sectors?: SectorsUpdateManyWithoutCategoryNestedInput
+    jobOffers?: jobOffersUpdateManyWithoutCategoriesNestedInput
+    children?: CategoryUpdateManyWithoutParentNestedInput
+  }
+
+  export type CategoryUncheckedUpdateWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    sectors?: SectorsUncheckedUpdateManyWithoutCategoryNestedInput
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutCategoriesNestedInput
+    children?: CategoryUncheckedUpdateManyWithoutParentNestedInput
+  }
+
+  export type CategoryUncheckedUpdateManyWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type jobOffersUpdateWithoutSectorsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
+    tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    agency?: AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput
+    branch?: BranchUpdateOneWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateWithoutSectorsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
+    tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutSectorsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 
@@ -19180,6 +26444,26 @@ export namespace Prisma {
      * @deprecated Use AgencyDataCountOutputTypeDefaultArgs instead
      */
     export type AgencyDataCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AgencyDataCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use BranchCountOutputTypeDefaultArgs instead
+     */
+    export type BranchCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BranchCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use JobOffersCountOutputTypeDefaultArgs instead
+     */
+    export type JobOffersCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = JobOffersCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use JobTagsCountOutputTypeDefaultArgs instead
+     */
+    export type JobTagsCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = JobTagsCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CategoryCountOutputTypeDefaultArgs instead
+     */
+    export type CategoryCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CategoryCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use SectorsCountOutputTypeDefaultArgs instead
+     */
+    export type SectorsCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SectorsCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use UserDefaultArgs instead
      */
@@ -19220,6 +26504,22 @@ export namespace Prisma {
      * @deprecated Use BranchDefaultArgs instead
      */
     export type BranchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BranchDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use jobOffersDefaultArgs instead
+     */
+    export type jobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = jobOffersDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use jobTagsDefaultArgs instead
+     */
+    export type jobTagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = jobTagsDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CategoryDefaultArgs instead
+     */
+    export type CategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CategoryDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use SectorsDefaultArgs instead
+     */
+    export type SectorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SectorsDefaultArgs<ExtArgs>
     /**
      * @deprecated Use AuthAccountDefaultArgs instead
      */

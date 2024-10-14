@@ -17,18 +17,26 @@ import {
 	FormLabel,
 	FormMessage,
 	Input,
-	Loader,
 	Switch
 } from '@/shared/components/ui'
 
-import { useUpdProfileMutation } from '../hooks/useUpdProfileMutation'
+import { useGetAgencyData, useUpdProfileMutation } from '../hooks'
 import { SettingsSchema, TypeSettingsSchema } from '../schemes'
+import { ImageUpload } from '@/shared/components'
+
 
 export function AgencySettings() {
+	const {user, isLoading, error} = useGetAgencyData()
 	const form = useForm<TypeSettingsSchema>({
+		mode: 'onChange',
 		resolver: zodResolver(SettingsSchema),
 		values: {
-			email: '',
+			logo: [],
+			agency_name: user?.agency_name || '',
+			address: user?.address || '',
+			phone: user?.phone || '',
+			about: user?.about || '',
+			p_iva_c_f: user?.p_iva_c_f || '',
 			isTwoFactorEnabled: false
 		}
 	})
@@ -50,18 +58,111 @@ export function AgencySettings() {
 						<form
 							onSubmit={form.handleSubmit(onSubmit)}
 							className='grid gap-2 space-y-2'
+							encType='multipart/form-data'
 						>
 							<FormField
 								control={form.control}
-								name='email'
+								name='logo'
+								rules={{
+									required: 'Загрузите хотя бы одну картинку'
+								}}
+								render={({ field }) => (
+									<FormItem className='mt-4'>
+										<FormLabel>Картинки</FormLabel>
+										<FormControl>
+											<ImageUpload
+												isDisabled={isLoading}
+												onChange={field.onChange}
+												value={field.value}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<FormField
+								control={form.control}
+								name='agency_name'
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Почта</FormLabel>
+										<FormLabel>Agency name</FormLabel>
 										<FormControl>
 											<Input
-												placeholder='ivan@example.com'
-												disabled={isPending}
-												type='email'
+												placeholder='Agency name'
+												disabled={isLoading}
+												type='text'
+												{...field}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<FormField
+								control={form.control}
+								name='address'
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Agency address</FormLabel>
+										<FormControl>
+											<Input
+												placeholder='Agency address'
+												disabled={isLoading}
+												type='text'
+												{...field}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<FormField
+								control={form.control}
+								name='about'
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>About agency</FormLabel>
+										<FormControl>
+											<Input
+												placeholder='About agency'
+												disabled={isLoading}
+												type='text'
+												{...field}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<FormField
+								control={form.control}
+								name='phone'
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Agency contacts</FormLabel>
+										<FormControl>
+											<Input
+												placeholder='Agency contacts'
+												disabled={isLoading}
+												type='text'
+												{...field}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<FormField
+								control={form.control}
+								name='p_iva_c_f'
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>P.IVA/CF</FormLabel>
+										<FormControl>
+											<Input
+												placeholder='P.IVA/CF'
+												disabled={isLoading}
+												type='text'
 												{...field}
 											/>
 										</FormControl>
@@ -93,7 +194,7 @@ export function AgencySettings() {
 									</FormItem>
 								)}
 							/>
-							<Button type='submit' disabled={isPending}>
+							<Button type='submit' disabled={isLoading}>
 								Сохранить
 							</Button>
 						</form>

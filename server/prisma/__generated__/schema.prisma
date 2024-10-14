@@ -12,7 +12,7 @@ model User {
   id       String   @id @default(uuid())
   email    String   @unique
   password String
-  role     UserRole @default(USER)
+  role     UserRole @default(CANDIDAT)
 
   isVerified         Boolean @default(false) @map("is_verified")
   isTwoFactorEnabled Boolean @default(false) @map("is_two_factor_enabled")
@@ -114,37 +114,96 @@ model Hobbies {
 }
 
 model AgencyData {
-  id          String   @id @default(uuid())
+  id          String      @id @default(uuid())
   agency_name String
-  slug        String   @unique
+  slug        String      @unique
   address     String
   phone       String
   p_iva_c_f   String
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
-  userId      String   @unique @map("user_id")
+  createdAt   DateTime    @default(now()) @map("created_at")
+  updatedAt   DateTime    @updatedAt @map("updated_at")
+  userId      String      @unique @map("user_id")
   about       String
   logo        String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   branch      Branch[]
-  //jobOffers   jobOffers[]
+  jobOffers   jobOffers[]
 
   @@map("agency_data")
 }
 
 model Branch {
-  id       String     @id @default(uuid())
-  name     String
-  email    String
-  phone    String
-  fax      String?
-  location String
-  logo     String?
-  adId     String     @map("agency_id")
-  agency   AgencyData @relation(fields: [adId], references: [id])
-  //jobOffers jobOffers[]
+  id        String      @id @default(uuid())
+  name      String
+  email     String
+  phone     String
+  fax       String?
+  location  String
+  logo      String?
+  adId      String      @map("agency_id")
+  agency    AgencyData  @relation(fields: [adId], references: [id])
+  jobOffers jobOffers[]
 
   @@map("branches")
+}
+
+model jobOffers {
+  id          String     @id @default(uuid())
+  title       String
+  slug        String     @unique
+  description String
+  region      String
+  province    String
+  location    String
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+  isValidate  Boolean    @default(false)
+  views       Int        @default(0)
+  categories  Category[]
+  sectors     Sectors[]
+  tags        jobTags[]
+
+  agencyId String     @map("agency_id")
+  agency   AgencyData @relation(fields: [agencyId], references: [id])
+
+  branchId String? @map("branch_id")
+  branch   Branch? @relation(fields: [branchId], references: [id])
+
+  @@map("job_offers")
+}
+
+model jobTags {
+  id        String      @id @default(uuid())
+  name      String
+  slug      String
+  jobOffers jobOffers[]
+
+  @@map("job_tags")
+}
+
+model Category {
+  id          String      @id @default(uuid())
+  name        String      @unique
+  slug        String      @unique
+  description String
+  level       Int?
+  sectors     Sectors[]
+  jobOffers   jobOffers[]
+  parentId    String?
+  parent      Category?   @relation("SubCategory", fields: [parentId], references: [id])
+  children    Category[]  @relation("SubCategory")
+
+  @@map("categories")
+}
+
+model Sectors {
+  id       String      @id @default(uuid())
+  name     String      @unique
+  slug     String      @unique
+  jobOffer jobOffers[]
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model AuthAccount {

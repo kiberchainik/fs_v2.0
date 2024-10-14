@@ -25,7 +25,6 @@ import { useUpdProfileMutation } from '../hooks/useUpdProfileMutation'
 import { SettingsSchema, TypeSettingsSchema } from '../schemes'
 
 export function CandidatSettings() {
-
 	const form = useForm<TypeSettingsSchema>({
 		resolver: zodResolver(SettingsSchema),
 		values: {

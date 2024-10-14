@@ -1,13 +1,15 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { authService } from "../services";
 import { TypeLoginSchema } from "../schemes";
 import { toastMessageHandler } from "@/shared/utils";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react"
 
 export function useLoginMutation (setTowFactor: Dispatch<SetStateAction<boolean>>) {
     const router = useRouter()
+    const queryClient = useQueryClient()
+
     const {mutate: login, isPending: isLoading} = useMutation({
         mutationKey: ['login user'],
         mutationFn: ({
@@ -23,8 +25,7 @@ export function useLoginMutation (setTowFactor: Dispatch<SetStateAction<boolean>
                 setTowFactor(true)
             } else {
                 toast.success('Login successfully')
-                
-                localStorage.setItem('fs_role', data?.user.role.toLowerCase())
+                queryClient.invalidateQueries({queryKey: ['getUserHeaderData']})
                 router.push(`/dashboard`)
             }
         },

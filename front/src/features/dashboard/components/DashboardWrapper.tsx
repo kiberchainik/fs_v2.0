@@ -3,12 +3,13 @@
 import { UserRole } from "@/features/auth/types";
 import { AgencySettings } from "@/features/agency/components";
 import { CandidatSettings } from "@/features/candidat/components";
-import { useStore } from "@tanstack/react-store";
-import { store } from "@/shared/store/store";
+import { useQueryClient } from "@tanstack/react-query";
+import { IUserMenuHeaderData } from "@/features/userHeaderBtn/types/userMenuData.type";
 
 export default function DashboardWrapper() {
-    const user = useStore(store, (store) => store.state.user);
-
+    const queryClient = useQueryClient()
+    const user = queryClient.getQueryData<IUserMenuHeaderData>(['getUserHeaderData'])
+    
     if(!user) return null
     return (
         <>

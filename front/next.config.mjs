@@ -17,8 +17,17 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'avatars.yandex.net'
             }
-        ]
-    }
+        ],
+        domains: ['localhost'],
+    },
+	async rewrites() {
+		return [
+			{
+				source: '/static/:path*',
+				destination: `${process.env.SERVER_URL}/static/:path*`
+			}
+		]
+	}
 };
 
 export default nextConfig;

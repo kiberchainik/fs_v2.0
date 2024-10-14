@@ -223,6 +223,44 @@ exports.Prisma.BranchScalarFieldEnum = {
   adId: 'adId'
 };
 
+exports.Prisma.JobOffersScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  slug: 'slug',
+  description: 'description',
+  region: 'region',
+  province: 'province',
+  location: 'location',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  isValidate: 'isValidate',
+  views: 'views',
+  agencyId: 'agencyId',
+  branchId: 'branchId'
+};
+
+exports.Prisma.JobTagsScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  description: 'description',
+  level: 'level',
+  parentId: 'parentId'
+};
+
+exports.Prisma.SectorsScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  categoryId: 'categoryId'
+};
+
 exports.Prisma.AuthAccountScalarFieldEnum = {
   id: 'id',
   type: 'type',
@@ -316,6 +354,10 @@ exports.Prisma.ModelName = {
   Hobbies: 'Hobbies',
   AgencyData: 'AgencyData',
   Branch: 'Branch',
+  jobOffers: 'jobOffers',
+  jobTags: 'jobTags',
+  Category: 'Category',
+  Sectors: 'Sectors',
   AuthAccount: 'AuthAccount',
   Tokens: 'Tokens'
 };

@@ -1,4 +1,5 @@
 export * from './header/Header'
-export * from './logo/Logo'
 export * from './heading/Heading'
+export * from './logo/Logo'
+export * from './image-upload/ImageUpload'
 export * from './ui'

@@ -2,17 +2,18 @@
 
 import { authService } from "@/features/auth/services";
 import { toastMessageHandler } from "@/shared/utils";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation"
 
 export function useLogoutMutation () {
     const router = useRouter()
+    const queryClient = useQueryClient()
 
     const {mutate: logout, isPending: isLoader} = useMutation({
         mutationKey: ['logout'],
         mutationFn: () => authService.logout(),
         onSuccess() {
-            localStorage.removeItem('fs_role')
+            queryClient.invalidateQueries({queryKey: ['getUserHeaderData']})
             router.push('/')
         },
         onError(error) {
