@@ -10,20 +10,19 @@ import { useUpload } from './useUpload'
 
 interface ImageUploadProps {
 	isDisabled: boolean
-	onChange: (value: string[]) => void
-	value: string[]
+	onChange: (value: string) => void
+	value: string
 }
 
 export function ImageUpload({ isDisabled, onChange, value }: ImageUploadProps) {
 	const { handleButtonClick, isUploading, fileInputRef, handleFileChange } = useUpload(onChange)
+
 	return (
 		<div>
 			<div className={styles.image_container}>
-				{value.map(url => (
-					<div key={url} className={styles.image_wrapper}>
-						<Image src={url} alt='Картинка' fill />
-					</div>
-				))}
+				<div className={styles.image_wrapper}>
+					<Image src={value} alt='Картинка' fill />
+				</div>
 			</div>
 			<Button
 				type='button'

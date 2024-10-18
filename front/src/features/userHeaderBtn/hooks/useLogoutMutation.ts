@@ -13,7 +13,7 @@ export function useLogoutMutation () {
         mutationKey: ['logout'],
         mutationFn: () => authService.logout(),
         onSuccess() {
-            queryClient.invalidateQueries({queryKey: ['getUserHeaderData']})
+            queryClient.removeQueries({queryKey: ['getUserHeaderData']})
             router.push('/')
         },
         onError(error) {

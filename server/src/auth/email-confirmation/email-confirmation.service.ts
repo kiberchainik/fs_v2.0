@@ -17,14 +17,13 @@ export class EmailConfirmationService {
         @Inject(forwardRef(() => AuthService)) private readonly auth:AuthService
     ) {}
 
-    async newVerificaion(req: Request, dto: ConfirmationDto) {
+    async newVerificaion(dto: ConfirmationDto) {
         const existToken = await this.prisma.tokens.findUnique({
             where: {
                 token: dto.token,
                 type: TokenType.VERIFICATION
             }
         })
-console.log(existToken);
 
         if(!existToken) {
             throw new NotFoundException('Token verified not found')
@@ -55,7 +54,8 @@ console.log(existToken);
             }
         })
 
-        return this.auth.saveSassion(req, existingUser)
+        const tokens = this.auth.issueTokens(existingUser.id, existingUser.email, existingUser.role)
+        return {existingUser, ...tokens}
     }
 
     async sendVerificationToken(user: User) {

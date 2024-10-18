@@ -1,14 +1,15 @@
-import { api } from "@/shared/api";
+import { axiosPrivate } from "@/shared/api";
 import { TypeSettingsSchema } from "../schemes";
 import { IAgencyData } from "../types/agensy.type";
 
 class AgencyService {
     public async getAgencyData () {
-        return await api.get<IAgencyData>('agency/profile')
+        const {data} = await axiosPrivate.get<IAgencyData>('agency/profile')
+        return data
     }
 
     public async updateProfile(data: TypeSettingsSchema) {
-        return await api.post<IAgencyData>('agency/settings', data)
+        return await axiosPrivate.post<IAgencyData>('agency/settings', data)
     }
 }
 

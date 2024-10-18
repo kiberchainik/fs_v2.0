@@ -17,8 +17,7 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'avatars.yandex.net'
             }
-        ],
-        domains: ['localhost'],
+        ]
     },
 	async rewrites() {
 		return [

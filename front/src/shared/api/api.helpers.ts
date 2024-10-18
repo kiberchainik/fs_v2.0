@@ -1,5 +1,5 @@
 export const getContentType = () => ({
-    'Content-Type': 'application/json'
+	'Content-type': 'application/json'
 })
 
 export const errorCatch = (error: any): string => {

@@ -24,7 +24,7 @@ export const CANDIDAT_URL = {
 
 export const MAIN_URL = {
     root: (url = '') => `${url ? '/'+url : ''}`,
-
+    
     home: () => MAIN_URL.root(),
     candidats: (login = '') => MAIN_URL.root(`candidats/${login}`),
     joboffers: (slug = '') => MAIN_URL.root(`joboffers/${slug}`),

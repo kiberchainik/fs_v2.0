@@ -1,42 +1,68 @@
-import { api } from "@/shared/api";
+import { axiosPrivate, axiosPublic } from "@/shared/api";
 import { TypeLoginSchema, TypeRegisterSchema } from "../schemes";
-import { IUser } from "../types";
+import { IAuthResponse, IUser } from "../types";
+import { API_URL, MAIN_URL } from "@/shared/config";
+import { removeFromStorage, saveTokenStorage } from "@/shared/services";
 
 class AuthService {
-    public async register(body: TypeRegisterSchema, recaptcha?: string) {
+    public async register(data: TypeRegisterSchema, recaptcha?: string) {
         const headers = recaptcha ? {recaptcha} : undefined
 
-        const response = await api.post<IUser>('auth/register', body, {
+        const response = await axiosPublic<IUser>({
+            url: API_URL.auth('/register'),
+            method: 'POST',
+            data, 
             headers
         })
 
         return response
     }
 
-    public async login (body: TypeLoginSchema, recaptcha?: string) {
+    public async login (data: TypeLoginSchema, recaptcha?: string) {
         const headers = recaptcha ? {recaptcha} : undefined
 
-        const response = await api.post<IUser>('auth/login', body, {
+        const response = await axiosPublic<IAuthResponse>({
+            url: API_URL.auth('/login'),
+			method: 'POST',
+			data,
             headers
         })
 
-        return response
+        if (response.data.accessToken)
+			saveTokenStorage(response.data.accessToken)
+
+		return response.data.user
     }
 
     public async getProfile () {
-        return await api.get<IUser>('users/profile')
+        return await axiosPrivate<IUser>('/users/profile')
+    }
+
+    public async getCurrentUserData (accessToken: string) {
+        const {data} = await axiosPrivate<IUser>(API_URL.currentUser(), {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        })
+
+        return data
     }
 
     public async oauthByprovider(provider: string) {
-        const response = await api.get<{url:string}>(`auth/oauth/connect/${provider}`)
+        const response = await axiosPublic.get<{url:string}>(`/auth/oauth/connect/${provider}`)
 
         return response
     }
 
     public async logout() {
-        const response = await api.post('auth/logout')
+        const response = await axiosPublic<boolean>({
+			url: API_URL.auth('/logout'),
+			method: 'POST'
+		})
 
-        return response
+		if (response.data) removeFromStorage()
+
+		return response
     }
 }
 

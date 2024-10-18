@@ -1,17 +1,16 @@
-import { BadRequestException, Body, Controller, Get, HttpCode, HttpStatus, Param, Post, Query, Req, Res, UseGuards } from '@nestjs/common';
-import { AuthService } from './auth.service';
-import { Request, Response } from 'express';
-import { LoginDto, RegisterDto } from './dto';
-import { Recaptcha } from '@nestlab/google-recaptcha';
-import { AuthProviderGuard } from './guards';
-import { ProviderService } from './provider/provider.service';
-import { ConfigService } from '@nestjs/config';
+import { BadRequestException, Body, Controller, Get, HttpCode, HttpStatus, Param, Post, Query, Req, Res, UnauthorizedException, UseGuards } from '@nestjs/common';
+import { AuthService } from './auth.service'
+import { Request, Response } from 'express'
+import { LoginDto, RegisterDto } from './dto'
+import { Recaptcha } from '@nestlab/google-recaptcha'
+import { ConfigService } from '@nestjs/config'
+import { REFRESH_TOKEN_NAME } from '@/libs/common/constants'
+import { AuthGuard } from '@nestjs/passport'
 
 @Controller('auth')
 export class AuthController {
   constructor(
     private readonly authService: AuthService,
-    private readonly provider: ProviderService,
     private readonly config: ConfigService
   ) {}
   
@@ -27,45 +26,59 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   async login (
     @Body() dto:LoginDto,
-    @Req() req:Request
+    @Res({ passthrough: true }) res: Response
   ) {
-    return this.authService.login(req, dto)
+    const { refreshToken, ...response } = await this.authService.login(dto)
+    this.authService.addRefreshTokenToResponse(res, refreshToken)
+
+    return response
+    //return this.authService.login(req, dto)
   }
 
-  @Get('/oauth/callback/:provider')
-  @UseGuards(AuthProviderGuard)
-  async callback (
-    @Req() req:Request,
-    @Res({passthrough: true}) res: Response,
-    @Query('code') code: string,
-    @Param('provider') provider: string
-  ) {
-    if(!code) {
-      throw new BadRequestException('code of authorization is wrong')
-    }
+  @HttpCode(200)
+	@Post('access-token')
+	async getNewTokens(
+		@Req() req: Request,
+		@Res({ passthrough: true }) res: Response
+	) {
+		const refreshTokenFromCookies = req.cookies[REFRESH_TOKEN_NAME]
 
-    await this.authService.extractProfileFromCode(req, provider, code)
-    
-    return res.redirect(`${this.config.getOrThrow<string>('ALLOWED_ORIGIN')}/dashboard/settings`)
-  }
+		if (!refreshTokenFromCookies) {
+			this.authService.removeRefreshTokenFromResponse(res)
+			throw new UnauthorizedException('Refresh токен не прошел')
+		}
 
-  @UseGuards(AuthProviderGuard)
-  @Get('/oauth/connect/:provider')
-  async connect (@Param('provider') provider: string) {
-    const providerInstatce = this.provider.findByService(provider)
+		const { refreshToken, ...response } = await this.authService.getNewTokens(refreshTokenFromCookies)
 
-    return {
-      url: providerInstatce.getAuthUrl()
-    }
-  }
+		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
-  @Post('logout')
-  @HttpCode(HttpStatus.OK)
-  async logout (
-    @Res({passthrough: true}) res:Response,
-    @Req() req:Request
-  ) {
-    return this.authService.logout(req, res)
-  }
+		return response
+	}
+
+  @Get('google')
+	@UseGuards(AuthGuard('google'))
+	async googleAuth(@Req() req) {}
+
+	@Get('google/callback')
+	@UseGuards(AuthGuard('google'))
+	async googleAuthCallback(
+		@Req() req,
+		@Res({ passthrough: true }) res: Response
+	) {
+		const { refreshToken, ...response } = await this.authService.validateOAuthLogin(req)
+
+		this.authService.addRefreshTokenToResponse(res, refreshToken)
+
+		return res.redirect(
+			`${process.env['ALLOWED_ORIGIN']}/dashboard?accessToken=${response.accessToken}`
+		)
+	}
+
+  @HttpCode(200)
+	@Post('logout')
+	async logout(@Res({ passthrough: true }) res: Response) {
+		this.authService.removeRefreshTokenFromResponse(res)
+		return true
+	}
 
 }

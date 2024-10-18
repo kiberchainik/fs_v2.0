@@ -24,14 +24,15 @@ import { useGetAgencyData, useUpdProfileMutation } from '../hooks'
 import { SettingsSchema, TypeSettingsSchema } from '../schemes'
 import { ImageUpload } from '@/shared/components'
 
-
 export function AgencySettings() {
 	const {user, isLoading, error} = useGetAgencyData()
+
+	
 	const form = useForm<TypeSettingsSchema>({
 		mode: 'onChange',
 		resolver: zodResolver(SettingsSchema),
 		values: {
-			logo: [],
+			logo: user?.logo || '',
 			agency_name: user?.agency_name || '',
 			address: user?.address || '',
 			phone: user?.phone || '',
@@ -40,13 +41,13 @@ export function AgencySettings() {
 			isTwoFactorEnabled: false
 		}
 	})
-
+	
 	const { updProfile, isPending } = useUpdProfileMutation()
-
+	
 	const onSubmit = (values: TypeSettingsSchema) => {
 		updProfile(values)
 	}
-
+	
 	return (
 		<Card className='w-[400px]'>
 			<CardHeader className='flex flex-row items-center justify-between'>
@@ -58,7 +59,6 @@ export function AgencySettings() {
 						<form
 							onSubmit={form.handleSubmit(onSubmit)}
 							className='grid gap-2 space-y-2'
-							encType='multipart/form-data'
 						>
 							<FormField
 								control={form.control}

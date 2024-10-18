@@ -1,4 +1,3 @@
-import { api } from "@/shared/api"
 import { axiosPrivate } from "@/shared/api/api.interceptors"
 
 export interface IFile {
@@ -8,11 +7,7 @@ export interface IFile {
 
 class FileService {
 	async upload(file: FormData, folder?: string) {
-		//return await api.files<IFile[]>('agency/logo', file)
-		return await axiosPrivate<IFile[]>({
-			url: 'agency/logo',
-			method: 'POST',
-			data: file,
+		return await axiosPrivate.post<IFile>('agency/logo', file, {
 			headers: {
 				'Content-Type': 'multipart/form-data'
 			}

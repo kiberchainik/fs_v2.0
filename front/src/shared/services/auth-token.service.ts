@@ -1,21 +1,24 @@
 import Cookies from 'js-cookie'
 
-export enum ETokens {
-    'COOKIE' = 'session'
+export enum EnumTokens {
+	'ACCESS_TOKEN' = 'accessToken',
+	'REFRESH_TOKEN' = 'refreshToken'
 }
 
 export const getAccessToken = () => {
-    return Cookies.get(ETokens.COOKIE) || null
+	const accessToken = Cookies.get(EnumTokens.ACCESS_TOKEN)
+	return accessToken || null
 }
 
 export const saveTokenStorage = (accessToken: string) => {
-    Cookies.set(ETokens.COOKIE, accessToken, {
-        domain: process.env.APP_DOMAIN,
-        sameSite: 'Strict',
-        expires: 1
-    })
+	Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
+		domain: process.env.APP_DOMAIN,
+		sameSite: 'strict',
+		expires: 1
+	})
 }
 
 export const removeFromStorage = () => {
-    Cookies.remove(ETokens.COOKIE)
+	Cookies.remove(EnumTokens.ACCESS_TOKEN)
+	Cookies.remove(EnumTokens.REFRESH_TOKEN)
 }

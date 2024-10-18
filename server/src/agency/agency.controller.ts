@@ -38,13 +38,11 @@ export class AgencyController {
     @CurrentUser('id') id:string,
 		@Query('folder') folder?: string
   ) {
-    console.log(id);
-    
     const newFiles = await this.file.filterFiles(files)
-    console.log(files);
     const fileData = await this.file.saveFiles(newFiles, id)
 
     this.agencyService.updLogo(id, fileData)
+    
     return fileData
   }
 

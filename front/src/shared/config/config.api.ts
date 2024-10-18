@@ -1,8 +1,9 @@
-export const SERVER_URL = process.env.SERVER_URL as string
+export const SERVER_URL = `${process.env.SERVER_URL}/api` as string
 
 export const API_URL = {
     root: (url = '') => `${url ? url : ''}`,
 
+    currentUser: () => API_URL.root('/users/short-data'),
     auth: (url = '') => API_URL.root(`/auth${url}`),
     file: (url:string) => API_URL.root(url),
     candidats: () => API_URL.root('/candidats'),

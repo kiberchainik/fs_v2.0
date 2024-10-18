@@ -9,7 +9,7 @@ import { path } from "app-root-path";
     imports: [
         ServeStaticModule.forRoot({
             rootPath: `${path}/src/static`,
-            serveRoot: '/static/'
+            serveRoot: '/static'
         }), UserModule
     ]
 })

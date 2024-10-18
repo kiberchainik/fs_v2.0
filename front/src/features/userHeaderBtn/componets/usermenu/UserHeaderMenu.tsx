@@ -19,14 +19,12 @@ export const UserHeaderMenu:FC = () => {
                     <DropdownMenu>
                         <DropdownMenuTrigger>
                             <Avatar>
-                                <AvatarImage src='/public/not-avatar.png' />
-                                <AvatarFallback>
-                                    {user?.avatar || user?.email.slice(0, 1)}
-                                </AvatarFallback>
+                                <AvatarImage src={user.avatar} />
+                                <AvatarFallback>{ user.email.slice(0, 1) }</AvatarFallback>
                             </Avatar>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent className='w-40' align='end'>
-                            <DropdownMenuItem onClick={() => router.push('/dashboard')} className='cursor-pointer'>
+                            <DropdownMenuItem onClick={() => router.push(`/${user.role.toLowerCase()}/profile`)} className='cursor-pointer'>
                                 <LuLayoutDashboard className='mr-2 size-4' /> Profile
                             </DropdownMenuItem>
                             <DropdownMenuItem
@@ -41,7 +39,8 @@ export const UserHeaderMenu:FC = () => {
                     </DropdownMenu>
                 ) : (
                     <Link href='/auth'>Login</Link>
-                )}
-            </>
+                )
+            }
+        </>
     )
 }

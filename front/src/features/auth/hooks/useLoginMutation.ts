@@ -20,14 +20,14 @@ export function useLoginMutation (setTowFactor: Dispatch<SetStateAction<boolean>
             recaptcha: string
         }) => authService.login(values, recaptcha),
         onSuccess(data: any) {
-            if(data.message) {
-                toastMessageHandler(data)
-                setTowFactor(true)
-            } else {
+            // if(data.message) {
+            //     toastMessageHandler(data)
+            //     setTowFactor(true)
+            // } else {
                 toast.success('Login successfully')
                 queryClient.invalidateQueries({queryKey: ['getUserHeaderData']})
-                router.push(`/dashboard`)
-            }
+                router.replace(`/${data.role.toLowerCase()}`)
+            //}
         },
         onError(error) {
             toastMessageHandler(error)

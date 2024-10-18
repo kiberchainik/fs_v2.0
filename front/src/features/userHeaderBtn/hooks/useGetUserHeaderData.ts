@@ -5,7 +5,7 @@ export function useGetUserHeaderData () {
     const {data: user, isFetching, error} = useQuery({
         queryKey: ['getUserHeaderData'],
         queryFn: () => userMenuService.getUserShortData(),
-        retry: 1
+        select: ({data}) => data
     })
 
     return {user, isFetching, error}
