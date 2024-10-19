@@ -3,5 +3,5 @@
 import { Toaster } from "../components/ui";
 
 export function ToastProvider() {
-    return <Toaster position='bottom-right' duration={3000} />
+    return <Toaster position='bottom-right' duration={3000} richColors />
 }

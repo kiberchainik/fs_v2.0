@@ -24,13 +24,12 @@ export class EmailConfirmationService {
                 type: TokenType.VERIFICATION
             }
         })
-
+        
         if(!existToken) {
             throw new NotFoundException('Token verified not found')
         }
-
+        
         const hasExpired = new Date(existToken.expiresIn) < new Date()
-
         if(hasExpired) {
             throw new BadRequestException('Token invalid naher!')
         }
@@ -47,14 +46,17 @@ export class EmailConfirmationService {
             }
         })
 
-        await this.prisma.tokens.delete({
-            where: {
-                id: existToken.id,
-                type: TokenType.VERIFICATION
-            }
-        })
+        if(existToken) {
+            await this.prisma.tokens.delete({
+                where: {
+                    id: existToken.id,
+                    type: TokenType.VERIFICATION
+                }
+            })
+        }
 
         const tokens = this.auth.issueTokens(existingUser.id, existingUser.email, existingUser.role)
+        
         return {existingUser, ...tokens}
     }
 

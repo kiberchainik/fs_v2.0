@@ -3,7 +3,7 @@ import styles from './header.module.scss'
 import { cn } from "@/shared/utils";
 import { Logo } from "@/shared/components";
 import { ToggleTheme } from "../ui";
-import { UserHeaderMenu } from "@/features/userHeaderBtn/componets/usermenu/UserHeaderMenu";
+import { UserHeaderMenu } from "@/features/userHeaderBtn/componets/usermenu/UserHeaderDropdownMenu";
 
 interface IStyles {
     className?: string

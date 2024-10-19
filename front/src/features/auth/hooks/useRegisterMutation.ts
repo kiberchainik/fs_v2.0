@@ -14,14 +14,16 @@ export function useRegisterMutation () {
             values: TypeRegisterSchema
             recaptcha: string
         }) => authService.register(values, recaptcha),
-        onSuccess(data: any) {
-            toastMessageHandler(data)
-            // toast.success('Registered with successfully', {
-            //     description: 'Please open your email for verified registration!'
-            // })
+        onSuccess(data) {
+            //toastMessageHandler(data)
+            toast.success('Registered with successfully', {
+                description: 'Please open your email for verified registration!'
+            })
         },
-        onError(error) {
-            toastMessageHandler(error)
+        onError(error:any) {
+            if(error.response && error.response.data && error.response.data && error.response.data.message) {
+                toast.error(error.response.data.message)
+            }
         }
     })
 

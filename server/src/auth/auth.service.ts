@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { UserService } from '@/user/user.service';
 import { AuthMethod, UserRole } from 'prisma/__generated__';
 import { Response } from 'express';
@@ -22,8 +22,11 @@ export class AuthService {
     ) {}
 
     async register(dto: RegisterDto) {
-        const user = await this.validateUser(dto.email) //if !user, returned throw
-        
+        const isExist = await this.user.findByEmail(dto.email) //if !user, returned throw
+        if (isExist) {
+            throw new BadRequestException('Польхователь с такими данными уже существует!')
+        }
+
         const newUser = await this.user.create({
             email:dto.email, 
             password:dto.password,

@@ -21,8 +21,10 @@ export function useResetPasswordMutation () {
                 description: 'Link for confirmation sended to email'
             })
         },
-        onError(error) {
-            toastMessageHandler(error)
+        onError(error:any) {
+            if(error.response && error.response.data && error.response.data && error.response.data.message) {
+                toast.error(error.response.data.message)
+            }
         }
     })
 

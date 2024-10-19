@@ -1,4 +1,4 @@
-import { Body, Controller, HttpCode, HttpStatus, Post, Req } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Post, Req, Res } from '@nestjs/common';
 import { EmailConfirmationService } from './email-confirmation.service';
 import { Response } from 'express';
 import { ConfirmationDto } from './dto/confirmation.dto';
@@ -14,10 +14,9 @@ export class EmailConfirmationController {
   @Post()
   @HttpCode(HttpStatus.OK)
   async newVerification(
-    @Req() res: Response,
+    @Res() res: Response,
     @Body() dto: ConfirmationDto
   ) {
-    //return this.emailConfirmationService.newVerificaion(req, dto)
     const { refreshToken, ...response } = await this.emailConfirmationService.newVerificaion(dto)
     this.auth.addRefreshTokenToResponse(res, refreshToken)
 

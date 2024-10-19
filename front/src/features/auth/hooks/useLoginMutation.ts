@@ -29,8 +29,10 @@ export function useLoginMutation (setTowFactor: Dispatch<SetStateAction<boolean>
                 router.replace(`/${data.role.toLowerCase()}`)
             //}
         },
-        onError(error) {
-            toastMessageHandler(error)
+        onError(error:any) {
+            if(error.response && error.response.data && error.response.data && error.response.data.message) {
+                toast.error(error.response.data.message)
+            }
         }
     })
 

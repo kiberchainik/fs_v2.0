@@ -26,8 +26,10 @@ export function useNewPasswordMutation () {
             })
             router.push('/dashboard/settings')
         },
-        onError(error) {
-            toastMessageHandler(error)
+        onError(error:any) {
+            if(error.response && error.response.data && error.response.data && error.response.data.message) {
+                toast.error(error.response.data.message)
+            }
         }
     })
 
