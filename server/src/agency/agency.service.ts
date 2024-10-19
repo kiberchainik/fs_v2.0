@@ -19,7 +19,7 @@ export class AgencyService {
       phone: regDto.phone,
       p_iva_c_f: regDto.p_iva_c_f,
       about: regDto.about,
-      logo: '',
+      logo: regDto.logo,
       userId
     }
 
@@ -36,13 +36,13 @@ export class AgencyService {
     return agencyData
   }
 
-  async updLogo (userId:string, file:FileResponse[]) {
+  async updLogo (userId:string, files:FileResponse[]) {
     const logo = await this.prisma.agencyData.update({
       where: {
         userId
       },
       data: {
-        logo: file[0].url
+        logo: files.map(file => file.url)
       }
     })
 

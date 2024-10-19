@@ -124,7 +124,7 @@ model AgencyData {
   updatedAt   DateTime   @updatedAt @map("updated_at")
   userId      String        @unique @map("user_id")
   about       String
-  logo        String
+  logo        String[]
   user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   branch      Branch[]
   jobOffers   jobOffers[]

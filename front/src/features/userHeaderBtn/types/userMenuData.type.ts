@@ -5,5 +5,5 @@ export interface IUserMenuHeaderData {
     email: string;
     isVerified: boolean;
     name?: string;
-    avatar?: string;
+    avatar?: string[];
 }

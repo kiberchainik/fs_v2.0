@@ -8,5 +8,5 @@ export interface IAgencyData {
     createdAt: string;
     userId: string;
     about: string;
-    logo: string;
+    logo: string[];
 }

@@ -7,11 +7,16 @@ export interface IFile {
 
 class FileService {
 	async upload(file: FormData, folder?: string) {
-		return await axiosPrivate.post<IFile>('agency/logo', file, {
+		const {data} = await axiosPrivate.post<IFile[]>('agency/logo', file, {
+			params: {
+				folder
+			},
 			headers: {
 				'Content-Type': 'multipart/form-data'
 			}
 		})
+
+		return data
 	}
 }
 

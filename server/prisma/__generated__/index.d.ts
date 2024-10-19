@@ -528,7 +528,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 5.19.1
-   * Query Engine version: 06fc58a368dc7be9fbbbe894adf8d445d208c284
+   * Query Engine version: bf0e5e8a04cada8225617067eaa03d041e2bba36
    */
   export type PrismaVersion = {
     client: string
@@ -10426,7 +10426,6 @@ export namespace Prisma {
     updatedAt: Date | null
     userId: string | null
     about: string | null
-    logo: string | null
   }
 
   export type AgencyDataMaxAggregateOutputType = {
@@ -10440,7 +10439,6 @@ export namespace Prisma {
     updatedAt: Date | null
     userId: string | null
     about: string | null
-    logo: string | null
   }
 
   export type AgencyDataCountAggregateOutputType = {
@@ -10470,7 +10468,6 @@ export namespace Prisma {
     updatedAt?: true
     userId?: true
     about?: true
-    logo?: true
   }
 
   export type AgencyDataMaxAggregateInputType = {
@@ -10484,7 +10481,6 @@ export namespace Prisma {
     updatedAt?: true
     userId?: true
     about?: true
-    logo?: true
   }
 
   export type AgencyDataCountAggregateInputType = {
@@ -10585,7 +10581,7 @@ export namespace Prisma {
     updatedAt: Date
     userId: string
     about: string
-    logo: string
+    logo: string[]
     _count: AgencyDataCountAggregateOutputType | null
     _min: AgencyDataMinAggregateOutputType | null
     _max: AgencyDataMaxAggregateOutputType | null
@@ -10680,7 +10676,7 @@ export namespace Prisma {
       updatedAt: Date
       userId: string
       about: string
-      logo: string
+      logo: string[]
     }, ExtArgs["result"]["agencyData"]>
     composites: {}
   }
@@ -11087,7 +11083,7 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"AgencyData", 'DateTime'>
     readonly userId: FieldRef<"AgencyData", 'String'>
     readonly about: FieldRef<"AgencyData", 'String'>
-    readonly logo: FieldRef<"AgencyData", 'String'>
+    readonly logo: FieldRef<"AgencyData", 'String[]'>
   }
     
 
@@ -19429,7 +19425,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"AgencyData"> | Date | string
     userId?: StringFilter<"AgencyData"> | string
     about?: StringFilter<"AgencyData"> | string
-    logo?: StringFilter<"AgencyData"> | string
+    logo?: StringNullableListFilter<"AgencyData">
     user?: XOR<UserRelationFilter, UserWhereInput>
     branch?: BranchListRelationFilter
     jobOffers?: JobOffersListRelationFilter
@@ -19466,7 +19462,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"AgencyData"> | Date | string
     updatedAt?: DateTimeFilter<"AgencyData"> | Date | string
     about?: StringFilter<"AgencyData"> | string
-    logo?: StringFilter<"AgencyData"> | string
+    logo?: StringNullableListFilter<"AgencyData">
     user?: XOR<UserRelationFilter, UserWhereInput>
     branch?: BranchListRelationFilter
     jobOffers?: JobOffersListRelationFilter
@@ -19503,7 +19499,7 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"AgencyData"> | Date | string
     userId?: StringWithAggregatesFilter<"AgencyData"> | string
     about?: StringWithAggregatesFilter<"AgencyData"> | string
-    logo?: StringWithAggregatesFilter<"AgencyData"> | string
+    logo?: StringNullableListFilter<"AgencyData">
   }
 
   export type BranchWhereInput = {
@@ -20583,7 +20579,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     about: string
-    logo: string
+    logo?: AgencyDataCreatelogoInput | string[]
     user: UserCreateNestedOneWithoutAgencydataInput
     branch?: BranchCreateNestedManyWithoutAgencyInput
     jobOffers?: jobOffersCreateNestedManyWithoutAgencyInput
@@ -20600,7 +20596,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     userId: string
     about: string
-    logo: string
+    logo?: AgencyDataCreatelogoInput | string[]
     branch?: BranchUncheckedCreateNestedManyWithoutAgencyInput
     jobOffers?: jobOffersUncheckedCreateNestedManyWithoutAgencyInput
   }
@@ -20615,7 +20611,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     about?: StringFieldUpdateOperationsInput | string
-    logo?: StringFieldUpdateOperationsInput | string
+    logo?: AgencyDataUpdatelogoInput | string[]
     user?: UserUpdateOneRequiredWithoutAgencydataNestedInput
     branch?: BranchUpdateManyWithoutAgencyNestedInput
     jobOffers?: jobOffersUpdateManyWithoutAgencyNestedInput
@@ -20632,7 +20628,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
     about?: StringFieldUpdateOperationsInput | string
-    logo?: StringFieldUpdateOperationsInput | string
+    logo?: AgencyDataUpdatelogoInput | string[]
     branch?: BranchUncheckedUpdateManyWithoutAgencyNestedInput
     jobOffers?: jobOffersUncheckedUpdateManyWithoutAgencyNestedInput
   }
@@ -20648,7 +20644,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     userId: string
     about: string
-    logo: string
+    logo?: AgencyDataCreatelogoInput | string[]
   }
 
   export type AgencyDataUpdateManyMutationInput = {
@@ -20661,7 +20657,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     about?: StringFieldUpdateOperationsInput | string
-    logo?: StringFieldUpdateOperationsInput | string
+    logo?: AgencyDataUpdatelogoInput | string[]
   }
 
   export type AgencyDataUncheckedUpdateManyInput = {
@@ -20675,7 +20671,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
     about?: StringFieldUpdateOperationsInput | string
-    logo?: StringFieldUpdateOperationsInput | string
+    logo?: AgencyDataUpdatelogoInput | string[]
   }
 
   export type BranchCreateInput = {
@@ -21719,6 +21715,14 @@ export namespace Prisma {
     cdId?: SortOrder
   }
 
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
   export type BranchListRelationFilter = {
     every?: BranchWhereInput
     some?: BranchWhereInput
@@ -21764,7 +21768,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
     userId?: SortOrder
     about?: SortOrder
-    logo?: SortOrder
   }
 
   export type AgencyDataMinOrderByAggregateInput = {
@@ -21778,7 +21781,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
     userId?: SortOrder
     about?: SortOrder
-    logo?: SortOrder
   }
 
   export type AgencyDataRelationFilter = {
@@ -22633,6 +22635,10 @@ export namespace Prisma {
     update?: XOR<XOR<CandidatDataUpdateToOneWithWhereWithoutHobbiesInput, CandidatDataUpdateWithoutHobbiesInput>, CandidatDataUncheckedUpdateWithoutHobbiesInput>
   }
 
+  export type AgencyDataCreatelogoInput = {
+    set: string[]
+  }
+
   export type UserCreateNestedOneWithoutAgencydataInput = {
     create?: XOR<UserCreateWithoutAgencydataInput, UserUncheckedCreateWithoutAgencydataInput>
     connectOrCreate?: UserCreateOrConnectWithoutAgencydataInput
@@ -22665,6 +22671,11 @@ export namespace Prisma {
     connectOrCreate?: jobOffersCreateOrConnectWithoutAgencyInput | jobOffersCreateOrConnectWithoutAgencyInput[]
     createMany?: jobOffersCreateManyAgencyInputEnvelope
     connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type AgencyDataUpdatelogoInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type UserUpdateOneRequiredWithoutAgencydataNestedInput = {
@@ -23515,7 +23526,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     about: string
-    logo: string
+    logo?: AgencyDataCreatelogoInput | string[]
     branch?: BranchCreateNestedManyWithoutAgencyInput
     jobOffers?: jobOffersCreateNestedManyWithoutAgencyInput
   }
@@ -23530,7 +23541,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     about: string
-    logo: string
+    logo?: AgencyDataCreatelogoInput | string[]
     branch?: BranchUncheckedCreateNestedManyWithoutAgencyInput
     jobOffers?: jobOffersUncheckedCreateNestedManyWithoutAgencyInput
   }
@@ -23635,7 +23646,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     about?: StringFieldUpdateOperationsInput | string
-    logo?: StringFieldUpdateOperationsInput | string
+    logo?: AgencyDataUpdatelogoInput | string[]
     branch?: BranchUpdateManyWithoutAgencyNestedInput
     jobOffers?: jobOffersUpdateManyWithoutAgencyNestedInput
   }
@@ -23650,7 +23661,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     about?: StringFieldUpdateOperationsInput | string
-    logo?: StringFieldUpdateOperationsInput | string
+    logo?: AgencyDataUpdatelogoInput | string[]
     branch?: BranchUncheckedUpdateManyWithoutAgencyNestedInput
     jobOffers?: jobOffersUncheckedUpdateManyWithoutAgencyNestedInput
   }
@@ -24874,7 +24885,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     about: string
-    logo: string
+    logo?: AgencyDataCreatelogoInput | string[]
     user: UserCreateNestedOneWithoutAgencydataInput
     jobOffers?: jobOffersCreateNestedManyWithoutAgencyInput
   }
@@ -24890,7 +24901,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     userId: string
     about: string
-    logo: string
+    logo?: AgencyDataCreatelogoInput | string[]
     jobOffers?: jobOffersUncheckedCreateNestedManyWithoutAgencyInput
   }
 
@@ -24966,7 +24977,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     about?: StringFieldUpdateOperationsInput | string
-    logo?: StringFieldUpdateOperationsInput | string
+    logo?: AgencyDataUpdatelogoInput | string[]
     user?: UserUpdateOneRequiredWithoutAgencydataNestedInput
     jobOffers?: jobOffersUpdateManyWithoutAgencyNestedInput
   }
@@ -24982,7 +24993,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
     about?: StringFieldUpdateOperationsInput | string
-    logo?: StringFieldUpdateOperationsInput | string
+    logo?: AgencyDataUpdatelogoInput | string[]
     jobOffers?: jobOffersUncheckedUpdateManyWithoutAgencyNestedInput
   }
 
@@ -25075,7 +25086,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     about: string
-    logo: string
+    logo?: AgencyDataCreatelogoInput | string[]
     user: UserCreateNestedOneWithoutAgencydataInput
     branch?: BranchCreateNestedManyWithoutAgencyInput
   }
@@ -25091,7 +25102,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     userId: string
     about: string
-    logo: string
+    logo?: AgencyDataCreatelogoInput | string[]
     branch?: BranchUncheckedCreateNestedManyWithoutAgencyInput
   }
 
@@ -25227,7 +25238,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     about?: StringFieldUpdateOperationsInput | string
-    logo?: StringFieldUpdateOperationsInput | string
+    logo?: AgencyDataUpdatelogoInput | string[]
     user?: UserUpdateOneRequiredWithoutAgencydataNestedInput
     branch?: BranchUpdateManyWithoutAgencyNestedInput
   }
@@ -25243,7 +25254,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
     about?: StringFieldUpdateOperationsInput | string
-    logo?: StringFieldUpdateOperationsInput | string
+    logo?: AgencyDataUpdatelogoInput | string[]
     branch?: BranchUncheckedUpdateManyWithoutAgencyNestedInput
   }
 

@@ -20,7 +20,8 @@ export class UserController {
   @HttpCode(HttpStatus.OK)
   @Get('short-data')
   async getUserShortData (@CurrentUser('id') id:string) {
-    return await this.userService.getUserShortData(id)
+    const data = await this.userService.getUserShortData(id)
+    return data
   }
 
   @HttpCode(HttpStatus.OK)

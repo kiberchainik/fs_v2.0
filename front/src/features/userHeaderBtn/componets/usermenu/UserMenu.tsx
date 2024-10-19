@@ -15,7 +15,7 @@ export const UserMenu:FC<IUserMenuHeaderData> = ({email, isVerified, role, avata
         <DropdownMenu>
             <DropdownMenuTrigger>
                 <Avatar>
-                    <AvatarImage src={avatar} />
+                    <AvatarImage src={avatar && avatar[0]} />
                     <AvatarFallback>{ email.slice(0, 1) }</AvatarFallback>
                 </Avatar>
             </DropdownMenuTrigger>

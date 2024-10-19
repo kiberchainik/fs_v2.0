@@ -3,14 +3,14 @@ import { ChangeEvent, useMemo, useRef } from 'react'
 import { toastMessageHandler } from '@/shared/utils'
 import { fileService } from '@/features/agency/services'
 
-export function useUpload(onChange: (value: string) => void) {
+export function useUpload(onChange: (value: string[]) => void) {
 	const fileInputRef = useRef<HTMLInputElement>(null)
 
 	const { mutate: uploadFiles, isPending: isUploading } = useMutation({
 		mutationKey: ['upload files'],
 		mutationFn: (formData: FormData) => fileService.upload(formData),
-		onSuccess({data}) {
-			onChange(data.url)
+		onSuccess(data) {
+			onChange(data.map(file => file.url))
 		},
 		onError(error) {
 			toastMessageHandler(error)

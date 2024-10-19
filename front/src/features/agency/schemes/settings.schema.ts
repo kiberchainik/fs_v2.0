@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 export const SettingsSchema = z.object({
-    logo: z.string().min(1, {
+    logo: z.string().array().min(1, {
         message: 'Загрузите хотя бы одну картинку'
     }),
     agency_name: z.string().min(1, {

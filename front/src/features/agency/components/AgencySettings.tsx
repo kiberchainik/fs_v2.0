@@ -32,7 +32,7 @@ export function AgencySettings() {
 		mode: 'onChange',
 		resolver: zodResolver(SettingsSchema),
 		values: {
-			logo: user?.logo || '',
+			logo: user?.logo || [],
 			agency_name: user?.agency_name || '',
 			address: user?.address || '',
 			phone: user?.phone || '',

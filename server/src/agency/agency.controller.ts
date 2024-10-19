@@ -41,7 +41,7 @@ export class AgencyController {
     const newFiles = await this.file.filterFiles(files)
     const fileData = await this.file.saveFiles(newFiles, id)
 
-    this.agencyService.updLogo(id, fileData)
+    //this.agencyService.updLogo(id, fileData)
     
     return fileData
   }
