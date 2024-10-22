@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 import { ChangeEvent, useMemo, useRef } from 'react'
 import { toastMessageHandler } from '@/shared/utils'
-import { fileService } from '@/features/agency/services'
+import { fileService } from '@/features/agency/profile/services'
 
 export function useUpload(onChange: (value: string[]) => void) {
 	const fileInputRef = useRef<HTMLInputElement>(null)

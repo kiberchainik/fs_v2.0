@@ -15,7 +15,8 @@ export const API_URL = {
     agencyProfile: () => API_URL.root('/agency/profile'),
     agencyEditProfile: () => API_URL.root('/agency'),
 
-    joboffers: (url = '') => API_URL.root(`/offers${url}`),
+    jobOffersList: () => API_URL.root(`/joboffers`),
+    jobCreateNew: () => API_URL.root('/joboffers'),
     branch: (url = '') => API_URL.root(`/branch${url}`),
-    category: (url = '') => API_URL.root(`/actors${url}`)
+    category: (id:string = '') => API_URL.root(`/category${id}`)
 }

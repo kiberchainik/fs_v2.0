@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, BadRequestException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto, CreateSectorDto, UpdateCategoryDto, UpdateSectorDto } from './dto';
 import { Authorization } from '@/auth/decorators';
@@ -9,7 +9,7 @@ export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 
   @Post()
-  @Authorization(UserRole.AGENCY)
+  @Authorization(UserRole.ADMIN)
   @UsePipes(new ValidationPipe())
   create(@Body() createCategoryDto: CreateCategoryDto) {
     return this.categoryService.create(createCategoryDto);
@@ -37,7 +37,7 @@ export class CategoryController {
     return await this.categoryService.findOne(id);
   }
 
-  @Authorization(UserRole.AGENCY)
+  @Authorization(UserRole.ADMIN)
   @UsePipes(new ValidationPipe())
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCategoryDto: UpdateCategoryDto) {
@@ -51,7 +51,7 @@ export class CategoryController {
     return this.categoryService.updateSector(id, updateSectorDto);
   }
 
-  @Authorization(UserRole.AGENCY)
+  @Authorization(UserRole.ADMIN)
   @UsePipes(new ValidationPipe())
   @Delete(':id')
   async remove(@Param('id') id: string) {

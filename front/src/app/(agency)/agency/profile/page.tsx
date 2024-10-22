@@ -1,4 +1,4 @@
-import { AgencySettings } from "@/features/agency/components";
+import { AgencySettings } from "@/features/agency/profile/components";
 
 export default function AgencyPage() {
     return (

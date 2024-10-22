@@ -31,7 +31,7 @@ class AuthService {
         if (response.data.accessToken)
 			saveTokenStorage(response.data.accessToken)
 
-		return response.data.user
+		return response.data
     }
 
     public async getProfile () {
