@@ -10,13 +10,15 @@ type TAuthProps = {
 
 export function UserAuth({role, isShowSocial}:TAuthProps) {
     return (
-        <Tabs defaultValue="login" className="w-[400px]">
-            <TabsList>
-                <TabsTrigger value="login">Login</TabsTrigger>
-                <TabsTrigger value="registration">Registration</TabsTrigger>
-            </TabsList>
-            <TabsContent value="login"><LoginForm isShowSocial={isShowSocial} /></TabsContent>
-            <TabsContent value="registration"><RegisterForm role={role} isShowSocial={isShowSocial} /></TabsContent>
-        </Tabs>
+        <div className='flex justify-center items-center mt-5'>
+            <Tabs defaultValue="login" className="w-[400px]">
+                <TabsList>
+                    <TabsTrigger value="login">Login</TabsTrigger>
+                    <TabsTrigger value="registration">Registration</TabsTrigger>
+                </TabsList>
+                <TabsContent value="login"><LoginForm isShowSocial={isShowSocial} /></TabsContent>
+                <TabsContent value="registration"><RegisterForm role={role} isShowSocial={isShowSocial} /></TabsContent>
+            </Tabs>
+        </div>
     )
 }

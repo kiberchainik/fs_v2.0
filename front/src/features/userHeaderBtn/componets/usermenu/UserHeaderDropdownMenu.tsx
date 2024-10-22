@@ -5,11 +5,9 @@ import { Loader, Button } from "@/shared/components/ui";
 import { useGetUserHeaderData } from "../../hooks";
 import { UserMenu } from "./UserMenu";
 import Link from "next/link";
-import { LuLogIn } from "react-icons/lu";
 
 export const UserHeaderMenu:FC = () => {
     const {user, isFetching} = useGetUserHeaderData()
-
     return (
         <>
             { isFetching ? (<Loader />) : user ? (

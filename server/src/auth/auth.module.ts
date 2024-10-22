@@ -6,7 +6,6 @@ import { GoogleRecaptchaModule } from '@nestlab/google-recaptcha';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getRecaptchaConfig } from '@/config/recaptcha.config';
 import { EmailConfirmationModule } from './email-confirmation/email-confirmation.module';
-import { EmailConfirmationService } from './email-confirmation/email-confirmation.service';
 import { MailService } from '@/libs/mail/mail.service';
 import { TwoFactorAuthService } from './two-factor-auth/two-factor-auth.service';
 import { AgencyService } from '@/agency/agency.service';

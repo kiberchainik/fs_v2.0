@@ -13,8 +13,8 @@ export function useLogoutMutation () {
         mutationKey: ['logout'],
         mutationFn: () => authService.logout(),
         onSuccess() {
-            queryClient.removeQueries({queryKey: ['getUserHeaderData']})
             router.push('/')
+            queryClient.invalidateQueries({queryKey: ['getUserHeaderData']})
         },
         onError(error) {
             toastMessageHandler(error)

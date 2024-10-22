@@ -2,6 +2,6 @@
     @apply h-[70px] sticky inset-y-0 w-full z-[50];
 
     > .header {
-        @apply p-6 gap-x-4 h-full flex items-center bg-opacity-80 backdrop-blur-sm justify-between;
+        @apply p-6 gap-x-4 h-full flex items-center dark:bg-[#312c2c] bg-white bg-opacity-80 backdrop-blur-sm justify-between;
     }
 }

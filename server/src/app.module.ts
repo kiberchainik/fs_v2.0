@@ -11,6 +11,7 @@ import { TwoFactorAuthModule } from './auth/two-factor-auth/two-factor-auth.modu
 import { AgencyModule } from './agency/agency.module';
 import { CandidatModule } from './candidat/candidat.module';
 import { FileModule } from './libs/file/file.module';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -27,7 +28,8 @@ import { FileModule } from './libs/file/file.module';
     TwoFactorAuthModule,
     AgencyModule,
     CandidatModule,
-    FileModule
+    FileModule,
+    CategoryModule
   ],
 })
 export class AppModule {}

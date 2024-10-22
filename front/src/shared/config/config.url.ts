@@ -23,12 +23,12 @@ export const CANDIDAT_URL = {
 }
 
 export const MAIN_URL = {
-    root: (url = '') => `${url ? '/'+url : ''}`,
+    root: (url = '') => `${url ? url : ''}`,
     
-    home: () => MAIN_URL.root(),
-    candidats: (login = '') => MAIN_URL.root(`candidats/${login}`),
-    joboffers: (slug = '') => MAIN_URL.root(`joboffers/${slug}`),
-    agency: () => MAIN_URL.root('agency'),
-    about: () => MAIN_URL.root('about'),
-    contacts: () => MAIN_URL.root('contacts')
+    home: () => MAIN_URL.root('/'),
+    candidats: (login = '') => MAIN_URL.root(`/candidats/${login}`),
+    joboffers: (slug = '') => MAIN_URL.root(`/joboffers/${slug}`),
+    agency: () => MAIN_URL.root('/agency'),
+    about: () => MAIN_URL.root('/about'),
+    contacts: () => MAIN_URL.root('/contacts')
 }

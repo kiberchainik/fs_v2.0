@@ -11,7 +11,7 @@ export function useUpdProfileMutation() {
         mutationFn: (data: TypeSettingsSchema) => agencyService.updateProfile(data),
         onSuccess() {
             toast.success('Profile updated')
-            queryClient.invalidateQueries({queryKey: ['getUserHeaderData', 'upd profile']})
+            queryClient.invalidateQueries({queryKey: ['getUserHeaderData']})
         },
         onError(error) {
             toastMessageHandler(error)
