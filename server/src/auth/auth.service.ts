@@ -9,6 +9,7 @@ import { TwoFactorAuthService } from './two-factor-auth/two-factor-auth.service'
 import { JwtService } from '@nestjs/jwt'
 import { EXPIRE_DAY_REFRESH_TOKEN, REFRESH_TOKEN_NAME } from '@/libs/common/constants';
 import { AuthMethod, UserRole } from 'prisma/__generated__';
+import passport from 'passport';
 
 @Injectable()
 export class AuthService {
@@ -68,7 +69,7 @@ export class AuthService {
         // }
             
         const tokens = this.issueTokens(user.id, user.email, user.role)
-        return {user, ...tokens}
+        return {...user, ...tokens}
     }
 
     issueTokens(userId: string, email: string, role: UserRole) {

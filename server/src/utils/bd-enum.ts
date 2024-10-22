@@ -1,4 +1,4 @@
-export enum PrismaError {
+export enum DBError {
     RecordDoesNotExist = 'P2025',
     UniqueConstraintViolated = 'P2002',
     ForeignKeyConstraintViolated = 'P2003',

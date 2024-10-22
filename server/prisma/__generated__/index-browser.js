@@ -6,7 +6,8 @@ const {
   objectEnumValues,
   makeStrictEnum,
   Public,
-  getRuntime
+  getRuntime,
+  skip
 } = require('./runtime/index-browser.js')
 
 
@@ -16,11 +17,11 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.19.1
+ * Prisma Client JS version: 5.21.1
  * Query Engine version: bf0e5e8a04cada8225617067eaa03d041e2bba36
  */
 Prisma.prismaVersion = {
-  client: "5.19.1",
+  client: "5.21.1",
   engine: "bf0e5e8a04cada8225617067eaa03d041e2bba36"
 }
 
@@ -107,6 +108,8 @@ Prisma.NullTypes = {
   JsonNull: objectEnumValues.classes.JsonNull,
   AnyNull: objectEnumValues.classes.AnyNull
 }
+
+
 
 /**
  * Enums

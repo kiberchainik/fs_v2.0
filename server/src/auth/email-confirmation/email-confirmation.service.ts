@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { ConfirmationDto } from './dto/confirmation.dto';
 import { MailService } from '@/libs/mail/mail.service';
 import { UserService } from '@/user/user.service';
-import { AuthService } from '../auth.service';
+import { AuthService } from '@/auth/auth.service'
 import { TokenType, User } from 'prisma/__generated__';
 
 @Injectable()

@@ -1,8 +1,8 @@
 import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common'
 import { CreateCategoryDto, CreateSectorDto, UpdateCategoryDto, UpdateSectorDto } from './dto'
 import { PrismaService } from '@/prisma/prisma.service'
-import { PrismaError } from 'prisma/prisma-enum'
 import { Prisma } from 'prisma/__generated__'
+import { DBError } from '@/utils'
 
 @Injectable()
 export class CategoryService {
@@ -43,7 +43,7 @@ export class CategoryService {
     } catch (err) {
       if (
         err instanceof Prisma.PrismaClientKnownRequestError &&
-        err.code === PrismaError.ConnectedRecordsNotFound
+        err.code === DBError.ConnectedRecordsNotFound
       ) {
         console.log(err)
         throw new ConflictException('Некоторые из предоставленых ИД категорий не верны')
@@ -166,7 +166,7 @@ export class CategoryService {
     } catch (err) {
       if (
         err instanceof Prisma.PrismaClientKnownRequestError &&
-        err.code === PrismaError.ConnectedRecordsNotFound
+        err.code === DBError.ConnectedRecordsNotFound
       ) {
         console.log(err)
         throw new ConflictException('Некоторые из предоставленых ИД категорий не верны')
@@ -184,6 +184,7 @@ export class CategoryService {
   }
 
   async remove(id: string) {
+    this.findOne(id)
     return await this.prisma.category.delete({where: {id}})
   }
 
