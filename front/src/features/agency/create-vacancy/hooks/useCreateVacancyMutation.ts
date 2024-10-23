@@ -5,7 +5,7 @@ import { toastMessageHandler } from "@/shared/utils";
 import { IVacanciaes } from "../types";
 
 export function useCreateVacancyMutation () {
-    const {mutate: createJob, isPending} = useMutation({
+    const {mutate: createJob, isPending, isSuccess} = useMutation({
         mutationKey: ['create vacancy data'],
         mutationFn: (data: IVacanciaes) => vacancyService.createVacancyData(data),
         onSuccess() {
@@ -16,5 +16,5 @@ export function useCreateVacancyMutation () {
         }
     })
 
-    return {createJob, isPending}
+    return {createJob, isPending, isSuccess}
 }

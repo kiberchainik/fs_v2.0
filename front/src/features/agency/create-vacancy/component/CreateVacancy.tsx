@@ -48,7 +48,7 @@ export function CreateVacancy () {
 		}
 	})
 	
-	const { createJob, isPending } = useCreateVacancyMutation()
+	const { createJob, isPending, isSuccess } = useCreateVacancyMutation()
 	
 	const onSubmit = (values: TypeVacancySchema) => {
 		const tagsArray = values.tags?.split(',').map(tag => tag.trim())
@@ -57,7 +57,10 @@ export function CreateVacancy () {
 			...value,
 			tags: tagsArray
 		}
+
 		createJob(newVals)
+		
+		isSuccess && form.reset()
 	}
 	
 	return (
