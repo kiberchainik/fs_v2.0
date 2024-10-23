@@ -222,14 +222,17 @@ export function CreateVacancy () {
 									</FormItem>
 								)}
 							/>
-							<Controller
-                                name='description'
-                                control={form.control}
-                                render={({ field }) => {
-                                    return <TextEditor {...field} />
-                                }}
-                                rules={{required: 'Write about you'}}
-                            />
+							            <FormField
+              control={form.control}
+              name="description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Description</FormLabel>
+                  <FormControl>
+                   <Tiptap description={field.name} onChange={field.onChange} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
 							<Button type='submit' disabled={isPending}>
 								Сохранить
 							</Button>
