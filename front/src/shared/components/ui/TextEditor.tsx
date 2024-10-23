@@ -10,7 +10,7 @@ import { Separator, Toggle } from '.'
 
 export interface ITextEditor {
   onChange: (richText: string) => void
-  value: string
+  description: string
 }
 
 const TextEditor:FC<ITextEditor> = ({value, onChange}) => {
@@ -39,7 +39,7 @@ const TextEditor:FC<ITextEditor> = ({value, onChange}) => {
       }),
       Highlight,
     ],
-    content: value, // Set the initial content with the provided value
+    content: description, // Set the initial content with the provided value
     onUpdate: ({ editor }) => {
       onChange(editor.getHTML()); // Call the onChange callback with the updated HTML content
     },
