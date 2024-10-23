@@ -229,7 +229,7 @@ export function CreateVacancy () {
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                   <Tiptap description={field.name} onChange={field.onChange} />
+                   <TextEditor description={field.name} onChange={field.onChange} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
