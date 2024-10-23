@@ -35,9 +35,9 @@ export class JoboffersService {
     
     const {id} = await this.getAgencyDataId(userId)
     
-    const {categories, branchId, tags, sectors, slug, ...jobOffers} = createJobofferDto
+    const {categoryIds, branchId, tags, sectors, slug, ...jobOffers} = createJobofferDto
 
-    const existsCategories = await this.categoryService.getByIds([...categories])
+    const existsCategories = await this.categoryService.getByIds([...categoryIds])
     const categoriesIds = existsCategories.map((catId) =>({id: catId.id}))
 
     const jobTags = tags?.map((tag) => ({
@@ -68,7 +68,6 @@ export class JoboffersService {
         },
         include: {
           ...this.includesAll,
-          //tags: true,
           sectors: true,
           branch: true
         }

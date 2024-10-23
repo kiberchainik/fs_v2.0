@@ -1,14 +1,14 @@
 import { toast } from "sonner"
 
-export function toastMessageHandler (error: Error) {
-    if(error.message) {
-        const errorMessage = error.message
-        const firstDotIndex = errorMessage.indexOf('.')//все что до точки это заголовок, все что после это опиание!
-
-        if (firstDotIndex !== -1) {
-            toast.error(errorMessage.slice(0, firstDotIndex), {
-                description: errorMessage.slice(firstDotIndex + 1)
-            })
+export function toastMessageHandler (error: any) {
+    if(error.response && error.response.data && error.response.data && error.response.data.message) {
+        const errorMessage = error.response.data.message
+        
+        if(Array.isArray(errorMessage)) {
+            const res = errorMessage.map(err => {
+                return err.charAt(0).toUpperCase() + err.slice(1);
+            }).join('! ')
+            toast.error(res)
         } else {
             toast.error(errorMessage)
         }

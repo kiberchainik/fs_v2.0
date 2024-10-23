@@ -1,5 +1,5 @@
 import { Type } from "class-transformer"
-import { ArrayNotEmpty, IsArray, IsNumber, IsOptional, IsString, Validate, ValidatorConstraint, ValidatorConstraintInterface } from "class-validator"
+import { IsArray, IsOptional, IsString, Validate, ValidatorConstraint, ValidatorConstraintInterface } from "class-validator"
 
 @ValidatorConstraint({ name: 'isArrayString' })
 export class isArrayString implements ValidatorConstraintInterface {
@@ -25,14 +25,10 @@ export class CreateJobofferDto {
     @IsString()
     description: string
 
-    @IsArray()
-    @ArrayNotEmpty()
-    @Type(() => String)
-    @Validate(isArrayString, { message: 'Category ids array value must a string' })
-    categories: string[] = []
+    @IsString()
+    categoryIds: string
 
     @IsArray()
-    @ArrayNotEmpty()
     @Type(() => String)
     @Validate(isArrayString, { message: 'Sector ids array value must a string' })
     @IsOptional()
@@ -47,12 +43,13 @@ export class CreateJobofferDto {
     @IsString()
     location: string
 
-    @IsNumber()
+    @IsString()
     @IsOptional()
     branchId?: string
 
     @IsArray()
     @IsString({each: true})
     @Type(()=> String)
+    @IsOptional()
     tags: string[]
 }

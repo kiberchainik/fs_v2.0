@@ -31,7 +31,9 @@ export const VacancySchema = z.object({
         message: 'Write full description of vacancy'
     }),
 
-    branchId: z.string().optional()
+    branchId: z.string().optional(),
+
+    tags: z.string().optional()
 })
 
 export type TypeVacancySchema = z.infer<typeof VacancySchema>

@@ -13,7 +13,7 @@ export interface ITextEditor {
   description: string
 }
 
-const TextEditor:FC<ITextEditor> = ({value, onChange}) => {
+const TextEditor:FC<ITextEditor> = ({description, onChange}) => {
   const editor = useEditor({
     editorProps: {
       attributes: {

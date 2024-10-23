@@ -1,7 +1,7 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Controller, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 import {
 	Button,
@@ -11,6 +11,7 @@ import {
 	CardTitle,
 	Form,
 	FormControl,
+	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
@@ -42,16 +43,21 @@ export function CreateVacancy () {
 			province: '',
 			region: '',
 			branchId: '',
-			sectors: []
+			sectors: [],
+			tags: ''
 		}
 	})
 	
 	const { createJob, isPending } = useCreateVacancyMutation()
 	
 	const onSubmit = (values: TypeVacancySchema) => {
-		console.log(values);
-		
-		createJob(values)
+		const tagsArray = values.tags?.split(',').map(tag => tag.trim())
+		const {tags, ...value} = values
+		const newVals = {
+			...value,
+			tags: tagsArray
+		}
+		createJob(newVals)
 	}
 	
 	return (
@@ -222,17 +228,38 @@ export function CreateVacancy () {
 									</FormItem>
 								)}
 							/>
-							            <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Description</FormLabel>
-                  <FormControl>
-                   <TextEditor description={field.name} onChange={field.onChange} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
+							<FormField
+								control={form.control}
+								name="description"
+								render={({ field }) => (
+								<FormItem>
+									<FormLabel>Description</FormLabel>
+									<FormControl>
+										<TextEditor description={field.name} onChange={field.onChange} />
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+								)}
+							/>
+							<FormField
+								control={form.control}
+								name='tags'
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Tags</FormLabel>
+										<FormControl>
+											<Input
+												placeholder='Tags'
+												disabled={isPending}
+												type='text'
+												{...field}
+											/>
+										</FormControl>
+										<FormDescription>All tags must be separated by comma</FormDescription>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
 							<Button type='submit' disabled={isPending}>
 								Сохранить
 							</Button>

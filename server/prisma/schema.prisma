@@ -155,6 +155,7 @@ model jobOffers {
   region      String
   province    String
   location    String
+  reallyUpTo  DateTime? @map("really_up_to")
   createdAt   DateTime            @default(now()) @map("created_at")
   updatedAt   DateTime            @updatedAt @map("updated_at")
   isValidate   Boolean             @default(false)
