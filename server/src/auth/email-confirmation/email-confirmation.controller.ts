@@ -14,7 +14,7 @@ export class EmailConfirmationController {
   @Post()
   @HttpCode(HttpStatus.OK)
   async newVerification(
-    @Res() res: Response,
+    @Res({ passthrough: true }) res: Response,
     @Body() dto: ConfirmationDto
   ) {
     const { refreshToken, ...response } = await this.emailConfirmationService.newVerificaion(dto)

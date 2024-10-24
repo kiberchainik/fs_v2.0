@@ -14,6 +14,7 @@ export function useVerificationMutation () {
             router.push('/auth')
         },
         onError(error:any) {
+            router.push('/auth')
             if(error.response && error.response.data && error.response.data && error.response.data.message) {
                 toast.error(error.response.data.message)
             }

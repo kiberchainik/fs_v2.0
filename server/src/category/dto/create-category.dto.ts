@@ -11,16 +11,16 @@ export class CreateCategoryDto {
     description: string
 
     @IsString({
-		each: true,
-		message: 'Ид категории должен иметь строчный формат'
-	})
+      each: true,
+      message: 'Ид категории должен иметь строчный формат'
+    })
     @IsOptional()
     parentId?: string[]
 
     @IsString({
-		each: true,
-		message: 'Ид сектора должен иметь строчный формат'
-	})
+      each: true,
+      message: 'Ид сектора должен иметь строчный формат'
+    })
     @IsOptional()
     sectorIds?: string[]
 }

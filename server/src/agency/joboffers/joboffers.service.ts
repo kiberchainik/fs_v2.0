@@ -37,8 +37,8 @@ export class JoboffersService {
     
     const {categoryIds, branchId, tags, sectors, slug, ...jobOffers} = createJobofferDto
 
-    const existsCategories = await this.categoryService.getByIds([...categoryIds])
-    const categoriesIds = existsCategories.map((catId) =>({id: catId.id}))
+    //const existsCategories = await this.categoryService.getById(categoryIds)
+    //const categoriesIds = existsCategories.map((catId) =>({id: catId.id}))
 
     const jobTags = tags?.map((tag) => ({
       name: tag, slug: slugify(tag)
@@ -48,13 +48,13 @@ export class JoboffersService {
       id
     })) || []
 
-    if(typeof id === 'string') {
+    if(id) {
       const newJob = await this.prisma.jobOffers.create({
         data: {
           ...jobOffers,
           slug: slugify(createJobofferDto.title),
           categories: {
-            connect: categoriesIds
+            connect: {id: categoryIds}
           },
           sectors: {
             connect: jobSectors

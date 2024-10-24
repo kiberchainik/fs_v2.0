@@ -45,7 +45,6 @@ export class CategoryService {
         err instanceof Prisma.PrismaClientKnownRequestError &&
         err.code === DBError.ConnectedRecordsNotFound
       ) {
-        console.log(err)
         throw new ConflictException('Некоторые из предоставленых ИД категорий не верны')
       }
     }
@@ -79,26 +78,24 @@ export class CategoryService {
 		return category
 	}
 
-	async getByIds(ids: string[]) {
-		const category = await this.prisma.category.findMany({
+	async getById(id: string) {
+		return await this.prisma.category.findUnique({
 			where: {
-				OR: ids.map(id => ({ id }))
+				id
 			},
-      select: {
-        id:true,
-        slug: true,
-        name: true,
-        sectors: true,
-        children: true
+      include: {
+        children: this.includeChildrenCategories(10)
       }
 		})
-		return category
 	}
 
   async findAll() {
     return await this.prisma.category.findMany({
       include: {
-        children: true
+        children: this.includeChildrenCategories(10)
+      },
+      where: {
+        parentId: null
       }
     })
   }
@@ -132,7 +129,7 @@ export class CategoryService {
     const category = await this.prisma.category.findUnique({
       where: {id},
       include: {
-        children: true
+        children: this.includeChildrenCategories(10)
       }
     })
 
@@ -157,7 +154,7 @@ export class CategoryService {
           }
         },
         include: {
-          children: true
+          children: this.includeChildrenCategories(10)
         },
         where: {
           id

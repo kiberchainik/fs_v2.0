@@ -191,14 +191,9 @@ export function CreateVacancy () {
 										</FormControl>
 										<SelectContent>
 											<SelectGroup>
-												{categories?.map(category => (
-													<SelectItem
-														value={category.id}
-														key={category.id}
-													>
-														{category.name}
-													</SelectItem>
-												))}
+												{categories ? categories.map(category => (
+													<SelectItem value={category.id} key={category.id}>{category.name}</SelectItem>
+												)) : <SelectItem value='0' key={'without_category'}>Категорий нет!</SelectItem>}
 											</SelectGroup>
 										</SelectContent>
 									</Select>

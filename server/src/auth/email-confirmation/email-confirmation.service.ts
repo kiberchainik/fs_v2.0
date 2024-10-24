@@ -23,14 +23,14 @@ export class EmailConfirmationService {
                 type: TokenType.VERIFICATION
             }
         })
-        
+
         if(!existToken) {
             throw new NotFoundException('Token verified not found')
         }
         
         const hasExpired = new Date(existToken.expiresIn) < new Date()
         if(hasExpired) {
-            throw new BadRequestException('Token invalid naher!')
+            throw new BadRequestException('Токен для верификации eamil просрочен, авторизутесь для получения письма с новой сылкой верификации!')
         }
 
         const existingUser = await this.user.findByEmail(existToken.email)
