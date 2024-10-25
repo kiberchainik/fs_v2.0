@@ -24,10 +24,10 @@ import {
 	SelectTrigger,
 	SelectValue} from '@/shared/components/ui'
 
-import { VacancySchema, TypeVacancySchema } from '../schemes'
-import { useCategory, useCreateVacancyMutation } from '../hooks'
+import { VacancySchema, TypeVacancySchema } from '../../schemes'
+import { useCategory, useCreateVacancyMutation } from '../../hooks'
 import TextEditor from '@/shared/components/ui/TextEditor'
-import { useGetBranch } from '../../branch/hooks'
+import { useGetBranch } from '../../../branch/hooks'
 
 export function CreateVacancy () {
 	const { categories, isFetching } = useCategory()
@@ -55,6 +55,7 @@ export function CreateVacancy () {
 	const onSubmit = (values: TypeVacancySchema) => {
 		const tagsArray = values.tags?.split(',').map(tag => tag.trim())
 		const {tags, ...value} = values
+		
 		const newVals = {
 			...value,
 			tags: tagsArray

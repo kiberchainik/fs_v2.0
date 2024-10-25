@@ -1,7 +1,7 @@
 import { TPagination } from "."
 
 export interface IVacanciaes {
-    id: string,
+    id?: string,
     title: string,
     slug: string,
     description: string,
@@ -14,7 +14,37 @@ export interface IVacanciaes {
     tags?: string[]
 }
 
-export type IVacanciaesList = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'description'>
+export type IVacanciaesList = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'description'> & {
+    reallyUpTo: string
+    createdAt: string
+    views: number
+    agency: {
+        agency_name: string
+        logo: string
+        phone: string
+        address: string
+        slug: string
+        user: {
+            email: string
+        }
+    }
+    categories: {
+        name: string
+        slug: string
+    }[]
+    tags: {
+        name: string
+        slug: string
+    }[]
+    branch: {
+        id: string
+        name: string
+        location: string
+        logo: string
+        email:string
+        phone: string
+    }
+}
 
 export interface IJobsResponce {
     items: IVacanciaesList[]

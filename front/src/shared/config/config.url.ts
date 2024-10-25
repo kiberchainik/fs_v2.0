@@ -6,10 +6,12 @@ export const AGENCY_URL = {
     profile: () => AGENCY_URL.root('/profile'),
     editProfile: () => AGENCY_URL.root('/profile/edit'),
 
+    vacancies: () => AGENCY_URL.root('/vacancies'),
     createOffers: () => AGENCY_URL.root('/joboffers'),
     editOffers: (id = '') => AGENCY_URL.root(`/joboffers/${id}`),
     deleteOffers: (id = '') => AGENCY_URL.root(`/joboffers/${id}`),
 
+    branches: () => AGENCY_URL.root('/branch'),
     createBranch: () => AGENCY_URL.root('/branch'),
     editBranch: (id = '') => AGENCY_URL.root(`/branch/${id}`),
     deleteBranch: (id = '') => AGENCY_URL.root(`/branch/${id}`),
@@ -27,8 +29,9 @@ export const MAIN_URL = {
     
     home: () => MAIN_URL.root('/'),
     candidats: (login = '') => MAIN_URL.root(`/candidats/${login}`),
-    joboffers: (slug = '') => MAIN_URL.root(`/joboffers/${slug}`),
-    agency: () => MAIN_URL.root('/agency'),
+    fullVacancy: (slug = '') => MAIN_URL.root(`/vacancy/${slug}`),
+    agencyPageInfo: (slug:string) => MAIN_URL.root(`/about-agency/${slug}`),
+    branchPageInfo: (id:string) => MAIN_URL.root(`/about-filial/${id}`),
     about: () => MAIN_URL.root('/about'),
     contacts: () => MAIN_URL.root('/contacts')
 }

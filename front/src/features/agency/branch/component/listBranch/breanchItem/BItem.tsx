@@ -1,12 +1,13 @@
 import { Button } from "@/shared/components";
 import { IBItem } from "../../../types";
 import Link from "next/link";
+import { AGENCY_URL } from "@/shared/config";
 
 export function BItem ({id, name}: IBItem) {
     return (
         <div>
             <Button variant='link'>
-                <Link href={`/agency/branch/${id}`}>{name}</Link>
+                <Link href={AGENCY_URL.branches()}>{name}</Link>
             </Button>
         </div>
     )

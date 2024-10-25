@@ -1,4 +1,4 @@
-import { LastVacancies } from "@/features/agency/dashboard/components/vacancy/LastVacancies";
+import { LastVacancies } from "@/features/agency/vacancy/component/vacancy/LastVacancies";
 
 export default function ContactsPage() {
     return (
