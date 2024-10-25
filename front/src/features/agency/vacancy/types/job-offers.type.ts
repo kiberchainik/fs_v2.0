@@ -1,6 +1,7 @@
 import { TPagination } from "."
 
 export interface IVacanciaes {
+    id: string,
     title: string,
     slug: string,
     description: string,
@@ -11,6 +12,14 @@ export interface IVacanciaes {
     location: string,
     branchId?: string,
     tags?: string[]
+}
+
+export type IVacanciaesList = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'description'>
+
+export interface IJobsResponce {
+    items: IVacanciaesList[]
+    count: number
+    pageCount: number
 }
 
 export type Filter = {

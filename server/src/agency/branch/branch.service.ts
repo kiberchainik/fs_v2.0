@@ -9,30 +9,27 @@ export class BranchService {
   constructor(private readonly prisma:PrismaService){}
   
   async create(userId:string, createBranchDto: CreateBranchDto) {
-    const adId = await this.getAgencyDataId(userId)
+    const {id} = await this.getAgencyDataId(userId)
 
-    if(!adId) throw new BadRequestException('Для добавления филиалов и объявлений заполните полнотью профиль!')
-    if(typeof adId === 'string') {
+    if(!id) throw new BadRequestException('Для добавления филиалов и объявлений заполните полнотью профиль!')
       return await this.prisma.branch.create({
         data: {
-          adId,
+          adId: id,
           ...createBranchDto
         }
       })
-    }
   }
 
   async findAll(userId:string) {
     const adId = await this.getAgencyDataId(userId)
 
-    if(!adId) throw new BadRequestException('Для добавления филиалов и объявлений заполните полнотью профиль!')
-    if(typeof adId === 'number') {
+    if(!adId.id) throw new BadRequestException('Для добавления филиалов и объявлений заполните полнотью профиль!')
+    
       return await this.prisma.branch.findMany({
-        where: {
-          adId
-        }
-      })
-    }
+      where: {
+        adId: adId.id
+      }
+    })
   }
 
   async update(id: string, userId:string, updateBranchDto: UpdateBranchDto) {

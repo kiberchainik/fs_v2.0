@@ -1,4 +1,4 @@
-import { CreateVacancy } from "@/features/agency/create-vacancy/component/CreateVacancy"
+import { CreateVacancy } from "@/features/agency/vacancy/component/CreateVacancy"
 
 export default function AgencyPage() {
     return (

@@ -1,6 +1,6 @@
 import { UserRole } from "@/features/auth/types"
 import { IconType } from "react-icons"
-import { IoIosPerson, IoIosContact , IoIosGitBranch, IoIosMegaphone } from "react-icons/io"
+import { IoIosPerson, IoIosContact , IoIosGitBranch, IoIosMegaphone, IoMdDesktop } from "react-icons/io"
 
 interface MenuItems {
     icon: IconType
@@ -11,6 +11,11 @@ interface MenuItems {
 //export function HeaderUserMenu(role: UserRole): MenuItems[] {
     export const HeaderUserMenu = (role:UserRole):MenuItems[] => {
         return role === UserRole.Agency ? [
+            {
+                icon: IoMdDesktop,
+                href: '/agency',
+                title: 'Dashboard'
+            },
             {
                 icon: IoIosContact,
                 href: '/agency/profile',

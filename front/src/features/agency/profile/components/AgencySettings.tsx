@@ -22,12 +22,11 @@ import {
 
 import { useGetAgencyData, useUpdProfileMutation } from '../hooks'
 import { SettingsSchema, TypeSettingsSchema } from '../schemes'
-import { ImageUpload } from '@/shared/components'
+import { ImageUpload } from './image-upload/ImageUpload'
 
 export function AgencySettings() {
 	const {user, isLoading, error} = useGetAgencyData()
 
-	
 	const form = useForm<TypeSettingsSchema>({
 		mode: 'onChange',
 		resolver: zodResolver(SettingsSchema),
@@ -49,7 +48,7 @@ export function AgencySettings() {
 	}
 	
 	return (
-		<Card className='w-[400px]'>
+		<Card className='w-[800px]'>
 			<CardHeader className='flex flex-row items-center justify-between'>
 				<CardTitle>Настройки профиля агентства</CardTitle>
 			</CardHeader>
@@ -68,7 +67,7 @@ export function AgencySettings() {
 								}}
 								render={({ field }) => (
 									<FormItem className='mt-4'>
-										<FormLabel>Картинки</FormLabel>
+										<FormLabel>Logo</FormLabel>
 										<FormControl>
 											<ImageUpload
 												isDisabled={isLoading}
@@ -167,30 +166,6 @@ export function AgencySettings() {
 											/>
 										</FormControl>
 										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name='isTwoFactorEnabled'
-								render={({ field }) => (
-									<FormItem className='flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm'>
-										<div className='space-y-0.5'>
-											<FormLabel>
-												Двухфакторная аутентификация
-											</FormLabel>
-											<FormDescription>
-												Включите двухфакторную
-												аутентификацию для вашей учетной
-												записи
-											</FormDescription>
-										</div>
-										<FormControl>
-											<Switch
-												checked={field.value}
-												onCheckedChange={field.onChange}
-											/>
-										</FormControl>
 									</FormItem>
 								)}
 							/>

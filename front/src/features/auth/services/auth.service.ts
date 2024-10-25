@@ -45,6 +45,8 @@ class AuthService {
             }
         })
 
+        if(!data) removeFromStorage()
+
         return data
     }
 

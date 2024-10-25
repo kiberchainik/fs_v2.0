@@ -39,6 +39,7 @@ const TextEditor:FC<ITextEditor> = ({description, onChange}) => {
       }),
       Highlight,
     ],
+    immediatelyRender: false,
     content: description, // Set the initial content with the provided value
     onUpdate: ({ editor }) => {
       onChange(editor.getHTML()); // Call the onChange callback with the updated HTML content

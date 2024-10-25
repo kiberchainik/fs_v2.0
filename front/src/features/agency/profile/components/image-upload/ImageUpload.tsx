@@ -5,8 +5,8 @@ import Image from 'next/image'
 
 import styles from './ImageUpload.module.scss'
 import { cn } from '@/shared/utils'
-import { Button } from '../ui'
-import { useUpload } from './useUpload'
+import { useUpload } from '../../hooks/useUpload'
+import { Button } from '@/shared/components'
 
 interface ImageUploadProps {
 	isDisabled: boolean

@@ -27,9 +27,11 @@ import {
 import { VacancySchema, TypeVacancySchema } from '../schemes'
 import { useCategory, useCreateVacancyMutation } from '../hooks'
 import TextEditor from '@/shared/components/ui/TextEditor'
+import { useGetBranch } from '../../branch/hooks'
 
 export function CreateVacancy () {
 	const { categories, isFetching } = useCategory()
+	const { branches, isFetching: isFetchingBranch} = useGetBranch()
 
 	const form = useForm<TypeVacancySchema>({
 		mode: 'onChange',
@@ -208,7 +210,7 @@ export function CreateVacancy () {
 									<FormItem>
 										<FormLabel>Branch</FormLabel>
 											<Select
-												disabled={isPending}
+												disabled={isFetchingBranch}
 												onValueChange={field.onChange}
 											>
 											<FormControl>
@@ -218,8 +220,9 @@ export function CreateVacancy () {
 											</FormControl>
 											<SelectContent>
 												<SelectGroup>
-													<SelectItem value={'1'} key={1}>Branch 1</SelectItem>
-													<SelectItem value={'2'} key={2}>Branch 2</SelectItem>
+												{branches ? branches.map(branch => (
+													<SelectItem value={branch.id} key={branch.id}>{branch.name}</SelectItem>
+												)) : <SelectItem value='0' key={'without_branch'}>Категорий нет!</SelectItem>}
 												</SelectGroup>
 											</SelectContent>
 										</Select>

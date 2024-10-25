@@ -7,7 +7,7 @@ export const API_URL = {
     auth: (url = '') => API_URL.root(`/auth${url}`),
     file: (url:string) => API_URL.root(url),
     candidats: () => API_URL.root('/candidats'),
-    candidat: (login:string) => API_URL.root(`/candidats${login}`),
+    candidatData: (login:string) => API_URL.root(`/candidats${login}`),
     candidatProfile: () => API_URL.root('/profile'),
     
     agency: () => API_URL.root('/agency'),

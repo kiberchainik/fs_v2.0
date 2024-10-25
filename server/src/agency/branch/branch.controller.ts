@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, UseInterceptors, UploadedFiles, ParseFilePipe, MaxFileSizeValidator } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, UseInterceptors, UploadedFiles, ParseFilePipe, MaxFileSizeValidator, Query } from '@nestjs/common';
 import { BranchService } from './branch.service';
 import { CreateBranchDto } from './dto/create-branch.dto';
 import { UpdateBranchDto } from './dto/update-branch.dto'
@@ -25,8 +25,8 @@ export class BranchController {
   }
 
   @Authorization(UserRole.AGENCY)
-  @UseInterceptors(FilesInterceptor('file'))
-  @Post('logo/:branch')
+  @UseInterceptors(FilesInterceptor('files'))
+  @Post('logo')
   async uploadFile (
     @UploadedFiles (
       new ParseFilePipe({
@@ -34,18 +34,18 @@ export class BranchController {
       })
     ) files: Express.Multer.File[],
     @CurrentUser('id') id:string,
-    @Param('branch') folder:string
+    @Query('folder') folder:string
   ) {
     const newFiles = await this.file.filterFiles(files)
     const fileData = await this.file.saveFiles(newFiles, folder+id)
-
-    return this.branchService.updLogo(id, fileData)
+    return fileData[0]
+    //return this.branchService.updLogo(id, fileData)
   }
 
   @Get()
   @Authorization(UserRole.AGENCY)
-  findAll(@CurrentUser('id') userId:string) {
-    return this.branchService.findAll(userId);
+  async findAll(@CurrentUser('id') userId:string) {
+    return await this.branchService.findAll(userId);
   }
 
   @Patch(':id')

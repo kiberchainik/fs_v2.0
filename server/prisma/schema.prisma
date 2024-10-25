@@ -133,13 +133,15 @@ model AgencyData {
 }
 
 model Branch {
-  id         String         @id @default(uuid())
+  id        String         @id @default(uuid())
   name      String
   email     String
   phone     String
   fax       String?
   location  String
+  region    String
   logo      String?
+  about_branch String?
   adId      String         @map("agency_id")
   agency    AgencyData  @relation(fields: [adId], references: [id])
   jobOffers jobOffers[]

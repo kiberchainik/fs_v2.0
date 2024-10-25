@@ -9,17 +9,23 @@ export class CreateBranchDto {
     email: string
 
     @IsString({message: 'Не верный формат телефона'})
-    @IsPhoneNumber()
+    @IsPhoneNumber('IT')
     phone: string
 
-    @IsPhoneNumber()
     @IsOptional()
     fax?: string
 
     @IsString({message: 'Укажите гда находится место работы'})
     location: string
 
+    @IsString({message: 'Укажите гда находится место работы'})
+    region: string
+
     @IsString({message: ''})
     @IsOptional()
     logo?: string
+
+    @IsOptional()
+    @IsString()
+    about_branch?: string
 }

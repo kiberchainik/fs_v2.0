@@ -501,8 +501,6 @@ export namespace Prisma {
   export import raw = runtime.raw
   export import Sql = runtime.Sql
 
-
-
   /**
    * Decimal.js
    */
@@ -529,7 +527,7 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.21.1
+   * Prisma Client JS version: 5.19.1
    * Query Engine version: bf0e5e8a04cada8225617067eaa03d041e2bba36
    */
   export type PrismaVersion = {
@@ -11475,7 +11473,9 @@ export namespace Prisma {
     phone: string | null
     fax: string | null
     location: string | null
+    region: string | null
     logo: string | null
+    about_branch: string | null
     adId: string | null
   }
 
@@ -11486,7 +11486,9 @@ export namespace Prisma {
     phone: string | null
     fax: string | null
     location: string | null
+    region: string | null
     logo: string | null
+    about_branch: string | null
     adId: string | null
   }
 
@@ -11497,7 +11499,9 @@ export namespace Prisma {
     phone: number
     fax: number
     location: number
+    region: number
     logo: number
+    about_branch: number
     adId: number
     _all: number
   }
@@ -11510,7 +11514,9 @@ export namespace Prisma {
     phone?: true
     fax?: true
     location?: true
+    region?: true
     logo?: true
+    about_branch?: true
     adId?: true
   }
 
@@ -11521,7 +11527,9 @@ export namespace Prisma {
     phone?: true
     fax?: true
     location?: true
+    region?: true
     logo?: true
+    about_branch?: true
     adId?: true
   }
 
@@ -11532,7 +11540,9 @@ export namespace Prisma {
     phone?: true
     fax?: true
     location?: true
+    region?: true
     logo?: true
+    about_branch?: true
     adId?: true
     _all?: true
   }
@@ -11616,7 +11626,9 @@ export namespace Prisma {
     phone: string
     fax: string | null
     location: string
+    region: string
     logo: string | null
+    about_branch: string | null
     adId: string
     _count: BranchCountAggregateOutputType | null
     _min: BranchMinAggregateOutputType | null
@@ -11644,7 +11656,9 @@ export namespace Prisma {
     phone?: boolean
     fax?: boolean
     location?: boolean
+    region?: boolean
     logo?: boolean
+    about_branch?: boolean
     adId?: boolean
     agency?: boolean | AgencyDataDefaultArgs<ExtArgs>
     jobOffers?: boolean | Branch$jobOffersArgs<ExtArgs>
@@ -11658,7 +11672,9 @@ export namespace Prisma {
     phone?: boolean
     fax?: boolean
     location?: boolean
+    region?: boolean
     logo?: boolean
+    about_branch?: boolean
     adId?: boolean
     agency?: boolean | AgencyDataDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["branch"]>
@@ -11670,7 +11686,9 @@ export namespace Prisma {
     phone?: boolean
     fax?: boolean
     location?: boolean
+    region?: boolean
     logo?: boolean
+    about_branch?: boolean
     adId?: boolean
   }
 
@@ -11696,7 +11714,9 @@ export namespace Prisma {
       phone: string
       fax: string | null
       location: string
+      region: string
       logo: string | null
+      about_branch: string | null
       adId: string
     }, ExtArgs["result"]["branch"]>
     composites: {}
@@ -12099,7 +12119,9 @@ export namespace Prisma {
     readonly phone: FieldRef<"Branch", 'String'>
     readonly fax: FieldRef<"Branch", 'String'>
     readonly location: FieldRef<"Branch", 'String'>
+    readonly region: FieldRef<"Branch", 'String'>
     readonly logo: FieldRef<"Branch", 'String'>
+    readonly about_branch: FieldRef<"Branch", 'String'>
     readonly adId: FieldRef<"Branch", 'String'>
   }
     
@@ -12481,6 +12503,7 @@ export namespace Prisma {
     region: string | null
     province: string | null
     location: string | null
+    reallyUpTo: Date | null
     createdAt: Date | null
     updatedAt: Date | null
     isValidate: boolean | null
@@ -12497,6 +12520,7 @@ export namespace Prisma {
     region: string | null
     province: string | null
     location: string | null
+    reallyUpTo: Date | null
     createdAt: Date | null
     updatedAt: Date | null
     isValidate: boolean | null
@@ -12513,6 +12537,7 @@ export namespace Prisma {
     region: number
     province: number
     location: number
+    reallyUpTo: number
     createdAt: number
     updatedAt: number
     isValidate: number
@@ -12539,6 +12564,7 @@ export namespace Prisma {
     region?: true
     province?: true
     location?: true
+    reallyUpTo?: true
     createdAt?: true
     updatedAt?: true
     isValidate?: true
@@ -12555,6 +12581,7 @@ export namespace Prisma {
     region?: true
     province?: true
     location?: true
+    reallyUpTo?: true
     createdAt?: true
     updatedAt?: true
     isValidate?: true
@@ -12571,6 +12598,7 @@ export namespace Prisma {
     region?: true
     province?: true
     location?: true
+    reallyUpTo?: true
     createdAt?: true
     updatedAt?: true
     isValidate?: true
@@ -12674,6 +12702,7 @@ export namespace Prisma {
     region: string
     province: string
     location: string
+    reallyUpTo: Date | null
     createdAt: Date
     updatedAt: Date
     isValidate: boolean
@@ -12709,6 +12738,7 @@ export namespace Prisma {
     region?: boolean
     province?: boolean
     location?: boolean
+    reallyUpTo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     isValidate?: boolean
@@ -12731,6 +12761,7 @@ export namespace Prisma {
     region?: boolean
     province?: boolean
     location?: boolean
+    reallyUpTo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     isValidate?: boolean
@@ -12749,6 +12780,7 @@ export namespace Prisma {
     region?: boolean
     province?: boolean
     location?: boolean
+    reallyUpTo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     isValidate?: boolean
@@ -12787,6 +12819,7 @@ export namespace Prisma {
       region: string
       province: string
       location: string
+      reallyUpTo: Date | null
       createdAt: Date
       updatedAt: Date
       isValidate: boolean
@@ -13198,6 +13231,7 @@ export namespace Prisma {
     readonly region: FieldRef<"jobOffers", 'String'>
     readonly province: FieldRef<"jobOffers", 'String'>
     readonly location: FieldRef<"jobOffers", 'String'>
+    readonly reallyUpTo: FieldRef<"jobOffers", 'DateTime'>
     readonly createdAt: FieldRef<"jobOffers", 'DateTime'>
     readonly updatedAt: FieldRef<"jobOffers", 'DateTime'>
     readonly isValidate: FieldRef<"jobOffers", 'Boolean'>
@@ -18611,7 +18645,9 @@ export namespace Prisma {
     phone: 'phone',
     fax: 'fax',
     location: 'location',
+    region: 'region',
     logo: 'logo',
+    about_branch: 'about_branch',
     adId: 'adId'
   };
 
@@ -18626,6 +18662,7 @@ export namespace Prisma {
     region: 'region',
     province: 'province',
     location: 'location',
+    reallyUpTo: 'reallyUpTo',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     isValidate: 'isValidate',
@@ -19514,7 +19551,9 @@ export namespace Prisma {
     phone?: StringFilter<"Branch"> | string
     fax?: StringNullableFilter<"Branch"> | string | null
     location?: StringFilter<"Branch"> | string
+    region?: StringFilter<"Branch"> | string
     logo?: StringNullableFilter<"Branch"> | string | null
+    about_branch?: StringNullableFilter<"Branch"> | string | null
     adId?: StringFilter<"Branch"> | string
     agency?: XOR<AgencyDataRelationFilter, AgencyDataWhereInput>
     jobOffers?: JobOffersListRelationFilter
@@ -19527,7 +19566,9 @@ export namespace Prisma {
     phone?: SortOrder
     fax?: SortOrderInput | SortOrder
     location?: SortOrder
+    region?: SortOrder
     logo?: SortOrderInput | SortOrder
+    about_branch?: SortOrderInput | SortOrder
     adId?: SortOrder
     agency?: AgencyDataOrderByWithRelationInput
     jobOffers?: jobOffersOrderByRelationAggregateInput
@@ -19543,7 +19584,9 @@ export namespace Prisma {
     phone?: StringFilter<"Branch"> | string
     fax?: StringNullableFilter<"Branch"> | string | null
     location?: StringFilter<"Branch"> | string
+    region?: StringFilter<"Branch"> | string
     logo?: StringNullableFilter<"Branch"> | string | null
+    about_branch?: StringNullableFilter<"Branch"> | string | null
     adId?: StringFilter<"Branch"> | string
     agency?: XOR<AgencyDataRelationFilter, AgencyDataWhereInput>
     jobOffers?: JobOffersListRelationFilter
@@ -19556,7 +19599,9 @@ export namespace Prisma {
     phone?: SortOrder
     fax?: SortOrderInput | SortOrder
     location?: SortOrder
+    region?: SortOrder
     logo?: SortOrderInput | SortOrder
+    about_branch?: SortOrderInput | SortOrder
     adId?: SortOrder
     _count?: BranchCountOrderByAggregateInput
     _max?: BranchMaxOrderByAggregateInput
@@ -19573,7 +19618,9 @@ export namespace Prisma {
     phone?: StringWithAggregatesFilter<"Branch"> | string
     fax?: StringNullableWithAggregatesFilter<"Branch"> | string | null
     location?: StringWithAggregatesFilter<"Branch"> | string
+    region?: StringWithAggregatesFilter<"Branch"> | string
     logo?: StringNullableWithAggregatesFilter<"Branch"> | string | null
+    about_branch?: StringNullableWithAggregatesFilter<"Branch"> | string | null
     adId?: StringWithAggregatesFilter<"Branch"> | string
   }
 
@@ -19588,6 +19635,7 @@ export namespace Prisma {
     region?: StringFilter<"jobOffers"> | string
     province?: StringFilter<"jobOffers"> | string
     location?: StringFilter<"jobOffers"> | string
+    reallyUpTo?: DateTimeNullableFilter<"jobOffers"> | Date | string | null
     createdAt?: DateTimeFilter<"jobOffers"> | Date | string
     updatedAt?: DateTimeFilter<"jobOffers"> | Date | string
     isValidate?: BoolFilter<"jobOffers"> | boolean
@@ -19609,6 +19657,7 @@ export namespace Prisma {
     region?: SortOrder
     province?: SortOrder
     location?: SortOrder
+    reallyUpTo?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     isValidate?: SortOrder
@@ -19633,6 +19682,7 @@ export namespace Prisma {
     region?: StringFilter<"jobOffers"> | string
     province?: StringFilter<"jobOffers"> | string
     location?: StringFilter<"jobOffers"> | string
+    reallyUpTo?: DateTimeNullableFilter<"jobOffers"> | Date | string | null
     createdAt?: DateTimeFilter<"jobOffers"> | Date | string
     updatedAt?: DateTimeFilter<"jobOffers"> | Date | string
     isValidate?: BoolFilter<"jobOffers"> | boolean
@@ -19654,6 +19704,7 @@ export namespace Prisma {
     region?: SortOrder
     province?: SortOrder
     location?: SortOrder
+    reallyUpTo?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     isValidate?: SortOrder
@@ -19678,6 +19729,7 @@ export namespace Prisma {
     region?: StringWithAggregatesFilter<"jobOffers"> | string
     province?: StringWithAggregatesFilter<"jobOffers"> | string
     location?: StringWithAggregatesFilter<"jobOffers"> | string
+    reallyUpTo?: DateTimeNullableWithAggregatesFilter<"jobOffers"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"jobOffers"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"jobOffers"> | Date | string
     isValidate?: BoolWithAggregatesFilter<"jobOffers"> | boolean
@@ -20683,7 +20735,9 @@ export namespace Prisma {
     phone: string
     fax?: string | null
     location: string
+    region: string
     logo?: string | null
+    about_branch?: string | null
     agency: AgencyDataCreateNestedOneWithoutBranchInput
     jobOffers?: jobOffersCreateNestedManyWithoutBranchInput
   }
@@ -20695,7 +20749,9 @@ export namespace Prisma {
     phone: string
     fax?: string | null
     location: string
+    region: string
     logo?: string | null
+    about_branch?: string | null
     adId: string
     jobOffers?: jobOffersUncheckedCreateNestedManyWithoutBranchInput
   }
@@ -20707,7 +20763,9 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
     location?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    about_branch?: NullableStringFieldUpdateOperationsInput | string | null
     agency?: AgencyDataUpdateOneRequiredWithoutBranchNestedInput
     jobOffers?: jobOffersUpdateManyWithoutBranchNestedInput
   }
@@ -20719,7 +20777,9 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
     location?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    about_branch?: NullableStringFieldUpdateOperationsInput | string | null
     adId?: StringFieldUpdateOperationsInput | string
     jobOffers?: jobOffersUncheckedUpdateManyWithoutBranchNestedInput
   }
@@ -20731,7 +20791,9 @@ export namespace Prisma {
     phone: string
     fax?: string | null
     location: string
+    region: string
     logo?: string | null
+    about_branch?: string | null
     adId: string
   }
 
@@ -20742,7 +20804,9 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
     location?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    about_branch?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type BranchUncheckedUpdateManyInput = {
@@ -20752,7 +20816,9 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
     location?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    about_branch?: NullableStringFieldUpdateOperationsInput | string | null
     adId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -20764,6 +20830,7 @@ export namespace Prisma {
     region: string
     province: string
     location: string
+    reallyUpTo?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isValidate?: boolean
@@ -20783,6 +20850,7 @@ export namespace Prisma {
     region: string
     province: string
     location: string
+    reallyUpTo?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isValidate?: boolean
@@ -20802,6 +20870,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -20821,6 +20890,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -20840,6 +20910,7 @@ export namespace Prisma {
     region: string
     province: string
     location: string
+    reallyUpTo?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isValidate?: boolean
@@ -20856,6 +20927,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -20870,6 +20942,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -21797,7 +21870,9 @@ export namespace Prisma {
     phone?: SortOrder
     fax?: SortOrder
     location?: SortOrder
+    region?: SortOrder
     logo?: SortOrder
+    about_branch?: SortOrder
     adId?: SortOrder
   }
 
@@ -21808,7 +21883,9 @@ export namespace Prisma {
     phone?: SortOrder
     fax?: SortOrder
     location?: SortOrder
+    region?: SortOrder
     logo?: SortOrder
+    about_branch?: SortOrder
     adId?: SortOrder
   }
 
@@ -21819,8 +21896,21 @@ export namespace Prisma {
     phone?: SortOrder
     fax?: SortOrder
     location?: SortOrder
+    region?: SortOrder
     logo?: SortOrder
+    about_branch?: SortOrder
     adId?: SortOrder
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -21877,6 +21967,7 @@ export namespace Prisma {
     region?: SortOrder
     province?: SortOrder
     location?: SortOrder
+    reallyUpTo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     isValidate?: SortOrder
@@ -21897,6 +21988,7 @@ export namespace Prisma {
     region?: SortOrder
     province?: SortOrder
     location?: SortOrder
+    reallyUpTo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     isValidate?: SortOrder
@@ -21913,6 +22005,7 @@ export namespace Prisma {
     region?: SortOrder
     province?: SortOrder
     location?: SortOrder
+    reallyUpTo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     isValidate?: SortOrder
@@ -21923,6 +22016,20 @@ export namespace Prisma {
 
   export type jobOffersSumOrderByAggregateInput = {
     views?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -22848,6 +22955,10 @@ export namespace Prisma {
     connect?: jobTagsWhereUniqueInput | jobTagsWhereUniqueInput[]
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -23413,6 +23524,31 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumLanguageLevelFilter<$PrismaModel>
     _max?: NestedEnumLanguageLevelFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -24702,7 +24838,9 @@ export namespace Prisma {
     phone: string
     fax?: string | null
     location: string
+    region: string
     logo?: string | null
+    about_branch?: string | null
     jobOffers?: jobOffersCreateNestedManyWithoutBranchInput
   }
 
@@ -24713,7 +24851,9 @@ export namespace Prisma {
     phone: string
     fax?: string | null
     location: string
+    region: string
     logo?: string | null
+    about_branch?: string | null
     jobOffers?: jobOffersUncheckedCreateNestedManyWithoutBranchInput
   }
 
@@ -24735,6 +24875,7 @@ export namespace Prisma {
     region: string
     province: string
     location: string
+    reallyUpTo?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isValidate?: boolean
@@ -24753,6 +24894,7 @@ export namespace Prisma {
     region: string
     province: string
     location: string
+    reallyUpTo?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isValidate?: boolean
@@ -24838,7 +24980,9 @@ export namespace Prisma {
     phone?: StringFilter<"Branch"> | string
     fax?: StringNullableFilter<"Branch"> | string | null
     location?: StringFilter<"Branch"> | string
+    region?: StringFilter<"Branch"> | string
     logo?: StringNullableFilter<"Branch"> | string | null
+    about_branch?: StringNullableFilter<"Branch"> | string | null
     adId?: StringFilter<"Branch"> | string
   }
 
@@ -24869,6 +25013,7 @@ export namespace Prisma {
     region?: StringFilter<"jobOffers"> | string
     province?: StringFilter<"jobOffers"> | string
     location?: StringFilter<"jobOffers"> | string
+    reallyUpTo?: DateTimeNullableFilter<"jobOffers"> | Date | string | null
     createdAt?: DateTimeFilter<"jobOffers"> | Date | string
     updatedAt?: DateTimeFilter<"jobOffers"> | Date | string
     isValidate?: BoolFilter<"jobOffers"> | boolean
@@ -24920,6 +25065,7 @@ export namespace Prisma {
     region: string
     province: string
     location: string
+    reallyUpTo?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isValidate?: boolean
@@ -24938,6 +25084,7 @@ export namespace Prisma {
     region: string
     province: string
     location: string
+    reallyUpTo?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isValidate?: boolean
@@ -25120,7 +25267,9 @@ export namespace Prisma {
     phone: string
     fax?: string | null
     location: string
+    region: string
     logo?: string | null
+    about_branch?: string | null
     agency: AgencyDataCreateNestedOneWithoutBranchInput
   }
 
@@ -25131,7 +25280,9 @@ export namespace Prisma {
     phone: string
     fax?: string | null
     location: string
+    region: string
     logo?: string | null
+    about_branch?: string | null
     adId: string
   }
 
@@ -25278,7 +25429,9 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
     location?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    about_branch?: NullableStringFieldUpdateOperationsInput | string | null
     agency?: AgencyDataUpdateOneRequiredWithoutBranchNestedInput
   }
 
@@ -25289,7 +25442,9 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
     location?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    about_branch?: NullableStringFieldUpdateOperationsInput | string | null
     adId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -25301,6 +25456,7 @@ export namespace Prisma {
     region: string
     province: string
     location: string
+    reallyUpTo?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isValidate?: boolean
@@ -25319,6 +25475,7 @@ export namespace Prisma {
     region: string
     province: string
     location: string
+    reallyUpTo?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isValidate?: boolean
@@ -25382,6 +25539,7 @@ export namespace Prisma {
     region: string
     province: string
     location: string
+    reallyUpTo?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isValidate?: boolean
@@ -25400,6 +25558,7 @@ export namespace Prisma {
     region: string
     province: string
     location: string
+    reallyUpTo?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isValidate?: boolean
@@ -25563,6 +25722,7 @@ export namespace Prisma {
     region: string
     province: string
     location: string
+    reallyUpTo?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isValidate?: boolean
@@ -25581,6 +25741,7 @@ export namespace Prisma {
     region: string
     province: string
     location: string
+    reallyUpTo?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isValidate?: boolean
@@ -25983,7 +26144,9 @@ export namespace Prisma {
     phone: string
     fax?: string | null
     location: string
+    region: string
     logo?: string | null
+    about_branch?: string | null
   }
 
   export type jobOffersCreateManyAgencyInput = {
@@ -25994,6 +26157,7 @@ export namespace Prisma {
     region: string
     province: string
     location: string
+    reallyUpTo?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isValidate?: boolean
@@ -26008,7 +26172,9 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
     location?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    about_branch?: NullableStringFieldUpdateOperationsInput | string | null
     jobOffers?: jobOffersUpdateManyWithoutBranchNestedInput
   }
 
@@ -26019,7 +26185,9 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
     location?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    about_branch?: NullableStringFieldUpdateOperationsInput | string | null
     jobOffers?: jobOffersUncheckedUpdateManyWithoutBranchNestedInput
   }
 
@@ -26030,7 +26198,9 @@ export namespace Prisma {
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
     location?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
+    about_branch?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type jobOffersUpdateWithoutAgencyInput = {
@@ -26041,6 +26211,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -26059,6 +26230,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -26077,6 +26249,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -26092,6 +26265,7 @@ export namespace Prisma {
     region: string
     province: string
     location: string
+    reallyUpTo?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     isValidate?: boolean
@@ -26107,6 +26281,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -26125,6 +26300,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -26143,6 +26319,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -26228,6 +26405,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -26246,6 +26424,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -26264,6 +26443,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -26314,6 +26494,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -26332,6 +26513,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -26350,6 +26532,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -26396,6 +26579,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -26414,6 +26598,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
@@ -26432,6 +26617,7 @@ export namespace Prisma {
     region?: StringFieldUpdateOperationsInput | string
     province?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean

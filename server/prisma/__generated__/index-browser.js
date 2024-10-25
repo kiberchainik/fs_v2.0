@@ -6,8 +6,7 @@ const {
   objectEnumValues,
   makeStrictEnum,
   Public,
-  getRuntime,
-  skip
+  getRuntime
 } = require('./runtime/index-browser.js')
 
 
@@ -17,11 +16,11 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.21.1
+ * Prisma Client JS version: 5.19.1
  * Query Engine version: bf0e5e8a04cada8225617067eaa03d041e2bba36
  */
 Prisma.prismaVersion = {
-  client: "5.21.1",
+  client: "5.19.1",
   engine: "bf0e5e8a04cada8225617067eaa03d041e2bba36"
 }
 
@@ -108,8 +107,6 @@ Prisma.NullTypes = {
   JsonNull: objectEnumValues.classes.JsonNull,
   AnyNull: objectEnumValues.classes.AnyNull
 }
-
-
 
 /**
  * Enums
@@ -222,7 +219,9 @@ exports.Prisma.BranchScalarFieldEnum = {
   phone: 'phone',
   fax: 'fax',
   location: 'location',
+  region: 'region',
   logo: 'logo',
+  about_branch: 'about_branch',
   adId: 'adId'
 };
 
@@ -234,6 +233,7 @@ exports.Prisma.JobOffersScalarFieldEnum = {
   region: 'region',
   province: 'province',
   location: 'location',
+  reallyUpTo: 'reallyUpTo',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   isValidate: 'isValidate',
