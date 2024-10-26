@@ -1,9 +1,23 @@
-import { LastVacancies } from "@/features/agency/vacancy/component/vacancy/LastVacancies";
+import { Branch } from "@/features/agency/branch/component/branchTable/Branch";
+import { Vacancies } from "@/features/agency/vacancy/component/vacancyTable/Vacancies";
+import { Card } from "@/shared/components";
+import { NO_INDEX_PAGE } from "@/shared/constants/seo.constants";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: 'Agency dashboard',
+	...NO_INDEX_PAGE
+}
 
 export default function ContactsPage() {
     return (
-      <div className='flex gap-x-3'>
-        <LastVacancies />
+      <div className='flex flex-col gap-x-3 justify-center mt-5'>
+        <Card>
+          <Branch />
+        </Card>
+        <Card className="mt-5">
+          <Vacancies />
+        </Card>
       </div>
     );
 }

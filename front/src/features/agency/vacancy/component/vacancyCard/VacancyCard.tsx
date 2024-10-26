@@ -7,7 +7,7 @@ import Link from "next/link";
 import styles from './listvacancy.module.scss'
 import { VacancyCardAuthorInfo } from "./VCAuthorInfo";
 
-export function VItem ({id, title, slug, description, agency, branch, categories, createdAt, reallyUpTo, views}:IVacanciaesList) {
+export function VacancyCard ({id, title, slug, description, agency, branch, categories, createdAt, reallyUpTo, views}:IVacanciaesList) {
     return (
         <Card className='max-w-96'>
             <CardHeader>

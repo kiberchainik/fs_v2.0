@@ -7,12 +7,12 @@ export const AGENCY_URL = {
     editProfile: () => AGENCY_URL.root('/profile/edit'),
 
     vacancies: () => AGENCY_URL.root('/vacancies'),
-    createOffers: () => AGENCY_URL.root('/joboffers'),
+    createOffers: () => AGENCY_URL.root('/create-vacancy'),
     editOffers: (id = '') => AGENCY_URL.root(`/joboffers/${id}`),
     deleteOffers: (id = '') => AGENCY_URL.root(`/joboffers/${id}`),
 
     branches: () => AGENCY_URL.root('/branch'),
-    createBranch: () => AGENCY_URL.root('/branch'),
+    createBranch: () => AGENCY_URL.root('/add-branch'),
     editBranch: (id = '') => AGENCY_URL.root(`/branch/${id}`),
     deleteBranch: (id = '') => AGENCY_URL.root(`/branch/${id}`),
 }

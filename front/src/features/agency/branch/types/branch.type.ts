@@ -11,3 +11,4 @@ export interface IBranch {
 }
 
 export type IBItem = Pick<IBranch, 'id' | 'name'>
+export type IBranchTable = Pick<IBranch, 'name' | 'id' | 'location' | 'email' | 'phone'>

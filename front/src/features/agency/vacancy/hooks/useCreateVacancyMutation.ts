@@ -3,6 +3,7 @@ import { toast } from "sonner";
 import { vacancyService } from "../services/vacancy.service";
 import { toastMessageHandler } from "@/shared/utils";
 import { IVacanciaes } from "../types";
+import { useMemo } from "react";
 
 export function useCreateVacancyMutation () {
     const {mutate: createJob, isPending, isSuccess} = useMutation({
@@ -16,5 +17,11 @@ export function useCreateVacancyMutation () {
         }
     })
 
-    return {createJob, isPending, isSuccess}
+    return useMemo(
+        () => ({
+            createJob,
+            isPending,
+            isSuccess
+        }),
+        [createJob, isPending, isSuccess])
 }
