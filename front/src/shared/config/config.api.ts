@@ -17,6 +17,7 @@ export const API_URL = {
 
     jobOffersList: () => API_URL.root(`/joboffers`),
     jobCreateNew: () => API_URL.root('/joboffers'),
+    options: (option: string) => API_URL.root(`/${option}`),
     branch: (url = '') => API_URL.root(`/branch${url}`),
     category: (id:string = '') => API_URL.root(`/category${id}`)
 }

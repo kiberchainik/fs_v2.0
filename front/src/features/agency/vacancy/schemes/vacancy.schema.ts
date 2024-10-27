@@ -33,7 +33,17 @@ export const VacancySchema = z.object({
 
     branchId: z.string().optional(),
 
-    tags: z.string().optional()
+    tags: z.string().optional(),
+
+    contractTypeId: z.string().optional(),
+
+    experienceMinimalId: z.string().optional(),
+
+    levelEducationId: z.string().optional(),
+
+    modeJobId: z.string().optional(),
+
+    workingTimeId: z.string().optional()
 })
 
 export type TypeVacancySchema = z.infer<typeof VacancySchema>

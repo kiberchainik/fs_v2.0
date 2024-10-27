@@ -69,6 +69,31 @@ export type Branch = $Result.DefaultSelection<Prisma.$BranchPayload>
  */
 export type jobOffers = $Result.DefaultSelection<Prisma.$jobOffersPayload>
 /**
+ * Model ContractTypeJob
+ * 
+ */
+export type ContractTypeJob = $Result.DefaultSelection<Prisma.$ContractTypeJobPayload>
+/**
+ * Model ExperienceMinimalJob
+ * 
+ */
+export type ExperienceMinimalJob = $Result.DefaultSelection<Prisma.$ExperienceMinimalJobPayload>
+/**
+ * Model ModeJob
+ * 
+ */
+export type ModeJob = $Result.DefaultSelection<Prisma.$ModeJobPayload>
+/**
+ * Model WorkingTimeJob
+ * 
+ */
+export type WorkingTimeJob = $Result.DefaultSelection<Prisma.$WorkingTimeJobPayload>
+/**
+ * Model LevelEducation
+ * 
+ */
+export type LevelEducation = $Result.DefaultSelection<Prisma.$LevelEducationPayload>
+/**
  * Model jobTags
  * 
  */
@@ -420,6 +445,56 @@ export class PrismaClient<
     * ```
     */
   get jobOffers(): Prisma.jobOffersDelegate<ExtArgs>;
+
+  /**
+   * `prisma.contractTypeJob`: Exposes CRUD operations for the **ContractTypeJob** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ContractTypeJobs
+    * const contractTypeJobs = await prisma.contractTypeJob.findMany()
+    * ```
+    */
+  get contractTypeJob(): Prisma.ContractTypeJobDelegate<ExtArgs>;
+
+  /**
+   * `prisma.experienceMinimalJob`: Exposes CRUD operations for the **ExperienceMinimalJob** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ExperienceMinimalJobs
+    * const experienceMinimalJobs = await prisma.experienceMinimalJob.findMany()
+    * ```
+    */
+  get experienceMinimalJob(): Prisma.ExperienceMinimalJobDelegate<ExtArgs>;
+
+  /**
+   * `prisma.modeJob`: Exposes CRUD operations for the **ModeJob** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ModeJobs
+    * const modeJobs = await prisma.modeJob.findMany()
+    * ```
+    */
+  get modeJob(): Prisma.ModeJobDelegate<ExtArgs>;
+
+  /**
+   * `prisma.workingTimeJob`: Exposes CRUD operations for the **WorkingTimeJob** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WorkingTimeJobs
+    * const workingTimeJobs = await prisma.workingTimeJob.findMany()
+    * ```
+    */
+  get workingTimeJob(): Prisma.WorkingTimeJobDelegate<ExtArgs>;
+
+  /**
+   * `prisma.levelEducation`: Exposes CRUD operations for the **LevelEducation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more LevelEducations
+    * const levelEducations = await prisma.levelEducation.findMany()
+    * ```
+    */
+  get levelEducation(): Prisma.LevelEducationDelegate<ExtArgs>;
 
   /**
    * `prisma.jobTags`: Exposes CRUD operations for the **jobTags** model.
@@ -920,6 +995,11 @@ export namespace Prisma {
     AgencyData: 'AgencyData',
     Branch: 'Branch',
     jobOffers: 'jobOffers',
+    ContractTypeJob: 'ContractTypeJob',
+    ExperienceMinimalJob: 'ExperienceMinimalJob',
+    ModeJob: 'ModeJob',
+    WorkingTimeJob: 'WorkingTimeJob',
+    LevelEducation: 'LevelEducation',
     jobTags: 'jobTags',
     Category: 'Category',
     Sectors: 'Sectors',
@@ -940,7 +1020,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "candidatData" | "education" | "skills" | "experience" | "languages" | "courses" | "hobbies" | "agencyData" | "branch" | "jobOffers" | "jobTags" | "category" | "sectors" | "authAccount" | "tokens"
+      modelProps: "user" | "candidatData" | "education" | "skills" | "experience" | "languages" | "courses" | "hobbies" | "agencyData" | "branch" | "jobOffers" | "contractTypeJob" | "experienceMinimalJob" | "modeJob" | "workingTimeJob" | "levelEducation" | "jobTags" | "category" | "sectors" | "authAccount" | "tokens"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1714,6 +1794,356 @@ export namespace Prisma {
           }
         }
       }
+      ContractTypeJob: {
+        payload: Prisma.$ContractTypeJobPayload<ExtArgs>
+        fields: Prisma.ContractTypeJobFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ContractTypeJobFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContractTypeJobPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ContractTypeJobFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContractTypeJobPayload>
+          }
+          findFirst: {
+            args: Prisma.ContractTypeJobFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContractTypeJobPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ContractTypeJobFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContractTypeJobPayload>
+          }
+          findMany: {
+            args: Prisma.ContractTypeJobFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContractTypeJobPayload>[]
+          }
+          create: {
+            args: Prisma.ContractTypeJobCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContractTypeJobPayload>
+          }
+          createMany: {
+            args: Prisma.ContractTypeJobCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ContractTypeJobCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContractTypeJobPayload>[]
+          }
+          delete: {
+            args: Prisma.ContractTypeJobDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContractTypeJobPayload>
+          }
+          update: {
+            args: Prisma.ContractTypeJobUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContractTypeJobPayload>
+          }
+          deleteMany: {
+            args: Prisma.ContractTypeJobDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ContractTypeJobUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ContractTypeJobUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContractTypeJobPayload>
+          }
+          aggregate: {
+            args: Prisma.ContractTypeJobAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateContractTypeJob>
+          }
+          groupBy: {
+            args: Prisma.ContractTypeJobGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ContractTypeJobGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ContractTypeJobCountArgs<ExtArgs>
+            result: $Utils.Optional<ContractTypeJobCountAggregateOutputType> | number
+          }
+        }
+      }
+      ExperienceMinimalJob: {
+        payload: Prisma.$ExperienceMinimalJobPayload<ExtArgs>
+        fields: Prisma.ExperienceMinimalJobFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ExperienceMinimalJobFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExperienceMinimalJobPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ExperienceMinimalJobFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExperienceMinimalJobPayload>
+          }
+          findFirst: {
+            args: Prisma.ExperienceMinimalJobFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExperienceMinimalJobPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ExperienceMinimalJobFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExperienceMinimalJobPayload>
+          }
+          findMany: {
+            args: Prisma.ExperienceMinimalJobFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExperienceMinimalJobPayload>[]
+          }
+          create: {
+            args: Prisma.ExperienceMinimalJobCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExperienceMinimalJobPayload>
+          }
+          createMany: {
+            args: Prisma.ExperienceMinimalJobCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ExperienceMinimalJobCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExperienceMinimalJobPayload>[]
+          }
+          delete: {
+            args: Prisma.ExperienceMinimalJobDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExperienceMinimalJobPayload>
+          }
+          update: {
+            args: Prisma.ExperienceMinimalJobUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExperienceMinimalJobPayload>
+          }
+          deleteMany: {
+            args: Prisma.ExperienceMinimalJobDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ExperienceMinimalJobUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ExperienceMinimalJobUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExperienceMinimalJobPayload>
+          }
+          aggregate: {
+            args: Prisma.ExperienceMinimalJobAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateExperienceMinimalJob>
+          }
+          groupBy: {
+            args: Prisma.ExperienceMinimalJobGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ExperienceMinimalJobGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ExperienceMinimalJobCountArgs<ExtArgs>
+            result: $Utils.Optional<ExperienceMinimalJobCountAggregateOutputType> | number
+          }
+        }
+      }
+      ModeJob: {
+        payload: Prisma.$ModeJobPayload<ExtArgs>
+        fields: Prisma.ModeJobFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ModeJobFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModeJobPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ModeJobFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModeJobPayload>
+          }
+          findFirst: {
+            args: Prisma.ModeJobFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModeJobPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ModeJobFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModeJobPayload>
+          }
+          findMany: {
+            args: Prisma.ModeJobFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModeJobPayload>[]
+          }
+          create: {
+            args: Prisma.ModeJobCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModeJobPayload>
+          }
+          createMany: {
+            args: Prisma.ModeJobCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ModeJobCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModeJobPayload>[]
+          }
+          delete: {
+            args: Prisma.ModeJobDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModeJobPayload>
+          }
+          update: {
+            args: Prisma.ModeJobUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModeJobPayload>
+          }
+          deleteMany: {
+            args: Prisma.ModeJobDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ModeJobUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ModeJobUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ModeJobPayload>
+          }
+          aggregate: {
+            args: Prisma.ModeJobAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateModeJob>
+          }
+          groupBy: {
+            args: Prisma.ModeJobGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ModeJobGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ModeJobCountArgs<ExtArgs>
+            result: $Utils.Optional<ModeJobCountAggregateOutputType> | number
+          }
+        }
+      }
+      WorkingTimeJob: {
+        payload: Prisma.$WorkingTimeJobPayload<ExtArgs>
+        fields: Prisma.WorkingTimeJobFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WorkingTimeJobFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkingTimeJobPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WorkingTimeJobFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkingTimeJobPayload>
+          }
+          findFirst: {
+            args: Prisma.WorkingTimeJobFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkingTimeJobPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WorkingTimeJobFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkingTimeJobPayload>
+          }
+          findMany: {
+            args: Prisma.WorkingTimeJobFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkingTimeJobPayload>[]
+          }
+          create: {
+            args: Prisma.WorkingTimeJobCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkingTimeJobPayload>
+          }
+          createMany: {
+            args: Prisma.WorkingTimeJobCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WorkingTimeJobCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkingTimeJobPayload>[]
+          }
+          delete: {
+            args: Prisma.WorkingTimeJobDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkingTimeJobPayload>
+          }
+          update: {
+            args: Prisma.WorkingTimeJobUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkingTimeJobPayload>
+          }
+          deleteMany: {
+            args: Prisma.WorkingTimeJobDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WorkingTimeJobUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.WorkingTimeJobUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WorkingTimeJobPayload>
+          }
+          aggregate: {
+            args: Prisma.WorkingTimeJobAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWorkingTimeJob>
+          }
+          groupBy: {
+            args: Prisma.WorkingTimeJobGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WorkingTimeJobGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WorkingTimeJobCountArgs<ExtArgs>
+            result: $Utils.Optional<WorkingTimeJobCountAggregateOutputType> | number
+          }
+        }
+      }
+      LevelEducation: {
+        payload: Prisma.$LevelEducationPayload<ExtArgs>
+        fields: Prisma.LevelEducationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LevelEducationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LevelEducationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LevelEducationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LevelEducationPayload>
+          }
+          findFirst: {
+            args: Prisma.LevelEducationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LevelEducationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LevelEducationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LevelEducationPayload>
+          }
+          findMany: {
+            args: Prisma.LevelEducationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LevelEducationPayload>[]
+          }
+          create: {
+            args: Prisma.LevelEducationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LevelEducationPayload>
+          }
+          createMany: {
+            args: Prisma.LevelEducationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LevelEducationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LevelEducationPayload>[]
+          }
+          delete: {
+            args: Prisma.LevelEducationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LevelEducationPayload>
+          }
+          update: {
+            args: Prisma.LevelEducationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LevelEducationPayload>
+          }
+          deleteMany: {
+            args: Prisma.LevelEducationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LevelEducationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.LevelEducationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LevelEducationPayload>
+          }
+          aggregate: {
+            args: Prisma.LevelEducationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLevelEducation>
+          }
+          groupBy: {
+            args: Prisma.LevelEducationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LevelEducationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LevelEducationCountArgs<ExtArgs>
+            result: $Utils.Optional<LevelEducationCountAggregateOutputType> | number
+          }
+        }
+      }
       jobTags: {
         payload: Prisma.$jobTagsPayload<ExtArgs>
         fields: Prisma.jobTagsFieldRefs
@@ -2444,6 +2874,161 @@ export namespace Prisma {
    */
   export type JobOffersCountOutputTypeCountTagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: jobTagsWhereInput
+  }
+
+
+  /**
+   * Count Type ContractTypeJobCountOutputType
+   */
+
+  export type ContractTypeJobCountOutputType = {
+    jobOffers: number
+  }
+
+  export type ContractTypeJobCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    jobOffers?: boolean | ContractTypeJobCountOutputTypeCountJobOffersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ContractTypeJobCountOutputType without action
+   */
+  export type ContractTypeJobCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContractTypeJobCountOutputType
+     */
+    select?: ContractTypeJobCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ContractTypeJobCountOutputType without action
+   */
+  export type ContractTypeJobCountOutputTypeCountJobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: jobOffersWhereInput
+  }
+
+
+  /**
+   * Count Type ExperienceMinimalJobCountOutputType
+   */
+
+  export type ExperienceMinimalJobCountOutputType = {
+    jobOffers: number
+  }
+
+  export type ExperienceMinimalJobCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    jobOffers?: boolean | ExperienceMinimalJobCountOutputTypeCountJobOffersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ExperienceMinimalJobCountOutputType without action
+   */
+  export type ExperienceMinimalJobCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExperienceMinimalJobCountOutputType
+     */
+    select?: ExperienceMinimalJobCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ExperienceMinimalJobCountOutputType without action
+   */
+  export type ExperienceMinimalJobCountOutputTypeCountJobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: jobOffersWhereInput
+  }
+
+
+  /**
+   * Count Type ModeJobCountOutputType
+   */
+
+  export type ModeJobCountOutputType = {
+    jobOffers: number
+  }
+
+  export type ModeJobCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    jobOffers?: boolean | ModeJobCountOutputTypeCountJobOffersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ModeJobCountOutputType without action
+   */
+  export type ModeJobCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModeJobCountOutputType
+     */
+    select?: ModeJobCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ModeJobCountOutputType without action
+   */
+  export type ModeJobCountOutputTypeCountJobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: jobOffersWhereInput
+  }
+
+
+  /**
+   * Count Type WorkingTimeJobCountOutputType
+   */
+
+  export type WorkingTimeJobCountOutputType = {
+    jobOffers: number
+  }
+
+  export type WorkingTimeJobCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    jobOffers?: boolean | WorkingTimeJobCountOutputTypeCountJobOffersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * WorkingTimeJobCountOutputType without action
+   */
+  export type WorkingTimeJobCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WorkingTimeJobCountOutputType
+     */
+    select?: WorkingTimeJobCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * WorkingTimeJobCountOutputType without action
+   */
+  export type WorkingTimeJobCountOutputTypeCountJobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: jobOffersWhereInput
+  }
+
+
+  /**
+   * Count Type LevelEducationCountOutputType
+   */
+
+  export type LevelEducationCountOutputType = {
+    jobOffers: number
+  }
+
+  export type LevelEducationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    jobOffers?: boolean | LevelEducationCountOutputTypeCountJobOffersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * LevelEducationCountOutputType without action
+   */
+  export type LevelEducationCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LevelEducationCountOutputType
+     */
+    select?: LevelEducationCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * LevelEducationCountOutputType without action
+   */
+  export type LevelEducationCountOutputTypeCountJobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: jobOffersWhereInput
   }
 
 
@@ -12508,6 +13093,11 @@ export namespace Prisma {
     updatedAt: Date | null
     isValidate: boolean | null
     views: number | null
+    contratId: string | null
+    experienceId: string | null
+    modeId: string | null
+    workingTimeId: string | null
+    levelId: string | null
     agencyId: string | null
     branchId: string | null
   }
@@ -12525,6 +13115,11 @@ export namespace Prisma {
     updatedAt: Date | null
     isValidate: boolean | null
     views: number | null
+    contratId: string | null
+    experienceId: string | null
+    modeId: string | null
+    workingTimeId: string | null
+    levelId: string | null
     agencyId: string | null
     branchId: string | null
   }
@@ -12542,6 +13137,11 @@ export namespace Prisma {
     updatedAt: number
     isValidate: number
     views: number
+    contratId: number
+    experienceId: number
+    modeId: number
+    workingTimeId: number
+    levelId: number
     agencyId: number
     branchId: number
     _all: number
@@ -12569,6 +13169,11 @@ export namespace Prisma {
     updatedAt?: true
     isValidate?: true
     views?: true
+    contratId?: true
+    experienceId?: true
+    modeId?: true
+    workingTimeId?: true
+    levelId?: true
     agencyId?: true
     branchId?: true
   }
@@ -12586,6 +13191,11 @@ export namespace Prisma {
     updatedAt?: true
     isValidate?: true
     views?: true
+    contratId?: true
+    experienceId?: true
+    modeId?: true
+    workingTimeId?: true
+    levelId?: true
     agencyId?: true
     branchId?: true
   }
@@ -12603,6 +13213,11 @@ export namespace Prisma {
     updatedAt?: true
     isValidate?: true
     views?: true
+    contratId?: true
+    experienceId?: true
+    modeId?: true
+    workingTimeId?: true
+    levelId?: true
     agencyId?: true
     branchId?: true
     _all?: true
@@ -12707,6 +13322,11 @@ export namespace Prisma {
     updatedAt: Date
     isValidate: boolean
     views: number
+    contratId: string | null
+    experienceId: string | null
+    modeId: string | null
+    workingTimeId: string | null
+    levelId: string | null
     agencyId: string
     branchId: string | null
     _count: JobOffersCountAggregateOutputType | null
@@ -12743,11 +13363,21 @@ export namespace Prisma {
     updatedAt?: boolean
     isValidate?: boolean
     views?: boolean
+    contratId?: boolean
+    experienceId?: boolean
+    modeId?: boolean
+    workingTimeId?: boolean
+    levelId?: boolean
     agencyId?: boolean
     branchId?: boolean
     categories?: boolean | jobOffers$categoriesArgs<ExtArgs>
     sectors?: boolean | jobOffers$sectorsArgs<ExtArgs>
     tags?: boolean | jobOffers$tagsArgs<ExtArgs>
+    contractType?: boolean | jobOffers$contractTypeArgs<ExtArgs>
+    experienceMinimalJob?: boolean | jobOffers$experienceMinimalJobArgs<ExtArgs>
+    modeJob?: boolean | jobOffers$modeJobArgs<ExtArgs>
+    workingTimeJob?: boolean | jobOffers$workingTimeJobArgs<ExtArgs>
+    levelEducation?: boolean | jobOffers$levelEducationArgs<ExtArgs>
     agency?: boolean | AgencyDataDefaultArgs<ExtArgs>
     branch?: boolean | jobOffers$branchArgs<ExtArgs>
     _count?: boolean | JobOffersCountOutputTypeDefaultArgs<ExtArgs>
@@ -12766,8 +13396,18 @@ export namespace Prisma {
     updatedAt?: boolean
     isValidate?: boolean
     views?: boolean
+    contratId?: boolean
+    experienceId?: boolean
+    modeId?: boolean
+    workingTimeId?: boolean
+    levelId?: boolean
     agencyId?: boolean
     branchId?: boolean
+    contractType?: boolean | jobOffers$contractTypeArgs<ExtArgs>
+    experienceMinimalJob?: boolean | jobOffers$experienceMinimalJobArgs<ExtArgs>
+    modeJob?: boolean | jobOffers$modeJobArgs<ExtArgs>
+    workingTimeJob?: boolean | jobOffers$workingTimeJobArgs<ExtArgs>
+    levelEducation?: boolean | jobOffers$levelEducationArgs<ExtArgs>
     agency?: boolean | AgencyDataDefaultArgs<ExtArgs>
     branch?: boolean | jobOffers$branchArgs<ExtArgs>
   }, ExtArgs["result"]["jobOffers"]>
@@ -12785,6 +13425,11 @@ export namespace Prisma {
     updatedAt?: boolean
     isValidate?: boolean
     views?: boolean
+    contratId?: boolean
+    experienceId?: boolean
+    modeId?: boolean
+    workingTimeId?: boolean
+    levelId?: boolean
     agencyId?: boolean
     branchId?: boolean
   }
@@ -12793,11 +13438,21 @@ export namespace Prisma {
     categories?: boolean | jobOffers$categoriesArgs<ExtArgs>
     sectors?: boolean | jobOffers$sectorsArgs<ExtArgs>
     tags?: boolean | jobOffers$tagsArgs<ExtArgs>
+    contractType?: boolean | jobOffers$contractTypeArgs<ExtArgs>
+    experienceMinimalJob?: boolean | jobOffers$experienceMinimalJobArgs<ExtArgs>
+    modeJob?: boolean | jobOffers$modeJobArgs<ExtArgs>
+    workingTimeJob?: boolean | jobOffers$workingTimeJobArgs<ExtArgs>
+    levelEducation?: boolean | jobOffers$levelEducationArgs<ExtArgs>
     agency?: boolean | AgencyDataDefaultArgs<ExtArgs>
     branch?: boolean | jobOffers$branchArgs<ExtArgs>
     _count?: boolean | JobOffersCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type jobOffersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    contractType?: boolean | jobOffers$contractTypeArgs<ExtArgs>
+    experienceMinimalJob?: boolean | jobOffers$experienceMinimalJobArgs<ExtArgs>
+    modeJob?: boolean | jobOffers$modeJobArgs<ExtArgs>
+    workingTimeJob?: boolean | jobOffers$workingTimeJobArgs<ExtArgs>
+    levelEducation?: boolean | jobOffers$levelEducationArgs<ExtArgs>
     agency?: boolean | AgencyDataDefaultArgs<ExtArgs>
     branch?: boolean | jobOffers$branchArgs<ExtArgs>
   }
@@ -12808,6 +13463,11 @@ export namespace Prisma {
       categories: Prisma.$CategoryPayload<ExtArgs>[]
       sectors: Prisma.$SectorsPayload<ExtArgs>[]
       tags: Prisma.$jobTagsPayload<ExtArgs>[]
+      contractType: Prisma.$ContractTypeJobPayload<ExtArgs> | null
+      experienceMinimalJob: Prisma.$ExperienceMinimalJobPayload<ExtArgs> | null
+      modeJob: Prisma.$ModeJobPayload<ExtArgs> | null
+      workingTimeJob: Prisma.$WorkingTimeJobPayload<ExtArgs> | null
+      levelEducation: Prisma.$LevelEducationPayload<ExtArgs> | null
       agency: Prisma.$AgencyDataPayload<ExtArgs>
       branch: Prisma.$BranchPayload<ExtArgs> | null
     }
@@ -12824,6 +13484,11 @@ export namespace Prisma {
       updatedAt: Date
       isValidate: boolean
       views: number
+      contratId: string | null
+      experienceId: string | null
+      modeId: string | null
+      workingTimeId: string | null
+      levelId: string | null
       agencyId: string
       branchId: string | null
     }, ExtArgs["result"]["jobOffers"]>
@@ -13193,6 +13858,11 @@ export namespace Prisma {
     categories<T extends jobOffers$categoriesArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$categoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany"> | Null>
     sectors<T extends jobOffers$sectorsArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$sectorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectorsPayload<ExtArgs>, T, "findMany"> | Null>
     tags<T extends jobOffers$tagsArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$tagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobTagsPayload<ExtArgs>, T, "findMany"> | Null>
+    contractType<T extends jobOffers$contractTypeArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$contractTypeArgs<ExtArgs>>): Prisma__ContractTypeJobClient<$Result.GetResult<Prisma.$ContractTypeJobPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    experienceMinimalJob<T extends jobOffers$experienceMinimalJobArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$experienceMinimalJobArgs<ExtArgs>>): Prisma__ExperienceMinimalJobClient<$Result.GetResult<Prisma.$ExperienceMinimalJobPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    modeJob<T extends jobOffers$modeJobArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$modeJobArgs<ExtArgs>>): Prisma__ModeJobClient<$Result.GetResult<Prisma.$ModeJobPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    workingTimeJob<T extends jobOffers$workingTimeJobArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$workingTimeJobArgs<ExtArgs>>): Prisma__WorkingTimeJobClient<$Result.GetResult<Prisma.$WorkingTimeJobPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    levelEducation<T extends jobOffers$levelEducationArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$levelEducationArgs<ExtArgs>>): Prisma__LevelEducationClient<$Result.GetResult<Prisma.$LevelEducationPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     agency<T extends AgencyDataDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AgencyDataDefaultArgs<ExtArgs>>): Prisma__AgencyDataClient<$Result.GetResult<Prisma.$AgencyDataPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     branch<T extends jobOffers$branchArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$branchArgs<ExtArgs>>): Prisma__BranchClient<$Result.GetResult<Prisma.$BranchPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     /**
@@ -13236,6 +13906,11 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"jobOffers", 'DateTime'>
     readonly isValidate: FieldRef<"jobOffers", 'Boolean'>
     readonly views: FieldRef<"jobOffers", 'Int'>
+    readonly contratId: FieldRef<"jobOffers", 'String'>
+    readonly experienceId: FieldRef<"jobOffers", 'String'>
+    readonly modeId: FieldRef<"jobOffers", 'String'>
+    readonly workingTimeId: FieldRef<"jobOffers", 'String'>
+    readonly levelId: FieldRef<"jobOffers", 'String'>
     readonly agencyId: FieldRef<"jobOffers", 'String'>
     readonly branchId: FieldRef<"jobOffers", 'String'>
   }
@@ -13616,6 +14291,81 @@ export namespace Prisma {
   }
 
   /**
+   * jobOffers.contractType
+   */
+  export type jobOffers$contractTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContractTypeJob
+     */
+    select?: ContractTypeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContractTypeJobInclude<ExtArgs> | null
+    where?: ContractTypeJobWhereInput
+  }
+
+  /**
+   * jobOffers.experienceMinimalJob
+   */
+  export type jobOffers$experienceMinimalJobArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExperienceMinimalJob
+     */
+    select?: ExperienceMinimalJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExperienceMinimalJobInclude<ExtArgs> | null
+    where?: ExperienceMinimalJobWhereInput
+  }
+
+  /**
+   * jobOffers.modeJob
+   */
+  export type jobOffers$modeJobArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModeJob
+     */
+    select?: ModeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModeJobInclude<ExtArgs> | null
+    where?: ModeJobWhereInput
+  }
+
+  /**
+   * jobOffers.workingTimeJob
+   */
+  export type jobOffers$workingTimeJobArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WorkingTimeJob
+     */
+    select?: WorkingTimeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WorkingTimeJobInclude<ExtArgs> | null
+    where?: WorkingTimeJobWhereInput
+  }
+
+  /**
+   * jobOffers.levelEducation
+   */
+  export type jobOffers$levelEducationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LevelEducation
+     */
+    select?: LevelEducationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LevelEducationInclude<ExtArgs> | null
+    where?: LevelEducationWhereInput
+  }
+
+  /**
    * jobOffers.branch
    */
   export type jobOffers$branchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -13642,6 +14392,4566 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: jobOffersInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ContractTypeJob
+   */
+
+  export type AggregateContractTypeJob = {
+    _count: ContractTypeJobCountAggregateOutputType | null
+    _min: ContractTypeJobMinAggregateOutputType | null
+    _max: ContractTypeJobMaxAggregateOutputType | null
+  }
+
+  export type ContractTypeJobMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type ContractTypeJobMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type ContractTypeJobCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type ContractTypeJobMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type ContractTypeJobMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type ContractTypeJobCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type ContractTypeJobAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ContractTypeJob to aggregate.
+     */
+    where?: ContractTypeJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContractTypeJobs to fetch.
+     */
+    orderBy?: ContractTypeJobOrderByWithRelationInput | ContractTypeJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ContractTypeJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContractTypeJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContractTypeJobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ContractTypeJobs
+    **/
+    _count?: true | ContractTypeJobCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ContractTypeJobMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ContractTypeJobMaxAggregateInputType
+  }
+
+  export type GetContractTypeJobAggregateType<T extends ContractTypeJobAggregateArgs> = {
+        [P in keyof T & keyof AggregateContractTypeJob]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateContractTypeJob[P]>
+      : GetScalarType<T[P], AggregateContractTypeJob[P]>
+  }
+
+
+
+
+  export type ContractTypeJobGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ContractTypeJobWhereInput
+    orderBy?: ContractTypeJobOrderByWithAggregationInput | ContractTypeJobOrderByWithAggregationInput[]
+    by: ContractTypeJobScalarFieldEnum[] | ContractTypeJobScalarFieldEnum
+    having?: ContractTypeJobScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ContractTypeJobCountAggregateInputType | true
+    _min?: ContractTypeJobMinAggregateInputType
+    _max?: ContractTypeJobMaxAggregateInputType
+  }
+
+  export type ContractTypeJobGroupByOutputType = {
+    id: string
+    name: string
+    _count: ContractTypeJobCountAggregateOutputType | null
+    _min: ContractTypeJobMinAggregateOutputType | null
+    _max: ContractTypeJobMaxAggregateOutputType | null
+  }
+
+  type GetContractTypeJobGroupByPayload<T extends ContractTypeJobGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ContractTypeJobGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ContractTypeJobGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ContractTypeJobGroupByOutputType[P]>
+            : GetScalarType<T[P], ContractTypeJobGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ContractTypeJobSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    jobOffers?: boolean | ContractTypeJob$jobOffersArgs<ExtArgs>
+    _count?: boolean | ContractTypeJobCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["contractTypeJob"]>
+
+  export type ContractTypeJobSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["contractTypeJob"]>
+
+  export type ContractTypeJobSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type ContractTypeJobInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    jobOffers?: boolean | ContractTypeJob$jobOffersArgs<ExtArgs>
+    _count?: boolean | ContractTypeJobCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ContractTypeJobIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ContractTypeJobPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ContractTypeJob"
+    objects: {
+      jobOffers: Prisma.$jobOffersPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+    }, ExtArgs["result"]["contractTypeJob"]>
+    composites: {}
+  }
+
+  type ContractTypeJobGetPayload<S extends boolean | null | undefined | ContractTypeJobDefaultArgs> = $Result.GetResult<Prisma.$ContractTypeJobPayload, S>
+
+  type ContractTypeJobCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ContractTypeJobFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ContractTypeJobCountAggregateInputType | true
+    }
+
+  export interface ContractTypeJobDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ContractTypeJob'], meta: { name: 'ContractTypeJob' } }
+    /**
+     * Find zero or one ContractTypeJob that matches the filter.
+     * @param {ContractTypeJobFindUniqueArgs} args - Arguments to find a ContractTypeJob
+     * @example
+     * // Get one ContractTypeJob
+     * const contractTypeJob = await prisma.contractTypeJob.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ContractTypeJobFindUniqueArgs>(args: SelectSubset<T, ContractTypeJobFindUniqueArgs<ExtArgs>>): Prisma__ContractTypeJobClient<$Result.GetResult<Prisma.$ContractTypeJobPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one ContractTypeJob that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ContractTypeJobFindUniqueOrThrowArgs} args - Arguments to find a ContractTypeJob
+     * @example
+     * // Get one ContractTypeJob
+     * const contractTypeJob = await prisma.contractTypeJob.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ContractTypeJobFindUniqueOrThrowArgs>(args: SelectSubset<T, ContractTypeJobFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ContractTypeJobClient<$Result.GetResult<Prisma.$ContractTypeJobPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first ContractTypeJob that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContractTypeJobFindFirstArgs} args - Arguments to find a ContractTypeJob
+     * @example
+     * // Get one ContractTypeJob
+     * const contractTypeJob = await prisma.contractTypeJob.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ContractTypeJobFindFirstArgs>(args?: SelectSubset<T, ContractTypeJobFindFirstArgs<ExtArgs>>): Prisma__ContractTypeJobClient<$Result.GetResult<Prisma.$ContractTypeJobPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first ContractTypeJob that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContractTypeJobFindFirstOrThrowArgs} args - Arguments to find a ContractTypeJob
+     * @example
+     * // Get one ContractTypeJob
+     * const contractTypeJob = await prisma.contractTypeJob.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ContractTypeJobFindFirstOrThrowArgs>(args?: SelectSubset<T, ContractTypeJobFindFirstOrThrowArgs<ExtArgs>>): Prisma__ContractTypeJobClient<$Result.GetResult<Prisma.$ContractTypeJobPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more ContractTypeJobs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContractTypeJobFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ContractTypeJobs
+     * const contractTypeJobs = await prisma.contractTypeJob.findMany()
+     * 
+     * // Get first 10 ContractTypeJobs
+     * const contractTypeJobs = await prisma.contractTypeJob.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const contractTypeJobWithIdOnly = await prisma.contractTypeJob.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ContractTypeJobFindManyArgs>(args?: SelectSubset<T, ContractTypeJobFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContractTypeJobPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a ContractTypeJob.
+     * @param {ContractTypeJobCreateArgs} args - Arguments to create a ContractTypeJob.
+     * @example
+     * // Create one ContractTypeJob
+     * const ContractTypeJob = await prisma.contractTypeJob.create({
+     *   data: {
+     *     // ... data to create a ContractTypeJob
+     *   }
+     * })
+     * 
+     */
+    create<T extends ContractTypeJobCreateArgs>(args: SelectSubset<T, ContractTypeJobCreateArgs<ExtArgs>>): Prisma__ContractTypeJobClient<$Result.GetResult<Prisma.$ContractTypeJobPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many ContractTypeJobs.
+     * @param {ContractTypeJobCreateManyArgs} args - Arguments to create many ContractTypeJobs.
+     * @example
+     * // Create many ContractTypeJobs
+     * const contractTypeJob = await prisma.contractTypeJob.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ContractTypeJobCreateManyArgs>(args?: SelectSubset<T, ContractTypeJobCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ContractTypeJobs and returns the data saved in the database.
+     * @param {ContractTypeJobCreateManyAndReturnArgs} args - Arguments to create many ContractTypeJobs.
+     * @example
+     * // Create many ContractTypeJobs
+     * const contractTypeJob = await prisma.contractTypeJob.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ContractTypeJobs and only return the `id`
+     * const contractTypeJobWithIdOnly = await prisma.contractTypeJob.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ContractTypeJobCreateManyAndReturnArgs>(args?: SelectSubset<T, ContractTypeJobCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContractTypeJobPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a ContractTypeJob.
+     * @param {ContractTypeJobDeleteArgs} args - Arguments to delete one ContractTypeJob.
+     * @example
+     * // Delete one ContractTypeJob
+     * const ContractTypeJob = await prisma.contractTypeJob.delete({
+     *   where: {
+     *     // ... filter to delete one ContractTypeJob
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ContractTypeJobDeleteArgs>(args: SelectSubset<T, ContractTypeJobDeleteArgs<ExtArgs>>): Prisma__ContractTypeJobClient<$Result.GetResult<Prisma.$ContractTypeJobPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one ContractTypeJob.
+     * @param {ContractTypeJobUpdateArgs} args - Arguments to update one ContractTypeJob.
+     * @example
+     * // Update one ContractTypeJob
+     * const contractTypeJob = await prisma.contractTypeJob.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ContractTypeJobUpdateArgs>(args: SelectSubset<T, ContractTypeJobUpdateArgs<ExtArgs>>): Prisma__ContractTypeJobClient<$Result.GetResult<Prisma.$ContractTypeJobPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more ContractTypeJobs.
+     * @param {ContractTypeJobDeleteManyArgs} args - Arguments to filter ContractTypeJobs to delete.
+     * @example
+     * // Delete a few ContractTypeJobs
+     * const { count } = await prisma.contractTypeJob.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ContractTypeJobDeleteManyArgs>(args?: SelectSubset<T, ContractTypeJobDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ContractTypeJobs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContractTypeJobUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ContractTypeJobs
+     * const contractTypeJob = await prisma.contractTypeJob.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ContractTypeJobUpdateManyArgs>(args: SelectSubset<T, ContractTypeJobUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ContractTypeJob.
+     * @param {ContractTypeJobUpsertArgs} args - Arguments to update or create a ContractTypeJob.
+     * @example
+     * // Update or create a ContractTypeJob
+     * const contractTypeJob = await prisma.contractTypeJob.upsert({
+     *   create: {
+     *     // ... data to create a ContractTypeJob
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ContractTypeJob we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ContractTypeJobUpsertArgs>(args: SelectSubset<T, ContractTypeJobUpsertArgs<ExtArgs>>): Prisma__ContractTypeJobClient<$Result.GetResult<Prisma.$ContractTypeJobPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of ContractTypeJobs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContractTypeJobCountArgs} args - Arguments to filter ContractTypeJobs to count.
+     * @example
+     * // Count the number of ContractTypeJobs
+     * const count = await prisma.contractTypeJob.count({
+     *   where: {
+     *     // ... the filter for the ContractTypeJobs we want to count
+     *   }
+     * })
+    **/
+    count<T extends ContractTypeJobCountArgs>(
+      args?: Subset<T, ContractTypeJobCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ContractTypeJobCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ContractTypeJob.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContractTypeJobAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ContractTypeJobAggregateArgs>(args: Subset<T, ContractTypeJobAggregateArgs>): Prisma.PrismaPromise<GetContractTypeJobAggregateType<T>>
+
+    /**
+     * Group by ContractTypeJob.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContractTypeJobGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ContractTypeJobGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ContractTypeJobGroupByArgs['orderBy'] }
+        : { orderBy?: ContractTypeJobGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ContractTypeJobGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetContractTypeJobGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ContractTypeJob model
+   */
+  readonly fields: ContractTypeJobFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ContractTypeJob.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ContractTypeJobClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    jobOffers<T extends ContractTypeJob$jobOffersArgs<ExtArgs> = {}>(args?: Subset<T, ContractTypeJob$jobOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ContractTypeJob model
+   */ 
+  interface ContractTypeJobFieldRefs {
+    readonly id: FieldRef<"ContractTypeJob", 'String'>
+    readonly name: FieldRef<"ContractTypeJob", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ContractTypeJob findUnique
+   */
+  export type ContractTypeJobFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContractTypeJob
+     */
+    select?: ContractTypeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContractTypeJobInclude<ExtArgs> | null
+    /**
+     * Filter, which ContractTypeJob to fetch.
+     */
+    where: ContractTypeJobWhereUniqueInput
+  }
+
+  /**
+   * ContractTypeJob findUniqueOrThrow
+   */
+  export type ContractTypeJobFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContractTypeJob
+     */
+    select?: ContractTypeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContractTypeJobInclude<ExtArgs> | null
+    /**
+     * Filter, which ContractTypeJob to fetch.
+     */
+    where: ContractTypeJobWhereUniqueInput
+  }
+
+  /**
+   * ContractTypeJob findFirst
+   */
+  export type ContractTypeJobFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContractTypeJob
+     */
+    select?: ContractTypeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContractTypeJobInclude<ExtArgs> | null
+    /**
+     * Filter, which ContractTypeJob to fetch.
+     */
+    where?: ContractTypeJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContractTypeJobs to fetch.
+     */
+    orderBy?: ContractTypeJobOrderByWithRelationInput | ContractTypeJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ContractTypeJobs.
+     */
+    cursor?: ContractTypeJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContractTypeJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContractTypeJobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ContractTypeJobs.
+     */
+    distinct?: ContractTypeJobScalarFieldEnum | ContractTypeJobScalarFieldEnum[]
+  }
+
+  /**
+   * ContractTypeJob findFirstOrThrow
+   */
+  export type ContractTypeJobFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContractTypeJob
+     */
+    select?: ContractTypeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContractTypeJobInclude<ExtArgs> | null
+    /**
+     * Filter, which ContractTypeJob to fetch.
+     */
+    where?: ContractTypeJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContractTypeJobs to fetch.
+     */
+    orderBy?: ContractTypeJobOrderByWithRelationInput | ContractTypeJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ContractTypeJobs.
+     */
+    cursor?: ContractTypeJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContractTypeJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContractTypeJobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ContractTypeJobs.
+     */
+    distinct?: ContractTypeJobScalarFieldEnum | ContractTypeJobScalarFieldEnum[]
+  }
+
+  /**
+   * ContractTypeJob findMany
+   */
+  export type ContractTypeJobFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContractTypeJob
+     */
+    select?: ContractTypeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContractTypeJobInclude<ExtArgs> | null
+    /**
+     * Filter, which ContractTypeJobs to fetch.
+     */
+    where?: ContractTypeJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ContractTypeJobs to fetch.
+     */
+    orderBy?: ContractTypeJobOrderByWithRelationInput | ContractTypeJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ContractTypeJobs.
+     */
+    cursor?: ContractTypeJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ContractTypeJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ContractTypeJobs.
+     */
+    skip?: number
+    distinct?: ContractTypeJobScalarFieldEnum | ContractTypeJobScalarFieldEnum[]
+  }
+
+  /**
+   * ContractTypeJob create
+   */
+  export type ContractTypeJobCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContractTypeJob
+     */
+    select?: ContractTypeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContractTypeJobInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ContractTypeJob.
+     */
+    data: XOR<ContractTypeJobCreateInput, ContractTypeJobUncheckedCreateInput>
+  }
+
+  /**
+   * ContractTypeJob createMany
+   */
+  export type ContractTypeJobCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ContractTypeJobs.
+     */
+    data: ContractTypeJobCreateManyInput | ContractTypeJobCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ContractTypeJob createManyAndReturn
+   */
+  export type ContractTypeJobCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContractTypeJob
+     */
+    select?: ContractTypeJobSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many ContractTypeJobs.
+     */
+    data: ContractTypeJobCreateManyInput | ContractTypeJobCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ContractTypeJob update
+   */
+  export type ContractTypeJobUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContractTypeJob
+     */
+    select?: ContractTypeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContractTypeJobInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ContractTypeJob.
+     */
+    data: XOR<ContractTypeJobUpdateInput, ContractTypeJobUncheckedUpdateInput>
+    /**
+     * Choose, which ContractTypeJob to update.
+     */
+    where: ContractTypeJobWhereUniqueInput
+  }
+
+  /**
+   * ContractTypeJob updateMany
+   */
+  export type ContractTypeJobUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ContractTypeJobs.
+     */
+    data: XOR<ContractTypeJobUpdateManyMutationInput, ContractTypeJobUncheckedUpdateManyInput>
+    /**
+     * Filter which ContractTypeJobs to update
+     */
+    where?: ContractTypeJobWhereInput
+  }
+
+  /**
+   * ContractTypeJob upsert
+   */
+  export type ContractTypeJobUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContractTypeJob
+     */
+    select?: ContractTypeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContractTypeJobInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ContractTypeJob to update in case it exists.
+     */
+    where: ContractTypeJobWhereUniqueInput
+    /**
+     * In case the ContractTypeJob found by the `where` argument doesn't exist, create a new ContractTypeJob with this data.
+     */
+    create: XOR<ContractTypeJobCreateInput, ContractTypeJobUncheckedCreateInput>
+    /**
+     * In case the ContractTypeJob was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ContractTypeJobUpdateInput, ContractTypeJobUncheckedUpdateInput>
+  }
+
+  /**
+   * ContractTypeJob delete
+   */
+  export type ContractTypeJobDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContractTypeJob
+     */
+    select?: ContractTypeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContractTypeJobInclude<ExtArgs> | null
+    /**
+     * Filter which ContractTypeJob to delete.
+     */
+    where: ContractTypeJobWhereUniqueInput
+  }
+
+  /**
+   * ContractTypeJob deleteMany
+   */
+  export type ContractTypeJobDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ContractTypeJobs to delete
+     */
+    where?: ContractTypeJobWhereInput
+  }
+
+  /**
+   * ContractTypeJob.jobOffers
+   */
+  export type ContractTypeJob$jobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    where?: jobOffersWhereInput
+    orderBy?: jobOffersOrderByWithRelationInput | jobOffersOrderByWithRelationInput[]
+    cursor?: jobOffersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: JobOffersScalarFieldEnum | JobOffersScalarFieldEnum[]
+  }
+
+  /**
+   * ContractTypeJob without action
+   */
+  export type ContractTypeJobDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContractTypeJob
+     */
+    select?: ContractTypeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContractTypeJobInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ExperienceMinimalJob
+   */
+
+  export type AggregateExperienceMinimalJob = {
+    _count: ExperienceMinimalJobCountAggregateOutputType | null
+    _min: ExperienceMinimalJobMinAggregateOutputType | null
+    _max: ExperienceMinimalJobMaxAggregateOutputType | null
+  }
+
+  export type ExperienceMinimalJobMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type ExperienceMinimalJobMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type ExperienceMinimalJobCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type ExperienceMinimalJobMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type ExperienceMinimalJobMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type ExperienceMinimalJobCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type ExperienceMinimalJobAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ExperienceMinimalJob to aggregate.
+     */
+    where?: ExperienceMinimalJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExperienceMinimalJobs to fetch.
+     */
+    orderBy?: ExperienceMinimalJobOrderByWithRelationInput | ExperienceMinimalJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ExperienceMinimalJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExperienceMinimalJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExperienceMinimalJobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ExperienceMinimalJobs
+    **/
+    _count?: true | ExperienceMinimalJobCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ExperienceMinimalJobMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ExperienceMinimalJobMaxAggregateInputType
+  }
+
+  export type GetExperienceMinimalJobAggregateType<T extends ExperienceMinimalJobAggregateArgs> = {
+        [P in keyof T & keyof AggregateExperienceMinimalJob]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateExperienceMinimalJob[P]>
+      : GetScalarType<T[P], AggregateExperienceMinimalJob[P]>
+  }
+
+
+
+
+  export type ExperienceMinimalJobGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ExperienceMinimalJobWhereInput
+    orderBy?: ExperienceMinimalJobOrderByWithAggregationInput | ExperienceMinimalJobOrderByWithAggregationInput[]
+    by: ExperienceMinimalJobScalarFieldEnum[] | ExperienceMinimalJobScalarFieldEnum
+    having?: ExperienceMinimalJobScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ExperienceMinimalJobCountAggregateInputType | true
+    _min?: ExperienceMinimalJobMinAggregateInputType
+    _max?: ExperienceMinimalJobMaxAggregateInputType
+  }
+
+  export type ExperienceMinimalJobGroupByOutputType = {
+    id: string
+    name: string
+    _count: ExperienceMinimalJobCountAggregateOutputType | null
+    _min: ExperienceMinimalJobMinAggregateOutputType | null
+    _max: ExperienceMinimalJobMaxAggregateOutputType | null
+  }
+
+  type GetExperienceMinimalJobGroupByPayload<T extends ExperienceMinimalJobGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ExperienceMinimalJobGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ExperienceMinimalJobGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ExperienceMinimalJobGroupByOutputType[P]>
+            : GetScalarType<T[P], ExperienceMinimalJobGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ExperienceMinimalJobSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    jobOffers?: boolean | ExperienceMinimalJob$jobOffersArgs<ExtArgs>
+    _count?: boolean | ExperienceMinimalJobCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["experienceMinimalJob"]>
+
+  export type ExperienceMinimalJobSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["experienceMinimalJob"]>
+
+  export type ExperienceMinimalJobSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type ExperienceMinimalJobInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    jobOffers?: boolean | ExperienceMinimalJob$jobOffersArgs<ExtArgs>
+    _count?: boolean | ExperienceMinimalJobCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ExperienceMinimalJobIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ExperienceMinimalJobPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ExperienceMinimalJob"
+    objects: {
+      jobOffers: Prisma.$jobOffersPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+    }, ExtArgs["result"]["experienceMinimalJob"]>
+    composites: {}
+  }
+
+  type ExperienceMinimalJobGetPayload<S extends boolean | null | undefined | ExperienceMinimalJobDefaultArgs> = $Result.GetResult<Prisma.$ExperienceMinimalJobPayload, S>
+
+  type ExperienceMinimalJobCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ExperienceMinimalJobFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ExperienceMinimalJobCountAggregateInputType | true
+    }
+
+  export interface ExperienceMinimalJobDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ExperienceMinimalJob'], meta: { name: 'ExperienceMinimalJob' } }
+    /**
+     * Find zero or one ExperienceMinimalJob that matches the filter.
+     * @param {ExperienceMinimalJobFindUniqueArgs} args - Arguments to find a ExperienceMinimalJob
+     * @example
+     * // Get one ExperienceMinimalJob
+     * const experienceMinimalJob = await prisma.experienceMinimalJob.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ExperienceMinimalJobFindUniqueArgs>(args: SelectSubset<T, ExperienceMinimalJobFindUniqueArgs<ExtArgs>>): Prisma__ExperienceMinimalJobClient<$Result.GetResult<Prisma.$ExperienceMinimalJobPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one ExperienceMinimalJob that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ExperienceMinimalJobFindUniqueOrThrowArgs} args - Arguments to find a ExperienceMinimalJob
+     * @example
+     * // Get one ExperienceMinimalJob
+     * const experienceMinimalJob = await prisma.experienceMinimalJob.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ExperienceMinimalJobFindUniqueOrThrowArgs>(args: SelectSubset<T, ExperienceMinimalJobFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ExperienceMinimalJobClient<$Result.GetResult<Prisma.$ExperienceMinimalJobPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first ExperienceMinimalJob that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExperienceMinimalJobFindFirstArgs} args - Arguments to find a ExperienceMinimalJob
+     * @example
+     * // Get one ExperienceMinimalJob
+     * const experienceMinimalJob = await prisma.experienceMinimalJob.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ExperienceMinimalJobFindFirstArgs>(args?: SelectSubset<T, ExperienceMinimalJobFindFirstArgs<ExtArgs>>): Prisma__ExperienceMinimalJobClient<$Result.GetResult<Prisma.$ExperienceMinimalJobPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first ExperienceMinimalJob that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExperienceMinimalJobFindFirstOrThrowArgs} args - Arguments to find a ExperienceMinimalJob
+     * @example
+     * // Get one ExperienceMinimalJob
+     * const experienceMinimalJob = await prisma.experienceMinimalJob.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ExperienceMinimalJobFindFirstOrThrowArgs>(args?: SelectSubset<T, ExperienceMinimalJobFindFirstOrThrowArgs<ExtArgs>>): Prisma__ExperienceMinimalJobClient<$Result.GetResult<Prisma.$ExperienceMinimalJobPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more ExperienceMinimalJobs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExperienceMinimalJobFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ExperienceMinimalJobs
+     * const experienceMinimalJobs = await prisma.experienceMinimalJob.findMany()
+     * 
+     * // Get first 10 ExperienceMinimalJobs
+     * const experienceMinimalJobs = await prisma.experienceMinimalJob.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const experienceMinimalJobWithIdOnly = await prisma.experienceMinimalJob.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ExperienceMinimalJobFindManyArgs>(args?: SelectSubset<T, ExperienceMinimalJobFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExperienceMinimalJobPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a ExperienceMinimalJob.
+     * @param {ExperienceMinimalJobCreateArgs} args - Arguments to create a ExperienceMinimalJob.
+     * @example
+     * // Create one ExperienceMinimalJob
+     * const ExperienceMinimalJob = await prisma.experienceMinimalJob.create({
+     *   data: {
+     *     // ... data to create a ExperienceMinimalJob
+     *   }
+     * })
+     * 
+     */
+    create<T extends ExperienceMinimalJobCreateArgs>(args: SelectSubset<T, ExperienceMinimalJobCreateArgs<ExtArgs>>): Prisma__ExperienceMinimalJobClient<$Result.GetResult<Prisma.$ExperienceMinimalJobPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many ExperienceMinimalJobs.
+     * @param {ExperienceMinimalJobCreateManyArgs} args - Arguments to create many ExperienceMinimalJobs.
+     * @example
+     * // Create many ExperienceMinimalJobs
+     * const experienceMinimalJob = await prisma.experienceMinimalJob.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ExperienceMinimalJobCreateManyArgs>(args?: SelectSubset<T, ExperienceMinimalJobCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ExperienceMinimalJobs and returns the data saved in the database.
+     * @param {ExperienceMinimalJobCreateManyAndReturnArgs} args - Arguments to create many ExperienceMinimalJobs.
+     * @example
+     * // Create many ExperienceMinimalJobs
+     * const experienceMinimalJob = await prisma.experienceMinimalJob.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ExperienceMinimalJobs and only return the `id`
+     * const experienceMinimalJobWithIdOnly = await prisma.experienceMinimalJob.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ExperienceMinimalJobCreateManyAndReturnArgs>(args?: SelectSubset<T, ExperienceMinimalJobCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExperienceMinimalJobPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a ExperienceMinimalJob.
+     * @param {ExperienceMinimalJobDeleteArgs} args - Arguments to delete one ExperienceMinimalJob.
+     * @example
+     * // Delete one ExperienceMinimalJob
+     * const ExperienceMinimalJob = await prisma.experienceMinimalJob.delete({
+     *   where: {
+     *     // ... filter to delete one ExperienceMinimalJob
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ExperienceMinimalJobDeleteArgs>(args: SelectSubset<T, ExperienceMinimalJobDeleteArgs<ExtArgs>>): Prisma__ExperienceMinimalJobClient<$Result.GetResult<Prisma.$ExperienceMinimalJobPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one ExperienceMinimalJob.
+     * @param {ExperienceMinimalJobUpdateArgs} args - Arguments to update one ExperienceMinimalJob.
+     * @example
+     * // Update one ExperienceMinimalJob
+     * const experienceMinimalJob = await prisma.experienceMinimalJob.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ExperienceMinimalJobUpdateArgs>(args: SelectSubset<T, ExperienceMinimalJobUpdateArgs<ExtArgs>>): Prisma__ExperienceMinimalJobClient<$Result.GetResult<Prisma.$ExperienceMinimalJobPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more ExperienceMinimalJobs.
+     * @param {ExperienceMinimalJobDeleteManyArgs} args - Arguments to filter ExperienceMinimalJobs to delete.
+     * @example
+     * // Delete a few ExperienceMinimalJobs
+     * const { count } = await prisma.experienceMinimalJob.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ExperienceMinimalJobDeleteManyArgs>(args?: SelectSubset<T, ExperienceMinimalJobDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ExperienceMinimalJobs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExperienceMinimalJobUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ExperienceMinimalJobs
+     * const experienceMinimalJob = await prisma.experienceMinimalJob.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ExperienceMinimalJobUpdateManyArgs>(args: SelectSubset<T, ExperienceMinimalJobUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ExperienceMinimalJob.
+     * @param {ExperienceMinimalJobUpsertArgs} args - Arguments to update or create a ExperienceMinimalJob.
+     * @example
+     * // Update or create a ExperienceMinimalJob
+     * const experienceMinimalJob = await prisma.experienceMinimalJob.upsert({
+     *   create: {
+     *     // ... data to create a ExperienceMinimalJob
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ExperienceMinimalJob we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ExperienceMinimalJobUpsertArgs>(args: SelectSubset<T, ExperienceMinimalJobUpsertArgs<ExtArgs>>): Prisma__ExperienceMinimalJobClient<$Result.GetResult<Prisma.$ExperienceMinimalJobPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of ExperienceMinimalJobs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExperienceMinimalJobCountArgs} args - Arguments to filter ExperienceMinimalJobs to count.
+     * @example
+     * // Count the number of ExperienceMinimalJobs
+     * const count = await prisma.experienceMinimalJob.count({
+     *   where: {
+     *     // ... the filter for the ExperienceMinimalJobs we want to count
+     *   }
+     * })
+    **/
+    count<T extends ExperienceMinimalJobCountArgs>(
+      args?: Subset<T, ExperienceMinimalJobCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ExperienceMinimalJobCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ExperienceMinimalJob.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExperienceMinimalJobAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ExperienceMinimalJobAggregateArgs>(args: Subset<T, ExperienceMinimalJobAggregateArgs>): Prisma.PrismaPromise<GetExperienceMinimalJobAggregateType<T>>
+
+    /**
+     * Group by ExperienceMinimalJob.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExperienceMinimalJobGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ExperienceMinimalJobGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ExperienceMinimalJobGroupByArgs['orderBy'] }
+        : { orderBy?: ExperienceMinimalJobGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ExperienceMinimalJobGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetExperienceMinimalJobGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ExperienceMinimalJob model
+   */
+  readonly fields: ExperienceMinimalJobFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ExperienceMinimalJob.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ExperienceMinimalJobClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    jobOffers<T extends ExperienceMinimalJob$jobOffersArgs<ExtArgs> = {}>(args?: Subset<T, ExperienceMinimalJob$jobOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ExperienceMinimalJob model
+   */ 
+  interface ExperienceMinimalJobFieldRefs {
+    readonly id: FieldRef<"ExperienceMinimalJob", 'String'>
+    readonly name: FieldRef<"ExperienceMinimalJob", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ExperienceMinimalJob findUnique
+   */
+  export type ExperienceMinimalJobFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExperienceMinimalJob
+     */
+    select?: ExperienceMinimalJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExperienceMinimalJobInclude<ExtArgs> | null
+    /**
+     * Filter, which ExperienceMinimalJob to fetch.
+     */
+    where: ExperienceMinimalJobWhereUniqueInput
+  }
+
+  /**
+   * ExperienceMinimalJob findUniqueOrThrow
+   */
+  export type ExperienceMinimalJobFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExperienceMinimalJob
+     */
+    select?: ExperienceMinimalJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExperienceMinimalJobInclude<ExtArgs> | null
+    /**
+     * Filter, which ExperienceMinimalJob to fetch.
+     */
+    where: ExperienceMinimalJobWhereUniqueInput
+  }
+
+  /**
+   * ExperienceMinimalJob findFirst
+   */
+  export type ExperienceMinimalJobFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExperienceMinimalJob
+     */
+    select?: ExperienceMinimalJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExperienceMinimalJobInclude<ExtArgs> | null
+    /**
+     * Filter, which ExperienceMinimalJob to fetch.
+     */
+    where?: ExperienceMinimalJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExperienceMinimalJobs to fetch.
+     */
+    orderBy?: ExperienceMinimalJobOrderByWithRelationInput | ExperienceMinimalJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ExperienceMinimalJobs.
+     */
+    cursor?: ExperienceMinimalJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExperienceMinimalJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExperienceMinimalJobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ExperienceMinimalJobs.
+     */
+    distinct?: ExperienceMinimalJobScalarFieldEnum | ExperienceMinimalJobScalarFieldEnum[]
+  }
+
+  /**
+   * ExperienceMinimalJob findFirstOrThrow
+   */
+  export type ExperienceMinimalJobFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExperienceMinimalJob
+     */
+    select?: ExperienceMinimalJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExperienceMinimalJobInclude<ExtArgs> | null
+    /**
+     * Filter, which ExperienceMinimalJob to fetch.
+     */
+    where?: ExperienceMinimalJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExperienceMinimalJobs to fetch.
+     */
+    orderBy?: ExperienceMinimalJobOrderByWithRelationInput | ExperienceMinimalJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ExperienceMinimalJobs.
+     */
+    cursor?: ExperienceMinimalJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExperienceMinimalJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExperienceMinimalJobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ExperienceMinimalJobs.
+     */
+    distinct?: ExperienceMinimalJobScalarFieldEnum | ExperienceMinimalJobScalarFieldEnum[]
+  }
+
+  /**
+   * ExperienceMinimalJob findMany
+   */
+  export type ExperienceMinimalJobFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExperienceMinimalJob
+     */
+    select?: ExperienceMinimalJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExperienceMinimalJobInclude<ExtArgs> | null
+    /**
+     * Filter, which ExperienceMinimalJobs to fetch.
+     */
+    where?: ExperienceMinimalJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExperienceMinimalJobs to fetch.
+     */
+    orderBy?: ExperienceMinimalJobOrderByWithRelationInput | ExperienceMinimalJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ExperienceMinimalJobs.
+     */
+    cursor?: ExperienceMinimalJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExperienceMinimalJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExperienceMinimalJobs.
+     */
+    skip?: number
+    distinct?: ExperienceMinimalJobScalarFieldEnum | ExperienceMinimalJobScalarFieldEnum[]
+  }
+
+  /**
+   * ExperienceMinimalJob create
+   */
+  export type ExperienceMinimalJobCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExperienceMinimalJob
+     */
+    select?: ExperienceMinimalJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExperienceMinimalJobInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ExperienceMinimalJob.
+     */
+    data: XOR<ExperienceMinimalJobCreateInput, ExperienceMinimalJobUncheckedCreateInput>
+  }
+
+  /**
+   * ExperienceMinimalJob createMany
+   */
+  export type ExperienceMinimalJobCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ExperienceMinimalJobs.
+     */
+    data: ExperienceMinimalJobCreateManyInput | ExperienceMinimalJobCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ExperienceMinimalJob createManyAndReturn
+   */
+  export type ExperienceMinimalJobCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExperienceMinimalJob
+     */
+    select?: ExperienceMinimalJobSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many ExperienceMinimalJobs.
+     */
+    data: ExperienceMinimalJobCreateManyInput | ExperienceMinimalJobCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ExperienceMinimalJob update
+   */
+  export type ExperienceMinimalJobUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExperienceMinimalJob
+     */
+    select?: ExperienceMinimalJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExperienceMinimalJobInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ExperienceMinimalJob.
+     */
+    data: XOR<ExperienceMinimalJobUpdateInput, ExperienceMinimalJobUncheckedUpdateInput>
+    /**
+     * Choose, which ExperienceMinimalJob to update.
+     */
+    where: ExperienceMinimalJobWhereUniqueInput
+  }
+
+  /**
+   * ExperienceMinimalJob updateMany
+   */
+  export type ExperienceMinimalJobUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ExperienceMinimalJobs.
+     */
+    data: XOR<ExperienceMinimalJobUpdateManyMutationInput, ExperienceMinimalJobUncheckedUpdateManyInput>
+    /**
+     * Filter which ExperienceMinimalJobs to update
+     */
+    where?: ExperienceMinimalJobWhereInput
+  }
+
+  /**
+   * ExperienceMinimalJob upsert
+   */
+  export type ExperienceMinimalJobUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExperienceMinimalJob
+     */
+    select?: ExperienceMinimalJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExperienceMinimalJobInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ExperienceMinimalJob to update in case it exists.
+     */
+    where: ExperienceMinimalJobWhereUniqueInput
+    /**
+     * In case the ExperienceMinimalJob found by the `where` argument doesn't exist, create a new ExperienceMinimalJob with this data.
+     */
+    create: XOR<ExperienceMinimalJobCreateInput, ExperienceMinimalJobUncheckedCreateInput>
+    /**
+     * In case the ExperienceMinimalJob was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ExperienceMinimalJobUpdateInput, ExperienceMinimalJobUncheckedUpdateInput>
+  }
+
+  /**
+   * ExperienceMinimalJob delete
+   */
+  export type ExperienceMinimalJobDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExperienceMinimalJob
+     */
+    select?: ExperienceMinimalJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExperienceMinimalJobInclude<ExtArgs> | null
+    /**
+     * Filter which ExperienceMinimalJob to delete.
+     */
+    where: ExperienceMinimalJobWhereUniqueInput
+  }
+
+  /**
+   * ExperienceMinimalJob deleteMany
+   */
+  export type ExperienceMinimalJobDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ExperienceMinimalJobs to delete
+     */
+    where?: ExperienceMinimalJobWhereInput
+  }
+
+  /**
+   * ExperienceMinimalJob.jobOffers
+   */
+  export type ExperienceMinimalJob$jobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    where?: jobOffersWhereInput
+    orderBy?: jobOffersOrderByWithRelationInput | jobOffersOrderByWithRelationInput[]
+    cursor?: jobOffersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: JobOffersScalarFieldEnum | JobOffersScalarFieldEnum[]
+  }
+
+  /**
+   * ExperienceMinimalJob without action
+   */
+  export type ExperienceMinimalJobDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExperienceMinimalJob
+     */
+    select?: ExperienceMinimalJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExperienceMinimalJobInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ModeJob
+   */
+
+  export type AggregateModeJob = {
+    _count: ModeJobCountAggregateOutputType | null
+    _min: ModeJobMinAggregateOutputType | null
+    _max: ModeJobMaxAggregateOutputType | null
+  }
+
+  export type ModeJobMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type ModeJobMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type ModeJobCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type ModeJobMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type ModeJobMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type ModeJobCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type ModeJobAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ModeJob to aggregate.
+     */
+    where?: ModeJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ModeJobs to fetch.
+     */
+    orderBy?: ModeJobOrderByWithRelationInput | ModeJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ModeJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ModeJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ModeJobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ModeJobs
+    **/
+    _count?: true | ModeJobCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ModeJobMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ModeJobMaxAggregateInputType
+  }
+
+  export type GetModeJobAggregateType<T extends ModeJobAggregateArgs> = {
+        [P in keyof T & keyof AggregateModeJob]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateModeJob[P]>
+      : GetScalarType<T[P], AggregateModeJob[P]>
+  }
+
+
+
+
+  export type ModeJobGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ModeJobWhereInput
+    orderBy?: ModeJobOrderByWithAggregationInput | ModeJobOrderByWithAggregationInput[]
+    by: ModeJobScalarFieldEnum[] | ModeJobScalarFieldEnum
+    having?: ModeJobScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ModeJobCountAggregateInputType | true
+    _min?: ModeJobMinAggregateInputType
+    _max?: ModeJobMaxAggregateInputType
+  }
+
+  export type ModeJobGroupByOutputType = {
+    id: string
+    name: string
+    _count: ModeJobCountAggregateOutputType | null
+    _min: ModeJobMinAggregateOutputType | null
+    _max: ModeJobMaxAggregateOutputType | null
+  }
+
+  type GetModeJobGroupByPayload<T extends ModeJobGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ModeJobGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ModeJobGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ModeJobGroupByOutputType[P]>
+            : GetScalarType<T[P], ModeJobGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ModeJobSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    jobOffers?: boolean | ModeJob$jobOffersArgs<ExtArgs>
+    _count?: boolean | ModeJobCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["modeJob"]>
+
+  export type ModeJobSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["modeJob"]>
+
+  export type ModeJobSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type ModeJobInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    jobOffers?: boolean | ModeJob$jobOffersArgs<ExtArgs>
+    _count?: boolean | ModeJobCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ModeJobIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ModeJobPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ModeJob"
+    objects: {
+      jobOffers: Prisma.$jobOffersPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+    }, ExtArgs["result"]["modeJob"]>
+    composites: {}
+  }
+
+  type ModeJobGetPayload<S extends boolean | null | undefined | ModeJobDefaultArgs> = $Result.GetResult<Prisma.$ModeJobPayload, S>
+
+  type ModeJobCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ModeJobFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ModeJobCountAggregateInputType | true
+    }
+
+  export interface ModeJobDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ModeJob'], meta: { name: 'ModeJob' } }
+    /**
+     * Find zero or one ModeJob that matches the filter.
+     * @param {ModeJobFindUniqueArgs} args - Arguments to find a ModeJob
+     * @example
+     * // Get one ModeJob
+     * const modeJob = await prisma.modeJob.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ModeJobFindUniqueArgs>(args: SelectSubset<T, ModeJobFindUniqueArgs<ExtArgs>>): Prisma__ModeJobClient<$Result.GetResult<Prisma.$ModeJobPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one ModeJob that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {ModeJobFindUniqueOrThrowArgs} args - Arguments to find a ModeJob
+     * @example
+     * // Get one ModeJob
+     * const modeJob = await prisma.modeJob.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ModeJobFindUniqueOrThrowArgs>(args: SelectSubset<T, ModeJobFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ModeJobClient<$Result.GetResult<Prisma.$ModeJobPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first ModeJob that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModeJobFindFirstArgs} args - Arguments to find a ModeJob
+     * @example
+     * // Get one ModeJob
+     * const modeJob = await prisma.modeJob.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ModeJobFindFirstArgs>(args?: SelectSubset<T, ModeJobFindFirstArgs<ExtArgs>>): Prisma__ModeJobClient<$Result.GetResult<Prisma.$ModeJobPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first ModeJob that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModeJobFindFirstOrThrowArgs} args - Arguments to find a ModeJob
+     * @example
+     * // Get one ModeJob
+     * const modeJob = await prisma.modeJob.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ModeJobFindFirstOrThrowArgs>(args?: SelectSubset<T, ModeJobFindFirstOrThrowArgs<ExtArgs>>): Prisma__ModeJobClient<$Result.GetResult<Prisma.$ModeJobPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more ModeJobs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModeJobFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ModeJobs
+     * const modeJobs = await prisma.modeJob.findMany()
+     * 
+     * // Get first 10 ModeJobs
+     * const modeJobs = await prisma.modeJob.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const modeJobWithIdOnly = await prisma.modeJob.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ModeJobFindManyArgs>(args?: SelectSubset<T, ModeJobFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModeJobPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a ModeJob.
+     * @param {ModeJobCreateArgs} args - Arguments to create a ModeJob.
+     * @example
+     * // Create one ModeJob
+     * const ModeJob = await prisma.modeJob.create({
+     *   data: {
+     *     // ... data to create a ModeJob
+     *   }
+     * })
+     * 
+     */
+    create<T extends ModeJobCreateArgs>(args: SelectSubset<T, ModeJobCreateArgs<ExtArgs>>): Prisma__ModeJobClient<$Result.GetResult<Prisma.$ModeJobPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many ModeJobs.
+     * @param {ModeJobCreateManyArgs} args - Arguments to create many ModeJobs.
+     * @example
+     * // Create many ModeJobs
+     * const modeJob = await prisma.modeJob.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ModeJobCreateManyArgs>(args?: SelectSubset<T, ModeJobCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ModeJobs and returns the data saved in the database.
+     * @param {ModeJobCreateManyAndReturnArgs} args - Arguments to create many ModeJobs.
+     * @example
+     * // Create many ModeJobs
+     * const modeJob = await prisma.modeJob.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ModeJobs and only return the `id`
+     * const modeJobWithIdOnly = await prisma.modeJob.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ModeJobCreateManyAndReturnArgs>(args?: SelectSubset<T, ModeJobCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ModeJobPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a ModeJob.
+     * @param {ModeJobDeleteArgs} args - Arguments to delete one ModeJob.
+     * @example
+     * // Delete one ModeJob
+     * const ModeJob = await prisma.modeJob.delete({
+     *   where: {
+     *     // ... filter to delete one ModeJob
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ModeJobDeleteArgs>(args: SelectSubset<T, ModeJobDeleteArgs<ExtArgs>>): Prisma__ModeJobClient<$Result.GetResult<Prisma.$ModeJobPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one ModeJob.
+     * @param {ModeJobUpdateArgs} args - Arguments to update one ModeJob.
+     * @example
+     * // Update one ModeJob
+     * const modeJob = await prisma.modeJob.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ModeJobUpdateArgs>(args: SelectSubset<T, ModeJobUpdateArgs<ExtArgs>>): Prisma__ModeJobClient<$Result.GetResult<Prisma.$ModeJobPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more ModeJobs.
+     * @param {ModeJobDeleteManyArgs} args - Arguments to filter ModeJobs to delete.
+     * @example
+     * // Delete a few ModeJobs
+     * const { count } = await prisma.modeJob.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ModeJobDeleteManyArgs>(args?: SelectSubset<T, ModeJobDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ModeJobs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModeJobUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ModeJobs
+     * const modeJob = await prisma.modeJob.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ModeJobUpdateManyArgs>(args: SelectSubset<T, ModeJobUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ModeJob.
+     * @param {ModeJobUpsertArgs} args - Arguments to update or create a ModeJob.
+     * @example
+     * // Update or create a ModeJob
+     * const modeJob = await prisma.modeJob.upsert({
+     *   create: {
+     *     // ... data to create a ModeJob
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ModeJob we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ModeJobUpsertArgs>(args: SelectSubset<T, ModeJobUpsertArgs<ExtArgs>>): Prisma__ModeJobClient<$Result.GetResult<Prisma.$ModeJobPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of ModeJobs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModeJobCountArgs} args - Arguments to filter ModeJobs to count.
+     * @example
+     * // Count the number of ModeJobs
+     * const count = await prisma.modeJob.count({
+     *   where: {
+     *     // ... the filter for the ModeJobs we want to count
+     *   }
+     * })
+    **/
+    count<T extends ModeJobCountArgs>(
+      args?: Subset<T, ModeJobCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ModeJobCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ModeJob.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModeJobAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ModeJobAggregateArgs>(args: Subset<T, ModeJobAggregateArgs>): Prisma.PrismaPromise<GetModeJobAggregateType<T>>
+
+    /**
+     * Group by ModeJob.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ModeJobGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ModeJobGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ModeJobGroupByArgs['orderBy'] }
+        : { orderBy?: ModeJobGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ModeJobGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetModeJobGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ModeJob model
+   */
+  readonly fields: ModeJobFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ModeJob.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ModeJobClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    jobOffers<T extends ModeJob$jobOffersArgs<ExtArgs> = {}>(args?: Subset<T, ModeJob$jobOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ModeJob model
+   */ 
+  interface ModeJobFieldRefs {
+    readonly id: FieldRef<"ModeJob", 'String'>
+    readonly name: FieldRef<"ModeJob", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ModeJob findUnique
+   */
+  export type ModeJobFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModeJob
+     */
+    select?: ModeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModeJobInclude<ExtArgs> | null
+    /**
+     * Filter, which ModeJob to fetch.
+     */
+    where: ModeJobWhereUniqueInput
+  }
+
+  /**
+   * ModeJob findUniqueOrThrow
+   */
+  export type ModeJobFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModeJob
+     */
+    select?: ModeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModeJobInclude<ExtArgs> | null
+    /**
+     * Filter, which ModeJob to fetch.
+     */
+    where: ModeJobWhereUniqueInput
+  }
+
+  /**
+   * ModeJob findFirst
+   */
+  export type ModeJobFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModeJob
+     */
+    select?: ModeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModeJobInclude<ExtArgs> | null
+    /**
+     * Filter, which ModeJob to fetch.
+     */
+    where?: ModeJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ModeJobs to fetch.
+     */
+    orderBy?: ModeJobOrderByWithRelationInput | ModeJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ModeJobs.
+     */
+    cursor?: ModeJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ModeJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ModeJobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ModeJobs.
+     */
+    distinct?: ModeJobScalarFieldEnum | ModeJobScalarFieldEnum[]
+  }
+
+  /**
+   * ModeJob findFirstOrThrow
+   */
+  export type ModeJobFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModeJob
+     */
+    select?: ModeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModeJobInclude<ExtArgs> | null
+    /**
+     * Filter, which ModeJob to fetch.
+     */
+    where?: ModeJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ModeJobs to fetch.
+     */
+    orderBy?: ModeJobOrderByWithRelationInput | ModeJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ModeJobs.
+     */
+    cursor?: ModeJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ModeJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ModeJobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ModeJobs.
+     */
+    distinct?: ModeJobScalarFieldEnum | ModeJobScalarFieldEnum[]
+  }
+
+  /**
+   * ModeJob findMany
+   */
+  export type ModeJobFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModeJob
+     */
+    select?: ModeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModeJobInclude<ExtArgs> | null
+    /**
+     * Filter, which ModeJobs to fetch.
+     */
+    where?: ModeJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ModeJobs to fetch.
+     */
+    orderBy?: ModeJobOrderByWithRelationInput | ModeJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ModeJobs.
+     */
+    cursor?: ModeJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ModeJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ModeJobs.
+     */
+    skip?: number
+    distinct?: ModeJobScalarFieldEnum | ModeJobScalarFieldEnum[]
+  }
+
+  /**
+   * ModeJob create
+   */
+  export type ModeJobCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModeJob
+     */
+    select?: ModeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModeJobInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ModeJob.
+     */
+    data: XOR<ModeJobCreateInput, ModeJobUncheckedCreateInput>
+  }
+
+  /**
+   * ModeJob createMany
+   */
+  export type ModeJobCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ModeJobs.
+     */
+    data: ModeJobCreateManyInput | ModeJobCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ModeJob createManyAndReturn
+   */
+  export type ModeJobCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModeJob
+     */
+    select?: ModeJobSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many ModeJobs.
+     */
+    data: ModeJobCreateManyInput | ModeJobCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ModeJob update
+   */
+  export type ModeJobUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModeJob
+     */
+    select?: ModeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModeJobInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ModeJob.
+     */
+    data: XOR<ModeJobUpdateInput, ModeJobUncheckedUpdateInput>
+    /**
+     * Choose, which ModeJob to update.
+     */
+    where: ModeJobWhereUniqueInput
+  }
+
+  /**
+   * ModeJob updateMany
+   */
+  export type ModeJobUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ModeJobs.
+     */
+    data: XOR<ModeJobUpdateManyMutationInput, ModeJobUncheckedUpdateManyInput>
+    /**
+     * Filter which ModeJobs to update
+     */
+    where?: ModeJobWhereInput
+  }
+
+  /**
+   * ModeJob upsert
+   */
+  export type ModeJobUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModeJob
+     */
+    select?: ModeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModeJobInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ModeJob to update in case it exists.
+     */
+    where: ModeJobWhereUniqueInput
+    /**
+     * In case the ModeJob found by the `where` argument doesn't exist, create a new ModeJob with this data.
+     */
+    create: XOR<ModeJobCreateInput, ModeJobUncheckedCreateInput>
+    /**
+     * In case the ModeJob was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ModeJobUpdateInput, ModeJobUncheckedUpdateInput>
+  }
+
+  /**
+   * ModeJob delete
+   */
+  export type ModeJobDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModeJob
+     */
+    select?: ModeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModeJobInclude<ExtArgs> | null
+    /**
+     * Filter which ModeJob to delete.
+     */
+    where: ModeJobWhereUniqueInput
+  }
+
+  /**
+   * ModeJob deleteMany
+   */
+  export type ModeJobDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ModeJobs to delete
+     */
+    where?: ModeJobWhereInput
+  }
+
+  /**
+   * ModeJob.jobOffers
+   */
+  export type ModeJob$jobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    where?: jobOffersWhereInput
+    orderBy?: jobOffersOrderByWithRelationInput | jobOffersOrderByWithRelationInput[]
+    cursor?: jobOffersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: JobOffersScalarFieldEnum | JobOffersScalarFieldEnum[]
+  }
+
+  /**
+   * ModeJob without action
+   */
+  export type ModeJobDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ModeJob
+     */
+    select?: ModeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ModeJobInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model WorkingTimeJob
+   */
+
+  export type AggregateWorkingTimeJob = {
+    _count: WorkingTimeJobCountAggregateOutputType | null
+    _min: WorkingTimeJobMinAggregateOutputType | null
+    _max: WorkingTimeJobMaxAggregateOutputType | null
+  }
+
+  export type WorkingTimeJobMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type WorkingTimeJobMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type WorkingTimeJobCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type WorkingTimeJobMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type WorkingTimeJobMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type WorkingTimeJobCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type WorkingTimeJobAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WorkingTimeJob to aggregate.
+     */
+    where?: WorkingTimeJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WorkingTimeJobs to fetch.
+     */
+    orderBy?: WorkingTimeJobOrderByWithRelationInput | WorkingTimeJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WorkingTimeJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WorkingTimeJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WorkingTimeJobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WorkingTimeJobs
+    **/
+    _count?: true | WorkingTimeJobCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WorkingTimeJobMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WorkingTimeJobMaxAggregateInputType
+  }
+
+  export type GetWorkingTimeJobAggregateType<T extends WorkingTimeJobAggregateArgs> = {
+        [P in keyof T & keyof AggregateWorkingTimeJob]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWorkingTimeJob[P]>
+      : GetScalarType<T[P], AggregateWorkingTimeJob[P]>
+  }
+
+
+
+
+  export type WorkingTimeJobGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WorkingTimeJobWhereInput
+    orderBy?: WorkingTimeJobOrderByWithAggregationInput | WorkingTimeJobOrderByWithAggregationInput[]
+    by: WorkingTimeJobScalarFieldEnum[] | WorkingTimeJobScalarFieldEnum
+    having?: WorkingTimeJobScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WorkingTimeJobCountAggregateInputType | true
+    _min?: WorkingTimeJobMinAggregateInputType
+    _max?: WorkingTimeJobMaxAggregateInputType
+  }
+
+  export type WorkingTimeJobGroupByOutputType = {
+    id: string
+    name: string
+    _count: WorkingTimeJobCountAggregateOutputType | null
+    _min: WorkingTimeJobMinAggregateOutputType | null
+    _max: WorkingTimeJobMaxAggregateOutputType | null
+  }
+
+  type GetWorkingTimeJobGroupByPayload<T extends WorkingTimeJobGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WorkingTimeJobGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WorkingTimeJobGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WorkingTimeJobGroupByOutputType[P]>
+            : GetScalarType<T[P], WorkingTimeJobGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WorkingTimeJobSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    jobOffers?: boolean | WorkingTimeJob$jobOffersArgs<ExtArgs>
+    _count?: boolean | WorkingTimeJobCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["workingTimeJob"]>
+
+  export type WorkingTimeJobSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["workingTimeJob"]>
+
+  export type WorkingTimeJobSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type WorkingTimeJobInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    jobOffers?: boolean | WorkingTimeJob$jobOffersArgs<ExtArgs>
+    _count?: boolean | WorkingTimeJobCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type WorkingTimeJobIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $WorkingTimeJobPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WorkingTimeJob"
+    objects: {
+      jobOffers: Prisma.$jobOffersPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+    }, ExtArgs["result"]["workingTimeJob"]>
+    composites: {}
+  }
+
+  type WorkingTimeJobGetPayload<S extends boolean | null | undefined | WorkingTimeJobDefaultArgs> = $Result.GetResult<Prisma.$WorkingTimeJobPayload, S>
+
+  type WorkingTimeJobCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<WorkingTimeJobFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: WorkingTimeJobCountAggregateInputType | true
+    }
+
+  export interface WorkingTimeJobDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WorkingTimeJob'], meta: { name: 'WorkingTimeJob' } }
+    /**
+     * Find zero or one WorkingTimeJob that matches the filter.
+     * @param {WorkingTimeJobFindUniqueArgs} args - Arguments to find a WorkingTimeJob
+     * @example
+     * // Get one WorkingTimeJob
+     * const workingTimeJob = await prisma.workingTimeJob.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WorkingTimeJobFindUniqueArgs>(args: SelectSubset<T, WorkingTimeJobFindUniqueArgs<ExtArgs>>): Prisma__WorkingTimeJobClient<$Result.GetResult<Prisma.$WorkingTimeJobPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one WorkingTimeJob that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {WorkingTimeJobFindUniqueOrThrowArgs} args - Arguments to find a WorkingTimeJob
+     * @example
+     * // Get one WorkingTimeJob
+     * const workingTimeJob = await prisma.workingTimeJob.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WorkingTimeJobFindUniqueOrThrowArgs>(args: SelectSubset<T, WorkingTimeJobFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WorkingTimeJobClient<$Result.GetResult<Prisma.$WorkingTimeJobPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first WorkingTimeJob that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WorkingTimeJobFindFirstArgs} args - Arguments to find a WorkingTimeJob
+     * @example
+     * // Get one WorkingTimeJob
+     * const workingTimeJob = await prisma.workingTimeJob.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WorkingTimeJobFindFirstArgs>(args?: SelectSubset<T, WorkingTimeJobFindFirstArgs<ExtArgs>>): Prisma__WorkingTimeJobClient<$Result.GetResult<Prisma.$WorkingTimeJobPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first WorkingTimeJob that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WorkingTimeJobFindFirstOrThrowArgs} args - Arguments to find a WorkingTimeJob
+     * @example
+     * // Get one WorkingTimeJob
+     * const workingTimeJob = await prisma.workingTimeJob.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WorkingTimeJobFindFirstOrThrowArgs>(args?: SelectSubset<T, WorkingTimeJobFindFirstOrThrowArgs<ExtArgs>>): Prisma__WorkingTimeJobClient<$Result.GetResult<Prisma.$WorkingTimeJobPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more WorkingTimeJobs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WorkingTimeJobFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WorkingTimeJobs
+     * const workingTimeJobs = await prisma.workingTimeJob.findMany()
+     * 
+     * // Get first 10 WorkingTimeJobs
+     * const workingTimeJobs = await prisma.workingTimeJob.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const workingTimeJobWithIdOnly = await prisma.workingTimeJob.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WorkingTimeJobFindManyArgs>(args?: SelectSubset<T, WorkingTimeJobFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkingTimeJobPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a WorkingTimeJob.
+     * @param {WorkingTimeJobCreateArgs} args - Arguments to create a WorkingTimeJob.
+     * @example
+     * // Create one WorkingTimeJob
+     * const WorkingTimeJob = await prisma.workingTimeJob.create({
+     *   data: {
+     *     // ... data to create a WorkingTimeJob
+     *   }
+     * })
+     * 
+     */
+    create<T extends WorkingTimeJobCreateArgs>(args: SelectSubset<T, WorkingTimeJobCreateArgs<ExtArgs>>): Prisma__WorkingTimeJobClient<$Result.GetResult<Prisma.$WorkingTimeJobPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many WorkingTimeJobs.
+     * @param {WorkingTimeJobCreateManyArgs} args - Arguments to create many WorkingTimeJobs.
+     * @example
+     * // Create many WorkingTimeJobs
+     * const workingTimeJob = await prisma.workingTimeJob.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WorkingTimeJobCreateManyArgs>(args?: SelectSubset<T, WorkingTimeJobCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WorkingTimeJobs and returns the data saved in the database.
+     * @param {WorkingTimeJobCreateManyAndReturnArgs} args - Arguments to create many WorkingTimeJobs.
+     * @example
+     * // Create many WorkingTimeJobs
+     * const workingTimeJob = await prisma.workingTimeJob.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WorkingTimeJobs and only return the `id`
+     * const workingTimeJobWithIdOnly = await prisma.workingTimeJob.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WorkingTimeJobCreateManyAndReturnArgs>(args?: SelectSubset<T, WorkingTimeJobCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkingTimeJobPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a WorkingTimeJob.
+     * @param {WorkingTimeJobDeleteArgs} args - Arguments to delete one WorkingTimeJob.
+     * @example
+     * // Delete one WorkingTimeJob
+     * const WorkingTimeJob = await prisma.workingTimeJob.delete({
+     *   where: {
+     *     // ... filter to delete one WorkingTimeJob
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WorkingTimeJobDeleteArgs>(args: SelectSubset<T, WorkingTimeJobDeleteArgs<ExtArgs>>): Prisma__WorkingTimeJobClient<$Result.GetResult<Prisma.$WorkingTimeJobPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one WorkingTimeJob.
+     * @param {WorkingTimeJobUpdateArgs} args - Arguments to update one WorkingTimeJob.
+     * @example
+     * // Update one WorkingTimeJob
+     * const workingTimeJob = await prisma.workingTimeJob.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WorkingTimeJobUpdateArgs>(args: SelectSubset<T, WorkingTimeJobUpdateArgs<ExtArgs>>): Prisma__WorkingTimeJobClient<$Result.GetResult<Prisma.$WorkingTimeJobPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more WorkingTimeJobs.
+     * @param {WorkingTimeJobDeleteManyArgs} args - Arguments to filter WorkingTimeJobs to delete.
+     * @example
+     * // Delete a few WorkingTimeJobs
+     * const { count } = await prisma.workingTimeJob.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WorkingTimeJobDeleteManyArgs>(args?: SelectSubset<T, WorkingTimeJobDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WorkingTimeJobs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WorkingTimeJobUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WorkingTimeJobs
+     * const workingTimeJob = await prisma.workingTimeJob.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WorkingTimeJobUpdateManyArgs>(args: SelectSubset<T, WorkingTimeJobUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one WorkingTimeJob.
+     * @param {WorkingTimeJobUpsertArgs} args - Arguments to update or create a WorkingTimeJob.
+     * @example
+     * // Update or create a WorkingTimeJob
+     * const workingTimeJob = await prisma.workingTimeJob.upsert({
+     *   create: {
+     *     // ... data to create a WorkingTimeJob
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WorkingTimeJob we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WorkingTimeJobUpsertArgs>(args: SelectSubset<T, WorkingTimeJobUpsertArgs<ExtArgs>>): Prisma__WorkingTimeJobClient<$Result.GetResult<Prisma.$WorkingTimeJobPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of WorkingTimeJobs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WorkingTimeJobCountArgs} args - Arguments to filter WorkingTimeJobs to count.
+     * @example
+     * // Count the number of WorkingTimeJobs
+     * const count = await prisma.workingTimeJob.count({
+     *   where: {
+     *     // ... the filter for the WorkingTimeJobs we want to count
+     *   }
+     * })
+    **/
+    count<T extends WorkingTimeJobCountArgs>(
+      args?: Subset<T, WorkingTimeJobCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WorkingTimeJobCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WorkingTimeJob.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WorkingTimeJobAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WorkingTimeJobAggregateArgs>(args: Subset<T, WorkingTimeJobAggregateArgs>): Prisma.PrismaPromise<GetWorkingTimeJobAggregateType<T>>
+
+    /**
+     * Group by WorkingTimeJob.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WorkingTimeJobGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WorkingTimeJobGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WorkingTimeJobGroupByArgs['orderBy'] }
+        : { orderBy?: WorkingTimeJobGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WorkingTimeJobGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWorkingTimeJobGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WorkingTimeJob model
+   */
+  readonly fields: WorkingTimeJobFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WorkingTimeJob.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WorkingTimeJobClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    jobOffers<T extends WorkingTimeJob$jobOffersArgs<ExtArgs> = {}>(args?: Subset<T, WorkingTimeJob$jobOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WorkingTimeJob model
+   */ 
+  interface WorkingTimeJobFieldRefs {
+    readonly id: FieldRef<"WorkingTimeJob", 'String'>
+    readonly name: FieldRef<"WorkingTimeJob", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WorkingTimeJob findUnique
+   */
+  export type WorkingTimeJobFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WorkingTimeJob
+     */
+    select?: WorkingTimeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WorkingTimeJobInclude<ExtArgs> | null
+    /**
+     * Filter, which WorkingTimeJob to fetch.
+     */
+    where: WorkingTimeJobWhereUniqueInput
+  }
+
+  /**
+   * WorkingTimeJob findUniqueOrThrow
+   */
+  export type WorkingTimeJobFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WorkingTimeJob
+     */
+    select?: WorkingTimeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WorkingTimeJobInclude<ExtArgs> | null
+    /**
+     * Filter, which WorkingTimeJob to fetch.
+     */
+    where: WorkingTimeJobWhereUniqueInput
+  }
+
+  /**
+   * WorkingTimeJob findFirst
+   */
+  export type WorkingTimeJobFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WorkingTimeJob
+     */
+    select?: WorkingTimeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WorkingTimeJobInclude<ExtArgs> | null
+    /**
+     * Filter, which WorkingTimeJob to fetch.
+     */
+    where?: WorkingTimeJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WorkingTimeJobs to fetch.
+     */
+    orderBy?: WorkingTimeJobOrderByWithRelationInput | WorkingTimeJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WorkingTimeJobs.
+     */
+    cursor?: WorkingTimeJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WorkingTimeJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WorkingTimeJobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WorkingTimeJobs.
+     */
+    distinct?: WorkingTimeJobScalarFieldEnum | WorkingTimeJobScalarFieldEnum[]
+  }
+
+  /**
+   * WorkingTimeJob findFirstOrThrow
+   */
+  export type WorkingTimeJobFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WorkingTimeJob
+     */
+    select?: WorkingTimeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WorkingTimeJobInclude<ExtArgs> | null
+    /**
+     * Filter, which WorkingTimeJob to fetch.
+     */
+    where?: WorkingTimeJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WorkingTimeJobs to fetch.
+     */
+    orderBy?: WorkingTimeJobOrderByWithRelationInput | WorkingTimeJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WorkingTimeJobs.
+     */
+    cursor?: WorkingTimeJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WorkingTimeJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WorkingTimeJobs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WorkingTimeJobs.
+     */
+    distinct?: WorkingTimeJobScalarFieldEnum | WorkingTimeJobScalarFieldEnum[]
+  }
+
+  /**
+   * WorkingTimeJob findMany
+   */
+  export type WorkingTimeJobFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WorkingTimeJob
+     */
+    select?: WorkingTimeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WorkingTimeJobInclude<ExtArgs> | null
+    /**
+     * Filter, which WorkingTimeJobs to fetch.
+     */
+    where?: WorkingTimeJobWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WorkingTimeJobs to fetch.
+     */
+    orderBy?: WorkingTimeJobOrderByWithRelationInput | WorkingTimeJobOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WorkingTimeJobs.
+     */
+    cursor?: WorkingTimeJobWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WorkingTimeJobs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WorkingTimeJobs.
+     */
+    skip?: number
+    distinct?: WorkingTimeJobScalarFieldEnum | WorkingTimeJobScalarFieldEnum[]
+  }
+
+  /**
+   * WorkingTimeJob create
+   */
+  export type WorkingTimeJobCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WorkingTimeJob
+     */
+    select?: WorkingTimeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WorkingTimeJobInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WorkingTimeJob.
+     */
+    data: XOR<WorkingTimeJobCreateInput, WorkingTimeJobUncheckedCreateInput>
+  }
+
+  /**
+   * WorkingTimeJob createMany
+   */
+  export type WorkingTimeJobCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WorkingTimeJobs.
+     */
+    data: WorkingTimeJobCreateManyInput | WorkingTimeJobCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WorkingTimeJob createManyAndReturn
+   */
+  export type WorkingTimeJobCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WorkingTimeJob
+     */
+    select?: WorkingTimeJobSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many WorkingTimeJobs.
+     */
+    data: WorkingTimeJobCreateManyInput | WorkingTimeJobCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WorkingTimeJob update
+   */
+  export type WorkingTimeJobUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WorkingTimeJob
+     */
+    select?: WorkingTimeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WorkingTimeJobInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WorkingTimeJob.
+     */
+    data: XOR<WorkingTimeJobUpdateInput, WorkingTimeJobUncheckedUpdateInput>
+    /**
+     * Choose, which WorkingTimeJob to update.
+     */
+    where: WorkingTimeJobWhereUniqueInput
+  }
+
+  /**
+   * WorkingTimeJob updateMany
+   */
+  export type WorkingTimeJobUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WorkingTimeJobs.
+     */
+    data: XOR<WorkingTimeJobUpdateManyMutationInput, WorkingTimeJobUncheckedUpdateManyInput>
+    /**
+     * Filter which WorkingTimeJobs to update
+     */
+    where?: WorkingTimeJobWhereInput
+  }
+
+  /**
+   * WorkingTimeJob upsert
+   */
+  export type WorkingTimeJobUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WorkingTimeJob
+     */
+    select?: WorkingTimeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WorkingTimeJobInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WorkingTimeJob to update in case it exists.
+     */
+    where: WorkingTimeJobWhereUniqueInput
+    /**
+     * In case the WorkingTimeJob found by the `where` argument doesn't exist, create a new WorkingTimeJob with this data.
+     */
+    create: XOR<WorkingTimeJobCreateInput, WorkingTimeJobUncheckedCreateInput>
+    /**
+     * In case the WorkingTimeJob was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WorkingTimeJobUpdateInput, WorkingTimeJobUncheckedUpdateInput>
+  }
+
+  /**
+   * WorkingTimeJob delete
+   */
+  export type WorkingTimeJobDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WorkingTimeJob
+     */
+    select?: WorkingTimeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WorkingTimeJobInclude<ExtArgs> | null
+    /**
+     * Filter which WorkingTimeJob to delete.
+     */
+    where: WorkingTimeJobWhereUniqueInput
+  }
+
+  /**
+   * WorkingTimeJob deleteMany
+   */
+  export type WorkingTimeJobDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WorkingTimeJobs to delete
+     */
+    where?: WorkingTimeJobWhereInput
+  }
+
+  /**
+   * WorkingTimeJob.jobOffers
+   */
+  export type WorkingTimeJob$jobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    where?: jobOffersWhereInput
+    orderBy?: jobOffersOrderByWithRelationInput | jobOffersOrderByWithRelationInput[]
+    cursor?: jobOffersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: JobOffersScalarFieldEnum | JobOffersScalarFieldEnum[]
+  }
+
+  /**
+   * WorkingTimeJob without action
+   */
+  export type WorkingTimeJobDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WorkingTimeJob
+     */
+    select?: WorkingTimeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WorkingTimeJobInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model LevelEducation
+   */
+
+  export type AggregateLevelEducation = {
+    _count: LevelEducationCountAggregateOutputType | null
+    _min: LevelEducationMinAggregateOutputType | null
+    _max: LevelEducationMaxAggregateOutputType | null
+  }
+
+  export type LevelEducationMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type LevelEducationMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+  }
+
+  export type LevelEducationCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type LevelEducationMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type LevelEducationMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type LevelEducationCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type LevelEducationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LevelEducation to aggregate.
+     */
+    where?: LevelEducationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LevelEducations to fetch.
+     */
+    orderBy?: LevelEducationOrderByWithRelationInput | LevelEducationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LevelEducationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LevelEducations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LevelEducations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned LevelEducations
+    **/
+    _count?: true | LevelEducationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LevelEducationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LevelEducationMaxAggregateInputType
+  }
+
+  export type GetLevelEducationAggregateType<T extends LevelEducationAggregateArgs> = {
+        [P in keyof T & keyof AggregateLevelEducation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLevelEducation[P]>
+      : GetScalarType<T[P], AggregateLevelEducation[P]>
+  }
+
+
+
+
+  export type LevelEducationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LevelEducationWhereInput
+    orderBy?: LevelEducationOrderByWithAggregationInput | LevelEducationOrderByWithAggregationInput[]
+    by: LevelEducationScalarFieldEnum[] | LevelEducationScalarFieldEnum
+    having?: LevelEducationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LevelEducationCountAggregateInputType | true
+    _min?: LevelEducationMinAggregateInputType
+    _max?: LevelEducationMaxAggregateInputType
+  }
+
+  export type LevelEducationGroupByOutputType = {
+    id: string
+    name: string
+    _count: LevelEducationCountAggregateOutputType | null
+    _min: LevelEducationMinAggregateOutputType | null
+    _max: LevelEducationMaxAggregateOutputType | null
+  }
+
+  type GetLevelEducationGroupByPayload<T extends LevelEducationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LevelEducationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LevelEducationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LevelEducationGroupByOutputType[P]>
+            : GetScalarType<T[P], LevelEducationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LevelEducationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    jobOffers?: boolean | LevelEducation$jobOffersArgs<ExtArgs>
+    _count?: boolean | LevelEducationCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["levelEducation"]>
+
+  export type LevelEducationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["levelEducation"]>
+
+  export type LevelEducationSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type LevelEducationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    jobOffers?: boolean | LevelEducation$jobOffersArgs<ExtArgs>
+    _count?: boolean | LevelEducationCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type LevelEducationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $LevelEducationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "LevelEducation"
+    objects: {
+      jobOffers: Prisma.$jobOffersPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+    }, ExtArgs["result"]["levelEducation"]>
+    composites: {}
+  }
+
+  type LevelEducationGetPayload<S extends boolean | null | undefined | LevelEducationDefaultArgs> = $Result.GetResult<Prisma.$LevelEducationPayload, S>
+
+  type LevelEducationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<LevelEducationFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: LevelEducationCountAggregateInputType | true
+    }
+
+  export interface LevelEducationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LevelEducation'], meta: { name: 'LevelEducation' } }
+    /**
+     * Find zero or one LevelEducation that matches the filter.
+     * @param {LevelEducationFindUniqueArgs} args - Arguments to find a LevelEducation
+     * @example
+     * // Get one LevelEducation
+     * const levelEducation = await prisma.levelEducation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LevelEducationFindUniqueArgs>(args: SelectSubset<T, LevelEducationFindUniqueArgs<ExtArgs>>): Prisma__LevelEducationClient<$Result.GetResult<Prisma.$LevelEducationPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one LevelEducation that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {LevelEducationFindUniqueOrThrowArgs} args - Arguments to find a LevelEducation
+     * @example
+     * // Get one LevelEducation
+     * const levelEducation = await prisma.levelEducation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LevelEducationFindUniqueOrThrowArgs>(args: SelectSubset<T, LevelEducationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LevelEducationClient<$Result.GetResult<Prisma.$LevelEducationPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first LevelEducation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LevelEducationFindFirstArgs} args - Arguments to find a LevelEducation
+     * @example
+     * // Get one LevelEducation
+     * const levelEducation = await prisma.levelEducation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LevelEducationFindFirstArgs>(args?: SelectSubset<T, LevelEducationFindFirstArgs<ExtArgs>>): Prisma__LevelEducationClient<$Result.GetResult<Prisma.$LevelEducationPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first LevelEducation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LevelEducationFindFirstOrThrowArgs} args - Arguments to find a LevelEducation
+     * @example
+     * // Get one LevelEducation
+     * const levelEducation = await prisma.levelEducation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LevelEducationFindFirstOrThrowArgs>(args?: SelectSubset<T, LevelEducationFindFirstOrThrowArgs<ExtArgs>>): Prisma__LevelEducationClient<$Result.GetResult<Prisma.$LevelEducationPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more LevelEducations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LevelEducationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all LevelEducations
+     * const levelEducations = await prisma.levelEducation.findMany()
+     * 
+     * // Get first 10 LevelEducations
+     * const levelEducations = await prisma.levelEducation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const levelEducationWithIdOnly = await prisma.levelEducation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LevelEducationFindManyArgs>(args?: SelectSubset<T, LevelEducationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LevelEducationPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a LevelEducation.
+     * @param {LevelEducationCreateArgs} args - Arguments to create a LevelEducation.
+     * @example
+     * // Create one LevelEducation
+     * const LevelEducation = await prisma.levelEducation.create({
+     *   data: {
+     *     // ... data to create a LevelEducation
+     *   }
+     * })
+     * 
+     */
+    create<T extends LevelEducationCreateArgs>(args: SelectSubset<T, LevelEducationCreateArgs<ExtArgs>>): Prisma__LevelEducationClient<$Result.GetResult<Prisma.$LevelEducationPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many LevelEducations.
+     * @param {LevelEducationCreateManyArgs} args - Arguments to create many LevelEducations.
+     * @example
+     * // Create many LevelEducations
+     * const levelEducation = await prisma.levelEducation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LevelEducationCreateManyArgs>(args?: SelectSubset<T, LevelEducationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many LevelEducations and returns the data saved in the database.
+     * @param {LevelEducationCreateManyAndReturnArgs} args - Arguments to create many LevelEducations.
+     * @example
+     * // Create many LevelEducations
+     * const levelEducation = await prisma.levelEducation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many LevelEducations and only return the `id`
+     * const levelEducationWithIdOnly = await prisma.levelEducation.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LevelEducationCreateManyAndReturnArgs>(args?: SelectSubset<T, LevelEducationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LevelEducationPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a LevelEducation.
+     * @param {LevelEducationDeleteArgs} args - Arguments to delete one LevelEducation.
+     * @example
+     * // Delete one LevelEducation
+     * const LevelEducation = await prisma.levelEducation.delete({
+     *   where: {
+     *     // ... filter to delete one LevelEducation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LevelEducationDeleteArgs>(args: SelectSubset<T, LevelEducationDeleteArgs<ExtArgs>>): Prisma__LevelEducationClient<$Result.GetResult<Prisma.$LevelEducationPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one LevelEducation.
+     * @param {LevelEducationUpdateArgs} args - Arguments to update one LevelEducation.
+     * @example
+     * // Update one LevelEducation
+     * const levelEducation = await prisma.levelEducation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LevelEducationUpdateArgs>(args: SelectSubset<T, LevelEducationUpdateArgs<ExtArgs>>): Prisma__LevelEducationClient<$Result.GetResult<Prisma.$LevelEducationPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more LevelEducations.
+     * @param {LevelEducationDeleteManyArgs} args - Arguments to filter LevelEducations to delete.
+     * @example
+     * // Delete a few LevelEducations
+     * const { count } = await prisma.levelEducation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LevelEducationDeleteManyArgs>(args?: SelectSubset<T, LevelEducationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LevelEducations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LevelEducationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many LevelEducations
+     * const levelEducation = await prisma.levelEducation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LevelEducationUpdateManyArgs>(args: SelectSubset<T, LevelEducationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one LevelEducation.
+     * @param {LevelEducationUpsertArgs} args - Arguments to update or create a LevelEducation.
+     * @example
+     * // Update or create a LevelEducation
+     * const levelEducation = await prisma.levelEducation.upsert({
+     *   create: {
+     *     // ... data to create a LevelEducation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the LevelEducation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LevelEducationUpsertArgs>(args: SelectSubset<T, LevelEducationUpsertArgs<ExtArgs>>): Prisma__LevelEducationClient<$Result.GetResult<Prisma.$LevelEducationPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of LevelEducations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LevelEducationCountArgs} args - Arguments to filter LevelEducations to count.
+     * @example
+     * // Count the number of LevelEducations
+     * const count = await prisma.levelEducation.count({
+     *   where: {
+     *     // ... the filter for the LevelEducations we want to count
+     *   }
+     * })
+    **/
+    count<T extends LevelEducationCountArgs>(
+      args?: Subset<T, LevelEducationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LevelEducationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a LevelEducation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LevelEducationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LevelEducationAggregateArgs>(args: Subset<T, LevelEducationAggregateArgs>): Prisma.PrismaPromise<GetLevelEducationAggregateType<T>>
+
+    /**
+     * Group by LevelEducation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LevelEducationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LevelEducationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LevelEducationGroupByArgs['orderBy'] }
+        : { orderBy?: LevelEducationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LevelEducationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLevelEducationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the LevelEducation model
+   */
+  readonly fields: LevelEducationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for LevelEducation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LevelEducationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    jobOffers<T extends LevelEducation$jobOffersArgs<ExtArgs> = {}>(args?: Subset<T, LevelEducation$jobOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findMany"> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the LevelEducation model
+   */ 
+  interface LevelEducationFieldRefs {
+    readonly id: FieldRef<"LevelEducation", 'String'>
+    readonly name: FieldRef<"LevelEducation", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * LevelEducation findUnique
+   */
+  export type LevelEducationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LevelEducation
+     */
+    select?: LevelEducationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LevelEducationInclude<ExtArgs> | null
+    /**
+     * Filter, which LevelEducation to fetch.
+     */
+    where: LevelEducationWhereUniqueInput
+  }
+
+  /**
+   * LevelEducation findUniqueOrThrow
+   */
+  export type LevelEducationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LevelEducation
+     */
+    select?: LevelEducationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LevelEducationInclude<ExtArgs> | null
+    /**
+     * Filter, which LevelEducation to fetch.
+     */
+    where: LevelEducationWhereUniqueInput
+  }
+
+  /**
+   * LevelEducation findFirst
+   */
+  export type LevelEducationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LevelEducation
+     */
+    select?: LevelEducationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LevelEducationInclude<ExtArgs> | null
+    /**
+     * Filter, which LevelEducation to fetch.
+     */
+    where?: LevelEducationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LevelEducations to fetch.
+     */
+    orderBy?: LevelEducationOrderByWithRelationInput | LevelEducationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LevelEducations.
+     */
+    cursor?: LevelEducationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LevelEducations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LevelEducations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LevelEducations.
+     */
+    distinct?: LevelEducationScalarFieldEnum | LevelEducationScalarFieldEnum[]
+  }
+
+  /**
+   * LevelEducation findFirstOrThrow
+   */
+  export type LevelEducationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LevelEducation
+     */
+    select?: LevelEducationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LevelEducationInclude<ExtArgs> | null
+    /**
+     * Filter, which LevelEducation to fetch.
+     */
+    where?: LevelEducationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LevelEducations to fetch.
+     */
+    orderBy?: LevelEducationOrderByWithRelationInput | LevelEducationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LevelEducations.
+     */
+    cursor?: LevelEducationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LevelEducations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LevelEducations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LevelEducations.
+     */
+    distinct?: LevelEducationScalarFieldEnum | LevelEducationScalarFieldEnum[]
+  }
+
+  /**
+   * LevelEducation findMany
+   */
+  export type LevelEducationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LevelEducation
+     */
+    select?: LevelEducationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LevelEducationInclude<ExtArgs> | null
+    /**
+     * Filter, which LevelEducations to fetch.
+     */
+    where?: LevelEducationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LevelEducations to fetch.
+     */
+    orderBy?: LevelEducationOrderByWithRelationInput | LevelEducationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing LevelEducations.
+     */
+    cursor?: LevelEducationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LevelEducations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LevelEducations.
+     */
+    skip?: number
+    distinct?: LevelEducationScalarFieldEnum | LevelEducationScalarFieldEnum[]
+  }
+
+  /**
+   * LevelEducation create
+   */
+  export type LevelEducationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LevelEducation
+     */
+    select?: LevelEducationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LevelEducationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a LevelEducation.
+     */
+    data: XOR<LevelEducationCreateInput, LevelEducationUncheckedCreateInput>
+  }
+
+  /**
+   * LevelEducation createMany
+   */
+  export type LevelEducationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many LevelEducations.
+     */
+    data: LevelEducationCreateManyInput | LevelEducationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * LevelEducation createManyAndReturn
+   */
+  export type LevelEducationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LevelEducation
+     */
+    select?: LevelEducationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many LevelEducations.
+     */
+    data: LevelEducationCreateManyInput | LevelEducationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * LevelEducation update
+   */
+  export type LevelEducationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LevelEducation
+     */
+    select?: LevelEducationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LevelEducationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a LevelEducation.
+     */
+    data: XOR<LevelEducationUpdateInput, LevelEducationUncheckedUpdateInput>
+    /**
+     * Choose, which LevelEducation to update.
+     */
+    where: LevelEducationWhereUniqueInput
+  }
+
+  /**
+   * LevelEducation updateMany
+   */
+  export type LevelEducationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update LevelEducations.
+     */
+    data: XOR<LevelEducationUpdateManyMutationInput, LevelEducationUncheckedUpdateManyInput>
+    /**
+     * Filter which LevelEducations to update
+     */
+    where?: LevelEducationWhereInput
+  }
+
+  /**
+   * LevelEducation upsert
+   */
+  export type LevelEducationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LevelEducation
+     */
+    select?: LevelEducationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LevelEducationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the LevelEducation to update in case it exists.
+     */
+    where: LevelEducationWhereUniqueInput
+    /**
+     * In case the LevelEducation found by the `where` argument doesn't exist, create a new LevelEducation with this data.
+     */
+    create: XOR<LevelEducationCreateInput, LevelEducationUncheckedCreateInput>
+    /**
+     * In case the LevelEducation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LevelEducationUpdateInput, LevelEducationUncheckedUpdateInput>
+  }
+
+  /**
+   * LevelEducation delete
+   */
+  export type LevelEducationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LevelEducation
+     */
+    select?: LevelEducationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LevelEducationInclude<ExtArgs> | null
+    /**
+     * Filter which LevelEducation to delete.
+     */
+    where: LevelEducationWhereUniqueInput
+  }
+
+  /**
+   * LevelEducation deleteMany
+   */
+  export type LevelEducationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LevelEducations to delete
+     */
+    where?: LevelEducationWhereInput
+  }
+
+  /**
+   * LevelEducation.jobOffers
+   */
+  export type LevelEducation$jobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the jobOffers
+     */
+    select?: jobOffersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: jobOffersInclude<ExtArgs> | null
+    where?: jobOffersWhereInput
+    orderBy?: jobOffersOrderByWithRelationInput | jobOffersOrderByWithRelationInput[]
+    cursor?: jobOffersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: JobOffersScalarFieldEnum | JobOffersScalarFieldEnum[]
+  }
+
+  /**
+   * LevelEducation without action
+   */
+  export type LevelEducationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LevelEducation
+     */
+    select?: LevelEducationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LevelEducationInclude<ExtArgs> | null
   }
 
 
@@ -18667,11 +23977,56 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     isValidate: 'isValidate',
     views: 'views',
+    contratId: 'contratId',
+    experienceId: 'experienceId',
+    modeId: 'modeId',
+    workingTimeId: 'workingTimeId',
+    levelId: 'levelId',
     agencyId: 'agencyId',
     branchId: 'branchId'
   };
 
   export type JobOffersScalarFieldEnum = (typeof JobOffersScalarFieldEnum)[keyof typeof JobOffersScalarFieldEnum]
+
+
+  export const ContractTypeJobScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type ContractTypeJobScalarFieldEnum = (typeof ContractTypeJobScalarFieldEnum)[keyof typeof ContractTypeJobScalarFieldEnum]
+
+
+  export const ExperienceMinimalJobScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type ExperienceMinimalJobScalarFieldEnum = (typeof ExperienceMinimalJobScalarFieldEnum)[keyof typeof ExperienceMinimalJobScalarFieldEnum]
+
+
+  export const ModeJobScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type ModeJobScalarFieldEnum = (typeof ModeJobScalarFieldEnum)[keyof typeof ModeJobScalarFieldEnum]
+
+
+  export const WorkingTimeJobScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type WorkingTimeJobScalarFieldEnum = (typeof WorkingTimeJobScalarFieldEnum)[keyof typeof WorkingTimeJobScalarFieldEnum]
+
+
+  export const LevelEducationScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type LevelEducationScalarFieldEnum = (typeof LevelEducationScalarFieldEnum)[keyof typeof LevelEducationScalarFieldEnum]
 
 
   export const JobTagsScalarFieldEnum: {
@@ -19640,11 +24995,21 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"jobOffers"> | Date | string
     isValidate?: BoolFilter<"jobOffers"> | boolean
     views?: IntFilter<"jobOffers"> | number
+    contratId?: StringNullableFilter<"jobOffers"> | string | null
+    experienceId?: StringNullableFilter<"jobOffers"> | string | null
+    modeId?: StringNullableFilter<"jobOffers"> | string | null
+    workingTimeId?: StringNullableFilter<"jobOffers"> | string | null
+    levelId?: StringNullableFilter<"jobOffers"> | string | null
     agencyId?: StringFilter<"jobOffers"> | string
     branchId?: StringNullableFilter<"jobOffers"> | string | null
     categories?: CategoryListRelationFilter
     sectors?: SectorsListRelationFilter
     tags?: JobTagsListRelationFilter
+    contractType?: XOR<ContractTypeJobNullableRelationFilter, ContractTypeJobWhereInput> | null
+    experienceMinimalJob?: XOR<ExperienceMinimalJobNullableRelationFilter, ExperienceMinimalJobWhereInput> | null
+    modeJob?: XOR<ModeJobNullableRelationFilter, ModeJobWhereInput> | null
+    workingTimeJob?: XOR<WorkingTimeJobNullableRelationFilter, WorkingTimeJobWhereInput> | null
+    levelEducation?: XOR<LevelEducationNullableRelationFilter, LevelEducationWhereInput> | null
     agency?: XOR<AgencyDataRelationFilter, AgencyDataWhereInput>
     branch?: XOR<BranchNullableRelationFilter, BranchWhereInput> | null
   }
@@ -19662,11 +25027,21 @@ export namespace Prisma {
     updatedAt?: SortOrder
     isValidate?: SortOrder
     views?: SortOrder
+    contratId?: SortOrderInput | SortOrder
+    experienceId?: SortOrderInput | SortOrder
+    modeId?: SortOrderInput | SortOrder
+    workingTimeId?: SortOrderInput | SortOrder
+    levelId?: SortOrderInput | SortOrder
     agencyId?: SortOrder
     branchId?: SortOrderInput | SortOrder
     categories?: CategoryOrderByRelationAggregateInput
     sectors?: SectorsOrderByRelationAggregateInput
     tags?: jobTagsOrderByRelationAggregateInput
+    contractType?: ContractTypeJobOrderByWithRelationInput
+    experienceMinimalJob?: ExperienceMinimalJobOrderByWithRelationInput
+    modeJob?: ModeJobOrderByWithRelationInput
+    workingTimeJob?: WorkingTimeJobOrderByWithRelationInput
+    levelEducation?: LevelEducationOrderByWithRelationInput
     agency?: AgencyDataOrderByWithRelationInput
     branch?: BranchOrderByWithRelationInput
   }
@@ -19687,11 +25062,21 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"jobOffers"> | Date | string
     isValidate?: BoolFilter<"jobOffers"> | boolean
     views?: IntFilter<"jobOffers"> | number
+    contratId?: StringNullableFilter<"jobOffers"> | string | null
+    experienceId?: StringNullableFilter<"jobOffers"> | string | null
+    modeId?: StringNullableFilter<"jobOffers"> | string | null
+    workingTimeId?: StringNullableFilter<"jobOffers"> | string | null
+    levelId?: StringNullableFilter<"jobOffers"> | string | null
     agencyId?: StringFilter<"jobOffers"> | string
     branchId?: StringNullableFilter<"jobOffers"> | string | null
     categories?: CategoryListRelationFilter
     sectors?: SectorsListRelationFilter
     tags?: JobTagsListRelationFilter
+    contractType?: XOR<ContractTypeJobNullableRelationFilter, ContractTypeJobWhereInput> | null
+    experienceMinimalJob?: XOR<ExperienceMinimalJobNullableRelationFilter, ExperienceMinimalJobWhereInput> | null
+    modeJob?: XOR<ModeJobNullableRelationFilter, ModeJobWhereInput> | null
+    workingTimeJob?: XOR<WorkingTimeJobNullableRelationFilter, WorkingTimeJobWhereInput> | null
+    levelEducation?: XOR<LevelEducationNullableRelationFilter, LevelEducationWhereInput> | null
     agency?: XOR<AgencyDataRelationFilter, AgencyDataWhereInput>
     branch?: XOR<BranchNullableRelationFilter, BranchWhereInput> | null
   }, "id" | "slug">
@@ -19709,6 +25094,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
     isValidate?: SortOrder
     views?: SortOrder
+    contratId?: SortOrderInput | SortOrder
+    experienceId?: SortOrderInput | SortOrder
+    modeId?: SortOrderInput | SortOrder
+    workingTimeId?: SortOrderInput | SortOrder
+    levelId?: SortOrderInput | SortOrder
     agencyId?: SortOrder
     branchId?: SortOrderInput | SortOrder
     _count?: jobOffersCountOrderByAggregateInput
@@ -19734,8 +25124,213 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"jobOffers"> | Date | string
     isValidate?: BoolWithAggregatesFilter<"jobOffers"> | boolean
     views?: IntWithAggregatesFilter<"jobOffers"> | number
+    contratId?: StringNullableWithAggregatesFilter<"jobOffers"> | string | null
+    experienceId?: StringNullableWithAggregatesFilter<"jobOffers"> | string | null
+    modeId?: StringNullableWithAggregatesFilter<"jobOffers"> | string | null
+    workingTimeId?: StringNullableWithAggregatesFilter<"jobOffers"> | string | null
+    levelId?: StringNullableWithAggregatesFilter<"jobOffers"> | string | null
     agencyId?: StringWithAggregatesFilter<"jobOffers"> | string
     branchId?: StringNullableWithAggregatesFilter<"jobOffers"> | string | null
+  }
+
+  export type ContractTypeJobWhereInput = {
+    AND?: ContractTypeJobWhereInput | ContractTypeJobWhereInput[]
+    OR?: ContractTypeJobWhereInput[]
+    NOT?: ContractTypeJobWhereInput | ContractTypeJobWhereInput[]
+    id?: StringFilter<"ContractTypeJob"> | string
+    name?: StringFilter<"ContractTypeJob"> | string
+    jobOffers?: JobOffersListRelationFilter
+  }
+
+  export type ContractTypeJobOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    jobOffers?: jobOffersOrderByRelationAggregateInput
+  }
+
+  export type ContractTypeJobWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ContractTypeJobWhereInput | ContractTypeJobWhereInput[]
+    OR?: ContractTypeJobWhereInput[]
+    NOT?: ContractTypeJobWhereInput | ContractTypeJobWhereInput[]
+    name?: StringFilter<"ContractTypeJob"> | string
+    jobOffers?: JobOffersListRelationFilter
+  }, "id">
+
+  export type ContractTypeJobOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: ContractTypeJobCountOrderByAggregateInput
+    _max?: ContractTypeJobMaxOrderByAggregateInput
+    _min?: ContractTypeJobMinOrderByAggregateInput
+  }
+
+  export type ContractTypeJobScalarWhereWithAggregatesInput = {
+    AND?: ContractTypeJobScalarWhereWithAggregatesInput | ContractTypeJobScalarWhereWithAggregatesInput[]
+    OR?: ContractTypeJobScalarWhereWithAggregatesInput[]
+    NOT?: ContractTypeJobScalarWhereWithAggregatesInput | ContractTypeJobScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ContractTypeJob"> | string
+    name?: StringWithAggregatesFilter<"ContractTypeJob"> | string
+  }
+
+  export type ExperienceMinimalJobWhereInput = {
+    AND?: ExperienceMinimalJobWhereInput | ExperienceMinimalJobWhereInput[]
+    OR?: ExperienceMinimalJobWhereInput[]
+    NOT?: ExperienceMinimalJobWhereInput | ExperienceMinimalJobWhereInput[]
+    id?: StringFilter<"ExperienceMinimalJob"> | string
+    name?: StringFilter<"ExperienceMinimalJob"> | string
+    jobOffers?: JobOffersListRelationFilter
+  }
+
+  export type ExperienceMinimalJobOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    jobOffers?: jobOffersOrderByRelationAggregateInput
+  }
+
+  export type ExperienceMinimalJobWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ExperienceMinimalJobWhereInput | ExperienceMinimalJobWhereInput[]
+    OR?: ExperienceMinimalJobWhereInput[]
+    NOT?: ExperienceMinimalJobWhereInput | ExperienceMinimalJobWhereInput[]
+    name?: StringFilter<"ExperienceMinimalJob"> | string
+    jobOffers?: JobOffersListRelationFilter
+  }, "id">
+
+  export type ExperienceMinimalJobOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: ExperienceMinimalJobCountOrderByAggregateInput
+    _max?: ExperienceMinimalJobMaxOrderByAggregateInput
+    _min?: ExperienceMinimalJobMinOrderByAggregateInput
+  }
+
+  export type ExperienceMinimalJobScalarWhereWithAggregatesInput = {
+    AND?: ExperienceMinimalJobScalarWhereWithAggregatesInput | ExperienceMinimalJobScalarWhereWithAggregatesInput[]
+    OR?: ExperienceMinimalJobScalarWhereWithAggregatesInput[]
+    NOT?: ExperienceMinimalJobScalarWhereWithAggregatesInput | ExperienceMinimalJobScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ExperienceMinimalJob"> | string
+    name?: StringWithAggregatesFilter<"ExperienceMinimalJob"> | string
+  }
+
+  export type ModeJobWhereInput = {
+    AND?: ModeJobWhereInput | ModeJobWhereInput[]
+    OR?: ModeJobWhereInput[]
+    NOT?: ModeJobWhereInput | ModeJobWhereInput[]
+    id?: StringFilter<"ModeJob"> | string
+    name?: StringFilter<"ModeJob"> | string
+    jobOffers?: JobOffersListRelationFilter
+  }
+
+  export type ModeJobOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    jobOffers?: jobOffersOrderByRelationAggregateInput
+  }
+
+  export type ModeJobWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ModeJobWhereInput | ModeJobWhereInput[]
+    OR?: ModeJobWhereInput[]
+    NOT?: ModeJobWhereInput | ModeJobWhereInput[]
+    name?: StringFilter<"ModeJob"> | string
+    jobOffers?: JobOffersListRelationFilter
+  }, "id">
+
+  export type ModeJobOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: ModeJobCountOrderByAggregateInput
+    _max?: ModeJobMaxOrderByAggregateInput
+    _min?: ModeJobMinOrderByAggregateInput
+  }
+
+  export type ModeJobScalarWhereWithAggregatesInput = {
+    AND?: ModeJobScalarWhereWithAggregatesInput | ModeJobScalarWhereWithAggregatesInput[]
+    OR?: ModeJobScalarWhereWithAggregatesInput[]
+    NOT?: ModeJobScalarWhereWithAggregatesInput | ModeJobScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ModeJob"> | string
+    name?: StringWithAggregatesFilter<"ModeJob"> | string
+  }
+
+  export type WorkingTimeJobWhereInput = {
+    AND?: WorkingTimeJobWhereInput | WorkingTimeJobWhereInput[]
+    OR?: WorkingTimeJobWhereInput[]
+    NOT?: WorkingTimeJobWhereInput | WorkingTimeJobWhereInput[]
+    id?: StringFilter<"WorkingTimeJob"> | string
+    name?: StringFilter<"WorkingTimeJob"> | string
+    jobOffers?: JobOffersListRelationFilter
+  }
+
+  export type WorkingTimeJobOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    jobOffers?: jobOffersOrderByRelationAggregateInput
+  }
+
+  export type WorkingTimeJobWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: WorkingTimeJobWhereInput | WorkingTimeJobWhereInput[]
+    OR?: WorkingTimeJobWhereInput[]
+    NOT?: WorkingTimeJobWhereInput | WorkingTimeJobWhereInput[]
+    name?: StringFilter<"WorkingTimeJob"> | string
+    jobOffers?: JobOffersListRelationFilter
+  }, "id">
+
+  export type WorkingTimeJobOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: WorkingTimeJobCountOrderByAggregateInput
+    _max?: WorkingTimeJobMaxOrderByAggregateInput
+    _min?: WorkingTimeJobMinOrderByAggregateInput
+  }
+
+  export type WorkingTimeJobScalarWhereWithAggregatesInput = {
+    AND?: WorkingTimeJobScalarWhereWithAggregatesInput | WorkingTimeJobScalarWhereWithAggregatesInput[]
+    OR?: WorkingTimeJobScalarWhereWithAggregatesInput[]
+    NOT?: WorkingTimeJobScalarWhereWithAggregatesInput | WorkingTimeJobScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WorkingTimeJob"> | string
+    name?: StringWithAggregatesFilter<"WorkingTimeJob"> | string
+  }
+
+  export type LevelEducationWhereInput = {
+    AND?: LevelEducationWhereInput | LevelEducationWhereInput[]
+    OR?: LevelEducationWhereInput[]
+    NOT?: LevelEducationWhereInput | LevelEducationWhereInput[]
+    id?: StringFilter<"LevelEducation"> | string
+    name?: StringFilter<"LevelEducation"> | string
+    jobOffers?: JobOffersListRelationFilter
+  }
+
+  export type LevelEducationOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    jobOffers?: jobOffersOrderByRelationAggregateInput
+  }
+
+  export type LevelEducationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: LevelEducationWhereInput | LevelEducationWhereInput[]
+    OR?: LevelEducationWhereInput[]
+    NOT?: LevelEducationWhereInput | LevelEducationWhereInput[]
+    name?: StringFilter<"LevelEducation"> | string
+    jobOffers?: JobOffersListRelationFilter
+  }, "id">
+
+  export type LevelEducationOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: LevelEducationCountOrderByAggregateInput
+    _max?: LevelEducationMaxOrderByAggregateInput
+    _min?: LevelEducationMinOrderByAggregateInput
+  }
+
+  export type LevelEducationScalarWhereWithAggregatesInput = {
+    AND?: LevelEducationScalarWhereWithAggregatesInput | LevelEducationScalarWhereWithAggregatesInput[]
+    OR?: LevelEducationScalarWhereWithAggregatesInput[]
+    NOT?: LevelEducationScalarWhereWithAggregatesInput | LevelEducationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"LevelEducation"> | string
+    name?: StringWithAggregatesFilter<"LevelEducation"> | string
   }
 
   export type jobTagsWhereInput = {
@@ -20838,6 +26433,11 @@ export namespace Prisma {
     categories?: CategoryCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
+    experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
+    modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
+    workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
+    levelEducation?: LevelEducationCreateNestedOneWithoutJobOffersInput
     agency: AgencyDataCreateNestedOneWithoutJobOffersInput
     branch?: BranchCreateNestedOneWithoutJobOffersInput
   }
@@ -20855,6 +26455,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    contratId?: string | null
+    experienceId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
     agencyId: string
     branchId?: string | null
     categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
@@ -20878,6 +26483,11 @@ export namespace Prisma {
     categories?: CategoryUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
+    experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
+    modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
+    workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
+    levelEducation?: LevelEducationUpdateOneWithoutJobOffersNestedInput
     agency?: AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput
     branch?: BranchUpdateOneWithoutJobOffersNestedInput
   }
@@ -20895,6 +26505,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
     categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
@@ -20915,6 +26530,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    contratId?: string | null
+    experienceId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
     agencyId: string
     branchId?: string | null
   }
@@ -20947,8 +26567,208 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ContractTypeJobCreateInput = {
+    id?: string
+    name: string
+    jobOffers?: jobOffersCreateNestedManyWithoutContractTypeInput
+  }
+
+  export type ContractTypeJobUncheckedCreateInput = {
+    id?: string
+    name: string
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutContractTypeInput
+  }
+
+  export type ContractTypeJobUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUpdateManyWithoutContractTypeNestedInput
+  }
+
+  export type ContractTypeJobUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutContractTypeNestedInput
+  }
+
+  export type ContractTypeJobCreateManyInput = {
+    id?: string
+    name: string
+  }
+
+  export type ContractTypeJobUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ContractTypeJobUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ExperienceMinimalJobCreateInput = {
+    id?: string
+    name: string
+    jobOffers?: jobOffersCreateNestedManyWithoutExperienceMinimalJobInput
+  }
+
+  export type ExperienceMinimalJobUncheckedCreateInput = {
+    id?: string
+    name: string
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutExperienceMinimalJobInput
+  }
+
+  export type ExperienceMinimalJobUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUpdateManyWithoutExperienceMinimalJobNestedInput
+  }
+
+  export type ExperienceMinimalJobUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutExperienceMinimalJobNestedInput
+  }
+
+  export type ExperienceMinimalJobCreateManyInput = {
+    id?: string
+    name: string
+  }
+
+  export type ExperienceMinimalJobUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ExperienceMinimalJobUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ModeJobCreateInput = {
+    id?: string
+    name: string
+    jobOffers?: jobOffersCreateNestedManyWithoutModeJobInput
+  }
+
+  export type ModeJobUncheckedCreateInput = {
+    id?: string
+    name: string
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutModeJobInput
+  }
+
+  export type ModeJobUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUpdateManyWithoutModeJobNestedInput
+  }
+
+  export type ModeJobUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutModeJobNestedInput
+  }
+
+  export type ModeJobCreateManyInput = {
+    id?: string
+    name: string
+  }
+
+  export type ModeJobUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ModeJobUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WorkingTimeJobCreateInput = {
+    id?: string
+    name: string
+    jobOffers?: jobOffersCreateNestedManyWithoutWorkingTimeJobInput
+  }
+
+  export type WorkingTimeJobUncheckedCreateInput = {
+    id?: string
+    name: string
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutWorkingTimeJobInput
+  }
+
+  export type WorkingTimeJobUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUpdateManyWithoutWorkingTimeJobNestedInput
+  }
+
+  export type WorkingTimeJobUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutWorkingTimeJobNestedInput
+  }
+
+  export type WorkingTimeJobCreateManyInput = {
+    id?: string
+    name: string
+  }
+
+  export type WorkingTimeJobUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WorkingTimeJobUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LevelEducationCreateInput = {
+    id?: string
+    name: string
+    jobOffers?: jobOffersCreateNestedManyWithoutLevelEducationInput
+  }
+
+  export type LevelEducationUncheckedCreateInput = {
+    id?: string
+    name: string
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutLevelEducationInput
+  }
+
+  export type LevelEducationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUpdateManyWithoutLevelEducationNestedInput
+  }
+
+  export type LevelEducationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutLevelEducationNestedInput
+  }
+
+  export type LevelEducationCreateManyInput = {
+    id?: string
+    name: string
+  }
+
+  export type LevelEducationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LevelEducationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
   }
 
   export type jobTagsCreateInput = {
@@ -21942,6 +27762,31 @@ export namespace Prisma {
     none?: jobTagsWhereInput
   }
 
+  export type ContractTypeJobNullableRelationFilter = {
+    is?: ContractTypeJobWhereInput | null
+    isNot?: ContractTypeJobWhereInput | null
+  }
+
+  export type ExperienceMinimalJobNullableRelationFilter = {
+    is?: ExperienceMinimalJobWhereInput | null
+    isNot?: ExperienceMinimalJobWhereInput | null
+  }
+
+  export type ModeJobNullableRelationFilter = {
+    is?: ModeJobWhereInput | null
+    isNot?: ModeJobWhereInput | null
+  }
+
+  export type WorkingTimeJobNullableRelationFilter = {
+    is?: WorkingTimeJobWhereInput | null
+    isNot?: WorkingTimeJobWhereInput | null
+  }
+
+  export type LevelEducationNullableRelationFilter = {
+    is?: LevelEducationWhereInput | null
+    isNot?: LevelEducationWhereInput | null
+  }
+
   export type BranchNullableRelationFilter = {
     is?: BranchWhereInput | null
     isNot?: BranchWhereInput | null
@@ -21972,6 +27817,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
     isValidate?: SortOrder
     views?: SortOrder
+    contratId?: SortOrder
+    experienceId?: SortOrder
+    modeId?: SortOrder
+    workingTimeId?: SortOrder
+    levelId?: SortOrder
     agencyId?: SortOrder
     branchId?: SortOrder
   }
@@ -21993,6 +27843,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
     isValidate?: SortOrder
     views?: SortOrder
+    contratId?: SortOrder
+    experienceId?: SortOrder
+    modeId?: SortOrder
+    workingTimeId?: SortOrder
+    levelId?: SortOrder
     agencyId?: SortOrder
     branchId?: SortOrder
   }
@@ -22010,6 +27865,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
     isValidate?: SortOrder
     views?: SortOrder
+    contratId?: SortOrder
+    experienceId?: SortOrder
+    modeId?: SortOrder
+    workingTimeId?: SortOrder
+    levelId?: SortOrder
     agencyId?: SortOrder
     branchId?: SortOrder
   }
@@ -22046,6 +27906,81 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type ContractTypeJobCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type ContractTypeJobMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type ContractTypeJobMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type ExperienceMinimalJobCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type ExperienceMinimalJobMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type ExperienceMinimalJobMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type ModeJobCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type ModeJobMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type ModeJobMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type WorkingTimeJobCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type WorkingTimeJobMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type WorkingTimeJobMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type LevelEducationCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type LevelEducationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type LevelEducationMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
   }
 
   export type jobTagsCountOrderByAggregateInput = {
@@ -22925,6 +28860,36 @@ export namespace Prisma {
     connect?: jobTagsWhereUniqueInput | jobTagsWhereUniqueInput[]
   }
 
+  export type ContractTypeJobCreateNestedOneWithoutJobOffersInput = {
+    create?: XOR<ContractTypeJobCreateWithoutJobOffersInput, ContractTypeJobUncheckedCreateWithoutJobOffersInput>
+    connectOrCreate?: ContractTypeJobCreateOrConnectWithoutJobOffersInput
+    connect?: ContractTypeJobWhereUniqueInput
+  }
+
+  export type ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput = {
+    create?: XOR<ExperienceMinimalJobCreateWithoutJobOffersInput, ExperienceMinimalJobUncheckedCreateWithoutJobOffersInput>
+    connectOrCreate?: ExperienceMinimalJobCreateOrConnectWithoutJobOffersInput
+    connect?: ExperienceMinimalJobWhereUniqueInput
+  }
+
+  export type ModeJobCreateNestedOneWithoutJobOffersInput = {
+    create?: XOR<ModeJobCreateWithoutJobOffersInput, ModeJobUncheckedCreateWithoutJobOffersInput>
+    connectOrCreate?: ModeJobCreateOrConnectWithoutJobOffersInput
+    connect?: ModeJobWhereUniqueInput
+  }
+
+  export type WorkingTimeJobCreateNestedOneWithoutJobOffersInput = {
+    create?: XOR<WorkingTimeJobCreateWithoutJobOffersInput, WorkingTimeJobUncheckedCreateWithoutJobOffersInput>
+    connectOrCreate?: WorkingTimeJobCreateOrConnectWithoutJobOffersInput
+    connect?: WorkingTimeJobWhereUniqueInput
+  }
+
+  export type LevelEducationCreateNestedOneWithoutJobOffersInput = {
+    create?: XOR<LevelEducationCreateWithoutJobOffersInput, LevelEducationUncheckedCreateWithoutJobOffersInput>
+    connectOrCreate?: LevelEducationCreateOrConnectWithoutJobOffersInput
+    connect?: LevelEducationWhereUniqueInput
+  }
+
   export type AgencyDataCreateNestedOneWithoutJobOffersInput = {
     create?: XOR<AgencyDataCreateWithoutJobOffersInput, AgencyDataUncheckedCreateWithoutJobOffersInput>
     connectOrCreate?: AgencyDataCreateOrConnectWithoutJobOffersInput
@@ -23006,6 +28971,56 @@ export namespace Prisma {
     deleteMany?: jobTagsScalarWhereInput | jobTagsScalarWhereInput[]
   }
 
+  export type ContractTypeJobUpdateOneWithoutJobOffersNestedInput = {
+    create?: XOR<ContractTypeJobCreateWithoutJobOffersInput, ContractTypeJobUncheckedCreateWithoutJobOffersInput>
+    connectOrCreate?: ContractTypeJobCreateOrConnectWithoutJobOffersInput
+    upsert?: ContractTypeJobUpsertWithoutJobOffersInput
+    disconnect?: ContractTypeJobWhereInput | boolean
+    delete?: ContractTypeJobWhereInput | boolean
+    connect?: ContractTypeJobWhereUniqueInput
+    update?: XOR<XOR<ContractTypeJobUpdateToOneWithWhereWithoutJobOffersInput, ContractTypeJobUpdateWithoutJobOffersInput>, ContractTypeJobUncheckedUpdateWithoutJobOffersInput>
+  }
+
+  export type ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput = {
+    create?: XOR<ExperienceMinimalJobCreateWithoutJobOffersInput, ExperienceMinimalJobUncheckedCreateWithoutJobOffersInput>
+    connectOrCreate?: ExperienceMinimalJobCreateOrConnectWithoutJobOffersInput
+    upsert?: ExperienceMinimalJobUpsertWithoutJobOffersInput
+    disconnect?: ExperienceMinimalJobWhereInput | boolean
+    delete?: ExperienceMinimalJobWhereInput | boolean
+    connect?: ExperienceMinimalJobWhereUniqueInput
+    update?: XOR<XOR<ExperienceMinimalJobUpdateToOneWithWhereWithoutJobOffersInput, ExperienceMinimalJobUpdateWithoutJobOffersInput>, ExperienceMinimalJobUncheckedUpdateWithoutJobOffersInput>
+  }
+
+  export type ModeJobUpdateOneWithoutJobOffersNestedInput = {
+    create?: XOR<ModeJobCreateWithoutJobOffersInput, ModeJobUncheckedCreateWithoutJobOffersInput>
+    connectOrCreate?: ModeJobCreateOrConnectWithoutJobOffersInput
+    upsert?: ModeJobUpsertWithoutJobOffersInput
+    disconnect?: ModeJobWhereInput | boolean
+    delete?: ModeJobWhereInput | boolean
+    connect?: ModeJobWhereUniqueInput
+    update?: XOR<XOR<ModeJobUpdateToOneWithWhereWithoutJobOffersInput, ModeJobUpdateWithoutJobOffersInput>, ModeJobUncheckedUpdateWithoutJobOffersInput>
+  }
+
+  export type WorkingTimeJobUpdateOneWithoutJobOffersNestedInput = {
+    create?: XOR<WorkingTimeJobCreateWithoutJobOffersInput, WorkingTimeJobUncheckedCreateWithoutJobOffersInput>
+    connectOrCreate?: WorkingTimeJobCreateOrConnectWithoutJobOffersInput
+    upsert?: WorkingTimeJobUpsertWithoutJobOffersInput
+    disconnect?: WorkingTimeJobWhereInput | boolean
+    delete?: WorkingTimeJobWhereInput | boolean
+    connect?: WorkingTimeJobWhereUniqueInput
+    update?: XOR<XOR<WorkingTimeJobUpdateToOneWithWhereWithoutJobOffersInput, WorkingTimeJobUpdateWithoutJobOffersInput>, WorkingTimeJobUncheckedUpdateWithoutJobOffersInput>
+  }
+
+  export type LevelEducationUpdateOneWithoutJobOffersNestedInput = {
+    create?: XOR<LevelEducationCreateWithoutJobOffersInput, LevelEducationUncheckedCreateWithoutJobOffersInput>
+    connectOrCreate?: LevelEducationCreateOrConnectWithoutJobOffersInput
+    upsert?: LevelEducationUpsertWithoutJobOffersInput
+    disconnect?: LevelEducationWhereInput | boolean
+    delete?: LevelEducationWhereInput | boolean
+    connect?: LevelEducationWhereUniqueInput
+    update?: XOR<XOR<LevelEducationUpdateToOneWithWhereWithoutJobOffersInput, LevelEducationUpdateWithoutJobOffersInput>, LevelEducationUncheckedUpdateWithoutJobOffersInput>
+  }
+
   export type AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput = {
     create?: XOR<AgencyDataCreateWithoutJobOffersInput, AgencyDataUncheckedCreateWithoutJobOffersInput>
     connectOrCreate?: AgencyDataCreateOrConnectWithoutJobOffersInput
@@ -23061,6 +29076,216 @@ export namespace Prisma {
     update?: jobTagsUpdateWithWhereUniqueWithoutJobOffersInput | jobTagsUpdateWithWhereUniqueWithoutJobOffersInput[]
     updateMany?: jobTagsUpdateManyWithWhereWithoutJobOffersInput | jobTagsUpdateManyWithWhereWithoutJobOffersInput[]
     deleteMany?: jobTagsScalarWhereInput | jobTagsScalarWhereInput[]
+  }
+
+  export type jobOffersCreateNestedManyWithoutContractTypeInput = {
+    create?: XOR<jobOffersCreateWithoutContractTypeInput, jobOffersUncheckedCreateWithoutContractTypeInput> | jobOffersCreateWithoutContractTypeInput[] | jobOffersUncheckedCreateWithoutContractTypeInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutContractTypeInput | jobOffersCreateOrConnectWithoutContractTypeInput[]
+    createMany?: jobOffersCreateManyContractTypeInputEnvelope
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type jobOffersUncheckedCreateNestedManyWithoutContractTypeInput = {
+    create?: XOR<jobOffersCreateWithoutContractTypeInput, jobOffersUncheckedCreateWithoutContractTypeInput> | jobOffersCreateWithoutContractTypeInput[] | jobOffersUncheckedCreateWithoutContractTypeInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutContractTypeInput | jobOffersCreateOrConnectWithoutContractTypeInput[]
+    createMany?: jobOffersCreateManyContractTypeInputEnvelope
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type jobOffersUpdateManyWithoutContractTypeNestedInput = {
+    create?: XOR<jobOffersCreateWithoutContractTypeInput, jobOffersUncheckedCreateWithoutContractTypeInput> | jobOffersCreateWithoutContractTypeInput[] | jobOffersUncheckedCreateWithoutContractTypeInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutContractTypeInput | jobOffersCreateOrConnectWithoutContractTypeInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutContractTypeInput | jobOffersUpsertWithWhereUniqueWithoutContractTypeInput[]
+    createMany?: jobOffersCreateManyContractTypeInputEnvelope
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutContractTypeInput | jobOffersUpdateWithWhereUniqueWithoutContractTypeInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutContractTypeInput | jobOffersUpdateManyWithWhereWithoutContractTypeInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutContractTypeNestedInput = {
+    create?: XOR<jobOffersCreateWithoutContractTypeInput, jobOffersUncheckedCreateWithoutContractTypeInput> | jobOffersCreateWithoutContractTypeInput[] | jobOffersUncheckedCreateWithoutContractTypeInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutContractTypeInput | jobOffersCreateOrConnectWithoutContractTypeInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutContractTypeInput | jobOffersUpsertWithWhereUniqueWithoutContractTypeInput[]
+    createMany?: jobOffersCreateManyContractTypeInputEnvelope
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutContractTypeInput | jobOffersUpdateWithWhereUniqueWithoutContractTypeInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutContractTypeInput | jobOffersUpdateManyWithWhereWithoutContractTypeInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type jobOffersCreateNestedManyWithoutExperienceMinimalJobInput = {
+    create?: XOR<jobOffersCreateWithoutExperienceMinimalJobInput, jobOffersUncheckedCreateWithoutExperienceMinimalJobInput> | jobOffersCreateWithoutExperienceMinimalJobInput[] | jobOffersUncheckedCreateWithoutExperienceMinimalJobInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutExperienceMinimalJobInput | jobOffersCreateOrConnectWithoutExperienceMinimalJobInput[]
+    createMany?: jobOffersCreateManyExperienceMinimalJobInputEnvelope
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type jobOffersUncheckedCreateNestedManyWithoutExperienceMinimalJobInput = {
+    create?: XOR<jobOffersCreateWithoutExperienceMinimalJobInput, jobOffersUncheckedCreateWithoutExperienceMinimalJobInput> | jobOffersCreateWithoutExperienceMinimalJobInput[] | jobOffersUncheckedCreateWithoutExperienceMinimalJobInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutExperienceMinimalJobInput | jobOffersCreateOrConnectWithoutExperienceMinimalJobInput[]
+    createMany?: jobOffersCreateManyExperienceMinimalJobInputEnvelope
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type jobOffersUpdateManyWithoutExperienceMinimalJobNestedInput = {
+    create?: XOR<jobOffersCreateWithoutExperienceMinimalJobInput, jobOffersUncheckedCreateWithoutExperienceMinimalJobInput> | jobOffersCreateWithoutExperienceMinimalJobInput[] | jobOffersUncheckedCreateWithoutExperienceMinimalJobInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutExperienceMinimalJobInput | jobOffersCreateOrConnectWithoutExperienceMinimalJobInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutExperienceMinimalJobInput | jobOffersUpsertWithWhereUniqueWithoutExperienceMinimalJobInput[]
+    createMany?: jobOffersCreateManyExperienceMinimalJobInputEnvelope
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutExperienceMinimalJobInput | jobOffersUpdateWithWhereUniqueWithoutExperienceMinimalJobInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutExperienceMinimalJobInput | jobOffersUpdateManyWithWhereWithoutExperienceMinimalJobInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutExperienceMinimalJobNestedInput = {
+    create?: XOR<jobOffersCreateWithoutExperienceMinimalJobInput, jobOffersUncheckedCreateWithoutExperienceMinimalJobInput> | jobOffersCreateWithoutExperienceMinimalJobInput[] | jobOffersUncheckedCreateWithoutExperienceMinimalJobInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutExperienceMinimalJobInput | jobOffersCreateOrConnectWithoutExperienceMinimalJobInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutExperienceMinimalJobInput | jobOffersUpsertWithWhereUniqueWithoutExperienceMinimalJobInput[]
+    createMany?: jobOffersCreateManyExperienceMinimalJobInputEnvelope
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutExperienceMinimalJobInput | jobOffersUpdateWithWhereUniqueWithoutExperienceMinimalJobInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutExperienceMinimalJobInput | jobOffersUpdateManyWithWhereWithoutExperienceMinimalJobInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type jobOffersCreateNestedManyWithoutModeJobInput = {
+    create?: XOR<jobOffersCreateWithoutModeJobInput, jobOffersUncheckedCreateWithoutModeJobInput> | jobOffersCreateWithoutModeJobInput[] | jobOffersUncheckedCreateWithoutModeJobInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutModeJobInput | jobOffersCreateOrConnectWithoutModeJobInput[]
+    createMany?: jobOffersCreateManyModeJobInputEnvelope
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type jobOffersUncheckedCreateNestedManyWithoutModeJobInput = {
+    create?: XOR<jobOffersCreateWithoutModeJobInput, jobOffersUncheckedCreateWithoutModeJobInput> | jobOffersCreateWithoutModeJobInput[] | jobOffersUncheckedCreateWithoutModeJobInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutModeJobInput | jobOffersCreateOrConnectWithoutModeJobInput[]
+    createMany?: jobOffersCreateManyModeJobInputEnvelope
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type jobOffersUpdateManyWithoutModeJobNestedInput = {
+    create?: XOR<jobOffersCreateWithoutModeJobInput, jobOffersUncheckedCreateWithoutModeJobInput> | jobOffersCreateWithoutModeJobInput[] | jobOffersUncheckedCreateWithoutModeJobInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutModeJobInput | jobOffersCreateOrConnectWithoutModeJobInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutModeJobInput | jobOffersUpsertWithWhereUniqueWithoutModeJobInput[]
+    createMany?: jobOffersCreateManyModeJobInputEnvelope
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutModeJobInput | jobOffersUpdateWithWhereUniqueWithoutModeJobInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutModeJobInput | jobOffersUpdateManyWithWhereWithoutModeJobInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutModeJobNestedInput = {
+    create?: XOR<jobOffersCreateWithoutModeJobInput, jobOffersUncheckedCreateWithoutModeJobInput> | jobOffersCreateWithoutModeJobInput[] | jobOffersUncheckedCreateWithoutModeJobInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutModeJobInput | jobOffersCreateOrConnectWithoutModeJobInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutModeJobInput | jobOffersUpsertWithWhereUniqueWithoutModeJobInput[]
+    createMany?: jobOffersCreateManyModeJobInputEnvelope
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutModeJobInput | jobOffersUpdateWithWhereUniqueWithoutModeJobInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutModeJobInput | jobOffersUpdateManyWithWhereWithoutModeJobInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type jobOffersCreateNestedManyWithoutWorkingTimeJobInput = {
+    create?: XOR<jobOffersCreateWithoutWorkingTimeJobInput, jobOffersUncheckedCreateWithoutWorkingTimeJobInput> | jobOffersCreateWithoutWorkingTimeJobInput[] | jobOffersUncheckedCreateWithoutWorkingTimeJobInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutWorkingTimeJobInput | jobOffersCreateOrConnectWithoutWorkingTimeJobInput[]
+    createMany?: jobOffersCreateManyWorkingTimeJobInputEnvelope
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type jobOffersUncheckedCreateNestedManyWithoutWorkingTimeJobInput = {
+    create?: XOR<jobOffersCreateWithoutWorkingTimeJobInput, jobOffersUncheckedCreateWithoutWorkingTimeJobInput> | jobOffersCreateWithoutWorkingTimeJobInput[] | jobOffersUncheckedCreateWithoutWorkingTimeJobInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutWorkingTimeJobInput | jobOffersCreateOrConnectWithoutWorkingTimeJobInput[]
+    createMany?: jobOffersCreateManyWorkingTimeJobInputEnvelope
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type jobOffersUpdateManyWithoutWorkingTimeJobNestedInput = {
+    create?: XOR<jobOffersCreateWithoutWorkingTimeJobInput, jobOffersUncheckedCreateWithoutWorkingTimeJobInput> | jobOffersCreateWithoutWorkingTimeJobInput[] | jobOffersUncheckedCreateWithoutWorkingTimeJobInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutWorkingTimeJobInput | jobOffersCreateOrConnectWithoutWorkingTimeJobInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutWorkingTimeJobInput | jobOffersUpsertWithWhereUniqueWithoutWorkingTimeJobInput[]
+    createMany?: jobOffersCreateManyWorkingTimeJobInputEnvelope
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutWorkingTimeJobInput | jobOffersUpdateWithWhereUniqueWithoutWorkingTimeJobInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutWorkingTimeJobInput | jobOffersUpdateManyWithWhereWithoutWorkingTimeJobInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutWorkingTimeJobNestedInput = {
+    create?: XOR<jobOffersCreateWithoutWorkingTimeJobInput, jobOffersUncheckedCreateWithoutWorkingTimeJobInput> | jobOffersCreateWithoutWorkingTimeJobInput[] | jobOffersUncheckedCreateWithoutWorkingTimeJobInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutWorkingTimeJobInput | jobOffersCreateOrConnectWithoutWorkingTimeJobInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutWorkingTimeJobInput | jobOffersUpsertWithWhereUniqueWithoutWorkingTimeJobInput[]
+    createMany?: jobOffersCreateManyWorkingTimeJobInputEnvelope
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutWorkingTimeJobInput | jobOffersUpdateWithWhereUniqueWithoutWorkingTimeJobInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutWorkingTimeJobInput | jobOffersUpdateManyWithWhereWithoutWorkingTimeJobInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type jobOffersCreateNestedManyWithoutLevelEducationInput = {
+    create?: XOR<jobOffersCreateWithoutLevelEducationInput, jobOffersUncheckedCreateWithoutLevelEducationInput> | jobOffersCreateWithoutLevelEducationInput[] | jobOffersUncheckedCreateWithoutLevelEducationInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutLevelEducationInput | jobOffersCreateOrConnectWithoutLevelEducationInput[]
+    createMany?: jobOffersCreateManyLevelEducationInputEnvelope
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type jobOffersUncheckedCreateNestedManyWithoutLevelEducationInput = {
+    create?: XOR<jobOffersCreateWithoutLevelEducationInput, jobOffersUncheckedCreateWithoutLevelEducationInput> | jobOffersCreateWithoutLevelEducationInput[] | jobOffersUncheckedCreateWithoutLevelEducationInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutLevelEducationInput | jobOffersCreateOrConnectWithoutLevelEducationInput[]
+    createMany?: jobOffersCreateManyLevelEducationInputEnvelope
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type jobOffersUpdateManyWithoutLevelEducationNestedInput = {
+    create?: XOR<jobOffersCreateWithoutLevelEducationInput, jobOffersUncheckedCreateWithoutLevelEducationInput> | jobOffersCreateWithoutLevelEducationInput[] | jobOffersUncheckedCreateWithoutLevelEducationInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutLevelEducationInput | jobOffersCreateOrConnectWithoutLevelEducationInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutLevelEducationInput | jobOffersUpsertWithWhereUniqueWithoutLevelEducationInput[]
+    createMany?: jobOffersCreateManyLevelEducationInputEnvelope
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutLevelEducationInput | jobOffersUpdateWithWhereUniqueWithoutLevelEducationInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutLevelEducationInput | jobOffersUpdateManyWithWhereWithoutLevelEducationInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutLevelEducationNestedInput = {
+    create?: XOR<jobOffersCreateWithoutLevelEducationInput, jobOffersUncheckedCreateWithoutLevelEducationInput> | jobOffersCreateWithoutLevelEducationInput[] | jobOffersUncheckedCreateWithoutLevelEducationInput[]
+    connectOrCreate?: jobOffersCreateOrConnectWithoutLevelEducationInput | jobOffersCreateOrConnectWithoutLevelEducationInput[]
+    upsert?: jobOffersUpsertWithWhereUniqueWithoutLevelEducationInput | jobOffersUpsertWithWhereUniqueWithoutLevelEducationInput[]
+    createMany?: jobOffersCreateManyLevelEducationInputEnvelope
+    set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+    update?: jobOffersUpdateWithWhereUniqueWithoutLevelEducationInput | jobOffersUpdateWithWhereUniqueWithoutLevelEducationInput[]
+    updateMany?: jobOffersUpdateManyWithWhereWithoutLevelEducationInput | jobOffersUpdateManyWithWhereWithoutLevelEducationInput[]
+    deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
   }
 
   export type jobOffersCreateNestedManyWithoutTagsInput = {
@@ -24883,6 +31108,11 @@ export namespace Prisma {
     categories?: CategoryCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
+    experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
+    modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
+    workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
+    levelEducation?: LevelEducationCreateNestedOneWithoutJobOffersInput
     branch?: BranchCreateNestedOneWithoutJobOffersInput
   }
 
@@ -24899,6 +31129,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    contratId?: string | null
+    experienceId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
     branchId?: string | null
     categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
@@ -25018,6 +31253,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"jobOffers"> | Date | string
     isValidate?: BoolFilter<"jobOffers"> | boolean
     views?: IntFilter<"jobOffers"> | number
+    contratId?: StringNullableFilter<"jobOffers"> | string | null
+    experienceId?: StringNullableFilter<"jobOffers"> | string | null
+    modeId?: StringNullableFilter<"jobOffers"> | string | null
+    workingTimeId?: StringNullableFilter<"jobOffers"> | string | null
+    levelId?: StringNullableFilter<"jobOffers"> | string | null
     agencyId?: StringFilter<"jobOffers"> | string
     branchId?: StringNullableFilter<"jobOffers"> | string | null
   }
@@ -25073,6 +31313,11 @@ export namespace Prisma {
     categories?: CategoryCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
+    experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
+    modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
+    workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
+    levelEducation?: LevelEducationCreateNestedOneWithoutJobOffersInput
     agency: AgencyDataCreateNestedOneWithoutJobOffersInput
   }
 
@@ -25089,6 +31334,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    contratId?: string | null
+    experienceId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
     agencyId: string
     categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
@@ -25223,6 +31473,81 @@ export namespace Prisma {
   export type jobTagsCreateOrConnectWithoutJobOffersInput = {
     where: jobTagsWhereUniqueInput
     create: XOR<jobTagsCreateWithoutJobOffersInput, jobTagsUncheckedCreateWithoutJobOffersInput>
+  }
+
+  export type ContractTypeJobCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+  }
+
+  export type ContractTypeJobUncheckedCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+  }
+
+  export type ContractTypeJobCreateOrConnectWithoutJobOffersInput = {
+    where: ContractTypeJobWhereUniqueInput
+    create: XOR<ContractTypeJobCreateWithoutJobOffersInput, ContractTypeJobUncheckedCreateWithoutJobOffersInput>
+  }
+
+  export type ExperienceMinimalJobCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+  }
+
+  export type ExperienceMinimalJobUncheckedCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+  }
+
+  export type ExperienceMinimalJobCreateOrConnectWithoutJobOffersInput = {
+    where: ExperienceMinimalJobWhereUniqueInput
+    create: XOR<ExperienceMinimalJobCreateWithoutJobOffersInput, ExperienceMinimalJobUncheckedCreateWithoutJobOffersInput>
+  }
+
+  export type ModeJobCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+  }
+
+  export type ModeJobUncheckedCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+  }
+
+  export type ModeJobCreateOrConnectWithoutJobOffersInput = {
+    where: ModeJobWhereUniqueInput
+    create: XOR<ModeJobCreateWithoutJobOffersInput, ModeJobUncheckedCreateWithoutJobOffersInput>
+  }
+
+  export type WorkingTimeJobCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+  }
+
+  export type WorkingTimeJobUncheckedCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+  }
+
+  export type WorkingTimeJobCreateOrConnectWithoutJobOffersInput = {
+    where: WorkingTimeJobWhereUniqueInput
+    create: XOR<WorkingTimeJobCreateWithoutJobOffersInput, WorkingTimeJobUncheckedCreateWithoutJobOffersInput>
+  }
+
+  export type LevelEducationCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+  }
+
+  export type LevelEducationUncheckedCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+  }
+
+  export type LevelEducationCreateOrConnectWithoutJobOffersInput = {
+    where: LevelEducationWhereUniqueInput
+    create: XOR<LevelEducationCreateWithoutJobOffersInput, LevelEducationUncheckedCreateWithoutJobOffersInput>
   }
 
   export type AgencyDataCreateWithoutJobOffersInput = {
@@ -25370,6 +31695,111 @@ export namespace Prisma {
     slug?: StringFilter<"jobTags"> | string
   }
 
+  export type ContractTypeJobUpsertWithoutJobOffersInput = {
+    update: XOR<ContractTypeJobUpdateWithoutJobOffersInput, ContractTypeJobUncheckedUpdateWithoutJobOffersInput>
+    create: XOR<ContractTypeJobCreateWithoutJobOffersInput, ContractTypeJobUncheckedCreateWithoutJobOffersInput>
+    where?: ContractTypeJobWhereInput
+  }
+
+  export type ContractTypeJobUpdateToOneWithWhereWithoutJobOffersInput = {
+    where?: ContractTypeJobWhereInput
+    data: XOR<ContractTypeJobUpdateWithoutJobOffersInput, ContractTypeJobUncheckedUpdateWithoutJobOffersInput>
+  }
+
+  export type ContractTypeJobUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ContractTypeJobUncheckedUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ExperienceMinimalJobUpsertWithoutJobOffersInput = {
+    update: XOR<ExperienceMinimalJobUpdateWithoutJobOffersInput, ExperienceMinimalJobUncheckedUpdateWithoutJobOffersInput>
+    create: XOR<ExperienceMinimalJobCreateWithoutJobOffersInput, ExperienceMinimalJobUncheckedCreateWithoutJobOffersInput>
+    where?: ExperienceMinimalJobWhereInput
+  }
+
+  export type ExperienceMinimalJobUpdateToOneWithWhereWithoutJobOffersInput = {
+    where?: ExperienceMinimalJobWhereInput
+    data: XOR<ExperienceMinimalJobUpdateWithoutJobOffersInput, ExperienceMinimalJobUncheckedUpdateWithoutJobOffersInput>
+  }
+
+  export type ExperienceMinimalJobUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ExperienceMinimalJobUncheckedUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ModeJobUpsertWithoutJobOffersInput = {
+    update: XOR<ModeJobUpdateWithoutJobOffersInput, ModeJobUncheckedUpdateWithoutJobOffersInput>
+    create: XOR<ModeJobCreateWithoutJobOffersInput, ModeJobUncheckedCreateWithoutJobOffersInput>
+    where?: ModeJobWhereInput
+  }
+
+  export type ModeJobUpdateToOneWithWhereWithoutJobOffersInput = {
+    where?: ModeJobWhereInput
+    data: XOR<ModeJobUpdateWithoutJobOffersInput, ModeJobUncheckedUpdateWithoutJobOffersInput>
+  }
+
+  export type ModeJobUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ModeJobUncheckedUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WorkingTimeJobUpsertWithoutJobOffersInput = {
+    update: XOR<WorkingTimeJobUpdateWithoutJobOffersInput, WorkingTimeJobUncheckedUpdateWithoutJobOffersInput>
+    create: XOR<WorkingTimeJobCreateWithoutJobOffersInput, WorkingTimeJobUncheckedCreateWithoutJobOffersInput>
+    where?: WorkingTimeJobWhereInput
+  }
+
+  export type WorkingTimeJobUpdateToOneWithWhereWithoutJobOffersInput = {
+    where?: WorkingTimeJobWhereInput
+    data: XOR<WorkingTimeJobUpdateWithoutJobOffersInput, WorkingTimeJobUncheckedUpdateWithoutJobOffersInput>
+  }
+
+  export type WorkingTimeJobUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WorkingTimeJobUncheckedUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LevelEducationUpsertWithoutJobOffersInput = {
+    update: XOR<LevelEducationUpdateWithoutJobOffersInput, LevelEducationUncheckedUpdateWithoutJobOffersInput>
+    create: XOR<LevelEducationCreateWithoutJobOffersInput, LevelEducationUncheckedCreateWithoutJobOffersInput>
+    where?: LevelEducationWhereInput
+  }
+
+  export type LevelEducationUpdateToOneWithWhereWithoutJobOffersInput = {
+    where?: LevelEducationWhereInput
+    data: XOR<LevelEducationUpdateWithoutJobOffersInput, LevelEducationUncheckedUpdateWithoutJobOffersInput>
+  }
+
+  export type LevelEducationUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type LevelEducationUncheckedUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
   export type AgencyDataUpsertWithoutJobOffersInput = {
     update: XOR<AgencyDataUpdateWithoutJobOffersInput, AgencyDataUncheckedUpdateWithoutJobOffersInput>
     create: XOR<AgencyDataCreateWithoutJobOffersInput, AgencyDataUncheckedCreateWithoutJobOffersInput>
@@ -25448,6 +31878,376 @@ export namespace Prisma {
     adId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type jobOffersCreateWithoutContractTypeInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    categories?: CategoryCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
+    modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
+    workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
+    levelEducation?: LevelEducationCreateNestedOneWithoutJobOffersInput
+    agency: AgencyDataCreateNestedOneWithoutJobOffersInput
+    branch?: BranchCreateNestedOneWithoutJobOffersInput
+  }
+
+  export type jobOffersUncheckedCreateWithoutContractTypeInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    experienceId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
+    agencyId: string
+    branchId?: string | null
+    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
+  }
+
+  export type jobOffersCreateOrConnectWithoutContractTypeInput = {
+    where: jobOffersWhereUniqueInput
+    create: XOR<jobOffersCreateWithoutContractTypeInput, jobOffersUncheckedCreateWithoutContractTypeInput>
+  }
+
+  export type jobOffersCreateManyContractTypeInputEnvelope = {
+    data: jobOffersCreateManyContractTypeInput | jobOffersCreateManyContractTypeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type jobOffersUpsertWithWhereUniqueWithoutContractTypeInput = {
+    where: jobOffersWhereUniqueInput
+    update: XOR<jobOffersUpdateWithoutContractTypeInput, jobOffersUncheckedUpdateWithoutContractTypeInput>
+    create: XOR<jobOffersCreateWithoutContractTypeInput, jobOffersUncheckedCreateWithoutContractTypeInput>
+  }
+
+  export type jobOffersUpdateWithWhereUniqueWithoutContractTypeInput = {
+    where: jobOffersWhereUniqueInput
+    data: XOR<jobOffersUpdateWithoutContractTypeInput, jobOffersUncheckedUpdateWithoutContractTypeInput>
+  }
+
+  export type jobOffersUpdateManyWithWhereWithoutContractTypeInput = {
+    where: jobOffersScalarWhereInput
+    data: XOR<jobOffersUpdateManyMutationInput, jobOffersUncheckedUpdateManyWithoutContractTypeInput>
+  }
+
+  export type jobOffersCreateWithoutExperienceMinimalJobInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    categories?: CategoryCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
+    modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
+    workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
+    levelEducation?: LevelEducationCreateNestedOneWithoutJobOffersInput
+    agency: AgencyDataCreateNestedOneWithoutJobOffersInput
+    branch?: BranchCreateNestedOneWithoutJobOffersInput
+  }
+
+  export type jobOffersUncheckedCreateWithoutExperienceMinimalJobInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    contratId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
+    agencyId: string
+    branchId?: string | null
+    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
+  }
+
+  export type jobOffersCreateOrConnectWithoutExperienceMinimalJobInput = {
+    where: jobOffersWhereUniqueInput
+    create: XOR<jobOffersCreateWithoutExperienceMinimalJobInput, jobOffersUncheckedCreateWithoutExperienceMinimalJobInput>
+  }
+
+  export type jobOffersCreateManyExperienceMinimalJobInputEnvelope = {
+    data: jobOffersCreateManyExperienceMinimalJobInput | jobOffersCreateManyExperienceMinimalJobInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type jobOffersUpsertWithWhereUniqueWithoutExperienceMinimalJobInput = {
+    where: jobOffersWhereUniqueInput
+    update: XOR<jobOffersUpdateWithoutExperienceMinimalJobInput, jobOffersUncheckedUpdateWithoutExperienceMinimalJobInput>
+    create: XOR<jobOffersCreateWithoutExperienceMinimalJobInput, jobOffersUncheckedCreateWithoutExperienceMinimalJobInput>
+  }
+
+  export type jobOffersUpdateWithWhereUniqueWithoutExperienceMinimalJobInput = {
+    where: jobOffersWhereUniqueInput
+    data: XOR<jobOffersUpdateWithoutExperienceMinimalJobInput, jobOffersUncheckedUpdateWithoutExperienceMinimalJobInput>
+  }
+
+  export type jobOffersUpdateManyWithWhereWithoutExperienceMinimalJobInput = {
+    where: jobOffersScalarWhereInput
+    data: XOR<jobOffersUpdateManyMutationInput, jobOffersUncheckedUpdateManyWithoutExperienceMinimalJobInput>
+  }
+
+  export type jobOffersCreateWithoutModeJobInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    categories?: CategoryCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
+    experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
+    workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
+    levelEducation?: LevelEducationCreateNestedOneWithoutJobOffersInput
+    agency: AgencyDataCreateNestedOneWithoutJobOffersInput
+    branch?: BranchCreateNestedOneWithoutJobOffersInput
+  }
+
+  export type jobOffersUncheckedCreateWithoutModeJobInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    contratId?: string | null
+    experienceId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
+    agencyId: string
+    branchId?: string | null
+    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
+  }
+
+  export type jobOffersCreateOrConnectWithoutModeJobInput = {
+    where: jobOffersWhereUniqueInput
+    create: XOR<jobOffersCreateWithoutModeJobInput, jobOffersUncheckedCreateWithoutModeJobInput>
+  }
+
+  export type jobOffersCreateManyModeJobInputEnvelope = {
+    data: jobOffersCreateManyModeJobInput | jobOffersCreateManyModeJobInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type jobOffersUpsertWithWhereUniqueWithoutModeJobInput = {
+    where: jobOffersWhereUniqueInput
+    update: XOR<jobOffersUpdateWithoutModeJobInput, jobOffersUncheckedUpdateWithoutModeJobInput>
+    create: XOR<jobOffersCreateWithoutModeJobInput, jobOffersUncheckedCreateWithoutModeJobInput>
+  }
+
+  export type jobOffersUpdateWithWhereUniqueWithoutModeJobInput = {
+    where: jobOffersWhereUniqueInput
+    data: XOR<jobOffersUpdateWithoutModeJobInput, jobOffersUncheckedUpdateWithoutModeJobInput>
+  }
+
+  export type jobOffersUpdateManyWithWhereWithoutModeJobInput = {
+    where: jobOffersScalarWhereInput
+    data: XOR<jobOffersUpdateManyMutationInput, jobOffersUncheckedUpdateManyWithoutModeJobInput>
+  }
+
+  export type jobOffersCreateWithoutWorkingTimeJobInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    categories?: CategoryCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
+    experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
+    modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
+    levelEducation?: LevelEducationCreateNestedOneWithoutJobOffersInput
+    agency: AgencyDataCreateNestedOneWithoutJobOffersInput
+    branch?: BranchCreateNestedOneWithoutJobOffersInput
+  }
+
+  export type jobOffersUncheckedCreateWithoutWorkingTimeJobInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    contratId?: string | null
+    experienceId?: string | null
+    modeId?: string | null
+    levelId?: string | null
+    agencyId: string
+    branchId?: string | null
+    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
+  }
+
+  export type jobOffersCreateOrConnectWithoutWorkingTimeJobInput = {
+    where: jobOffersWhereUniqueInput
+    create: XOR<jobOffersCreateWithoutWorkingTimeJobInput, jobOffersUncheckedCreateWithoutWorkingTimeJobInput>
+  }
+
+  export type jobOffersCreateManyWorkingTimeJobInputEnvelope = {
+    data: jobOffersCreateManyWorkingTimeJobInput | jobOffersCreateManyWorkingTimeJobInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type jobOffersUpsertWithWhereUniqueWithoutWorkingTimeJobInput = {
+    where: jobOffersWhereUniqueInput
+    update: XOR<jobOffersUpdateWithoutWorkingTimeJobInput, jobOffersUncheckedUpdateWithoutWorkingTimeJobInput>
+    create: XOR<jobOffersCreateWithoutWorkingTimeJobInput, jobOffersUncheckedCreateWithoutWorkingTimeJobInput>
+  }
+
+  export type jobOffersUpdateWithWhereUniqueWithoutWorkingTimeJobInput = {
+    where: jobOffersWhereUniqueInput
+    data: XOR<jobOffersUpdateWithoutWorkingTimeJobInput, jobOffersUncheckedUpdateWithoutWorkingTimeJobInput>
+  }
+
+  export type jobOffersUpdateManyWithWhereWithoutWorkingTimeJobInput = {
+    where: jobOffersScalarWhereInput
+    data: XOR<jobOffersUpdateManyMutationInput, jobOffersUncheckedUpdateManyWithoutWorkingTimeJobInput>
+  }
+
+  export type jobOffersCreateWithoutLevelEducationInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    categories?: CategoryCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
+    experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
+    modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
+    workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
+    agency: AgencyDataCreateNestedOneWithoutJobOffersInput
+    branch?: BranchCreateNestedOneWithoutJobOffersInput
+  }
+
+  export type jobOffersUncheckedCreateWithoutLevelEducationInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    contratId?: string | null
+    experienceId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    agencyId: string
+    branchId?: string | null
+    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
+    sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
+  }
+
+  export type jobOffersCreateOrConnectWithoutLevelEducationInput = {
+    where: jobOffersWhereUniqueInput
+    create: XOR<jobOffersCreateWithoutLevelEducationInput, jobOffersUncheckedCreateWithoutLevelEducationInput>
+  }
+
+  export type jobOffersCreateManyLevelEducationInputEnvelope = {
+    data: jobOffersCreateManyLevelEducationInput | jobOffersCreateManyLevelEducationInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type jobOffersUpsertWithWhereUniqueWithoutLevelEducationInput = {
+    where: jobOffersWhereUniqueInput
+    update: XOR<jobOffersUpdateWithoutLevelEducationInput, jobOffersUncheckedUpdateWithoutLevelEducationInput>
+    create: XOR<jobOffersCreateWithoutLevelEducationInput, jobOffersUncheckedCreateWithoutLevelEducationInput>
+  }
+
+  export type jobOffersUpdateWithWhereUniqueWithoutLevelEducationInput = {
+    where: jobOffersWhereUniqueInput
+    data: XOR<jobOffersUpdateWithoutLevelEducationInput, jobOffersUncheckedUpdateWithoutLevelEducationInput>
+  }
+
+  export type jobOffersUpdateManyWithWhereWithoutLevelEducationInput = {
+    where: jobOffersScalarWhereInput
+    data: XOR<jobOffersUpdateManyMutationInput, jobOffersUncheckedUpdateManyWithoutLevelEducationInput>
+  }
+
   export type jobOffersCreateWithoutTagsInput = {
     id?: string
     title: string
@@ -25463,6 +32263,11 @@ export namespace Prisma {
     views?: number
     categories?: CategoryCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
+    contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
+    experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
+    modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
+    workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
+    levelEducation?: LevelEducationCreateNestedOneWithoutJobOffersInput
     agency: AgencyDataCreateNestedOneWithoutJobOffersInput
     branch?: BranchCreateNestedOneWithoutJobOffersInput
   }
@@ -25480,6 +32285,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    contratId?: string | null
+    experienceId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
     agencyId: string
     branchId?: string | null
     categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
@@ -25546,6 +32356,11 @@ export namespace Prisma {
     views?: number
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
+    experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
+    modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
+    workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
+    levelEducation?: LevelEducationCreateNestedOneWithoutJobOffersInput
     agency: AgencyDataCreateNestedOneWithoutJobOffersInput
     branch?: BranchCreateNestedOneWithoutJobOffersInput
   }
@@ -25563,6 +32378,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    contratId?: string | null
+    experienceId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
     agencyId: string
     branchId?: string | null
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
@@ -25729,6 +32549,11 @@ export namespace Prisma {
     views?: number
     categories?: CategoryCreateNestedManyWithoutJobOffersInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
+    experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
+    modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
+    workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
+    levelEducation?: LevelEducationCreateNestedOneWithoutJobOffersInput
     agency: AgencyDataCreateNestedOneWithoutJobOffersInput
     branch?: BranchCreateNestedOneWithoutJobOffersInput
   }
@@ -25746,6 +32571,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    contratId?: string | null
+    experienceId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
     agencyId: string
     branchId?: string | null
     categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
@@ -26162,6 +32992,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    contratId?: string | null
+    experienceId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
     branchId?: string | null
   }
 
@@ -26219,6 +33054,11 @@ export namespace Prisma {
     categories?: CategoryUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
+    experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
+    modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
+    workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
+    levelEducation?: LevelEducationUpdateOneWithoutJobOffersNestedInput
     branch?: BranchUpdateOneWithoutJobOffersNestedInput
   }
 
@@ -26235,6 +33075,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
     categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
@@ -26254,6 +33099,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -26270,6 +33120,11 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    contratId?: string | null
+    experienceId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
     agencyId: string
   }
 
@@ -26289,6 +33144,11 @@ export namespace Prisma {
     categories?: CategoryUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
+    experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
+    modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
+    workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
+    levelEducation?: LevelEducationUpdateOneWithoutJobOffersNestedInput
     agency?: AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput
   }
 
@@ -26305,6 +33165,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
@@ -26324,6 +33189,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -26397,6 +33267,456 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
   }
 
+  export type jobOffersCreateManyContractTypeInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    experienceId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
+    agencyId: string
+    branchId?: string | null
+  }
+
+  export type jobOffersUpdateWithoutContractTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
+    modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
+    workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
+    levelEducation?: LevelEducationUpdateOneWithoutJobOffersNestedInput
+    agency?: AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput
+    branch?: BranchUpdateOneWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateWithoutContractTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutContractTypeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type jobOffersCreateManyExperienceMinimalJobInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    contratId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
+    agencyId: string
+    branchId?: string | null
+  }
+
+  export type jobOffersUpdateWithoutExperienceMinimalJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
+    modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
+    workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
+    levelEducation?: LevelEducationUpdateOneWithoutJobOffersNestedInput
+    agency?: AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput
+    branch?: BranchUpdateOneWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateWithoutExperienceMinimalJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutExperienceMinimalJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type jobOffersCreateManyModeJobInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    contratId?: string | null
+    experienceId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
+    agencyId: string
+    branchId?: string | null
+  }
+
+  export type jobOffersUpdateWithoutModeJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
+    experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
+    workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
+    levelEducation?: LevelEducationUpdateOneWithoutJobOffersNestedInput
+    agency?: AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput
+    branch?: BranchUpdateOneWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateWithoutModeJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutModeJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type jobOffersCreateManyWorkingTimeJobInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    contratId?: string | null
+    experienceId?: string | null
+    modeId?: string | null
+    levelId?: string | null
+    agencyId: string
+    branchId?: string | null
+  }
+
+  export type jobOffersUpdateWithoutWorkingTimeJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
+    experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
+    modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
+    levelEducation?: LevelEducationUpdateOneWithoutJobOffersNestedInput
+    agency?: AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput
+    branch?: BranchUpdateOneWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateWithoutWorkingTimeJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutWorkingTimeJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type jobOffersCreateManyLevelEducationInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    contratId?: string | null
+    experienceId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    agencyId: string
+    branchId?: string | null
+  }
+
+  export type jobOffersUpdateWithoutLevelEducationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
+    experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
+    modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
+    workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
+    agency?: AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput
+    branch?: BranchUpdateOneWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateWithoutLevelEducationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
+    sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateManyWithoutLevelEducationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type jobOffersUpdateWithoutTagsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
@@ -26412,6 +33732,11 @@ export namespace Prisma {
     views?: IntFieldUpdateOperationsInput | number
     categories?: CategoryUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
+    contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
+    experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
+    modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
+    workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
+    levelEducation?: LevelEducationUpdateOneWithoutJobOffersNestedInput
     agency?: AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput
     branch?: BranchUpdateOneWithoutJobOffersNestedInput
   }
@@ -26429,6 +33754,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
     categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
@@ -26448,6 +33778,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -26501,6 +33836,11 @@ export namespace Prisma {
     views?: IntFieldUpdateOperationsInput | number
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
+    experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
+    modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
+    workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
+    levelEducation?: LevelEducationUpdateOneWithoutJobOffersNestedInput
     agency?: AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput
     branch?: BranchUpdateOneWithoutJobOffersNestedInput
   }
@@ -26518,6 +33858,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
@@ -26537,6 +33882,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -26586,6 +33936,11 @@ export namespace Prisma {
     views?: IntFieldUpdateOperationsInput | number
     categories?: CategoryUpdateManyWithoutJobOffersNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
+    experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
+    modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
+    workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
+    levelEducation?: LevelEducationUpdateOneWithoutJobOffersNestedInput
     agency?: AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput
     branch?: BranchUpdateOneWithoutJobOffersNestedInput
   }
@@ -26603,6 +33958,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
     categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
@@ -26622,6 +33982,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -26651,6 +34016,26 @@ export namespace Prisma {
      * @deprecated Use JobOffersCountOutputTypeDefaultArgs instead
      */
     export type JobOffersCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = JobOffersCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ContractTypeJobCountOutputTypeDefaultArgs instead
+     */
+    export type ContractTypeJobCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ContractTypeJobCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ExperienceMinimalJobCountOutputTypeDefaultArgs instead
+     */
+    export type ExperienceMinimalJobCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ExperienceMinimalJobCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ModeJobCountOutputTypeDefaultArgs instead
+     */
+    export type ModeJobCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ModeJobCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WorkingTimeJobCountOutputTypeDefaultArgs instead
+     */
+    export type WorkingTimeJobCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WorkingTimeJobCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use LevelEducationCountOutputTypeDefaultArgs instead
+     */
+    export type LevelEducationCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LevelEducationCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use JobTagsCountOutputTypeDefaultArgs instead
      */
@@ -26707,6 +34092,26 @@ export namespace Prisma {
      * @deprecated Use jobOffersDefaultArgs instead
      */
     export type jobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = jobOffersDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ContractTypeJobDefaultArgs instead
+     */
+    export type ContractTypeJobArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ContractTypeJobDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ExperienceMinimalJobDefaultArgs instead
+     */
+    export type ExperienceMinimalJobArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ExperienceMinimalJobDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ModeJobDefaultArgs instead
+     */
+    export type ModeJobArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ModeJobDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use WorkingTimeJobDefaultArgs instead
+     */
+    export type WorkingTimeJobArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WorkingTimeJobDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use LevelEducationDefaultArgs instead
+     */
+    export type LevelEducationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LevelEducationDefaultArgs<ExtArgs>
     /**
      * @deprecated Use jobTagsDefaultArgs instead
      */

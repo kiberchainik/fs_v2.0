@@ -25,12 +25,20 @@ import {
 	SelectValue} from '@/shared/components/ui'
 
 import { VacancySchema, TypeVacancySchema } from '../../schemes'
-import { useCategory, useCreateVacancyMutation } from '../../hooks'
+import { useCategory, useCreateVacancyMutation, useGetExperienceMinimal, useGetLevelEducation, useGetModeJob, useGetOptionsContractTypes, useGetWorkingTime } from '../../hooks'
 import TextEditor from '@/shared/components/ui/TextEditor'
 import { useGetBranch } from '../../../branch/hooks'
 
+import styles from './vacancy.module.scss'
+
 export function CreateVacancy () {
 	const { categories, isFetching } = useCategory()
+	const { contractType, isFetching: isFCT } = useGetOptionsContractTypes()
+	const { experienceMinimal, isFetching: isFEM } = useGetExperienceMinimal()
+	const { levelEducation, isFetching: isFLE } = useGetLevelEducation()
+	const { modeJob, isFetching: isFMJ } = useGetModeJob()
+	const { workingTime, isFetching: isFWT } = useGetWorkingTime()
+
 	const { branches, isFetching: isFetchingBranch} = useGetBranch()
 
 	const form = useForm<TypeVacancySchema>({
@@ -262,6 +270,143 @@ export function CreateVacancy () {
 									</FormItem>
 								)}
 							/>
+							<div className={styles.options_job}>
+								<div className={styles.options_job_label}>
+									<FormLabel>Opzionale</FormLabel>
+								</div>
+								<div className={styles.options_job_fields}>
+									<FormField
+										control={form.control}
+										name='contractTypeId'
+										render={({ field }) => (
+											<FormItem>
+												<FormLabel>Tipo di contratto</FormLabel>
+													<Select
+														disabled={isFCT}
+														onValueChange={field.onChange}
+													>
+													<FormControl>
+														<SelectTrigger>
+															<SelectValue placeholder='Tipo di contratto' />
+														</SelectTrigger>
+													</FormControl>
+													<SelectContent>
+														<SelectGroup>
+														{contractType ? contractType.map(type => (
+															<SelectItem value={type.id} key={type.id}>{type.name}</SelectItem>
+														)) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+														</SelectGroup>
+													</SelectContent>
+												</Select>
+											</FormItem>
+										)}
+									/>
+									<FormField
+										control={form.control}
+										name='modeJobId'
+										render={({ field }) => (
+											<FormItem>
+												<FormLabel>Modalità di lavoro</FormLabel>
+													<Select
+														disabled={isFMJ}
+														onValueChange={field.onChange}
+													>
+													<FormControl>
+														<SelectTrigger>
+															<SelectValue placeholder='Modalità di lavoro' />
+														</SelectTrigger>
+													</FormControl>
+													<SelectContent>
+														<SelectGroup>
+														{modeJob ? modeJob.map(mode => (
+															<SelectItem value={mode.id} key={mode.id}>{mode.name}</SelectItem>
+														)) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+														</SelectGroup>
+													</SelectContent>
+												</Select>
+											</FormItem>
+										)}
+									/>
+									<FormField
+										control={form.control}
+										name='workingTimeId'
+										render={({ field }) => (
+											<FormItem>
+												<FormLabel>Orario di lavoro</FormLabel>
+													<Select
+														disabled={isFWT}
+														onValueChange={field.onChange}
+													>
+													<FormControl>
+														<SelectTrigger>
+															<SelectValue placeholder='Orario di lavoro' />
+														</SelectTrigger>
+													</FormControl>
+													<SelectContent>
+														<SelectGroup>
+														{workingTime ? workingTime.map(time => (
+															<SelectItem value={time.id} key={time.id}>{time.name}</SelectItem>
+														)) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+														</SelectGroup>
+													</SelectContent>
+												</Select>
+											</FormItem>
+										)}
+									/>
+									<FormField
+										control={form.control}
+										name='levelEducationId'
+										render={({ field }) => (
+											<FormItem>
+												<FormLabel>Livello di istruzione</FormLabel>
+													<Select
+														disabled={isFLE}
+														onValueChange={field.onChange}
+													>
+													<FormControl>
+														<SelectTrigger>
+															<SelectValue placeholder='Livello di istruzione' />
+														</SelectTrigger>
+													</FormControl>
+													<SelectContent>
+														<SelectGroup>
+														{levelEducation ? levelEducation.map(level => (
+															<SelectItem value={level.id} key={level.id}>{level.name}</SelectItem>
+														)) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+														</SelectGroup>
+													</SelectContent>
+												</Select>
+											</FormItem>
+										)}
+									/>
+									<FormField
+										control={form.control}
+										name='experienceMinimalId'
+										render={({ field }) => (
+											<FormItem>
+												<FormLabel>Esperienza minima richiesta</FormLabel>
+													<Select
+														disabled={isFEM}
+														onValueChange={field.onChange}
+													>
+													<FormControl>
+														<SelectTrigger>
+															<SelectValue placeholder='Esperienza minima richiesta' />
+														</SelectTrigger>
+													</FormControl>
+													<SelectContent>
+														<SelectGroup>
+														{experienceMinimal ? experienceMinimal.map(experience => (
+															<SelectItem value={experience.id} key={experience.id}>{experience.name}</SelectItem>
+														)) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+														</SelectGroup>
+													</SelectContent>
+												</Select>
+											</FormItem>
+										)}
+									/>
+								</div>
+							</div>
 							<Button type='submit' disabled={isPending}>
 								Сохранить
 							</Button>

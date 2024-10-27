@@ -23,6 +23,21 @@ export class JoboffersService {
 		},
     tags: {
       select: returnTagsObject
+    },
+    contractType:{
+      select: {name: true}
+    },
+    experienceMinimalJob:{
+      select: {name: true}
+    },
+    levelEducation: {
+      select: {name: true}
+    },
+    modeJob: {
+      select: {name: true}
+    },
+    workingTimeJob: {
+      select: {name: true}
     }
 	}
 
@@ -35,7 +50,19 @@ export class JoboffersService {
     
     const {id} = await this.getAgencyDataId(userId)
     
-    const {categoryIds, branchId, tags, sectors, slug, ...jobOffers} = createJobofferDto
+    const {
+        categoryIds,
+        branchId,
+        tags,
+        sectors,
+        slug,
+        contractTypeId,
+        experienceMinimalId,
+        levelEducationId,
+        modeJobId,
+        workingTimeId,
+        ...jobOffers
+      } = createJobofferDto
 
     //const existsCategories = await this.categoryService.getById(categoryIds)
     //const categoriesIds = existsCategories.map((catId) =>({id: catId.id}))
@@ -64,6 +91,21 @@ export class JoboffersService {
           },
           agency: {
             connect: {id}
+          },
+          contractType: {
+            connect: {id: contractTypeId}
+          },
+          experienceMinimalJob: {
+            connect: {id: experienceMinimalId}
+          },
+          levelEducation: {
+            connect: {id: levelEducationId}
+          },
+          modeJob: {
+            connect: {id: modeJobId}
+          },
+          workingTimeJob: {
+            connect: {id: workingTimeId}
           }
         },
         include: {

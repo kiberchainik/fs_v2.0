@@ -12,6 +12,11 @@ import { AgencyModule } from './agency/agency.module';
 import { CandidatModule } from './candidat/candidat.module';
 import { FileModule } from './libs/file/file.module';
 import { CategoryModule } from './category/category.module';
+import { ContractTypeModule } from './contract-type/contract-type.module';
+import { ExperienceMinimalModule } from './experience-minimal/experience-minimal.module';
+import { ModeJobModule } from './mode-job/mode-job.module';
+import { WorkingTimeModule } from './working-time/working-time.module';
+import { LevelEducationModule } from './level-education/level-education.module';
 
 @Module({
   imports: [
@@ -29,7 +34,12 @@ import { CategoryModule } from './category/category.module';
     AgencyModule,
     CandidatModule,
     FileModule,
-    CategoryModule
+    CategoryModule,
+    ContractTypeModule,
+    ExperienceMinimalModule,
+    ModeJobModule,
+    WorkingTimeModule,
+    LevelEducationModule
   ],
 })
 export class AppModule {}

@@ -238,8 +238,38 @@ exports.Prisma.JobOffersScalarFieldEnum = {
   updatedAt: 'updatedAt',
   isValidate: 'isValidate',
   views: 'views',
+  contratId: 'contratId',
+  experienceId: 'experienceId',
+  modeId: 'modeId',
+  workingTimeId: 'workingTimeId',
+  levelId: 'levelId',
   agencyId: 'agencyId',
   branchId: 'branchId'
+};
+
+exports.Prisma.ContractTypeJobScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.ExperienceMinimalJobScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.ModeJobScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.WorkingTimeJobScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.LevelEducationScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
 };
 
 exports.Prisma.JobTagsScalarFieldEnum = {
@@ -358,6 +388,11 @@ exports.Prisma.ModelName = {
   AgencyData: 'AgencyData',
   Branch: 'Branch',
   jobOffers: 'jobOffers',
+  ContractTypeJob: 'ContractTypeJob',
+  ExperienceMinimalJob: 'ExperienceMinimalJob',
+  ModeJob: 'ModeJob',
+  WorkingTimeJob: 'WorkingTimeJob',
+  LevelEducation: 'LevelEducation',
   jobTags: 'jobTags',
   Category: 'Category',
   Sectors: 'Sectors',

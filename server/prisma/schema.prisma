@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output = "./__generated__"
+  output   = "./__generated__"
 }
 
 datasource db {
@@ -9,12 +9,12 @@ datasource db {
 }
 
 model User {
-  id String @id @default(uuid())
-  email String @unique
+  id       String   @id @default(uuid())
+  email    String   @unique
   password String
-  role UserRole @default(CANDIDAT)
+  role     UserRole @default(CANDIDAT)
 
-  isVerified Boolean @default(false) @map("is_verified")
+  isVerified         Boolean @default(false) @map("is_verified")
   isTwoFactorEnabled Boolean @default(false) @map("is_two_factor_enabled")
 
   method AuthMethod
@@ -31,7 +31,7 @@ model User {
 }
 
 model CandidatData {
-  id         String         @id @default(uuid())
+  id         String       @id @default(uuid())
   firstname  String
   surname    String
   birthday   String
@@ -39,22 +39,22 @@ model CandidatData {
   resident   String
   about_my   String
   avatar     String
-  createdAt  DateTime    @default(now()) @map("created_at")
-  updatedAt  DateTime    @updatedAt @map("updated_at")
-  userId     String         @unique @map("user_id")
+  createdAt  DateTime     @default(now()) @map("created_at")
+  updatedAt  DateTime     @updatedAt @map("updated_at")
+  userId     String       @unique @map("user_id")
   courses    Courses[]
   education  Education[]
   experience Experience[]
   hobbies    Hobbies[]
   languages  Languages[]
   skills     Skills[]
-  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("candidat_data")
 }
 
 model Education {
-  id         String         @id @default(uuid())
+  id          String   @id @default(uuid())
   degree      String
   school      String
   grade       String?
@@ -62,20 +62,20 @@ model Education {
   enddate     DateTime @db.Date
   description String?
 
-  candidate   CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  cdId        String          @map("candidate_id")
+  candidate CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  cdId      String       @map("candidate_id")
 }
 
 model Skills {
-  id         String         @id @default(uuid())
+  id        String       @id @default(uuid())
   skill     String
   level     SkillsLevel  @default(NONE)
-  cdId      String          @map("candidate_id")
+  cdId      String       @map("candidate_id")
   candidate CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
 }
 
 model Experience {
-  id         String         @id @default(uuid())
+  id          String       @id @default(uuid())
   company     String
   contract    ContractType
   location    String?
@@ -83,49 +83,49 @@ model Experience {
   startDate   DateTime
   endDate     DateTime
   description String?
-  cdId        String          @map("candidate_id")
+  cdId        String       @map("candidate_id")
   candidate   CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
 }
 
 model Languages {
-  id         String         @id @default(uuid())
+  id        String        @id @default(uuid())
   language  String
   level     LanguageLevel @default(BASIC)
-  cdId      String           @map("candidate_id")
+  cdId      String        @map("candidate_id")
   candidate CandidatData  @relation(fields: [cdId], references: [id], onDelete: Cascade)
 }
 
 model Courses {
-  id         String         @id @default(uuid())
+  id          String       @id @default(uuid())
   course      String
   institution String
   grade       String
   startdate   DateTime
   enddate     DateTime
-  cdId        String          @map("candidate_id")
+  cdId        String       @map("candidate_id")
   candidate   CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
 }
 
 model Hobbies {
-  id         String         @id @default(uuid())
+  id        String       @id @default(uuid())
   hobbie    String
-  cdId      String          @map("candidate_id")
+  cdId      String       @map("candidate_id")
   candidate CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
 }
 
 model AgencyData {
-  id         String         @id @default(uuid())
+  id          String      @id @default(uuid())
   agency_name String
-  slug        String     @unique
+  slug        String      @unique
   address     String
   phone       String
   p_iva_c_f   String
-  createdAt   DateTime   @default(now()) @map("created_at")
-  updatedAt   DateTime   @updatedAt @map("updated_at")
-  userId      String        @unique @map("user_id")
+  createdAt   DateTime    @default(now()) @map("created_at")
+  updatedAt   DateTime    @updatedAt @map("updated_at")
+  userId      String      @unique @map("user_id")
   about       String
   logo        String[]
-  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   branch      Branch[]
   jobOffers   jobOffers[]
 
@@ -133,51 +133,102 @@ model AgencyData {
 }
 
 model Branch {
-  id        String         @id @default(uuid())
-  name      String
-  email     String
-  phone     String
-  fax       String?
-  location  String
-  region    String
-  logo      String?
+  id           String      @id @default(uuid())
+  name         String
+  email        String
+  phone        String
+  fax          String?
+  location     String
+  region       String
+  logo         String?
   about_branch String?
-  adId      String         @map("agency_id")
-  agency    AgencyData  @relation(fields: [adId], references: [id])
-  jobOffers jobOffers[]
+  adId         String      @map("agency_id")
+  agency       AgencyData  @relation(fields: [adId], references: [id])
+  jobOffers    jobOffers[]
 
   @@map("branches")
 }
 
 model jobOffers {
-  id          String                 @id @default(uuid())
+  id          String     @id @default(uuid())
   title       String
-  slug        String              @unique
+  slug        String     @unique
   description String
   region      String
   province    String
   location    String
-  reallyUpTo  DateTime? @map("really_up_to")
-  createdAt   DateTime            @default(now()) @map("created_at")
-  updatedAt   DateTime            @updatedAt @map("updated_at")
-  isValidate   Boolean             @default(false)
-  views       Int                 @default(0)
+  reallyUpTo  DateTime?  @map("really_up_to")
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+  isValidate  Boolean    @default(false)
+  views       Int        @default(0)
   categories  Category[]
   sectors     Sectors[]
   tags        jobTags[]
-  
-  agencyId    String                 @map("agency_id")
-  agency      AgencyData          @relation(fields: [agencyId], references: [id])
-  
-  branchId    String?                @map("branch_id")
-  branch      Branch?             @relation(fields: [branchId], references: [id])
+
+  contratId            String?               @map("contract_id")
+  contractType         ContractTypeJob?      @relation(fields: [contratId], references: [id])
+  experienceId         String?               @map("experience_id")
+  experienceMinimalJob ExperienceMinimalJob? @relation(fields: [experienceId], references: [id])
+  modeId               String?               @map("mode_job_id")
+  modeJob              ModeJob?              @relation(fields: [modeId], references: [id])
+  workingTimeId        String?               @map("working_time_id")
+  workingTimeJob       WorkingTimeJob?       @relation(fields: [workingTimeId], references: [id])
+  levelId              String?               @map("level_education_id")
+  levelEducation       LevelEducation?       @relation(fields: [levelId], references: [id])
+
+  agencyId String     @map("agency_id")
+  agency   AgencyData @relation(fields: [agencyId], references: [id])
+
+  branchId String? @map("branch_id")
+  branch   Branch? @relation(fields: [branchId], references: [id])
 
   @@map("job_offers")
 }
 
+model ContractTypeJob {
+  id        String      @id @default(uuid())
+  name      String
+  jobOffers jobOffers[]
+
+  @@map("contract_type")
+}
+
+model ExperienceMinimalJob {
+  id        String      @id @default(uuid())
+  name      String
+  jobOffers jobOffers[]
+
+  @@map("experience_minimal")
+}
+
+model ModeJob {
+  id        String      @id @default(uuid())
+  name      String
+  jobOffers jobOffers[]
+
+  @@map("mode_job")
+}
+
+model WorkingTimeJob {
+  id        String      @id @default(uuid())
+  name      String
+  jobOffers jobOffers[]
+
+  @@map("working_time_job")
+}
+
+model LevelEducation {
+  id        String      @id @default(uuid())
+  name      String
+  jobOffers jobOffers[]
+
+  @@map("level_education")
+}
+
 model jobTags {
-  id String @id @default(uuid())
-  name String
+  id        String      @id @default(uuid())
+  name      String
   slug      String
   jobOffers jobOffers[]
 
@@ -185,44 +236,44 @@ model jobTags {
 }
 
 model Category {
-  id          String                 @id @default(uuid())
-  name        String              @unique
-  slug        String              @unique
+  id          String      @id @default(uuid())
+  name        String      @unique
+  slug        String      @unique
   description String
   level       Int?
   sectors     Sectors[]
   jobOffers   jobOffers[]
   parentId    String?
-  parent      Category?           @relation("SubCategory", fields: [parentId], references: [id])
-  children    Category[]          @relation("SubCategory")
-  
+  parent      Category?   @relation("SubCategory", fields: [parentId], references: [id])
+  children    Category[]  @relation("SubCategory")
+
   @@map("categories")
 }
 
 model Sectors {
-  id String @id @default(uuid())
-  name String @unique
-  slug String @unique
+  id       String      @id @default(uuid())
+  name     String      @unique
+  slug     String      @unique
   jobOffer jobOffers[]
-  
+
   categoryId String
-  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model AuthAccount {
   id String @id @default(uuid())
 
-  type String
+  type    String
   provide String
 
   refreshToken String? @map("refresh_token")
-  accessToken String? @map("access_token")
-  expiresAt Int @map("expires_at")
+  accessToken  String? @map("access_token")
+  expiresAt    Int     @map("expires_at")
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  user User? @relation(fields: [userId], references: [id])
+  user   User?   @relation(fields: [userId], references: [id])
   userId String? @map("user_id")
 
   @@map("auth_account")
@@ -231,10 +282,10 @@ model AuthAccount {
 model Tokens {
   id String @id @default(uuid())
 
-  email String
-  token String @unique
-  type TokenType
-  expiresIn DateTime @map("expires_in")
+  email     String
+  token     String    @unique
+  type      TokenType
+  expiresIn DateTime  @map("expires_in")
 
   createdAt DateTime @default(now()) @map("created_at")
 

@@ -52,4 +52,24 @@ export class CreateJobofferDto {
     @Type(()=> String)
     @IsOptional()
     tags: string[]
+
+    @IsString()
+    @IsOptional()
+    contractTypeId: string
+
+    @IsString()
+    @IsOptional()
+    experienceMinimalId: string
+
+    @IsString()
+    @IsOptional()
+    levelEducationId: string
+
+    @IsString()
+    @IsOptional()
+    modeJobId: string
+
+    @IsString()
+    @IsOptional()
+    workingTimeId: string
 }

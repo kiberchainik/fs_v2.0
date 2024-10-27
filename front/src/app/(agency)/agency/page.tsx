@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ContactsPage() {
     return (
-      <div className='flex flex-col gap-x-3 justify-center mt-5'>
+      <div className='flex flex-col gap-x-3 justify-center m-5'>
         <Card>
           <Branch />
         </Card>

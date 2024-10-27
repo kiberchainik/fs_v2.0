@@ -44,6 +44,11 @@ export type IVacanciaesList = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'descr
         email:string
         phone: string
     }
+    contractTypeId?: string
+    experienceMinimalId?: string
+    levelEducationId?: string
+    modeJobId?: string
+    workingTimeId?: string
 }
 
 export interface IJobsResponce {
