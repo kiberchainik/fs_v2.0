@@ -11,12 +11,12 @@ import { TwoFactorAuthModule } from './auth/two-factor-auth/two-factor-auth.modu
 import { AgencyModule } from './agency/agency.module';
 import { CandidatModule } from './candidat/candidat.module';
 import { FileModule } from './libs/file/file.module';
-import { CategoryModule } from './category/category.module';
-import { ContractTypeModule } from './contract-type/contract-type.module';
-import { ExperienceMinimalModule } from './experience-minimal/experience-minimal.module';
-import { ModeJobModule } from './mode-job/mode-job.module';
-import { WorkingTimeModule } from './working-time/working-time.module';
-import { LevelEducationModule } from './level-education/level-education.module';
+import { CategoryModule } from './admin/category/category.module';
+import { ContractTypeModule } from './admin/contract-type/contract-type.module';
+import { ExperienceMinimalModule } from './admin/experience-minimal/experience-minimal.module';
+import { ModeJobModule } from './admin/mode-job/mode-job.module';
+import { WorkingTimeModule } from './admin/working-time/working-time.module';
+import { LevelEducationModule } from './admin/level-education/level-education.module';
 
 @Module({
   imports: [

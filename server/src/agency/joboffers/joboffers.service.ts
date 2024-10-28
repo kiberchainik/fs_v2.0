@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateJobofferDto, UpdateJobofferDto, JobOffersDto, returnTagsObject } from './dto'
-import { CategoryService } from 'src/category/category.service';
+import { CategoryService } from 'src/admin/category/category.service';
 import { Prisma } from 'prisma/__generated__';
-import { returnCategoryBaseObject } from 'src/category/dto'
+import { returnCategoryBaseObject } from 'src/admin/category/dto'
 import { returnAgencyBaseObject } from 'src/agency/dto'
 import { PrismaService } from '@/prisma/prisma.service';
 import { slugify } from '@/utils';
