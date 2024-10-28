@@ -5,15 +5,13 @@ export const VacancySchema = z.object({
         message: 'Write title vacancy'
     }),
 
-    slug: z.string().min(1, {
-        message: 'Write slug vacancy'
-    }),
+    slug: z.string().optional(),
 
     description: z.string().min(100, {
         message: 'Write full description of vacancy'
     }),
 
-    categoryIds: z.string().min(1, {
+    categories: z.string().min(1, {
         message: 'Select the category for vacancy'
     }),
 
@@ -30,6 +28,8 @@ export const VacancySchema = z.object({
     location: z.string().min(1, {
         message: 'Write full description of vacancy'
     }),
+
+    agencyId: z.string().optional(),
 
     branchId: z.string().optional(),
 

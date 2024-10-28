@@ -1,5 +1,5 @@
 import { ColumnDef } from '@tanstack/react-table'
-import { ArrowUpDown, ExternalLink, MoreHorizontal, Pencil } from 'lucide-react'
+import { ArrowUpDown, ExternalLink, MoreHorizontal, Pencil, Trash } from 'lucide-react'
 import Link from 'next/link'
 
 import { Button, Checkbox } from '@/shared/components'
@@ -14,6 +14,7 @@ import {
 import { MAIN_URL, AGENCY_URL } from '@/shared/config'
 
 export interface IVacancyColumn {
+	id:string
 	title: string,
 	slug: string,
     createdAt: string
@@ -128,11 +129,19 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 						</DropdownMenuItem>
 					</Link>
 					<Link
-						href={AGENCY_URL.editOffers(row.original.slug)}
+						href={AGENCY_URL.editOffers(row.original.id)}
 					>
 						<DropdownMenuItem>
 							<Pencil className='size-4 mr-2' />
 							Изменить
+						</DropdownMenuItem>
+					</Link>
+					<Link
+						href={AGENCY_URL.deleteOffers(row.original.id)}
+					>
+						<DropdownMenuItem>
+							<Trash className='size-4 mr-2 text-red-500' />
+							Delete
 						</DropdownMenuItem>
 					</Link>
 				</DropdownMenuContent>

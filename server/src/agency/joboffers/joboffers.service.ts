@@ -126,6 +126,11 @@ export class JoboffersService {
     } else throw new NotFoundException('Заполните все данные о агентстве!')
   }
 
+  async update(id: string, userId:string, updateJobofferDto: UpdateJobofferDto) {
+    const adId = await this.getAgencyDataId(userId)
+    return `This action updates a #${id} joboffer`;
+  }
+
   async findAll({count = 10, page = 1, isValidate, agencyId, categoryId, tagId, byPopularity}: JobOffersDto) {
     const where: Prisma.jobOffersWhereInput = { isValidate }
 		const orderBy: Prisma.jobOffersOrderByWithRelationInput[] = []
@@ -162,34 +167,32 @@ export class JoboffersService {
 		}
   }
 
-  async findOne(id: string) {
-    const vacancie = await this.prisma.jobOffers.findMany({
-			where: { 
-        AND: [{
-          id
-        }, {
-          isValidate:true
-        }]
-      },
-			include: {
-        tags: true,
-        categories: true,
-        sectors: true,
-        agency: true,
-        branch: true
-      }
-		})
-		if (!vacancie) throw new NotFoundException('ARTICLE_NOT_FOUND')
-		await this.prisma.jobOffers.update({
-			where: { id },
-			data: {
-				views: {
-					increment: 1
-				}
-			}
-		})
-		return vacancie
-  }
+  // async findOne(id: string) {
+  //   const vacancie = await this.prisma.jobOffers.findMany({
+	// 		where: { 
+  //       AND: [{
+  //         id
+  //       }, {
+  //         isValidate:true
+  //       }]
+  //     },
+	// 		include: {
+  //       ...this.includesAll,
+  //       sectors: true,
+  //       branch: true
+  //     }
+	// 	})
+	// 	if (!vacancie) throw new NotFoundException('ARTICLE_NOT_FOUND')
+	// 	await this.prisma.jobOffers.update({
+	// 		where: { id },
+	// 		data: {
+	// 			views: {
+	// 				increment: 1
+	// 			}
+	// 		}
+	// 	})
+	// 	return vacancie
+  // }
 
   async findOneBySlug(slug: string) {
 		const vacancie = await this.prisma.jobOffers.findMany({
@@ -220,26 +223,37 @@ export class JoboffersService {
 		return vacancie
 	}
 
-  async confirmArticle(id: string) {
-		const jobOffers = await this.findOne(id)
+  async findOneById(id: string) {
+		const vacancie = await this.prisma.jobOffers.findUnique({
+			where: {id},
+      include: {
+        categories: {
+          select: {id: true}
+        },
+        tags: {
+          select: {
+            name: true
+          }
+        },
+        sectors: {
+          select: {
+            id: true
+          }
+        }
+      }
+		})
+		return vacancie
+	}
+
+  async confirmVacancy(id: string) {
+		//const jobOffers = await this.findOne(id)
 		return await this.prisma.jobOffers.update({
 			where: { id },
 			data: {
 				isValidate: true
-			},
-			include: {
-        ...this.includesAll,
-        //tags: true,
-        sectors: true,
-        branch: true
-      }
+			}
 		})
 	}
-
-  async update(id: string, userId:string, updateJobofferDto: UpdateJobofferDto) {
-    const adId = await this.getAgencyDataId(userId)
-    return `This action updates a #${id} joboffer`;
-  }
 
   async remove(id: string, userId:string) {
     const adId = await this.getAgencyDataId(userId)

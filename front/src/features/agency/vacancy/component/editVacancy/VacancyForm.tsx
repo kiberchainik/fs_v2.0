@@ -25,51 +25,64 @@ import {
 	SelectValue} from '@/shared/components/ui'
 
 import { VacancySchema, TypeVacancySchema } from '../../schemes'
-import { useCategory, useCreateVacancyMutation, useGetExperienceMinimal, useGetLevelEducation, useGetModeJob, useGetOptionsContractTypes, useGetWorkingTime } from '../../hooks'
 import TextEditor from '@/shared/components/ui/TextEditor'
-import { useGetBranch } from '../../../branch/hooks'
+import { ICategory, IOptions, IVacanciaesEdit } from '../../types'
+import { IBItem } from '@/features/agency/branch/types'
+import { useUpdateVacancyMutation } from '../../hooks'
 
 import styles from './vacancy.module.scss'
 
-export function CreateVacancy () {
-	const { categories, isFetching } = useCategory()
-	const { contractType, isFetching: isFCT } = useGetOptionsContractTypes()
-	const { experienceMinimal, isFetching: isFEM } = useGetExperienceMinimal()
-	const { levelEducation, isFetching: isFLE } = useGetLevelEducation()
-	const { modeJob, isFetching: isFMJ } = useGetModeJob()
-	const { workingTime, isFetching: isFWT } = useGetWorkingTime()
+interface VacancyFromProps {
+	vacancy: IVacanciaesEdit
+	categories: ICategory[]
+	branches: IBItem[]
+	contractType: IOptions[] | undefined
+	experienceMinimal: IOptions[] | undefined
+	levelEducation: IOptions[] | undefined
+	modeJob: IOptions[] | undefined
+	workingTime: IOptions[] | undefined
+}
 
-	const { branches, isFetching: isFetchingBranch} = useGetBranch()
+const arrToStrong = (arr:{name:string}[]):string => {
+	let string:string = ''
+	arr.map(i => string += ', ' + i.name)
+	return string.slice(2)
+}
 
+export function VacancyForm ({vacancy, categories, branches, contractType, experienceMinimal, levelEducation, modeJob, workingTime}:VacancyFromProps) {
 	const form = useForm<TypeVacancySchema>({
 		mode: 'onChange',
 		resolver: zodResolver(VacancySchema),
 		values: {
-			title: '',
-			description: '',
-			slug: '',
-			categories: '',
-			location: '',
-			province: '',
-			region: '',
-			branchId: '',
+			title: vacancy.title,
+			description: vacancy.description,
+			categories: vacancy.categories[0].id,
+			location: vacancy.location,
+			province: vacancy.province,
+			region: vacancy.region,
+			branchId: vacancy.branchId,
 			sectors: [],
-			tags: ''
+			tags: arrToStrong(vacancy.tags),
+			contractTypeId: vacancy.contratId || '',
+			experienceMinimalId: vacancy.experienceId || '',
+			levelEducationId: vacancy.levelId || '',
+			modeJobId: vacancy.modeId || '',
+			workingTimeId: vacancy.workingTimeId || ''
 		}
 	})
 	
-	const { createJob, isPending, isSuccess } = useCreateVacancyMutation()
+	const { updJob, isPending, isSuccess } = useUpdateVacancyMutation()
 	
 	const onSubmit = (values: TypeVacancySchema) => {
-		const tagsArray = values.tags?.split(',').map(tag => tag.trim())
+		const tagsString = values.tags?.split(',').map(tag => tag.trim())
 		const {tags, ...value} = values
 		
 		const newVals = {
 			...value,
-			tags: tagsArray
+			tags: tagsString
 		}
 
-		createJob(newVals)
+		updJob(newVals)
 		
 		isSuccess && form.reset()
 	}
@@ -98,24 +111,6 @@ export function CreateVacancy () {
 										<FormControl>
 											<Input
 												placeholder='Job title'
-												disabled={isPending}
-												type='text'
-												{...field}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name='slug'
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Job slug</FormLabel>
-										<FormControl>
-											<Input
-												placeholder='Job slug'
 												disabled={isPending}
 												type='text'
 												{...field}
@@ -191,13 +186,12 @@ export function CreateVacancy () {
 								<FormItem>
 									<FormLabel>Категория</FormLabel>
 									<Select
-										disabled={isFetching}
 										onValueChange={field.onChange}
 										defaultValue={field.value}
 									>
 										<FormControl>
 											<SelectTrigger>
-												<SelectValue placeholder='Категория товара' />
+												<SelectValue placeholder='Категория' />
 											</SelectTrigger>
 										</FormControl>
 										<SelectContent>
@@ -219,8 +213,8 @@ export function CreateVacancy () {
 									<FormItem>
 										<FormLabel>Branch</FormLabel>
 											<Select
-												disabled={isFetchingBranch}
 												onValueChange={field.onChange}
+												defaultValue={field.value}
 											>
 											<FormControl>
 												<SelectTrigger>
@@ -245,7 +239,7 @@ export function CreateVacancy () {
 								<FormItem>
 									<FormLabel>Description</FormLabel>
 									<FormControl>
-										<TextEditor description={field.name} onChange={field.onChange} />
+										<TextEditor description={field.value} onChange={field.onChange} />
 									</FormControl>
 									<FormMessage />
 								</FormItem>
@@ -282,8 +276,8 @@ export function CreateVacancy () {
 											<FormItem>
 												<FormLabel>Tipo di contratto</FormLabel>
 													<Select
-														disabled={isFCT}
 														onValueChange={field.onChange}
+														defaultValue={field.value}
 													>
 													<FormControl>
 														<SelectTrigger>
@@ -308,7 +302,7 @@ export function CreateVacancy () {
 											<FormItem>
 												<FormLabel>Modalità di lavoro</FormLabel>
 													<Select
-														disabled={isFMJ}
+														defaultValue={field.value}
 														onValueChange={field.onChange}
 													>
 													<FormControl>
@@ -334,7 +328,7 @@ export function CreateVacancy () {
 											<FormItem>
 												<FormLabel>Orario di lavoro</FormLabel>
 													<Select
-														disabled={isFWT}
+														defaultValue={field.value}
 														onValueChange={field.onChange}
 													>
 													<FormControl>
@@ -360,7 +354,7 @@ export function CreateVacancy () {
 											<FormItem>
 												<FormLabel>Livello di istruzione</FormLabel>
 													<Select
-														disabled={isFLE}
+														defaultValue={field.value}
 														onValueChange={field.onChange}
 													>
 													<FormControl>
@@ -386,7 +380,7 @@ export function CreateVacancy () {
 											<FormItem>
 												<FormLabel>Esperienza minima richiesta</FormLabel>
 													<Select
-														disabled={isFEM}
+														defaultValue={field.value}
 														onValueChange={field.onChange}
 													>
 													<FormControl>

@@ -16,6 +16,7 @@ export function Vacancies () {
 
     const formattedVacancies: IVacancyColumn[] = vacancyList?.items
 		? vacancyList.items.map(vacancy => ({
+			id: vacancy.id,
             title: vacancy.title,
             slug: vacancy.slug,
             createdAt: formatDate(vacancy.createdAt),

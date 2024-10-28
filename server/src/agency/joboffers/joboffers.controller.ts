@@ -31,6 +31,12 @@ export class JoboffersController {
     return this.joboffersService.findOneBySlug(slug);
   }
 
+  @Get('by-id/:id')
+  @Authorization(UserRole.AGENCY)
+  findOneById(@Param('id') id:string) {
+    return this.joboffersService.findOneById(id);
+  }
+
   @Patch(':id')
   @UsePipes(new ValidationPipe())
   @Authorization(UserRole.AGENCY)
@@ -49,5 +55,11 @@ export class JoboffersController {
     @CurrentUser('id') userId:string
   ) {
     return this.joboffersService.remove(id, userId);
+  }
+
+  @Get('confirm-vacancy')
+  @Authorization(UserRole.ADMIN)
+  confirmVacancy (@Param('id') id: string) {
+    return this.joboffersService.confirmVacancy(id)
   }
 }
