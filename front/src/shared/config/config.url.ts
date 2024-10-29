@@ -1,5 +1,22 @@
 export const APP_URL = process.env.APP_URL as string
 
+export const AGENCY_DROPDOWN_URL = {
+    root: (url:string) => `/agency${url ? url : ''}`,
+
+    dashboard: () => AGENCY_DROPDOWN_URL.root(''),
+    profile: () => AGENCY_DROPDOWN_URL.root('/profile'),
+    vacancy: (page:string) => AGENCY_DROPDOWN_URL.root(`/vacancy/${page}`),
+    branch: (page:string) => AGENCY_DROPDOWN_URL.root(`/branch/${page}`),
+    favorites: () => AGENCY_DROPDOWN_URL.root('/favorites')
+}
+
+export const CANDIDAT_DROPDOWN_URL = {
+    root: (url:string) => `/candidat${url ? url : ''}`,
+
+    dashboard: () => CANDIDAT_DROPDOWN_URL.root(''),
+    profile: () => CANDIDAT_DROPDOWN_URL.root('/profile'),
+}
+
 export const AGENCY_URL = {
     root: (url = '') => `/agency${url ? url : ''}`,
 
@@ -7,14 +24,10 @@ export const AGENCY_URL = {
     editProfile: () => AGENCY_URL.root('/profile/edit'),
 
     vacancies: () => AGENCY_URL.root('/vacancies'),
-    createOffers: () => AGENCY_URL.root('/vacancy/create'),
     editOffers: (id = '') => AGENCY_URL.root(`/vacancy/edit/${id}`),
     deleteOffers: (id = '') => AGENCY_URL.root(`/vacancy/delete/${id}`),
 
     branches: () => AGENCY_URL.root('/branch'),
-    createBranch: () => AGENCY_URL.root('/add-branch'),
-    editBranch: (id = '') => AGENCY_URL.root(`/branch/${id}`),
-    deleteBranch: (id = '') => AGENCY_URL.root(`/branch/${id}`),
 }
 
 export const CANDIDAT_URL = {

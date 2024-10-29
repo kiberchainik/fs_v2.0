@@ -138,6 +138,7 @@ model Branch {
   email        String
   phone        String
   fax          String?
+  address      String
   location     String
   region       String
   logo         String?
@@ -162,10 +163,11 @@ model jobOffers {
   updatedAt   DateTime   @updatedAt @map("updated_at")
   isValidate  Boolean    @default(false)
   views       Int        @default(0)
-  categories  Category[]
   sectors     Sectors[]
   tags        jobTags[]
 
+  categoryId           String                @map("category_id")
+  categories           Category?             @relation(fields: [categoryId], references: [id])
   contratId            String?               @map("contract_id")
   contractType         ContractTypeJob?      @relation(fields: [contratId], references: [id])
   experienceId         String?               @map("experience_id")

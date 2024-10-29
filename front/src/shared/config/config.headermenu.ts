@@ -1,6 +1,7 @@
 import { UserRole } from "@/features/auth/types"
 import { IconType } from "react-icons"
 import { IoIosPerson, IoIosContact , IoIosGitBranch, IoIosMegaphone, IoMdDesktop } from "react-icons/io"
+import { AGENCY_DROPDOWN_URL, AGENCY_URL, CANDIDAT_DROPDOWN_URL } from "./config.url"
 
 interface MenuItems {
     icon: IconType
@@ -13,33 +14,38 @@ interface MenuItems {
         return role === UserRole.Agency ? [
             {
                 icon: IoMdDesktop,
-                href: '/agency',
+                href: AGENCY_DROPDOWN_URL.dashboard(),
                 title: 'Dashboard'
             },
             {
                 icon: IoIosContact,
-                href: '/agency/profile',
+                href: AGENCY_DROPDOWN_URL.profile(),
                 title: 'Profile'
             },
             {
                 icon: IoIosGitBranch,
-                href: '/agency/add-branch',
+                href: AGENCY_DROPDOWN_URL.branch('create'),
                 title: 'New branch'
             },
             {
                 icon: IoIosMegaphone ,
-                href: '/agency/create-vacancy',
+                href: AGENCY_DROPDOWN_URL.vacancy('create'),
                 title: 'Create vacancy'
             },
             {
                 icon: IoIosPerson,
-                href: '/agency/favorites',
+                href: AGENCY_DROPDOWN_URL.favorites(),
                 title: 'Workers favorites'
             }
         ] : [
             {
                 icon: IoIosPerson,
-                href: '/candidat/edit-profile',
+                href: CANDIDAT_DROPDOWN_URL.dashboard(),
+                title: 'Profile'
+            },
+            {
+                icon: IoIosPerson,
+                href: CANDIDAT_DROPDOWN_URL.profile(),
                 title: 'Profile'
             }
         ]

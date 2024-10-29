@@ -2833,13 +2833,11 @@ export namespace Prisma {
    */
 
   export type JobOffersCountOutputType = {
-    categories: number
     sectors: number
     tags: number
   }
 
   export type JobOffersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    categories?: boolean | JobOffersCountOutputTypeCountCategoriesArgs
     sectors?: boolean | JobOffersCountOutputTypeCountSectorsArgs
     tags?: boolean | JobOffersCountOutputTypeCountTagsArgs
   }
@@ -2853,13 +2851,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the JobOffersCountOutputType
      */
     select?: JobOffersCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * JobOffersCountOutputType without action
-   */
-  export type JobOffersCountOutputTypeCountCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CategoryWhereInput
   }
 
   /**
@@ -12057,6 +12048,7 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     fax: string | null
+    address: string | null
     location: string | null
     region: string | null
     logo: string | null
@@ -12070,6 +12062,7 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     fax: string | null
+    address: string | null
     location: string | null
     region: string | null
     logo: string | null
@@ -12083,6 +12076,7 @@ export namespace Prisma {
     email: number
     phone: number
     fax: number
+    address: number
     location: number
     region: number
     logo: number
@@ -12098,6 +12092,7 @@ export namespace Prisma {
     email?: true
     phone?: true
     fax?: true
+    address?: true
     location?: true
     region?: true
     logo?: true
@@ -12111,6 +12106,7 @@ export namespace Prisma {
     email?: true
     phone?: true
     fax?: true
+    address?: true
     location?: true
     region?: true
     logo?: true
@@ -12124,6 +12120,7 @@ export namespace Prisma {
     email?: true
     phone?: true
     fax?: true
+    address?: true
     location?: true
     region?: true
     logo?: true
@@ -12210,6 +12207,7 @@ export namespace Prisma {
     email: string
     phone: string
     fax: string | null
+    address: string
     location: string
     region: string
     logo: string | null
@@ -12240,6 +12238,7 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     fax?: boolean
+    address?: boolean
     location?: boolean
     region?: boolean
     logo?: boolean
@@ -12256,6 +12255,7 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     fax?: boolean
+    address?: boolean
     location?: boolean
     region?: boolean
     logo?: boolean
@@ -12270,6 +12270,7 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     fax?: boolean
+    address?: boolean
     location?: boolean
     region?: boolean
     logo?: boolean
@@ -12298,6 +12299,7 @@ export namespace Prisma {
       email: string
       phone: string
       fax: string | null
+      address: string
       location: string
       region: string
       logo: string | null
@@ -12703,6 +12705,7 @@ export namespace Prisma {
     readonly email: FieldRef<"Branch", 'String'>
     readonly phone: FieldRef<"Branch", 'String'>
     readonly fax: FieldRef<"Branch", 'String'>
+    readonly address: FieldRef<"Branch", 'String'>
     readonly location: FieldRef<"Branch", 'String'>
     readonly region: FieldRef<"Branch", 'String'>
     readonly logo: FieldRef<"Branch", 'String'>
@@ -13093,6 +13096,7 @@ export namespace Prisma {
     updatedAt: Date | null
     isValidate: boolean | null
     views: number | null
+    categoryId: string | null
     contratId: string | null
     experienceId: string | null
     modeId: string | null
@@ -13115,6 +13119,7 @@ export namespace Prisma {
     updatedAt: Date | null
     isValidate: boolean | null
     views: number | null
+    categoryId: string | null
     contratId: string | null
     experienceId: string | null
     modeId: string | null
@@ -13137,6 +13142,7 @@ export namespace Prisma {
     updatedAt: number
     isValidate: number
     views: number
+    categoryId: number
     contratId: number
     experienceId: number
     modeId: number
@@ -13169,6 +13175,7 @@ export namespace Prisma {
     updatedAt?: true
     isValidate?: true
     views?: true
+    categoryId?: true
     contratId?: true
     experienceId?: true
     modeId?: true
@@ -13191,6 +13198,7 @@ export namespace Prisma {
     updatedAt?: true
     isValidate?: true
     views?: true
+    categoryId?: true
     contratId?: true
     experienceId?: true
     modeId?: true
@@ -13213,6 +13221,7 @@ export namespace Prisma {
     updatedAt?: true
     isValidate?: true
     views?: true
+    categoryId?: true
     contratId?: true
     experienceId?: true
     modeId?: true
@@ -13322,6 +13331,7 @@ export namespace Prisma {
     updatedAt: Date
     isValidate: boolean
     views: number
+    categoryId: string
     contratId: string | null
     experienceId: string | null
     modeId: string | null
@@ -13363,6 +13373,7 @@ export namespace Prisma {
     updatedAt?: boolean
     isValidate?: boolean
     views?: boolean
+    categoryId?: boolean
     contratId?: boolean
     experienceId?: boolean
     modeId?: boolean
@@ -13370,9 +13381,9 @@ export namespace Prisma {
     levelId?: boolean
     agencyId?: boolean
     branchId?: boolean
-    categories?: boolean | jobOffers$categoriesArgs<ExtArgs>
     sectors?: boolean | jobOffers$sectorsArgs<ExtArgs>
     tags?: boolean | jobOffers$tagsArgs<ExtArgs>
+    categories?: boolean | jobOffers$categoriesArgs<ExtArgs>
     contractType?: boolean | jobOffers$contractTypeArgs<ExtArgs>
     experienceMinimalJob?: boolean | jobOffers$experienceMinimalJobArgs<ExtArgs>
     modeJob?: boolean | jobOffers$modeJobArgs<ExtArgs>
@@ -13396,6 +13407,7 @@ export namespace Prisma {
     updatedAt?: boolean
     isValidate?: boolean
     views?: boolean
+    categoryId?: boolean
     contratId?: boolean
     experienceId?: boolean
     modeId?: boolean
@@ -13403,6 +13415,7 @@ export namespace Prisma {
     levelId?: boolean
     agencyId?: boolean
     branchId?: boolean
+    categories?: boolean | jobOffers$categoriesArgs<ExtArgs>
     contractType?: boolean | jobOffers$contractTypeArgs<ExtArgs>
     experienceMinimalJob?: boolean | jobOffers$experienceMinimalJobArgs<ExtArgs>
     modeJob?: boolean | jobOffers$modeJobArgs<ExtArgs>
@@ -13425,6 +13438,7 @@ export namespace Prisma {
     updatedAt?: boolean
     isValidate?: boolean
     views?: boolean
+    categoryId?: boolean
     contratId?: boolean
     experienceId?: boolean
     modeId?: boolean
@@ -13435,9 +13449,9 @@ export namespace Prisma {
   }
 
   export type jobOffersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    categories?: boolean | jobOffers$categoriesArgs<ExtArgs>
     sectors?: boolean | jobOffers$sectorsArgs<ExtArgs>
     tags?: boolean | jobOffers$tagsArgs<ExtArgs>
+    categories?: boolean | jobOffers$categoriesArgs<ExtArgs>
     contractType?: boolean | jobOffers$contractTypeArgs<ExtArgs>
     experienceMinimalJob?: boolean | jobOffers$experienceMinimalJobArgs<ExtArgs>
     modeJob?: boolean | jobOffers$modeJobArgs<ExtArgs>
@@ -13448,6 +13462,7 @@ export namespace Prisma {
     _count?: boolean | JobOffersCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type jobOffersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    categories?: boolean | jobOffers$categoriesArgs<ExtArgs>
     contractType?: boolean | jobOffers$contractTypeArgs<ExtArgs>
     experienceMinimalJob?: boolean | jobOffers$experienceMinimalJobArgs<ExtArgs>
     modeJob?: boolean | jobOffers$modeJobArgs<ExtArgs>
@@ -13460,9 +13475,9 @@ export namespace Prisma {
   export type $jobOffersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "jobOffers"
     objects: {
-      categories: Prisma.$CategoryPayload<ExtArgs>[]
       sectors: Prisma.$SectorsPayload<ExtArgs>[]
       tags: Prisma.$jobTagsPayload<ExtArgs>[]
+      categories: Prisma.$CategoryPayload<ExtArgs> | null
       contractType: Prisma.$ContractTypeJobPayload<ExtArgs> | null
       experienceMinimalJob: Prisma.$ExperienceMinimalJobPayload<ExtArgs> | null
       modeJob: Prisma.$ModeJobPayload<ExtArgs> | null
@@ -13484,6 +13499,7 @@ export namespace Prisma {
       updatedAt: Date
       isValidate: boolean
       views: number
+      categoryId: string
       contratId: string | null
       experienceId: string | null
       modeId: string | null
@@ -13855,9 +13871,9 @@ export namespace Prisma {
    */
   export interface Prisma__jobOffersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    categories<T extends jobOffers$categoriesArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$categoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany"> | Null>
     sectors<T extends jobOffers$sectorsArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$sectorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectorsPayload<ExtArgs>, T, "findMany"> | Null>
     tags<T extends jobOffers$tagsArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$tagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobTagsPayload<ExtArgs>, T, "findMany"> | Null>
+    categories<T extends jobOffers$categoriesArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$categoriesArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     contractType<T extends jobOffers$contractTypeArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$contractTypeArgs<ExtArgs>>): Prisma__ContractTypeJobClient<$Result.GetResult<Prisma.$ContractTypeJobPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     experienceMinimalJob<T extends jobOffers$experienceMinimalJobArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$experienceMinimalJobArgs<ExtArgs>>): Prisma__ExperienceMinimalJobClient<$Result.GetResult<Prisma.$ExperienceMinimalJobPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     modeJob<T extends jobOffers$modeJobArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$modeJobArgs<ExtArgs>>): Prisma__ModeJobClient<$Result.GetResult<Prisma.$ModeJobPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
@@ -13906,6 +13922,7 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"jobOffers", 'DateTime'>
     readonly isValidate: FieldRef<"jobOffers", 'Boolean'>
     readonly views: FieldRef<"jobOffers", 'Int'>
+    readonly categoryId: FieldRef<"jobOffers", 'String'>
     readonly contratId: FieldRef<"jobOffers", 'String'>
     readonly experienceId: FieldRef<"jobOffers", 'String'>
     readonly modeId: FieldRef<"jobOffers", 'String'>
@@ -14231,26 +14248,6 @@ export namespace Prisma {
   }
 
   /**
-   * jobOffers.categories
-   */
-  export type jobOffers$categoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Category
-     */
-    select?: CategorySelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CategoryInclude<ExtArgs> | null
-    where?: CategoryWhereInput
-    orderBy?: CategoryOrderByWithRelationInput | CategoryOrderByWithRelationInput[]
-    cursor?: CategoryWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CategoryScalarFieldEnum | CategoryScalarFieldEnum[]
-  }
-
-  /**
    * jobOffers.sectors
    */
   export type jobOffers$sectorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -14288,6 +14285,21 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: JobTagsScalarFieldEnum | JobTagsScalarFieldEnum[]
+  }
+
+  /**
+   * jobOffers.categories
+   */
+  export type jobOffers$categoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Category
+     */
+    select?: CategorySelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryInclude<ExtArgs> | null
+    where?: CategoryWhereInput
   }
 
   /**
@@ -23954,6 +23966,7 @@ export namespace Prisma {
     email: 'email',
     phone: 'phone',
     fax: 'fax',
+    address: 'address',
     location: 'location',
     region: 'region',
     logo: 'logo',
@@ -23977,6 +23990,7 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     isValidate: 'isValidate',
     views: 'views',
+    categoryId: 'categoryId',
     contratId: 'contratId',
     experienceId: 'experienceId',
     modeId: 'modeId',
@@ -24905,6 +24919,7 @@ export namespace Prisma {
     email?: StringFilter<"Branch"> | string
     phone?: StringFilter<"Branch"> | string
     fax?: StringNullableFilter<"Branch"> | string | null
+    address?: StringFilter<"Branch"> | string
     location?: StringFilter<"Branch"> | string
     region?: StringFilter<"Branch"> | string
     logo?: StringNullableFilter<"Branch"> | string | null
@@ -24920,6 +24935,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     fax?: SortOrderInput | SortOrder
+    address?: SortOrder
     location?: SortOrder
     region?: SortOrder
     logo?: SortOrderInput | SortOrder
@@ -24938,6 +24954,7 @@ export namespace Prisma {
     email?: StringFilter<"Branch"> | string
     phone?: StringFilter<"Branch"> | string
     fax?: StringNullableFilter<"Branch"> | string | null
+    address?: StringFilter<"Branch"> | string
     location?: StringFilter<"Branch"> | string
     region?: StringFilter<"Branch"> | string
     logo?: StringNullableFilter<"Branch"> | string | null
@@ -24953,6 +24970,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     fax?: SortOrderInput | SortOrder
+    address?: SortOrder
     location?: SortOrder
     region?: SortOrder
     logo?: SortOrderInput | SortOrder
@@ -24972,6 +24990,7 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"Branch"> | string
     phone?: StringWithAggregatesFilter<"Branch"> | string
     fax?: StringNullableWithAggregatesFilter<"Branch"> | string | null
+    address?: StringWithAggregatesFilter<"Branch"> | string
     location?: StringWithAggregatesFilter<"Branch"> | string
     region?: StringWithAggregatesFilter<"Branch"> | string
     logo?: StringNullableWithAggregatesFilter<"Branch"> | string | null
@@ -24995,6 +25014,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"jobOffers"> | Date | string
     isValidate?: BoolFilter<"jobOffers"> | boolean
     views?: IntFilter<"jobOffers"> | number
+    categoryId?: StringFilter<"jobOffers"> | string
     contratId?: StringNullableFilter<"jobOffers"> | string | null
     experienceId?: StringNullableFilter<"jobOffers"> | string | null
     modeId?: StringNullableFilter<"jobOffers"> | string | null
@@ -25002,9 +25022,9 @@ export namespace Prisma {
     levelId?: StringNullableFilter<"jobOffers"> | string | null
     agencyId?: StringFilter<"jobOffers"> | string
     branchId?: StringNullableFilter<"jobOffers"> | string | null
-    categories?: CategoryListRelationFilter
     sectors?: SectorsListRelationFilter
     tags?: JobTagsListRelationFilter
+    categories?: XOR<CategoryNullableRelationFilter, CategoryWhereInput> | null
     contractType?: XOR<ContractTypeJobNullableRelationFilter, ContractTypeJobWhereInput> | null
     experienceMinimalJob?: XOR<ExperienceMinimalJobNullableRelationFilter, ExperienceMinimalJobWhereInput> | null
     modeJob?: XOR<ModeJobNullableRelationFilter, ModeJobWhereInput> | null
@@ -25027,6 +25047,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     isValidate?: SortOrder
     views?: SortOrder
+    categoryId?: SortOrder
     contratId?: SortOrderInput | SortOrder
     experienceId?: SortOrderInput | SortOrder
     modeId?: SortOrderInput | SortOrder
@@ -25034,9 +25055,9 @@ export namespace Prisma {
     levelId?: SortOrderInput | SortOrder
     agencyId?: SortOrder
     branchId?: SortOrderInput | SortOrder
-    categories?: CategoryOrderByRelationAggregateInput
     sectors?: SectorsOrderByRelationAggregateInput
     tags?: jobTagsOrderByRelationAggregateInput
+    categories?: CategoryOrderByWithRelationInput
     contractType?: ContractTypeJobOrderByWithRelationInput
     experienceMinimalJob?: ExperienceMinimalJobOrderByWithRelationInput
     modeJob?: ModeJobOrderByWithRelationInput
@@ -25062,6 +25083,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"jobOffers"> | Date | string
     isValidate?: BoolFilter<"jobOffers"> | boolean
     views?: IntFilter<"jobOffers"> | number
+    categoryId?: StringFilter<"jobOffers"> | string
     contratId?: StringNullableFilter<"jobOffers"> | string | null
     experienceId?: StringNullableFilter<"jobOffers"> | string | null
     modeId?: StringNullableFilter<"jobOffers"> | string | null
@@ -25069,9 +25091,9 @@ export namespace Prisma {
     levelId?: StringNullableFilter<"jobOffers"> | string | null
     agencyId?: StringFilter<"jobOffers"> | string
     branchId?: StringNullableFilter<"jobOffers"> | string | null
-    categories?: CategoryListRelationFilter
     sectors?: SectorsListRelationFilter
     tags?: JobTagsListRelationFilter
+    categories?: XOR<CategoryNullableRelationFilter, CategoryWhereInput> | null
     contractType?: XOR<ContractTypeJobNullableRelationFilter, ContractTypeJobWhereInput> | null
     experienceMinimalJob?: XOR<ExperienceMinimalJobNullableRelationFilter, ExperienceMinimalJobWhereInput> | null
     modeJob?: XOR<ModeJobNullableRelationFilter, ModeJobWhereInput> | null
@@ -25094,6 +25116,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     isValidate?: SortOrder
     views?: SortOrder
+    categoryId?: SortOrder
     contratId?: SortOrderInput | SortOrder
     experienceId?: SortOrderInput | SortOrder
     modeId?: SortOrderInput | SortOrder
@@ -25124,6 +25147,7 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"jobOffers"> | Date | string
     isValidate?: BoolWithAggregatesFilter<"jobOffers"> | boolean
     views?: IntWithAggregatesFilter<"jobOffers"> | number
+    categoryId?: StringWithAggregatesFilter<"jobOffers"> | string
     contratId?: StringNullableWithAggregatesFilter<"jobOffers"> | string | null
     experienceId?: StringNullableWithAggregatesFilter<"jobOffers"> | string | null
     modeId?: StringNullableWithAggregatesFilter<"jobOffers"> | string | null
@@ -26329,6 +26353,7 @@ export namespace Prisma {
     email: string
     phone: string
     fax?: string | null
+    address: string
     location: string
     region: string
     logo?: string | null
@@ -26343,6 +26368,7 @@ export namespace Prisma {
     email: string
     phone: string
     fax?: string | null
+    address: string
     location: string
     region: string
     logo?: string | null
@@ -26357,6 +26383,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26371,6 +26398,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26385,6 +26413,7 @@ export namespace Prisma {
     email: string
     phone: string
     fax?: string | null
+    address: string
     location: string
     region: string
     logo?: string | null
@@ -26398,6 +26427,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26410,6 +26440,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26430,9 +26461,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
-    categories?: CategoryCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    categories?: CategoryCreateNestedOneWithoutJobOffersInput
     contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
     experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
     modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
@@ -26455,6 +26486,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     contratId?: string | null
     experienceId?: string | null
     modeId?: string | null
@@ -26462,7 +26494,6 @@ export namespace Prisma {
     levelId?: string | null
     agencyId: string
     branchId?: string | null
-    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
   }
@@ -26480,9 +26511,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
-    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    categories?: CategoryUpdateOneWithoutJobOffersNestedInput
     contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
     experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
     modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
@@ -26505,6 +26536,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26512,7 +26544,6 @@ export namespace Prisma {
     levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
-    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
   }
@@ -26530,6 +26561,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     contratId?: string | null
     experienceId?: string | null
     modeId?: string | null
@@ -26567,6 +26599,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27689,6 +27722,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     fax?: SortOrder
+    address?: SortOrder
     location?: SortOrder
     region?: SortOrder
     logo?: SortOrder
@@ -27702,6 +27736,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     fax?: SortOrder
+    address?: SortOrder
     location?: SortOrder
     region?: SortOrder
     logo?: SortOrder
@@ -27715,6 +27750,7 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     fax?: SortOrder
+    address?: SortOrder
     location?: SortOrder
     region?: SortOrder
     logo?: SortOrder
@@ -27744,12 +27780,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type CategoryListRelationFilter = {
-    every?: CategoryWhereInput
-    some?: CategoryWhereInput
-    none?: CategoryWhereInput
-  }
-
   export type SectorsListRelationFilter = {
     every?: SectorsWhereInput
     some?: SectorsWhereInput
@@ -27760,6 +27790,11 @@ export namespace Prisma {
     every?: jobTagsWhereInput
     some?: jobTagsWhereInput
     none?: jobTagsWhereInput
+  }
+
+  export type CategoryNullableRelationFilter = {
+    is?: CategoryWhereInput | null
+    isNot?: CategoryWhereInput | null
   }
 
   export type ContractTypeJobNullableRelationFilter = {
@@ -27792,10 +27827,6 @@ export namespace Prisma {
     isNot?: BranchWhereInput | null
   }
 
-  export type CategoryOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type SectorsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -27817,6 +27848,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     isValidate?: SortOrder
     views?: SortOrder
+    categoryId?: SortOrder
     contratId?: SortOrder
     experienceId?: SortOrder
     modeId?: SortOrder
@@ -27843,6 +27875,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     isValidate?: SortOrder
     views?: SortOrder
+    categoryId?: SortOrder
     contratId?: SortOrder
     experienceId?: SortOrder
     modeId?: SortOrder
@@ -27865,6 +27898,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     isValidate?: SortOrder
     views?: SortOrder
+    categoryId?: SortOrder
     contratId?: SortOrder
     experienceId?: SortOrder
     modeId?: SortOrder
@@ -28012,9 +28046,14 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type CategoryNullableRelationFilter = {
-    is?: CategoryWhereInput | null
-    isNot?: CategoryWhereInput | null
+  export type CategoryListRelationFilter = {
+    every?: CategoryWhereInput
+    some?: CategoryWhereInput
+    none?: CategoryWhereInput
+  }
+
+  export type CategoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type CategoryCountOrderByAggregateInput = {
@@ -28842,12 +28881,6 @@ export namespace Prisma {
     deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
   }
 
-  export type CategoryCreateNestedManyWithoutJobOffersInput = {
-    create?: XOR<CategoryCreateWithoutJobOffersInput, CategoryUncheckedCreateWithoutJobOffersInput> | CategoryCreateWithoutJobOffersInput[] | CategoryUncheckedCreateWithoutJobOffersInput[]
-    connectOrCreate?: CategoryCreateOrConnectWithoutJobOffersInput | CategoryCreateOrConnectWithoutJobOffersInput[]
-    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-  }
-
   export type SectorsCreateNestedManyWithoutJobOfferInput = {
     create?: XOR<SectorsCreateWithoutJobOfferInput, SectorsUncheckedCreateWithoutJobOfferInput> | SectorsCreateWithoutJobOfferInput[] | SectorsUncheckedCreateWithoutJobOfferInput[]
     connectOrCreate?: SectorsCreateOrConnectWithoutJobOfferInput | SectorsCreateOrConnectWithoutJobOfferInput[]
@@ -28858,6 +28891,12 @@ export namespace Prisma {
     create?: XOR<jobTagsCreateWithoutJobOffersInput, jobTagsUncheckedCreateWithoutJobOffersInput> | jobTagsCreateWithoutJobOffersInput[] | jobTagsUncheckedCreateWithoutJobOffersInput[]
     connectOrCreate?: jobTagsCreateOrConnectWithoutJobOffersInput | jobTagsCreateOrConnectWithoutJobOffersInput[]
     connect?: jobTagsWhereUniqueInput | jobTagsWhereUniqueInput[]
+  }
+
+  export type CategoryCreateNestedOneWithoutJobOffersInput = {
+    create?: XOR<CategoryCreateWithoutJobOffersInput, CategoryUncheckedCreateWithoutJobOffersInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutJobOffersInput
+    connect?: CategoryWhereUniqueInput
   }
 
   export type ContractTypeJobCreateNestedOneWithoutJobOffersInput = {
@@ -28902,12 +28941,6 @@ export namespace Prisma {
     connect?: BranchWhereUniqueInput
   }
 
-  export type CategoryUncheckedCreateNestedManyWithoutJobOffersInput = {
-    create?: XOR<CategoryCreateWithoutJobOffersInput, CategoryUncheckedCreateWithoutJobOffersInput> | CategoryCreateWithoutJobOffersInput[] | CategoryUncheckedCreateWithoutJobOffersInput[]
-    connectOrCreate?: CategoryCreateOrConnectWithoutJobOffersInput | CategoryCreateOrConnectWithoutJobOffersInput[]
-    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-  }
-
   export type SectorsUncheckedCreateNestedManyWithoutJobOfferInput = {
     create?: XOR<SectorsCreateWithoutJobOfferInput, SectorsUncheckedCreateWithoutJobOfferInput> | SectorsCreateWithoutJobOfferInput[] | SectorsUncheckedCreateWithoutJobOfferInput[]
     connectOrCreate?: SectorsCreateOrConnectWithoutJobOfferInput | SectorsCreateOrConnectWithoutJobOfferInput[]
@@ -28930,19 +28963,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type CategoryUpdateManyWithoutJobOffersNestedInput = {
-    create?: XOR<CategoryCreateWithoutJobOffersInput, CategoryUncheckedCreateWithoutJobOffersInput> | CategoryCreateWithoutJobOffersInput[] | CategoryUncheckedCreateWithoutJobOffersInput[]
-    connectOrCreate?: CategoryCreateOrConnectWithoutJobOffersInput | CategoryCreateOrConnectWithoutJobOffersInput[]
-    upsert?: CategoryUpsertWithWhereUniqueWithoutJobOffersInput | CategoryUpsertWithWhereUniqueWithoutJobOffersInput[]
-    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    update?: CategoryUpdateWithWhereUniqueWithoutJobOffersInput | CategoryUpdateWithWhereUniqueWithoutJobOffersInput[]
-    updateMany?: CategoryUpdateManyWithWhereWithoutJobOffersInput | CategoryUpdateManyWithWhereWithoutJobOffersInput[]
-    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
   }
 
   export type SectorsUpdateManyWithoutJobOfferNestedInput = {
@@ -28969,6 +28989,16 @@ export namespace Prisma {
     update?: jobTagsUpdateWithWhereUniqueWithoutJobOffersInput | jobTagsUpdateWithWhereUniqueWithoutJobOffersInput[]
     updateMany?: jobTagsUpdateManyWithWhereWithoutJobOffersInput | jobTagsUpdateManyWithWhereWithoutJobOffersInput[]
     deleteMany?: jobTagsScalarWhereInput | jobTagsScalarWhereInput[]
+  }
+
+  export type CategoryUpdateOneWithoutJobOffersNestedInput = {
+    create?: XOR<CategoryCreateWithoutJobOffersInput, CategoryUncheckedCreateWithoutJobOffersInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutJobOffersInput
+    upsert?: CategoryUpsertWithoutJobOffersInput
+    disconnect?: CategoryWhereInput | boolean
+    delete?: CategoryWhereInput | boolean
+    connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutJobOffersInput, CategoryUpdateWithoutJobOffersInput>, CategoryUncheckedUpdateWithoutJobOffersInput>
   }
 
   export type ContractTypeJobUpdateOneWithoutJobOffersNestedInput = {
@@ -29037,19 +29067,6 @@ export namespace Prisma {
     delete?: BranchWhereInput | boolean
     connect?: BranchWhereUniqueInput
     update?: XOR<XOR<BranchUpdateToOneWithWhereWithoutJobOffersInput, BranchUpdateWithoutJobOffersInput>, BranchUncheckedUpdateWithoutJobOffersInput>
-  }
-
-  export type CategoryUncheckedUpdateManyWithoutJobOffersNestedInput = {
-    create?: XOR<CategoryCreateWithoutJobOffersInput, CategoryUncheckedCreateWithoutJobOffersInput> | CategoryCreateWithoutJobOffersInput[] | CategoryUncheckedCreateWithoutJobOffersInput[]
-    connectOrCreate?: CategoryCreateOrConnectWithoutJobOffersInput | CategoryCreateOrConnectWithoutJobOffersInput[]
-    upsert?: CategoryUpsertWithWhereUniqueWithoutJobOffersInput | CategoryUpsertWithWhereUniqueWithoutJobOffersInput[]
-    set?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    disconnect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    delete?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    connect?: CategoryWhereUniqueInput | CategoryWhereUniqueInput[]
-    update?: CategoryUpdateWithWhereUniqueWithoutJobOffersInput | CategoryUpdateWithWhereUniqueWithoutJobOffersInput[]
-    updateMany?: CategoryUpdateManyWithWhereWithoutJobOffersInput | CategoryUpdateManyWithWhereWithoutJobOffersInput[]
-    deleteMany?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
   }
 
   export type SectorsUncheckedUpdateManyWithoutJobOfferNestedInput = {
@@ -29336,6 +29353,7 @@ export namespace Prisma {
   export type jobOffersCreateNestedManyWithoutCategoriesInput = {
     create?: XOR<jobOffersCreateWithoutCategoriesInput, jobOffersUncheckedCreateWithoutCategoriesInput> | jobOffersCreateWithoutCategoriesInput[] | jobOffersUncheckedCreateWithoutCategoriesInput[]
     connectOrCreate?: jobOffersCreateOrConnectWithoutCategoriesInput | jobOffersCreateOrConnectWithoutCategoriesInput[]
+    createMany?: jobOffersCreateManyCategoriesInputEnvelope
     connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
   }
 
@@ -29362,6 +29380,7 @@ export namespace Prisma {
   export type jobOffersUncheckedCreateNestedManyWithoutCategoriesInput = {
     create?: XOR<jobOffersCreateWithoutCategoriesInput, jobOffersUncheckedCreateWithoutCategoriesInput> | jobOffersCreateWithoutCategoriesInput[] | jobOffersUncheckedCreateWithoutCategoriesInput[]
     connectOrCreate?: jobOffersCreateOrConnectWithoutCategoriesInput | jobOffersCreateOrConnectWithoutCategoriesInput[]
+    createMany?: jobOffersCreateManyCategoriesInputEnvelope
     connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
   }
 
@@ -29398,6 +29417,7 @@ export namespace Prisma {
     create?: XOR<jobOffersCreateWithoutCategoriesInput, jobOffersUncheckedCreateWithoutCategoriesInput> | jobOffersCreateWithoutCategoriesInput[] | jobOffersUncheckedCreateWithoutCategoriesInput[]
     connectOrCreate?: jobOffersCreateOrConnectWithoutCategoriesInput | jobOffersCreateOrConnectWithoutCategoriesInput[]
     upsert?: jobOffersUpsertWithWhereUniqueWithoutCategoriesInput | jobOffersUpsertWithWhereUniqueWithoutCategoriesInput[]
+    createMany?: jobOffersCreateManyCategoriesInputEnvelope
     set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
     disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
     delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
@@ -29449,6 +29469,7 @@ export namespace Prisma {
     create?: XOR<jobOffersCreateWithoutCategoriesInput, jobOffersUncheckedCreateWithoutCategoriesInput> | jobOffersCreateWithoutCategoriesInput[] | jobOffersUncheckedCreateWithoutCategoriesInput[]
     connectOrCreate?: jobOffersCreateOrConnectWithoutCategoriesInput | jobOffersCreateOrConnectWithoutCategoriesInput[]
     upsert?: jobOffersUpsertWithWhereUniqueWithoutCategoriesInput | jobOffersUpsertWithWhereUniqueWithoutCategoriesInput[]
+    createMany?: jobOffersCreateManyCategoriesInputEnvelope
     set?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
     disconnect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
     delete?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
@@ -31062,6 +31083,7 @@ export namespace Prisma {
     email: string
     phone: string
     fax?: string | null
+    address: string
     location: string
     region: string
     logo?: string | null
@@ -31075,6 +31097,7 @@ export namespace Prisma {
     email: string
     phone: string
     fax?: string | null
+    address: string
     location: string
     region: string
     logo?: string | null
@@ -31105,9 +31128,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
-    categories?: CategoryCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    categories?: CategoryCreateNestedOneWithoutJobOffersInput
     contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
     experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
     modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
@@ -31129,13 +31152,13 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     contratId?: string | null
     experienceId?: string | null
     modeId?: string | null
     workingTimeId?: string | null
     levelId?: string | null
     branchId?: string | null
-    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
   }
@@ -31214,6 +31237,7 @@ export namespace Prisma {
     email?: StringFilter<"Branch"> | string
     phone?: StringFilter<"Branch"> | string
     fax?: StringNullableFilter<"Branch"> | string | null
+    address?: StringFilter<"Branch"> | string
     location?: StringFilter<"Branch"> | string
     region?: StringFilter<"Branch"> | string
     logo?: StringNullableFilter<"Branch"> | string | null
@@ -31253,6 +31277,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"jobOffers"> | Date | string
     isValidate?: BoolFilter<"jobOffers"> | boolean
     views?: IntFilter<"jobOffers"> | number
+    categoryId?: StringFilter<"jobOffers"> | string
     contratId?: StringNullableFilter<"jobOffers"> | string | null
     experienceId?: StringNullableFilter<"jobOffers"> | string | null
     modeId?: StringNullableFilter<"jobOffers"> | string | null
@@ -31310,9 +31335,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
-    categories?: CategoryCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    categories?: CategoryCreateNestedOneWithoutJobOffersInput
     contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
     experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
     modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
@@ -31334,13 +31359,13 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     contratId?: string | null
     experienceId?: string | null
     modeId?: string | null
     workingTimeId?: string | null
     levelId?: string | null
     agencyId: string
-    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
   }
@@ -31412,33 +31437,6 @@ export namespace Prisma {
     data: XOR<jobOffersUpdateManyMutationInput, jobOffersUncheckedUpdateManyWithoutBranchInput>
   }
 
-  export type CategoryCreateWithoutJobOffersInput = {
-    id?: string
-    name: string
-    slug: string
-    description: string
-    level?: number | null
-    sectors?: SectorsCreateNestedManyWithoutCategoryInput
-    parent?: CategoryCreateNestedOneWithoutChildrenInput
-    children?: CategoryCreateNestedManyWithoutParentInput
-  }
-
-  export type CategoryUncheckedCreateWithoutJobOffersInput = {
-    id?: string
-    name: string
-    slug: string
-    description: string
-    level?: number | null
-    parentId?: string | null
-    sectors?: SectorsUncheckedCreateNestedManyWithoutCategoryInput
-    children?: CategoryUncheckedCreateNestedManyWithoutParentInput
-  }
-
-  export type CategoryCreateOrConnectWithoutJobOffersInput = {
-    where: CategoryWhereUniqueInput
-    create: XOR<CategoryCreateWithoutJobOffersInput, CategoryUncheckedCreateWithoutJobOffersInput>
-  }
-
   export type SectorsCreateWithoutJobOfferInput = {
     id?: string
     name: string
@@ -31473,6 +31471,33 @@ export namespace Prisma {
   export type jobTagsCreateOrConnectWithoutJobOffersInput = {
     where: jobTagsWhereUniqueInput
     create: XOR<jobTagsCreateWithoutJobOffersInput, jobTagsUncheckedCreateWithoutJobOffersInput>
+  }
+
+  export type CategoryCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    level?: number | null
+    sectors?: SectorsCreateNestedManyWithoutCategoryInput
+    parent?: CategoryCreateNestedOneWithoutChildrenInput
+    children?: CategoryCreateNestedManyWithoutParentInput
+  }
+
+  export type CategoryUncheckedCreateWithoutJobOffersInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    level?: number | null
+    parentId?: string | null
+    sectors?: SectorsUncheckedCreateNestedManyWithoutCategoryInput
+    children?: CategoryUncheckedCreateNestedManyWithoutParentInput
+  }
+
+  export type CategoryCreateOrConnectWithoutJobOffersInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutJobOffersInput, CategoryUncheckedCreateWithoutJobOffersInput>
   }
 
   export type ContractTypeJobCreateWithoutJobOffersInput = {
@@ -31591,6 +31616,7 @@ export namespace Prisma {
     email: string
     phone: string
     fax?: string | null
+    address: string
     location: string
     region: string
     logo?: string | null
@@ -31604,6 +31630,7 @@ export namespace Prisma {
     email: string
     phone: string
     fax?: string | null
+    address: string
     location: string
     region: string
     logo?: string | null
@@ -31614,34 +31641,6 @@ export namespace Prisma {
   export type BranchCreateOrConnectWithoutJobOffersInput = {
     where: BranchWhereUniqueInput
     create: XOR<BranchCreateWithoutJobOffersInput, BranchUncheckedCreateWithoutJobOffersInput>
-  }
-
-  export type CategoryUpsertWithWhereUniqueWithoutJobOffersInput = {
-    where: CategoryWhereUniqueInput
-    update: XOR<CategoryUpdateWithoutJobOffersInput, CategoryUncheckedUpdateWithoutJobOffersInput>
-    create: XOR<CategoryCreateWithoutJobOffersInput, CategoryUncheckedCreateWithoutJobOffersInput>
-  }
-
-  export type CategoryUpdateWithWhereUniqueWithoutJobOffersInput = {
-    where: CategoryWhereUniqueInput
-    data: XOR<CategoryUpdateWithoutJobOffersInput, CategoryUncheckedUpdateWithoutJobOffersInput>
-  }
-
-  export type CategoryUpdateManyWithWhereWithoutJobOffersInput = {
-    where: CategoryScalarWhereInput
-    data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyWithoutJobOffersInput>
-  }
-
-  export type CategoryScalarWhereInput = {
-    AND?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
-    OR?: CategoryScalarWhereInput[]
-    NOT?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
-    id?: StringFilter<"Category"> | string
-    name?: StringFilter<"Category"> | string
-    slug?: StringFilter<"Category"> | string
-    description?: StringFilter<"Category"> | string
-    level?: IntNullableFilter<"Category"> | number | null
-    parentId?: StringNullableFilter<"Category"> | string | null
   }
 
   export type SectorsUpsertWithWhereUniqueWithoutJobOfferInput = {
@@ -31693,6 +31692,39 @@ export namespace Prisma {
     id?: StringFilter<"jobTags"> | string
     name?: StringFilter<"jobTags"> | string
     slug?: StringFilter<"jobTags"> | string
+  }
+
+  export type CategoryUpsertWithoutJobOffersInput = {
+    update: XOR<CategoryUpdateWithoutJobOffersInput, CategoryUncheckedUpdateWithoutJobOffersInput>
+    create: XOR<CategoryCreateWithoutJobOffersInput, CategoryUncheckedCreateWithoutJobOffersInput>
+    where?: CategoryWhereInput
+  }
+
+  export type CategoryUpdateToOneWithWhereWithoutJobOffersInput = {
+    where?: CategoryWhereInput
+    data: XOR<CategoryUpdateWithoutJobOffersInput, CategoryUncheckedUpdateWithoutJobOffersInput>
+  }
+
+  export type CategoryUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    sectors?: SectorsUpdateManyWithoutCategoryNestedInput
+    parent?: CategoryUpdateOneWithoutChildrenNestedInput
+    children?: CategoryUpdateManyWithoutParentNestedInput
+  }
+
+  export type CategoryUncheckedUpdateWithoutJobOffersInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    level?: NullableIntFieldUpdateOperationsInput | number | null
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    sectors?: SectorsUncheckedUpdateManyWithoutCategoryNestedInput
+    children?: CategoryUncheckedUpdateManyWithoutParentNestedInput
   }
 
   export type ContractTypeJobUpsertWithoutJobOffersInput = {
@@ -31858,6 +31890,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -31871,6 +31904,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -31891,9 +31925,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
-    categories?: CategoryCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    categories?: CategoryCreateNestedOneWithoutJobOffersInput
     experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
     modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
     workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
@@ -31915,13 +31949,13 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     experienceId?: string | null
     modeId?: string | null
     workingTimeId?: string | null
     levelId?: string | null
     agencyId: string
     branchId?: string | null
-    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
   }
@@ -31965,9 +31999,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
-    categories?: CategoryCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    categories?: CategoryCreateNestedOneWithoutJobOffersInput
     contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
     modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
     workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
@@ -31989,13 +32023,13 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     contratId?: string | null
     modeId?: string | null
     workingTimeId?: string | null
     levelId?: string | null
     agencyId: string
     branchId?: string | null
-    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
   }
@@ -32039,9 +32073,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
-    categories?: CategoryCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    categories?: CategoryCreateNestedOneWithoutJobOffersInput
     contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
     experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
     workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
@@ -32063,13 +32097,13 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     contratId?: string | null
     experienceId?: string | null
     workingTimeId?: string | null
     levelId?: string | null
     agencyId: string
     branchId?: string | null
-    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
   }
@@ -32113,9 +32147,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
-    categories?: CategoryCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    categories?: CategoryCreateNestedOneWithoutJobOffersInput
     contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
     experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
     modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
@@ -32137,13 +32171,13 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     contratId?: string | null
     experienceId?: string | null
     modeId?: string | null
     levelId?: string | null
     agencyId: string
     branchId?: string | null
-    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
   }
@@ -32187,9 +32221,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
-    categories?: CategoryCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    categories?: CategoryCreateNestedOneWithoutJobOffersInput
     contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
     experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
     modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
@@ -32211,13 +32245,13 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     contratId?: string | null
     experienceId?: string | null
     modeId?: string | null
     workingTimeId?: string | null
     agencyId: string
     branchId?: string | null
-    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
   }
@@ -32261,8 +32295,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
-    categories?: CategoryCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
+    categories?: CategoryCreateNestedOneWithoutJobOffersInput
     contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
     experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
     modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
@@ -32285,6 +32319,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     contratId?: string | null
     experienceId?: string | null
     modeId?: string | null
@@ -32292,7 +32327,6 @@ export namespace Prisma {
     levelId?: string | null
     agencyId: string
     branchId?: string | null
-    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
   }
 
@@ -32392,6 +32426,11 @@ export namespace Prisma {
   export type jobOffersCreateOrConnectWithoutCategoriesInput = {
     where: jobOffersWhereUniqueInput
     create: XOR<jobOffersCreateWithoutCategoriesInput, jobOffersUncheckedCreateWithoutCategoriesInput>
+  }
+
+  export type jobOffersCreateManyCategoriesInputEnvelope = {
+    data: jobOffersCreateManyCategoriesInput | jobOffersCreateManyCategoriesInput[]
+    skipDuplicates?: boolean
   }
 
   export type CategoryCreateWithoutChildrenInput = {
@@ -32534,6 +32573,18 @@ export namespace Prisma {
     data: XOR<CategoryUpdateManyMutationInput, CategoryUncheckedUpdateManyWithoutParentInput>
   }
 
+  export type CategoryScalarWhereInput = {
+    AND?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+    OR?: CategoryScalarWhereInput[]
+    NOT?: CategoryScalarWhereInput | CategoryScalarWhereInput[]
+    id?: StringFilter<"Category"> | string
+    name?: StringFilter<"Category"> | string
+    slug?: StringFilter<"Category"> | string
+    description?: StringFilter<"Category"> | string
+    level?: IntNullableFilter<"Category"> | number | null
+    parentId?: StringNullableFilter<"Category"> | string | null
+  }
+
   export type jobOffersCreateWithoutSectorsInput = {
     id?: string
     title: string
@@ -32547,8 +32598,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
-    categories?: CategoryCreateNestedManyWithoutJobOffersInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    categories?: CategoryCreateNestedOneWithoutJobOffersInput
     contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
     experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
     modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
@@ -32571,6 +32622,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     contratId?: string | null
     experienceId?: string | null
     modeId?: string | null
@@ -32578,7 +32630,6 @@ export namespace Prisma {
     levelId?: string | null
     agencyId: string
     branchId?: string | null
-    categories?: CategoryUncheckedCreateNestedManyWithoutJobOffersInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
   }
 
@@ -32973,6 +33024,7 @@ export namespace Prisma {
     email: string
     phone: string
     fax?: string | null
+    address: string
     location: string
     region: string
     logo?: string | null
@@ -32992,6 +33044,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     contratId?: string | null
     experienceId?: string | null
     modeId?: string | null
@@ -33006,6 +33059,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33019,6 +33073,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33032,6 +33087,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     fax?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     region?: StringFieldUpdateOperationsInput | string
     logo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33051,9 +33107,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
-    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    categories?: CategoryUpdateOneWithoutJobOffersNestedInput
     contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
     experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
     modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
@@ -33075,13 +33131,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
     workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
     levelId?: NullableStringFieldUpdateOperationsInput | string | null
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
-    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
   }
@@ -33099,6 +33155,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33120,6 +33177,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     contratId?: string | null
     experienceId?: string | null
     modeId?: string | null
@@ -33141,9 +33199,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
-    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    categories?: CategoryUpdateOneWithoutJobOffersNestedInput
     contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
     experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
     modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
@@ -33165,13 +33223,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
     workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
     levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
-    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
   }
@@ -33189,43 +33247,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
     workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
     levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type CategoryUpdateWithoutJobOffersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    level?: NullableIntFieldUpdateOperationsInput | number | null
-    sectors?: SectorsUpdateManyWithoutCategoryNestedInput
-    parent?: CategoryUpdateOneWithoutChildrenNestedInput
-    children?: CategoryUpdateManyWithoutParentNestedInput
-  }
-
-  export type CategoryUncheckedUpdateWithoutJobOffersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    level?: NullableIntFieldUpdateOperationsInput | number | null
-    parentId?: NullableStringFieldUpdateOperationsInput | string | null
-    sectors?: SectorsUncheckedUpdateManyWithoutCategoryNestedInput
-    children?: CategoryUncheckedUpdateManyWithoutParentNestedInput
-  }
-
-  export type CategoryUncheckedUpdateManyWithoutJobOffersInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    level?: NullableIntFieldUpdateOperationsInput | number | null
-    parentId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SectorsUpdateWithoutJobOfferInput = {
@@ -33280,6 +33308,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     experienceId?: string | null
     modeId?: string | null
     workingTimeId?: string | null
@@ -33301,9 +33330,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
-    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    categories?: CategoryUpdateOneWithoutJobOffersNestedInput
     experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
     modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
     workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
@@ -33325,13 +33354,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
     workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
     levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
-    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
   }
@@ -33349,6 +33378,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
     workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33370,6 +33400,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     contratId?: string | null
     modeId?: string | null
     workingTimeId?: string | null
@@ -33391,9 +33422,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
-    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    categories?: CategoryUpdateOneWithoutJobOffersNestedInput
     contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
     modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
     workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
@@ -33415,13 +33446,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
     workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
     levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
-    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
   }
@@ -33439,6 +33470,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
     workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33460,6 +33492,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     contratId?: string | null
     experienceId?: string | null
     workingTimeId?: string | null
@@ -33481,9 +33514,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
-    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    categories?: CategoryUpdateOneWithoutJobOffersNestedInput
     contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
     experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
     workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
@@ -33505,13 +33538,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
     levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
-    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
   }
@@ -33529,6 +33562,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33550,6 +33584,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     contratId?: string | null
     experienceId?: string | null
     modeId?: string | null
@@ -33571,9 +33606,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
-    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    categories?: CategoryUpdateOneWithoutJobOffersNestedInput
     contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
     experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
     modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
@@ -33595,13 +33630,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
     levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
-    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
   }
@@ -33619,6 +33654,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33640,6 +33676,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     isValidate?: boolean
     views?: number
+    categoryId: string
     contratId?: string | null
     experienceId?: string | null
     modeId?: string | null
@@ -33661,9 +33698,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
-    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    categories?: CategoryUpdateOneWithoutJobOffersNestedInput
     contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
     experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
     modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
@@ -33685,13 +33722,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
     workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
-    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
   }
@@ -33709,6 +33746,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33730,8 +33768,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
-    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
+    categories?: CategoryUpdateOneWithoutJobOffersNestedInput
     contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
     experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
     modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
@@ -33754,6 +33792,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33761,7 +33800,6 @@ export namespace Prisma {
     levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
-    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
   }
 
@@ -33778,6 +33816,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33791,6 +33830,28 @@ export namespace Prisma {
     id?: string
     name: string
     slug: string
+  }
+
+  export type jobOffersCreateManyCategoriesInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    contratId?: string | null
+    experienceId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
+    agencyId: string
+    branchId?: string | null
   }
 
   export type CategoryCreateManyParentInput = {
@@ -33934,8 +33995,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
-    categories?: CategoryUpdateManyWithoutJobOffersNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    categories?: CategoryUpdateOneWithoutJobOffersNestedInput
     contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
     experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
     modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
@@ -33958,6 +34019,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -33965,7 +34027,6 @@ export namespace Prisma {
     levelId?: NullableStringFieldUpdateOperationsInput | string | null
     agencyId?: StringFieldUpdateOperationsInput | string
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
-    categories?: CategoryUncheckedUpdateManyWithoutJobOffersNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
   }
 
@@ -33982,6 +34043,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isValidate?: BoolFieldUpdateOperationsInput | boolean
     views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
     contratId?: NullableStringFieldUpdateOperationsInput | string | null
     experienceId?: NullableStringFieldUpdateOperationsInput | string | null
     modeId?: NullableStringFieldUpdateOperationsInput | string | null

@@ -16,6 +16,9 @@ export class CreateBranchDto {
     fax?: string
 
     @IsString({message: 'Укажите гда находится место работы'})
+    address: string
+
+    @IsString({message: 'Укажите гда находится место работы'})
     location: string
 
     @IsString({message: 'Укажите гда находится место работы'})

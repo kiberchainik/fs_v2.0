@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotAcceptableException, NotFoundException } from '@nestjs/common';
 import { CreateJobofferDto, UpdateJobofferDto, JobOffersDto, returnTagsObject } from './dto'
 import { CategoryService } from 'src/admin/category/category.service';
 import { Prisma } from 'prisma/__generated__';
@@ -51,18 +51,18 @@ export class JoboffersService {
     const {id} = await this.getAgencyDataId(userId)
     
     const {
-        categoryIds,
-        branchId,
-        tags,
-        sectors,
-        slug,
-        contractTypeId,
-        experienceMinimalId,
-        levelEducationId,
-        modeJobId,
-        workingTimeId,
-        ...jobOffers
-      } = createJobofferDto
+      categories,
+      branchId,
+      tags,
+      sectors,
+      slug,
+      contractTypeId,
+      experienceMinimalId,
+      levelEducationId,
+      modeJobId,
+      workingTimeId,
+      ...jobOffers
+    } = createJobofferDto
 
     //const existsCategories = await this.categoryService.getById(categoryIds)
     //const categoriesIds = existsCategories.map((catId) =>({id: catId.id}))
@@ -81,7 +81,7 @@ export class JoboffersService {
           ...jobOffers,
           slug: slugify(createJobofferDto.title),
           categories: {
-            connect: {id: categoryIds}
+            connect: {id: categories}
           },
           sectors: {
             connect: jobSectors
@@ -126,9 +126,118 @@ export class JoboffersService {
     } else throw new NotFoundException('Заполните все данные о агентстве!')
   }
 
-  async update(id: string, userId:string, updateJobofferDto: UpdateJobofferDto) {
-    const adId = await this.getAgencyDataId(userId)
-    return `This action updates a #${id} joboffer`;
+  async update(idJob: string, userId:string, updateJobofferDto: UpdateJobofferDto) {
+    const {title, tags} = await this.prisma.jobOffers.findFirst({
+      where: {
+        AND: [
+          {id: idJob},
+          {agency: {userId}}
+        ]
+      },
+      select: {
+        title: true,
+        tags: {
+          select: {
+            id: true
+          }
+        }
+      }
+    })
+
+    const {
+      categories,
+      branchId,
+      tags: vTags,
+      sectors,
+      slug,
+      contractTypeId,
+      experienceMinimalId,
+      levelEducationId,
+      modeJobId,
+      workingTimeId,
+      ...jobOffers
+    } = updateJobofferDto
+  
+    if(vTags) {
+      await this.prisma.jobTags.deleteMany({
+        where: {
+          id: {
+            in: tags.map(i => i.id)
+          }
+        }
+      })
+    }
+
+    if(title !== updateJobofferDto.title) {
+      updateJobofferDto.slug = `${slugify(updateJobofferDto.title)}_${idJob}`
+      //if(isExist) throw new NotAcceptableException('According to the rules of the site, vacancies cannot have the same title')
+    }
+
+    const jobTags = vTags?.map((tag) => ({
+      name: tag, slug: slugify(tag)
+    })) || []
+
+    const jobSectors = sectors?.map((id) => ({
+      id
+    })) || []
+
+    const vacancy = await this.prisma.agencyData.update({
+      where: {
+        userId
+      },
+      data: {
+        jobOffers: {
+          update: {
+            where: {
+              id: idJob
+            },
+            data: {
+              ...jobOffers,
+              slug: updateJobofferDto.slug,
+              categories: {
+                connect: {id: categories}
+              },
+              sectors: {
+                connect: jobSectors
+              },
+              tags: {
+                create: jobTags
+              },
+              contractType: {
+                connect: {id: contractTypeId}
+              },
+              experienceMinimalJob: {
+                connect: {id: experienceMinimalId}
+              },
+              levelEducation: {
+                connect: {id: levelEducationId}
+              },
+              modeJob: {
+                connect: {id: modeJobId}
+              },
+              workingTimeJob: {
+                connect: {id: workingTimeId}
+              },
+              branch: {
+                connect: {id: branchId}
+              },
+              updatedAt: new Date()
+            }
+          }
+        }
+      },
+      include: {
+        jobOffers: {
+          include: {
+            ...this.includesAll,
+            branch: true,
+            sectors: true
+          }
+        }
+      }
+    })
+
+    return vacancy
   }
 
   async findAll({count = 10, page = 1, isValidate, agencyId, categoryId, tagId, byPopularity}: JobOffersDto) {
@@ -141,7 +250,7 @@ export class JoboffersService {
 		
 		orderBy.push({ createdAt: 'desc' })
 		agencyId ? (where['agency'] = { id: agencyId }) : {}
-		categoryId ? (where['categories'] = { some: { id: categoryId } }) : {}
+		categoryId ? (where['categories'] =  { id: categoryId } ) : {}
 		tagId ? (where['tags'] = { some: { id: tagId } }) : {}
 
     const [vacancies, vacanciesCount] = await this.prisma.$transaction([
@@ -152,7 +261,6 @@ export class JoboffersService {
 				take: count,
 				include: {
 					...this.includesAll,
-          //tags: true,
           sectors: true,
           branch: true
 				}

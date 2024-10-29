@@ -138,6 +138,7 @@ model Branch {
   email        String
   phone        String
   fax          String?
+  address      String
   location     String
   region       String
   logo         String?
@@ -150,22 +151,23 @@ model Branch {
 }
 
 model jobOffers {
-  id          String     @id @default(uuid())
+  id          String    @id @default(uuid())
   title       String
-  slug        String     @unique
+  slug        String    @unique
   description String
   region      String
   province    String
   location    String
-  reallyUpTo  DateTime?  @map("really_up_to")
-  createdAt   DateTime   @default(now()) @map("created_at")
-  updatedAt   DateTime   @updatedAt @map("updated_at")
-  isValidate  Boolean    @default(false)
-  views       Int        @default(0)
-  categories  Category[]
+  reallyUpTo  DateTime? @map("really_up_to")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  isValidate  Boolean   @default(false)
+  views       Int       @default(0)
   sectors     Sectors[]
   tags        jobTags[]
 
+  categoryId           String                @map("category_id")
+  categories           Category?             @relation(fields: [categoryId], references: [id])
   contratId            String?               @map("contract_id")
   contractType         ContractTypeJob?      @relation(fields: [contratId], references: [id])
   experienceId         String?               @map("experience_id")

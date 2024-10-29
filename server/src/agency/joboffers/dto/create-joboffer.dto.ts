@@ -26,7 +26,7 @@ export class CreateJobofferDto {
     description: string
 
     @IsString()
-    categoryIds: string
+    categories: string
 
     @IsArray()
     @Type(() => String)
