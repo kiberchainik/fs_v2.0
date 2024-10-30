@@ -12,4 +12,5 @@ export interface IBranch {
 }
 
 export type IBItem = Pick<IBranch, 'id' | 'name'>
+export type IBranchEdit = Omit<IBranch, 'id'>
 export type IBranchTable = Pick<IBranch, 'name' | 'id' | 'location' | 'email' | 'phone'>

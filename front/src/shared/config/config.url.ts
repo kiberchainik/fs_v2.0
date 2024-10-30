@@ -24,9 +24,11 @@ export const AGENCY_URL = {
     editProfile: () => AGENCY_URL.root('/profile/edit'),
 
     vacancies: () => AGENCY_URL.root('/vacancies'),
+    createOffers: () => AGENCY_URL.root('/vacancy/create'),
     editOffers: (id:string = '') => AGENCY_URL.root(`/vacancy/edit/${id}`),
 
     branches: () => AGENCY_URL.root('/branch'),
+    createBranch: () => AGENCY_URL.root('/branch/create'),
     editBranch: (id:string = '') => AGENCY_URL.root(`/branch/edit/${id}`)
 }
 

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, UseInterceptors, UploadedFiles, ParseFilePipe, MaxFileSizeValidator, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, UseInterceptors, UploadedFiles, ParseFilePipe, MaxFileSizeValidator, Query, Res } from '@nestjs/common';
 import { BranchService } from './branch.service';
 import { CreateBranchDto } from './dto/create-branch.dto';
 import { UpdateBranchDto } from './dto/update-branch.dto'
@@ -6,6 +6,7 @@ import { FilesInterceptor } from '@nestjs/platform-express'
 import { FileService } from '@/libs/file/file.service';
 import { Authorization, CurrentUser } from '@/auth/decorators';
 import { UserRole } from 'prisma/__generated__';
+import { Response } from 'express'
 
 @Controller('branch')
 export class BranchController {
@@ -45,7 +46,7 @@ export class BranchController {
   @Get()
   @Authorization(UserRole.AGENCY)
   async findAll(@CurrentUser('id') userId:string) {
-    return await this.branchService.findAll(userId);
+    return await this.branchService.findAll(userId)
   }
 
   @Get(':id')

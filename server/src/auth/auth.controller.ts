@@ -18,7 +18,7 @@ export class AuthController {
   
   @ApiOperation({ summary: 'User registration' })
   @ApiBody({type: RegisterDto})
-  @ApiResponse({ status: 200, description: 'After successful registration, be sure to open your email and follow the email confirmation link. After that, you can log in to the site for full use!' })
+  @ApiResponse({ status: 200, description: 'After successful registration, be sure to open your email and follow the email confirmation link. After that, you refresh in your account!' })
   @Post('register')
   @Recaptcha()
   @HttpCode(HttpStatus.OK)

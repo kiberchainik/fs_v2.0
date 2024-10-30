@@ -21,13 +21,9 @@ export class BranchService {
   }
 
   async findAll(userId:string) {
-    const adId = await this.getAgencyDataId(userId)
-
-    if(!adId.id) throw new BadRequestException('Для добавления филиалов и объявлений заполните полнотью профиль!')
-    
-      return await this.prisma.branch.findMany({
+    return await this.prisma.branch.findMany({
       where: {
-        adId: adId.id
+        agency: {userId}
       }
     })
   }

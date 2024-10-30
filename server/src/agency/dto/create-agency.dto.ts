@@ -10,7 +10,7 @@ export class CreateAgencyDto {
   address: string
 
   @IsNotEmpty({message: 'Номер телефона нужно указать обязательно'})
-  @IsPhoneNumber()
+  @IsPhoneNumber('IT')
   phone: string
 
   @IsString()

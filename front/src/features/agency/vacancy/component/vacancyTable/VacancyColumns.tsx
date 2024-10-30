@@ -1,5 +1,5 @@
 import { ColumnDef } from '@tanstack/react-table'
-import { ArrowUpDown, ExternalLink, MoreHorizontal, Pencil, Trash } from 'lucide-react'
+import { ArrowUpDown, ExternalLink, MoreHorizontal, Pencil } from 'lucide-react'
 import Link from 'next/link'
 
 import { Button, Checkbox } from '@/shared/components'
@@ -12,14 +12,15 @@ import {
 } from '@/shared/components'
 
 import { MAIN_URL, AGENCY_URL } from '@/shared/config'
+import { IoMdTrash } from 'react-icons/io'
 
 export interface IVacancyColumn {
-	id:string
-	title: string,
-	slug: string,
-    createdAt: string
-	reallyUpTo: string
-    views: number
+	id:string | undefined
+	title: string | undefined
+	slug: string | undefined
+    createdAt: string | undefined
+	reallyUpTo: string | undefined
+    views: number | undefined
 }
 
 export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
@@ -137,10 +138,10 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 						</DropdownMenuItem>
 					</Link>
 					<Link
-						href={AGENCY_URL.deleteOffers(row.original.id)}
+						href=''
 					>
 						<DropdownMenuItem>
-							<Trash className='size-4 mr-2 text-red-500' />
+							<IoMdTrash className='size-4 mr-2 text-red-500' />
 							Delete
 						</DropdownMenuItem>
 					</Link>
