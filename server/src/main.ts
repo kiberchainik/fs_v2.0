@@ -7,6 +7,7 @@ import IORedis from 'ioredis'
 import * as session from 'express-session'
 import msFn, { StringValue } from './libs/common/utils/ms.utils'
 import RedisStore from 'connect-redis'
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
@@ -45,6 +46,15 @@ async function bootstrap() {
     credentials: true,
     exposedHeaders: ['set-cookie']
   })
+
+  const configSwagger = new DocumentBuilder()
+    .setTitle('FindSolution APIs')
+    .setDescription('The FS API description')
+    .setVersion('1.0')
+    .addTag('fs')
+    .build();
+  const documentFactory = () => SwaggerModule.createDocument(app, configSwagger);
+  SwaggerModule.setup('api', app, documentFactory);
 
   await app.listen(config.getOrThrow<number>('APP_PORT'))
 }

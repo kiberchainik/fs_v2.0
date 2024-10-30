@@ -6,7 +6,10 @@ import { Recaptcha } from '@nestlab/google-recaptcha'
 import { ConfigService } from '@nestjs/config'
 import { REFRESH_TOKEN_NAME } from '@/libs/common/constants'
 import { AuthGuard } from '@nestjs/passport'
+import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiBearerAuth()
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -14,6 +17,7 @@ export class AuthController {
     private readonly config: ConfigService
   ) {}
   
+  @ApiOperation({ summary: 'User registration' })
   @Post('register')
   @Recaptcha()
   @HttpCode(HttpStatus.OK)
