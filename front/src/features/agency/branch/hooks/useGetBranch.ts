@@ -9,3 +9,12 @@ export function useGetBranch () {
 
     return {branches, isFetching}
 }
+
+export function useGetBranchById (id:string) {
+    const {data: branchData, isFetching} = useQuery({
+        queryKey: ['get branch for edit by id'],
+        queryFn: () => branchService.getBranchById(id)
+    })
+
+    return {branchData, isFetching}
+}

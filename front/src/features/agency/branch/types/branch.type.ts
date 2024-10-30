@@ -5,6 +5,7 @@ export interface IBranch {
     phone: string,
     fax?: string,
     logo?: string | undefined,
+    address: string
     location: string,
     region: string,
     about_branch?: string

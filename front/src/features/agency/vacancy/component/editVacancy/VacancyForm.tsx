@@ -31,6 +31,9 @@ import { IBItem } from '@/features/agency/branch/types'
 import { useUpdateVacancyMutation } from '../../hooks'
 
 import styles from './vacancy.module.scss'
+import { ConfirmModal } from '@/shared/components/modals/ConfirmModals'
+import { IoMdTrash } from 'react-icons/io'
+import { useDeleteVacancy } from '../../hooks/useDeleteVacancy'
 
 interface VacancyFromProps {
 	vacancy: IVacanciaesEdit
@@ -43,26 +46,30 @@ interface VacancyFromProps {
 	workingTime: IOptions[] | undefined
 }
 
-const arrToStrong = (arr:{name:string}[]):string => {
+const arrToString = (arr:string[] | undefined):string => {
 	let string:string = ''
-	arr.map(i => string += ', ' + i.name)
+	arr?.map(i => string += ', ' + i)
 	return string.slice(2)
 }
 
+
 export function VacancyForm ({vacancy, categories, branches, contractType, experienceMinimal, levelEducation, modeJob, workingTime}:VacancyFromProps) {
+	const { updJob, isPending, isSuccess } = useUpdateVacancyMutation()
+	const { deleteVacancy, isLoadingDelete } = useDeleteVacancy()
+
 	const form = useForm<TypeVacancySchema>({
 		mode: 'onChange',
 		resolver: zodResolver(VacancySchema),
 		values: {
 			title: vacancy.title,
 			description: vacancy.description,
-			categories: vacancy.categories[0].id,
+			categories: vacancy.categories,
 			location: vacancy.location,
 			province: vacancy.province,
 			region: vacancy.region,
 			branchId: vacancy.branchId,
 			sectors: [],
-			tags: arrToStrong(vacancy.tags),
+			tags: arrToString(vacancy.tags),
 			contractTypeId: vacancy.contratId || '',
 			experienceMinimalId: vacancy.experienceId || '',
 			levelEducationId: vacancy.levelId || '',
@@ -70,8 +77,6 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 			workingTimeId: vacancy.workingTimeId || ''
 		}
 	})
-	
-	const { updJob, isPending, isSuccess } = useUpdateVacancyMutation()
 	
 	const onSubmit = (values: TypeVacancySchema) => {
 		const tagsString = values.tags?.split(',').map(tag => tag.trim())
@@ -90,7 +95,12 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 	return (
 		<Card className='w-[800px]'>
 			<CardHeader className='flex flex-row items-center justify-between'>
-				<CardTitle>Create new vacancy</CardTitle>
+				<CardTitle>Edit {vacancy.title}</CardTitle>
+                <ConfirmModal handleClick={() => deleteVacancy()}>
+                    <Button size='icon' variant='default' disabled={isLoadingDelete}>
+                        <IoMdTrash className='text-red-500' />
+                    </Button>
+                </ConfirmModal>
 			</CardHeader>
 			<CardContent>
 				{

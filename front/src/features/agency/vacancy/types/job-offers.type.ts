@@ -1,6 +1,14 @@
 import { TPagination } from "."
 
-export interface IVacanciaes {
+interface IVacancyOptions {
+    contractTypeId?: string
+    experienceMinimalId?: string
+    levelEducationId?: string
+    modeJobId?: string
+    workingTimeId?: string
+}
+
+export interface IVacanciaes extends IVacancyOptions {
     id?: string,
     title: string,
     slug?: string,
@@ -45,12 +53,7 @@ export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'd
         email:string
         phone: string
     }
-    contractTypeId?: string
-    experienceMinimalId?: string
-    levelEducationId?: string
-    modeJobId?: string
-    workingTimeId?: string
-}
+} & IVacancyOptions
 
 export type IVacanciaesEdit = 
     Omit<IVacanciaes, 'slug'> & 
@@ -62,15 +65,9 @@ export type IVacanciaesEdit =
         levelId?: string
         agencyId?: string
         branchId?: string
-        categories: {
-            id: string
-        }[]
-        tags: {
-            name: string
-        }[]
-        sectors: {
-            id: string
-        }[]
+        categories: string[]
+        tags?: string[]
+        sectors?: string[]
     }
 
 export interface IJobsResponce {

@@ -1,1 +1,1 @@
-export * from './newBranch.schema'
+export * from './branch.schema'

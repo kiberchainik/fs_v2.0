@@ -19,38 +19,37 @@ import {
 
 import { BranchSchema, TypeBranchSchema } from '../../schemes'
 import TextEditor from '@/shared/components/ui/TextEditor'
-import { useNewBranchMutation } from '../../hooks'
+import { useDeleteBranch, useNewBranchMutation } from '../../hooks'
 import { ImageUpload } from '../image-upload/ImageUpload'
+import { IBranch } from '../../types'
+import { useUpdateBranchMutation } from '../../hooks'
+import { ConfirmModal } from '@/shared/components/modals/ConfirmModals'
+import { IoMdTrash } from 'react-icons/io'
 
-export function NewBranch () {
+export function BranchForm (branchData:IBranch) {
+    const { updateBranch, isPending, isSuccess } = useUpdateBranchMutation()
+    const {deleteBranch, isLoadingDelete} = useDeleteBranch()
 
 	const form = useForm<TypeBranchSchema>({
 		mode: 'onChange',
 		resolver: zodResolver(BranchSchema),
-		values: {
-			name: '',
-			email: '',
-			phone: '',
-			fax: '',
-			logo: '',
-			address: '',
-			location: '',
-			region: '',
-			about_branch: ''
-		}
+		values: {...branchData}
 	})
 	
-	const { createBranch, isPending, isSuccess } = useNewBranchMutation()
-	
 	const onSubmit = (values: TypeBranchSchema) => {
-		createBranch(values)
+		updateBranch(values)
 		isSuccess && form.reset()
 	}
 	
 	return (
 		<Card className='w-[800px]'>
 			<CardHeader className='flex flex-row items-center justify-between'>
-				<CardTitle>Create new filial</CardTitle>
+				<CardTitle>Edit filial {branchData.name}</CardTitle>
+                <ConfirmModal handleClick={() => deleteBranch()}>
+                    <Button size='icon' variant='default' disabled={isLoadingDelete}>
+                        <IoMdTrash className='text-red-500' />
+                    </Button>
+                </ConfirmModal>
 			</CardHeader>
 			<CardContent>
 				{

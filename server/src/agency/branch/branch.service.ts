@@ -32,23 +32,26 @@ export class BranchService {
     })
   }
 
-  async update(id: string, userId:string, updateBranchDto: UpdateBranchDto) {
-    const adId = await this.getAgencyDataId(userId)
+  async getById(idBranch:string, userId:string) {
+    return await this.prisma.branch.findMany({
+      where: {
+        AND: [{id: idBranch}, {agency: {userId}}]
+      }
+    })
+  }
 
-    if(!adId) throw new BadRequestException('Для добавления филиалов и объявлений заполните полнотью профиль!')
-    if(typeof adId === 'number') {
-      return await this.prisma.branch.updateMany({
-        where: {
-          AND: [
-            {id},
-            {adId}
-          ]
-        },
-        data: {
-          ...updateBranchDto
-        }
-      })
-    }
+  async update(id: string, userId:string, updateBranchDto: UpdateBranchDto) {
+    return await this.prisma.branch.updateMany({
+      where: {
+        AND: [
+          {id},
+          {agency: {userId}}
+        ]
+      },
+      data: {
+        ...updateBranchDto
+      }
+    })
   }
 
   async updLogo (id:string, fileData:FileResponse[]) {
@@ -61,19 +64,14 @@ export class BranchService {
   }
 
   async remove(id: string, userId:string) {
-    const adId = await this.getAgencyDataId(userId)
-
-    if(!adId) throw new BadRequestException('Для добавления филиалов и объявлений заполните полнотью профиль!')
-    if(typeof adId === 'string') {
-      return await this.prisma.branch.deleteMany({
-        where: {
-          AND: [
-            {id},
-            {adId}
-          ]
-        }
-      })
-    }
+    return await this.prisma.branch.deleteMany({
+      where: {
+        AND: [
+          {id},
+          {agency: {userId}}
+        ]
+      }
+    })
   }
 
   private async getAgencyDataId (userId:string) {

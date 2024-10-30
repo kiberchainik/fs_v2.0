@@ -48,6 +48,12 @@ export class BranchController {
     return await this.branchService.findAll(userId);
   }
 
+  @Get(':id')
+  @Authorization(UserRole.AGENCY)
+  async getBranchById(@Param('id') id: string, @CurrentUser('id') userId:string) {
+    return await this.branchService.getById(id, userId);
+  }
+
   @Patch(':id')
   @Authorization(UserRole.AGENCY)
   update(

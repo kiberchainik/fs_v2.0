@@ -3,13 +3,16 @@ import { toast } from "sonner"
 import { toastMessageHandler } from "@/shared/utils";
 import { IBranch } from "../types";
 import { branchService } from "../services";
+import { useParams } from "next/navigation";
 import { useMemo } from "react";
 
-export function useNewBranchMutation () {
+export function useUpdateBranchMutation () {
+    const {editBranchId} = useParams<{editBranchId: string}>()
     const queryClient = useQueryClient()
-    const {mutate: createBranch, isPending, isSuccess} = useMutation({
-        mutationKey: ['create vacancy data'],
-        mutationFn: (data: IBranch) => branchService.createBranch(data),
+    
+    const {mutate: updateBranch, isPending, isSuccess} = useMutation({
+        mutationKey: ['update branch data'],
+        mutationFn: (data: IBranch) => branchService.updateBranch(editBranchId, data),
         onSuccess() {
             queryClient.invalidateQueries({queryKey: ['get all branch']})
             toast.success('New filial created succesfully!')
@@ -21,9 +24,9 @@ export function useNewBranchMutation () {
 
     return useMemo(
         () => ({
-            createBranch,
+            updateBranch,
             isPending,
             isSuccess
         }),
-        [createBranch, isPending, isSuccess])
+        [updateBranch, isPending, isSuccess])
 }

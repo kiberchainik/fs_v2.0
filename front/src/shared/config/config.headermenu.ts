@@ -9,45 +9,44 @@ interface MenuItems {
     title: string
 }
 
-//export function HeaderUserMenu(role: UserRole): MenuItems[] {
-    export const HeaderUserMenu = (role:UserRole):MenuItems[] => {
-        return role === UserRole.Agency ? [
-            {
-                icon: IoMdDesktop,
-                href: AGENCY_DROPDOWN_URL.dashboard(),
-                title: 'Dashboard'
-            },
-            {
-                icon: IoIosContact,
-                href: AGENCY_DROPDOWN_URL.profile(),
-                title: 'Profile'
-            },
-            {
-                icon: IoIosGitBranch,
-                href: AGENCY_DROPDOWN_URL.branch('create'),
-                title: 'New branch'
-            },
-            {
-                icon: IoIosMegaphone ,
-                href: AGENCY_DROPDOWN_URL.vacancy('create'),
-                title: 'Create vacancy'
-            },
-            {
-                icon: IoIosPerson,
-                href: AGENCY_DROPDOWN_URL.favorites(),
-                title: 'Workers favorites'
-            }
-        ] : [
-            {
-                icon: IoIosPerson,
-                href: CANDIDAT_DROPDOWN_URL.dashboard(),
-                title: 'Profile'
-            },
-            {
-                icon: IoIosPerson,
-                href: CANDIDAT_DROPDOWN_URL.profile(),
-                title: 'Profile'
-            }
-        ]
-    }
-//}
+
+export const HeaderUserMenu = (role:UserRole):MenuItems[] => {
+    return role === UserRole.Agency ? [
+        {
+            icon: IoMdDesktop,
+            href: AGENCY_DROPDOWN_URL.dashboard(),
+            title: 'Dashboard'
+        },
+        {
+            icon: IoIosContact,
+            href: AGENCY_DROPDOWN_URL.profile(),
+            title: 'Profile'
+        },
+        {
+            icon: IoIosGitBranch,
+            href: AGENCY_DROPDOWN_URL.branch('create'),
+            title: 'New branch'
+        },
+        {
+            icon: IoIosMegaphone ,
+            href: AGENCY_DROPDOWN_URL.vacancy('create'),
+            title: 'Create vacancy'
+        },
+        {
+            icon: IoIosPerson,
+            href: AGENCY_DROPDOWN_URL.favorites(),
+            title: 'Workers favorites'
+        }
+    ] : [
+        {
+            icon: IoIosPerson,
+            href: CANDIDAT_DROPDOWN_URL.dashboard(),
+            title: 'Profile'
+        },
+        {
+            icon: IoIosPerson,
+            href: CANDIDAT_DROPDOWN_URL.profile(),
+            title: 'Profile'
+        }
+    ]
+}

@@ -6,23 +6,27 @@ const phoneRegex = new RegExp(
 
 export const BranchSchema = z.object({
     name: z.string().min(1, {
-        message: 'Write title vacancy'
+        message: 'Write name filial'
     }),
 
     email: z.string().min(1, {
-        message: 'Write slug vacancy'
+        message: 'Write email filial'
     }),
 
-    phone: z.string().regex(phoneRegex, 'Invalid Number!'),
+    phone: z.string().regex(phoneRegex, 'Invalid number!'),
 
     fax: z.string().optional(),
 
     location: z.string().min(1, {
-        message: 'Write full description of vacancy'
+        message: 'Write town filial'
+    }),
+
+    address: z.string().min(1, {
+        message: 'Write full address'
     }),
 
     region: z.string().min(1, {
-        message: 'Write full description of vacancy'
+        message: 'Write region filial'
     }),
 
     logo: z.string().optional(),

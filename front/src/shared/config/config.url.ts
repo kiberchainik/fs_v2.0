@@ -24,10 +24,10 @@ export const AGENCY_URL = {
     editProfile: () => AGENCY_URL.root('/profile/edit'),
 
     vacancies: () => AGENCY_URL.root('/vacancies'),
-    editOffers: (id = '') => AGENCY_URL.root(`/vacancy/edit/${id}`),
-    deleteOffers: (id = '') => AGENCY_URL.root(`/vacancy/delete/${id}`),
+    editOffers: (id:string = '') => AGENCY_URL.root(`/vacancy/edit/${id}`),
 
     branches: () => AGENCY_URL.root('/branch'),
+    editBranch: (id:string = '') => AGENCY_URL.root(`/branch/edit/${id}`)
 }
 
 export const CANDIDAT_URL = {

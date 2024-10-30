@@ -5,6 +5,7 @@ import { toastMessageHandler } from "@/shared/utils";
 import { useMemo } from "react";
 import { useParams } from "next/navigation";
 import { TypeVacancySchema } from "../schemes";
+import { IVacanciaes } from "../types";
 
 export function useUpdateVacancyMutation () {
     const { editjobId } = useParams<{editjobId: string}>()
@@ -12,9 +13,11 @@ export function useUpdateVacancyMutation () {
 
     const {mutate: updJob, isPending, isSuccess} = useMutation({
         mutationKey: ['create vacancy data'],
-        mutationFn: (data: TypeVacancySchema) => vacancyService.updateVacancyData(editjobId, data),
+        mutationFn: (data: IVacanciaes) => vacancyService.updateVacancyData(editjobId, data),
         onSuccess() {
-            queryClient.invalidateQueries({queryKey: ['get vacancy for edit by id']})
+            queryClient.invalidateQueries({
+                queryKey: ['get all vacancy']
+            })
             toast.success('Vacancy updated succesfully!')
         },
         onError(error:any) {
