@@ -175,6 +175,14 @@ export class JoboffersService {
       id
     })) || []
 
+    const optionals = {
+      contractType: contractTypeId ? ({ connect: { id: contractTypeId }}) : {},
+      experienceMinimalJob: experienceMinimalId ? ({ connect: { id: experienceMinimalId }}) : {},
+      levelEducation: levelEducationId ? ({ connect: { id: levelEducationId }}) : {},
+      modeJob: modeJobId ? ({ connect: { id: modeJobId }}) : {},
+      workingTimeJob: workingTimeId ? ({ connect: { id: workingTimeId }}) : {}
+    }
+
     const vacancy = await this.prisma.agencyData.update({
       where: {
         userId
@@ -197,21 +205,7 @@ export class JoboffersService {
               tags: {
                 create: jobTags
               },
-              contractType: {
-                connect: {id: contractTypeId}
-              },
-              experienceMinimalJob: {
-                connect: {id: experienceMinimalId}
-              },
-              levelEducation: {
-                connect: {id: levelEducationId}
-              },
-              modeJob: {
-                connect: {id: modeJobId}
-              },
-              workingTimeJob: {
-                connect: {id: workingTimeId}
-              },
+              ...optionals,
               branch: {
                 connect: {id: branchId}
               },

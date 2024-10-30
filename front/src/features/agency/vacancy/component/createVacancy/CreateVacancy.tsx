@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form'
 
 import {
 	Button,
-	Calendar,
 	Card,
 	CardContent,
 	CardHeader,
@@ -18,9 +17,6 @@ import {
 	FormLabel,
 	FormMessage,
 	Input,
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
 	Select,
 	SelectContent,
 	SelectGroup,
@@ -34,8 +30,7 @@ import TextEditor from '@/shared/components/ui/TextEditor'
 import { useGetBranch } from '../../../branch/hooks'
 
 import styles from './vacancy.module.scss'
-import { formatDate, splitTagsWithComa } from '@/shared/utils'
-import { CalendarIcon } from 'lucide-react'
+import { splitTagsWithComa } from '@/shared/utils'
 import { DateTimePicker } from '@/shared/components/datapicker/Datapicker'
 
 export function CreateVacancy () {
@@ -61,7 +56,7 @@ export function CreateVacancy () {
 			region: '',
 			branchId: '',
 			sectors: [],
-			tags: ''
+			tags: '',
 		}
 	})
 	

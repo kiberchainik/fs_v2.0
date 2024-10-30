@@ -67,7 +67,7 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 			branchId: vacancy.branchId,
 			sectors: [],
 			tags: joinNamesWithComma(vacancy.tags),
-			reallyUpTo: new Date(vacancy.reallyUpTo || ''),
+			reallyUpTo: new Date(vacancy.reallyUpTo || 0),
 			contractTypeId: vacancy.contratId || '',
 			experienceMinimalId: vacancy.experienceId || '',
 			levelEducationId: vacancy.levelId || '',
@@ -277,7 +277,7 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 										<FormLabel>Reall up to</FormLabel>
 										<DateTimePicker 
 												use12HourFormat={false} 
-												value={field.value ? field.value : new Date()} 
+												value={field.value} 
 												onChange={field.onChange}
 												hideTime={true}
 												min={new Date()}
