@@ -6,9 +6,8 @@ import { Recaptcha } from '@nestlab/google-recaptcha'
 import { ConfigService } from '@nestjs/config'
 import { REFRESH_TOKEN_NAME } from '@/libs/common/constants'
 import { AuthGuard } from '@nestjs/passport'
-import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
-@ApiBearerAuth()
 @ApiTags('auth')
 @Controller('auth')
 export class AuthController {
@@ -18,6 +17,8 @@ export class AuthController {
   ) {}
   
   @ApiOperation({ summary: 'User registration' })
+  @ApiBody({type: RegisterDto})
+  @ApiResponse({ status: 200, description: 'After successful registration, be sure to open your email and follow the email confirmation link. After that, you can log in to the site for full use!' })
   @Post('register')
   @Recaptcha()
   @HttpCode(HttpStatus.OK)
@@ -25,6 +26,10 @@ export class AuthController {
     return this.authService.register(dto)
   }
 
+  @ApiOperation({ summary: 'User log in' })
+  @ApiBody({type: LoginDto})
+  @ApiResponse({ status: 200, description: 'After successful authorization you will be returned accessToken' })
+  @ApiResponse({ status: 403, description: 'If you have not confirmed your email after registration, then you will receive an error and a new link will be sent to confirm your email. After confirming your email, you will be able to log in to your account' })
   @Post('login')
   @Recaptcha()
   @HttpCode(HttpStatus.OK)
@@ -39,7 +44,8 @@ export class AuthController {
     //return this.authService.login(req, dto)
   }
 
-  @HttpCode(200)
+	@ApiBearerAuth()
+	@HttpCode(200)
 	@Post('access-token')
 	async getNewTokens(
 		@Req() req: Request,
@@ -59,7 +65,7 @@ export class AuthController {
 		return response
 	}
 
-  @Get('google')
+	@Get('google')
 	@UseGuards(AuthGuard('google'))
 	async googleAuth(@Req() req) {}
 
