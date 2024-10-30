@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 
 import {
 	Button,
+	Calendar,
 	Card,
 	CardContent,
 	CardHeader,
@@ -17,6 +18,9 @@ import {
 	FormLabel,
 	FormMessage,
 	Input,
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
 	Select,
 	SelectContent,
 	SelectGroup,
@@ -30,6 +34,9 @@ import TextEditor from '@/shared/components/ui/TextEditor'
 import { useGetBranch } from '../../../branch/hooks'
 
 import styles from './vacancy.module.scss'
+import { formatDate, splitTagsWithComa } from '@/shared/utils'
+import { CalendarIcon } from 'lucide-react'
+import { DateTimePicker } from '@/shared/components/datapicker/Datapicker'
 
 export function CreateVacancy () {
 	const { categories, isFetching } = useCategory()
@@ -48,7 +55,7 @@ export function CreateVacancy () {
 			title: '',
 			description: '',
 			slug: '',
-			categories: '',
+			categoryId: '',
 			location: '',
 			province: '',
 			region: '',
@@ -61,12 +68,11 @@ export function CreateVacancy () {
 	const { createJob, isPending, isSuccess } = useCreateVacancyMutation()
 	
 	const onSubmit = (values: TypeVacancySchema) => {
-		const tagsArray = values.tags?.split(',').map(tag => tag.trim())
 		const {tags, ...value} = values
 		
 		const newVals = {
 			...value,
-			tags: tagsArray
+			tags: splitTagsWithComa(values.tags)
 		}
 
 		createJob(newVals)
@@ -170,7 +176,7 @@ export function CreateVacancy () {
 											<FormLabel>Region</FormLabel>
 											<FormControl>
 												<Input
-													placeholder='Regopn'
+													placeholder='Region'
 													disabled={isPending}
 													type='text'
 													{...field}
@@ -183,7 +189,7 @@ export function CreateVacancy () {
 							</div>
 							<FormField
 							control={form.control}
-							name='categories'
+							name='categoryId'
 							rules={{
 								required: 'Категория обязательна'
 							}}
@@ -193,7 +199,6 @@ export function CreateVacancy () {
 									<Select
 										disabled={isFetching}
 										onValueChange={field.onChange}
-										defaultValue={field.value}
 									>
 										<FormControl>
 											<SelectTrigger>
@@ -270,6 +275,23 @@ export function CreateVacancy () {
 									</FormItem>
 								)}
 							/>
+							<FormField
+								control={form.control}
+								name="reallyUpTo"
+								render={({ field }) => (
+									<FormItem className="flex flex-col">
+										<FormLabel>Reall up to</FormLabel>
+										<DateTimePicker 
+											use12HourFormat={false} 
+											value={field.value} 
+											onChange={field.onChange}
+											hideTime={true}
+											min={new Date()}
+										/>
+										<FormMessage />
+									</FormItem>
+								)}
+								/>
 							<div className={styles.options_job}>
 								<div className={styles.options_job_label}>
 									<FormLabel>Opzionale</FormLabel>

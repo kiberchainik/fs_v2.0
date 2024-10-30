@@ -26,7 +26,7 @@ export class CreateJobofferDto {
     description: string
 
     @IsString()
-    categories: string
+    categoryId: string
 
     @IsArray()
     @Type(() => String)
@@ -43,6 +43,10 @@ export class CreateJobofferDto {
     @IsString()
     location: string
 
+    @IsString()
+    @IsOptional()
+    reallyUpTo: string
+    
     @IsString()
     @IsOptional()
     branchId?: string

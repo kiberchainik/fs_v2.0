@@ -46,12 +46,11 @@ export class JoboffersService {
       where: {title: createJobofferDto.title}
     })
 
-    if(offersExist !== null) throw new NotFoundException('Вакансия с таким названием уже существует!')
     
     const {id} = await this.getAgencyDataId(userId)
     
     const {
-      categories,
+      categoryId: categories,
       branchId,
       tags,
       sectors,
@@ -63,7 +62,8 @@ export class JoboffersService {
       workingTimeId,
       ...jobOffers
     } = createJobofferDto
-
+    
+    if(offersExist !== null) createJobofferDto.title = slug + '_' + createJobofferDto.location
     //const existsCategories = await this.categoryService.getById(categoryIds)
     //const categoriesIds = existsCategories.map((catId) =>({id: catId.id}))
 
@@ -74,6 +74,14 @@ export class JoboffersService {
     const jobSectors = sectors?.map((id) => ({
       id
     })) || []
+
+    const optionals = {
+      contractType: contractTypeId ? ({ connect: { id: contractTypeId }}) : {},
+      experienceMinimalJob: experienceMinimalId ? ({ connect: { id: experienceMinimalId }}) : {},
+      levelEducation: levelEducationId ? ({ connect: { id: levelEducationId }}) : {},
+      modeJob: modeJobId ? ({ connect: { id: modeJobId }}) : {},
+      workingTimeJob: workingTimeId ? ({ connect: { id: workingTimeId }}) : {}
+    }
 
     if(id) {
       const newJob = await this.prisma.jobOffers.create({
@@ -92,21 +100,7 @@ export class JoboffersService {
           agency: {
             connect: {id}
           },
-          contractType: {
-            connect: {id: contractTypeId}
-          },
-          experienceMinimalJob: {
-            connect: {id: experienceMinimalId}
-          },
-          levelEducation: {
-            connect: {id: levelEducationId}
-          },
-          modeJob: {
-            connect: {id: modeJobId}
-          },
-          workingTimeJob: {
-            connect: {id: workingTimeId}
-          }
+          ...optionals
         },
         include: {
           ...this.includesAll,
@@ -145,7 +139,7 @@ export class JoboffersService {
     })
 
     const {
-      categories,
+      categoryId: categories,
       branchId,
       tags: vTags,
       sectors,
@@ -274,33 +268,6 @@ export class JoboffersService {
 			pageCount
 		}
   }
-
-  // async findOne(id: string) {
-  //   const vacancie = await this.prisma.jobOffers.findMany({
-	// 		where: { 
-  //       AND: [{
-  //         id
-  //       }, {
-  //         isValidate:true
-  //       }]
-  //     },
-	// 		include: {
-  //       ...this.includesAll,
-  //       sectors: true,
-  //       branch: true
-  //     }
-	// 	})
-	// 	if (!vacancie) throw new NotFoundException('ARTICLE_NOT_FOUND')
-	// 	await this.prisma.jobOffers.update({
-	// 		where: { id },
-	// 		data: {
-	// 			views: {
-	// 				increment: 1
-	// 			}
-	// 		}
-	// 	})
-	// 	return vacancie
-  // }
 
   async findOneBySlug(slug: string) {
 		const vacancie = await this.prisma.jobOffers.findMany({

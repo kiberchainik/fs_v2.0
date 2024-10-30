@@ -13,14 +13,14 @@ export interface IVacanciaes extends IVacancyOptions {
     title: string,
     slug?: string,
     description: string,
-    categories: string,
+    categoryId: string,
     sectors?: string[],
     region: string,
     province: string,
     location: string,
     branchId?: string,
     tags?: string[]
-    reallyUpTo?: string
+    reallyUpTo?: string | Date
 }
 
 export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'description'> & {
@@ -65,8 +65,8 @@ export type IVacanciaesEdit =
         levelId?: string
         agencyId?: string
         branchId?: string
-        categories: string[]
-        tags?: string[]
+        categoryId: string
+        tags?: {name: string}[]
         sectors?: string[]
     }
 

@@ -3,7 +3,7 @@ interface DateFormatOptions {
     capitalize?: boolean
 }
 
-export function formatDate(dateString: string, options: DateFormatOptions = {}): string {
+export function formatDate(dateString: string | Date, options: DateFormatOptions = {}): string {
     const {
         locale = 'it',
         capitalize = false

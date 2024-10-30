@@ -34,6 +34,8 @@ import styles from './vacancy.module.scss'
 import { ConfirmModal } from '@/shared/components/modals/ConfirmModals'
 import { IoMdTrash } from 'react-icons/io'
 import { useDeleteVacancy } from '../../hooks/useDeleteVacancy'
+import { joinNamesWithComma, splitTagsWithComa } from '@/shared/utils'
+import { DateTimePicker } from '@/shared/components/datapicker/Datapicker'
 
 interface VacancyFromProps {
 	vacancy: IVacanciaesEdit
@@ -46,11 +48,6 @@ interface VacancyFromProps {
 	workingTime: IOptions[] | undefined
 }
 
-const arrToString = (arr:string[] | undefined):string => {
-	let string:string = ''
-	arr?.map(i => string += ', ' + i)
-	return string.slice(2)
-}
 
 
 export function VacancyForm ({vacancy, categories, branches, contractType, experienceMinimal, levelEducation, modeJob, workingTime}:VacancyFromProps) {
@@ -63,13 +60,14 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 		values: {
 			title: vacancy.title,
 			description: vacancy.description,
-			categories: vacancy.categories,
+			categoryId: vacancy.categoryId,
 			location: vacancy.location,
 			province: vacancy.province,
 			region: vacancy.region,
 			branchId: vacancy.branchId,
 			sectors: [],
-			tags: arrToString(vacancy.tags),
+			tags: joinNamesWithComma(vacancy.tags),
+			reallyUpTo: new Date(vacancy.reallyUpTo || ''),
 			contractTypeId: vacancy.contratId || '',
 			experienceMinimalId: vacancy.experienceId || '',
 			levelEducationId: vacancy.levelId || '',
@@ -79,16 +77,13 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 	})
 	
 	const onSubmit = (values: TypeVacancySchema) => {
-		const tagsString = values.tags?.split(',').map(tag => tag.trim())
 		const {tags, ...value} = values
-		
 		const newVals = {
 			...value,
-			tags: tagsString
+			tags: splitTagsWithComa(values.tags)
 		}
 
 		updJob(newVals)
-		
 		isSuccess && form.reset()
 	}
 	
@@ -97,8 +92,8 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 			<CardHeader className='flex flex-row items-center justify-between'>
 				<CardTitle>Edit {vacancy.title}</CardTitle>
                 <ConfirmModal handleClick={() => deleteVacancy()}>
-                    <Button size='icon' variant='default' disabled={isLoadingDelete}>
-                        <IoMdTrash className='text-red-500' />
+                    <Button size='icon' variant='outline' disabled={isLoadingDelete}>
+                        <IoMdTrash className='text-red-500 size-6' />
                     </Button>
                 </ConfirmModal>
 			</CardHeader>
@@ -188,7 +183,7 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 							</div>
 							<FormField
 							control={form.control}
-							name='categories'
+							name='categoryId'
 							rules={{
 								required: 'Категория обязательна'
 							}}
@@ -270,6 +265,23 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 											/>
 										</FormControl>
 										<FormDescription>All tags must be separated by comma</FormDescription>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<FormField
+								control={form.control}
+								name="reallyUpTo"
+								render={({ field }) => (
+									<FormItem className="flex flex-col">
+										<FormLabel>Reall up to</FormLabel>
+										<DateTimePicker 
+												use12HourFormat={false} 
+												value={field.value ? field.value : new Date()} 
+												onChange={field.onChange}
+												hideTime={true}
+												min={new Date()}
+											/>
 										<FormMessage />
 									</FormItem>
 								)}
