@@ -139,6 +139,7 @@ export function DateTimePicker({
 }: DateTimePickerProps & CalendarProps) {
   const [open, setOpen] = useState(false);
   const [monthYearPicker, setMonthYearPicker] = useState<'month' | 'year' | false>(false);
+
   const initDate = useMemo(() => new TZDate(value || new Date(), timezone), [value, timezone]);
 
   const [month, setMonth] = useState<Date>(initDate);
@@ -160,8 +161,10 @@ export function DateTimePicker({
         d.setHours(max.getHours(), max.getMinutes(), max.getSeconds());
       }
       setDate(d);
+      onChange(new Date(d));
+      setOpen(false);
     },
-    [setDate, setMonth]
+    [setDate, setMonth, setOpen, onChange]
   );
   const onSumbit = useCallback(() => {
     onChange(new Date(date));
@@ -201,6 +204,7 @@ export function DateTimePicker({
 
   const dislayFormat = useMemo(() => {
     if (!displayValue) return 'Pick a date';
+    
     return format(
       displayValue ,
       `${!hideTime ? 'MMM' : 'MMMM'} d, yyyy${!hideTime ? (use12HourFormat ? ' hh:mm:ss a' : ' HH:mm:ss') : ''}`
@@ -335,9 +339,6 @@ export function DateTimePicker({
             />
           )}
           <div className="flex flex-row-reverse items-center justify-between">
-            <Button className="ms-2 h-7 px-2" onClick={onSumbit}>
-              Done
-            </Button>
             {timezone && (
               <div className="text-sm">
                 <span>Timezone:</span>
