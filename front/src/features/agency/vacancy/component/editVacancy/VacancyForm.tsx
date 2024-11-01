@@ -26,7 +26,7 @@ import {
 
 import { VacancySchema, TypeVacancySchema } from '../../schemes'
 import TextEditor from '@/shared/components/ui/TextEditor'
-import { ICategory, IOptions, IVacanciaesEdit } from '../../types'
+import { IOptions, IVacanciaesEdit } from '../../types'
 import { IBItem } from '@/features/agency/branch/types'
 import { useGenerateDescription, useUpdateVacancyMutation } from '../../hooks'
 
@@ -36,6 +36,7 @@ import { IoMdTrash } from 'react-icons/io'
 import { useDeleteVacancy } from '../../hooks/useDeleteVacancy'
 import { joinNamesWithComma, splitTagsWithComa } from '@/shared/utils'
 import { DateTimePicker } from '@/shared/components/datapicker/Datapicker'
+import { ICategory } from '@/features/category/types'
 
 interface VacancyFromProps {
 	vacancy: IVacanciaesEdit

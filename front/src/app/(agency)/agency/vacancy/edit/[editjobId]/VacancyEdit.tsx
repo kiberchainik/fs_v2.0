@@ -2,8 +2,9 @@
 
 import { useGetBranch } from "@/features/agency/branch/hooks";
 import { VacancyForm } from "@/features/agency/vacancy/component/editVacancy/VacancyForm";
-import { useCategory, useGetExperienceMinimal, useGetLevelEducation, useGetModeJob, useGetOptionsContractTypes, useGetWorkingTime } from "@/features/agency/vacancy/hooks";
+import { useGetExperienceMinimal, useGetLevelEducation, useGetModeJob, useGetOptionsContractTypes, useGetWorkingTime } from "@/features/agency/vacancy/hooks";
 import { useVacancyById } from "@/features/agency/vacancy/hooks/useGetVacancy";
+import { useCategory } from "@/features/category/hooks";
 import { useParams } from "next/navigation";
 
 export default function VacancyEdit() {

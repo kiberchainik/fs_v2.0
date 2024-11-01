@@ -26,13 +26,14 @@ import {
 	SelectValue} from '@/shared/components/ui'
 
 import { VacancySchema, TypeVacancySchema } from '../../schemes'
-import { useCategory, useCreateVacancyMutation, useGetExperienceMinimal, useGetLevelEducation, useGetModeJob, useGetOptionsContractTypes, useGetWorkingTime } from '../../hooks'
+import { useCreateVacancyMutation, useGetExperienceMinimal, useGetLevelEducation, useGetModeJob, useGetOptionsContractTypes, useGetWorkingTime } from '../../hooks'
 import TextEditor from '@/shared/components/ui/TextEditor'
 import { useGetBranch } from '../../../branch/hooks'
 
 import styles from './vacancy.module.scss'
 import { splitTagsWithComa } from '@/shared/utils'
 import { DateTimePicker } from '@/shared/components/datapicker/Datapicker'
+import { useCategory } from '@/features/category/hooks'
 
 export function CreateVacancy () {
 	const { categories, isFetching } = useCategory()
