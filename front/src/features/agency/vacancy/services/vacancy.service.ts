@@ -39,6 +39,18 @@ class VacancyService {
 
         return vacancy
     }
+
+    async getGeneratedText(keyword: string) {
+        const {data} = await axiosPrivate.post('/ai-generate', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            keyword
+        });
+
+        return data.generatedText
+    }
+    
 }
 
 export const vacancyService = new VacancyService()

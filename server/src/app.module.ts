@@ -17,6 +17,7 @@ import { ExperienceMinimalModule } from './admin/experience-minimal/experience-m
 import { ModeJobModule } from './admin/mode-job/mode-job.module';
 import { WorkingTimeModule } from './admin/working-time/working-time.module';
 import { LevelEducationModule } from './admin/level-education/level-education.module';
+import { OpenAIModule } from './admin/openai/openai.model';
 
 @Module({
   imports: [
@@ -39,7 +40,10 @@ import { LevelEducationModule } from './admin/level-education/level-education.mo
     ExperienceMinimalModule,
     ModeJobModule,
     WorkingTimeModule,
-    LevelEducationModule
+    LevelEducationModule,
+    OpenAIModule
   ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

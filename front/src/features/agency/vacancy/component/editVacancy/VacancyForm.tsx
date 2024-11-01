@@ -28,7 +28,7 @@ import { VacancySchema, TypeVacancySchema } from '../../schemes'
 import TextEditor from '@/shared/components/ui/TextEditor'
 import { ICategory, IOptions, IVacanciaesEdit } from '../../types'
 import { IBItem } from '@/features/agency/branch/types'
-import { useUpdateVacancyMutation } from '../../hooks'
+import { useGenerateDescription, useUpdateVacancyMutation } from '../../hooks'
 
 import styles from './vacancy.module.scss'
 import { ConfirmModal } from '@/shared/components/modals/ConfirmModals'
@@ -53,6 +53,7 @@ interface VacancyFromProps {
 export function VacancyForm ({vacancy, categories, branches, contractType, experienceMinimal, levelEducation, modeJob, workingTime}:VacancyFromProps) {
 	const { updJob, isPending, isSuccess } = useUpdateVacancyMutation()
 	const { deleteVacancy, isLoadingDelete } = useDeleteVacancy()
+	const {generateText, gentext, isInProccess} = useGenerateDescription()
 
 	const form = useForm<TypeVacancySchema>({
 		mode: 'onChange',
@@ -75,6 +76,13 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 			workingTimeId: vacancy.workingTimeId || ''
 		}
 	})
+
+	const GenerateDescriptionBtn = (keywords:string | undefined) => {
+		if(keywords) {
+			const genDescription = generateText(keywords)
+			form.setValue('description', gentext || '')
+		}
+	}
 	
 	const onSubmit = (values: TypeVacancySchema) => {
 		const {tags, ...value} = values
@@ -255,7 +263,12 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 								name='tags'
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Tags</FormLabel>
+										<div className='flex justify-between items-center'>
+											<FormLabel>Tags</FormLabel>
+											{/* <FormLabel>
+												<Button variant='link' onClick={() => GenerateDescriptionBtn(field.value)}>Generate description with tags</Button>
+											</FormLabel> */}
+										</div>
 										<FormControl>
 											<Input
 												placeholder='Tags'
