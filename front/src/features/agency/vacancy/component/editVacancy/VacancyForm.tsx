@@ -208,11 +208,22 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 											</SelectTrigger>
 										</FormControl>
 										<SelectContent>
-											<SelectGroup>
-												{categories ? categories.map(category => (
-													<SelectItem value={category.id} key={category.id}>{category.name}</SelectItem>
-												)) : <SelectItem value='0' key={'without_category'}>Категорий нет!</SelectItem>}
-											</SelectGroup>
+											{categories?.map((category) => (
+												<div key={category.id}>
+													<SelectItem value={category.id} className="font-semibold">
+													{category.name}
+													</SelectItem>
+													{category.children?.map((child) => (
+													<SelectItem
+														key={child.id}
+														value={child.id}
+														className="pl-6" // Отступ для подкатегорий
+													>
+														{child.name}
+													</SelectItem>
+													))}
+											  </div>
+											))}
 										</SelectContent>
 									</Select>
 									<FormMessage />
