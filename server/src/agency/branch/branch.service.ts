@@ -29,7 +29,7 @@ export class BranchService {
   }
 
   async getById(idBranch:string, userId:string) {
-    return await this.prisma.branch.findMany({
+    return await this.prisma.branch.findFirst({
       where: {
         AND: [{id: idBranch}, {agency: {userId}}]
       }

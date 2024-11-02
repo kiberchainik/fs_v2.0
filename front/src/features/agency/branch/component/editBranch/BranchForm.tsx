@@ -46,7 +46,7 @@ export function BranchForm (branchData:IBranch) {
 			<CardHeader className='flex flex-row items-center justify-between'>
 				<CardTitle>Edit filial {branchData.name}</CardTitle>
                 <ConfirmModal handleClick={() => deleteBranch()}>
-                    <Button size='icon' variant='default' disabled={isLoadingDelete}>
+                    <Button size='icon' variant='outline' disabled={isLoadingDelete}>
                         <IoMdTrash className='text-red-500' />
                     </Button>
                 </ConfirmModal>

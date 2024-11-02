@@ -19,6 +19,6 @@ export const API_URL = {
     getJobById: (id:string) => API_URL.root(`/joboffers/by-id/${id}`),
     getJobBySlug: (slug:string) => API_URL.root(`/joboffers/${slug}`),
     options: (option: string) => API_URL.root(`/${option}`),
-    branch: (url = '') => API_URL.root(`/branch${url}`),
+    branch: (url = '') => API_URL.root(`/branch/${url}`),
     category: (id:string = '') => API_URL.root(`/category${id}`)
 }

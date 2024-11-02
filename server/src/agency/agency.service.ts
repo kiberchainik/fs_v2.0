@@ -4,7 +4,8 @@ import { UpdateAgencyDto } from './dto/update-agency.dto';
 import { PrismaService } from '@/prisma/prisma.service';
 import { slugify } from '@/utils';
 import { FileResponse } from '@/libs/file/file.service';
-import { unlink } from "fs/promises";
+import { join } from 'path';
+import { unlink } from 'fs/promises';
 
 @Injectable()
 export class AgencyService {
@@ -24,10 +25,10 @@ export class AgencyService {
       userId
     }
 
-const logo = await this.prisma.agencyData.findUnique({
- where: {userId},
- select: {logo: true}
-})
+    const {logo} = await this.prisma.agencyData.findUnique({
+      where: {userId},
+      select: {logo: true}
+    })
 
 
     const agencyData = await this.prisma.agencyData.upsert({
@@ -40,7 +41,9 @@ const logo = await this.prisma.agencyData.findUnique({
       throw new BadRequestException('Не удалось сохранить данные')
     }
 
-if (logo) unlink(logo)
+    if (logo) logo.map(file => {
+      unlink(join(__dirname, '..', '../src', file))
+    })
 
     return agencyData
   }
