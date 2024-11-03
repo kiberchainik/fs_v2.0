@@ -35,8 +35,6 @@ export function NewPasswordForm () {
     return (
         <AuthWrapper 
             heading="New password"
-            backButtonHref="/auth/login"
-            backButtonLabel="Login"
             description="Enter new password"
         >
             <Form {...form}>
