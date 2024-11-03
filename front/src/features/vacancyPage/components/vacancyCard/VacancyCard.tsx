@@ -1,5 +1,5 @@
-import { IVacanciaesList } from "@/features/agency/vacancy/types";
-import { Avatar, AvatarFallback, AvatarImage, Button, Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/shared/components";
+import { IVacanciaesFullDate } from "@/features/agency/vacancy/types";
+import { Button, Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/shared/components";
 import { MAIN_URL } from "@/shared/config";
 import { formatDate } from "@/shared/utils";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import Link from "next/link";
 import styles from './listvacancy.module.scss'
 import { VacancyCardAuthorInfo } from "./VCAuthorInfo";
 
-export function VacancyCard ({id, title, slug, description, agency, branch, categories, createdAt, reallyUpTo, views}:IVacanciaesList) {
+export function VacancyCard ({title, slug, description, agency, branch, categories, createdAt, reallyUpTo, views}:IVacanciaesFullDate) {
     return (
         <Card className='max-w-96'>
             <CardHeader>
