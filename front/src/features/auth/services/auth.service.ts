@@ -51,7 +51,7 @@ class AuthService {
     }
 
     public async oauthByprovider(provider: string) {
-        const response = await axiosPublic.get<{url:string}>(`/auth/oauth/connect/${provider}`)
+        const response = await axiosPublic.get<{url:string}>(API_URL.authSocial(provider))
 
         return response
     }

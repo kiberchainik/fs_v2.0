@@ -5,6 +5,7 @@ export const API_URL = {
 
     currentUser: () => API_URL.root('/users/short-data'),
     auth: (url = '') => API_URL.root(`/auth${url}`),
+    authSocial: (provider:string) => API_URL.root(`/auth/${provider}`),
     file: (url:string) => API_URL.root(url),
     candidats: () => API_URL.root('/candidats'),
     candidatData: (login:string) => API_URL.root(`/candidats${login}`),

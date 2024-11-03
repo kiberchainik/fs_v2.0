@@ -17,7 +17,7 @@ export function AuthSocial () {
     const onClick = async(provider:string) => {
         const response = await mutateAsync(provider)
 
-        if(response) router.push(response.url)
+        if(response) router.push(response.data.url)
     }
 
     return <>
@@ -25,7 +25,7 @@ export function AuthSocial () {
             <Button variant='outline' onClick={() => onClick('google')}>
                 <FaGoogle />
             </Button>
-            <Button variant='outline'>
+            <Button variant='outline' onClick={() => onClick('facebook')}>
                 <FaFacebook />
             </Button>
             <Button variant='outline'>
