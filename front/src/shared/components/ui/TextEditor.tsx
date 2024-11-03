@@ -4,6 +4,7 @@ import { useEditor, EditorContent, Editor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Highlight from '@tiptap/extension-highlight'
 import TextAlign from '@tiptap/extension-text-align'
+import Heading from "@tiptap/extension-heading";
 import { FC } from 'react'
 import { AlignCenter, AlignJustify, AlignLeft, AlignRight, Bold, Heading1, Heading2, Heading3, Italic, List, ListOrdered, Pilcrow, Strikethrough } from 'lucide-react'
 import { Separator, Toggle } from '.'
@@ -18,7 +19,7 @@ const TextEditor:FC<ITextEditor> = ({description, onChange}) => {
     editorProps: {
       attributes: {
         class:
-          "min-h-[150px] max-h-[150px] w-full rounded-md rounded-br-none rounded-bl-none border border-input bg-transparent px-3 py-2 border-b-0 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 overflow-auto",
+          "min-h-[200px] max-h-[400px] w-full mb-0 rounded-md rounded-br-none rounded-bl-none border border-input bg-transparent px-3 py-2 border-b-0 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 overflow-auto",
       },
     },
     extensions: [
@@ -38,6 +39,9 @@ const TextEditor:FC<ITextEditor> = ({description, onChange}) => {
         types: ['heading', 'paragraph', 'left', 'center', 'right', 'justify'],
       }),
       Highlight,
+      Heading.configure({
+        levels: [1, 2, 3],
+      }),
     ],
     immediatelyRender: false,
     content: description, // Set the initial content with the provided value
