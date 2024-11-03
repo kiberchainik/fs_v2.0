@@ -7,7 +7,9 @@ export function TanstackQueryProvider({children}:PropsWithChildren<unknown>) {
     const [client] = useState(
         new QueryClient({
             defaultOptions: {
-                queries: {refetchOnWindowFocus: false}
+                queries: {
+                    refetchOnWindowFocus: false
+                }
             }
         })
     )

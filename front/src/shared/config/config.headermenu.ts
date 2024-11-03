@@ -1,7 +1,9 @@
 import { UserRole } from "@/features/auth/types"
 import { IconType } from "react-icons"
-import { IoIosPerson, IoIosContact , IoIosGitBranch, IoIosMegaphone, IoMdDesktop } from "react-icons/io"
-import { AGENCY_DROPDOWN_URL, AGENCY_URL, CANDIDAT_DROPDOWN_URL } from "./config.url"
+import { CiDesktop, CiHeart, CiPalette, CiUser } from "react-icons/ci"
+import { PiGitBranchThin } from "react-icons/pi"
+import { AGENCY_DROPDOWN_URL, CANDIDAT_DROPDOWN_URL } from "./config.url"
+import { IoIosPerson } from "react-icons/io"
 
 interface MenuItems {
     icon: IconType
@@ -9,42 +11,62 @@ interface MenuItems {
     title: string
 }
 
+export const headerMainMenu = () => {
+    return [
+        {
+            href: '/vacancy',
+            title: 'Job offers'
+        },
+        {
+            href: '/candidats',
+            title: 'Candidats'
+        },
+        {
+            href: '/about-us',
+            title: 'About us'
+        },
+        {
+            href: '/contacts',
+            title: 'Contacts'
+        }
+    ]
+}
 
 export const HeaderUserMenu = (role:UserRole):MenuItems[] => {
     return role === UserRole.Agency ? [
         {
-            icon: IoMdDesktop,
+            icon: CiDesktop,
             href: AGENCY_DROPDOWN_URL.dashboard(),
             title: 'Dashboard'
         },
         {
-            icon: IoIosContact,
+            icon: CiUser,
             href: AGENCY_DROPDOWN_URL.profile(),
             title: 'Profile'
         },
         {
-            icon: IoIosGitBranch,
+            icon: PiGitBranchThin,
             href: AGENCY_DROPDOWN_URL.branch('create'),
             title: 'New branch'
         },
         {
-            icon: IoIosMegaphone ,
+            icon: CiPalette ,
             href: AGENCY_DROPDOWN_URL.vacancy('create'),
             title: 'Create vacancy'
         },
         {
-            icon: IoIosPerson,
+            icon: CiHeart,
             href: AGENCY_DROPDOWN_URL.favorites(),
             title: 'Workers favorites'
         }
     ] : [
         {
-            icon: IoIosPerson,
+            icon: CiHeart,
             href: CANDIDAT_DROPDOWN_URL.dashboard(),
             title: 'Profile'
         },
         {
-            icon: IoIosPerson,
+            icon: CiUser,
             href: CANDIDAT_DROPDOWN_URL.profile(),
             title: 'Profile'
         }

@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { useCategory } from "../hooks";
-import { Card } from "@/shared/components";
+import { Button, Card } from "@/shared/components";
+import Link from "next/link";
 
 export default function CategoryList() {
-  const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({})
   const { categories, isFetching } = useCategory()
+
+  const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({});
 
   const toggleCategory = (id: string) => {
     setOpenCategories((prev) => ({
@@ -18,25 +20,35 @@ export default function CategoryList() {
 
   return (
     <Card className="p-4">
-      <ul className="space-y-4">
+      <div className="p-4 space-y-4">
+      <ul className="space-y-2">
         {categories?.map((category) => (
-          <li key={category.id}>
-            <div
-              className="flex items-center cursor-pointer text-lg font-semibold"
-              onClick={() => toggleCategory(category.id)}
-            >
-              {openCategories[category.id] ? (
-                <ChevronDown className="mr-2 h-4 w-4" />
-              ) : (
-                <ChevronRight className="mr-2 h-4 w-4" />
+          <li key={category.id} className="pb-2">
+            <div className="flex items-center justify-between">
+              <Link href={`category/${category.slug}`} className="text-lg font-semibold px-0">
+                {category.name}
+              </Link>
+              {category.children && category.children.length > 0 && (
+              <Button
+                variant='link'
+                onClick={() => toggleCategory(category.id)}
+                className="p-2 rounded-md hover:bg-gray-100"
+              >
+                {openCategories[category.id] ? (
+                  <ChevronDown className="h-5 w-5" />
+                ) : (
+                  <ChevronRight className="h-5 w-5" />
+                )}
+              </Button>
               )}
-              {category.name}
             </div>
-            {openCategories[category.id] && (
-              <ul className="ml-6 mt-2 space-y-2">
-                {category.children && category.children.map((children) => (
-                  <li key={children.id} className="text-gray-700">
-                    {children.name}
+            {openCategories[category.id] && category.children && (
+              <ul className="mt-2 space-y-1 ml-4">
+                {category.children?.map((subcategory) => (
+                  <li key={subcategory.id}>
+                    <Link href={`/category/${subcategory.slug}`} className="text-gray-600 pl-4 text-sm w-full justify-start">
+                      {subcategory.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -44,6 +56,7 @@ export default function CategoryList() {
           </li>
         ))}
       </ul>
+    </div>
     </Card>
   );
 }

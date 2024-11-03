@@ -1,19 +1,29 @@
 import { useQuery } from "@tanstack/react-query"
 import { userMenuService } from "../services/usermenu.service"
-import { useEffect, useState } from "react"
-import { IUserMenuHeaderData } from "../types/userMenuData.type"
+import { useEffect } from "react"
+import { useAppDispatch } from "@/shared/hooks"
+import { setError, setLoading, setUser } from "../slice/userSlice"
 
 export function useGetUserHeaderData () {
-    const [user, setUser] = useState<IUserMenuHeaderData | undefined>(undefined)
-    const {data, isFetching, isError} = useQuery({
+    const dispatch = useAppDispatch()
+
+    const query = useQuery({
         queryKey: ['getUserHeaderData'],
         queryFn: () => userMenuService.getUserShortData(),
         select: ({data}) => data
     })
 
-    useEffect(()=> {
-        setUser(!isError ? data : undefined)
-    }, [isFetching, isError])
+  useEffect(() => {
+    if (query.isSuccess && query.data) {
+      dispatch(setUser(query.data));
+      dispatch(setLoading(false));
+    }
+
+    if (query.isError && query.error) {
+      dispatch(setError(query.error.message));
+      dispatch(setLoading(false));
+    }
+  }, [query.data, query.isFetching, query.isError, query.error, dispatch])
     
-    return {user, isFetching}
+    return query
 }

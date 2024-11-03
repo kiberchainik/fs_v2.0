@@ -4,6 +4,7 @@ import { cn } from "@/shared/utils";
 import { Logo } from "@/shared/components";
 import { ToggleTheme } from "../ui";
 import { UserHeaderMenu } from "@/features/userHeaderBtn/componets/usermenu/UserHeaderDropdownMenu";
+import { HeaderMenu } from "@/features/headerMenu/components/HeaderMenu";
 
 interface IStyles {
     className?: string

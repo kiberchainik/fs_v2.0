@@ -4,6 +4,7 @@ import "@/shared/styles/globals.scss";
 import { MainProvider } from "@/shared/providers"
 import { SITE_DESCRIPTION, SITE_NAME } from "@/shared/constants/seo.constants";
 import { Header } from "@/shared/components";
+import { HeaderMenu } from "@/features/headerMenu/components/HeaderMenu";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -40,7 +41,9 @@ export default function RootLayout({
         <MainProvider>
           <div className="relative flex min-h-screen flex-col">
             <div className="flex-1">
-              <Header></Header>
+              <Header>
+                <HeaderMenu />
+              </Header>
               {children}
             </div>
           </div>
