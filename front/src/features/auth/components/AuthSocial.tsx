@@ -41,13 +41,13 @@ export function AuthSocial () {
                 <FaGithub />
             </Button>
         </div>
-        {/* <div className='relative my-3 space-y-4'>
+        <div className='relative my-3 space-y-4'>
             <div className='absolute inset-0 flex items-center mt-1'>
                 <span className='w-full border-t' />
             </div>
             <div className='relative flex justify-center text-xs uppercase'>
-                <span className='bg-background px-2 text-muted-foreground'>or</span>
+                <span className='bg-background px-2.5 py-1 text-muted-foreground rounded-full'>or</span>
             </div>
-        </div> */}
+        </div>
     </>
 }

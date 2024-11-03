@@ -35,8 +35,6 @@ export function ResetPasswordForm () {
     return (
         <AuthWrapper 
             heading="Reset"
-            backButtonHref="/auth/login"
-            backButtonLabel="Dont have account? Register"
             description="Compile all fields for login"
         >
             <Form {...form}>
