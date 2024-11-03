@@ -9,7 +9,7 @@ import { EmailConfirmationModule } from './email-confirmation/email-confirmation
 import { MailService } from '@/libs/mail/mail.service';
 import { TwoFactorAuthService } from './two-factor-auth/two-factor-auth.service';
 import { AgencyService } from '@/agency/agency.service';
-import { GoogleStrategy, JwtStrategy } from './strategies';
+import { FacebookStrategy, GoogleStrategy, JwtStrategy } from './strategies';
 import { JwtModule } from '@nestjs/jwt';
 import { getJwtConfig } from '@/config';
 
@@ -28,7 +28,7 @@ import { getJwtConfig } from '@/config';
     forwardRef(() => EmailConfirmationModule)
   ],
   controllers: [AuthController],
-  providers: [AuthService, UserService, MailService, TwoFactorAuthService, AgencyService, JwtStrategy, GoogleStrategy],
+  providers: [AuthService, UserService, MailService, TwoFactorAuthService, AgencyService, JwtStrategy, GoogleStrategy, FacebookStrategy],
   exports:[AuthService]
 })
 export class AuthModule {}

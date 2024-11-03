@@ -84,6 +84,25 @@ export class AuthController {
 		)
 	}
 
+	@Get('facebook')
+	@UseGuards(AuthGuard('facebook'))
+	async facebookAuth(@Req() req) {}
+
+	@Get('facebook/redirect')
+	@UseGuards(AuthGuard('facebook'))
+	async facebookAuthCallback(
+		@Req() req,
+		@Res({ passthrough: true }) res: Response
+	) {
+		const { refreshToken, ...response } = await this.authService.validateOAuthLogin(req)
+
+		this.authService.addRefreshTokenToResponse(res, refreshToken)
+
+		return res.redirect(
+			`${process.env['ALLOWED_ORIGIN']}/dashboard?accessToken=${response.accessToken}`
+		)
+	}
+
   	@HttpCode(200)
 	@Post('logout')
 	async logout(@Res({ passthrough: true }) res: Response) {
