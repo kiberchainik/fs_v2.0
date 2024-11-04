@@ -16,7 +16,6 @@ export const UserHeaderMenu:FC = () => {
     useEffect(() => {
         refetch(); // Запрос данных пользователя при монтировании компонента
     }, [refetch]);
-console.log(AGENCY_DROPDOWN_URL);
 
     return (
         <>
