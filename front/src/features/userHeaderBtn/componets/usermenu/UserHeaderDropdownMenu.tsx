@@ -6,6 +6,7 @@ import { useGetUserHeaderData } from "../../hooks";
 import { UserMenu } from "./UserMenu";
 import Link from "next/link";
 import { useAppSelector } from "@/shared/hooks";
+import { AGENCY_DROPDOWN_URL } from "@/shared/config";
 
 export const UserHeaderMenu:FC = () => {
     //const {user, isFetching} = useGetUserHeaderData()
@@ -15,6 +16,7 @@ export const UserHeaderMenu:FC = () => {
     useEffect(() => {
         refetch(); // Запрос данных пользователя при монтировании компонента
     }, [refetch]);
+console.log(AGENCY_DROPDOWN_URL);
 
     return (
         <>
