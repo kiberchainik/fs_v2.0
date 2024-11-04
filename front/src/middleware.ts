@@ -5,14 +5,14 @@ import { EnumTokens } from '@/shared/services'
 import { authService } from './features/auth/services'
 
 export async function middleware(request: NextRequest) {
-	const refreshToken = request.cookies.get(EnumTokens.REFRESH_TOKEN)?.value
+	const accessToken = request.cookies.get(EnumTokens.ACCESS_TOKEN)?.value
 
 	const isAuthPage = request.url.includes(API_URL.auth())
 	
 	const isCandidatProfile = request.url.includes(CANDIDAT_URL.root())
 	const isAgencyProfile = request.url.includes(AGENCY_URL.root())
 
-	if (refreshToken) {
+	if (accessToken) {
 		const user = await authService.getCurrentUserData(refreshToken)
 		
 		if (isAuthPage) {
@@ -44,12 +44,12 @@ export async function middleware(request: NextRequest) {
 	}
 
 	if(isAuthPage) {
-		if (refreshToken === undefined) {
+		if (accessToken === undefined) {
 			return NextResponse.next()
 		}
 	}
 
-	if (refreshToken === undefined) {
+	if (accessToken === undefined) {
 		return NextResponse.redirect(new URL(MAIN_URL.home(), request.url))
 	}
 }
