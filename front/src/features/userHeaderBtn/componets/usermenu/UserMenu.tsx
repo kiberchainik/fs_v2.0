@@ -13,7 +13,6 @@ export const UserMenu:FC<IUserMenuHeaderData> = ({email, isVerified, role, avata
     const router = useRouter()
     const {isLoader, logout} = useLogoutMutation()
     const userMenu = HeaderUserMenu(role)
-    console.log(userMenu);
     
     return (
         <DropdownMenu>
