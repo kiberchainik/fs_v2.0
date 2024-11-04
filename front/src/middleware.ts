@@ -13,7 +13,7 @@ export async function middleware(request: NextRequest) {
 	const isAgencyProfile = request.url.includes(AGENCY_URL.root())
 
 	if (accessToken) {
-		const user = await authService.getCurrentUserData(refreshToken)
+		const user = await authService.getCurrentUserData(accessToken)
 		
 		if (isAuthPage) {
 			if(user.role === 'CANDIDAT') {
