@@ -20,7 +20,9 @@ export interface IVacanciaes extends IVacancyOptions {
     location: string,
     branchId?: string,
     tags?: string[]
+    createdAt?: string
     reallyUpTo?: string | Date
+    views?:number
 }
 
 export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'description'> & {

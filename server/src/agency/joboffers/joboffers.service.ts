@@ -263,6 +263,14 @@ export class JoboffersService {
 		}
   }
 
+  async findAllOfUser(userId:string) {
+			return await this.prisma.jobOffers.findMany({
+				where:{
+          agency: {userId}
+        }
+			})
+  }
+
   async findOneBySlug(slug: string) {
 		const vacancie = await this.prisma.jobOffers.findMany({
 			where: {
@@ -274,7 +282,6 @@ export class JoboffersService {
       },
 			include: {
         ...this.includesAll,
-        //tags: true,
         sectors: true,
         branch: true
       }
@@ -325,8 +332,15 @@ export class JoboffersService {
 	}
 
   async remove(id: string, userId:string) {
-    const adId = await this.getAgencyDataId(userId)
-    return `This action removes a #${id} joboffer`;
+    await this.prisma.jobOffers.deleteMany({
+      where: {
+        AND: [
+          {id},
+          {agency: {userId}}
+        ]
+      }
+    })
+    return true
   }
 
   private async getAgencyDataId (userId:string) {

@@ -12,7 +12,7 @@ export const useDeleteBranch = () => {
 
     const queryClient = useQueryClient()
 
-    const { data:deleteBranch, isPending:isLoadingDelete } = useMutation({
+    const { mutate:deleteBranch, isPending:isLoadingDelete } = useMutation({
         mutationKey: ['delete branch'],
         mutationFn: () => branchService.deleteBranch(editBranchId),
         onSuccess() {

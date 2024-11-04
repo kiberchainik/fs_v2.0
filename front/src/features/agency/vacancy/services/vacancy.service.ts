@@ -5,7 +5,7 @@ import { TypeVacancySchema } from "../schemes"
 
 class VacancyService {
     async getVacancyList () {
-        const {data} = await axiosPublic.get<IJobsResponce>(API_URL.vacancy())
+        const {data} = await axiosPrivate.get<IVacanciaes[]>(API_URL.agencyVacancy())
 
         return data
     }
@@ -36,6 +36,7 @@ class VacancyService {
 
     async deleteVacancy (id:string) {
         const {data: vacancy} = await axiosPrivate.delete(API_URL.vacancy(id))
+console.log(id);
 
         return vacancy
     }

@@ -12,7 +12,7 @@ export const useDeleteVacancy = () => {
 
     const queryClient = useQueryClient()
 
-    const { data:deleteVacancy, isPending:isLoadingDelete } = useMutation({
+    const { mutate:deleteVacancy, isPending:isLoadingDelete } = useMutation({
         mutationKey: ['delete vacancy'],
         mutationFn: () => vacancyService.deleteVacancy(editjobId),
         onSuccess() {

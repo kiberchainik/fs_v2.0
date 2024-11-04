@@ -14,12 +14,12 @@ import { formatDate } from "@/shared/utils"
 export function Vacancies () {
     const {vacancyList, isFetching} = useGetVacancy()
 
-    const formattedVacancies: IVacancyColumn[] = vacancyList?.items
-		? vacancyList.items.map(vacancy => ({
+    const formattedVacancies: IVacancyColumn[] = vacancyList
+		? vacancyList.map(vacancy => ({
 			id: vacancy.id,
             title: vacancy.title,
             slug: vacancy.slug,
-            createdAt: formatDate(vacancy.createdAt),
+            createdAt: formatDate(vacancy.createdAt!),
             reallyUpTo: vacancy.reallyUpTo ? formatDate(vacancy.reallyUpTo) : ' - ',
             views: vacancy.views
 			}))

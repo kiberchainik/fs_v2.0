@@ -26,9 +26,15 @@ export class JoboffersController {
     return this.joboffersService.findAll(jobOffersDto);
   }
 
-  @Get(':slug')
+  @Get('by-slug/:slug')
   findOneBySlug(@Param('slug') slug:string) {
     return this.joboffersService.findOneBySlug(slug);
+  }
+
+  @Get('my-vacancies')
+  @Authorization(UserRole.AGENCY)
+  findAllOfUser(@CurrentUser('id') id:string,) {
+    return this.joboffersService.findAllOfUser(id);
   }
 
   @Get('by-id/:id')

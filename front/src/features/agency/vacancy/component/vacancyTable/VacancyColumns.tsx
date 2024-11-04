@@ -137,14 +137,6 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 							Изменить
 						</DropdownMenuItem>
 					</Link>
-					<Link
-						href=''
-					>
-						<DropdownMenuItem>
-							<IoMdTrash className='size-4 mr-2 text-red-500' />
-							Delete
-						</DropdownMenuItem>
-					</Link>
 				</DropdownMenuContent>
 			</DropdownMenu>
 		)
