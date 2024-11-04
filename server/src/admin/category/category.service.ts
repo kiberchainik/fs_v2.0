@@ -2,7 +2,7 @@ import { BadRequestException, ConflictException, Injectable, NotFoundException }
 import { CreateCategoryDto, CreateSectorDto, UpdateCategoryDto, UpdateSectorDto } from './dto'
 import { PrismaService } from '@/prisma/prisma.service'
 import { Prisma } from 'prisma/__generated__'
-import { DBError } from '@/utils'
+import { DBError, slugify } from '@/utils'
 
 @Injectable()
 export class CategoryService {
@@ -27,7 +27,7 @@ export class CategoryService {
       return await this.prisma.category.create({
         data: {
           name: createCategoryDto.name,
-          slug: createCategoryDto.seo,
+          slug: slugify(createCategoryDto.seo),
           description: createCategoryDto.description,
           sectors: {
             connect: sectors
@@ -147,7 +147,7 @@ export class CategoryService {
       return await this.prisma.category.update({
         data: {
           name: updateCategoryDto.name,
-          slug: updateCategoryDto.seo,
+          slug: slugify(updateCategoryDto.seo),
           description: updateCategoryDto.description,
           children: {
             connect: nestedCategories

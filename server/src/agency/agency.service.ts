@@ -41,7 +41,7 @@ export class AgencyService {
       throw new BadRequestException('Не удалось сохранить данные')
     }
 
-    if (logo) logo.map(file => {
+    if (!logo) logo.map(file => {
       unlink(join(__dirname, '..', '../src', file))
     })
 

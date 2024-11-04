@@ -8,8 +8,7 @@ import { EmailConfirmationService } from './email-confirmation/email-confirmatio
 import { TwoFactorAuthService } from './two-factor-auth/two-factor-auth.service'
 import { JwtService } from '@nestjs/jwt'
 import { EXPIRE_DAY_REFRESH_TOKEN, REFRESH_TOKEN_NAME } from '@/libs/common/constants';
-import { AuthMethod, UserRole } from 'prisma/__generated__';
-import passport from 'passport';
+import { AuthMethod, UserRole } from 'prisma/__generated__'
 
 @Injectable()
 export class AuthService {
