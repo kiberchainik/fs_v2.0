@@ -25,11 +25,10 @@ export class AgencyService {
       userId
     }
 
-    const {logo} = await this.prisma.agencyData.findUnique({
-      where: {userId},
-      select: {logo: true}
+    const oldData = await this.prisma.agencyData.findFirst({
+      where: {userId}
     })
-
+    
 
     const agencyData = await this.prisma.agencyData.upsert({
         where: {userId},
@@ -41,7 +40,7 @@ export class AgencyService {
       throw new BadRequestException('Не удалось сохранить данные')
     }
 
-    if (!logo) logo.map(file => {
+    if (oldData.logo !== null) oldData.logo.map(file => {
       unlink(join(__dirname, '..', '../src', file))
     })
 
