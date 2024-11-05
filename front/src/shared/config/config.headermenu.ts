@@ -3,15 +3,14 @@ import { IconType } from "react-icons"
 import { CiDesktop, CiHeart, CiPalette, CiUser } from "react-icons/ci"
 import { PiGitBranchThin } from "react-icons/pi"
 import { AGENCY_DROPDOWN_URL, CANDIDAT_DROPDOWN_URL } from "./config.url"
-import { IoIosPerson } from "react-icons/io"
 
-interface MenuItems {
-    icon: IconType
+export interface MenuItems {
+    icon?: IconType
     href: string
     title: string
 }
 
-export const headerMainMenu = () => {
+export const headerMainMenu = ():MenuItems[] => {
     return [
         {
             href: '/vacancy',
@@ -61,7 +60,7 @@ export const HeaderUserMenu = (role:UserRole):MenuItems[] => {
         }
     ] : [
         {
-            icon: CiHeart,
+            icon: CiDesktop,
             href: CANDIDAT_DROPDOWN_URL.dashboard(),
             title: 'Profile'
         },

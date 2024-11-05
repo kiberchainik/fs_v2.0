@@ -14,7 +14,7 @@ interface IStyles {
 export const Header: FC<PropsWithChildren<IStyles>> = ({children, className}) => {
     return <div className={styles.wrapper}>
         <div className={cn(styles.header, className)}>
-            <Logo />
+            <div className='hidden md:flex'><Logo /></div>
             {children}
             <div className='flex gap-x-2 items-center'>
                 <UserHeaderMenu />
