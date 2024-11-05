@@ -143,6 +143,9 @@ export class CategoryService {
       const nestedCategories = updateCategoryDto.parentId?.map((id) => ({
         id
       })) || []
+console.log(updateCategoryDto);
+console.log(nestedCategories);
+
 
       return await this.prisma.category.update({
         data: {
@@ -160,6 +163,7 @@ export class CategoryService {
           id
         }
       })
+
     } catch (err) {
       if (
         err instanceof Prisma.PrismaClientKnownRequestError &&

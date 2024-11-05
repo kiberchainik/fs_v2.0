@@ -26,7 +26,7 @@ export const UserMenu:FC<IUserMenuHeaderData> = ({email, isVerified, role, avata
                 {userMenu.map(item => {
                     const Icon = item.icon
                     return (<DropdownMenuItem key={item.href} onClick={() => router.push(item.href)} className='cursor-pointer'>
-                        <Icon className='size-6 pr-1' /> {item.title}
+                        {Icon && <Icon className='size-6 pr-1' />} {item.title}
                     </DropdownMenuItem>)
                 })}
                 <DropdownMenuItem
