@@ -147,7 +147,7 @@ export class CategoryService {
       return await this.prisma.category.update({
         data: {
           name: updateCategoryDto.name,
-          slug: slugify(updateCategoryDto.seo),
+          slug: updateCategoryDto.seo && slugify(updateCategoryDto.seo),
           description: updateCategoryDto.description,
           children: {
             connect: nestedCategories
@@ -160,14 +160,19 @@ export class CategoryService {
           id
         }
       })      
-    } catch (err) {
-      if (
-        err instanceof Prisma.PrismaClientKnownRequestError &&
-        err.code === DBError.ConnectedRecordsNotFound
-      ) {
-        console.log(err)
-        throw new ConflictException('Некоторые из предоставленых ИД категорий не верны')
+    } catch (error) {
+      if (!(error instanceof Prisma.PrismaClientKnownRequestError)) {
+        throw error;
       }
+      if (error.code === DBError.RecordDoesNotExist) {
+        throw new NotFoundException();
+      }
+      if (error.code === DBError.ConnectedRecordsNotFound) {
+        throw new ConflictException(
+          'Some of the provided category ids are not valid',
+        );
+      }
+      throw error;
     }
   }
 
