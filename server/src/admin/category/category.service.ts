@@ -147,7 +147,7 @@ console.log(updateCategoryDto);
 console.log(nestedCategories);
 
 
-      return await this.prisma.category.update({
+      const res = await this.prisma.category.update({
         data: {
           name: updateCategoryDto.name,
           slug: slugify(updateCategoryDto.seo),
@@ -164,6 +164,9 @@ console.log(nestedCategories);
         }
       })
 
+      console.log(res);
+      
+return res
     } catch (err) {
       if (
         err instanceof Prisma.PrismaClientKnownRequestError &&
