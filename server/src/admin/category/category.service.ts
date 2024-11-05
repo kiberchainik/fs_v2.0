@@ -143,11 +143,8 @@ export class CategoryService {
       const nestedCategories = updateCategoryDto.parentId?.map((id) => ({
         id
       })) || []
-console.log(updateCategoryDto);
-console.log(nestedCategories);
 
-
-      const res = await this.prisma.category.update({
+      return await this.prisma.category.update({
         data: {
           name: updateCategoryDto.name,
           slug: slugify(updateCategoryDto.seo),
@@ -162,12 +159,7 @@ console.log(nestedCategories);
         where: {
           id
         }
-      })
-console.log('res');
-
-      console.log(res);
-      
-return res
+      })      
     } catch (err) {
       if (
         err instanceof Prisma.PrismaClientKnownRequestError &&
