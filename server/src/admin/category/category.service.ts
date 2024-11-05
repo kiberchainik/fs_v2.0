@@ -163,6 +163,7 @@ console.log(nestedCategories);
           id
         }
       })
+console.log('res');
 
       console.log(res);
       
