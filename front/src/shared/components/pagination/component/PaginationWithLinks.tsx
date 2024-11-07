@@ -53,7 +53,7 @@ export function PaginationWithLinks({
         newSearchParams.set(key, String(newPageSize))
       }
 
-      router.push(`${pathname}?${newSearchParams.toString()}`)
+      replace(`${pathname}?${newSearchParams.toString()}`)
     },
     [searchParams, pathname]
   );
