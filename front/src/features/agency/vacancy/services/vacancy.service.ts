@@ -1,10 +1,9 @@
 import { axiosPrivate, axiosPublic } from "@/shared/api"
 import { API_URL } from "@/shared/config"
-import { IJobsResponce, IVacanciaes, IVacanciaesEdit } from "../types"
-import { TypeVacancySchema } from "../schemes"
+import { IVacanciaes, IVacanciaesEdit } from "../types"
 
 class VacancyService {
-    async getVacancyList () {
+    async getAgencyVacancyList () {
         const {data} = await axiosPrivate.get<IVacanciaes[]>(API_URL.agencyVacancy())
 
         return data
@@ -36,7 +35,6 @@ class VacancyService {
 
     async deleteVacancy (id:string) {
         const {data: vacancy} = await axiosPrivate.delete(API_URL.vacancy(id))
-console.log(id);
 
         return vacancy
     }

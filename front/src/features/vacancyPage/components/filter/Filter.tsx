@@ -19,20 +19,6 @@ export default function VacancyFilter() {
                   </SelectGroup>
                 </SelectContent>
               </Select>
-              <Select>
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Per page ..." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectItem value="10">10</SelectItem>
-                    <SelectItem value="20">20</SelectItem>
-                    <SelectItem value="30">30</SelectItem>
-                    <SelectItem value="40">40</SelectItem>
-                    <SelectItem value="50">50</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
             </div>
             <div className='flex justify-end gap-x-1'>
               <Button variant='link' size='sm' className='text-xl'>

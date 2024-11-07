@@ -13,6 +13,7 @@ import {
 
 import { MAIN_URL, AGENCY_URL } from '@/shared/config'
 import { IoMdTrash } from 'react-icons/io'
+import { ReactElement } from 'react'
 
 export interface IVacancyColumn {
 	id:string | undefined
@@ -21,6 +22,7 @@ export interface IVacancyColumn {
     createdAt: string | undefined
 	reallyUpTo: string | undefined
     views: number | undefined
+	isValidate: string
 }
 
 export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
@@ -67,7 +69,7 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 				<Button
 					variant='ghost'
 					onClick={() =>
-						column.toggleSorting(column.getIsSorted() === 'asc')
+						column.toggleSorting(column.getIsSorted() === 'desc')
 					}
 				>
 					Created
@@ -103,6 +105,22 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 					}
 				>
 					Views
+					<ArrowUpDown className='ml-2 size-4' />
+				</Button>
+			)
+		}
+	},
+	{
+		accessorKey: 'isValidate',
+		header: ({ column }) => {
+			return (
+				<Button
+					variant='ghost'
+					onClick={() =>
+						column.toggleSorting(column.getIsSorted() === 'asc')
+					}
+				>
+					Is verified
 					<ArrowUpDown className='ml-2 size-4' />
 				</Button>
 			)

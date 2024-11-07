@@ -12,7 +12,7 @@ export function useUpdateVacancyMutation () {
     const queryClient = useQueryClient()
 
     const {mutate: updJob, isPending, isSuccess} = useMutation({
-        mutationKey: ['create vacancy data'],
+        mutationKey: ['update vacancy data'],
         mutationFn: (data: IVacanciaes) => vacancyService.updateVacancyData(editjobId, data),
         onSuccess() {
             queryClient.invalidateQueries({

@@ -4,31 +4,32 @@ import { MAIN_URL } from "@/shared/config";
 import { formatDate } from "@/shared/utils";
 import Link from "next/link";
 
-import styles from './listvacancy.module.scss'
+import styles from './vacancyCard.module.scss'
+import { CiCalendar, CiClock2, CiRead } from "react-icons/ci"
+
 import { VacancyCardAuthorInfo } from "./VCAuthorInfo";
 
-export function VacancyCard ({title, slug, description, agency, branch, categories, createdAt, reallyUpTo, views}:IVacanciaesFullDate) {
+export function VacancyCard({ title, slug, description, agency, branch, categories, createdAt, reallyUpTo, views }: IVacanciaesFullDate) {
+    description = description.slice(0, 150) + '...'
     return (
         <Card className='max-w-96'>
             <CardHeader>
                 <CardTitle className='text-wrap'>
-                    <Button variant='link'>
-                        <Link href={MAIN_URL.fullVacancy(slug)} className='text-left text-balance'>{title}</Link>
-                    </Button>
+                    <Link href={MAIN_URL.fullVacancy(slug)} className='text-left text-balance text-2xl font-light'>{title}</Link>
                 </CardTitle>
                 <div className={styles.headerDateInfo}>
-                    <i>Created:</i> {formatDate(createdAt)}
-                    {reallyUpTo && <><i>Really up to:</i> {formatDate(reallyUpTo)}</>}
+                    <CiCalendar /> {formatDate(createdAt)}
+                    {reallyUpTo && <><CiClock2 /> {formatDate(reallyUpTo)}</>}
                 </div>
-                <div className=''>
-                    Views: {views}
+                <div className={styles.headerDateInfo}>
+                    <CiRead /> {views}
                 </div>
             </CardHeader>
             <CardDescription className='p-6' dangerouslySetInnerHTML={{ __html: description }}></CardDescription>
             <CardFooter>
                 {
                     branch ? (
-                        <VacancyCardAuthorInfo 
+                        <VacancyCardAuthorInfo
                             email={branch.email}
                             location={branch.location}
                             logo={branch.logo}
@@ -37,7 +38,7 @@ export function VacancyCard ({title, slug, description, agency, branch, categori
                             slug={branch.id}
                         />
                     ) : (
-                        <VacancyCardAuthorInfo 
+                        <VacancyCardAuthorInfo
                             email={agency.user.email}
                             location={agency.address}
                             logo={agency.logo}
@@ -47,7 +48,7 @@ export function VacancyCard ({title, slug, description, agency, branch, categori
                         />
                     )
                 }
-                
+
             </CardFooter>
         </Card>
     )

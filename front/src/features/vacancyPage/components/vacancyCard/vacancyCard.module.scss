@@ -1,19 +1,15 @@
-.listVacancy {
-    @apply w-full flex flex-row max-md:flex-col justify-center gap-5 mt-5;
+.headerDateInfo {
+    @apply flex text-gray-500 text-sm items-center gap-1;
+}
 
-    .headerDateInfo {
-        @apply flex justify-between text-sm;
-    }
+.headerDateInfo > i {
+    @apply text-gray-400;
+}
 
-    .headerDateInfo > i {
-        @apply text-gray-400;
-    }
+.footerAutorInfo {
+    @apply w-full flex flex-col gap-y-3 text-gray-500 text-sm;
+}
 
-    .footerAutorInfo {
-        @apply w-full flex flex-col gap-y-3 text-gray-500 text-sm;
-    }
-
-    .footerAutorInfo_top {
-        @apply flex flex-row gap-x-3 items-center
-    }
+.footerAutorInfo_top {
+    @apply flex flex-row gap-x-3 items-center
 }

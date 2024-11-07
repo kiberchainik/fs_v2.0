@@ -23,6 +23,7 @@ export interface IVacanciaes extends IVacancyOptions {
     createdAt?: string
     reallyUpTo?: string | Date
     views?:number
+    isValidate?:boolean
 }
 
 export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'description'> & {

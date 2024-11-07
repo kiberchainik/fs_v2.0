@@ -2,18 +2,19 @@ import { Avatar, AvatarFallback, AvatarImage, Button } from "@/shared/components
 import { MAIN_URL } from "@/shared/config"
 import Link from "next/link"
 
-import styles from './listvacancy.module.scss'
+import styles from './vacancyCard.module.scss'
 
 interface IAuthorData {
     slug: string
     name: string
     location: string
     logo: string
-    email:string
+    email: string
     phone: string
 }
 
-export function VacancyCardAuthorInfo ({name, slug, email, location, phone, logo}:IAuthorData) {
+export function VacancyCardAuthorInfo({ name, slug, email, location, phone, logo }: IAuthorData) {
+    name = name.slice(0, 25)
     return (
         <div className={styles.footerAutorInfo}>
             <div className={styles.footerAutorInfo_top}>

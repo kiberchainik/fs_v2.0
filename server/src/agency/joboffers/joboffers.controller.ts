@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe } from '@nestjs/common'
+import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, Query } from '@nestjs/common'
 import { JoboffersService } from './joboffers.service'
 import { CreateJobofferDto } from './dto/create-joboffer.dto'
 import { UpdateJobofferDto } from './dto/update-joboffer.dto'
@@ -21,8 +21,10 @@ export class JoboffersController {
   }
 
   @Get()
-  @UsePipes(new ValidationPipe())
-  findAll(@Body() jobOffersDto: JobOffersDto) {
+  //@UsePipes(new ValidationPipe({transform: true}))
+  findAll(
+    @Query() jobOffersDto: JobOffersDto
+  ) {
     return this.joboffersService.findAll(jobOffersDto);
   }
 
@@ -63,7 +65,7 @@ export class JoboffersController {
     return this.joboffersService.remove(id, userId);
   }
 
-  @Get('confirm-vacancy')
+  @Get('confirm-vacancy/:id')
   @Authorization(UserRole.ADMIN)
   confirmVacancy (@Param('id') id: string) {
     return this.joboffersService.confirmVacancy(id)

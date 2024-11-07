@@ -228,16 +228,17 @@ export class JoboffersService {
     return vacancy
   }
 
-  async findAll({count = 10, page = 1, isValidate, agencyId, categoryId, tagId, byPopularity}: JobOffersDto) {
+  async findAll({isValidate, agencyId, branchId, categoryId, tagId, byPopularity, limit, page}: JobOffersDto) {
     const where: Prisma.jobOffersWhereInput = { isValidate }
 		const orderBy: Prisma.jobOffersOrderByWithRelationInput[] = []
-    
+
     if (byPopularity) {
 			orderBy.push({ views: 'desc' })
 		}
 		
 		orderBy.push({ createdAt: 'desc' })
 		agencyId ? (where['agency'] = { id: agencyId }) : {}
+		branchId ? (where['branch'] = { id: branchId }) : {}
 		categoryId ? (where['categories'] =  { id: categoryId } ) : {}
 		tagId ? (where['tags'] = { some: { id: tagId } }) : {}
 
@@ -245,8 +246,8 @@ export class JoboffersService {
 			this.prisma.jobOffers.findMany({
 				where,
 				orderBy,
-				skip: page * count - count,
-				take: count,
+				skip: page * limit - limit,
+				take: limit,
 				include: {
 					...this.includesAll,
           sectors: true,
@@ -255,7 +256,7 @@ export class JoboffersService {
 			}),
 			this.prisma.jobOffers.count({ where })
 		])
-		const pageCount = Math.ceil(vacanciesCount / count)
+		const pageCount = Math.ceil(vacanciesCount / limit)
 		return {
 			items: vacancies,
 			count: vacanciesCount,

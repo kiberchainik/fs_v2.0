@@ -1,6 +1,6 @@
 import { PaginationQueryDto } from "@/utils"
 import { Type } from "class-transformer"
-import { IsBoolean, IsOptional, IsString } from "class-validator"
+import { IsBoolean, IsNumber, IsOptional, IsString } from "class-validator"
 
 export class JobOffersDto extends PaginationQueryDto {
 	@IsOptional()
@@ -9,14 +9,14 @@ export class JobOffersDto extends PaginationQueryDto {
 	agencyId?: string
 
 	@IsOptional()
+	@IsString()
+	@Type(() => String)
+	branchId?: string
+
+	@IsOptional()
 	@IsBoolean()
 	@Type(() => Boolean)
 	byPopularity?: boolean = false
-
-	// @IsOptional()
-	// @IsBoolean()
-	// @Type(() => Boolean)
-	// byPopularityComment: boolean = false
 
 	@IsOptional()
 	@IsString()

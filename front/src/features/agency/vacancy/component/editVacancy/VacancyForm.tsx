@@ -22,7 +22,8 @@ import {
 	SelectGroup,
 	SelectItem,
 	SelectTrigger,
-	SelectValue} from '@/shared/components/ui'
+	SelectValue
+} from '@/shared/components/ui'
 
 import { VacancySchema, TypeVacancySchema } from '../../schemes'
 import TextEditor from '@/shared/components/ui/TextEditor'
@@ -51,10 +52,10 @@ interface VacancyFromProps {
 
 
 
-export function VacancyForm ({vacancy, categories, branches, contractType, experienceMinimal, levelEducation, modeJob, workingTime}:VacancyFromProps) {
+export function VacancyForm({ vacancy, categories, branches, contractType, experienceMinimal, levelEducation, modeJob, workingTime }: VacancyFromProps) {
 	const { updJob, isPending, isSuccess } = useUpdateVacancyMutation()
 	const { deleteVacancy, isLoadingDelete } = useDeleteVacancy()
-	const {generateText, gentext, isInProccess} = useGenerateDescription()
+	const { generateText, gentext, isInProccess } = useGenerateDescription()
 
 	const form = useForm<TypeVacancySchema>({
 		mode: 'onChange',
@@ -78,15 +79,15 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 		}
 	})
 
-	const GenerateDescriptionBtn = (keywords:string | undefined) => {
-		if(keywords) {
+	const GenerateDescriptionBtn = (keywords: string | undefined) => {
+		if (keywords) {
 			const genDescription = generateText(keywords)
 			form.setValue('description', gentext || '')
 		}
 	}
-	
+
 	const onSubmit = (values: TypeVacancySchema) => {
-		const {tags, ...value} = values
+		const { tags, ...value } = values
 		const newVals = {
 			...value,
 			tags: splitTagsWithComa(values.tags)
@@ -95,16 +96,16 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 		updJob(newVals)
 		isSuccess && form.reset()
 	}
-	
+
 	return (
-		<Card className='w-[800px]'>
+		<Card className='md:w-[800px] w-full'>
 			<CardHeader className='flex flex-row items-center justify-between'>
 				<CardTitle>Edit {vacancy.title}</CardTitle>
-                <ConfirmModal handleClick={() => deleteVacancy()}>
-                    <Button size='icon' variant='outline' disabled={isLoadingDelete}>
-                        <IoMdTrash className='text-red-500 size-6' />
-                    </Button>
-                </ConfirmModal>
+				<ConfirmModal handleClick={() => deleteVacancy()}>
+					<Button size='icon' variant='outline' disabled={isLoadingDelete}>
+						<IoMdTrash className='text-red-500 size-6' />
+					</Button>
+				</ConfirmModal>
 			</CardHeader>
 			<CardContent>
 				{
@@ -134,7 +135,7 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 									</FormItem>
 								)}
 							/>
-							<div className='flex flex-row gap-x-2 justify-between items-center'>
+							<div className='flex md:flex-row flex-col md:gap-x-2 gap-y-2 justify-between'>
 								<FormField
 									control={form.control}
 									name='location'
@@ -191,45 +192,45 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 								/>
 							</div>
 							<FormField
-							control={form.control}
-							name='categoryId'
-							rules={{
-								required: 'Категория обязательна'
-							}}
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Категория</FormLabel>
-									<Select
-										onValueChange={field.onChange}
-										defaultValue={field.value}
-									>
-										<FormControl>
-											<SelectTrigger>
-												<SelectValue placeholder='Категория' />
-											</SelectTrigger>
-										</FormControl>
-										<SelectContent>
-											{categories?.map((category) => (
-												<div key={category.id}>
-													<SelectItem value={category.id} className="font-semibold">
-													{category.name}
-													</SelectItem>
-													{category.children?.map((child) => (
-													<SelectItem
-														key={child.id}
-														value={child.id}
-														className="pl-6" // Отступ для подкатегорий
-													>
-														{child.name}
-													</SelectItem>
-													))}
-											  </div>
-											))}
-										</SelectContent>
-									</Select>
-									<FormMessage />
-								</FormItem>
-							)}
+								control={form.control}
+								name='categoryId'
+								rules={{
+									required: 'Категория обязательна'
+								}}
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Категория</FormLabel>
+										<Select
+											onValueChange={field.onChange}
+											defaultValue={field.value}
+										>
+											<FormControl>
+												<SelectTrigger>
+													<SelectValue placeholder='Категория' />
+												</SelectTrigger>
+											</FormControl>
+											<SelectContent>
+												{categories?.map((category) => (
+													<div key={category.id}>
+														<SelectItem value={category.id} className="font-semibold">
+															{category.name}
+														</SelectItem>
+														{category.children?.map((child) => (
+															<SelectItem
+																key={child.id}
+																value={child.id}
+																className="pl-6" // Отступ для подкатегорий
+															>
+																{child.name}
+															</SelectItem>
+														))}
+													</div>
+												))}
+											</SelectContent>
+										</Select>
+										<FormMessage />
+									</FormItem>
+								)}
 							/>
 							<FormField
 								control={form.control}
@@ -237,10 +238,10 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 								render={({ field }) => (
 									<FormItem>
 										<FormLabel>Branch</FormLabel>
-											<Select
-												onValueChange={field.onChange}
-												defaultValue={field.value}
-											>
+										<Select
+											onValueChange={field.onChange}
+											defaultValue={field.value}
+										>
 											<FormControl>
 												<SelectTrigger>
 													<SelectValue placeholder='Brach is required' />
@@ -248,9 +249,9 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 											</FormControl>
 											<SelectContent>
 												<SelectGroup>
-												{branches ? branches.map(branch => (
-													<SelectItem value={branch.id} key={branch.id}>{branch.name}</SelectItem>
-												)) : <SelectItem value='0' key={'without_branch'}>Категорий нет!</SelectItem>}
+													{branches ? branches.map(branch => (
+														<SelectItem value={branch.id} key={branch.id}>{branch.name}</SelectItem>
+													)) : <SelectItem value='0' key={'without_branch'}>Категорий нет!</SelectItem>}
 												</SelectGroup>
 											</SelectContent>
 										</Select>
@@ -261,13 +262,13 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 								control={form.control}
 								name="description"
 								render={({ field }) => (
-								<FormItem>
-									<FormLabel>Description</FormLabel>
-									<FormControl>
-										<TextEditor description={field.value} onChange={field.onChange} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
+									<FormItem>
+										<FormLabel>Description</FormLabel>
+										<FormControl>
+											<TextEditor description={field.value} onChange={field.onChange} />
+										</FormControl>
+										<FormMessage />
+									</FormItem>
 								)}
 							/>
 							<FormField
@@ -300,14 +301,14 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 								render={({ field }) => (
 									<FormItem className="flex flex-col">
 										<FormLabel>Reall up to</FormLabel>
-										<DateTimePicker 
-												use12HourFormat={false} 
-												value={field.value}
-												defaultMonth={new Date()}
-												onChange={field.onChange}
-												hideTime={true}
-												min={new Date()}
-											/>
+										<DateTimePicker
+											use12HourFormat={false}
+											value={field.value}
+											defaultMonth={new Date()}
+											onChange={field.onChange}
+											hideTime={true}
+											min={new Date()}
+										/>
 										<FormMessage />
 									</FormItem>
 								)}
@@ -323,10 +324,10 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 										render={({ field }) => (
 											<FormItem>
 												<FormLabel>Tipo di contratto</FormLabel>
-													<Select
-														onValueChange={field.onChange}
-														defaultValue={field.value}
-													>
+												<Select
+													onValueChange={field.onChange}
+													defaultValue={field.value}
+												>
 													<FormControl>
 														<SelectTrigger>
 															<SelectValue placeholder='Tipo di contratto' />
@@ -334,9 +335,9 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 													</FormControl>
 													<SelectContent>
 														<SelectGroup>
-														{contractType ? contractType.map(type => (
-															<SelectItem value={type.id} key={type.id}>{type.name}</SelectItem>
-														)) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+															{contractType ? contractType.map(type => (
+																<SelectItem value={type.id} key={type.id}>{type.name}</SelectItem>
+															)) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
 														</SelectGroup>
 													</SelectContent>
 												</Select>
@@ -349,10 +350,10 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 										render={({ field }) => (
 											<FormItem>
 												<FormLabel>Modalità di lavoro</FormLabel>
-													<Select
-														defaultValue={field.value}
-														onValueChange={field.onChange}
-													>
+												<Select
+													defaultValue={field.value}
+													onValueChange={field.onChange}
+												>
 													<FormControl>
 														<SelectTrigger>
 															<SelectValue placeholder='Modalità di lavoro' />
@@ -360,9 +361,9 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 													</FormControl>
 													<SelectContent>
 														<SelectGroup>
-														{modeJob ? modeJob.map(mode => (
-															<SelectItem value={mode.id} key={mode.id}>{mode.name}</SelectItem>
-														)) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+															{modeJob ? modeJob.map(mode => (
+																<SelectItem value={mode.id} key={mode.id}>{mode.name}</SelectItem>
+															)) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
 														</SelectGroup>
 													</SelectContent>
 												</Select>
@@ -375,10 +376,10 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 										render={({ field }) => (
 											<FormItem>
 												<FormLabel>Orario di lavoro</FormLabel>
-													<Select
-														defaultValue={field.value}
-														onValueChange={field.onChange}
-													>
+												<Select
+													defaultValue={field.value}
+													onValueChange={field.onChange}
+												>
 													<FormControl>
 														<SelectTrigger>
 															<SelectValue placeholder='Orario di lavoro' />
@@ -386,9 +387,9 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 													</FormControl>
 													<SelectContent>
 														<SelectGroup>
-														{workingTime ? workingTime.map(time => (
-															<SelectItem value={time.id} key={time.id}>{time.name}</SelectItem>
-														)) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+															{workingTime ? workingTime.map(time => (
+																<SelectItem value={time.id} key={time.id}>{time.name}</SelectItem>
+															)) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
 														</SelectGroup>
 													</SelectContent>
 												</Select>
@@ -401,10 +402,10 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 										render={({ field }) => (
 											<FormItem>
 												<FormLabel>Livello di istruzione</FormLabel>
-													<Select
-														defaultValue={field.value}
-														onValueChange={field.onChange}
-													>
+												<Select
+													defaultValue={field.value}
+													onValueChange={field.onChange}
+												>
 													<FormControl>
 														<SelectTrigger>
 															<SelectValue placeholder='Livello di istruzione' />
@@ -412,9 +413,9 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 													</FormControl>
 													<SelectContent>
 														<SelectGroup>
-														{levelEducation ? levelEducation.map(level => (
-															<SelectItem value={level.id} key={level.id}>{level.name}</SelectItem>
-														)) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+															{levelEducation ? levelEducation.map(level => (
+																<SelectItem value={level.id} key={level.id}>{level.name}</SelectItem>
+															)) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
 														</SelectGroup>
 													</SelectContent>
 												</Select>
@@ -427,10 +428,10 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 										render={({ field }) => (
 											<FormItem>
 												<FormLabel>Esperienza minima richiesta</FormLabel>
-													<Select
-														defaultValue={field.value}
-														onValueChange={field.onChange}
-													>
+												<Select
+													defaultValue={field.value}
+													onValueChange={field.onChange}
+												>
 													<FormControl>
 														<SelectTrigger>
 															<SelectValue placeholder='Esperienza minima richiesta' />
@@ -438,9 +439,9 @@ export function VacancyForm ({vacancy, categories, branches, contractType, exper
 													</FormControl>
 													<SelectContent>
 														<SelectGroup>
-														{experienceMinimal ? experienceMinimal.map(experience => (
-															<SelectItem value={experience.id} key={experience.id}>{experience.name}</SelectItem>
-														)) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+															{experienceMinimal ? experienceMinimal.map(experience => (
+																<SelectItem value={experience.id} key={experience.id}>{experience.name}</SelectItem>
+															)) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
 														</SelectGroup>
 													</SelectContent>
 												</Select>

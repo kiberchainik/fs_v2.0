@@ -1,13 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { vacancyService } from "../services/vacancy.service";
+import { useMemo } from "react";
 
 export function useGetVacancy () {
     const {data: vacancyList, isFetching} = useQuery({
-        queryKey: ['get all vacancy'],
-        queryFn: () => vacancyService.getVacancyList()
+        queryKey: ['get all vacancy for agency'],
+        queryFn: () => vacancyService.getAgencyVacancyList()
     })
 
-    return {vacancyList, isFetching}
+    return useMemo(() => ({
+        vacancyList,
+        isFetching
+    }), [vacancyList, isFetching])
 }
 
 export function useVacancyById (id:string) {

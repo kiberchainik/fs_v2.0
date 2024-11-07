@@ -21,7 +21,8 @@ export function Vacancies () {
             slug: vacancy.slug,
             createdAt: formatDate(vacancy.createdAt!),
             reallyUpTo: vacancy.reallyUpTo ? formatDate(vacancy.reallyUpTo) : ' - ',
-            views: vacancy.views
+            views: vacancy.views,
+			isValidate: vacancy.isValidate ? 'Verified':'Not verified!'
 			}))
 		: []
 

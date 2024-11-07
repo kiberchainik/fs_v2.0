@@ -15,7 +15,8 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-	Input} from '@/shared/components/ui'
+	Input
+} from '@/shared/components/ui'
 
 import { BranchSchema, TypeBranchSchema } from '../../schemes'
 import TextEditor from '@/shared/components/ui/TextEditor'
@@ -26,30 +27,30 @@ import { useUpdateBranchMutation } from '../../hooks'
 import { ConfirmModal } from '@/shared/components/modals/ConfirmModals'
 import { IoMdTrash } from 'react-icons/io'
 
-export function BranchForm (branchData:IBranch) {
-    const { updateBranch, isPending, isSuccess } = useUpdateBranchMutation()
-    const {deleteBranch, isLoadingDelete} = useDeleteBranch()
+export function BranchForm(branchData: IBranch) {
+	const { updateBranch, isPending, isSuccess } = useUpdateBranchMutation()
+	const { deleteBranch, isLoadingDelete } = useDeleteBranch()
 
 	const form = useForm<TypeBranchSchema>({
 		mode: 'onChange',
 		resolver: zodResolver(BranchSchema),
-		values: {...branchData}
+		values: { ...branchData }
 	})
-	
+
 	const onSubmit = (values: TypeBranchSchema) => {
 		updateBranch(values)
 		isSuccess && form.reset()
 	}
-	
+
 	return (
-		<Card className='w-[800px]'>
+		<Card className='md:w-[800px] w-full'>
 			<CardHeader className='flex flex-row items-center justify-between'>
 				<CardTitle>Edit filial {branchData.name}</CardTitle>
-                <ConfirmModal handleClick={() => deleteBranch()}>
-                    <Button size='icon' variant='outline' disabled={isLoadingDelete}>
-                        <IoMdTrash className='text-red-500' />
-                    </Button>
-                </ConfirmModal>
+				<ConfirmModal handleClick={() => deleteBranch()}>
+					<Button size='icon' variant='outline' disabled={isLoadingDelete}>
+						<IoMdTrash className='text-red-500' />
+					</Button>
+				</ConfirmModal>
 			</CardHeader>
 			<CardContent>
 				{
@@ -117,8 +118,8 @@ export function BranchForm (branchData:IBranch) {
 									</FormItem>
 								)}
 							/>
-							<div className='flex flex-row gap-x-2 justify-between items-center'>
-							<FormField
+							<div className='flex md:flex-row flex-col md:gap-x-2 gap-y-2 justify-between'>
+								<FormField
 									control={form.control}
 									name='address'
 									render={({ field }) => (
@@ -177,48 +178,48 @@ export function BranchForm (branchData:IBranch) {
 								control={form.control}
 								name="phone"
 								render={({ field }) => (
-								<FormItem>
-									<FormLabel>Contact phone</FormLabel>
-									<FormControl>
-										<Input
-											placeholder='Contact phone'
-											disabled={isPending}
-											type='text'
-											{...field}
-										/>
-									</FormControl>
-									<FormMessage />
-								</FormItem>
+									<FormItem>
+										<FormLabel>Contact phone</FormLabel>
+										<FormControl>
+											<Input
+												placeholder='Contact phone'
+												disabled={isPending}
+												type='text'
+												{...field}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
 								)}
 							/><FormField
-							control={form.control}
-							name="fax"
-							render={({ field }) => (
-							<FormItem>
-								<FormLabel>Fax</FormLabel>
-								<FormControl>
-									<Input
-										placeholder='Fax'
-										disabled={isPending}
-										type='text'
-										{...field}
-									/>
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-							)}
-						/>
+								control={form.control}
+								name="fax"
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Fax</FormLabel>
+										<FormControl>
+											<Input
+												placeholder='Fax'
+												disabled={isPending}
+												type='text'
+												{...field}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
 							<FormField
 								control={form.control}
 								name="about_branch"
 								render={({ field }) => (
-								<FormItem>
-									<FormLabel>Description</FormLabel>
-									<FormControl>
-										<TextEditor description={field.name} onChange={field.onChange} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
+									<FormItem>
+										<FormLabel>Description</FormLabel>
+										<FormControl>
+											<TextEditor description={field.name} onChange={field.onChange} />
+										</FormControl>
+										<FormMessage />
+									</FormItem>
 								)}
 							/>
 							<Button type='submit' disabled={isPending}>

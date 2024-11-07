@@ -12,11 +12,11 @@ import OrderedList from "@tiptap/extension-ordered-list";
 import ImageResize from "tiptap-extension-resize-image";
 
 export interface ITextEditor {
-    onChange: (richText: string) => void
-    description: string
-  }
+  onChange: (richText: string) => void
+  description: string
+}
 
-export default function RichTextEditor({ description, onChange }:ITextEditor) {
+export default function RichTextEditor({ description, onChange }: ITextEditor) {
   const editor = useEditor({
     extensions: [
       StarterKit.configure(),
@@ -43,7 +43,7 @@ export default function RichTextEditor({ description, onChange }:ITextEditor) {
     content: description,
     editorProps: {
       attributes: {
-        class: "min-h-[156px] border rounded-md bg-slate-50 py-2 px-3",
+        class: "min-h-[200px] md:w-full border rounded-md bg-slate-50 py-2 px-3",
       },
     },
     onUpdate: ({ editor }) => {
