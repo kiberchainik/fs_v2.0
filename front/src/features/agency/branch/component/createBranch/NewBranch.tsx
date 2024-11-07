@@ -49,7 +49,7 @@ export function NewBranch() {
 	}
 
 	return (
-		<Card className='md:w-[800px] w-full'>
+		<Card className='md:w-[800px] w-full mx-5 md:mx-0'>
 			<CardHeader className='flex flex-row items-center justify-between'>
 				<CardTitle>Create new filial</CardTitle>
 			</CardHeader>

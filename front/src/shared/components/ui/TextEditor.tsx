@@ -14,7 +14,7 @@ export interface ITextEditor {
   description: string
 }
 
-const TextEditor:FC<ITextEditor> = ({description, onChange}) => {
+const TextEditor: FC<ITextEditor> = ({ description, onChange }) => {
   const editor = useEditor({
     editorProps: {
       attributes: {
@@ -65,6 +65,7 @@ const RichTextEditorToolbar = ({ editor }: { editor: Editor }) => {
         size="sm"
         pressed={editor.isActive("heading", { level: 1 })}
         onPressedChange={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+        className='hidden md:flex'
       >
         <Heading1 className="h-4 w-4" />
       </Toggle>
@@ -72,6 +73,7 @@ const RichTextEditorToolbar = ({ editor }: { editor: Editor }) => {
         size="sm"
         pressed={editor.isActive("heading", { level: 2 })}
         onPressedChange={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+        className='hidden md:flex'
       >
         <Heading2 className="h-4 w-4" />
       </Toggle>
@@ -79,10 +81,11 @@ const RichTextEditorToolbar = ({ editor }: { editor: Editor }) => {
         size="sm"
         pressed={editor.isActive("heading", { level: 3 })}
         onPressedChange={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+        className='hidden md:flex'
       >
         <Heading3 className="h-4 w-4" />
       </Toggle>
-      <Separator orientation="vertical" className="w-[1px] h-8" />
+      <Separator orientation="vertical" className="w-[1px] h-8 hidden md:flex" />
       <Toggle
         size="sm"
         pressed={editor.isActive("bold")}
@@ -101,6 +104,7 @@ const RichTextEditorToolbar = ({ editor }: { editor: Editor }) => {
         size="sm"
         pressed={editor.isActive("strike")}
         onPressedChange={() => editor.chain().focus().toggleStrike().run()}
+        className='hidden md:flex'
       >
         <Strikethrough className="h-4 w-4" />
       </Toggle>
@@ -116,6 +120,7 @@ const RichTextEditorToolbar = ({ editor }: { editor: Editor }) => {
         size="sm"
         pressed={editor.isActive("orderedList")}
         onPressedChange={() => editor.chain().focus().toggleOrderedList().run()}
+        className='hidden md:flex'
       >
         <ListOrdered className="h-4 w-4" />
       </Toggle>
@@ -124,6 +129,7 @@ const RichTextEditorToolbar = ({ editor }: { editor: Editor }) => {
         size="sm"
         pressed={editor.isActive("paragraph")}
         onPressedChange={() => editor.commands.setParagraph()}
+        className='hidden md:flex'
       >
         <Pilcrow className="h-4 w-4" />
       </Toggle>
@@ -138,6 +144,7 @@ const RichTextEditorToolbar = ({ editor }: { editor: Editor }) => {
         size="sm"
         pressed={editor.isActive("center")}
         onPressedChange={() => editor.commands.setTextAlign('center')}
+        className='hidden md:flex'
       >
         <AlignCenter className="h-4 w-4" />
       </Toggle>
@@ -145,6 +152,7 @@ const RichTextEditorToolbar = ({ editor }: { editor: Editor }) => {
         size="sm"
         pressed={editor.isActive('right')}
         onPressedChange={() => editor.commands.setTextAlign('right')}
+        className='hidden md:flex'
       >
         <AlignRight className="h-4 w-4" />
       </Toggle>

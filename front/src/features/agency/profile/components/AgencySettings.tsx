@@ -25,7 +25,7 @@ import { SettingsSchema, TypeSettingsSchema } from '../schemes'
 import { ImageUpload } from './image-upload/ImageUpload'
 
 export function AgencySettings() {
-	const {user, isLoading, error} = useGetAgencyData()
+	const { user, isLoading, error } = useGetAgencyData()
 
 	const form = useForm<TypeSettingsSchema>({
 		mode: 'onChange',
@@ -40,15 +40,15 @@ export function AgencySettings() {
 			isTwoFactorEnabled: false
 		}
 	})
-	
+
 	const { updProfile, isPending } = useUpdProfileMutation()
-	
+
 	const onSubmit = (values: TypeSettingsSchema) => {
 		updProfile(values)
 	}
-	
+
 	return (
-		<Card className='w-[800px]'>
+		<Card className='md:w-[800px] w-full mx-5 md:mx-0'>
 			<CardHeader className='flex flex-row items-center justify-between'>
 				<CardTitle>Настройки профиля агентства</CardTitle>
 			</CardHeader>
