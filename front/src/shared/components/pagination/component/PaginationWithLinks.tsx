@@ -64,7 +64,7 @@ export function PaginationWithLinks({
 
     if (totalPageCount <= maxVisiblePages) {
       for (let i = 1; i <= totalPageCount; i++) {
-        items.push(
+        replace(
           <PaginationItem key={i}>
             <PaginationLink href={buildLink(i)} isActive={page === i}>
               {i}
@@ -73,7 +73,7 @@ export function PaginationWithLinks({
         );
       }
     } else {
-      items.push(
+      replace(
         <PaginationItem key={1}>
           <PaginationLink href={buildLink(1)} isActive={page === 1}>
             1
@@ -93,7 +93,7 @@ export function PaginationWithLinks({
       const end = Math.min(totalPageCount - 1, page + 1);
 
       for (let i = start; i <= end; i++) {
-        items.push(
+        replace(
           <PaginationItem key={i}>
             <PaginationLink href={buildLink(i)} isActive={page === i}>
               {i}
@@ -103,14 +103,14 @@ export function PaginationWithLinks({
       }
 
       if (page < totalPageCount - 2) {
-        items.push(
+        replace(
           <PaginationItem key='ellipsis-end'>
             <PaginationEllipsis />
           </PaginationItem>
         );
       }
 
-      items.push(
+      replace(
         <PaginationItem key={totalPageCount}>
           <PaginationLink
             href={buildLink(totalPageCount)}
