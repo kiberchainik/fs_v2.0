@@ -1,7 +1,18 @@
 import { Button, Card, Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/shared/components";
 import { CiBoxList, CiGrid41 } from "react-icons/ci"
+import { useAppDispatch, useAppSelector } from 'react-redux';
+import { setSortBy, sortJobs } from '@/store/vacancySlice'
 
 export default function VacancyFilter() {
+const dispatch = useAppDispatch();
+    const sortBy = useAppSelector((state: RootState) => state.jobs.sortBy)
+
+const handleSortChange = (value: string) => {
+        // Устанавливаем критерий сортировки и сортируем вакансии
+        dispatch(setSortBy(value as "title" | "createdAt" | "views"));
+        dispatch(sortJobs());
+    };
+
     return (
       <div className='flex gap-3 w-full'>
         <Card className='w-full rounded-full'>
