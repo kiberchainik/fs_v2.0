@@ -18,7 +18,7 @@ const handleSortChange = (value: string) => {
         <Card className='w-full rounded-full'>
           <div className='flex p-5 items-center justify-between'>
             <div className='flex justify-start gap-x-2'>
-              <Select>
+              <Select onValueChange={handleSortChange}>
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Sorted by ..." />
                 </SelectTrigger>
