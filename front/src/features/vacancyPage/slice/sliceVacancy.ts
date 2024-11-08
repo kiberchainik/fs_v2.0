@@ -51,6 +51,6 @@ setSortBy(state, action: PayloadAction<"title" | "createdAt" | "views">) {
     }
 })
 
-export const { setJobs, setLoading, setError } = vacancySlice.actions
+export const { setJobs, setLoading, setError, setSortBy, sortJobs } = vacancySlice.actions
 
 export default vacancySlice.reducer
