@@ -24,9 +24,9 @@ const handleSortChange = (value: string) => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectItem value="date">Data</SelectItem>
-                    <SelectItem value="popular">Popular</SelectItem>
-                    <SelectItem value="new">New</SelectItem>
+                    <SelectItem value="createdAt">Data</SelectItem>
+                    <SelectItem value="title">Title</SelectItem>
+                    <SelectItem value="views">Popular</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
