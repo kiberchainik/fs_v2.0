@@ -32,7 +32,7 @@ export function PaginationWithLinks({
 
   const buildLink = useCallback(
     (newPage: number) => {
-        
+
       const key = pageSearchParam || 'page';
       if (!searchParams) return `${pathname}?${key}=${newPage}`;
       const newSearchParams = new URLSearchParams(searchParams);
@@ -46,14 +46,14 @@ export function PaginationWithLinks({
     (newPageSize: number) => {
       const key = pageSizeSelectOptions?.pageSizeSearchParam || 'limit';
       const newSearchParams = new URLSearchParams(searchParams || undefined);
-      
-      if(Number(newSearchParams.get('page')) >= totalPageCount){
+
+      if (Number(newSearchParams.get('page')) >= totalPageCount) {
         newSearchParams.set('page', String(totalPageCount))
       } else {
         newSearchParams.set(key, String(newPageSize))
       }
 
-      replace(`${pathname}?${newSearchParams.toString()}`)
+      router.push(`${pathname}?${newSearchParams.toString()}`)
     },
     [searchParams, pathname]
   );
@@ -64,7 +64,7 @@ export function PaginationWithLinks({
 
     if (totalPageCount <= maxVisiblePages) {
       for (let i = 1; i <= totalPageCount; i++) {
-        replace(
+        items.push(
           <PaginationItem key={i}>
             <PaginationLink href={buildLink(i)} isActive={page === i}>
               {i}
@@ -73,7 +73,7 @@ export function PaginationWithLinks({
         );
       }
     } else {
-      replace(
+      items.push(
         <PaginationItem key={1}>
           <PaginationLink href={buildLink(1)} isActive={page === 1}>
             1
@@ -93,7 +93,7 @@ export function PaginationWithLinks({
       const end = Math.min(totalPageCount - 1, page + 1);
 
       for (let i = start; i <= end; i++) {
-        replace(
+        items.push(
           <PaginationItem key={i}>
             <PaginationLink href={buildLink(i)} isActive={page === i}>
               {i}
@@ -103,14 +103,14 @@ export function PaginationWithLinks({
       }
 
       if (page < totalPageCount - 2) {
-        replace(
+        items.push(
           <PaginationItem key='ellipsis-end'>
             <PaginationEllipsis />
           </PaginationItem>
         );
       }
 
-      replace(
+      items.push(
         <PaginationItem key={totalPageCount}>
           <PaginationLink
             href={buildLink(totalPageCount)}
