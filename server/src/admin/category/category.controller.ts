@@ -1,12 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, Query } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto, CreateSectorDto, UpdateCategoryDto, UpdateSectorDto } from './dto';
 import { Authorization } from '@/auth/decorators';
 import { UserRole } from 'prisma/__generated__';
+import { JobOffersDto } from '@/agency/joboffers/dto';
 
 @Controller('category')
 export class CategoryController {
-  constructor(private readonly categoryService: CategoryService) {}
+  constructor(private readonly categoryService: CategoryService) { }
 
   @Post()
   @Authorization(UserRole.ADMIN)
@@ -18,7 +19,7 @@ export class CategoryController {
   @Post('sector')
   @Authorization(UserRole.ADMIN)
   @UsePipes(new ValidationPipe())
-  createSector (@Body() sectorDto:CreateSectorDto) {
+  createSector(@Body() sectorDto: CreateSectorDto) {
     return this.categoryService.createSector(sectorDto)
   }
 
@@ -35,6 +36,14 @@ export class CategoryController {
   @Get(':id')
   async findOne(@Param('id') id: string) {
     return await this.categoryService.findOne(id);
+  }
+
+  @Get('by-slug/:slug')
+  async findOneBySlug(
+    @Param('slug') slug: string,
+    @Query() jobOffersDto: JobOffersDto
+  ) {
+    return await this.categoryService.findOneBySlug(slug, jobOffersDto);
   }
 
   @Authorization(UserRole.ADMIN)

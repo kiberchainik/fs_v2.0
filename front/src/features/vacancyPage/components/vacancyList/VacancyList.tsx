@@ -8,8 +8,10 @@ import { Card } from "@/shared/components";
 import { SkeletonCard } from '@/features/vacancyPage/components/vacancyCard/Skeleton'
 import { useAppSelector } from "@/shared/hooks";
 import { useEffect } from "react";
+import { useParams } from "next/navigation";
 
 export default function VacancyPage() {
+  const { jobSlug } = useParams<{ jobSlug: string }>()
   const { data: vacancyList, isLoading, error } = useAppSelector(state => state.reducer.vacancies)
   const { query, params } = useGetVacancyListPage()
 

@@ -12,43 +12,43 @@ export class JoboffersService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly categoryService: CategoryService
-  ) {}
+  ) { }
 
   private includesAll: Prisma.jobOffersInclude = {
-		categories: {
-			select: returnCategoryBaseObject
-		},
-		agency: {
-			select: returnAgencyBaseObject
-		},
+    categories: {
+      select: returnCategoryBaseObject
+    },
+    agency: {
+      select: returnAgencyBaseObject
+    },
     tags: {
       select: returnTagsObject
     },
-    contractType:{
-      select: {name: true}
+    contractType: {
+      select: { name: true }
     },
-    experienceMinimalJob:{
-      select: {name: true}
+    experienceMinimalJob: {
+      select: { name: true }
     },
     levelEducation: {
-      select: {name: true}
+      select: { name: true }
     },
     modeJob: {
-      select: {name: true}
+      select: { name: true }
     },
     workingTimeJob: {
-      select: {name: true}
+      select: { name: true }
     }
-	}
+  }
 
-  async create(userId:string, createJobofferDto: CreateJobofferDto) {
+  async create(userId: string, createJobofferDto: CreateJobofferDto) {
     const offersExist = await this.prisma.jobOffers.findFirst({
-      where: {title: createJobofferDto.title}
+      where: { title: createJobofferDto.title }
     })
 
-    
-    const {id} = await this.getAgencyDataId(userId)
-    
+
+    const { id } = await this.getAgencyDataId(userId)
+
     const {
       categoryId: categories,
       branchId,
@@ -62,8 +62,8 @@ export class JoboffersService {
       workingTimeId,
       ...jobOffers
     } = createJobofferDto
-    
-    if(offersExist !== null) createJobofferDto.title = slug + '_' + createJobofferDto.location
+
+    if (offersExist !== null) createJobofferDto.title = slug + '_' + createJobofferDto.location
     //const existsCategories = await this.categoryService.getById(categoryIds)
     //const categoriesIds = existsCategories.map((catId) =>({id: catId.id}))
 
@@ -76,20 +76,20 @@ export class JoboffersService {
     })) || []
 
     const optionals = {
-      contractType: contractTypeId ? ({ connect: { id: contractTypeId }}) : {},
-      experienceMinimalJob: experienceMinimalId ? ({ connect: { id: experienceMinimalId }}) : {},
-      levelEducation: levelEducationId ? ({ connect: { id: levelEducationId }}) : {},
-      modeJob: modeJobId ? ({ connect: { id: modeJobId }}) : {},
-      workingTimeJob: workingTimeId ? ({ connect: { id: workingTimeId }}) : {}
+      contractType: contractTypeId ? ({ connect: { id: contractTypeId } }) : {},
+      experienceMinimalJob: experienceMinimalId ? ({ connect: { id: experienceMinimalId } }) : {},
+      levelEducation: levelEducationId ? ({ connect: { id: levelEducationId } }) : {},
+      modeJob: modeJobId ? ({ connect: { id: modeJobId } }) : {},
+      workingTimeJob: workingTimeId ? ({ connect: { id: workingTimeId } }) : {}
     }
 
-    if(id) {
+    if (id) {
       const newJob = await this.prisma.jobOffers.create({
         data: {
           ...jobOffers,
           slug: slugify(createJobofferDto.title),
           categories: {
-            connect: {id: categories}
+            connect: { id: categories }
           },
           sectors: {
             connect: jobSectors
@@ -98,7 +98,7 @@ export class JoboffersService {
             create: jobTags
           },
           agency: {
-            connect: {id}
+            connect: { id }
           },
           ...optionals
         },
@@ -109,10 +109,10 @@ export class JoboffersService {
         }
       })
 
-      if(branchId) {
+      if (branchId) {
         await this.prisma.jobOffers.update({
-          where: {id: newJob.id},
-          data: {branchId}
+          where: { id: newJob.id },
+          data: { branchId }
         })
       }
 
@@ -120,12 +120,12 @@ export class JoboffersService {
     } else throw new NotFoundException('Заполните все данные о агентстве!')
   }
 
-  async update(idJob: string, userId:string, updateJobofferDto: UpdateJobofferDto) {
-    const {title, tags} = await this.prisma.jobOffers.findFirst({
+  async update(idJob: string, userId: string, updateJobofferDto: UpdateJobofferDto) {
+    const { title, tags } = await this.prisma.jobOffers.findFirst({
       where: {
         AND: [
-          {id: idJob},
-          {agency: {userId}}
+          { id: idJob },
+          { agency: { userId } }
         ]
       },
       select: {
@@ -151,8 +151,8 @@ export class JoboffersService {
       workingTimeId,
       ...jobOffers
     } = updateJobofferDto
-  
-    if(vTags) {
+
+    if (vTags) {
       await this.prisma.jobTags.deleteMany({
         where: {
           id: {
@@ -162,7 +162,7 @@ export class JoboffersService {
       })
     }
 
-    if(title !== updateJobofferDto.title) {
+    if (title !== updateJobofferDto.title) {
       updateJobofferDto.slug = `${slugify(updateJobofferDto.title)}_${idJob}`
       //if(isExist) throw new NotAcceptableException('According to the rules of the site, vacancies cannot have the same title')
     }
@@ -176,11 +176,11 @@ export class JoboffersService {
     })) || []
 
     const optionals = {
-      contractType: contractTypeId ? ({ connect: { id: contractTypeId }}) : {},
-      experienceMinimalJob: experienceMinimalId ? ({ connect: { id: experienceMinimalId }}) : {},
-      levelEducation: levelEducationId ? ({ connect: { id: levelEducationId }}) : {},
-      modeJob: modeJobId ? ({ connect: { id: modeJobId }}) : {},
-      workingTimeJob: workingTimeId ? ({ connect: { id: workingTimeId }}) : {}
+      contractType: contractTypeId ? ({ connect: { id: contractTypeId } }) : {},
+      experienceMinimalJob: experienceMinimalId ? ({ connect: { id: experienceMinimalId } }) : {},
+      levelEducation: levelEducationId ? ({ connect: { id: levelEducationId } }) : {},
+      modeJob: modeJobId ? ({ connect: { id: modeJobId } }) : {},
+      workingTimeJob: workingTimeId ? ({ connect: { id: workingTimeId } }) : {}
     }
 
     const vacancy = await this.prisma.agencyData.update({
@@ -197,7 +197,7 @@ export class JoboffersService {
               ...jobOffers,
               slug: updateJobofferDto.slug,
               categories: {
-                connect: {id: categories}
+                connect: { id: categories }
               },
               sectors: {
                 connect: jobSectors
@@ -207,7 +207,7 @@ export class JoboffersService {
               },
               ...optionals,
               branch: {
-                connect: {id: branchId}
+                connect: { id: branchId }
               },
               updatedAt: new Date()
             }
@@ -228,84 +228,84 @@ export class JoboffersService {
     return vacancy
   }
 
-  async findAll({isValidate, agencyId, branchId, categoryId, tagId, byPopularity, limit, page}: JobOffersDto) {
+  async findAll({ isValidate, agencyId, branchId, categoryId, tagId, byPopularity, limit, page }: JobOffersDto) {
     const where: Prisma.jobOffersWhereInput = { isValidate }
-		const orderBy: Prisma.jobOffersOrderByWithRelationInput[] = []
+    const orderBy: Prisma.jobOffersOrderByWithRelationInput[] = []
 
     if (byPopularity) {
-			orderBy.push({ views: 'desc' })
-		}
-		
-		orderBy.push({ createdAt: 'desc' })
-		agencyId ? (where['agency'] = { id: agencyId }) : {}
-		branchId ? (where['branch'] = { id: branchId }) : {}
-		categoryId ? (where['categories'] =  { id: categoryId } ) : {}
-		tagId ? (where['tags'] = { some: { id: tagId } }) : {}
+      orderBy.push({ views: 'desc' })
+    }
+
+    orderBy.push({ createdAt: 'desc' })
+    agencyId ? (where['agency'] = { id: agencyId }) : {}
+    branchId ? (where['branch'] = { id: branchId }) : {}
+    categoryId ? (where['categories'] = { id: categoryId }) : {}
+    tagId ? (where['tags'] = { some: { id: tagId } }) : {}
 
     const [vacancies, vacanciesCount] = await this.prisma.$transaction([
-			this.prisma.jobOffers.findMany({
-				where,
-				orderBy,
-				skip: page * limit - limit,
-				take: limit,
-				include: {
-					...this.includesAll,
+      this.prisma.jobOffers.findMany({
+        where,
+        orderBy,
+        skip: page * limit - limit,
+        take: limit,
+        include: {
+          ...this.includesAll,
           sectors: true,
           branch: true
-				}
-			}),
-			this.prisma.jobOffers.count({ where })
-		])
-		const pageCount = Math.ceil(vacanciesCount / limit)
-		return {
-			items: vacancies,
-			count: vacanciesCount,
-			pageCount
-		}
+        }
+      }),
+      this.prisma.jobOffers.count({ where })
+    ])
+    const pageCount = Math.ceil(vacanciesCount / limit)
+    return {
+      items: vacancies,
+      count: vacanciesCount,
+      pageCount
+    }
   }
 
-  async findAllOfUser(userId:string) {
-			return await this.prisma.jobOffers.findMany({
-				where:{
-          agency: {userId}
-        }
-			})
+  async findAllOfUser(userId: string) {
+    return await this.prisma.jobOffers.findMany({
+      where: {
+        agency: { userId }
+      }
+    })
   }
 
   async findOneBySlug(slug: string) {
-		const vacancie = await this.prisma.jobOffers.findMany({
-			where: {
+    const vacancy = await this.prisma.jobOffers.findFirst({
+      where: {
         AND: [{
           slug
         }, {
-          isValidate:true
+          isValidate: true
         }]
       },
-			include: {
+      include: {
         ...this.includesAll,
         sectors: true,
         branch: true
       }
-		})
+    })
 
-		if (!vacancie) throw new NotFoundException('ARTICLE_NOT_FOUND')
-		await this.prisma.jobOffers.update({
-			where: { slug },
-			data: {
-				views: {
-					increment: 1
-				}
-			}
-		})
-		return vacancie
-	}
+    //if (!vacancy) throw new NotFoundException('ARTICLE_NOT_FOUND')
+    await this.prisma.jobOffers.update({
+      where: { slug },
+      data: {
+        views: {
+          increment: 1
+        }
+      }
+    })
+    return vacancy
+  }
 
   async findOneById(id: string) {
-		const vacancie = await this.prisma.jobOffers.findUnique({
-			where: {id},
+    const vacancie = await this.prisma.jobOffers.findUnique({
+      where: { id },
       include: {
         categories: {
-          select: {id: true}
+          select: { id: true }
         },
         tags: {
           select: {
@@ -318,35 +318,45 @@ export class JoboffersService {
           }
         }
       }
-		})
-		return vacancie
-	}
+    })
+
+    if (!vacancie) throw new NotFoundException('ARTICLE_NOT_FOUND')
+    await this.prisma.jobOffers.update({
+      where: { id },
+      data: {
+        views: {
+          increment: 1
+        }
+      }
+    })
+    return vacancie
+  }
 
   async confirmVacancy(id: string) {
-		//const jobOffers = await this.findOne(id)
-		return await this.prisma.jobOffers.update({
-			where: { id },
-			data: {
-				isValidate: true
-			}
-		})
-	}
+    //const jobOffers = await this.findOne(id)
+    return await this.prisma.jobOffers.update({
+      where: { id },
+      data: {
+        isValidate: true
+      }
+    })
+  }
 
-  async remove(id: string, userId:string) {
+  async remove(id: string, userId: string) {
     await this.prisma.jobOffers.deleteMany({
       where: {
         AND: [
-          {id},
-          {agency: {userId}}
+          { id },
+          { agency: { userId } }
         ]
       }
     })
     return true
   }
 
-  private async getAgencyDataId (userId:string) {
+  private async getAgencyDataId(userId: string) {
     return await this.prisma.agencyData.findUnique({
-      where:{
+      where: {
         userId
       },
       select: {

@@ -1,19 +1,21 @@
 import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common'
-import { CreateCategoryDto, CreateSectorDto, UpdateCategoryDto, UpdateSectorDto } from './dto'
+import { CreateCategoryDto, CreateSectorDto, PaginationCategoryQueryDto, UpdateCategoryDto, UpdateSectorDto } from './dto'
 import { PrismaService } from '@/prisma/prisma.service'
 import { Prisma } from 'prisma/__generated__'
 import { DBError, slugify } from '@/utils'
+import { returnAgencyBaseObject } from '@/agency/dto'
+import { JobOffersDto } from '@/agency/joboffers/dto'
 
 @Injectable()
 export class CategoryService {
-  constructor(private readonly prisma:PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   async create(createCategoryDto: CreateCategoryDto) {
     const nestedCategories = createCategoryDto.parentId?.map((id) => ({
       id
     })) || []
 
-    const sectors = createCategoryDto.sectorIds?.map((id) => ({id})) || []
+    const sectors = createCategoryDto.sectorIds?.map((id) => ({ id })) || []
 
     const category = await this.prisma.category.findUnique({
       where: {
@@ -22,7 +24,7 @@ export class CategoryService {
     })
 
     if (category) throw new BadRequestException('Категория с таким названием уже существует. Название и seo должны быть уникальными!')
-    
+
     try {
       return await this.prisma.category.create({
         data: {
@@ -50,8 +52,8 @@ export class CategoryService {
     }
   }
 
-  async createSector (sectorDto:CreateSectorDto) {
-    if(!this.findOne(sectorDto.categoryId)) throw new BadRequestException(`Нельзя создать секстор т.к. категория с id ${sectorDto.categoryId} не существует`)
+  async createSector(sectorDto: CreateSectorDto) {
+    if (!this.findOne(sectorDto.categoryId)) throw new BadRequestException(`Нельзя создать секстор т.к. категория с id ${sectorDto.categoryId} не существует`)
 
     return await this.prisma.sectors.create({
       data: {
@@ -63,31 +65,31 @@ export class CategoryService {
   }
 
   async findOnebySlug(slug: string) {
-		const category = await this.prisma.category.findUnique({
-			where: { slug },
-			include: { jobOffers: true }
-		})
-		if (!category) throw new NotFoundException('CATEGORY_NOT_FOUND')
-		return category
-	}
+    const category = await this.prisma.category.findUnique({
+      where: { slug },
+      include: { jobOffers: true }
+    })
+    if (!category) throw new NotFoundException('CATEGORY_NOT_FOUND')
+    return category
+  }
 
-	async byName(name: string) {
-		const category = await this.prisma.category.findUnique({
-			where: { name }
-		})
-		return category
-	}
+  async byName(name: string) {
+    const category = await this.prisma.category.findUnique({
+      where: { name }
+    })
+    return category
+  }
 
-	async getById(id: string) {
-		return await this.prisma.category.findUnique({
-			where: {
-				id
-			},
+  async getById(id: string) {
+    return await this.prisma.category.findUnique({
+      where: {
+        id
+      },
       include: {
         children: this.includeChildrenCategories(10)
       }
-		})
-	}
+    })
+  }
 
   async findAll() {
     return await this.prisma.category.findMany({
@@ -113,8 +115,8 @@ export class CategoryService {
     })
   }
 
-  private includeChildrenCategories(maxumumLevel: number):boolean | Prisma.Category$childrenArgs {
-    if(maxumumLevel === 1) {
+  private includeChildrenCategories(maxumumLevel: number): boolean | Prisma.Category$childrenArgs {
+    if (maxumumLevel === 1) {
       return true
     }
 
@@ -127,15 +129,54 @@ export class CategoryService {
 
   async findOne(id: string) {
     const category = await this.prisma.category.findUnique({
-      where: {id},
+      where: { id },
       include: {
         children: this.includeChildrenCategories(10)
       }
     })
 
-    if(!category) throw new NotFoundException('Категории не существует')
-    
+    if (!category) throw new NotFoundException('Категории не существует')
+
     return category
+  }
+
+  async findOneBySlug(slug: string, { page, limit }: JobOffersDto) {
+    const [vacancies, vacanciesCount] = await this.prisma.$transaction([
+      this.prisma.category.findFirst({
+        where: { slug },
+        include: {
+          children: this.includeChildrenCategories(10),
+          jobOffers: {
+            include: {
+              agency: {
+                select: returnAgencyBaseObject
+              },
+              branch: true
+            }
+          }
+        },
+        skip: page * limit - limit,
+        take: limit
+      }),
+
+      this.prisma.jobOffers.count({
+        where: {
+          categories: {
+            slug
+          }
+        }
+      })
+    ])
+
+    const pageCount = Math.ceil(vacanciesCount / limit)
+
+    if (!vacancies) throw new NotFoundException('Категории не существует')
+
+    return {
+      vacancies,
+      count: vacanciesCount,
+      pageCount
+    }
   }
 
   async update(id: string, updateCategoryDto: UpdateCategoryDto) {
@@ -159,7 +200,7 @@ export class CategoryService {
         where: {
           id
         }
-      })      
+      })
     } catch (error) {
       if (!(error instanceof Prisma.PrismaClientKnownRequestError)) {
         throw error;
@@ -176,21 +217,21 @@ export class CategoryService {
     }
   }
 
-  async updateSector(id:string, sectorDto:UpdateSectorDto) {
-    if(!this.findOne(sectorDto.categoryId)) throw new BadRequestException(`Нельзя обновить секстор т.к. категория с id ${sectorDto.categoryId} не существует`)
+  async updateSector(id: string, sectorDto: UpdateSectorDto) {
+    if (!this.findOne(sectorDto.categoryId)) throw new BadRequestException(`Нельзя обновить секстор т.к. категория с id ${sectorDto.categoryId} не существует`)
 
     return await this.prisma.sectors.update({
-      where: {id},
+      where: { id },
       data: UpdateSectorDto
     })
   }
 
   async remove(id: string) {
     this.findOne(id)
-    return await this.prisma.category.delete({where: {id}})
+    return await this.prisma.category.delete({ where: { id } })
   }
 
   async removeSector(id: string) {
-    return await this.prisma.sectors.delete({where: {id}})
+    return await this.prisma.sectors.delete({ where: { id } })
   }
 }
