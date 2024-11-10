@@ -13,7 +13,7 @@ export default function VacancyFilter() {
 
   const handleSortChange = (value: string) => {
     dispatch(setSortBy(value as "title" | "createdAt" | "views"));
-    dispatch(sortJobs());
+    dispatch(sortJobs())
   };
 
   return (

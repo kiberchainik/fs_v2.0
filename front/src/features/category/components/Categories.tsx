@@ -6,7 +6,7 @@ import { useCategory } from "../hooks";
 import { Button, Card } from "@/shared/components";
 import Link from "next/link";
 
-export default function CategoryList() {
+export default function CategoryMenu() {
   const { categories, isFetching } = useCategory()
 
   const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({});
@@ -25,7 +25,7 @@ export default function CategoryList() {
           {categories?.map((category) => (
             <li key={category.id} className="pb-2">
               <div className="flex items-center justify-between">
-                <Link href={`category/${category.slug}`} className="text-lg font-semibold px-0">
+                <Link href={`offerte-di-lavoro/${category.slug}`} className="text-lg font-semibold px-0">
                   {category.name}
                 </Link>
                 {category.children && category.children.length > 0 && (
@@ -46,7 +46,7 @@ export default function CategoryList() {
                 <ul className="mt-2 space-y-1 ml-4">
                   {category.children?.map((subcategory) => (
                     <li key={subcategory.id}>
-                      <Link href={`/category/${subcategory.slug}`} className="text-gray-600 pl-4 text-sm w-full justify-start">
+                      <Link href={`/offerte-di-lavoro/${subcategory.slug}`} className="text-gray-600 pl-4 text-sm w-full justify-start">
                         {subcategory.name}
                       </Link>
                     </li>

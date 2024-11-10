@@ -1,5 +1,5 @@
 import userReducer from "@/features/userHeaderBtn/slice/userSlice";
-import vacancyReducer from "@/features/vacancyPage/slice/sliceVacancy";
+import vacancyReducer from "@/features/vacancy/slice/sliceVacancy";
 import { combineReducers } from "@reduxjs/toolkit"
 
 export const rootReducer = combineReducers({

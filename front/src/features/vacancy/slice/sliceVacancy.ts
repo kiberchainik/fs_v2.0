@@ -1,8 +1,8 @@
-import { IJobsResponce, IVacanciaesFullDate } from "@/features/agency/vacancy/types";
+import { IVacanciaesFullDate } from "@/features/agency/vacancy/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface VacancySlice {
-    data: IJobsResponce | null
+    data: IVacanciaesFullDate[] | null
     isLoading: boolean
     error: string | null
     sortBy: "title" | "createdAt" | "views";
@@ -19,7 +19,7 @@ const vacancySlice = createSlice({
     name: "jobs",
     initialState,
     reducers: {
-        setJobs(state, action: PayloadAction<IJobsResponce | null>) {
+        setJobs(state, action: PayloadAction<IVacanciaesFullDate[] | null>) {
             state.data = action.payload
             state.isLoading = false
             state.error = null
@@ -35,9 +35,8 @@ const vacancySlice = createSlice({
         },
         sortJobs(state) {
             if (state.data) {
-                const { items } = state.data;
                 const sortBy = state.sortBy;
-                state.data.items = items.slice().sort((a: IVacanciaesFullDate, b: IVacanciaesFullDate) => {
+                state.data = state.data.slice().sort((a: IVacanciaesFullDate, b: IVacanciaesFullDate) => {
                     if (sortBy === "title") {
                         return a.title.localeCompare(b.title);
                     } else if (sortBy === "createdAt") {

@@ -2,7 +2,7 @@ import { UserRole } from "@/features/auth/types"
 import { IconType } from "react-icons"
 import { CiDesktop, CiHeart, CiPalette, CiUser } from "react-icons/ci"
 import { PiGitBranchThin } from "react-icons/pi"
-import { AGENCY_DROPDOWN_URL, CANDIDAT_DROPDOWN_URL } from "./config.url"
+import { AGENCY_DROPDOWN_URL, CANDIDAT_DROPDOWN_URL, MAIN_URL } from "./config.url"
 
 export interface MenuItems {
     icon?: IconType
@@ -10,28 +10,28 @@ export interface MenuItems {
     title: string
 }
 
-export const headerMainMenu = ():MenuItems[] => {
+export const headerMainMenu = (): MenuItems[] => {
     return [
         {
-            href: '/vacancy',
-            title: 'Job offers'
+            href: MAIN_URL.categories(),
+            title: 'Offerte di lavoro'
         },
         {
-            href: '/candidats',
-            title: 'Candidats'
+            href: MAIN_URL.candidats(),
+            title: 'Candidati'
         },
         {
-            href: '/about-us',
-            title: 'About us'
+            href: MAIN_URL.about(),
+            title: 'Chi siamo'
         },
         {
-            href: '/contacts',
-            title: 'Contacts'
+            href: MAIN_URL.contacts(),
+            title: 'Contattaci'
         }
     ]
 }
 
-export const HeaderUserMenu = (role:UserRole):MenuItems[] => {
+export const HeaderUserMenu = (role: UserRole): MenuItems[] => {
     return role === UserRole.Agency ? [
         {
             icon: CiDesktop,
@@ -49,7 +49,7 @@ export const HeaderUserMenu = (role:UserRole):MenuItems[] => {
             title: 'New branch'
         },
         {
-            icon: CiPalette ,
+            icon: CiPalette,
             href: AGENCY_DROPDOWN_URL.vacancy('create'),
             title: 'Create vacancy'
         },
