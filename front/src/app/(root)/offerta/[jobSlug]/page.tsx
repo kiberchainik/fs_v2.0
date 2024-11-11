@@ -16,7 +16,7 @@ const getJobData = cache(
   }
 )
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
   const jobData = await getJobData(params.jobSlug)
   //const previosImages = (await parent).openGraph?.images || []
 

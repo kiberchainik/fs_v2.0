@@ -9,16 +9,16 @@ import Link from "next/link";
 import { MAIN_URL } from "@/shared/config";
 import { VacancyCardAuthorInfo } from "../vacancyCard/VCAuthorInfo";
 
-export default function VacancyPage({ id, title, description, views, createdAt, reallyUpTo, categories, agency, branch }: IVacanciaesFullDate) {
+export default function VacancyPage({ id, title, description, views, createdAt, reallyUpTo, categories, agency, branchId, branch }: IVacanciaesFullDate) {
   const authUser = useAppSelector(state => state.reducer.user.data?.email)
 
   const author = {
-    slug: branch.id ? branch.id : agency.slug,
-    name: branch.name ? branch.name : agency.agency_name,
-    location: branch.location ? branch.location : agency.address,
-    logo: branch.logo ? branch.logo : agency.logo,
-    email: branch.email ? branch.email : agency.user.email,
-    phone: branch.phone ? branch.phone : agency.phone,
+    slug: branchId ? branch.id : agency.slug,
+    name: branchId ? branch.name : agency.agency_name,
+    location: branchId ? branch.location : agency.address,
+    logo: branchId ? branch.logo : agency.logo,
+    email: branchId ? branch.email : agency.user.email,
+    phone: branchId ? branch.phone : agency.phone,
   }
 
   const saveInFavorite = () => {
