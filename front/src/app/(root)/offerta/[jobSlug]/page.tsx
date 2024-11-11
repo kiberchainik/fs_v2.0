@@ -16,20 +16,7 @@ const getJobData = cache(
   }
 )
 
-export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
-  const jobData = await getJobData(params.jobSlug)
-  //const previosImages = (await parent).openGraph?.images || []
 
-  return {
-    title: jobData.title,
-    description: jobData.description,
-    openGraph: {
-      title: jobData.title,
-      description: jobData.description,
-      //images: ['/some-specific-page-image.jpg', ...previosImages]
-    }
-  }
-}
 
 export default async function VacancyPage({ params }: Props) {
   const jobData = await getJobData(params.jobSlug)
