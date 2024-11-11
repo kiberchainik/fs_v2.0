@@ -7,8 +7,7 @@ import { cache } from "react";
 export const revalidate = 60;
 
 type Props = {
-  params: Promise<{ jobSlug: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+  params: { jobSlug: string }
 }
 
 const getJobData = cache(
@@ -17,8 +16,8 @@ const getJobData = cache(
   }
 )
 
-export async function generateMetadata({ params, searchParams }: Props, parent: ResolvingMetadata): Promise<Metadata> {
-  const jobData = await getJobData((await params).jobSlug)
+export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
+  const jobData = await getJobData(params.jobSlug)
   //const previosImages = (await parent).openGraph?.images || []
 
   return {
@@ -33,7 +32,7 @@ export async function generateMetadata({ params, searchParams }: Props, parent: 
 }
 
 export default async function VacancyPage({ params }: Props) {
-  const jobData = await getJobData((await params).jobSlug)
+  const jobData = await getJobData(params.jobSlug)
 
   return (
     <div className='mt-6'>

@@ -4,6 +4,7 @@ import VacancyList from "@/features/vacancy/components/vacancyList/VacancyList";
 import type { Metadata } from "next";
 import { CATEGORY_DESCRIPTION, CATEGORY_NAME } from "@/shared/constants/seo.constants"
 import { vacancyPageServices } from "@/features/vacancy/services"
+import { MAIN_URL } from "@/shared/config";
 
 export const revalidate = 60;
 
@@ -39,7 +40,7 @@ export default async function CategoryPage({ searchParams }: JobListProps) {
                 <VacancyList
                     name={CATEGORY_NAME}
                     description={CATEGORY_DESCRIPTION}
-                    slug={'/categoria'}
+                    slug={MAIN_URL.categories()}
                     jobs={vacancies}
                     count={count}
                     pageCount={pageCount}
