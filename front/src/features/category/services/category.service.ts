@@ -1,7 +1,7 @@
 import { axiosPublic } from "@/shared/api";
 import { API_URL } from "@/shared/config";
 import { TCategoryPageResponse, TCategorySelector } from "../types";
-import { ISearchTerm } from "@/features/vacancyPage/types/searchTerm.type";
+import { ISearchTerm } from "@/features/vacancy/types/searchTerm.type";
 
 class CategoryService {
     public async getCategoryList() {

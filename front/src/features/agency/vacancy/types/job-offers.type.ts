@@ -22,8 +22,8 @@ export interface IVacanciaes extends IVacancyOptions {
     tags?: string[]
     createdAt?: string
     reallyUpTo?: string | Date
-    views?:number
-    isValidate?:boolean
+    views?: number
+    isValidate?: boolean
 }
 
 export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'description'> & {
@@ -43,7 +43,7 @@ export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'd
     categories: {
         name: string
         slug: string
-    }[]
+    }
     tags: {
         name: string
         slug: string
@@ -53,13 +53,13 @@ export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'd
         name: string
         location: string
         logo: string
-        email:string
+        email: string
         phone: string
     }
 } & IVacancyOptions
 
-export type IVacanciaesEdit = 
-    Omit<IVacanciaes, 'slug'> & 
+export type IVacanciaesEdit =
+    Omit<IVacanciaes, 'slug'> &
     {
         contratId?: string
         experienceId?: string
@@ -69,7 +69,7 @@ export type IVacanciaesEdit =
         agencyId?: string
         branchId?: string
         categoryId: string
-        tags?: {name: string}[]
+        tags?: { name: string }[]
         sectors?: string[]
     }
 
@@ -81,9 +81,9 @@ export interface IJobsResponce {
 
 export type Filter = {
     agencyId?: number,
-	byPopularity?: boolean
-	categoryId?: number
-	tagId?: number
+    byPopularity?: boolean
+    categoryId?: number
+    tagId?: number
 }
 
 export type TVacanciaesFilter = Filter & TPagination

@@ -43,7 +43,7 @@ export const MAIN_URL = {
     root: (url = '') => `${url ? url : ''}`,
 
     home: () => MAIN_URL.root('/'),
-    categories: () => MAIN_URL.root('/offerte-di-lavoro'),
+    categories: (slug: string = '') => MAIN_URL.root(`/offerte-di-lavoro/${slug}`),
     candidats: () => MAIN_URL.root(`/candidati`),
     fullVacancy: (slug = '') => MAIN_URL.root(`/offerta/${slug}`),
     agencyPageInfo: (slug: string) => MAIN_URL.root(`/about-agency/${slug}`),

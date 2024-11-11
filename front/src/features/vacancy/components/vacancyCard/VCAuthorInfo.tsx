@@ -3,6 +3,7 @@ import { MAIN_URL } from "@/shared/config"
 import Link from "next/link"
 
 import styles from './vacancyCard.module.scss'
+import { CiMail, CiMap, CiPhone, CiVoicemail } from "react-icons/ci"
 
 interface IAuthorData {
     slug: string
@@ -30,10 +31,10 @@ export function VacancyCardAuthorInfo({ name, slug, email, location, phone, logo
                     </Button>
                 </div>
             </div>
-            <div>
-                <div>{location}</div>
-                <div>{email}</div>
-                <div>{phone}</div>
+            <div className={styles.footerAutorInfo_bottom}>
+                <div className={styles.authorContactData}><span><CiMap /></span> {location}</div>
+                <div className={styles.authorContactData}><span><CiMail /></span> {email}</div>
+                <div className={styles.authorContactData}><span><CiPhone /></span> {phone}</div>
             </div>
         </div>
     )

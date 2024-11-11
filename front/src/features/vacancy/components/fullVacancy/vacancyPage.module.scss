@@ -1,0 +1,51 @@
+.wrapper {
+    @apply flex flex-col md:flex-row;
+
+    > .wrapperVacancy {
+        @apply grid md:w-3/4 w-full;
+    
+        > .title {
+            @apply w-full font-extrabold text-4xl
+        }
+    
+        > .description {
+            @apply p-4 text-gray-500;
+    
+            p {
+                @apply py-2
+            }
+        }
+    
+        > .jobInfo {
+            @apply px-5 w-full flex gap-x-5 items-center justify-between;
+    
+            > .viewsData {
+                @apply flex md:flex-row flex-col gap-3 md:items-center items-start;
+    
+                > .views, .createdAt {
+                    @apply flex text-gray-400 font-light items-center gap-1;
+        
+                    > span {
+                        @apply text-xl
+                    }
+                }
+        
+                > .reallyUpTo {
+                    @apply border border-zinc-400 text-lg font-bold bg-slate-300 rounded-full p-2
+                }
+            }
+        }
+
+        > .breadcrumbs {
+            @apply flex mt-2 items-center;
+
+            span {
+                @apply text-zinc-300;
+            }
+        }
+    }
+
+    > .authorSector {
+        @apply lg:border-l lg:border-solid lg:border-zinc-200 pl-4 h-full;
+    }
+}

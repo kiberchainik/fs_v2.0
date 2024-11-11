@@ -1,30 +1,50 @@
 import { vacancyService } from "@/features/agency/vacancy/services";
 import JobFullPage from "./JobFullPage";
-import type { Metadata } from "next";
+import type { Metadata, ResolvingMetadata } from "next";
+import CategoryMenu from "@/features/category/components/Categories"
+import { cache } from "react";
 
 export const revalidate = 60;
 
-async function getVacancyDataPage(jobSlug: string) {
-  return await vacancyService.getVacancyDataBySlug(jobSlug);
+type Props = {
+  params: Promise<{ jobSlug: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
-export default async function VacancyPage({ params }: { params: { jobSlug: string } }) {
-  // Запрос выполняется один раз и используется для обоих случаев
-  const jobData = await getVacancyDataPage(params.jobSlug)
+const getJobData = cache(
+  async (jobSlug: string) => {
+    return await vacancyService.getVacancyDataBySlug(jobSlug)
+  }
+)
 
-  const metadata: Metadata = {
+export async function generateMetadata({ params, searchParams }: Props, parent: ResolvingMetadata): Promise<Metadata> {
+  const jobData = await getJobData((await params).jobSlug)
+  //const previosImages = (await parent).openGraph?.images || []
+
+  return {
     title: jobData.title,
     description: jobData.description,
     openGraph: {
       title: jobData.title,
       description: jobData.description,
-    },
+      //images: ['/some-specific-page-image.jpg', ...previosImages]
+    }
   }
+}
+
+export default async function VacancyPage({ params }: Props) {
+  const jobData = await getJobData((await params).jobSlug)
+
   return (
-    <>
-      <div className='flex gap-3'>
-        <JobFullPage {...jobData} /> {/* Передаем данные вакансии в компонент */}
+    <div className='mt-6'>
+      <div className='flex gap-5 justify-between m-10'>
+        <div className='w-1/3 hidden md:block'>
+          <CategoryMenu />
+        </div>
+        <div className='flex flex-col gap-y-5 w-full'>
+          <JobFullPage {...jobData} />
+        </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -4,6 +4,7 @@ import VacancyList from "@/features/vacancy/components/vacancyList/VacancyList";
 import type { Metadata } from "next";
 import { CATEGORY_DESCRIPTION, CATEGORY_NAME } from "@/shared/constants/seo.constants"
 import { vacancyPageServices } from "@/features/vacancy/services"
+import { cache } from "react";
 
 export const revalidate = 60;
 
@@ -14,9 +15,11 @@ interface JobListProps {
     }
 }
 
-async function getVacancies({ searchParams }: JobListProps) {
-    return await vacancyPageServices.getVacancyList(searchParams);
-}
+const getCategoryData = cache(
+    async ({ searchParams }: JobListProps) => {
+        return await vacancyPageServices.getVacancyList(searchParams)
+    }
+)
 
 export const metadata: Metadata = {
     title: CATEGORY_NAME,
@@ -29,10 +32,10 @@ export const metadata: Metadata = {
 
 
 export default async function CategoryPage({ searchParams }: JobListProps) {
-    const { items: vacancies, count, pageCount } = await getVacancies({ searchParams })
+    const { items: vacancies, count, pageCount } = await getCategoryData({ searchParams })
     return (
         <div className='flex gap-5 justify-between m-10'>
-            <div className='w-1/3 hidden md:flex'>
+            <div className='w-1/3 hidden md:block'>
                 <CategoryMenu />
             </div>
             <div className='flex flex-col gap-y-5 w-full'>

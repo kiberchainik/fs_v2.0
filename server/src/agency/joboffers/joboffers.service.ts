@@ -6,6 +6,7 @@ import { returnCategoryBaseObject } from 'src/admin/category/dto'
 import { returnAgencyBaseObject } from 'src/agency/dto'
 import { PrismaService } from '@/prisma/prisma.service';
 import { slugify } from '@/utils';
+import { title } from 'process';
 
 @Injectable()
 export class JoboffersService {
@@ -273,22 +274,6 @@ export class JoboffersService {
   }
 
   async findOneBySlug(slug: string) {
-    const vacancy = await this.prisma.jobOffers.findFirst({
-      where: {
-        AND: [{
-          slug
-        }, {
-          isValidate: true
-        }]
-      },
-      include: {
-        ...this.includesAll,
-        sectors: true,
-        branch: true
-      }
-    })
-
-    //if (!vacancy) throw new NotFoundException('ARTICLE_NOT_FOUND')
     await this.prisma.jobOffers.update({
       where: { slug },
       data: {
@@ -297,7 +282,23 @@ export class JoboffersService {
         }
       }
     })
-    return vacancy
+
+    const jobData = await this.prisma.jobOffers.findFirst({
+      where: {
+        AND: [{
+          slug
+        }, {
+          isValidate: true
+        }]
+      },
+      include: {
+        branch: true,
+        sectors: true,
+        ...this.includesAll
+      },
+    })
+
+    return jobData
   }
 
   async findOneById(id: string) {

@@ -19,7 +19,7 @@ export default function VacancyList({ jobs, count, pageCount }: TCategoryBySlug)
   const searchParams = useSearchParams()
   const params: ISearchTerm = {
     page: parseInt((searchParams.get('page') as string) || '1'),
-    limit: parseInt((searchParams.get('limit') as string) || '5')
+    limit: parseInt((searchParams.get('limit') as string) || '10')
   }
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function VacancyList({ jobs, count, pageCount }: TCategoryBySlug)
       {isLoading ? (<SkeletonCard />) : vacancyList && (
         <div className={styles.listVacancy}>
           <div className={styles.listBlocks}>
-            {vacancyList.map(job => <VacancyCard {...job} />)}
+            {vacancyList.map(job => <VacancyCard {...job} key={job.id} />)}
           </div>
           <Card className={styles.vacancyPagination}>
             <PaginationWithLinks

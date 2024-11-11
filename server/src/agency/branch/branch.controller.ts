@@ -13,52 +13,62 @@ export class BranchController {
   constructor(
     private readonly branchService: BranchService,
     private readonly file: FileService
-  ) {}
+  ) { }
 
   @Post()
   @Authorization(UserRole.AGENCY)
   @UsePipes(new ValidationPipe())
   create(
-    @CurrentUser('id') userId:string,
+    @CurrentUser('id') userId: string,
     @Body() createBranchDto: CreateBranchDto
   ) {
     return this.branchService.create(userId, createBranchDto);
   }
 
+  @Post('create-package-branch')
+  @Authorization(UserRole.AGENCY)
+  @UsePipes(new ValidationPipe())
+  async createPackageBranch(
+    @CurrentUser('id') userId: string,
+    @Body() createBranchDto: CreateBranchDto[]
+  ) {
+    return this.branchService.createPackage(userId, createBranchDto)
+  }
+
   @Authorization(UserRole.AGENCY)
   @UseInterceptors(FilesInterceptor('files'))
   @Post('logo')
-  async uploadFile (
-    @UploadedFiles (
+  async uploadFile(
+    @UploadedFiles(
       new ParseFilePipe({
-        validators: [new MaxFileSizeValidator({maxSize: 2 * 1024 * 1024, message: "Файл должен быть не более 2mb"})]
+        validators: [new MaxFileSizeValidator({ maxSize: 2 * 1024 * 1024, message: "Файл должен быть не более 2mb" })]
       })
     ) files: Express.Multer.File[],
-    @CurrentUser('id') id:string,
-    @Query('folder') folder:string
+    @CurrentUser('id') id: string,
+    @Query('folder') folder: string
   ) {
     const newFiles = await this.file.filterFiles(files)
-    const fileData = await this.file.saveFiles(newFiles, folder+id)
+    const fileData = await this.file.saveFiles(newFiles, folder + id)
     return fileData[0]
     //return this.branchService.updLogo(id, fileData)
   }
 
   @Get()
   @Authorization(UserRole.AGENCY)
-  async findAll(@CurrentUser('id') userId:string) {
+  async findAll(@CurrentUser('id') userId: string) {
     return await this.branchService.findAll(userId)
   }
 
   @Get(':id')
   @Authorization(UserRole.AGENCY)
-  async getBranchById(@Param('id') id: string, @CurrentUser('id') userId:string) {
+  async getBranchById(@Param('id') id: string, @CurrentUser('id') userId: string) {
     return await this.branchService.getById(id, userId);
   }
 
   @Patch(':id')
   @Authorization(UserRole.AGENCY)
   update(
-    @CurrentUser('id') userId:string,
+    @CurrentUser('id') userId: string,
     @Param('id') id: string,
     @Body() updateBranchDto: UpdateBranchDto
   ) {
@@ -67,7 +77,7 @@ export class BranchController {
 
   @Delete(':id')
   @Authorization(UserRole.AGENCY)
-  remove(@CurrentUser('id') userId:string, @Param('id') id: string) {
+  remove(@CurrentUser('id') userId: string, @Param('id') id: string) {
     return this.branchService.remove(id, userId);
   }
 }
