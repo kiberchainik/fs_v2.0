@@ -13,7 +13,7 @@ import { ISearchTerm } from "../../types/searchTerm.type";
 import { setError, setJobs, setLoading } from "../../slice/sliceVacancy";
 import Filter from "../filter/Filter";
 
-export default function VacancyList({ jobs, count, pageCount }: TCategoryBySlug) {
+export default function VacancyList({ jobs, count, pageCount, name, description }: TCategoryBySlug) {
   const { data: vacancyList, isLoading, error } = useAppSelector(state => state.reducer.vacancies)
   const dispatch = useAppDispatch()
   const searchParams = useSearchParams()
@@ -40,6 +40,10 @@ export default function VacancyList({ jobs, count, pageCount }: TCategoryBySlug)
       <Filter />
       {isLoading ? (<SkeletonCard />) : vacancyList && (
         <div className={styles.listVacancy}>
+          <div className={styles.category_info}>
+            <div className={styles.category_info_title}>{name}</div>
+            <div className={styles.category_info_description}>{description}</div>
+          </div>
           <div className={styles.listBlocks}>
             {vacancyList.map(job => <VacancyCard {...job} key={job.id} />)}
           </div>

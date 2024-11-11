@@ -4,7 +4,6 @@ import VacancyList from "@/features/vacancy/components/vacancyList/VacancyList";
 import type { Metadata } from "next";
 import { CATEGORY_DESCRIPTION, CATEGORY_NAME } from "@/shared/constants/seo.constants"
 import { vacancyPageServices } from "@/features/vacancy/services"
-import { cache } from "react";
 
 export const revalidate = 60;
 
@@ -15,11 +14,9 @@ interface JobListProps {
     }
 }
 
-const getCategoryData = cache(
-    async ({ searchParams }: JobListProps) => {
-        return await vacancyPageServices.getVacancyList(searchParams)
-    }
-)
+async function getCategoryData({ searchParams }: JobListProps) {
+    return await vacancyPageServices.getVacancyList(searchParams)
+}
 
 export const metadata: Metadata = {
     title: CATEGORY_NAME,

@@ -7,18 +7,21 @@ import { cache } from "react";
 export const revalidate = 60;
 
 type Props = {
-    params: Promise<{ categorySlug: string }>
-    searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+    params: { categorySlug: string }
+    searchParams: {
+        limit: number
+        page: number
+    }
 }
 
 const getCategoryData = cache(
-    async (categorySlug: string) => {
-        return await categoryService.getCategoryDataBySlug(categorySlug)
+    async ({ params, searchParams }: Props) => {
+        return await categoryService.getCategoryDataBySlug(params.categorySlug, searchParams)
     }
 )
 
-export async function generateMetadata({ params }: { params: { categorySlug: string } }): Promise<Metadata> {
-    const { vacancies } = await getCategoryData(params.categorySlug);
+export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
+    const { vacancies } = await getCategoryData({ params, searchParams });
 
     return {
         title: vacancies?.name,
@@ -30,8 +33,8 @@ export async function generateMetadata({ params }: { params: { categorySlug: str
     }
 }
 
-export default async function CategoryPage({ params }: { params: { categorySlug: string } }) {
-    const { vacancies, count, pageCount } = await getCategoryData(params.categorySlug);
+export default async function CategoryPage({ params, searchParams }: Props) {
+    const { vacancies, count, pageCount } = await getCategoryData({ params, searchParams });
 
     return (
         <div className='my-6'>

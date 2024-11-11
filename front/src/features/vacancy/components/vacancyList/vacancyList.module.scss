@@ -1,11 +1,23 @@
 .listVacancy {
     @apply w-full flex flex-col max-md:flex-col gap-5 mt-5;
 
-        > .vacancyPagination {
-            @apply p-4 rounded-full;
+    > .category_info {
+        @apply px-5 text-muted-foreground mb-3;
+
+        > .category_info_title {
+            @apply text-xl font-extrabold;
         }
 
-        > .listBlocks {
-            @apply grid gap-7 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-center;
+        > .category_info_description {
+            @apply italic text-base md:mt-2 mt-0;
         }
+    }
+
+    > .vacancyPagination {
+        @apply p-4 rounded-full;
+    }
+
+    > .listBlocks {
+        @apply grid gap-7 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-center;
+    }
 }
