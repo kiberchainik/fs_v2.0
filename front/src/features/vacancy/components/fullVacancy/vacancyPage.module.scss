@@ -34,6 +34,14 @@
                     @apply border border-zinc-400 text-lg font-bold bg-slate-300 rounded-full p-2
                 }
             }
+
+            > .favoriteCandidat {
+                @apply flex gap-x-2;
+
+                button {
+                    @apply text-base;
+                }
+            }
         }
 
         > .breadcrumbs {
@@ -47,5 +55,9 @@
 
     > .authorSector {
         @apply lg:border-l lg:border-solid lg:border-zinc-200 pl-4 h-full;
+
+        > .authorSector_btn {
+            @apply mt-5;
+        }
     }
 }
