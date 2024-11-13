@@ -28,18 +28,24 @@ import { Input } from '../ui'
 import styles from './DataTable.module.scss'
 import { DataTablePagination } from './DataTablePagination'
 
-interface Identifiable {
+interface IVacancyColumn {
   id: string;
+  title: string;
+  slug: string;
+  createdAt: string;
+  reallyUpTo: string;
+  views: number;
+  isValidate: string;
 }
 
-interface DataTableProps<TData extends Identifiable, TValue> {
+interface DataTableProps<TData extends IVacancyColumn, TValue> {
 	columns: ColumnDef<TData, TValue>[]
 	data: TData[]
 	filterKey?: string
 	onSelectionChange?: (selectedIds: string[]) => void
 }
 
-export function DataTable<TData extends Identifiable, TValue>({
+export function DataTable<TData extends IVacancyColumn, TValue>({
 	columns,
 	data,
 	filterKey,
