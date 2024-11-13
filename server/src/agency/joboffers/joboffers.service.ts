@@ -355,6 +355,22 @@ export class JoboffersService {
     return true
   }
 
+  async deleteMany(userId: string, ids: string[]) {
+    const deleteMany = await this.prisma.jobOffers.deleteMany({
+      where: {
+        AND: [
+          {
+            id: {
+              in: ids
+            }
+          },
+          { agency: { userId } }
+        ]
+      }
+    })
+    return deleteMany
+  }
+
   private async getAgencyDataId(userId: string) {
     return await this.prisma.agencyData.findUnique({
       where: {

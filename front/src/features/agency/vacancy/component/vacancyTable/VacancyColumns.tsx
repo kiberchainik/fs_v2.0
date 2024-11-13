@@ -12,16 +12,14 @@ import {
 } from '@/shared/components'
 
 import { MAIN_URL, AGENCY_URL } from '@/shared/config'
-import { IoMdTrash } from 'react-icons/io'
-import { ReactElement } from 'react'
 
 export interface IVacancyColumn {
-	id:string | undefined
+	id: string | undefined
 	title: string | undefined
 	slug: string | undefined
-    createdAt: string | undefined
+	createdAt: string | undefined
 	reallyUpTo: string | undefined
-    views: number | undefined
+	views: number | undefined
 	isValidate: string
 }
 
@@ -29,21 +27,22 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 	{
 		id: "select",
 		header: ({ table }) => (
-		<Checkbox
-			checked={
-			table.getIsAllPageRowsSelected() ||
-			(table.getIsSomePageRowsSelected() && "indeterminate")
-			}
-			onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-			aria-label="Select all"
-		/>
+			<Checkbox
+				checked={
+					table.getIsAllPageRowsSelected() ||
+					(table.getIsSomePageRowsSelected() && "indeterminate")
+				}
+				onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+				aria-label="Select all"
+			/>
 		),
 		cell: ({ row }) => (
-		<Checkbox
-			checked={row.getIsSelected()}
-			onCheckedChange={(value) => row.toggleSelected(!!value)}
-			aria-label="Select row"
-		/>
+			<Checkbox
+				checked={row.getIsSelected()}
+				onCheckedChange={(value) => row.toggleSelected(!!value)}
+				aria-label="Select row"
+				value={row.original.id}
+			/>
 		),
 	},
 	{

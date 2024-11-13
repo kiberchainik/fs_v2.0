@@ -16,30 +16,31 @@ import { MAIN_URL, AGENCY_URL } from '@/shared/config'
 export interface IBranchColumn {
 	name: string,
 	id: string,
-    location: string
+	location: string
 	email: string
-    phone: string
+	phone: string
 }
 
 export const branchColumns: ColumnDef<IBranchColumn>[] = [
 	{
 		id: "select",
 		header: ({ table }) => (
-		<Checkbox
-			checked={
-			table.getIsAllPageRowsSelected() ||
-			(table.getIsSomePageRowsSelected() && "indeterminate")
-			}
-			onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-			aria-label="Select all"
-		/>
+			<Checkbox
+				checked={
+					table.getIsAllPageRowsSelected() ||
+					(table.getIsSomePageRowsSelected() && "indeterminate")
+				}
+				onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+				aria-label="Select all"
+			/>
 		),
 		cell: ({ row }) => (
-		<Checkbox
-			checked={row.getIsSelected()}
-			onCheckedChange={(value) => row.toggleSelected(!!value)}
-			aria-label="Select row"
-		/>
+			<Checkbox
+				checked={row.getIsSelected()}
+				onCheckedChange={(value) => row.toggleSelected(!!value)}
+				aria-label="Select row"
+				value={row.original.id}
+			/>
 		),
 	},
 	{

@@ -39,6 +39,12 @@ class VacancyService {
         return vacancy
     }
 
+    async deleteManyVacancy(data: string[]) {
+        const { data: vacancy } = await axiosPrivate.post(API_URL.deleteManyVacancy(), data)
+
+        return vacancy
+    }
+
     async getGeneratedText(keyword: string) {
         const { data } = await axiosPrivate.post('/ai-generate', {
             headers: {

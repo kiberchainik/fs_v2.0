@@ -10,39 +10,51 @@ import Link from "next/link"
 import { AGENCY_URL } from "@/shared/config"
 import { Plus } from "lucide-react"
 import { formatDate } from "@/shared/utils"
+import { useEffect, useState } from "react"
+import { CiTrash } from "react-icons/ci"
+import { useDeleteManyVacancy } from "../../hooks/useDeleteVacancy"
 
-export function Vacancies () {
-    const {vacancyList, isFetching} = useGetVacancy()
+export function Vacancies() {
+	const { vacancyList, isFetching } = useGetVacancy()
+	const { deleteManyVacancy } = useDeleteManyVacancy()
+	const [selectedIds, setSelectedIds] = useState<string[]>([])
 
-    const formattedVacancies: IVacancyColumn[] = vacancyList
+	const formattedVacancies: IVacancyColumn[] = vacancyList
 		? vacancyList.map(vacancy => ({
 			id: vacancy.id,
-            title: vacancy.title,
-            slug: vacancy.slug,
-            createdAt: formatDate(vacancy.createdAt!),
-            reallyUpTo: vacancy.reallyUpTo ? formatDate(vacancy.reallyUpTo) : ' - ',
-            views: vacancy.views,
-			isValidate: vacancy.isValidate ? 'Verified':'Not verified!'
-			}))
-		: []
+			title: vacancy.title,
+			slug: vacancy.slug,
+			createdAt: formatDate(vacancy.createdAt!),
+			reallyUpTo: vacancy.reallyUpTo ? formatDate(vacancy.reallyUpTo) : ' - ',
+			views: vacancy.views,
+			isValidate: vacancy.isValidate ? 'Verified' : 'Not verified!'
+		})) : []
 
-    return (
-        <div className={styles.wrapper}>
+	const handleDeleteMany = () => {
+		deleteManyVacancy(selectedIds)
+	}
+
+	return (
+		<div className={styles.wrapper}>
 			{isFetching ? (
 				<DataTableLoading />
 			) : (
 				<>
 					<div className={styles.header}>
 						<Heading>All vacancies</Heading>
+
 						<div className={styles.buttons}>
-							<Link
-								href={AGENCY_URL.createOffers()}
-							>
+							<Link href={AGENCY_URL.createOffers()}>
 								<Button variant='outline'>
 									<Plus />
 									Создать
 								</Button>
 							</Link>
+							{selectedIds.length > 0 && (
+								<Button variant='default' onClick={() => handleDeleteMany()}>
+									<CiTrash /> Удалить
+								</Button>
+							)}
 						</div>
 					</div>
 					<div className={styles.table}>
@@ -50,10 +62,11 @@ export function Vacancies () {
 							columns={vacancyColumns}
 							data={formattedVacancies}
 							filterKey='title'
+							onSelectionChange={setSelectedIds}
 						/>
 					</div>
 				</>
 			)}
 		</div>
-    )
+	)
 }

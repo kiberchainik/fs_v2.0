@@ -50,8 +50,6 @@ interface VacancyFromProps {
 	workingTime: IOptions[] | undefined
 }
 
-
-
 export function VacancyForm({ vacancy, categories, branches, contractType, experienceMinimal, levelEducation, modeJob, workingTime }: VacancyFromProps) {
 	const { updJob, isPending, isSuccess } = useUpdateVacancyMutation()
 	const { deleteVacancy, isLoadingDelete } = useDeleteVacancy()

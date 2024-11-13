@@ -5,19 +5,19 @@ import { NO_INDEX_PAGE } from "@/shared/constants/seo.constants";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: 'Agency dashboard',
-	...NO_INDEX_PAGE
+  title: 'Agency dashboard',
+  ...NO_INDEX_PAGE
 }
 
 export default function ContactsPage() {
-    return (
-      <div className='flex gap-3 justify-between m-5'>
-        <Card>
-          <Branch />
-        </Card>
-        <Card>
-          <Vacancies />
-        </Card>
-      </div>
-    );
+  return (
+    <div className='grid gap-3 m-5'>
+      <Card>
+        <Branch />
+      </Card>
+      <Card>
+        <Vacancies />
+      </Card>
+    </div>
+  );
 }

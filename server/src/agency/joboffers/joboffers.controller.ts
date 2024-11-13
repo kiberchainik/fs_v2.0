@@ -65,6 +65,15 @@ export class JoboffersController {
     return this.joboffersService.remove(id, userId);
   }
 
+  @Post('delete-many')
+  @Authorization(UserRole.AGENCY)
+  async deleteManyVacancies(
+    @Body() ids: string[],
+    @CurrentUser('id') id: string
+  ) {
+    return await this.joboffersService.deleteMany(id, ids);
+  }
+
   @Get('confirm-vacancy/:id')
   @Authorization(UserRole.ADMIN)
   confirmVacancy(@Param('id') id: string) {

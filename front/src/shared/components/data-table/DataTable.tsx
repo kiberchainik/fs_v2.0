@@ -9,9 +9,10 @@ import {
 	getFilteredRowModel,
 	getSortedRowModel,
 	getPaginationRowModel,
-	useReactTable
+	useReactTable,
+	RowSelectionState
 } from '@tanstack/react-table'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import {
 	Button,
@@ -31,16 +32,18 @@ interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[]
 	data: TData[]
 	filterKey?: string
+	onSelectionChange?: (selectedIds: string[]) => void
 }
 
 export function DataTable<TData, TValue>({
 	columns,
 	data,
-	filterKey
+	filterKey,
+	onSelectionChange
 }: DataTableProps<TData, TValue>) {
 	const [sorting, setSorting] = useState<SortingState>([])
 	const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
-	const [rowSelection, setRowSelection] = useState({})
+	const [rowSelection, setRowSelection] = useState<RowSelectionState>({})
 
 	const table = useReactTable({
 		data,
@@ -58,6 +61,13 @@ export function DataTable<TData, TValue>({
 			rowSelection
 		}
 	})
+
+	useEffect(() => {
+		if (onSelectionChange) {
+			const selectedIds = table.getSelectedRowModel().rows.map((row) => row.original.id)
+			onSelectionChange(selectedIds);
+		}
+	}, [rowSelection, onSelectionChange])
 
 	return (
 		<div>
@@ -91,10 +101,10 @@ export function DataTable<TData, TValue>({
 												{header.isPlaceholder
 													? null
 													: flexRender(
-															header.column.columnDef
-																.header,
-															header.getContext()
-														)}
+														header.column.columnDef
+															.header,
+														header.getContext()
+													)}
 											</TableHead>
 										)
 									})}
