@@ -28,10 +28,6 @@ import { Input } from '../ui'
 import styles from './DataTable.module.scss'
 import { DataTablePagination } from './DataTablePagination'
 
-interface Identifiable {
-  id: string;
-}
-
 interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[]
 	data: TData[]
@@ -39,7 +35,7 @@ interface DataTableProps<TData, TValue> {
 	onSelectionChange?: (selectedIds: string[]) => void
 }
 
-export function DataTable<TData  extends Identifiable, TValue>({
+export function DataTable<TData, TValue>({
 	columns,
 	data,
 	filterKey,
