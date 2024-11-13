@@ -28,14 +28,18 @@ import { Input } from '../ui'
 import styles from './DataTable.module.scss'
 import { DataTablePagination } from './DataTablePagination'
 
-interface DataTableProps<TData, TValue> {
+interface Identifiable {
+  id: string;
+}
+
+interface DataTableProps<TData extends Identifiable, TValue> {
 	columns: ColumnDef<TData, TValue>[]
 	data: TData[]
 	filterKey?: string
 	onSelectionChange?: (selectedIds: string[]) => void
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData extends Identifiable, TValue>({
 	columns,
 	data,
 	filterKey,
@@ -64,8 +68,14 @@ export function DataTable<TData, TValue>({
 
 	useEffect(() => {
 		if (onSelectionChange) {
-			const selectedIds = table.getSelectedRowModel().rows.map((row) => row.original.id)
-			onSelectionChange(selectedIds);
+			const selectedIds = Object.keys(rowSelection)
+        .filter(rowId => rowSelection[rowId])
+        .map(rowId => {
+          const row = table.getRowModel().rows.find(r => r.id === rowId);
+          return (row?.original as Identifiable).id; // Приведение типа к Identifiable
+        })
+        .filter(Boolean);
+onSelectionChange(selectedIds as string[])
 		}
 	}, [rowSelection, onSelectionChange])
 
