@@ -80,4 +80,12 @@ export class BranchController {
   remove(@CurrentUser('id') userId: string, @Param('id') id: string) {
     return this.branchService.remove(id, userId);
   }
+
+  @Post('delete-many')
+  @Authorization(UserRole.AGENCY)
+  deleteMany(
+    @CurrentUser('id') userId: string,
+    @Body() ids: string[]) {
+    return this.branchService.deleteMany(ids, userId);
+  }
 }

@@ -7,20 +7,20 @@ import { toastMessageHandler } from "@/shared/utils"
 import { useMemo } from "react"
 
 export const useDeleteBranch = () => {
-    const {editBranchId} = useParams<{editBranchId: string}>()
+    const { editBranchId } = useParams<{ editBranchId: string }>()
     const router = useRouter()
 
     const queryClient = useQueryClient()
 
-    const { mutate:deleteBranch, isPending:isLoadingDelete } = useMutation({
+    const { mutate: deleteBranch, isPending: isLoadingDelete } = useMutation({
         mutationKey: ['delete branch'],
         mutationFn: () => branchService.deleteBranch(editBranchId),
         onSuccess() {
-            queryClient.invalidateQueries({queryKey:['get all branch']})
+            queryClient.invalidateQueries({ queryKey: ['get all branch'] })
             toast.success('Filial deleted successfully')
             router.push(AGENCY_URL.branches())
         },
-        onError(error:any) {
+        onError(error: any) {
             toastMessageHandler(error)
         }
     })
@@ -31,4 +31,27 @@ export const useDeleteBranch = () => {
             isLoadingDelete
         }),
         [deleteBranch, isLoadingDelete])
+}
+
+export const useDeleteManyBranch = () => {
+    const queryClient = useQueryClient()
+
+    const { mutate: deleteManyBranch, isPending: isLoadingDelete } = useMutation({
+        mutationKey: ['delete many branch'],
+        mutationFn: (ids: string[]) => branchService.deleteManyBranch(ids),
+        onSuccess() {
+            queryClient.invalidateQueries({ queryKey: ['get all branch'] })
+            toast.success('Filial deleted successfully')
+        },
+        onError(error: any) {
+            toastMessageHandler(error)
+        }
+    })
+
+    return useMemo(
+        () => ({
+            deleteManyBranch,
+            isLoadingDelete
+        }),
+        [deleteManyBranch, isLoadingDelete])
 } 

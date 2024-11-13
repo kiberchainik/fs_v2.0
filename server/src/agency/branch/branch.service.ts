@@ -106,6 +106,21 @@ export class BranchService {
     })
   }
 
+  async deleteMany(ids: string[], userId: string) {
+    return await this.prisma.branch.deleteMany({
+      where: {
+        AND: [
+          {
+            id: {
+              in: ids
+            }
+          },
+          { agency: { userId } }
+        ]
+      }
+    })
+  }
+
   private async getAgencyDataId(userId: string) {
     return await this.prisma.agencyData.findUnique({
       where: {

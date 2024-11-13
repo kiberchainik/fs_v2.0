@@ -24,6 +24,7 @@ export const API_URL = {
     getJobByCategory: (slug: string) => API_URL.root(`/joboffers/by-category/${slug}`),
     options: (option: string) => API_URL.root(`/${option}`),
     branch: (url = '') => API_URL.root(`/branch/${url}`),
+    deleteManyBranch: () => API_URL.root(`/branch/delete-many`),
     category: (id: string = '') => API_URL.root(`/category${id}`),
     categoryBySlug: (slug: string) => API_URL.root(`/category/by-slug/${slug}`)
 }
