@@ -32,14 +32,14 @@ interface Identifiable {
   id: string;
 }
 
-interface DataTableProps<TData extends Identifiable, TValue> {
+interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[]
 	data: TData[]
 	filterKey?: string
 	onSelectionChange?: (selectedIds: string[]) => void
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData  extends Identifiable, TValue>({
 	columns,
 	data,
 	filterKey,
