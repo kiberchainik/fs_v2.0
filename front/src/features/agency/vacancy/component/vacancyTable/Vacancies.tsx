@@ -10,7 +10,7 @@ import Link from "next/link"
 import { AGENCY_URL } from "@/shared/config"
 import { Plus } from "lucide-react"
 import { formatDate } from "@/shared/utils"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { CiTrash } from "react-icons/ci"
 import { useDeleteManyVacancy } from "../../hooks/useDeleteVacancy"
 

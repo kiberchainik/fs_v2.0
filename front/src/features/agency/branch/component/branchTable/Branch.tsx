@@ -10,11 +10,9 @@ import DataTableLoading from "@/shared/components/data-table/DataTableLoading"
 import { AGENCY_URL } from "@/shared/config"
 import { Plus } from "lucide-react"
 import { branchColumns } from "./BranchColumns"
-import { useState } from "react"
 
 export function Branch() {
     const { branches, isFetching } = useGetBranch()
-    const [selectedIds, setSelectedIds] = useState<string[]>([])
 
     const formattedBrancesData: IBranchTable[] = branches
         ? branches.map(branch => ({
@@ -50,7 +48,6 @@ export function Branch() {
                             columns={branchColumns}
                             data={formattedBrancesData}
                             filterKey='name'
-                            onSelectionChange={setSelectedIds}
                         />
                     </div>
                 </>
