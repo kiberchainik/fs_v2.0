@@ -28,7 +28,11 @@ import { Input } from '../ui'
 import styles from './DataTable.module.scss'
 import { DataTablePagination } from './DataTablePagination'
 
-interface DataTableProps<TData, TValue> {
+interface Identifiable {
+  id: string;
+}
+
+interface DataTableProps<TData extends Identifiable, TValue> {
 	columns: ColumnDef<TData, TValue>[]
 	data: TData[]
 	filterKey?: string
