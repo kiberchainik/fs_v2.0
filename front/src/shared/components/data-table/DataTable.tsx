@@ -78,7 +78,7 @@ export function DataTable<TData extends IVacancyColumn, TValue>({
         .filter(rowId => rowSelection[rowId])
         .map(rowId => {
           const row = table.getRowModel().rows.find(r => r.id === rowId);
-          return (row?.original as Identifiable).id; // Приведение типа к Identifiable
+          return row?.original.id
         })
         .filter(Boolean);
 onSelectionChange(selectedIds as string[])
