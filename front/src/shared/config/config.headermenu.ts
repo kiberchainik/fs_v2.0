@@ -45,8 +45,18 @@ export const HeaderUserMenu = (role: UserRole): MenuItems[] => {
         },
         {
             icon: PiGitBranchThin,
+            href: AGENCY_DROPDOWN_URL.branch(),
+            title: 'All branches'
+        },
+        {
+            icon: PiGitBranchThin,
             href: AGENCY_DROPDOWN_URL.branch('create'),
             title: 'New branch'
+        },
+        {
+            icon: CiPalette,
+            href: AGENCY_DROPDOWN_URL.vacancy(),
+            title: 'All vacancies'
         },
         {
             icon: CiPalette,

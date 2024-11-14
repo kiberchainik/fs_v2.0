@@ -5,8 +5,8 @@ export const AGENCY_DROPDOWN_URL = {
 
     dashboard: () => AGENCY_DROPDOWN_URL.root(''),
     profile: () => AGENCY_DROPDOWN_URL.root('/profile'),
-    vacancy: (page: string) => AGENCY_DROPDOWN_URL.root(`/vacancy/${page}`),
-    branch: (page: string) => AGENCY_DROPDOWN_URL.root(`/branch/${page}`),
+    vacancy: (page: string = '') => AGENCY_DROPDOWN_URL.root(`/vacancy/${page}`),
+    branch: (page: string = '') => AGENCY_DROPDOWN_URL.root(`/branch/${page}`),
     favorites: () => AGENCY_DROPDOWN_URL.root('/favorites')
 }
 
