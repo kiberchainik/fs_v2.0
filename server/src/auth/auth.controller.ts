@@ -11,38 +11,38 @@ import { ApiBearerAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nes
 @ApiTags('auth')
 @Controller('auth')
 export class AuthController {
-  constructor(
-    private readonly authService: AuthService,
-    private readonly config: ConfigService
-  ) {}
-  
-  @ApiOperation({ summary: 'User registration' })
-  @ApiBody({type: RegisterDto})
-  @ApiResponse({ status: 200, description: 'After successful registration, be sure to open your email and follow the email confirmation link. After that, you refresh in your account!' })
-  @Post('register')
-  @Recaptcha()
-  @HttpCode(HttpStatus.OK)
-  async register (@Body() dto:RegisterDto) {
-    return this.authService.register(dto)
-  }
+	constructor(
+		private readonly authService: AuthService,
+		private readonly config: ConfigService
+	) { }
 
-  @ApiOperation({ summary: 'User log in' })
-  @ApiBody({type: LoginDto})
-  @ApiResponse({ status: 200, description: 'After successful authorization you will be returned accessToken' })
-  @ApiResponse({ status: 403, description: 'If you have not confirmed your email after registration, then you will receive an error and a new link will be sent to confirm your email. After confirming your email, you will be able to log in to your account' })
-  @Post('login')
-  @Recaptcha()
-  @HttpCode(HttpStatus.OK)
-  async login (
-    @Body() dto:LoginDto,
-    @Res({ passthrough: true }) res: Response
-  ) {
-    const { refreshToken, password, ...response } = await this.authService.login(dto)
-    this.authService.addRefreshTokenToResponse(res, refreshToken)
+	@ApiOperation({ summary: 'User registration' })
+	@ApiBody({ type: RegisterDto })
+	@ApiResponse({ status: 200, description: 'After successful registration, be sure to open your email and follow the email confirmation link. After that, you refresh in your account!' })
+	@Post('register')
+	@Recaptcha()
+	@HttpCode(HttpStatus.OK)
+	async register(@Body() dto: RegisterDto) {
+		return this.authService.register(dto)
+	}
 
-    return response
-    //return this.authService.login(req, dto)
-  }
+	@ApiOperation({ summary: 'User log in' })
+	@ApiBody({ type: LoginDto })
+	@ApiResponse({ status: 200, description: 'After successful authorization you will be returned accessToken' })
+	@ApiResponse({ status: 403, description: 'If you have not confirmed your email after registration, then you will receive an error and a new link will be sent to confirm your email. After confirming your email, you will be able to log in to your account' })
+	@Post('login')
+	@Recaptcha()
+	@HttpCode(HttpStatus.OK)
+	async login(
+		@Body() dto: LoginDto,
+		@Res({ passthrough: true }) res: Response
+	) {
+		const { refreshToken, password, ...response } = await this.authService.login(dto)
+		this.authService.addRefreshTokenToResponse(res, refreshToken)
+
+		return response
+		//return this.authService.login(req, dto)
+	}
 
 	@ApiBearerAuth()
 	@HttpCode(200)
@@ -67,7 +67,7 @@ export class AuthController {
 
 	@Get('google')
 	@UseGuards(AuthGuard('google'))
-	async googleAuth(@Req() req) {}
+	async googleAuth(@Req() req) { }
 
 	@Get('google/callback')
 	@UseGuards(AuthGuard('google'))
@@ -80,13 +80,13 @@ export class AuthController {
 		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
 		return res.redirect(
-			`${process.env['ALLOWED_ORIGIN']}/dashboard?accessToken=${response.accessToken}`
+			`${process.env['ALLOWED_ORIGIN']}/candidat?accessToken=${response.accessToken}`
 		)
 	}
 
 	@Get('facebook')
 	@UseGuards(AuthGuard('facebook'))
-	async facebookAuth(@Req() req) {}
+	async facebookAuth(@Req() req) { }
 
 	@Get('facebook/redirect')
 	@UseGuards(AuthGuard('facebook'))
@@ -103,7 +103,7 @@ export class AuthController {
 		)
 	}
 
-  	@HttpCode(200)
+	@HttpCode(200)
 	@Post('logout')
 	async logout(@Res({ passthrough: true }) res: Response) {
 		this.authService.removeRefreshTokenFromResponse(res)
