@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module'
-import {ConfigService} from '@nestjs/config'
+import { ConfigService } from '@nestjs/config'
 import * as cookieParser from 'cookie-parser'
 import { ValidationPipe } from '@nestjs/common'
 import IORedis from 'ioredis'
@@ -56,7 +56,6 @@ async function bootstrap() {
   const documentFactory = () => SwaggerModule.createDocument(app, configSwagger);
   SwaggerModule.setup('api', app, documentFactory);
 
-  //await app.listen(config.getOrThrow<number>('APP_PORT'))
-  await app.listen(process.env.APP_PORT || 3000, '0.0.0.0')
+  await app.listen(config.getOrThrow<string>('APP_PORT'))
 }
 bootstrap()
