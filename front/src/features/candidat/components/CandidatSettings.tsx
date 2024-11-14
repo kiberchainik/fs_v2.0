@@ -23,8 +23,18 @@ import {
 
 import { useUpdProfileMutation } from '../hooks/useUpdProfileMutation'
 import { SettingsSchema, TypeSettingsSchema } from '../schemes'
+import { useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
+import { saveTokenStorage } from '@/shared/services'
 
 export function CandidatSettings() {
+	const searchParams = useSearchParams()
+
+	useEffect(() => {
+		const accessToken = searchParams.get('accessToken')
+		if (accessToken) saveTokenStorage(accessToken)
+	}, [searchParams])
+
 	const form = useForm<TypeSettingsSchema>({
 		resolver: zodResolver(SettingsSchema),
 		values: {
@@ -46,57 +56,57 @@ export function CandidatSettings() {
 			</CardHeader>
 			<CardContent>
 				{<Form {...form}>
-						<form
-							onSubmit={form.handleSubmit(onSubmit)}
-							className='grid gap-2 space-y-2'
-						>
-							<FormField
-								control={form.control}
-								name='email'
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Почта</FormLabel>
-										<FormControl>
-											<Input
-												placeholder='ivan@example.com'
-												disabled={isPending}
-												type='email'
-												{...field}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name='isTwoFactorEnabled'
-								render={({ field }) => (
-									<FormItem className='flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm'>
-										<div className='space-y-0.5'>
-											<FormLabel>
-												Двухфакторная аутентификация
-											</FormLabel>
-											<FormDescription>
-												Включите двухфакторную
-												аутентификацию для вашей учетной
-												записи
-											</FormDescription>
-										</div>
-										<FormControl>
-											<Switch
-												checked={field.value}
-												onCheckedChange={field.onChange}
-											/>
-										</FormControl>
-									</FormItem>
-								)}
-							/>
-							<Button type='submit' disabled={isPending}>
-								Сохранить
-							</Button>
-						</form>
-					</Form>
+					<form
+						onSubmit={form.handleSubmit(onSubmit)}
+						className='grid gap-2 space-y-2'
+					>
+						<FormField
+							control={form.control}
+							name='email'
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>Почта</FormLabel>
+									<FormControl>
+										<Input
+											placeholder='ivan@example.com'
+											disabled={isPending}
+											type='email'
+											{...field}
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						<FormField
+							control={form.control}
+							name='isTwoFactorEnabled'
+							render={({ field }) => (
+								<FormItem className='flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm'>
+									<div className='space-y-0.5'>
+										<FormLabel>
+											Двухфакторная аутентификация
+										</FormLabel>
+										<FormDescription>
+											Включите двухфакторную
+											аутентификацию для вашей учетной
+											записи
+										</FormDescription>
+									</div>
+									<FormControl>
+										<Switch
+											checked={field.value}
+											onCheckedChange={field.onChange}
+										/>
+									</FormControl>
+								</FormItem>
+							)}
+						/>
+						<Button type='submit' disabled={isPending}>
+							Сохранить
+						</Button>
+					</form>
+				</Form>
 				}
 			</CardContent>
 		</Card>

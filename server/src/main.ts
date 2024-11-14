@@ -42,7 +42,7 @@ async function bootstrap() {
   }))
 
   app.enableCors({
-    origin: config.getOrThrow<string>('ALLOWED_ORIGIN'),
+    origin: 'https://fs-v2-0-front.onrender.com',
     credentials: true,
     exposedHeaders: ['set-cookie']
   })
