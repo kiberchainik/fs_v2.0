@@ -7,6 +7,7 @@ import { ConfigService } from '@nestjs/config'
 import { REFRESH_TOKEN_NAME } from '@/libs/common/constants'
 import { AuthGuard } from '@nestjs/passport'
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { GoogleOAuthGuard } from './guards';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -66,11 +67,11 @@ export class AuthController {
 	}
 
 	@Get('google')
-	@UseGuards(AuthGuard('google'))
-	async googleAuth(@Req() req: Request) { }
+	@UseGuards(GoogleOAuthGuard)
+	async googleAuth(@Req() req) { }
 
 	@Get('google/callback')
-	@UseGuards(AuthGuard('google'))
+	@UseGuards(GoogleOAuthGuard)
 	async googleAuthCallback(
 		@Req() req,
 		@Res({ passthrough: true }) res: Response
