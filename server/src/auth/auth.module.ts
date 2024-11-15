@@ -9,26 +9,42 @@ import { EmailConfirmationModule } from './email-confirmation/email-confirmation
 import { MailService } from '@/libs/mail/mail.service';
 import { TwoFactorAuthService } from './two-factor-auth/two-factor-auth.service';
 import { AgencyService } from '@/agency/agency.service';
-import { FacebookStrategy, GoogleStrategy, JwtStrategy } from './strategies';
+import { FacebookStrategy, GoogleStrategy, InstagramStrategy, JwtStrategy, LinkedInStrategy, TelegramStrategy } from './strategies';
 import { JwtModule } from '@nestjs/jwt';
 import { getJwtConfig } from '@/config';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [
     JwtModule.registerAsync({
-			imports: [ConfigModule],
-			inject: [ConfigService],
-			useFactory: getJwtConfig
-		}),
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: getJwtConfig
+    }),
     GoogleRecaptchaModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: getRecaptchaConfig,
       inject: [ConfigService]
     }),
-    forwardRef(() => EmailConfirmationModule)
+    forwardRef(() => EmailConfirmationModule),
+    PassportModule.register({ defaultStrategy: 'instagram' }),
+    PassportModule.register({ defaultStrategy: 'linkedin' }),
+    PassportModule.register({ defaultStrategy: 'telegram' })
   ],
   controllers: [AuthController],
-  providers: [AuthService, UserService, MailService, TwoFactorAuthService, AgencyService, JwtStrategy, GoogleStrategy, FacebookStrategy],
-  exports:[AuthService]
+  providers: [
+    AuthService,
+    UserService,
+    MailService,
+    TwoFactorAuthService,
+    AgencyService,
+    JwtStrategy,
+    GoogleStrategy,
+    FacebookStrategy,
+    InstagramStrategy,
+    LinkedInStrategy,
+    TelegramStrategy
+  ],
+  exports: [AuthService, PassportModule]
 })
-export class AuthModule {}
+export class AuthModule { }

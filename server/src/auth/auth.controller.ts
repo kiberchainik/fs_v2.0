@@ -6,8 +6,7 @@ import { Recaptcha } from '@nestlab/google-recaptcha'
 import { ConfigService } from '@nestjs/config'
 import { REFRESH_TOKEN_NAME } from '@/libs/common/constants'
 import { AuthGuard } from '@nestjs/passport'
-import { ApiBearerAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { GoogleOAuthGuard } from './guards';
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
 
 @ApiTags('auth')
 @Controller('auth')
@@ -67,17 +66,16 @@ export class AuthController {
 	}
 
 	@Get('google')
-	@UseGuards(GoogleOAuthGuard)
+	@UseGuards(AuthGuard('google'))
 	async googleAuth(@Req() req: Request) { }
 
 	@Get('google/callback')
-	@UseGuards(GoogleOAuthGuard)
+	@UseGuards(AuthGuard('google'))
 	async googleAuthCallback(
 		@Req() req: Request,
 		@Res({ passthrough: true }) res: Response
 	) {
 		const { refreshToken, ...response } = await this.authService.validateOAuthLogin(req)
-
 		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
 		return res.redirect(
@@ -96,7 +94,60 @@ export class AuthController {
 		@Res({ passthrough: true }) res: Response
 	) {
 		const { refreshToken, ...response } = await this.authService.validateOAuthLogin(req)
+		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
+		return res.redirect(
+			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat?accessToken=${response.accessToken}`
+		)
+	}
+
+	@Get('instagram')
+	@UseGuards(AuthGuard('instagram'))
+	async instagramLogin(@Req() req: Request) { }
+
+	@Get('instagram/callback')
+	@UseGuards(AuthGuard('instagram'))
+	async instagramLoginCallback(
+		@Req() req: any,
+		@Res({ passthrough: true }) res: Response
+	) {
+		const { refreshToken, ...response } = await this.authService.validateOAuthLogin(req)
+		this.authService.addRefreshTokenToResponse(res, refreshToken)
+
+		return res.redirect(
+			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat?accessToken=${response.accessToken}`
+		)
+	}
+
+	@Get('linkedin')
+	@UseGuards(AuthGuard('linkedin'))
+	async linkedinLogin(@Req() req: Request) { }
+
+	@Get('linkedin/callback')
+	@UseGuards(AuthGuard('linkedin'))
+	async linkedinLoginCallback(
+		@Req() req: any,
+		@Res({ passthrough: true }) res: Response
+	) {
+		const { refreshToken, ...response } = await this.authService.validateOAuthLogin(req)
+		this.authService.addRefreshTokenToResponse(res, refreshToken)
+
+		return res.redirect(
+			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat?accessToken=${response.accessToken}`
+		)
+	}
+
+	@Get('telegram')
+	@UseGuards(AuthGuard('telegram'))
+	async telegramLogin(@Req() req: Request) { }
+
+	@Get('telegram/callback')
+	@UseGuards(AuthGuard('telegram'))
+	async telegramCallback(
+		@Req() req: any,
+		@Res({ passthrough: true }) res: Response
+	) {
+		const { refreshToken, ...response } = await this.authService.validateOAuthLogin(req)
 		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
 		return res.redirect(
@@ -110,5 +161,4 @@ export class AuthController {
 		this.authService.removeRefreshTokenFromResponse(res)
 		return true
 	}
-
 }

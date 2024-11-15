@@ -25,13 +25,13 @@ import { useUpdProfileMutation } from '../hooks/useUpdProfileMutation'
 import { SettingsSchema, TypeSettingsSchema } from '../schemes'
 import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
-import { saveTokenStorage } from '@/shared/services'
+import { EnumTokens, saveTokenStorage } from '@/shared/services'
 
 export function CandidatSettings() {
 	const searchParams = useSearchParams()
 
 	useEffect(() => {
-		const accessToken = searchParams.get('accessToken')
+		const accessToken = searchParams.get(EnumTokens.ACCESS_TOKEN)
 		if (accessToken) saveTokenStorage(accessToken)
 	}, [searchParams])
 
