@@ -1,43 +1,34 @@
 'use client'
 
 import { Button } from "@/shared/components/ui"
-import { useMutation } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
-import { FaDiscord, FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTelegram } from 'react-icons/fa'
-import { authService } from "../services"
+import { FaDiscord, FaFacebook, FaGithub, FaGoogle, FaInstagram, FaLinkedin, FaTelegram } from 'react-icons/fa'
+import { API_URL, SERVER_URL } from "@/shared/config"
 
-export function AuthSocial () {
+export function AuthSocial() {
     const router = useRouter()
-
-    const {mutateAsync} = useMutation({
-        mutationKey: ['oauth by provider'],
-        mutationFn: async (provider:string) => await authService.oauthByprovider(provider)
-    })
-
-    const onClick = async(provider:string) => {
-        const response = await mutateAsync(provider)
-
-        if(response) router.push(response.data.url)
-    }
 
     return <>
         <div className='flex justify-between items-center gap-x-1'>
-            <Button variant='outline' onClick={() => onClick('google')}>
+            <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('google')}`)}>
                 <FaGoogle />
             </Button>
-            <Button variant='outline' onClick={() => onClick('facebook')}>
+            <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('facebook')}`)}>
                 <FaFacebook />
             </Button>
-            <Button variant='outline'>
+            <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('linkedin')}`)}>
+                <FaLinkedin />
+            </Button>
+            <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('instagram')}`)}>
                 <FaInstagram />
             </Button>
-            <Button variant='outline'>
+            <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('telegram')}`)}>
                 <FaTelegram />
             </Button>
-            <Button variant='outline'>
+            <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('discord')}`)}>
                 <FaDiscord />
             </Button>
-            <Button variant='outline'>
+            <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('github')}`)}>
                 <FaGithub />
             </Button>
         </div>

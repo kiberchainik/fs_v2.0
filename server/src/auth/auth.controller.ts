@@ -68,12 +68,12 @@ export class AuthController {
 
 	@Get('google')
 	@UseGuards(GoogleOAuthGuard)
-	async googleAuth(@Req() req) { }
+	async googleAuth(@Req() req: Request) { }
 
 	@Get('google/callback')
 	@UseGuards(GoogleOAuthGuard)
 	async googleAuthCallback(
-		@Req() req,
+		@Req() req: Request,
 		@Res({ passthrough: true }) res: Response
 	) {
 		const { refreshToken, ...response } = await this.authService.validateOAuthLogin(req)

@@ -29,15 +29,10 @@ import { saveTokenStorage } from '@/shared/services'
 
 export function CandidatSettings() {
 	const searchParams = useSearchParams()
-	console.log(searchParams);
 
 	useEffect(() => {
 		const accessToken = searchParams.get('accessToken')
-		console.log(accessToken);
-
 		if (accessToken) saveTokenStorage(accessToken)
-		else console.log('token not found');
-
 	}, [searchParams])
 
 	const form = useForm<TypeSettingsSchema>({
