@@ -80,7 +80,7 @@ export class AuthController {
 		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
 		return res.redirect(
-			`${process.env['ALLOWED_ORIGIN']}/candidat?accessToken=${response.accessToken}`
+			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat?accessToken=${response.accessToken}`
 		)
 	}
 
@@ -99,7 +99,7 @@ export class AuthController {
 		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
 		return res.redirect(
-			`${process.env['ALLOWED_ORIGIN']}/dashboard?accessToken=${response.accessToken}`
+			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat?accessToken=${response.accessToken}`
 		)
 	}
 
