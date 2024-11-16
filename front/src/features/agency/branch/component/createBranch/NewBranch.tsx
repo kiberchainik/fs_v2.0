@@ -24,28 +24,29 @@ import { useNewBranchMutation } from '../../hooks'
 import { ImageUpload } from '../image-upload/ImageUpload'
 
 export function NewBranch() {
+	const defaultValues = {
+		name: '',
+		email: '',
+		phone: '',
+		fax: '',
+		logo: '',
+		address: '',
+		location: '',
+		region: '',
+		about_branch: ''
+	}
 
 	const form = useForm<TypeBranchSchema>({
 		mode: 'onChange',
 		resolver: zodResolver(BranchSchema),
-		values: {
-			name: '',
-			email: '',
-			phone: '',
-			fax: '',
-			logo: '',
-			address: '',
-			location: '',
-			region: '',
-			about_branch: ''
-		}
+		defaultValues
 	})
 
 	const { createBranch, isPending, isSuccess } = useNewBranchMutation()
 
 	const onSubmit = (values: TypeBranchSchema) => {
 		createBranch(values)
-		isSuccess && form.reset()
+		isSuccess && form.reset(defaultValues)
 	}
 
 	return (
@@ -94,24 +95,7 @@ export function NewBranch() {
 												placeholder='Filial name'
 												disabled={isPending}
 												type='text'
-												{...field}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name='email'
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Contact email</FormLabel>
-										<FormControl>
-											<Input
-												placeholder='Contact email'
-												disabled={isPending}
-												type='text'
+												defaultValue={field.value}
 												{...field}
 											/>
 										</FormControl>
@@ -131,6 +115,7 @@ export function NewBranch() {
 													placeholder='Full address'
 													disabled={isPending}
 													type='text'
+													defaultValue={field.value}
 													{...field}
 												/>
 											</FormControl>
@@ -149,6 +134,7 @@ export function NewBranch() {
 													placeholder='Location'
 													disabled={isPending}
 													type='text'
+													defaultValue={field.value}
 													{...field}
 												/>
 											</FormControl>
@@ -167,6 +153,66 @@ export function NewBranch() {
 													placeholder='Region'
 													disabled={isPending}
 													type='text'
+													defaultValue={field.value}
+													{...field}
+												/>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+							</div>
+							<div className='flex md:flex-row flex-col md:gap-x-2 gap-y-2 justify-between'>
+								<FormField
+									control={form.control}
+									name='email'
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Contact email</FormLabel>
+											<FormControl>
+												<Input
+													placeholder='Contact email'
+													disabled={isPending}
+													type='text'
+													defaultValue={field.value}
+													{...field}
+												/>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+								<FormField
+									control={form.control}
+									name="phone"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Contact phone</FormLabel>
+											<FormControl>
+												<Input
+													placeholder='Contact phone'
+													disabled={isPending}
+													type='text'
+													defaultValue={field.value}
+													{...field}
+												/>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+								<FormField
+									control={form.control}
+									name="fax"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Fax</FormLabel>
+											<FormControl>
+												<Input
+													placeholder='Fax'
+													disabled={isPending}
+													type='text'
+													defaultValue={field.value}
 													{...field}
 												/>
 											</FormControl>
@@ -177,47 +223,12 @@ export function NewBranch() {
 							</div>
 							<FormField
 								control={form.control}
-								name="phone"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Contact phone</FormLabel>
-										<FormControl>
-											<Input
-												placeholder='Contact phone'
-												disabled={isPending}
-												type='text'
-												{...field}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/><FormField
-								control={form.control}
-								name="fax"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Fax</FormLabel>
-										<FormControl>
-											<Input
-												placeholder='Fax'
-												disabled={isPending}
-												type='text'
-												{...field}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
 								name="about_branch"
 								render={({ field }) => (
 									<FormItem>
 										<FormLabel>Description</FormLabel>
 										<FormControl>
-											<TextEditor description={field.name} onChange={field.onChange} />
+											<TextEditor description={field.value ? field.value : 'About filifal'} onChange={field.onChange} />
 										</FormControl>
 										<FormMessage />
 									</FormItem>

@@ -39,7 +39,6 @@ export function BranchForm(branchData: IBranch) {
 
 	const onSubmit = (values: TypeBranchSchema) => {
 		updateBranch(values)
-		isSuccess && form.reset()
 	}
 
 	return (
@@ -91,24 +90,6 @@ export function BranchForm(branchData: IBranch) {
 										<FormControl>
 											<Input
 												placeholder='Filial name'
-												disabled={isPending}
-												type='text'
-												{...field}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name='email'
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Contact email</FormLabel>
-										<FormControl>
-											<Input
-												placeholder='Contact email'
 												disabled={isPending}
 												type='text'
 												{...field}
@@ -174,41 +155,62 @@ export function BranchForm(branchData: IBranch) {
 									)}
 								/>
 							</div>
-							<FormField
-								control={form.control}
-								name="phone"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Contact phone</FormLabel>
-										<FormControl>
-											<Input
-												placeholder='Contact phone'
-												disabled={isPending}
-												type='text'
-												{...field}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/><FormField
-								control={form.control}
-								name="fax"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Fax</FormLabel>
-										<FormControl>
-											<Input
-												placeholder='Fax'
-												disabled={isPending}
-												type='text'
-												{...field}
-											/>
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
+							<div className='flex md:flex-row flex-col md:gap-x-2 gap-y-2 justify-between'>
+								<FormField
+									control={form.control}
+									name='email'
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Contact email</FormLabel>
+											<FormControl>
+												<Input
+													placeholder='Contact email'
+													disabled={isPending}
+													type='text'
+													{...field}
+												/>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+								<FormField
+									control={form.control}
+									name="phone"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Contact phone</FormLabel>
+											<FormControl>
+												<Input
+													placeholder='Contact phone'
+													disabled={isPending}
+													type='text'
+													{...field}
+												/>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+								<FormField
+									control={form.control}
+									name="fax"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Fax</FormLabel>
+											<FormControl>
+												<Input
+													placeholder='Fax'
+													disabled={isPending}
+													type='text'
+													{...field}
+												/>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+							</div>
 							<FormField
 								control={form.control}
 								name="about_branch"
@@ -216,7 +218,7 @@ export function BranchForm(branchData: IBranch) {
 									<FormItem>
 										<FormLabel>Description</FormLabel>
 										<FormControl>
-											<TextEditor description={field.name} onChange={field.onChange} />
+											<TextEditor description={field.value ? field.value : 'About filifal'} onChange={field.onChange} />
 										</FormControl>
 										<FormMessage />
 									</FormItem>

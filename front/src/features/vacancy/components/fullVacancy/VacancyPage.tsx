@@ -34,6 +34,7 @@ export default function VacancyPage({ id, title, description, views, createdAt, 
     <div className={styles.wrapper}>
       <div className={styles.wrapperVacancy}>
         <Heading className={styles.title}>{title}</Heading>
+        {/* <BreadcrumbComponent /> */}
         {categories && (
           <div className={styles.breadcrumbs}>
             <Button variant='link'>

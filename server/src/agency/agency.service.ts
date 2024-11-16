@@ -11,9 +11,9 @@ import { unlink } from 'fs/promises';
 export class AgencyService {
   constructor(
     private readonly prisma: PrismaService
-  ) {}
+  ) { }
 
-  async create(userId:string, regDto: CreateAgencyDto) {
+  async create(userId: string, regDto: CreateAgencyDto) {
     const _data = {
       agency_name: regDto.agency_name,
       slug: slugify(regDto.agency_name),
@@ -26,28 +26,28 @@ export class AgencyService {
     }
 
     const oldData = await this.prisma.agencyData.findFirst({
-      where: {userId}
+      where: { userId }
     })
-    
+
 
     const agencyData = await this.prisma.agencyData.upsert({
-        where: {userId},
-        update: _data,
-        create: _data
+      where: { userId },
+      update: _data,
+      create: _data
     })
 
-    if(!agencyData) {
+    if (!agencyData) {
       throw new BadRequestException('Не удалось сохранить данные')
     }
 
     if (oldData.logo !== null) oldData.logo.map(file => {
-      unlink(join(__dirname, '..', '../src', file))
+      if (join(__dirname, '..', '../src', file)) unlink(join(__dirname, '..', '../src', file))
     })
 
     return agencyData
   }
 
-  async updLogo (userId:string, files:FileResponse[]) {
+  async updLogo(userId: string, files: FileResponse[]) {
     const logo = await this.prisma.agencyData.update({
       where: {
         userId
@@ -57,7 +57,7 @@ export class AgencyService {
       }
     })
 
-    if(!logo) {
+    if (!logo) {
       return new BadRequestException('Upload error!')
     }
 
@@ -65,16 +65,14 @@ export class AgencyService {
   }
 
   async agencyData(userId: string) {
-    console.log();
-    
     return await this.prisma.agencyData.findUnique({
-      where: {userId}
+      where: { userId }
     })
   }
 
   async agencyDatabySlug(slug: string) {
     return await this.prisma.agencyData.findUnique({
-      where: {slug},
+      where: { slug },
       include: {
         user: {
           select: {

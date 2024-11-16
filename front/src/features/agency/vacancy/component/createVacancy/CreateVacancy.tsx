@@ -46,21 +46,28 @@ export function CreateVacancy() {
 
 	const { branches, isFetching: isFetchingBranch } = useGetBranch()
 
+	const defaultValues = {
+		title: '',
+		description: 'Descrizione ...',
+		slug: '',
+		categoryId: '',
+		location: '',
+		province: '',
+		region: '',
+		branchId: '',
+		sectors: [],
+		tags: '',
+		contractTypeId: '',
+		modeJobId: '',
+		workingTimeId: '',
+		levelEducationId: '',
+		experienceMinimalId: '',
+	}
+
 	const form = useForm<TypeVacancySchema>({
 		mode: 'onChange',
 		resolver: zodResolver(VacancySchema),
-		values: {
-			title: '',
-			description: '',
-			slug: '',
-			categoryId: '',
-			location: '',
-			province: '',
-			region: '',
-			branchId: '',
-			sectors: [],
-			tags: '',
-		}
+		defaultValues
 	})
 
 	const { createJob, isPending, isSuccess } = useCreateVacancyMutation()
@@ -75,7 +82,7 @@ export function CreateVacancy() {
 
 		createJob(newVals)
 
-		isSuccess && form.reset()
+		isSuccess && form.reset(defaultValues)
 	}
 
 	return (
@@ -104,6 +111,7 @@ export function CreateVacancy() {
 												placeholder='Job title'
 												disabled={isPending}
 												type='text'
+												defaultValue={field.value}
 												{...field}
 											/>
 										</FormControl>
@@ -122,6 +130,7 @@ export function CreateVacancy() {
 												placeholder='Job slug'
 												disabled={isPending}
 												type='text'
+												defaultValue={field.value}
 												{...field}
 											/>
 										</FormControl>
@@ -141,6 +150,7 @@ export function CreateVacancy() {
 													placeholder='Location'
 													disabled={isPending}
 													type='text'
+													defaultValue={field.value}
 													{...field}
 												/>
 											</FormControl>
@@ -159,6 +169,7 @@ export function CreateVacancy() {
 													placeholder='Province'
 													disabled={isPending}
 													type='text'
+													defaultValue={field.value}
 													{...field}
 												/>
 											</FormControl>
@@ -177,6 +188,7 @@ export function CreateVacancy() {
 													placeholder='Region'
 													disabled={isPending}
 													type='text'
+													defaultValue={field.value}
 													{...field}
 												/>
 											</FormControl>
@@ -197,6 +209,7 @@ export function CreateVacancy() {
 										<Select
 											disabled={isFetching}
 											onValueChange={field.onChange}
+											defaultValue={field.value}
 										>
 											<FormControl>
 												<SelectTrigger>
@@ -235,6 +248,7 @@ export function CreateVacancy() {
 										<Select
 											disabled={isFetchingBranch}
 											onValueChange={field.onChange}
+											defaultValue={field.value}
 										>
 											<FormControl>
 												<SelectTrigger>
@@ -276,6 +290,7 @@ export function CreateVacancy() {
 												placeholder='Tags'
 												disabled={isPending}
 												type='text'
+												defaultValue={field.value}
 												{...field}
 											/>
 										</FormControl>
@@ -315,6 +330,7 @@ export function CreateVacancy() {
 												<Select
 													disabled={isFCT}
 													onValueChange={field.onChange}
+													defaultValue={field.value}
 												>
 													<FormControl>
 														<SelectTrigger>
@@ -341,6 +357,7 @@ export function CreateVacancy() {
 												<Select
 													disabled={isFMJ}
 													onValueChange={field.onChange}
+													defaultValue={field.value}
 												>
 													<FormControl>
 														<SelectTrigger>
@@ -367,6 +384,7 @@ export function CreateVacancy() {
 												<Select
 													disabled={isFWT}
 													onValueChange={field.onChange}
+													defaultValue={field.value}
 												>
 													<FormControl>
 														<SelectTrigger>
@@ -393,6 +411,7 @@ export function CreateVacancy() {
 												<Select
 													disabled={isFLE}
 													onValueChange={field.onChange}
+													defaultValue={field.value}
 												>
 													<FormControl>
 														<SelectTrigger>
@@ -419,6 +438,7 @@ export function CreateVacancy() {
 												<Select
 													disabled={isFEM}
 													onValueChange={field.onChange}
+													defaultValue={field.value}
 												>
 													<FormControl>
 														<SelectTrigger>
