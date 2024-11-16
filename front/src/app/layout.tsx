@@ -4,7 +4,7 @@ import "@/shared/styles/globals.scss";
 import { MainProvider } from "@/shared/providers"
 import { SITE_DESCRIPTION, SITE_NAME } from "@/shared/constants/seo.constants";
 import { Header } from "@/shared/components";
-import { HeaderMenu } from "@/features/headerMenu/components/HeaderMenu";
+import { HeaderMenu } from "@/features/headerMenu/components/HeaderMenu"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: SITE_NAME,
-    emails:['support@findsol.it']
+    emails: ['support@findsol.it']
   }
 };
 

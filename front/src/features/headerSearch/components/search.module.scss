@@ -1,0 +1,15 @@
+.overflow {
+    @apply fixed h-full w-full bg-black/60 z-30 backdrop-blur-sm;
+}
+
+.searchField {
+    @apply flex justify-end items-center z-40 bg-white rounded-full;
+
+    > .searchIcon {
+        @apply absolute top-1/2 translate-y-[-50%] text-gray-800 mr-3 rounded-full cursor-pointer;
+    }
+}
+
+.searchResult {
+    @apply absolute w-full bg-white rounded-2xl py-2 top-14 shadow-md transition-all duration-300 invisible opacity-0 z-30;
+}

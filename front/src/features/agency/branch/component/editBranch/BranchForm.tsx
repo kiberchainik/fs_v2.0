@@ -20,7 +20,7 @@ import {
 
 import { BranchSchema, TypeBranchSchema } from '../../schemes'
 import TextEditor from '@/shared/components/ui/TextEditor'
-import { useDeleteBranch, useNewBranchMutation } from '../../hooks'
+import { useDeleteBranch } from '../../hooks'
 import { ImageUpload } from '../image-upload/ImageUpload'
 import { IBranch } from '../../types'
 import { useUpdateBranchMutation } from '../../hooks'
@@ -28,7 +28,7 @@ import { ConfirmModal } from '@/shared/components/modals/ConfirmModals'
 import { IoMdTrash } from 'react-icons/io'
 
 export function BranchForm(branchData: IBranch) {
-	const { updateBranch, isPending, isSuccess } = useUpdateBranchMutation()
+	const { updateBranch, isPending } = useUpdateBranchMutation()
 	const { deleteBranch, isLoadingDelete } = useDeleteBranch()
 
 	const form = useForm<TypeBranchSchema>({
