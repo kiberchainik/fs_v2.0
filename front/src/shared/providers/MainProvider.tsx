@@ -5,7 +5,7 @@ import { TanstackQueryProvider } from "./TanstackQueryProvider";
 import { ThemeProvider, ToastProvider } from ".";
 import { Provider } from "react-redux";
 import { store } from "../store";
-import { AppProgressBar as ProgressBar } from '.'
+import { AppProgressBar as ProgressBar } from './index.d.ts'
 
 export function MainProvider({children}:PropsWithChildren<unknown>) {
     return <TanstackQueryProvider>
