@@ -39,13 +39,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <MainProvider>
-          <div className="relative flex min-h-screen flex-col">
-            <div className="flex-1">
-              <Header>
-                <HeaderMenu />
-              </Header>
-              {children}
-            </div>
+          <div className="flex min-h-screen flex-col">
+            <Header>
+              <HeaderMenu />
+            </Header>
+            <main className='flex-grow'>{children}</main>
+            <footer className='bg-white py-5 items-center italic text-zinc-500 font-extralight text-sm text-center'>2025 FindSolution 2.0</footer>
           </div>
         </MainProvider>
       </body>

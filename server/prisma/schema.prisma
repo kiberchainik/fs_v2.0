@@ -1,6 +1,7 @@
 generator client {
-  provider = "prisma-client-js"
-  output   = "./__generated__"
+  provider        = "prisma-client-js"
+  output          = "./__generated__"
+  previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
@@ -151,18 +152,18 @@ model Branch {
 }
 
 model jobOffers {
-  id          String     @id @default(uuid())
+  id          String    @id @default(uuid())
   title       String
-  slug        String     @unique
+  slug        String    @unique
   description String
   region      String
   province    String
   location    String
-  reallyUpTo  DateTime?  @map("really_up_to")
-  createdAt   DateTime   @default(now()) @map("created_at")
-  updatedAt   DateTime   @updatedAt @map("updated_at")
-  isValidate  Boolean    @default(false)
-  views       Int        @default(0)
+  reallyUpTo  DateTime? @map("really_up_to")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  isValidate  Boolean   @default(false)
+  views       Int       @default(0)
   sectors     Sectors[]
   tags        jobTags[]
 

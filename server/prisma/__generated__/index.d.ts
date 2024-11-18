@@ -24119,12 +24119,241 @@ export namespace Prisma {
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
+  export const UserOrderByRelevanceFieldEnum: {
+    id: 'id',
+    email: 'email',
+    password: 'password'
+  };
+
+  export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
+
+
+  export const CandidatDataOrderByRelevanceFieldEnum: {
+    id: 'id',
+    firstname: 'firstname',
+    surname: 'surname',
+    birthday: 'birthday',
+    phone: 'phone',
+    resident: 'resident',
+    about_my: 'about_my',
+    avatar: 'avatar',
+    userId: 'userId'
+  };
+
+  export type CandidatDataOrderByRelevanceFieldEnum = (typeof CandidatDataOrderByRelevanceFieldEnum)[keyof typeof CandidatDataOrderByRelevanceFieldEnum]
+
+
   export const NullsOrder: {
     first: 'first',
     last: 'last'
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const EducationOrderByRelevanceFieldEnum: {
+    id: 'id',
+    degree: 'degree',
+    school: 'school',
+    grade: 'grade',
+    description: 'description',
+    cdId: 'cdId'
+  };
+
+  export type EducationOrderByRelevanceFieldEnum = (typeof EducationOrderByRelevanceFieldEnum)[keyof typeof EducationOrderByRelevanceFieldEnum]
+
+
+  export const SkillsOrderByRelevanceFieldEnum: {
+    id: 'id',
+    skill: 'skill',
+    cdId: 'cdId'
+  };
+
+  export type SkillsOrderByRelevanceFieldEnum = (typeof SkillsOrderByRelevanceFieldEnum)[keyof typeof SkillsOrderByRelevanceFieldEnum]
+
+
+  export const ExperienceOrderByRelevanceFieldEnum: {
+    id: 'id',
+    company: 'company',
+    location: 'location',
+    description: 'description',
+    cdId: 'cdId'
+  };
+
+  export type ExperienceOrderByRelevanceFieldEnum = (typeof ExperienceOrderByRelevanceFieldEnum)[keyof typeof ExperienceOrderByRelevanceFieldEnum]
+
+
+  export const LanguagesOrderByRelevanceFieldEnum: {
+    id: 'id',
+    language: 'language',
+    cdId: 'cdId'
+  };
+
+  export type LanguagesOrderByRelevanceFieldEnum = (typeof LanguagesOrderByRelevanceFieldEnum)[keyof typeof LanguagesOrderByRelevanceFieldEnum]
+
+
+  export const CoursesOrderByRelevanceFieldEnum: {
+    id: 'id',
+    course: 'course',
+    institution: 'institution',
+    grade: 'grade',
+    cdId: 'cdId'
+  };
+
+  export type CoursesOrderByRelevanceFieldEnum = (typeof CoursesOrderByRelevanceFieldEnum)[keyof typeof CoursesOrderByRelevanceFieldEnum]
+
+
+  export const HobbiesOrderByRelevanceFieldEnum: {
+    id: 'id',
+    hobbie: 'hobbie',
+    cdId: 'cdId'
+  };
+
+  export type HobbiesOrderByRelevanceFieldEnum = (typeof HobbiesOrderByRelevanceFieldEnum)[keyof typeof HobbiesOrderByRelevanceFieldEnum]
+
+
+  export const AgencyDataOrderByRelevanceFieldEnum: {
+    id: 'id',
+    agency_name: 'agency_name',
+    slug: 'slug',
+    address: 'address',
+    phone: 'phone',
+    p_iva_c_f: 'p_iva_c_f',
+    userId: 'userId',
+    about: 'about',
+    logo: 'logo'
+  };
+
+  export type AgencyDataOrderByRelevanceFieldEnum = (typeof AgencyDataOrderByRelevanceFieldEnum)[keyof typeof AgencyDataOrderByRelevanceFieldEnum]
+
+
+  export const BranchOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name',
+    email: 'email',
+    phone: 'phone',
+    fax: 'fax',
+    address: 'address',
+    location: 'location',
+    region: 'region',
+    logo: 'logo',
+    about_branch: 'about_branch',
+    adId: 'adId'
+  };
+
+  export type BranchOrderByRelevanceFieldEnum = (typeof BranchOrderByRelevanceFieldEnum)[keyof typeof BranchOrderByRelevanceFieldEnum]
+
+
+  export const jobOffersOrderByRelevanceFieldEnum: {
+    id: 'id',
+    title: 'title',
+    slug: 'slug',
+    description: 'description',
+    region: 'region',
+    province: 'province',
+    location: 'location',
+    categoryId: 'categoryId',
+    contratId: 'contratId',
+    experienceId: 'experienceId',
+    modeId: 'modeId',
+    workingTimeId: 'workingTimeId',
+    levelId: 'levelId',
+    agencyId: 'agencyId',
+    branchId: 'branchId'
+  };
+
+  export type jobOffersOrderByRelevanceFieldEnum = (typeof jobOffersOrderByRelevanceFieldEnum)[keyof typeof jobOffersOrderByRelevanceFieldEnum]
+
+
+  export const ContractTypeJobOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type ContractTypeJobOrderByRelevanceFieldEnum = (typeof ContractTypeJobOrderByRelevanceFieldEnum)[keyof typeof ContractTypeJobOrderByRelevanceFieldEnum]
+
+
+  export const ExperienceMinimalJobOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type ExperienceMinimalJobOrderByRelevanceFieldEnum = (typeof ExperienceMinimalJobOrderByRelevanceFieldEnum)[keyof typeof ExperienceMinimalJobOrderByRelevanceFieldEnum]
+
+
+  export const ModeJobOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type ModeJobOrderByRelevanceFieldEnum = (typeof ModeJobOrderByRelevanceFieldEnum)[keyof typeof ModeJobOrderByRelevanceFieldEnum]
+
+
+  export const WorkingTimeJobOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type WorkingTimeJobOrderByRelevanceFieldEnum = (typeof WorkingTimeJobOrderByRelevanceFieldEnum)[keyof typeof WorkingTimeJobOrderByRelevanceFieldEnum]
+
+
+  export const LevelEducationOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type LevelEducationOrderByRelevanceFieldEnum = (typeof LevelEducationOrderByRelevanceFieldEnum)[keyof typeof LevelEducationOrderByRelevanceFieldEnum]
+
+
+  export const jobTagsOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug'
+  };
+
+  export type jobTagsOrderByRelevanceFieldEnum = (typeof jobTagsOrderByRelevanceFieldEnum)[keyof typeof jobTagsOrderByRelevanceFieldEnum]
+
+
+  export const CategoryOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug',
+    description: 'description',
+    parentId: 'parentId'
+  };
+
+  export type CategoryOrderByRelevanceFieldEnum = (typeof CategoryOrderByRelevanceFieldEnum)[keyof typeof CategoryOrderByRelevanceFieldEnum]
+
+
+  export const SectorsOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name',
+    slug: 'slug',
+    categoryId: 'categoryId'
+  };
+
+  export type SectorsOrderByRelevanceFieldEnum = (typeof SectorsOrderByRelevanceFieldEnum)[keyof typeof SectorsOrderByRelevanceFieldEnum]
+
+
+  export const AuthAccountOrderByRelevanceFieldEnum: {
+    id: 'id',
+    type: 'type',
+    provide: 'provide',
+    refreshToken: 'refreshToken',
+    accessToken: 'accessToken',
+    userId: 'userId'
+  };
+
+  export type AuthAccountOrderByRelevanceFieldEnum = (typeof AuthAccountOrderByRelevanceFieldEnum)[keyof typeof AuthAccountOrderByRelevanceFieldEnum]
+
+
+  export const TokensOrderByRelevanceFieldEnum: {
+    id: 'id',
+    email: 'email',
+    token: 'token'
+  };
+
+  export type TokensOrderByRelevanceFieldEnum = (typeof TokensOrderByRelevanceFieldEnum)[keyof typeof TokensOrderByRelevanceFieldEnum]
 
 
   /**
@@ -24313,6 +24542,7 @@ export namespace Prisma {
     authAccounts?: AuthAccountOrderByRelationAggregateInput
     agencydata?: AgencyDataOrderByWithRelationInput
     candidatdata?: CandidatDataOrderByWithRelationInput
+    _relevance?: UserOrderByRelevanceInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -24406,6 +24636,7 @@ export namespace Prisma {
     languages?: LanguagesOrderByRelationAggregateInput
     skills?: SkillsOrderByRelationAggregateInput
     user?: UserOrderByWithRelationInput
+    _relevance?: CandidatDataOrderByRelevanceInput
   }
 
   export type CandidatDataWhereUniqueInput = Prisma.AtLeast<{
@@ -24491,6 +24722,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     cdId?: SortOrder
     candidate?: CandidatDataOrderByWithRelationInput
+    _relevance?: EducationOrderByRelevanceInput
   }
 
   export type EducationWhereUniqueInput = Prisma.AtLeast<{
@@ -24553,6 +24785,7 @@ export namespace Prisma {
     level?: SortOrder
     cdId?: SortOrder
     candidate?: CandidatDataOrderByWithRelationInput
+    _relevance?: SkillsOrderByRelevanceInput
   }
 
   export type SkillsWhereUniqueInput = Prisma.AtLeast<{
@@ -24613,6 +24846,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     cdId?: SortOrder
     candidate?: CandidatDataOrderByWithRelationInput
+    _relevance?: ExperienceOrderByRelevanceInput
   }
 
   export type ExperienceWhereUniqueInput = Prisma.AtLeast<{
@@ -24678,6 +24912,7 @@ export namespace Prisma {
     level?: SortOrder
     cdId?: SortOrder
     candidate?: CandidatDataOrderByWithRelationInput
+    _relevance?: LanguagesOrderByRelevanceInput
   }
 
   export type LanguagesWhereUniqueInput = Prisma.AtLeast<{
@@ -24734,6 +24969,7 @@ export namespace Prisma {
     enddate?: SortOrder
     cdId?: SortOrder
     candidate?: CandidatDataOrderByWithRelationInput
+    _relevance?: CoursesOrderByRelevanceInput
   }
 
   export type CoursesWhereUniqueInput = Prisma.AtLeast<{
@@ -24791,6 +25027,7 @@ export namespace Prisma {
     hobbie?: SortOrder
     cdId?: SortOrder
     candidate?: CandidatDataOrderByWithRelationInput
+    _relevance?: HobbiesOrderByRelevanceInput
   }
 
   export type HobbiesWhereUniqueInput = Prisma.AtLeast<{
@@ -24856,6 +25093,7 @@ export namespace Prisma {
     user?: UserOrderByWithRelationInput
     branch?: BranchOrderByRelationAggregateInput
     jobOffers?: jobOffersOrderByRelationAggregateInput
+    _relevance?: AgencyDataOrderByRelevanceInput
   }
 
   export type AgencyDataWhereUniqueInput = Prisma.AtLeast<{
@@ -24945,6 +25183,7 @@ export namespace Prisma {
     adId?: SortOrder
     agency?: AgencyDataOrderByWithRelationInput
     jobOffers?: jobOffersOrderByRelationAggregateInput
+    _relevance?: BranchOrderByRelevanceInput
   }
 
   export type BranchWhereUniqueInput = Prisma.AtLeast<{
@@ -25067,6 +25306,7 @@ export namespace Prisma {
     levelEducation?: LevelEducationOrderByWithRelationInput
     agency?: AgencyDataOrderByWithRelationInput
     branch?: BranchOrderByWithRelationInput
+    _relevance?: jobOffersOrderByRelevanceInput
   }
 
   export type jobOffersWhereUniqueInput = Prisma.AtLeast<{
@@ -25172,6 +25412,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     jobOffers?: jobOffersOrderByRelationAggregateInput
+    _relevance?: ContractTypeJobOrderByRelevanceInput
   }
 
   export type ContractTypeJobWhereUniqueInput = Prisma.AtLeast<{
@@ -25212,6 +25453,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     jobOffers?: jobOffersOrderByRelationAggregateInput
+    _relevance?: ExperienceMinimalJobOrderByRelevanceInput
   }
 
   export type ExperienceMinimalJobWhereUniqueInput = Prisma.AtLeast<{
@@ -25252,6 +25494,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     jobOffers?: jobOffersOrderByRelationAggregateInput
+    _relevance?: ModeJobOrderByRelevanceInput
   }
 
   export type ModeJobWhereUniqueInput = Prisma.AtLeast<{
@@ -25292,6 +25535,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     jobOffers?: jobOffersOrderByRelationAggregateInput
+    _relevance?: WorkingTimeJobOrderByRelevanceInput
   }
 
   export type WorkingTimeJobWhereUniqueInput = Prisma.AtLeast<{
@@ -25332,6 +25576,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     jobOffers?: jobOffersOrderByRelationAggregateInput
+    _relevance?: LevelEducationOrderByRelevanceInput
   }
 
   export type LevelEducationWhereUniqueInput = Prisma.AtLeast<{
@@ -25374,6 +25619,7 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     jobOffers?: jobOffersOrderByRelationAggregateInput
+    _relevance?: jobTagsOrderByRelevanceInput
   }
 
   export type jobTagsWhereUniqueInput = Prisma.AtLeast<{
@@ -25431,6 +25677,7 @@ export namespace Prisma {
     jobOffers?: jobOffersOrderByRelationAggregateInput
     parent?: CategoryOrderByWithRelationInput
     children?: CategoryOrderByRelationAggregateInput
+    _relevance?: CategoryOrderByRelevanceInput
   }
 
   export type CategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -25494,6 +25741,7 @@ export namespace Prisma {
     categoryId?: SortOrder
     jobOffer?: jobOffersOrderByRelationAggregateInput
     category?: CategoryOrderByWithRelationInput
+    _relevance?: SectorsOrderByRelevanceInput
   }
 
   export type SectorsWhereUniqueInput = Prisma.AtLeast<{
@@ -25555,6 +25803,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     userId?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
+    _relevance?: AuthAccountOrderByRelevanceInput
   }
 
   export type AuthAccountWhereUniqueInput = Prisma.AtLeast<{
@@ -25624,6 +25873,7 @@ export namespace Prisma {
     type?: SortOrder
     expiresIn?: SortOrder
     createdAt?: SortOrder
+    _relevance?: TokensOrderByRelevanceInput
   }
 
   export type TokensWhereUniqueInput = Prisma.AtLeast<{
@@ -27135,6 +27385,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
   }
@@ -27189,6 +27440,12 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type UserOrderByRelevanceInput = {
+    fields: UserOrderByRelevanceFieldEnum | UserOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
@@ -27236,6 +27493,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     mode?: QueryMode
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
@@ -27350,6 +27608,12 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type CandidatDataOrderByRelevanceInput = {
+    fields: CandidatDataOrderByRelevanceFieldEnum | CandidatDataOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type CandidatDataCountOrderByAggregateInput = {
     id?: SortOrder
     firstname?: SortOrder
@@ -27403,6 +27667,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
@@ -27415,6 +27680,12 @@ export namespace Prisma {
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type EducationOrderByRelevanceInput = {
+    fields: EducationOrderByRelevanceFieldEnum | EducationOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type EducationCountOrderByAggregateInput = {
@@ -27461,6 +27732,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     mode?: QueryMode
     not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
@@ -27473,6 +27745,12 @@ export namespace Prisma {
     in?: $Enums.SkillsLevel[] | ListEnumSkillsLevelFieldRefInput<$PrismaModel>
     notIn?: $Enums.SkillsLevel[] | ListEnumSkillsLevelFieldRefInput<$PrismaModel>
     not?: NestedEnumSkillsLevelFilter<$PrismaModel> | $Enums.SkillsLevel
+  }
+
+  export type SkillsOrderByRelevanceInput = {
+    fields: SkillsOrderByRelevanceFieldEnum | SkillsOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type SkillsCountOrderByAggregateInput = {
@@ -27511,6 +27789,12 @@ export namespace Prisma {
     in?: $Enums.ContractType[] | ListEnumContractTypeFieldRefInput<$PrismaModel>
     notIn?: $Enums.ContractType[] | ListEnumContractTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumContractTypeFilter<$PrismaModel> | $Enums.ContractType
+  }
+
+  export type ExperienceOrderByRelevanceInput = {
+    fields: ExperienceOrderByRelevanceFieldEnum | ExperienceOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type ExperienceCountOrderByAggregateInput = {
@@ -27566,6 +27850,12 @@ export namespace Prisma {
     not?: NestedEnumLanguageLevelFilter<$PrismaModel> | $Enums.LanguageLevel
   }
 
+  export type LanguagesOrderByRelevanceInput = {
+    fields: LanguagesOrderByRelevanceFieldEnum | LanguagesOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type LanguagesCountOrderByAggregateInput = {
     id?: SortOrder
     language?: SortOrder
@@ -27597,6 +27887,12 @@ export namespace Prisma {
     _max?: NestedEnumLanguageLevelFilter<$PrismaModel>
   }
 
+  export type CoursesOrderByRelevanceInput = {
+    fields: CoursesOrderByRelevanceFieldEnum | CoursesOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type CoursesCountOrderByAggregateInput = {
     id?: SortOrder
     course?: SortOrder
@@ -27625,6 +27921,12 @@ export namespace Prisma {
     startdate?: SortOrder
     enddate?: SortOrder
     cdId?: SortOrder
+  }
+
+  export type HobbiesOrderByRelevanceInput = {
+    fields: HobbiesOrderByRelevanceFieldEnum | HobbiesOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type HobbiesCountOrderByAggregateInput = {
@@ -27673,6 +27975,12 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type AgencyDataOrderByRelevanceInput = {
+    fields: AgencyDataOrderByRelevanceFieldEnum | AgencyDataOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type AgencyDataCountOrderByAggregateInput = {
     id?: SortOrder
     agency_name?: SortOrder
@@ -27716,6 +28024,12 @@ export namespace Prisma {
   export type AgencyDataRelationFilter = {
     is?: AgencyDataWhereInput
     isNot?: AgencyDataWhereInput
+  }
+
+  export type BranchOrderByRelevanceInput = {
+    fields: BranchOrderByRelevanceFieldEnum | BranchOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type BranchCountOrderByAggregateInput = {
@@ -27837,6 +28151,12 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type jobOffersOrderByRelevanceInput = {
+    fields: jobOffersOrderByRelevanceFieldEnum | jobOffersOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type jobOffersCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
@@ -27944,6 +28264,12 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
+  export type ContractTypeJobOrderByRelevanceInput = {
+    fields: ContractTypeJobOrderByRelevanceFieldEnum | ContractTypeJobOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type ContractTypeJobCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -27957,6 +28283,12 @@ export namespace Prisma {
   export type ContractTypeJobMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+  }
+
+  export type ExperienceMinimalJobOrderByRelevanceInput = {
+    fields: ExperienceMinimalJobOrderByRelevanceFieldEnum | ExperienceMinimalJobOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type ExperienceMinimalJobCountOrderByAggregateInput = {
@@ -27974,6 +28306,12 @@ export namespace Prisma {
     name?: SortOrder
   }
 
+  export type ModeJobOrderByRelevanceInput = {
+    fields: ModeJobOrderByRelevanceFieldEnum | ModeJobOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type ModeJobCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -27987,6 +28325,12 @@ export namespace Prisma {
   export type ModeJobMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+  }
+
+  export type WorkingTimeJobOrderByRelevanceInput = {
+    fields: WorkingTimeJobOrderByRelevanceFieldEnum | WorkingTimeJobOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type WorkingTimeJobCountOrderByAggregateInput = {
@@ -28004,6 +28348,12 @@ export namespace Prisma {
     name?: SortOrder
   }
 
+  export type LevelEducationOrderByRelevanceInput = {
+    fields: LevelEducationOrderByRelevanceFieldEnum | LevelEducationOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type LevelEducationCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -28017,6 +28367,12 @@ export namespace Prisma {
   export type LevelEducationMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+  }
+
+  export type jobTagsOrderByRelevanceInput = {
+    fields: jobTagsOrderByRelevanceFieldEnum | jobTagsOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type jobTagsCountOrderByAggregateInput = {
@@ -28056,6 +28412,12 @@ export namespace Prisma {
 
   export type CategoryOrderByRelationAggregateInput = {
     _count?: SortOrder
+  }
+
+  export type CategoryOrderByRelevanceInput = {
+    fields: CategoryOrderByRelevanceFieldEnum | CategoryOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type CategoryCountOrderByAggregateInput = {
@@ -28114,6 +28476,12 @@ export namespace Prisma {
     isNot?: CategoryWhereInput
   }
 
+  export type SectorsOrderByRelevanceInput = {
+    fields: SectorsOrderByRelevanceFieldEnum | SectorsOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type SectorsCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -28138,6 +28506,12 @@ export namespace Prisma {
   export type UserNullableRelationFilter = {
     is?: UserWhereInput | null
     isNot?: UserWhereInput | null
+  }
+
+  export type AuthAccountOrderByRelevanceInput = {
+    fields: AuthAccountOrderByRelevanceFieldEnum | AuthAccountOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type AuthAccountCountOrderByAggregateInput = {
@@ -28189,6 +28563,12 @@ export namespace Prisma {
     in?: $Enums.TokenType[] | ListEnumTokenTypeFieldRefInput<$PrismaModel>
     notIn?: $Enums.TokenType[] | ListEnumTokenTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumTokenTypeFilter<$PrismaModel> | $Enums.TokenType
+  }
+
+  export type TokensOrderByRelevanceInput = {
+    fields: TokensOrderByRelevanceFieldEnum | TokensOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type TokensCountOrderByAggregateInput = {
@@ -29578,6 +29958,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
@@ -29622,6 +30003,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
@@ -29692,6 +30074,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
@@ -29706,6 +30089,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>

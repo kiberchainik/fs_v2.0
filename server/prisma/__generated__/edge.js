@@ -298,9 +298,175 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.UserOrderByRelevanceFieldEnum = {
+  id: 'id',
+  email: 'email',
+  password: 'password'
+};
+
+exports.Prisma.CandidatDataOrderByRelevanceFieldEnum = {
+  id: 'id',
+  firstname: 'firstname',
+  surname: 'surname',
+  birthday: 'birthday',
+  phone: 'phone',
+  resident: 'resident',
+  about_my: 'about_my',
+  avatar: 'avatar',
+  userId: 'userId'
+};
+
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.EducationOrderByRelevanceFieldEnum = {
+  id: 'id',
+  degree: 'degree',
+  school: 'school',
+  grade: 'grade',
+  description: 'description',
+  cdId: 'cdId'
+};
+
+exports.Prisma.SkillsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  skill: 'skill',
+  cdId: 'cdId'
+};
+
+exports.Prisma.ExperienceOrderByRelevanceFieldEnum = {
+  id: 'id',
+  company: 'company',
+  location: 'location',
+  description: 'description',
+  cdId: 'cdId'
+};
+
+exports.Prisma.LanguagesOrderByRelevanceFieldEnum = {
+  id: 'id',
+  language: 'language',
+  cdId: 'cdId'
+};
+
+exports.Prisma.CoursesOrderByRelevanceFieldEnum = {
+  id: 'id',
+  course: 'course',
+  institution: 'institution',
+  grade: 'grade',
+  cdId: 'cdId'
+};
+
+exports.Prisma.HobbiesOrderByRelevanceFieldEnum = {
+  id: 'id',
+  hobbie: 'hobbie',
+  cdId: 'cdId'
+};
+
+exports.Prisma.AgencyDataOrderByRelevanceFieldEnum = {
+  id: 'id',
+  agency_name: 'agency_name',
+  slug: 'slug',
+  address: 'address',
+  phone: 'phone',
+  p_iva_c_f: 'p_iva_c_f',
+  userId: 'userId',
+  about: 'about',
+  logo: 'logo'
+};
+
+exports.Prisma.BranchOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  fax: 'fax',
+  address: 'address',
+  location: 'location',
+  region: 'region',
+  logo: 'logo',
+  about_branch: 'about_branch',
+  adId: 'adId'
+};
+
+exports.Prisma.jobOffersOrderByRelevanceFieldEnum = {
+  id: 'id',
+  title: 'title',
+  slug: 'slug',
+  description: 'description',
+  region: 'region',
+  province: 'province',
+  location: 'location',
+  categoryId: 'categoryId',
+  contratId: 'contratId',
+  experienceId: 'experienceId',
+  modeId: 'modeId',
+  workingTimeId: 'workingTimeId',
+  levelId: 'levelId',
+  agencyId: 'agencyId',
+  branchId: 'branchId'
+};
+
+exports.Prisma.ContractTypeJobOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.ExperienceMinimalJobOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.ModeJobOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.WorkingTimeJobOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.LevelEducationOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.jobTagsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug'
+};
+
+exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  description: 'description',
+  parentId: 'parentId'
+};
+
+exports.Prisma.SectorsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  categoryId: 'categoryId'
+};
+
+exports.Prisma.AuthAccountOrderByRelevanceFieldEnum = {
+  id: 'id',
+  type: 'type',
+  provide: 'provide',
+  refreshToken: 'refreshToken',
+  accessToken: 'accessToken',
+  userId: 'userId'
+};
+
+exports.Prisma.TokensOrderByRelevanceFieldEnum = {
+  id: 'id',
+  email: 'email',
+  token: 'token'
 };
 exports.UserRole = exports.$Enums.UserRole = {
   USER: 'USER',
@@ -396,7 +562,9 @@ const config = {
         "native": true
       }
     ],
-    "previewFeatures": [],
+    "previewFeatures": [
+      "fullTextSearch"
+    ],
     "sourceFilePath": "C:\\Users\\kiber\\Documents\\findSol_v2.0\\server\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
@@ -411,6 +579,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -419,8 +588,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"./__generated__\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id       String   @id @default(uuid())\n  email    String   @unique\n  password String\n  role     UserRole @default(CANDIDAT)\n\n  isVerified         Boolean @default(false) @map(\"is_verified\")\n  isTwoFactorEnabled Boolean @default(false) @map(\"is_two_factor_enabled\")\n\n  method AuthMethod\n\n  authAccounts AuthAccount[]\n\n  agencydata   AgencyData?\n  candidatdata CandidatData?\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  @@map(\"users\")\n}\n\nmodel CandidatData {\n  id         String       @id @default(uuid())\n  firstname  String\n  surname    String\n  birthday   String\n  phone      String\n  resident   String\n  about_my   String\n  avatar     String\n  createdAt  DateTime     @default(now()) @map(\"created_at\")\n  updatedAt  DateTime     @updatedAt @map(\"updated_at\")\n  userId     String       @unique @map(\"user_id\")\n  courses    Courses[]\n  education  Education[]\n  experience Experience[]\n  hobbies    Hobbies[]\n  languages  Languages[]\n  skills     Skills[]\n  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@map(\"candidat_data\")\n}\n\nmodel Education {\n  id          String   @id @default(uuid())\n  degree      String\n  school      String\n  grade       String?\n  startdate   DateTime @db.Date\n  enddate     DateTime @db.Date\n  description String?\n\n  candidate CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n  cdId      String       @map(\"candidate_id\")\n}\n\nmodel Skills {\n  id        String       @id @default(uuid())\n  skill     String\n  level     SkillsLevel  @default(NONE)\n  cdId      String       @map(\"candidate_id\")\n  candidate CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)\n}\n\nmodel Experience {\n  id          String       @id @default(uuid())\n  company     String\n  contract    ContractType\n  location    String?\n  currently   Boolean      @default(false)\n  startDate   DateTime\n  endDate     DateTime\n  description String?\n  cdId        String       @map(\"candidate_id\")\n  candidate   CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)\n}\n\nmodel Languages {\n  id        String        @id @default(uuid())\n  language  String\n  level     LanguageLevel @default(BASIC)\n  cdId      String        @map(\"candidate_id\")\n  candidate CandidatData  @relation(fields: [cdId], references: [id], onDelete: Cascade)\n}\n\nmodel Courses {\n  id          String       @id @default(uuid())\n  course      String\n  institution String\n  grade       String\n  startdate   DateTime\n  enddate     DateTime\n  cdId        String       @map(\"candidate_id\")\n  candidate   CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)\n}\n\nmodel Hobbies {\n  id        String       @id @default(uuid())\n  hobbie    String\n  cdId      String       @map(\"candidate_id\")\n  candidate CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)\n}\n\nmodel AgencyData {\n  id          String      @id @default(uuid())\n  agency_name String\n  slug        String      @unique\n  address     String\n  phone       String\n  p_iva_c_f   String\n  createdAt   DateTime    @default(now()) @map(\"created_at\")\n  updatedAt   DateTime    @updatedAt @map(\"updated_at\")\n  userId      String      @unique @map(\"user_id\")\n  about       String\n  logo        String[]\n  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)\n  branch      Branch[]\n  jobOffers   jobOffers[]\n\n  @@map(\"agency_data\")\n}\n\nmodel Branch {\n  id           String      @id @default(uuid())\n  name         String\n  email        String\n  phone        String\n  fax          String?\n  address      String\n  location     String\n  region       String\n  logo         String?\n  about_branch String?\n  adId         String      @map(\"agency_id\")\n  agency       AgencyData  @relation(fields: [adId], references: [id])\n  jobOffers    jobOffers[]\n\n  @@map(\"branches\")\n}\n\nmodel jobOffers {\n  id          String    @id @default(uuid())\n  title       String\n  slug        String    @unique\n  description String\n  region      String\n  province    String\n  location    String\n  reallyUpTo  DateTime? @map(\"really_up_to\")\n  createdAt   DateTime  @default(now()) @map(\"created_at\")\n  updatedAt   DateTime  @updatedAt @map(\"updated_at\")\n  isValidate  Boolean   @default(false)\n  views       Int       @default(0)\n  sectors     Sectors[]\n  tags        jobTags[]\n\n  categoryId           String                @map(\"category_id\")\n  categories           Category?             @relation(fields: [categoryId], references: [id])\n  contratId            String?               @map(\"contract_id\")\n  contractType         ContractTypeJob?      @relation(fields: [contratId], references: [id])\n  experienceId         String?               @map(\"experience_id\")\n  experienceMinimalJob ExperienceMinimalJob? @relation(fields: [experienceId], references: [id])\n  modeId               String?               @map(\"mode_job_id\")\n  modeJob              ModeJob?              @relation(fields: [modeId], references: [id])\n  workingTimeId        String?               @map(\"working_time_id\")\n  workingTimeJob       WorkingTimeJob?       @relation(fields: [workingTimeId], references: [id])\n  levelId              String?               @map(\"level_education_id\")\n  levelEducation       LevelEducation?       @relation(fields: [levelId], references: [id])\n\n  agencyId String     @map(\"agency_id\")\n  agency   AgencyData @relation(fields: [agencyId], references: [id])\n\n  branchId String? @map(\"branch_id\")\n  branch   Branch? @relation(fields: [branchId], references: [id])\n\n  @@map(\"job_offers\")\n}\n\nmodel ContractTypeJob {\n  id        String      @id @default(uuid())\n  name      String\n  jobOffers jobOffers[]\n\n  @@map(\"contract_type\")\n}\n\nmodel ExperienceMinimalJob {\n  id        String      @id @default(uuid())\n  name      String\n  jobOffers jobOffers[]\n\n  @@map(\"experience_minimal\")\n}\n\nmodel ModeJob {\n  id        String      @id @default(uuid())\n  name      String\n  jobOffers jobOffers[]\n\n  @@map(\"mode_job\")\n}\n\nmodel WorkingTimeJob {\n  id        String      @id @default(uuid())\n  name      String\n  jobOffers jobOffers[]\n\n  @@map(\"working_time_job\")\n}\n\nmodel LevelEducation {\n  id        String      @id @default(uuid())\n  name      String\n  jobOffers jobOffers[]\n\n  @@map(\"level_education\")\n}\n\nmodel jobTags {\n  id        String      @id @default(uuid())\n  name      String\n  slug      String\n  jobOffers jobOffers[]\n\n  @@map(\"job_tags\")\n}\n\nmodel Category {\n  id          String      @id @default(uuid())\n  name        String      @unique\n  slug        String      @unique\n  description String\n  level       Int?\n  sectors     Sectors[]\n  jobOffers   jobOffers[]\n  parentId    String?\n  parent      Category?   @relation(\"SubCategory\", fields: [parentId], references: [id])\n  children    Category[]  @relation(\"SubCategory\")\n\n  @@map(\"categories\")\n}\n\nmodel Sectors {\n  id       String      @id @default(uuid())\n  name     String      @unique\n  slug     String      @unique\n  jobOffer jobOffers[]\n\n  categoryId String\n  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n}\n\nmodel AuthAccount {\n  id String @id @default(uuid())\n\n  type    String\n  provide String\n\n  refreshToken String? @map(\"refresh_token\")\n  accessToken  String? @map(\"access_token\")\n  expiresAt    Int     @map(\"expires_at\")\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  user   User?   @relation(fields: [userId], references: [id])\n  userId String? @map(\"user_id\")\n\n  @@map(\"auth_account\")\n}\n\nmodel Tokens {\n  id String @id @default(uuid())\n\n  email     String\n  token     String    @unique\n  type      TokenType\n  expiresIn DateTime  @map(\"expires_in\")\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n\n  @@map(\"tokens\")\n}\n\nenum TokenType {\n  VERIFICATION\n  TWO_FACTOR\n  PASSWORD_RESET\n}\n\nenum AuthMethod {\n  CREDENTIALS\n  GOOGLE\n  FACEBOOK\n  TWITTER\n  TELEGRAMM\n  INSTAGRAM\n  DISCORD\n}\n\nenum UserRole {\n  USER\n  ADMIN\n  MODERATOR\n  CANDIDAT\n  AGENCY\n}\n\nenum SkillsLevel {\n  NONE\n  BEGINNER\n  EXPERIENCED\n  EXPERT\n}\n\nenum ContractType {\n  PARTTIME\n  SELFEMPLOYED\n  FREELANCE\n  CONTRACT\n  INTERNSHIP\n  APPRENTICESHIP\n}\n\nenum LanguageLevel {\n  NATIVESPEAKER\n  FLUENT\n  VERYGOOD\n  BASIC\n}\n",
-  "inlineSchemaHash": "42ace06796624bef083aa71d79ba6557b28fed4c298d80d0a766d552b0c7d6b3",
+  "inlineSchema": "generator client {\n  provider        = \"prisma-client-js\"\n  output          = \"./__generated__\"\n  previewFeatures = [\"fullTextSearch\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id       String   @id @default(uuid())\n  email    String   @unique\n  password String\n  role     UserRole @default(CANDIDAT)\n\n  isVerified         Boolean @default(false) @map(\"is_verified\")\n  isTwoFactorEnabled Boolean @default(false) @map(\"is_two_factor_enabled\")\n\n  method AuthMethod\n\n  authAccounts AuthAccount[]\n\n  agencydata   AgencyData?\n  candidatdata CandidatData?\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  @@map(\"users\")\n}\n\nmodel CandidatData {\n  id         String       @id @default(uuid())\n  firstname  String\n  surname    String\n  birthday   String\n  phone      String\n  resident   String\n  about_my   String\n  avatar     String\n  createdAt  DateTime     @default(now()) @map(\"created_at\")\n  updatedAt  DateTime     @updatedAt @map(\"updated_at\")\n  userId     String       @unique @map(\"user_id\")\n  courses    Courses[]\n  education  Education[]\n  experience Experience[]\n  hobbies    Hobbies[]\n  languages  Languages[]\n  skills     Skills[]\n  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@map(\"candidat_data\")\n}\n\nmodel Education {\n  id          String   @id @default(uuid())\n  degree      String\n  school      String\n  grade       String?\n  startdate   DateTime @db.Date\n  enddate     DateTime @db.Date\n  description String?\n\n  candidate CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n  cdId      String       @map(\"candidate_id\")\n}\n\nmodel Skills {\n  id        String       @id @default(uuid())\n  skill     String\n  level     SkillsLevel  @default(NONE)\n  cdId      String       @map(\"candidate_id\")\n  candidate CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)\n}\n\nmodel Experience {\n  id          String       @id @default(uuid())\n  company     String\n  contract    ContractType\n  location    String?\n  currently   Boolean      @default(false)\n  startDate   DateTime\n  endDate     DateTime\n  description String?\n  cdId        String       @map(\"candidate_id\")\n  candidate   CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)\n}\n\nmodel Languages {\n  id        String        @id @default(uuid())\n  language  String\n  level     LanguageLevel @default(BASIC)\n  cdId      String        @map(\"candidate_id\")\n  candidate CandidatData  @relation(fields: [cdId], references: [id], onDelete: Cascade)\n}\n\nmodel Courses {\n  id          String       @id @default(uuid())\n  course      String\n  institution String\n  grade       String\n  startdate   DateTime\n  enddate     DateTime\n  cdId        String       @map(\"candidate_id\")\n  candidate   CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)\n}\n\nmodel Hobbies {\n  id        String       @id @default(uuid())\n  hobbie    String\n  cdId      String       @map(\"candidate_id\")\n  candidate CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)\n}\n\nmodel AgencyData {\n  id          String      @id @default(uuid())\n  agency_name String\n  slug        String      @unique\n  address     String\n  phone       String\n  p_iva_c_f   String\n  createdAt   DateTime    @default(now()) @map(\"created_at\")\n  updatedAt   DateTime    @updatedAt @map(\"updated_at\")\n  userId      String      @unique @map(\"user_id\")\n  about       String\n  logo        String[]\n  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)\n  branch      Branch[]\n  jobOffers   jobOffers[]\n\n  @@map(\"agency_data\")\n}\n\nmodel Branch {\n  id           String      @id @default(uuid())\n  name         String\n  email        String\n  phone        String\n  fax          String?\n  address      String\n  location     String\n  region       String\n  logo         String?\n  about_branch String?\n  adId         String      @map(\"agency_id\")\n  agency       AgencyData  @relation(fields: [adId], references: [id])\n  jobOffers    jobOffers[]\n\n  @@map(\"branches\")\n}\n\nmodel jobOffers {\n  id          String    @id @default(uuid())\n  title       String\n  slug        String    @unique\n  description String\n  region      String\n  province    String\n  location    String\n  reallyUpTo  DateTime? @map(\"really_up_to\")\n  createdAt   DateTime  @default(now()) @map(\"created_at\")\n  updatedAt   DateTime  @updatedAt @map(\"updated_at\")\n  isValidate  Boolean   @default(false)\n  views       Int       @default(0)\n  sectors     Sectors[]\n  tags        jobTags[]\n\n  categoryId           String                @map(\"category_id\")\n  categories           Category?             @relation(fields: [categoryId], references: [id])\n  contratId            String?               @map(\"contract_id\")\n  contractType         ContractTypeJob?      @relation(fields: [contratId], references: [id])\n  experienceId         String?               @map(\"experience_id\")\n  experienceMinimalJob ExperienceMinimalJob? @relation(fields: [experienceId], references: [id])\n  modeId               String?               @map(\"mode_job_id\")\n  modeJob              ModeJob?              @relation(fields: [modeId], references: [id])\n  workingTimeId        String?               @map(\"working_time_id\")\n  workingTimeJob       WorkingTimeJob?       @relation(fields: [workingTimeId], references: [id])\n  levelId              String?               @map(\"level_education_id\")\n  levelEducation       LevelEducation?       @relation(fields: [levelId], references: [id])\n\n  agencyId String     @map(\"agency_id\")\n  agency   AgencyData @relation(fields: [agencyId], references: [id])\n\n  branchId String? @map(\"branch_id\")\n  branch   Branch? @relation(fields: [branchId], references: [id])\n\n  @@map(\"job_offers\")\n}\n\nmodel ContractTypeJob {\n  id        String      @id @default(uuid())\n  name      String\n  jobOffers jobOffers[]\n\n  @@map(\"contract_type\")\n}\n\nmodel ExperienceMinimalJob {\n  id        String      @id @default(uuid())\n  name      String\n  jobOffers jobOffers[]\n\n  @@map(\"experience_minimal\")\n}\n\nmodel ModeJob {\n  id        String      @id @default(uuid())\n  name      String\n  jobOffers jobOffers[]\n\n  @@map(\"mode_job\")\n}\n\nmodel WorkingTimeJob {\n  id        String      @id @default(uuid())\n  name      String\n  jobOffers jobOffers[]\n\n  @@map(\"working_time_job\")\n}\n\nmodel LevelEducation {\n  id        String      @id @default(uuid())\n  name      String\n  jobOffers jobOffers[]\n\n  @@map(\"level_education\")\n}\n\nmodel jobTags {\n  id        String      @id @default(uuid())\n  name      String\n  slug      String\n  jobOffers jobOffers[]\n\n  @@map(\"job_tags\")\n}\n\nmodel Category {\n  id          String      @id @default(uuid())\n  name        String      @unique\n  slug        String      @unique\n  description String\n  level       Int?\n  sectors     Sectors[]\n  jobOffers   jobOffers[]\n  parentId    String?\n  parent      Category?   @relation(\"SubCategory\", fields: [parentId], references: [id])\n  children    Category[]  @relation(\"SubCategory\")\n\n  @@map(\"categories\")\n}\n\nmodel Sectors {\n  id       String      @id @default(uuid())\n  name     String      @unique\n  slug     String      @unique\n  jobOffer jobOffers[]\n\n  categoryId String\n  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)\n}\n\nmodel AuthAccount {\n  id String @id @default(uuid())\n\n  type    String\n  provide String\n\n  refreshToken String? @map(\"refresh_token\")\n  accessToken  String? @map(\"access_token\")\n  expiresAt    Int     @map(\"expires_at\")\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  user   User?   @relation(fields: [userId], references: [id])\n  userId String? @map(\"user_id\")\n\n  @@map(\"auth_account\")\n}\n\nmodel Tokens {\n  id String @id @default(uuid())\n\n  email     String\n  token     String    @unique\n  type      TokenType\n  expiresIn DateTime  @map(\"expires_in\")\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n\n  @@map(\"tokens\")\n}\n\nenum TokenType {\n  VERIFICATION\n  TWO_FACTOR\n  PASSWORD_RESET\n}\n\nenum AuthMethod {\n  CREDENTIALS\n  GOOGLE\n  FACEBOOK\n  TWITTER\n  TELEGRAMM\n  INSTAGRAM\n  DISCORD\n}\n\nenum UserRole {\n  USER\n  ADMIN\n  MODERATOR\n  CANDIDAT\n  AGENCY\n}\n\nenum SkillsLevel {\n  NONE\n  BEGINNER\n  EXPERIENCED\n  EXPERT\n}\n\nenum ContractType {\n  PARTTIME\n  SELFEMPLOYED\n  FREELANCE\n  CONTRACT\n  INTERNSHIP\n  APPRENTICESHIP\n}\n\nenum LanguageLevel {\n  NATIVESPEAKER\n  FLUENT\n  VERYGOOD\n  BASIC\n}\n",
+  "inlineSchemaHash": "05f6dfbf9e2559bdc7a50a2f4cd7106d08a2921983d8c0f092af4547c1255a2e",
   "copyEngine": true
 }
 config.dirname = '/'

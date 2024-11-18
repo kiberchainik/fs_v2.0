@@ -12,10 +12,10 @@ interface IStyles {
 }
 
 export const Header: FC<PropsWithChildren<IStyles>> = ({ children, className }) => {
-    return <div className={styles.wrapper}>
+    return <header className={styles.wrapper}>
         <div className={cn(styles.header, className)}>
             <div className='hidden md:flex'><Logo /></div>
-            <div className='flex justify-center w-full items-center'>
+            <div className='flex justify-around w-full items-center'>
                 {children}
                 <HeaderSearch />
             </div>
@@ -24,5 +24,5 @@ export const Header: FC<PropsWithChildren<IStyles>> = ({ children, className }) 
                 <ToggleTheme />
             </div>
         </div>
-    </div>
+    </header>
 }

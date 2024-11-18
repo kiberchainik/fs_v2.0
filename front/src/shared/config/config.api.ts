@@ -17,6 +17,7 @@ export const API_URL = {
     agencyEditProfile: () => API_URL.root('/agency'),
 
     vacancy: (id: string = '') => API_URL.root(`/joboffers/${id}`),
+    vacancySearchHeader: () => API_URL.root(`/joboffers/searchTerm`),
     deleteManyVacancy: () => API_URL.root(`/joboffers/delete-many`),
     agencyVacancy: () => API_URL.root(`/joboffers/my-vacancies`),
     getJobById: (id: string) => API_URL.root(`/joboffers/by-id/${id}`),

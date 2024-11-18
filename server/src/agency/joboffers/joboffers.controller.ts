@@ -21,11 +21,17 @@ export class JoboffersController {
   }
 
   @Get()
-  //@UsePipes(new ValidationPipe({transform: true}))
   findAll(
     @Query() jobOffersDto: JobOffersDto
   ) {
     return this.joboffersService.findAll(jobOffersDto);
+  }
+
+  @Get('searchTerm')
+  findAllBySearchTerm(
+    @Query('query') searchTerm: string
+  ) {
+    return this.joboffersService.findAllSearch(searchTerm);
   }
 
   @Get('by-slug/:slug')

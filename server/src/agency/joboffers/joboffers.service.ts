@@ -265,6 +265,61 @@ export class JoboffersService {
     }
   }
 
+  async findAllSearch(searchTerm: string) {
+    const search = await this.prisma.jobOffers.findMany({
+      where: {
+        AND: [
+          { isValidate: true },
+          {
+            OR: [
+              {
+                title: {
+                  search: searchTerm
+                }
+              },
+              // {
+              //   description: {
+              //     search: searchTerm
+              //   }
+              // }
+            ]
+          }
+        ]
+      },
+      select: {
+        id: true,
+        title: true,
+        slug: true,
+        description: true,
+        agency: {
+          select: {
+            id: true,
+            agency_name: true,
+            phone: true,
+            user: {
+              select: {
+                email: true
+              }
+            },
+            address: true
+          }
+        },
+        branch: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+            phone: true,
+            location: true,
+            address: true
+          }
+        }
+      }
+    })
+
+    return search
+  }
+
   async findAllOfUser(userId: string) {
     return await this.prisma.jobOffers.findMany({
       where: {

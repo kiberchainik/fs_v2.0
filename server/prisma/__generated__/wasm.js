@@ -330,9 +330,175 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.UserOrderByRelevanceFieldEnum = {
+  id: 'id',
+  email: 'email',
+  password: 'password'
+};
+
+exports.Prisma.CandidatDataOrderByRelevanceFieldEnum = {
+  id: 'id',
+  firstname: 'firstname',
+  surname: 'surname',
+  birthday: 'birthday',
+  phone: 'phone',
+  resident: 'resident',
+  about_my: 'about_my',
+  avatar: 'avatar',
+  userId: 'userId'
+};
+
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.EducationOrderByRelevanceFieldEnum = {
+  id: 'id',
+  degree: 'degree',
+  school: 'school',
+  grade: 'grade',
+  description: 'description',
+  cdId: 'cdId'
+};
+
+exports.Prisma.SkillsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  skill: 'skill',
+  cdId: 'cdId'
+};
+
+exports.Prisma.ExperienceOrderByRelevanceFieldEnum = {
+  id: 'id',
+  company: 'company',
+  location: 'location',
+  description: 'description',
+  cdId: 'cdId'
+};
+
+exports.Prisma.LanguagesOrderByRelevanceFieldEnum = {
+  id: 'id',
+  language: 'language',
+  cdId: 'cdId'
+};
+
+exports.Prisma.CoursesOrderByRelevanceFieldEnum = {
+  id: 'id',
+  course: 'course',
+  institution: 'institution',
+  grade: 'grade',
+  cdId: 'cdId'
+};
+
+exports.Prisma.HobbiesOrderByRelevanceFieldEnum = {
+  id: 'id',
+  hobbie: 'hobbie',
+  cdId: 'cdId'
+};
+
+exports.Prisma.AgencyDataOrderByRelevanceFieldEnum = {
+  id: 'id',
+  agency_name: 'agency_name',
+  slug: 'slug',
+  address: 'address',
+  phone: 'phone',
+  p_iva_c_f: 'p_iva_c_f',
+  userId: 'userId',
+  about: 'about',
+  logo: 'logo'
+};
+
+exports.Prisma.BranchOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  phone: 'phone',
+  fax: 'fax',
+  address: 'address',
+  location: 'location',
+  region: 'region',
+  logo: 'logo',
+  about_branch: 'about_branch',
+  adId: 'adId'
+};
+
+exports.Prisma.jobOffersOrderByRelevanceFieldEnum = {
+  id: 'id',
+  title: 'title',
+  slug: 'slug',
+  description: 'description',
+  region: 'region',
+  province: 'province',
+  location: 'location',
+  categoryId: 'categoryId',
+  contratId: 'contratId',
+  experienceId: 'experienceId',
+  modeId: 'modeId',
+  workingTimeId: 'workingTimeId',
+  levelId: 'levelId',
+  agencyId: 'agencyId',
+  branchId: 'branchId'
+};
+
+exports.Prisma.ContractTypeJobOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.ExperienceMinimalJobOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.ModeJobOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.WorkingTimeJobOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.LevelEducationOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.jobTagsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug'
+};
+
+exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  description: 'description',
+  parentId: 'parentId'
+};
+
+exports.Prisma.SectorsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  categoryId: 'categoryId'
+};
+
+exports.Prisma.AuthAccountOrderByRelevanceFieldEnum = {
+  id: 'id',
+  type: 'type',
+  provide: 'provide',
+  refreshToken: 'refreshToken',
+  accessToken: 'accessToken',
+  userId: 'userId'
+};
+
+exports.Prisma.TokensOrderByRelevanceFieldEnum = {
+  id: 'id',
+  email: 'email',
+  token: 'token'
 };
 exports.UserRole = exports.$Enums.UserRole = {
   USER: 'USER',

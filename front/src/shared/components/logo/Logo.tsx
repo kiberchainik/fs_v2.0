@@ -7,8 +7,8 @@ interface IStyles {
     className?: string
 }
 
-export const Logo: FC<PropsWithChildren<IStyles>> = ({className}) => {
-    return <Link href='/' className={styles.wrapper}>
+export const Logo: FC<PropsWithChildren<IStyles>> = ({ className }) => {
+    return <Link href='/' className={cn(styles.wrapper, className)}>
         FindSolution
     </Link>
 }
