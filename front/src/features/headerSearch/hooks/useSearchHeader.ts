@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { searchService } from "../services/search.service";
 import { useMemo, useRef, useState } from "react";
 import { toastMessageHandler } from "@/shared/utils";
@@ -13,14 +13,14 @@ interface UseSearchState {
     searchResult: ISearch[] | undefined
     ref: React.RefObject<HTMLDivElement>
     onFocus: () => void
-    onBlur: () => void
     onSearchTermChange: (e: React.ChangeEvent<HTMLInputElement>) => void
     onClickSearch: () => void
 }
 
 export function useSearchHeader(): UseSearchState {
     const [focused, setFocused] = useState<boolean>(false);
-    const [query, setQuery] = useState<string>('');
+    const [query, setQuery] = useState<string>('')
+    const queryClient = useQueryClient()
 
     const ref = useRef<HTMLDivElement>(null);
 
@@ -37,7 +37,7 @@ export function useSearchHeader(): UseSearchState {
     if (error) toastMessageHandler(error);
 
     const onSearchTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setQuery(e.target.value);
+        setQuery(e.target.value)
     };
 
     useClickAway(ref, () => {
@@ -48,12 +48,10 @@ export function useSearchHeader(): UseSearchState {
         setFocused(true);
     };
 
-    const onBlur = () => {
-        setFocused(false);
-    };
-
     const onClickSearch = () => {
-        setFocused(false);
+        setQuery('')
+        setFocused(false)
+        queryClient.removeQueries({ queryKey: ['search header'] })
     };
 
     return useMemo(() => ({
@@ -64,7 +62,6 @@ export function useSearchHeader(): UseSearchState {
         searchResult,
         ref,
         onFocus,
-        onBlur,
         onSearchTermChange,
         onClickSearch
     }), [query, focused, isFetching, isSuccess, searchResult]);
