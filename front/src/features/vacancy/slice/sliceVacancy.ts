@@ -5,6 +5,10 @@ interface VacancySlice {
     data: IVacanciaesFullDate[] | null
     isLoading: boolean
     error: string | null
+    limit?: number
+    page?: number
+    totalPages: number
+    totalCountJobs: number
     sortBy: "title" | "createdAt" | "views";
 }
 
@@ -12,6 +16,10 @@ const initialState: VacancySlice = {
     data: null,
     isLoading: false,
     error: null,
+    limit: 10,
+    page: 1,
+    totalPages: 1,
+    totalCountJobs: 1,
     sortBy: "createdAt"
 }
 
@@ -23,6 +31,12 @@ const vacancySlice = createSlice({
             state.data = action.payload
             state.isLoading = false
             state.error = null
+        },
+        setPageCount(state, action: PayloadAction<number>) {
+            state.totalPages = action.payload
+        },
+        setCountTotalJobs(state, action: PayloadAction<number>) {
+            state.totalCountJobs = action.payload
         },
         setLoading(state, action: PayloadAction<boolean>) {
             state.isLoading = action.payload
@@ -50,6 +64,6 @@ const vacancySlice = createSlice({
     }
 })
 
-export const { setJobs, setLoading, setError, setSortBy, sortJobs } = vacancySlice.actions
+export const { setJobs, setLoading, setError, setSortBy, sortJobs, setPageCount, setCountTotalJobs } = vacancySlice.actions
 
 export default vacancySlice.reducer

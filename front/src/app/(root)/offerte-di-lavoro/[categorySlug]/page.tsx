@@ -3,6 +3,7 @@ import { categoryService } from "@/features/category/services"
 import CategoryMenu from "@/features/category/components/Categories";
 import VacancyList from "@/features/vacancy/components/vacancyList/VacancyList";
 import { cache } from "react";
+import { Filter } from "@/features/filter/components/Filter";
 
 export const revalidate = 60;
 
@@ -40,6 +41,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         <div className='my-6'>
             <div className='flex gap-5 justify-between m-10'>
                 <div className='w-1/3 hidden md:block'>
+                    <Filter />
                     <CategoryMenu />
                 </div>
                 <div className='flex flex-col gap-y-5 w-full'>

@@ -7,6 +7,7 @@ import { returnAgencyBaseObject } from 'src/agency/dto'
 import { PrismaService } from '@/prisma/prisma.service';
 import { slugify } from '@/utils';
 import { title } from 'process';
+import { FilterJobsDto } from './dto/filterJobs.dto';
 
 @Injectable()
 export class JoboffersService {
@@ -242,6 +243,43 @@ export class JoboffersService {
     branchId ? (where['branch'] = { id: branchId }) : {}
     categoryId ? (where['categories'] = { id: categoryId }) : {}
     tagId ? (where['tags'] = { some: { id: tagId } }) : {}
+
+    const [vacancies, vacanciesCount] = await this.prisma.$transaction([
+      this.prisma.jobOffers.findMany({
+        where,
+        orderBy,
+        skip: page * limit - limit,
+        take: limit,
+        include: {
+          ...this.includesAll,
+          sectors: true,
+          branch: true
+        }
+      }),
+      this.prisma.jobOffers.count({ where })
+    ])
+    const pageCount = Math.ceil(vacanciesCount / limit)
+    return {
+      items: vacancies,
+      count: vacanciesCount,
+      pageCount
+    }
+  }
+
+  async findAllByFilter({ contractTypeId, experienceMinimalId, levelEducationId, location, modeJobId, workingTimeId, isValidate, agencyId, branchId, categoryId, limit, page }: FilterJobsDto) {
+    const where: Prisma.jobOffersWhereInput = { isValidate }
+    const orderBy: Prisma.jobOffersOrderByWithRelationInput[] = []
+
+    orderBy.push({ createdAt: 'desc' })
+    categoryId ? (where['categories'] = { id: categoryId }) : {}
+    location ? (where['location'] = location) : ''
+    agencyId ? (where['agency'] = { id: agencyId }) : {}
+    branchId ? (where['branch'] = { id: branchId }) : {}
+    contractTypeId ? (where['contractType'] = { id: contractTypeId }) : {}
+    experienceMinimalId ? (where['experienceMinimalJob'] = { id: experienceMinimalId }) : {}
+    levelEducationId ? (where['levelEducation'] = { id: levelEducationId }) : {}
+    modeJobId ? (where['modeJob'] = { id: modeJobId }) : {}
+    workingTimeId ? (where['workingTimeJob'] = { id: workingTimeId }) : {}
 
     const [vacancies, vacanciesCount] = await this.prisma.$transaction([
       this.prisma.jobOffers.findMany({

@@ -9,7 +9,7 @@ import Link from "next/link";
 import { MAIN_URL } from "@/shared/config";
 import { VacancyCardAuthorInfo } from "../vacancyCard/VCAuthorInfo";
 
-export default function VacancyPage({ id, title, description, views, createdAt, reallyUpTo, categories, agency, branchId, branch }: IVacanciaesFullDate) {
+export default function VacancyPage({ id, title, description, views, createdAt, reallyUpTo, categories, agency, branchId, branch, contractType, experienceMinimalJob, levelEducation, modeJob, workingTimeJob }: IVacanciaesFullDate) {
   const authUser = useAppSelector(state => state.reducer.user.data?.email)
 
   const author = {
@@ -66,6 +66,13 @@ export default function VacancyPage({ id, title, description, views, createdAt, 
         </div>
       </div>
       <div className={styles.authorSector}>
+        <div className='grid gap-y-3 font-bold text-sm'>
+          <span>{contractType && contractType.name}</span>
+          <span>{experienceMinimalJob && experienceMinimalJob.name}</span>
+          <span>{workingTimeJob && workingTimeJob.name}</span>
+          <span>{levelEducation && levelEducation.name}</span>
+          <span>{modeJob && modeJob.name}</span>
+        </div>
         <VacancyCardAuthorInfo {...author} />
         <div className={styles.authorSector_btn}>
           <Button variant='default'>

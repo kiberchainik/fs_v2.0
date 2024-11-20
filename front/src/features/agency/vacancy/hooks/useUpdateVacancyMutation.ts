@@ -2,16 +2,15 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { vacancyService } from "../services/vacancy.service";
 import { toastMessageHandler } from "@/shared/utils";
-import { useMemo } from "react";
-import { useParams } from "next/navigation";
-import { TypeVacancySchema } from "../schemes";
+import { useMemo } from "react"
+import { useParams } from "next/navigation"
 import { IVacanciaes } from "../types";
 
-export function useUpdateVacancyMutation () {
-    const { editjobId } = useParams<{editjobId: string}>()
+export function useUpdateVacancyMutation() {
+    const { editjobId } = useParams<{ editjobId: string }>()
     const queryClient = useQueryClient()
 
-    const {mutate: updJob, isPending, isSuccess} = useMutation({
+    const { mutate: updJob, isPending, isSuccess } = useMutation({
         mutationKey: ['update vacancy data'],
         mutationFn: (data: IVacanciaes) => vacancyService.updateVacancyData(editjobId, data),
         onSuccess() {
@@ -20,7 +19,7 @@ export function useUpdateVacancyMutation () {
             })
             toast.success('Vacancy updated succesfully!')
         },
-        onError(error:any) {
+        onError(error: any) {
             toastMessageHandler(error)
         }
     })

@@ -56,7 +56,12 @@ export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'd
         email: string
         phone: string
     }
-} & IVacancyOptions
+    contractType: { name: string } | null
+    experienceMinimalJob: { name: string } | null
+    levelEducation: { name: string } | null
+    modeJob: { name: string } | null
+    workingTimeJob: { name: string } | null
+}
 
 export type IVacanciaesEdit =
     Omit<IVacanciaes, 'slug'> &

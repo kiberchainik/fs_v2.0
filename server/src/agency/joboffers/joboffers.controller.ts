@@ -5,6 +5,7 @@ import { UpdateJobofferDto } from './dto/update-joboffer.dto'
 import { JobOffersDto } from './dto'
 import { Authorization, CurrentUser } from '@/auth/decorators'
 import { UserRole } from 'prisma/__generated__'
+import { FilterJobsDto } from './dto/filterJobs.dto'
 
 @Controller('joboffers')
 export class JoboffersController {
@@ -32,6 +33,13 @@ export class JoboffersController {
     @Query('query') searchTerm: string
   ) {
     return this.joboffersService.findAllSearch(searchTerm);
+  }
+
+  @Post('filtering')
+  findAllByFilter(
+    @Body() filterParams: FilterJobsDto
+  ) {
+    return this.joboffersService.findAllByFilter(filterParams);
   }
 
   @Get('by-slug/:slug')

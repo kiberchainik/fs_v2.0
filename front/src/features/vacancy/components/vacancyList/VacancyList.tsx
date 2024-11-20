@@ -10,21 +10,23 @@ import { useEffect } from "react";
 import { TCategoryBySlug } from "@/features/category/types";
 import { useSearchParams } from "next/navigation";
 import { ISearchTerm } from "../../types/searchTerm.type";
-import { setError, setJobs, setLoading } from "../../slice/sliceVacancy";
-import Filter from "../filter/Filter";
+import { setCountTotalJobs, setError, setJobs, setLoading, setPageCount } from "../../slice/sliceVacancy";
+import Filter from "../sorted/Filter";
 
-export default function VacancyList({ jobs, count, pageCount, name, description }: TCategoryBySlug) {
-  const { data: vacancyList, isLoading, error } = useAppSelector(state => state.reducer.vacancies)
+export default function VacancyList({ jobs, count: totalJobs, pageCount: totalPages, name, description }: TCategoryBySlug) {
+  const { data: vacancyList, isLoading, page, totalCountJobs, limit } = useAppSelector(state => state.reducer.vacancies)
   const dispatch = useAppDispatch()
   const searchParams = useSearchParams()
   const params: ISearchTerm = {
-    page: parseInt((searchParams.get('page') as string) || '1'),
-    limit: parseInt((searchParams.get('limit') as string) || '10')
+    page: parseInt((searchParams.get('page') as string) || page!.toString()),
+    limit: parseInt((searchParams.get('limit') as string) || limit!.toString())
   }
 
   useEffect(() => {
     if (jobs) {
       dispatch(setJobs(jobs))
+      dispatch(setCountTotalJobs(totalJobs!))
+      dispatch(setPageCount(totalPages!))
       dispatch(setLoading(false))
     }
 
@@ -49,9 +51,9 @@ export default function VacancyList({ jobs, count, pageCount, name, description 
           </div>
           <Card className={styles.vacancyPagination}>
             <PaginationWithLinks
-              page={pageCount}
+              page={params.page!}
               limit={params.limit!}
-              totalCount={count}
+              totalCount={totalCountJobs!}
               pageSizeSelectOptions={{
                 pageSizeOptions: [5, 10, 25, 50]
               }}
