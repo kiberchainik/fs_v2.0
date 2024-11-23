@@ -1,5 +1,5 @@
 import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common'
-import { CreateCategoryDto, CreateSectorDto, PaginationCategoryQueryDto, UpdateCategoryDto, UpdateSectorDto } from './dto'
+import { CreateCategoryDto, CreateSectorDto, PaginationCategoryQueryDto, returnCategoryBaseObject, UpdateCategoryDto, UpdateSectorDto } from './dto'
 import { PrismaService } from '@/prisma/prisma.service'
 import { Prisma } from 'prisma/__generated__'
 import { DBError, slugify } from '@/utils'
@@ -149,10 +149,7 @@ export class CategoryService {
           jobOffers: {
             include: {
               categories: {
-                select: {
-                  name: true,
-                  slug: true
-                }
+                select: returnCategoryBaseObject
               },
               agency: {
                 select: returnAgencyBaseObject
@@ -177,12 +174,25 @@ export class CategoryService {
 
     const pageCount = Math.ceil(vacanciesCount / limit)
 
-
     return {
       vacancies,
       count: vacanciesCount,
       pageCount
     }
+  }
+
+  async findMetadataBySlug(slug: string) {
+    const vacancies = this.prisma.category.findFirst({
+      where: { slug },
+      select: {
+        name: true,
+        description: true,
+      }
+    })
+
+    if (!vacancies) return false
+
+    return vacancies
   }
 
   async update(id: string, updateCategoryDto: UpdateCategoryDto) {

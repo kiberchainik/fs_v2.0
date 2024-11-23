@@ -47,6 +47,14 @@ export class CategoryController {
     return await this.categoryService.findOneBySlug(slug, jobOffersDto);
   }
 
+  @Get('metadata-by-slug/:slug')
+  @HttpCode(HttpStatus.OK)
+  async getMetadataBySlug(
+    @Param('slug') slug: string
+  ) {
+    return await this.categoryService.findMetadataBySlug(slug);
+  }
+
   @Authorization(UserRole.ADMIN)
   @UsePipes(new ValidationPipe())
   @Patch(':id')

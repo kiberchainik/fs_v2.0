@@ -21,6 +21,12 @@ class VacancyService {
         return data
     }
 
+    async getVacancyMetaDataBySlug(slug: string) {
+        const { data } = await axiosPublic.get<{ title: string, description: string }>(API_URL.getMetadataJobBySlug(slug))
+
+        return data
+    }
+
     async createVacancyData(data: IVacanciaes) {
         const { data: vacancy } = await axiosPrivate.post<IVacanciaes>(API_URL.vacancy(), data)
 

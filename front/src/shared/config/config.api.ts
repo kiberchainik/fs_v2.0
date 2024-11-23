@@ -23,10 +23,12 @@ export const API_URL = {
     agencyVacancy: () => API_URL.root(`/joboffers/my-vacancies`),
     getJobById: (id: string) => API_URL.root(`/joboffers/by-id/${id}`),
     getJobBySlug: (slug: string) => API_URL.root(`/joboffers/by-slug/${slug}`),
+    getMetadataJobBySlug: (slug: string) => API_URL.root(`/joboffers/metadata-by-slug/${slug}`),
     getJobByCategory: (slug: string) => API_URL.root(`/joboffers/by-category/${slug}`),
     options: (option: string) => API_URL.root(`/${option}`),
     branch: (url = '') => API_URL.root(`/branch/${url}`),
     deleteManyBranch: () => API_URL.root(`/branch/delete-many`),
     category: (id: string = '') => API_URL.root(`/category${id}`),
-    categoryBySlug: (slug: string) => API_URL.root(`/category/by-slug/${slug}`)
+    categoryBySlug: (slug: string) => API_URL.root(`/category/by-slug/${slug}`),
+    categoryMetadataBySlug: (slug: string) => API_URL.root(`/category/metadata-by-slug/${slug}`)
 }

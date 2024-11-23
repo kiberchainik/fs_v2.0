@@ -16,6 +16,11 @@ class CategoryService {
 
         return data
     }
+
+    public async getCategoryMetaDataBySlug(slug: string) {
+        const { data } = await axiosPublic.get<{ name: string, description: string }>(API_URL.categoryMetadataBySlug(slug))
+        return data
+    }
 }
 
 export const categoryService = new CategoryService()

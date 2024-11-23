@@ -47,6 +47,11 @@ export class JoboffersController {
     return this.joboffersService.findOneBySlug(slug);
   }
 
+  @Get('metadata-by-slug/:slug')
+  getMetadataBySlug(@Param('slug') slug: string) {
+    return this.joboffersService.findMetedataJobBySlug(slug);
+  }
+
   @Get('my-vacancies')
   @Authorization(UserRole.AGENCY)
   findAllOfUser(@CurrentUser('id') id: string,) {

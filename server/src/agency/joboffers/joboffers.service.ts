@@ -412,6 +412,22 @@ export class JoboffersService {
     return jobData
   }
 
+  async findMetedataJobBySlug(slug: string) {
+    const jobData = await this.prisma.jobOffers.findUnique({
+      where: { slug },
+      select: {
+        title: true,
+        description: true
+      }
+    });
+
+    if (!jobData) {
+      return false
+    }
+
+    return jobData
+  }
+
   async findOneById(id: string) {
     const vacancie = await this.prisma.jobOffers.findUnique({
       where: { id },

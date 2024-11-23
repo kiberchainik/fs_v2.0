@@ -3,7 +3,7 @@ import CategoryMenu from '@/features/category/components/Categories'
 import { Filter } from '@/features/filter/components/Filter'
 import VacancyList from '@/features/vacancy/components/vacancyList/VacancyList'
 import { vacancyPageServices } from '@/features/vacancy/services'
-import { CATEGORY_DESCRIPTION, CATEGORY_NAME, CATEGORY_NOT_FOUND } from '@/shared/constants/seo.constants'
+import { CATEGORY_DESCRIPTION, CATEGORY_NAME } from '@/shared/constants/seo.constants'
 import { Metadata } from 'next'
 import { cache } from 'react'
 
