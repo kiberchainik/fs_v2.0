@@ -148,6 +148,12 @@ export class CategoryService {
           children: this.includeChildrenCategories(10),
           jobOffers: {
             include: {
+              categories: {
+                select: {
+                  name: true,
+                  slug: true
+                }
+              },
               agency: {
                 select: returnAgencyBaseObject
               },
@@ -167,10 +173,10 @@ export class CategoryService {
         }
       })
     ])
+    if (!vacancies) return false
 
     const pageCount = Math.ceil(vacanciesCount / limit)
 
-    if (!vacancies) throw new NotFoundException('Категории не существует')
 
     return {
       vacancies,

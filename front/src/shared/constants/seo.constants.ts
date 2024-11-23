@@ -5,6 +5,8 @@ export const NO_INDEX_PAGE = {
     }
 }
 
+export const CATEGORY_NOT_FOUND = 'Категория которую вы пытаетесь открыть не сущестувет или вы ошиблись при вводе адреса, но вы так же можете воспользоваться фильтром'
+
 export const SITE_NAME = 'Curriculum gratis per il lavoro dei tuoi sogni!'
 export const SITE_DESCRIPTION = 'Crea il tuo CV professionale sul nostro sito e accedi alle offerte di lavoro in tutta Italia. Con un curriculum efficace, ti candidi in pochi passi e aumenti le tue possibilità di trovare il lavoro giusto per te.'
 

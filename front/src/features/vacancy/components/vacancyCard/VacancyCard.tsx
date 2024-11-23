@@ -1,7 +1,6 @@
 import { IVacanciaesFullDate } from "@/features/agency/vacancy/types";
-import { Button, Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/shared/components";
-import { MAIN_URL } from "@/shared/config";
-import { formatDate } from "@/shared/utils";
+import { Button, Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/shared/components"
+import { formatDate, generatePostUrl } from "@/shared/utils";
 import Link from "next/link";
 
 import styles from './vacancyCard.module.scss'
@@ -10,12 +9,14 @@ import { CiCalendar, CiClock2, CiRead } from "react-icons/ci"
 import { VacancyCardAuthorInfo } from "./VCAuthorInfo";
 
 export function VacancyCard({ title, slug, description, agency, branch, categories, createdAt, reallyUpTo, views }: IVacanciaesFullDate) {
+    console.log(categories);
+
     description = description.slice(0, 150) + '...'
     return (
         <Card className='max-w-96'>
             <CardHeader>
                 <CardTitle className='text-wrap'>
-                    <Link href={MAIN_URL.fullVacancy(slug)} className='text-left text-balance text-2xl font-light'>{title}</Link>
+                    <Link href={`${generatePostUrl(categories, slug!)}`} className='text-left text-balance text-2xl font-light'>{title}</Link>
                 </CardTitle>
                 <div className={styles.headerDateInfo}>
                     <CiCalendar /> {formatDate(createdAt)}

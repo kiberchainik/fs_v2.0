@@ -26,7 +26,7 @@ export default function CategoryMenu() {
           {categories?.map((category) => (
             <li key={category.id} className="pb-2">
               <div className="flex items-center justify-between">
-                <Link href={MAIN_URL.categories(category.slug)} className="text-lg font-semibold px-0">
+                <Link href={`/${category.slug}`} className="text-lg font-semibold px-0">
                   {category.name}
                 </Link>
                 {category.children && category.children.length > 0 && (
@@ -47,7 +47,7 @@ export default function CategoryMenu() {
                 <ul className="mt-2 space-y-1 ml-4">
                   {category.children?.map((subcategory) => (
                     <li key={subcategory.id}>
-                      <Link href={MAIN_URL.categories(category.slug)} className="text-gray-600 pl-4 text-sm w-full justify-start">
+                      <Link href={`/${category.slug}/${subcategory.slug}`} className="text-gray-600 pl-4 text-sm w-full justify-start">
                         {subcategory.name}
                       </Link>
                     </li>

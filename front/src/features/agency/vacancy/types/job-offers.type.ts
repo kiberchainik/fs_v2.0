@@ -1,3 +1,4 @@
+import { TBreadcrumbr } from "@/features/category/types"
 import { TPagination } from "."
 
 interface IVacancyOptions {
@@ -27,6 +28,7 @@ export interface IVacanciaes extends IVacancyOptions {
 }
 
 export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'description' | 'branchId'> & {
+    breadcrumbs: TBreadcrumbr
     reallyUpTo: string
     createdAt: string
     views: number

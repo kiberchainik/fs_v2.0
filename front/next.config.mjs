@@ -20,14 +20,14 @@ const nextConfig = {
             }
         ]
     },
-	async rewrites() {
-		return [
-			{
-				source: '/static/:path*',
-				destination: `${process.env.SERVER_URL}/static/:path*`
-			}
-		]
-	}
+    async rewrites() {
+        return [
+            {
+                source: '/static/:path*',
+                destination: `${process.env.SERVER_URL}/static/:path*`
+            }
+        ]
+    }
 };
 
 export default nextConfig;

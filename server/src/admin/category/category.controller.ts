@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, Query, HttpCode, HttpStatus } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto, CreateSectorDto, UpdateCategoryDto, UpdateSectorDto } from './dto';
 import { Authorization } from '@/auth/decorators';
@@ -39,6 +39,7 @@ export class CategoryController {
   }
 
   @Get('by-slug/:slug')
+  @HttpCode(HttpStatus.OK)
   async findOneBySlug(
     @Param('slug') slug: string,
     @Query() jobOffersDto: JobOffersDto

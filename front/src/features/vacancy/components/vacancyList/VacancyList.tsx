@@ -12,8 +12,9 @@ import { useSearchParams } from "next/navigation";
 import { ISearchTerm } from "../../types/searchTerm.type";
 import { setCountTotalJobs, setError, setJobs, setLoading, setPageCount } from "../../slice/sliceVacancy";
 import Filter from "../sorted/Filter";
+import Breadcrumbs from "@/features/breadcrumbs/components/BreadCrumbs"
 
-export default function VacancyList({ jobs, count: totalJobs, pageCount: totalPages, name, description }: TCategoryBySlug) {
+export default function VacancyList({ jobs, count: totalJobs, pageCount: totalPages, name, category_not_found, description, breadcrumbs }: TCategoryBySlug) {
   const { data: vacancyList, isLoading, page, totalCountJobs, limit } = useAppSelector(state => state.reducer.vacancies)
   const dispatch = useAppDispatch()
   const searchParams = useSearchParams()
@@ -42,7 +43,9 @@ export default function VacancyList({ jobs, count: totalJobs, pageCount: totalPa
       <Filter />
       {isLoading ? (<SkeletonCard />) : vacancyList && (
         <div className={styles.listVacancy}>
+          <Breadcrumbs breadcrumbs={breadcrumbs} />
           <div className={styles.category_info}>
+            {category_not_found && <div className={styles.category_not_found}>{category_not_found}</div>}
             <div className={styles.category_info_title}>{name}</div>
             <div className={styles.category_info_description}>{description}</div>
           </div>

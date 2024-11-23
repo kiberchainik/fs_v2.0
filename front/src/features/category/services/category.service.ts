@@ -13,6 +13,7 @@ class CategoryService {
         const { data } = await axiosPublic.get<TCategoryPageResponse>(API_URL.categoryBySlug(slug), {
             params: searchTerm ? searchTerm : {}
         })
+
         return data
     }
 }

@@ -1,8 +1,15 @@
+export interface CategoryNode {
+    name: string
+    slug: string
+    parent?: CategoryNode
+}
+
 export interface ISearch {
     title: string
     slug: string
     id: string
     description: string
+    categories: CategoryNode
     agency?: {
         id: string
         agency_name: string

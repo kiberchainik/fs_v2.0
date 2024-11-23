@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Input, Skeleton } from '@/shared/components'
+import { Button, Input } from '@/shared/components'
 import styles from './search.module.scss'
 import { CiSearch } from 'react-icons/ci'
 import { cn } from '@/shared/utils'
@@ -9,7 +9,7 @@ import { MAIN_URL } from '@/shared/config'
 import { useSearchHeader } from '../hooks/useSearchHeader'
 
 export function HeaderSearch() {
-    const { searchTerm, focused, searchResult, ref, onSearchTermChange, onFocus, onClickSearch } = useSearchHeader()
+    const { searchTerm, focused, searchResult, ref, onSearchTermChange, onFocus, onClickSearch, generatePostUrl } = useSearchHeader()
 
     return (
         <>
@@ -22,7 +22,7 @@ export function HeaderSearch() {
             </div>
             {<div className={cn(styles.searchResult, focused ? 'opacity-100' : 'opacity-0')}>
                 {searchResult && searchResult.map(item => (
-                    <Link href={MAIN_URL.fullVacancy(item.slug)} key={item.id} className={styles.elementResult} onClick={onClickSearch}>
+                    <Link href={`${generatePostUrl(item.categories, item.slug)}`} key={item.id} className={styles.elementResult} onClick={onClickSearch}>
                         <div className={styles.elementResult_info}>
                             <div className={styles.elementResult_title}><span>{item.title}</span></div>
                             <div className={styles.elementResult_info_author}>

@@ -18,8 +18,15 @@ export type TCategoryPageResponse = {
     pageCount: number
 }
 
+export type TBreadcrumbr = {
+    name: string
+    href: string
+}[]
+
 export type TCategorySelector = Omit<ICategory, 'parentId' | 'level'>
 export type TCategoryBySlug = Omit<TCategorySelector, 'id'> & {
+    breadcrumbs: TBreadcrumbr
+    category_not_found?: string
     jobs: IVacanciaesFullDate[]
     count: number
     pageCount: number

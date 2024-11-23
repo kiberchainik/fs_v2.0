@@ -6,7 +6,6 @@ import { returnCategoryBaseObject } from 'src/admin/category/dto'
 import { returnAgencyBaseObject } from 'src/agency/dto'
 import { PrismaService } from '@/prisma/prisma.service';
 import { slugify } from '@/utils';
-import { title } from 'process';
 import { FilterJobsDto } from './dto/filterJobs.dto';
 
 @Injectable()
@@ -44,11 +43,6 @@ export class JoboffersService {
   }
 
   async create(userId: string, createJobofferDto: CreateJobofferDto) {
-    const offersExist = await this.prisma.jobOffers.findFirst({
-      where: { title: createJobofferDto.title }
-    })
-
-
     const { id } = await this.getAgencyDataId(userId)
 
     const {
@@ -65,7 +59,6 @@ export class JoboffersService {
       ...jobOffers
     } = createJobofferDto
 
-    if (offersExist !== null) createJobofferDto.title = slug + '_' + createJobofferDto.location
     //const existsCategories = await this.categoryService.getById(categoryIds)
     //const categoriesIds = existsCategories.map((catId) =>({id: catId.id}))
 
@@ -111,6 +104,11 @@ export class JoboffersService {
         }
       })
 
+      await this.prisma.jobOffers.update({
+        where: { id: newJob.id },
+        data: { slug: `${newJob.slug}_${newJob.id.split('-')[0]}` }
+      })
+
       if (branchId) {
         await this.prisma.jobOffers.update({
           where: { id: newJob.id },
@@ -123,7 +121,7 @@ export class JoboffersService {
   }
 
   async update(idJob: string, userId: string, updateJobofferDto: UpdateJobofferDto) {
-    const { title, tags } = await this.prisma.jobOffers.findFirst({
+    const { tags } = await this.prisma.jobOffers.findFirst({
       where: {
         AND: [
           { id: idJob },
@@ -131,7 +129,6 @@ export class JoboffersService {
         ]
       },
       select: {
-        title: true,
         tags: {
           select: {
             id: true
@@ -164,11 +161,6 @@ export class JoboffersService {
       })
     }
 
-    if (title !== updateJobofferDto.title) {
-      updateJobofferDto.slug = `${slugify(updateJobofferDto.title)}_${idJob}`
-      //if(isExist) throw new NotAcceptableException('According to the rules of the site, vacancies cannot have the same title')
-    }
-
     const jobTags = vTags?.map((tag) => ({
       name: tag, slug: slugify(tag)
     })) || []
@@ -197,7 +189,7 @@ export class JoboffersService {
             },
             data: {
               ...jobOffers,
-              slug: updateJobofferDto.slug,
+              slug: `${slugify(updateJobofferDto.slug)}_${idJob.split('-')[0]}`,
               categories: {
                 connect: { id: categories }
               },
@@ -351,6 +343,24 @@ export class JoboffersService {
             location: true,
             address: true
           }
+        },
+        categories: {
+          select: {
+            name: true,
+            slug: true,
+            parent: {
+              select: {
+                name: true,
+                slug: true,
+                parent: {
+                  select: {
+                    name: true,
+                    slug: true,
+                  },
+                },
+              },
+            }
+          }
         }
       }
     })
@@ -367,6 +377,14 @@ export class JoboffersService {
   }
 
   async findOneBySlug(slug: string) {
+    const existingJobOffer = await this.prisma.jobOffers.findUnique({
+      where: { slug },
+    });
+
+    if (!existingJobOffer) {
+      return false
+    }
+
     await this.prisma.jobOffers.update({
       where: { slug },
       data: {
@@ -410,16 +428,6 @@ export class JoboffersService {
           select: {
             id: true
           }
-        }
-      }
-    })
-
-    if (!vacancie) throw new NotFoundException('ARTICLE_NOT_FOUND')
-    await this.prisma.jobOffers.update({
-      where: { id },
-      data: {
-        views: {
-          increment: 1
         }
       }
     })

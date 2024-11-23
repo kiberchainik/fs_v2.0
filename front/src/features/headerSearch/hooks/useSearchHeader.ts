@@ -1,9 +1,9 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { searchService } from "../services/search.service";
 import { useMemo, useRef, useState } from "react";
-import { toastMessageHandler } from "@/shared/utils";
+import { generatePostUrl, toastMessageHandler } from "@/shared/utils";
 import { useClickAway, useDebounce } from "react-use";
-import { ISearch } from "../types/search.type";
+import { CategoryNode, ISearch } from "../types/search.type";
 
 interface UseSearchState {
     focused: boolean
@@ -15,6 +15,7 @@ interface UseSearchState {
     onFocus: () => void
     onSearchTermChange: (e: React.ChangeEvent<HTMLInputElement>) => void
     onClickSearch: () => void
+    generatePostUrl: (category: CategoryNode, slug: string) => string
 }
 
 export function useSearchHeader(): UseSearchState {
@@ -63,6 +64,7 @@ export function useSearchHeader(): UseSearchState {
         ref,
         onFocus,
         onSearchTermChange,
-        onClickSearch
+        onClickSearch,
+        generatePostUrl
     }), [query, focused, isFetching, isSuccess, searchResult]);
 }

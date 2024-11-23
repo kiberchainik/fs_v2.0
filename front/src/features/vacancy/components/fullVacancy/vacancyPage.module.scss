@@ -2,7 +2,7 @@
     @apply flex flex-col md:flex-row;
 
     > .wrapperVacancy {
-        @apply grid md:w-3/4 w-full;
+        @apply grid md:w-3/4 w-full gap-y-5;
     
         > .title {
             @apply w-full font-extrabold text-4xl
