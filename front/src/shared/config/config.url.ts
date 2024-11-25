@@ -12,9 +12,16 @@ export const AGENCY_DROPDOWN_URL = {
 
 export const CANDIDAT_DROPDOWN_URL = {
     root: (url: string) => `/candidat${url ? url : ''}`,
-
+    // courses    Courses[]
+    // education  Education[]
+    // experience Experience[]
+    // hobbies    Hobbies[]
+    // languages  Languages[]
+    // skills
     dashboard: () => CANDIDAT_DROPDOWN_URL.root(''),
-    profile: () => CANDIDAT_DROPDOWN_URL.root('/profile'),
+    privacy: () => CANDIDAT_DROPDOWN_URL.root('/privacy'),
+    portfolio: () => CANDIDAT_DROPDOWN_URL.root('/curriculum'),
+    savedJobs: () => CANDIDAT_DROPDOWN_URL.root('/favorite'),
 }
 
 export const AGENCY_URL = {

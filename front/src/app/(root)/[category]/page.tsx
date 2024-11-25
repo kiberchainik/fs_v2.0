@@ -48,7 +48,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
             <div className='my-6'>
                 <div className='flex gap-5 justify-between m-10'>
                     <div className='w-1/3 hidden md:block'>
-                        <Filter />
+                        {/* <Filter /> */}
                         <CategoryMenu />
                     </div>
                     <div className='flex flex-col gap-y-5 w-full'>

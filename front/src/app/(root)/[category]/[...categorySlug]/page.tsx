@@ -27,7 +27,7 @@ export default async function Page({ params, searchParams }: Props) {
         return (
             <div className="flex gap-5 justify-between m-10">
                 <div className="w-1/3 hidden md:grid h-full gap-y-5">
-                    <Filter />
+                    {/* <Filter /> */}
                     <CategoryMenu />
                 </div>
                 <div className="flex flex-col gap-y-5 w-full">

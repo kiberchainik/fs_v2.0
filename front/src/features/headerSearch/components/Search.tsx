@@ -5,7 +5,6 @@ import styles from './search.module.scss'
 import { CiSearch } from 'react-icons/ci'
 import { cn } from '@/shared/utils'
 import Link from 'next/link'
-import { MAIN_URL } from '@/shared/config'
 import { useSearchHeader } from '../hooks/useSearchHeader'
 
 export function HeaderSearch() {

@@ -5,11 +5,9 @@ import { Loader, Button } from "@/shared/components/ui";
 import { useGetUserHeaderData } from "../../hooks";
 import { UserMenu } from "./UserMenu";
 import Link from "next/link";
-import { useAppSelector } from "@/shared/hooks";
-import { AGENCY_DROPDOWN_URL } from "@/shared/config";
+import { useAppSelector } from "@/shared/hooks"
 
-export const UserHeaderMenu:FC = () => {
-    //const {user, isFetching} = useGetUserHeaderData()
+export const UserHeaderMenu: FC = () => {
     const { data: user, isLoading, error } = useAppSelector(state => state.reducer.user);
     const { refetch } = useGetUserHeaderData();
 
@@ -19,14 +17,14 @@ export const UserHeaderMenu:FC = () => {
 
     return (
         <>
-            { isLoading ? (<Loader />) : user ? (
-                    <UserMenu {...user} />
-                ) : (
-                    <>
-                        <Button variant='default'><Link href="/auth/candidat">Candidat</Link></Button>
-                        <Button variant='default'><Link href="/auth/agency">Agency</Link></Button>
-                    </>
-                )
+            {isLoading ? (<Loader />) : user ? (
+                <UserMenu {...user} />
+            ) : (
+                <>
+                    <Button variant='default'><Link href="/auth/candidat">Candidat</Link></Button>
+                    <Button variant='default'><Link href="/auth/agency">Agency</Link></Button>
+                </>
+            )
             }
         </>
     )

@@ -1,6 +1,6 @@
 import { UserRole } from "@/features/auth/types"
 import { IconType } from "react-icons"
-import { CiDesktop, CiHeart, CiPalette, CiUser } from "react-icons/ci"
+import { CiDesktop, CiHeart, CiMemoPad, CiPalette, CiUser } from "react-icons/ci"
 import { PiGitBranchThin } from "react-icons/pi"
 import { AGENCY_DROPDOWN_URL, CANDIDAT_DROPDOWN_URL, MAIN_URL } from "./config.url"
 
@@ -76,8 +76,18 @@ export const HeaderUserMenu = (role: UserRole): MenuItems[] => {
         },
         {
             icon: CiUser,
-            href: CANDIDAT_DROPDOWN_URL.profile(),
-            title: 'Profile'
+            href: CANDIDAT_DROPDOWN_URL.privacy(),
+            title: 'Privacy'
+        },
+        {
+            icon: CiMemoPad,
+            href: CANDIDAT_DROPDOWN_URL.portfolio(),
+            title: 'Curriculum'
+        },
+        {
+            icon: CiHeart,
+            href: CANDIDAT_DROPDOWN_URL.savedJobs(),
+            title: 'Offerte salvati'
         }
     ]
 }

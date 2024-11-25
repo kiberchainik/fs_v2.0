@@ -3,19 +3,44 @@
 import { headerMainMenu } from "@/shared/config";
 
 import styles from './headerMenu.module.scss'
-import { HeaderDesctopMenu, HeaderMobileMenu } from "."
+import { useState } from "react";
+import Link from "next/link";
+import { Button } from "@/shared/components";
+import { cn } from "@/shared/utils";
 
-export function HeaderMenu () {
+export function HeaderMenu() {
     const headerMenu = headerMainMenu()
-    
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    }
+
     return (
         <>
-            <div className='hidden md:flex'>
-                <HeaderDesctopMenu  headerMenu={headerMenu} />
+            <div className="md:hidden">
+                <Button onClick={toggleMenu} className="focus:outline-none" aria-label="Toggle Menu">
+                    {isMenuOpen ? (
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    ) : (
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    )}
+                </Button>
             </div>
-            <div className='md:hidden'>
-                <HeaderMobileMenu  headerMenu={headerMenu} />
-            </div>
+
+            <nav className={cn(styles.headerNav, isMenuOpen ? styles.toggleOpen : styles.toggleClose, 'md:opacity-100 md:scale-100 md:pointer-events-auto')}>
+                <ul className={styles.list}>
+                    {headerMenu.map((menu) => (
+                        <Link href={menu.href} key={menu.href}>
+                            {menu.title}
+                        </Link>
+                    ))}
+                </ul>
+            </nav>
         </>
     )
 }
