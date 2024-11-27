@@ -3,8 +3,8 @@ import { CreateCandidatDto } from './dto/create-candidat.dto';
 import { UpdateCandidatDto } from './dto/update-candidat.dto';
 import { PrismaService } from '@/prisma/prisma.service';
 import { join } from 'path';
-import { unlink } from 'fs/promises';
-import { FileResponse } from '@/libs/file/file.service';
+import { unlink, access } from 'fs/promises';
+import { FileResponse } from '@/libs/file/file.service'
 
 @Injectable()
 export class CandidatService {
@@ -57,7 +57,9 @@ export class CandidatService {
     }
 
     if (oldData.avatar !== null) oldData.avatar.map(file => {
-      if (join(__dirname, '..', '../src', file)) unlink(join(__dirname, '..', '../src', file))
+      access(join(__dirname, '..', '../src', file)).then(() => {
+        unlink(join(__dirname, '..', '../src', file))
+      })
     })
 
     return candidat
