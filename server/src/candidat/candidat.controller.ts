@@ -1,15 +1,42 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, MaxFileSizeValidator, ParseFilePipe, Query, UploadedFiles } from '@nestjs/common';
 import { CandidatService } from './candidat.service';
 import { CreateCandidatDto } from './dto/create-candidat.dto';
 import { UpdateCandidatDto } from './dto/update-candidat.dto';
+import { Authorization, CurrentUser } from '@/auth/decorators';
+import { UserRole } from 'prisma/__generated__';
+import { FilesInterceptor } from '@nestjs/platform-express';
+import { FileService } from '@/libs/file/file.service';
 
 @Controller('candidat')
 export class CandidatController {
-  constructor(private readonly candidatService: CandidatService) {}
+  constructor(
+    private readonly candidatService: CandidatService,
+    private readonly file: FileService
+  ) { }
 
   @Post()
   create(@Body() createCandidatDto: CreateCandidatDto) {
     return this.candidatService.create(createCandidatDto);
+  }
+
+  @Authorization(UserRole.CANDIDAT)
+  @UseInterceptors(FilesInterceptor('files'))
+  @Post('avatar')
+  async uploadFile(
+    @UploadedFiles(
+      new ParseFilePipe({
+        validators: [new MaxFileSizeValidator({ maxSize: 2 * 1024 * 1024, message: "Файл должен быть не более 2mb" })]
+      })
+    ) files: Express.Multer.File[],
+    @CurrentUser('id') id: string,
+    @Query('folder') folder?: string
+  ) {
+    const newFiles = await this.file.filterFiles(files)
+    const fileData = await this.file.saveFiles(newFiles, id)
+
+    //this.agencyService.updLogo(id, fileData)
+
+    return fileData
   }
 
   @Get()
@@ -17,18 +44,23 @@ export class CandidatController {
     return this.candidatService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.candidatService.findOne(+id);
+  @Get('privacy')
+  @Authorization(UserRole.CANDIDAT)
+  getCandidatPrivacy(@CurrentUser('id') id: string) {
+    return this.candidatService.getCandidatPrivacy(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCandidatDto: UpdateCandidatDto) {
-    return this.candidatService.update(+id, updateCandidatDto);
+  @Patch('privacy')
+  @Authorization(UserRole.CANDIDAT)
+  update(
+    @Body() updateCandidatDto: UpdateCandidatDto,
+    @CurrentUser('id') id: string
+  ) {
+    return this.candidatService.update(id, updateCandidatDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.candidatService.remove(+id);
+    return this.candidatService.remove(id);
   }
 }

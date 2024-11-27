@@ -1,10 +1,17 @@
-import { IUser } from "@/features/auth/types";
+import { IPrivacy, IUser } from "@/features/auth/types";
 import { axiosPrivate } from "@/shared/api";
-import { TypeSettingsSchema } from "../schemes";
+import { TypePrivacySchema } from "../schemes";
+import { API_URL } from "@/shared/config";
 
 class UserService {
-    public async updateProfile(data: TypeSettingsSchema) {
-        return await axiosPrivate.patch<IUser>('users/profile', data)
+    public async getPrivacy() {
+        const { data } = await axiosPrivate.get<IPrivacy>(API_URL.candidatProfile())
+
+        return data
+    }
+
+    public async updateProfile(data: TypePrivacySchema) {
+        return await axiosPrivate.patch<IUser>(API_URL.candidatProfile(), data)
     }
 }
 

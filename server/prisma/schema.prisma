@@ -36,10 +36,10 @@ model CandidatData {
   firstname  String
   surname    String
   birthday   String
-  phone      String
-  resident   String
-  about_my   String
-  avatar     String
+  phone      String?
+  resident   String?
+  about_my   String?
+  avatar     String[]
   createdAt  DateTime     @default(now()) @map("created_at")
   updatedAt  DateTime     @updatedAt @map("updated_at")
   userId     String       @unique @map("user_id")

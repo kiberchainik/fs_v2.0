@@ -8,12 +8,12 @@ import Link from "next/link";
 import { useAppSelector } from "@/shared/hooks"
 
 export const UserHeaderMenu: FC = () => {
-    const { data: user, isLoading, error } = useAppSelector(state => state.reducer.user);
-    const { refetch } = useGetUserHeaderData();
+    const { data: user, isLoading, error } = useAppSelector(state => state.reducer.user)
+    const { refetch } = useGetUserHeaderData()
 
     useEffect(() => {
-        refetch(); // Запрос данных пользователя при монтировании компонента
-    }, [refetch]);
+        refetch()
+    }, [refetch])
 
     return (
         <>

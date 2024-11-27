@@ -23,7 +23,7 @@ export interface IAccount {
     userId: string
 }
 
-export interface IUser { 
+export interface IUser {
     id: string
     createdAt: string
     updatedAt: string
@@ -33,4 +33,14 @@ export interface IUser {
     isTwoFactorEnabled: boolean
     method: AuthMethod
     accounts: IAccount[]
+}
+
+export interface IPrivacy {
+    avatar: string[]
+    birthday: string
+    firstname: string
+    surname: string
+    resident: string
+    phone: string
+    about_my: string
 }

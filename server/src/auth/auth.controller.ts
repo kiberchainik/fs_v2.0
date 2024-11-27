@@ -79,7 +79,7 @@ export class AuthController {
 		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
 		return res.redirect(
-			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat?accessToken=${response.accessToken}`
+			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat/privacy?accessToken=${response.accessToken}`
 		)
 	}
 
@@ -97,7 +97,7 @@ export class AuthController {
 		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
 		return res.redirect(
-			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat?accessToken=${response.accessToken}`
+			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat/privacy?accessToken=${response.accessToken}`
 		)
 	}
 
@@ -115,7 +115,7 @@ export class AuthController {
 		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
 		return res.redirect(
-			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat?accessToken=${response.accessToken}`
+			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat/privacy?accessToken=${response.accessToken}`
 		)
 	}
 
@@ -133,7 +133,7 @@ export class AuthController {
 		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
 		return res.redirect(
-			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat?accessToken=${response.accessToken}`
+			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat/privacy?accessToken=${response.accessToken}`
 		)
 	}
 
@@ -151,7 +151,7 @@ export class AuthController {
 		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
 		return res.redirect(
-			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat?accessToken=${response.accessToken}`
+			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat/privacy?accessToken=${response.accessToken}`
 		)
 	}
 

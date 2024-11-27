@@ -336,6 +336,11 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   password: 'password'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 exports.Prisma.CandidatDataOrderByRelevanceFieldEnum = {
   id: 'id',
   firstname: 'firstname',
@@ -346,11 +351,6 @@ exports.Prisma.CandidatDataOrderByRelevanceFieldEnum = {
   about_my: 'about_my',
   avatar: 'avatar',
   userId: 'userId'
-};
-
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
 };
 
 exports.Prisma.EducationOrderByRelevanceFieldEnum = {

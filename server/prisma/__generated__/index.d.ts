@@ -4192,7 +4192,6 @@ export namespace Prisma {
     phone: string | null
     resident: string | null
     about_my: string | null
-    avatar: string | null
     createdAt: Date | null
     updatedAt: Date | null
     userId: string | null
@@ -4206,7 +4205,6 @@ export namespace Prisma {
     phone: string | null
     resident: string | null
     about_my: string | null
-    avatar: string | null
     createdAt: Date | null
     updatedAt: Date | null
     userId: string | null
@@ -4236,7 +4234,6 @@ export namespace Prisma {
     phone?: true
     resident?: true
     about_my?: true
-    avatar?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
@@ -4250,7 +4247,6 @@ export namespace Prisma {
     phone?: true
     resident?: true
     about_my?: true
-    avatar?: true
     createdAt?: true
     updatedAt?: true
     userId?: true
@@ -4348,10 +4344,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone: string | null
+    resident: string | null
+    about_my: string | null
+    avatar: string[]
     createdAt: Date
     updatedAt: Date
     userId: string
@@ -4455,10 +4451,10 @@ export namespace Prisma {
       firstname: string
       surname: string
       birthday: string
-      phone: string
-      resident: string
-      about_my: string
-      avatar: string
+      phone: string | null
+      resident: string | null
+      about_my: string | null
+      avatar: string[]
       createdAt: Date
       updatedAt: Date
       userId: string
@@ -4869,7 +4865,7 @@ export namespace Prisma {
     readonly phone: FieldRef<"CandidatData", 'String'>
     readonly resident: FieldRef<"CandidatData", 'String'>
     readonly about_my: FieldRef<"CandidatData", 'String'>
-    readonly avatar: FieldRef<"CandidatData", 'String'>
+    readonly avatar: FieldRef<"CandidatData", 'String[]'>
     readonly createdAt: FieldRef<"CandidatData", 'DateTime'>
     readonly updatedAt: FieldRef<"CandidatData", 'DateTime'>
     readonly userId: FieldRef<"CandidatData", 'String'>
@@ -24128,6 +24124,14 @@ export namespace Prisma {
   export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
 
 
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
   export const CandidatDataOrderByRelevanceFieldEnum: {
     id: 'id',
     firstname: 'firstname',
@@ -24141,14 +24145,6 @@ export namespace Prisma {
   };
 
   export type CandidatDataOrderByRelevanceFieldEnum = (typeof CandidatDataOrderByRelevanceFieldEnum)[keyof typeof CandidatDataOrderByRelevanceFieldEnum]
-
-
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   export const EducationOrderByRelevanceFieldEnum: {
@@ -24601,10 +24597,10 @@ export namespace Prisma {
     firstname?: StringFilter<"CandidatData"> | string
     surname?: StringFilter<"CandidatData"> | string
     birthday?: StringFilter<"CandidatData"> | string
-    phone?: StringFilter<"CandidatData"> | string
-    resident?: StringFilter<"CandidatData"> | string
-    about_my?: StringFilter<"CandidatData"> | string
-    avatar?: StringFilter<"CandidatData"> | string
+    phone?: StringNullableFilter<"CandidatData"> | string | null
+    resident?: StringNullableFilter<"CandidatData"> | string | null
+    about_my?: StringNullableFilter<"CandidatData"> | string | null
+    avatar?: StringNullableListFilter<"CandidatData">
     createdAt?: DateTimeFilter<"CandidatData"> | Date | string
     updatedAt?: DateTimeFilter<"CandidatData"> | Date | string
     userId?: StringFilter<"CandidatData"> | string
@@ -24622,9 +24618,9 @@ export namespace Prisma {
     firstname?: SortOrder
     surname?: SortOrder
     birthday?: SortOrder
-    phone?: SortOrder
-    resident?: SortOrder
-    about_my?: SortOrder
+    phone?: SortOrderInput | SortOrder
+    resident?: SortOrderInput | SortOrder
+    about_my?: SortOrderInput | SortOrder
     avatar?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -24648,10 +24644,10 @@ export namespace Prisma {
     firstname?: StringFilter<"CandidatData"> | string
     surname?: StringFilter<"CandidatData"> | string
     birthday?: StringFilter<"CandidatData"> | string
-    phone?: StringFilter<"CandidatData"> | string
-    resident?: StringFilter<"CandidatData"> | string
-    about_my?: StringFilter<"CandidatData"> | string
-    avatar?: StringFilter<"CandidatData"> | string
+    phone?: StringNullableFilter<"CandidatData"> | string | null
+    resident?: StringNullableFilter<"CandidatData"> | string | null
+    about_my?: StringNullableFilter<"CandidatData"> | string | null
+    avatar?: StringNullableListFilter<"CandidatData">
     createdAt?: DateTimeFilter<"CandidatData"> | Date | string
     updatedAt?: DateTimeFilter<"CandidatData"> | Date | string
     courses?: CoursesListRelationFilter
@@ -24668,9 +24664,9 @@ export namespace Prisma {
     firstname?: SortOrder
     surname?: SortOrder
     birthday?: SortOrder
-    phone?: SortOrder
-    resident?: SortOrder
-    about_my?: SortOrder
+    phone?: SortOrderInput | SortOrder
+    resident?: SortOrderInput | SortOrder
+    about_my?: SortOrderInput | SortOrder
     avatar?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -24688,10 +24684,10 @@ export namespace Prisma {
     firstname?: StringWithAggregatesFilter<"CandidatData"> | string
     surname?: StringWithAggregatesFilter<"CandidatData"> | string
     birthday?: StringWithAggregatesFilter<"CandidatData"> | string
-    phone?: StringWithAggregatesFilter<"CandidatData"> | string
-    resident?: StringWithAggregatesFilter<"CandidatData"> | string
-    about_my?: StringWithAggregatesFilter<"CandidatData"> | string
-    avatar?: StringWithAggregatesFilter<"CandidatData"> | string
+    phone?: StringNullableWithAggregatesFilter<"CandidatData"> | string | null
+    resident?: StringNullableWithAggregatesFilter<"CandidatData"> | string | null
+    about_my?: StringNullableWithAggregatesFilter<"CandidatData"> | string | null
+    avatar?: StringNullableListFilter<"CandidatData">
     createdAt?: DateTimeWithAggregatesFilter<"CandidatData"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"CandidatData"> | Date | string
     userId?: StringWithAggregatesFilter<"CandidatData"> | string
@@ -26013,10 +26009,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     courses?: CoursesCreateNestedManyWithoutCandidateInput
@@ -26033,10 +26029,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
@@ -26053,10 +26049,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     courses?: CoursesUpdateManyWithoutCandidateNestedInput
@@ -26073,10 +26069,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -26093,10 +26089,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
@@ -26107,10 +26103,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -26120,10 +26116,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -27543,6 +27539,30 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
   export type CoursesListRelationFilter = {
     every?: CoursesWhereInput
     some?: CoursesWhereInput
@@ -27582,6 +27602,11 @@ export namespace Prisma {
   export type UserRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type CoursesOrderByRelationAggregateInput = {
@@ -27636,7 +27661,6 @@ export namespace Prisma {
     phone?: SortOrder
     resident?: SortOrder
     about_my?: SortOrder
-    avatar?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
@@ -27650,13 +27674,12 @@ export namespace Prisma {
     phone?: SortOrder
     resident?: SortOrder
     about_my?: SortOrder
-    avatar?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -27669,17 +27692,15 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
     mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type CandidatDataRelationFilter = {
     is?: CandidatDataWhereInput
     isNot?: CandidatDataWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type EducationOrderByRelevanceInput = {
@@ -27719,25 +27740,6 @@ export namespace Prisma {
     enddate?: SortOrder
     description?: SortOrder
     cdId?: SortOrder
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type EnumSkillsLevelFilter<$PrismaModel = never> = {
@@ -27945,14 +27947,6 @@ export namespace Prisma {
     id?: SortOrder
     hobbie?: SortOrder
     cdId?: SortOrder
-  }
-
-  export type StringNullableListFilter<$PrismaModel = never> = {
-    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    has?: string | StringFieldRefInput<$PrismaModel> | null
-    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
-    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
   }
 
   export type BranchListRelationFilter = {
@@ -28734,6 +28728,10 @@ export namespace Prisma {
     update?: XOR<XOR<CandidatDataUpdateToOneWithWhereWithoutUserInput, CandidatDataUpdateWithoutUserInput>, CandidatDataUncheckedUpdateWithoutUserInput>
   }
 
+  export type CandidatDataCreateavatarInput = {
+    set: string[]
+  }
+
   export type CoursesCreateNestedManyWithoutCandidateInput = {
     create?: XOR<CoursesCreateWithoutCandidateInput, CoursesUncheckedCreateWithoutCandidateInput> | CoursesCreateWithoutCandidateInput[] | CoursesUncheckedCreateWithoutCandidateInput[]
     connectOrCreate?: CoursesCreateOrConnectWithoutCandidateInput | CoursesCreateOrConnectWithoutCandidateInput[]
@@ -28822,6 +28820,15 @@ export namespace Prisma {
     connectOrCreate?: SkillsCreateOrConnectWithoutCandidateInput | SkillsCreateOrConnectWithoutCandidateInput[]
     createMany?: SkillsCreateManyCandidateInputEnvelope
     connect?: SkillsWhereUniqueInput | SkillsWhereUniqueInput[]
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type CandidatDataUpdateavatarInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type CoursesUpdateManyWithoutCandidateNestedInput = {
@@ -29004,10 +29011,6 @@ export namespace Prisma {
     create?: XOR<CandidatDataCreateWithoutEducationInput, CandidatDataUncheckedCreateWithoutEducationInput>
     connectOrCreate?: CandidatDataCreateOrConnectWithoutEducationInput
     connect?: CandidatDataWhereUniqueInput
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type CandidatDataUpdateOneRequiredWithoutEducationNestedInput = {
@@ -30326,10 +30329,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     courses?: CoursesCreateNestedManyWithoutCandidateInput
@@ -30345,10 +30348,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     courses?: CoursesUncheckedCreateNestedManyWithoutCandidateInput
@@ -30452,10 +30455,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     courses?: CoursesUpdateManyWithoutCandidateNestedInput
@@ -30471,10 +30474,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     courses?: CoursesUncheckedUpdateManyWithoutCandidateNestedInput
@@ -30883,10 +30886,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     courses?: CoursesCreateNestedManyWithoutCandidateInput
@@ -30902,10 +30905,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
@@ -30937,10 +30940,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     courses?: CoursesUpdateManyWithoutCandidateNestedInput
@@ -30956,10 +30959,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -30975,10 +30978,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     courses?: CoursesCreateNestedManyWithoutCandidateInput
@@ -30994,10 +30997,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
@@ -31029,10 +31032,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     courses?: CoursesUpdateManyWithoutCandidateNestedInput
@@ -31048,10 +31051,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -31067,10 +31070,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     courses?: CoursesCreateNestedManyWithoutCandidateInput
@@ -31086,10 +31089,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
@@ -31121,10 +31124,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     courses?: CoursesUpdateManyWithoutCandidateNestedInput
@@ -31140,10 +31143,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -31159,10 +31162,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     courses?: CoursesCreateNestedManyWithoutCandidateInput
@@ -31178,10 +31181,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
@@ -31213,10 +31216,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     courses?: CoursesUpdateManyWithoutCandidateNestedInput
@@ -31232,10 +31235,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -31251,10 +31254,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     education?: EducationCreateNestedManyWithoutCandidateInput
@@ -31270,10 +31273,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
@@ -31305,10 +31308,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     education?: EducationUpdateManyWithoutCandidateNestedInput
@@ -31324,10 +31327,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -31343,10 +31346,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     courses?: CoursesCreateNestedManyWithoutCandidateInput
@@ -31362,10 +31365,10 @@ export namespace Prisma {
     firstname: string
     surname: string
     birthday: string
-    phone: string
-    resident: string
-    about_my: string
-    avatar: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
@@ -31397,10 +31400,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     courses?: CoursesUpdateManyWithoutCandidateNestedInput
@@ -31416,10 +31419,10 @@ export namespace Prisma {
     firstname?: StringFieldUpdateOperationsInput | string
     surname?: StringFieldUpdateOperationsInput | string
     birthday?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    resident?: StringFieldUpdateOperationsInput | string
-    about_my?: StringFieldUpdateOperationsInput | string
-    avatar?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
