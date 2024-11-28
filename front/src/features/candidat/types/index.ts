@@ -1,1 +1,1 @@
-export * from './skills.type.ts'
+export * from './skills.type'
