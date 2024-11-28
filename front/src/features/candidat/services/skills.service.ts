@@ -5,7 +5,7 @@ import { API_URL } from "@/shared/config";
 
 class UserService {
     public async getSkills() {
-        const { data } = await axiosPrivate.get<ISkilks>(API_URL.candidatSkills())
+        const { data } = await axiosPrivate.get<ISkills>(API_URL.candidatSkills())
 
         return data
     }
