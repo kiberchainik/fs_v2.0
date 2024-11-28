@@ -3,7 +3,7 @@ import { axiosPrivate } from "@/shared/api";
 import { TypeSkillsSchema } from "../schemes";
 import { API_URL } from "@/shared/config";
 
-class UserService {
+class SkillsService {
     public async getSkills() {
         const { data } = await axiosPrivate.get<ISkills>(API_URL.candidatSkills())
 
@@ -15,4 +15,4 @@ class UserService {
     }
 }
 
-export const userService = new UserService()
+export const skillsService = new SkillsService()
