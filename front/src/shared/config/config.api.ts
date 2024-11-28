@@ -8,12 +8,12 @@ export const API_URL = {
     authSocial: (provider: string) => API_URL.root(`/auth/${provider}`),
     file: (url: string) => API_URL.root(url),
     candidats: () => API_URL.root('/candidats'),
-    candidatData: (login: string) => API_URL.root(`/candidats${login}`),
+    candidatData: (login: string) => API_URL.root(`/candidats/${login}`),
     candidatProfile: () => API_URL.root('/candidat/privacy'),
-candidatSkills: () => API_URL.root('skills')
+    candidatSkills: (skillId: string = '') => API_URL.root(`/skills/${skillId}`),
 
     agency: () => API_URL.root('/agency'),
-    agencypage: (slug: string) => API_URL.root(`/agency${slug}`),
+    agencypage: (slug: string) => API_URL.root(`/agency/${slug}`),
     agencyProfile: () => API_URL.root('/agency/profile'),
     agencyEditProfile: () => API_URL.root('/agency'),
 

@@ -1,4 +1,4 @@
 export interface ISkills {
-skill: string
-level: string
+    skill: string
+    level: string
 }

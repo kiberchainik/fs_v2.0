@@ -3,6 +3,7 @@ import { TypePrivacySchema } from "../schemes";
 import { userService } from "../services";
 import { toast } from "sonner";
 import { toastMessageHandler } from "@/shared/utils";
+import { useMemo } from "react";
 
 export function useUpdProfileMutation() {
     const queryClient = useQueryClient()
@@ -19,5 +20,5 @@ export function useUpdProfileMutation() {
         }
     })
 
-    return { updProfile, isPending }
+    return useMemo(() => ({ updProfile, isPending }), [updProfile, isPending])
 }
