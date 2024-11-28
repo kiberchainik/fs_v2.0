@@ -11,5 +11,5 @@ export function useSkills() {
     return useMemo(() => ({
         skills,
         isFetching
-    }), [privacy, isFetching])
+    }), [skills, isFetching])
 }
