@@ -26,13 +26,20 @@ export class SkillsController {
 
   @Patch(':id')
   @Authorization(UserRole.CANDIDAT)
-  update(@CurrentUser('id') userId: string, @Param('id') id: string, @Body() updateSkillDto: UpdateSkillDto) {
-    return this.skillsService.update(id, updateSkillDto);
+  update(
+    @CurrentUser('id') userId: string,
+    @Param('id') id: string,
+    @Body() updateSkillDto: UpdateSkillDto
+  ) {
+    return this.skillsService.update(userId, id, updateSkillDto);
   }
 
   @Delete(':id')
   @Authorization(UserRole.CANDIDAT)
-  remove(@CurrentUser('id') userId: string, @Param('id') id: string) {
-    return this.skillsService.remove(id);
+  remove(
+    @CurrentUser('id') userId: string,
+    @Param('id') id: string
+  ) {
+    return this.skillsService.remove(userId, id);
   }
 }

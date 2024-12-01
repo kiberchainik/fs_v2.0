@@ -1,47 +1,24 @@
 'use client'
 
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-
-import {
-    Button,
-    Card,
-    CardContent,
-    CardHeader,
-    CardTitle,
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-    Input,
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue
-} from '@/shared/components/ui'
-
-import { TypeSkillSchema, SkillSchema } from '../../schemes'
-import { useCreateSkill, useSkills } from '../../hooks'
+import { Form, FormField, FormItem, FormControl, FormMessage, Input, Select, SelectTrigger, SelectContent, SelectItem, SelectValue, Button, Card, CardHeader, CardTitle, CardContent } from '@/shared/components/ui'
+import { useSkillsLogic } from '../../hooks/useSkills'
+import { CiEdit, CiTrash } from 'react-icons/ci'
 
 export default function Skills() {
-    const { newSkill, isPending } = useCreateSkill()
-    const { skills, isFetching } = useSkills()
-    const form = useForm<TypeSkillSchema>({
-        mode: 'onChange',
-        resolver: zodResolver(SkillSchema),
-        values: {
-            level: '',
-            skill: ''
-        }
-    })
-
-    const onSubmit = (values: TypeSkillSchema) => {
-        newSkill(values)
-        form.reset()
-    }
+    const {
+        deletingSkillId,
+        skills,
+        addForm,
+        editForm,
+        editingSkillId,
+        setEditingSkillId,
+        handleAddSkill,
+        handleEditSkill,
+        handleSaveSkill,
+        handleDeleteSkill,
+        isSaving,
+        isAdding
+    } = useSkillsLogic()
 
     return (
         <Card className='md:w-[800px] w-full mx-5 md:mx-0'>
@@ -49,74 +26,125 @@ export default function Skills() {
                 <CardTitle>Candidat skills</CardTitle>
             </CardHeader>
             <CardContent>
-                {
-                    <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)}>
-                            <div className='flex md:flex-row flex-col gap-3'>
-                                <FormField
-                                    control={form.control}
-                                    name='skill'
-                                    rules={{
-                                        required: 'Skill is required'
-                                    }}
-                                    render={({ field }) => (
-                                        <FormItem className='mt-4'>
-                                            <FormLabel>Skill</FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    placeholder='Skill'
-                                                    //disabled={isPending}
-                                                    type='text'
-                                                    //defaultValue={field.value}
-                                                    {...field}
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name='level'
-                                    rules={{
-                                        required: 'Skill level is required'
-                                    }}
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>Skill level</FormLabel>
-                                            <Select
-                                                //disabled={isFetching}
-                                                onValueChange={field.onChange}
-                                            //defaultValue={field.value}
-                                            >
-                                                <FormControl>
-                                                    <SelectTrigger>
-                                                        <SelectValue placeholder='Категория товара' />
-                                                    </SelectTrigger>
-                                                </FormControl>
-                                                <SelectContent>
-                                                    <SelectItem value='NONE' key={'NONE'}>NONE</SelectItem>
-                                                    <SelectItem value='BEGINNER' key={'BEGINNER'}>BEGINNER</SelectItem>
-                                                    <SelectItem value='EXPERIENCED' key={'EXPERIENCED'}>EXPERIENCED</SelectItem>
-                                                    <SelectItem value='EXPERT' key={'EXPERT'}>EXPERT</SelectItem>
-                                                </SelectContent>
-                                            </Select>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
+                <Form {...addForm}>
+                    <form
+                        onSubmit={addForm.handleSubmit(handleAddSkill)}
+                        className='flex md:flex-row flex-col gap-3 justify-between items-center'
+                    >
+                        <FormField
+                            control={addForm.control}
+                            name='skill'
+                            render={({ field }) => (
+                                <FormItem className='w-full'>
+                                    <FormControl>
+                                        <Input placeholder='Skill' {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={addForm.control}
+                            name='level'
+                            render={({ field }) => (
+                                <FormItem className='w-full'>
+                                    <Select onValueChange={field.onChange}>
+                                        <FormControl>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder='Skill level' />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
+                                            <SelectItem value='NONE'>NONE</SelectItem>
+                                            <SelectItem value='BEGINNER'>BEGINNER</SelectItem>
+                                            <SelectItem value='EXPERIENCED'>EXPERIENCED</SelectItem>
+                                            <SelectItem value='EXPERT'>EXPERT</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <Button type='submit' disabled={isAdding}>
+                            {isAdding ? 'Adding...' : 'Save'}
+                        </Button>
+                    </form>
+                </Form>
+
+                {skills && (
+                    <div className='mt-5'>
+                        {skills.map(skill => (
+                            <div className='flex justify-between items-center gap-y-1 p-2' key={skill.id}>
+                                {editingSkillId === skill.id ? (
+                                    <Form {...editForm}>
+                                        <form
+                                            onSubmit={editForm.handleSubmit(() => handleSaveSkill(skill.id))}
+                                            className='flex md:flex-row flex-col gap-3 justify-between items-center'
+                                        >
+                                            <FormField
+                                                control={editForm.control}
+                                                name='skill'
+                                                render={({ field }) => (
+                                                    <FormItem className='w-full'>
+                                                        <FormControl>
+                                                            <Input placeholder='Skill' {...field} />
+                                                        </FormControl>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                            <FormField
+                                                control={editForm.control}
+                                                name='level'
+                                                render={({ field }) => (
+                                                    <FormItem className='w-full'>
+                                                        <Select
+                                                            value={field.value}
+                                                            onValueChange={field.onChange}
+                                                        >
+                                                            <FormControl>
+                                                                <SelectTrigger>
+                                                                    <SelectValue placeholder='Skill level' />
+                                                                </SelectTrigger>
+                                                            </FormControl>
+                                                            <SelectContent>
+                                                                <SelectItem value='NONE'>NONE</SelectItem>
+                                                                <SelectItem value='BEGINNER'>BEGINNER</SelectItem>
+                                                                <SelectItem value='EXPERIENCED'>EXPERIENCED</SelectItem>
+                                                                <SelectItem value='EXPERT'>EXPERT</SelectItem>
+                                                            </SelectContent>
+                                                        </Select>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                            <div className='flex gap-x-2'>
+                                                <Button type='submit' disabled={isSaving}>
+                                                    {isSaving ? 'Saving...' : 'Save'}
+                                                </Button>
+                                                <Button onClick={() => setEditingSkillId(null)}>Cancel</Button>
+                                            </div>
+                                        </form>
+                                    </Form>
+                                ) : (
+                                    <div className='flex justify-between items-center w-full'>
+                                        <span>
+                                            {skill.skill} - {skill.level}
+                                        </span>
+                                        <div className='flex gap-x-2'>
+                                            <Button onClick={() => handleEditSkill(skill)}>
+                                                <CiEdit />
+                                            </Button>
+                                            <Button onClick={() => handleDeleteSkill(skill.id)} disabled={deletingSkillId === skill.id}>
+                                                {deletingSkillId === skill.id ? 'Deleting...' : <CiTrash />}
+                                            </Button>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
-                            <Button type='submit'>
-                                Сохранить
-                            </Button>
-                        </form>
-                    </Form>
-                }
-                {skills && skills.map(skill => (
-                    <p>
-                        <span>{skill.skill}</span> - <span>{skill.level}</span>
-                    </p>
-                ))}
+                        ))}
+                    </div>
+                )}
             </CardContent>
         </Card>
     )

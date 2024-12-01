@@ -10,16 +10,16 @@ class SkillsService {
         return data
     }
 
-    public async createProfile(data: TypeSkillSchema) {
+    public async createSkill(data: TypeSkillSchema) {
         return await axiosPrivate.post<ISkills>(API_URL.candidatSkills(), data)
     }
 
-    public async updateProfile(data: TypeSkillSchema) {
-        return await axiosPrivate.patch<ISkills>(API_URL.candidatSkills(), data)
+    public async updateSkill(id: string, data: TypeSkillSchema) {
+        return await axiosPrivate.patch<ISkills>(`/skills/${id}`, data)
     }
 
-    public async deleteProfile(skillId: string) {
-        return await axiosPrivate.delete<ISkills>(API_URL.candidatSkills(skillId))
+    public async deleteSkill(skillId: string) {
+        return await axiosPrivate.delete<{ count: number }>(API_URL.candidatSkills(skillId))
     }
 }
 

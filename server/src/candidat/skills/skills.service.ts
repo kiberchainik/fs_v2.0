@@ -35,11 +35,37 @@ export class SkillsService {
     })
   }
 
-  update(id: string, updateSkillDto: UpdateSkillDto) {
-    return `This action updates a #${id} skill`;
+  async update(userId: string, id: string, updateSkillDto: UpdateSkillDto) {
+    return await this.prisma.skills.updateMany({
+      where: {
+        AND: [
+          {
+            candidate: {
+              userId
+            }
+          },
+          { id }
+        ]
+      },
+      data: {
+        skill: updateSkillDto.skill,
+        level: updateSkillDto.level
+      }
+    })
   }
 
-  remove(id: string) {
-    return `This action removes a #${id} skill`;
+  async remove(userId: string, id: string) {
+    return await this.prisma.skills.deleteMany({
+      where: {
+        AND: [
+          {
+            candidate: {
+              userId
+            }
+          },
+          { id }
+        ]
+      }
+    })
   }
 }
