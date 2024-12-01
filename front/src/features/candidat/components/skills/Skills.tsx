@@ -1,8 +1,11 @@
 'use client'
 
-import { Form, FormField, FormItem, FormControl, FormMessage, Input, Select, SelectTrigger, SelectContent, SelectItem, SelectValue, Button, Card, CardHeader, CardTitle, CardContent } from '@/shared/components/ui'
+import { Form, Button, Card, CardHeader, CardTitle, CardContent } from '@/shared/components/ui'
 import { useSkillsLogic } from '../../hooks/useSkills'
 import { CiEdit, CiTrash } from 'react-icons/ci'
+import SkillForm from './SkillForm'
+
+import styles from './skills.module.scss'
 
 export default function Skills() {
     const {
@@ -22,49 +25,16 @@ export default function Skills() {
 
     return (
         <Card className='md:w-[800px] w-full mx-5 md:mx-0'>
-            <CardHeader className='flex flex-row items-center justify-between'>
+            <CardHeader className={styles.cardHeader}>
                 <CardTitle>Candidat skills</CardTitle>
             </CardHeader>
             <CardContent>
                 <Form {...addForm}>
                     <form
                         onSubmit={addForm.handleSubmit(handleAddSkill)}
-                        className='flex md:flex-row flex-col gap-3 justify-between items-center'
+                        className={styles.formWrapper}
                     >
-                        <FormField
-                            control={addForm.control}
-                            name='skill'
-                            render={({ field }) => (
-                                <FormItem className='w-full'>
-                                    <FormControl>
-                                        <Input placeholder='Skill' {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={addForm.control}
-                            name='level'
-                            render={({ field }) => (
-                                <FormItem className='w-full'>
-                                    <Select onValueChange={field.onChange}>
-                                        <FormControl>
-                                            <SelectTrigger>
-                                                <SelectValue placeholder='Skill level' />
-                                            </SelectTrigger>
-                                        </FormControl>
-                                        <SelectContent>
-                                            <SelectItem value='NONE'>NONE</SelectItem>
-                                            <SelectItem value='BEGINNER'>BEGINNER</SelectItem>
-                                            <SelectItem value='EXPERIENCED'>EXPERIENCED</SelectItem>
-                                            <SelectItem value='EXPERT'>EXPERT</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
+                        <SkillForm formData={addForm} />
                         <Button type='submit' disabled={isAdding}>
                             {isAdding ? 'Adding...' : 'Save'}
                         </Button>
@@ -74,50 +44,14 @@ export default function Skills() {
                 {skills && (
                     <div className='mt-5'>
                         {skills.map(skill => (
-                            <div className='flex justify-between items-center gap-y-1 p-2' key={skill.id}>
+                            <div className={styles.editSkillForm} key={skill.id}>
                                 {editingSkillId === skill.id ? (
                                     <Form {...editForm}>
                                         <form
                                             onSubmit={editForm.handleSubmit(() => handleSaveSkill(skill.id))}
-                                            className='flex md:flex-row flex-col gap-3 justify-between items-center'
+                                            className={styles.formWrapper}
                                         >
-                                            <FormField
-                                                control={editForm.control}
-                                                name='skill'
-                                                render={({ field }) => (
-                                                    <FormItem className='w-full'>
-                                                        <FormControl>
-                                                            <Input placeholder='Skill' {...field} />
-                                                        </FormControl>
-                                                        <FormMessage />
-                                                    </FormItem>
-                                                )}
-                                            />
-                                            <FormField
-                                                control={editForm.control}
-                                                name='level'
-                                                render={({ field }) => (
-                                                    <FormItem className='w-full'>
-                                                        <Select
-                                                            value={field.value}
-                                                            onValueChange={field.onChange}
-                                                        >
-                                                            <FormControl>
-                                                                <SelectTrigger>
-                                                                    <SelectValue placeholder='Skill level' />
-                                                                </SelectTrigger>
-                                                            </FormControl>
-                                                            <SelectContent>
-                                                                <SelectItem value='NONE'>NONE</SelectItem>
-                                                                <SelectItem value='BEGINNER'>BEGINNER</SelectItem>
-                                                                <SelectItem value='EXPERIENCED'>EXPERIENCED</SelectItem>
-                                                                <SelectItem value='EXPERT'>EXPERT</SelectItem>
-                                                            </SelectContent>
-                                                        </Select>
-                                                        <FormMessage />
-                                                    </FormItem>
-                                                )}
-                                            />
+                                            <SkillForm formData={editForm} />
                                             <div className='flex gap-x-2'>
                                                 <Button type='submit' disabled={isSaving}>
                                                     {isSaving ? 'Saving...' : 'Save'}
@@ -127,7 +61,7 @@ export default function Skills() {
                                         </form>
                                     </Form>
                                 ) : (
-                                    <div className='flex justify-between items-center w-full'>
+                                    <div className={styles.skillsList}>
                                         <span>
                                             {skill.skill} - {skill.level}
                                         </span>
