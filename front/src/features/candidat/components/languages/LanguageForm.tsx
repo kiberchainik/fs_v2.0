@@ -37,10 +37,10 @@ export default function LanguageForm({ formData }: FormProps) {
                             </FormControl>
                             <SelectContent>
                                 <SelectItem value='NONE'>NONE</SelectItem>
-                                <SelectItem value='BEGINNER'>NATIVESPEAKER</SelectItem>
-                                <SelectItem value='EXPERIENCED'>BASIC</SelectItem>
-                                <SelectItem value='EXPERT'>VERYGOOD</SelectItem>
-                                <SelectItem value='EXPERT'>FLUENT</SelectItem>
+                                <SelectItem value='NATIVESPEAKER'>NATIVESPEAKER</SelectItem>
+                                <SelectItem value='BASIC'>BASIC</SelectItem>
+                                <SelectItem value='VERYGOOD'>VERYGOOD</SelectItem>
+                                <SelectItem value='FLUENT'>FLUENT</SelectItem>
                             </SelectContent>
                         </Select>
                         <FormMessage />

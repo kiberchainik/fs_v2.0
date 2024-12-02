@@ -1,26 +1,67 @@
 import { Injectable } from '@nestjs/common';
 import { CreateLanguageDto } from './dto/create-language.dto';
 import { UpdateLanguageDto } from './dto/update-language.dto';
+import { PrismaService } from '@/prisma/prisma.service';
 
 @Injectable()
 export class LanguagesService {
-  create(createLanguageDto: CreateLanguageDto) {
-    return 'This action adds a new language';
+  constructor(private readonly prisma: PrismaService) { }
+
+  async create(userId: string, createLanguageDto: CreateLanguageDto) {
+    return await this.prisma.languages.create({
+      data: {
+        language: createLanguageDto.language,
+        level: createLanguageDto.level,
+        candidate: {
+          connect: { userId }
+        }
+      }
+    })
   }
 
-  findAll() {
-    return `This action returns all languages`;
+  async findAll(userId: string) {
+    return await this.prisma.languages.findMany({
+      where: {
+        candidate: {
+          userId
+        }
+      }
+    })
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} language`;
+  async update(id: string, userId: string, updateLanguageDto: UpdateLanguageDto) {
+    return await this.prisma.languages.updateMany({
+      where: {
+        AND: [
+          {
+            candidate: {
+              userId
+            }
+          },
+          {
+            id
+          }
+        ]
+      },
+      data: {
+        language: updateLanguageDto.language,
+        level: updateLanguageDto.level
+      }
+    })
   }
 
-  update(id: number, updateLanguageDto: UpdateLanguageDto) {
-    return `This action updates a #${id} language`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} language`;
+  async remove(id: string, userId: string) {
+    return await this.prisma.languages.deleteMany({
+      where: {
+        AND: [
+          {
+            candidate: {
+              userId
+            }
+          },
+          { id }
+        ]
+      }
+    })
   }
 }
