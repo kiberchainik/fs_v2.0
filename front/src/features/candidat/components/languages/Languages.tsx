@@ -48,7 +48,7 @@ export default function Languages() {
                 {languages && (
                     <div className='mt-5'>
                         {languages.map(language => (
-                            <div className={styles.editLanuageForm} key={language.id}>
+                            <div className={styles.editLanguagesForm} key={language.id}>
                                 {editingLanguageId === language.id ? (
                                     <Form {...editForm}>
                                         <form
@@ -65,7 +65,7 @@ export default function Languages() {
                                         </form>
                                     </Form>
                                 ) : (
-                                    <div className={styles.lanuagesList}>
+                                    <div className={styles.languagesList}>
                                         <span>
                                             {language.language} - {language.level}
                                         </span>

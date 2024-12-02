@@ -3,7 +3,7 @@
 }
 
 .formWrapper {
-    @apply flex md:flex-row flex-col gap-3 justify-between items-center;
+    @apply flex md:flex-row flex-col gap-3 justify-between items-center w-full;
 }
 
 .languagesList {
