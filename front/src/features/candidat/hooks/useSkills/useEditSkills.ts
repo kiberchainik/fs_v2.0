@@ -55,7 +55,7 @@ export const useSkillsLogic = () => {
         deletingSkillId.current = id
         deleteSkill({ id }, {
             onSettled: () => {
-                deletingSkillId.current = null // Сбрасываем состояние после завершения запроса
+                deletingSkillId.current = null
             }
         })
     }

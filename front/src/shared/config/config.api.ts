@@ -11,6 +11,7 @@ export const API_URL = {
     candidatData: (login: string) => API_URL.root(`/candidats/${login}`),
     candidatProfile: () => API_URL.root('/candidat/privacy'),
     candidatSkills: (skillId: string = '') => API_URL.root(`/skills/${skillId}`),
+    candidatHobbies: (hobbieId: string = '') => API_URL.root(`/hobbies/${hobbieId}`),
     candidatLanguages: (languageId: string = '') => API_URL.root(`/languages/${languageId}`),
 
     agency: () => API_URL.root('/agency'),

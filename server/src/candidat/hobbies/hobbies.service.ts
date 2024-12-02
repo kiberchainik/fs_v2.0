@@ -1,26 +1,61 @@
 import { Injectable } from '@nestjs/common';
 import { CreateHobbyDto } from './dto/create-hobby.dto';
 import { UpdateHobbyDto } from './dto/update-hobby.dto';
+import { PrismaService } from '@/prisma/prisma.service';
 
 @Injectable()
 export class HobbiesService {
-  create(createHobbyDto: CreateHobbyDto) {
-    return 'This action adds a new hobby';
+  constructor(private readonly prisma: PrismaService) { }
+
+  async create(userId: string, createHobbyDto: CreateHobbyDto) {
+    return await this.prisma.hobbies.create({
+      data: {
+        hobbie: createHobbyDto.hobbie,
+        candidate: {
+          connect: {
+            userId
+          }
+        }
+      }
+    })
   }
 
-  findAll() {
-    return `This action returns all hobbies`;
+  async findAll(userId: string) {
+    return await this.prisma.hobbies.findMany({
+      where: {
+        AND: [
+          {
+            candidate: {
+              userId
+            }
+          }
+        ]
+      }
+    })
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} hobby`;
+  async update(id: string, userId: string, updateHobbyDto: UpdateHobbyDto) {
+    return await this.prisma.hobbies.updateMany({
+      where: {
+        AND: [
+          { candidate: { userId } },
+          { id }
+        ]
+      },
+      data: {
+        hobbie: updateHobbyDto.hobbie
+      }
+    })
   }
 
-  update(id: number, updateHobbyDto: UpdateHobbyDto) {
-    return `This action updates a #${id} hobby`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} hobby`;
+  async remove(id: string, userId: string) {
+    return await this.prisma.hobbies.deleteMany({
+      where: {
+        AND: [
+          { candidate: { userId } },
+          { id }
+        ]
+      }
+    })
   }
 }
