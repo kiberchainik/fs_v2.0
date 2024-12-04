@@ -24,6 +24,11 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type CandidatData = $Result.DefaultSelection<Prisma.$CandidatDataPayload>
 /**
+ * Model CandidatLifeState
+ * 
+ */
+export type CandidatLifeState = $Result.DefaultSelection<Prisma.$CandidatLifeStatePayload>
+/**
  * Model Education
  * 
  */
@@ -123,15 +128,24 @@ export type Tokens = $Result.DefaultSelection<Prisma.$TokensPayload>
  * Enums
  */
 export namespace $Enums {
-  export const UserRole: {
-  USER: 'USER',
-  ADMIN: 'ADMIN',
-  MODERATOR: 'MODERATOR',
-  CANDIDAT: 'CANDIDAT',
-  AGENCY: 'AGENCY'
+  export const TokenType: {
+  VERIFICATION: 'VERIFICATION',
+  TWO_FACTOR: 'TWO_FACTOR',
+  PASSWORD_RESET: 'PASSWORD_RESET'
 };
 
-export type UserRole = (typeof UserRole)[keyof typeof UserRole]
+export type TokenType = (typeof TokenType)[keyof typeof TokenType]
+
+
+export const MaritalStatus: {
+  NONE: 'NONE',
+  NOT_MARRIED: 'NOT_MARRIED',
+  MARRIEDNOCHILDREN: 'MARRIEDNOCHILDREN',
+  MARRIEDHAVECHILDREN: 'MARRIEDHAVECHILDREN',
+  DIVORCET: 'DIVORCET'
+};
+
+export type MaritalStatus = (typeof MaritalStatus)[keyof typeof MaritalStatus]
 
 
 export const AuthMethod: {
@@ -145,6 +159,17 @@ export const AuthMethod: {
 };
 
 export type AuthMethod = (typeof AuthMethod)[keyof typeof AuthMethod]
+
+
+export const UserRole: {
+  USER: 'USER',
+  ADMIN: 'ADMIN',
+  MODERATOR: 'MODERATOR',
+  CANDIDAT: 'CANDIDAT',
+  AGENCY: 'AGENCY'
+};
+
+export type UserRole = (typeof UserRole)[keyof typeof UserRole]
 
 
 export const SkillsLevel: {
@@ -178,24 +203,23 @@ export const LanguageLevel: {
 
 export type LanguageLevel = (typeof LanguageLevel)[keyof typeof LanguageLevel]
 
-
-export const TokenType: {
-  VERIFICATION: 'VERIFICATION',
-  TWO_FACTOR: 'TWO_FACTOR',
-  PASSWORD_RESET: 'PASSWORD_RESET'
-};
-
-export type TokenType = (typeof TokenType)[keyof typeof TokenType]
-
 }
 
-export type UserRole = $Enums.UserRole
+export type TokenType = $Enums.TokenType
 
-export const UserRole: typeof $Enums.UserRole
+export const TokenType: typeof $Enums.TokenType
+
+export type MaritalStatus = $Enums.MaritalStatus
+
+export const MaritalStatus: typeof $Enums.MaritalStatus
 
 export type AuthMethod = $Enums.AuthMethod
 
 export const AuthMethod: typeof $Enums.AuthMethod
+
+export type UserRole = $Enums.UserRole
+
+export const UserRole: typeof $Enums.UserRole
 
 export type SkillsLevel = $Enums.SkillsLevel
 
@@ -208,10 +232,6 @@ export const ContractType: typeof $Enums.ContractType
 export type LanguageLevel = $Enums.LanguageLevel
 
 export const LanguageLevel: typeof $Enums.LanguageLevel
-
-export type TokenType = $Enums.TokenType
-
-export const TokenType: typeof $Enums.TokenType
 
 /**
  * ##  Prisma Client ʲˢ
@@ -355,6 +375,16 @@ export class PrismaClient<
     * ```
     */
   get candidatData(): Prisma.CandidatDataDelegate<ExtArgs>;
+
+  /**
+   * `prisma.candidatLifeState`: Exposes CRUD operations for the **CandidatLifeState** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CandidatLifeStates
+    * const candidatLifeStates = await prisma.candidatLifeState.findMany()
+    * ```
+    */
+  get candidatLifeState(): Prisma.CandidatLifeStateDelegate<ExtArgs>;
 
   /**
    * `prisma.education`: Exposes CRUD operations for the **Education** model.
@@ -565,7 +595,6 @@ export namespace Prisma {
   export import PrismaClientRustPanicError = runtime.PrismaClientRustPanicError
   export import PrismaClientInitializationError = runtime.PrismaClientInitializationError
   export import PrismaClientValidationError = runtime.PrismaClientValidationError
-  export import NotFoundError = runtime.NotFoundError
 
   /**
    * Re-export of sql-template-tag
@@ -604,8 +633,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.21.1
-   * Query Engine version: bf0e5e8a04cada8225617067eaa03d041e2bba36
+   * Prisma Client JS version: 6.0.1
+   * Query Engine version: 5dbef10bdbfb579e07d35cc85fb1518d357cb99e
    */
   export type PrismaVersion = {
     client: string
@@ -988,6 +1017,7 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     CandidatData: 'CandidatData',
+    CandidatLifeState: 'CandidatLifeState',
     Education: 'Education',
     Skills: 'Skills',
     Experience: 'Experience',
@@ -1022,7 +1052,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "candidatData" | "education" | "skills" | "experience" | "languages" | "courses" | "hobbies" | "agencyData" | "branch" | "jobOffers" | "contractTypeJob" | "experienceMinimalJob" | "modeJob" | "workingTimeJob" | "levelEducation" | "jobTags" | "category" | "sectors" | "authAccount" | "tokens"
+      modelProps: "user" | "candidatData" | "candidatLifeState" | "education" | "skills" | "experience" | "languages" | "courses" | "hobbies" | "agencyData" | "branch" | "jobOffers" | "contractTypeJob" | "experienceMinimalJob" | "modeJob" | "workingTimeJob" | "levelEducation" | "jobTags" | "category" | "sectors" | "authAccount" | "tokens"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1163,6 +1193,76 @@ export namespace Prisma {
           count: {
             args: Prisma.CandidatDataCountArgs<ExtArgs>
             result: $Utils.Optional<CandidatDataCountAggregateOutputType> | number
+          }
+        }
+      }
+      CandidatLifeState: {
+        payload: Prisma.$CandidatLifeStatePayload<ExtArgs>
+        fields: Prisma.CandidatLifeStateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CandidatLifeStateFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CandidatLifeStatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CandidatLifeStateFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CandidatLifeStatePayload>
+          }
+          findFirst: {
+            args: Prisma.CandidatLifeStateFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CandidatLifeStatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CandidatLifeStateFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CandidatLifeStatePayload>
+          }
+          findMany: {
+            args: Prisma.CandidatLifeStateFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CandidatLifeStatePayload>[]
+          }
+          create: {
+            args: Prisma.CandidatLifeStateCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CandidatLifeStatePayload>
+          }
+          createMany: {
+            args: Prisma.CandidatLifeStateCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CandidatLifeStateCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CandidatLifeStatePayload>[]
+          }
+          delete: {
+            args: Prisma.CandidatLifeStateDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CandidatLifeStatePayload>
+          }
+          update: {
+            args: Prisma.CandidatLifeStateUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CandidatLifeStatePayload>
+          }
+          deleteMany: {
+            args: Prisma.CandidatLifeStateDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CandidatLifeStateUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.CandidatLifeStateUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CandidatLifeStatePayload>
+          }
+          aggregate: {
+            args: Prisma.CandidatLifeStateAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCandidatLifeState>
+          }
+          groupBy: {
+            args: Prisma.CandidatLifeStateGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CandidatLifeStateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CandidatLifeStateCountArgs<ExtArgs>
+            result: $Utils.Optional<CandidatLifeStateCountAggregateOutputType> | number
           }
         }
       }
@@ -4382,6 +4482,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     userId?: boolean
+    candidatLifeState?: boolean | CandidatData$candidatLifeStateArgs<ExtArgs>
     courses?: boolean | CandidatData$coursesArgs<ExtArgs>
     education?: boolean | CandidatData$educationArgs<ExtArgs>
     experience?: boolean | CandidatData$experienceArgs<ExtArgs>
@@ -4422,6 +4523,7 @@ export namespace Prisma {
   }
 
   export type CandidatDataInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    candidatLifeState?: boolean | CandidatData$candidatLifeStateArgs<ExtArgs>
     courses?: boolean | CandidatData$coursesArgs<ExtArgs>
     education?: boolean | CandidatData$educationArgs<ExtArgs>
     experience?: boolean | CandidatData$experienceArgs<ExtArgs>
@@ -4438,6 +4540,7 @@ export namespace Prisma {
   export type $CandidatDataPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "CandidatData"
     objects: {
+      candidatLifeState: Prisma.$CandidatLifeStatePayload<ExtArgs> | null
       courses: Prisma.$CoursesPayload<ExtArgs>[]
       education: Prisma.$EducationPayload<ExtArgs>[]
       experience: Prisma.$ExperiencePayload<ExtArgs>[]
@@ -4822,6 +4925,7 @@ export namespace Prisma {
    */
   export interface Prisma__CandidatDataClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    candidatLifeState<T extends CandidatData$candidatLifeStateArgs<ExtArgs> = {}>(args?: Subset<T, CandidatData$candidatLifeStateArgs<ExtArgs>>): Prisma__CandidatLifeStateClient<$Result.GetResult<Prisma.$CandidatLifeStatePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     courses<T extends CandidatData$coursesArgs<ExtArgs> = {}>(args?: Subset<T, CandidatData$coursesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CoursesPayload<ExtArgs>, T, "findMany"> | Null>
     education<T extends CandidatData$educationArgs<ExtArgs> = {}>(args?: Subset<T, CandidatData$educationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EducationPayload<ExtArgs>, T, "findMany"> | Null>
     experience<T extends CandidatData$experienceArgs<ExtArgs> = {}>(args?: Subset<T, CandidatData$experienceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExperiencePayload<ExtArgs>, T, "findMany"> | Null>
@@ -5187,6 +5291,21 @@ export namespace Prisma {
   }
 
   /**
+   * CandidatData.candidatLifeState
+   */
+  export type CandidatData$candidatLifeStateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CandidatLifeState
+     */
+    select?: CandidatLifeStateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CandidatLifeStateInclude<ExtArgs> | null
+    where?: CandidatLifeStateWhereInput
+  }
+
+  /**
    * CandidatData.courses
    */
   export type CandidatData$coursesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5318,6 +5437,939 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: CandidatDataInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CandidatLifeState
+   */
+
+  export type AggregateCandidatLifeState = {
+    _count: CandidatLifeStateCountAggregateOutputType | null
+    _min: CandidatLifeStateMinAggregateOutputType | null
+    _max: CandidatLifeStateMaxAggregateOutputType | null
+  }
+
+  export type CandidatLifeStateMinAggregateOutputType = {
+    id: string | null
+    driverCategory: string | null
+    availabilityTransport: boolean | null
+    maritalStatus: $Enums.MaritalStatus | null
+    cdId: string | null
+  }
+
+  export type CandidatLifeStateMaxAggregateOutputType = {
+    id: string | null
+    driverCategory: string | null
+    availabilityTransport: boolean | null
+    maritalStatus: $Enums.MaritalStatus | null
+    cdId: string | null
+  }
+
+  export type CandidatLifeStateCountAggregateOutputType = {
+    id: number
+    driverCategory: number
+    availabilityTransport: number
+    maritalStatus: number
+    cdId: number
+    _all: number
+  }
+
+
+  export type CandidatLifeStateMinAggregateInputType = {
+    id?: true
+    driverCategory?: true
+    availabilityTransport?: true
+    maritalStatus?: true
+    cdId?: true
+  }
+
+  export type CandidatLifeStateMaxAggregateInputType = {
+    id?: true
+    driverCategory?: true
+    availabilityTransport?: true
+    maritalStatus?: true
+    cdId?: true
+  }
+
+  export type CandidatLifeStateCountAggregateInputType = {
+    id?: true
+    driverCategory?: true
+    availabilityTransport?: true
+    maritalStatus?: true
+    cdId?: true
+    _all?: true
+  }
+
+  export type CandidatLifeStateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CandidatLifeState to aggregate.
+     */
+    where?: CandidatLifeStateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CandidatLifeStates to fetch.
+     */
+    orderBy?: CandidatLifeStateOrderByWithRelationInput | CandidatLifeStateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CandidatLifeStateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CandidatLifeStates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CandidatLifeStates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CandidatLifeStates
+    **/
+    _count?: true | CandidatLifeStateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CandidatLifeStateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CandidatLifeStateMaxAggregateInputType
+  }
+
+  export type GetCandidatLifeStateAggregateType<T extends CandidatLifeStateAggregateArgs> = {
+        [P in keyof T & keyof AggregateCandidatLifeState]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCandidatLifeState[P]>
+      : GetScalarType<T[P], AggregateCandidatLifeState[P]>
+  }
+
+
+
+
+  export type CandidatLifeStateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CandidatLifeStateWhereInput
+    orderBy?: CandidatLifeStateOrderByWithAggregationInput | CandidatLifeStateOrderByWithAggregationInput[]
+    by: CandidatLifeStateScalarFieldEnum[] | CandidatLifeStateScalarFieldEnum
+    having?: CandidatLifeStateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CandidatLifeStateCountAggregateInputType | true
+    _min?: CandidatLifeStateMinAggregateInputType
+    _max?: CandidatLifeStateMaxAggregateInputType
+  }
+
+  export type CandidatLifeStateGroupByOutputType = {
+    id: string
+    driverCategory: string | null
+    availabilityTransport: boolean
+    maritalStatus: $Enums.MaritalStatus
+    cdId: string
+    _count: CandidatLifeStateCountAggregateOutputType | null
+    _min: CandidatLifeStateMinAggregateOutputType | null
+    _max: CandidatLifeStateMaxAggregateOutputType | null
+  }
+
+  type GetCandidatLifeStateGroupByPayload<T extends CandidatLifeStateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CandidatLifeStateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CandidatLifeStateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CandidatLifeStateGroupByOutputType[P]>
+            : GetScalarType<T[P], CandidatLifeStateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CandidatLifeStateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    driverCategory?: boolean
+    availabilityTransport?: boolean
+    maritalStatus?: boolean
+    cdId?: boolean
+    candidate?: boolean | CandidatDataDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["candidatLifeState"]>
+
+  export type CandidatLifeStateSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    driverCategory?: boolean
+    availabilityTransport?: boolean
+    maritalStatus?: boolean
+    cdId?: boolean
+    candidate?: boolean | CandidatDataDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["candidatLifeState"]>
+
+  export type CandidatLifeStateSelectScalar = {
+    id?: boolean
+    driverCategory?: boolean
+    availabilityTransport?: boolean
+    maritalStatus?: boolean
+    cdId?: boolean
+  }
+
+  export type CandidatLifeStateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    candidate?: boolean | CandidatDataDefaultArgs<ExtArgs>
+  }
+  export type CandidatLifeStateIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    candidate?: boolean | CandidatDataDefaultArgs<ExtArgs>
+  }
+
+  export type $CandidatLifeStatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CandidatLifeState"
+    objects: {
+      candidate: Prisma.$CandidatDataPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      driverCategory: string | null
+      availabilityTransport: boolean
+      maritalStatus: $Enums.MaritalStatus
+      cdId: string
+    }, ExtArgs["result"]["candidatLifeState"]>
+    composites: {}
+  }
+
+  type CandidatLifeStateGetPayload<S extends boolean | null | undefined | CandidatLifeStateDefaultArgs> = $Result.GetResult<Prisma.$CandidatLifeStatePayload, S>
+
+  type CandidatLifeStateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CandidatLifeStateFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: CandidatLifeStateCountAggregateInputType | true
+    }
+
+  export interface CandidatLifeStateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CandidatLifeState'], meta: { name: 'CandidatLifeState' } }
+    /**
+     * Find zero or one CandidatLifeState that matches the filter.
+     * @param {CandidatLifeStateFindUniqueArgs} args - Arguments to find a CandidatLifeState
+     * @example
+     * // Get one CandidatLifeState
+     * const candidatLifeState = await prisma.candidatLifeState.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CandidatLifeStateFindUniqueArgs>(args: SelectSubset<T, CandidatLifeStateFindUniqueArgs<ExtArgs>>): Prisma__CandidatLifeStateClient<$Result.GetResult<Prisma.$CandidatLifeStatePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one CandidatLifeState that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {CandidatLifeStateFindUniqueOrThrowArgs} args - Arguments to find a CandidatLifeState
+     * @example
+     * // Get one CandidatLifeState
+     * const candidatLifeState = await prisma.candidatLifeState.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CandidatLifeStateFindUniqueOrThrowArgs>(args: SelectSubset<T, CandidatLifeStateFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CandidatLifeStateClient<$Result.GetResult<Prisma.$CandidatLifeStatePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first CandidatLifeState that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CandidatLifeStateFindFirstArgs} args - Arguments to find a CandidatLifeState
+     * @example
+     * // Get one CandidatLifeState
+     * const candidatLifeState = await prisma.candidatLifeState.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CandidatLifeStateFindFirstArgs>(args?: SelectSubset<T, CandidatLifeStateFindFirstArgs<ExtArgs>>): Prisma__CandidatLifeStateClient<$Result.GetResult<Prisma.$CandidatLifeStatePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first CandidatLifeState that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CandidatLifeStateFindFirstOrThrowArgs} args - Arguments to find a CandidatLifeState
+     * @example
+     * // Get one CandidatLifeState
+     * const candidatLifeState = await prisma.candidatLifeState.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CandidatLifeStateFindFirstOrThrowArgs>(args?: SelectSubset<T, CandidatLifeStateFindFirstOrThrowArgs<ExtArgs>>): Prisma__CandidatLifeStateClient<$Result.GetResult<Prisma.$CandidatLifeStatePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more CandidatLifeStates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CandidatLifeStateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CandidatLifeStates
+     * const candidatLifeStates = await prisma.candidatLifeState.findMany()
+     * 
+     * // Get first 10 CandidatLifeStates
+     * const candidatLifeStates = await prisma.candidatLifeState.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const candidatLifeStateWithIdOnly = await prisma.candidatLifeState.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CandidatLifeStateFindManyArgs>(args?: SelectSubset<T, CandidatLifeStateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CandidatLifeStatePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a CandidatLifeState.
+     * @param {CandidatLifeStateCreateArgs} args - Arguments to create a CandidatLifeState.
+     * @example
+     * // Create one CandidatLifeState
+     * const CandidatLifeState = await prisma.candidatLifeState.create({
+     *   data: {
+     *     // ... data to create a CandidatLifeState
+     *   }
+     * })
+     * 
+     */
+    create<T extends CandidatLifeStateCreateArgs>(args: SelectSubset<T, CandidatLifeStateCreateArgs<ExtArgs>>): Prisma__CandidatLifeStateClient<$Result.GetResult<Prisma.$CandidatLifeStatePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many CandidatLifeStates.
+     * @param {CandidatLifeStateCreateManyArgs} args - Arguments to create many CandidatLifeStates.
+     * @example
+     * // Create many CandidatLifeStates
+     * const candidatLifeState = await prisma.candidatLifeState.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CandidatLifeStateCreateManyArgs>(args?: SelectSubset<T, CandidatLifeStateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CandidatLifeStates and returns the data saved in the database.
+     * @param {CandidatLifeStateCreateManyAndReturnArgs} args - Arguments to create many CandidatLifeStates.
+     * @example
+     * // Create many CandidatLifeStates
+     * const candidatLifeState = await prisma.candidatLifeState.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CandidatLifeStates and only return the `id`
+     * const candidatLifeStateWithIdOnly = await prisma.candidatLifeState.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CandidatLifeStateCreateManyAndReturnArgs>(args?: SelectSubset<T, CandidatLifeStateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CandidatLifeStatePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a CandidatLifeState.
+     * @param {CandidatLifeStateDeleteArgs} args - Arguments to delete one CandidatLifeState.
+     * @example
+     * // Delete one CandidatLifeState
+     * const CandidatLifeState = await prisma.candidatLifeState.delete({
+     *   where: {
+     *     // ... filter to delete one CandidatLifeState
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CandidatLifeStateDeleteArgs>(args: SelectSubset<T, CandidatLifeStateDeleteArgs<ExtArgs>>): Prisma__CandidatLifeStateClient<$Result.GetResult<Prisma.$CandidatLifeStatePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one CandidatLifeState.
+     * @param {CandidatLifeStateUpdateArgs} args - Arguments to update one CandidatLifeState.
+     * @example
+     * // Update one CandidatLifeState
+     * const candidatLifeState = await prisma.candidatLifeState.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CandidatLifeStateUpdateArgs>(args: SelectSubset<T, CandidatLifeStateUpdateArgs<ExtArgs>>): Prisma__CandidatLifeStateClient<$Result.GetResult<Prisma.$CandidatLifeStatePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more CandidatLifeStates.
+     * @param {CandidatLifeStateDeleteManyArgs} args - Arguments to filter CandidatLifeStates to delete.
+     * @example
+     * // Delete a few CandidatLifeStates
+     * const { count } = await prisma.candidatLifeState.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CandidatLifeStateDeleteManyArgs>(args?: SelectSubset<T, CandidatLifeStateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CandidatLifeStates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CandidatLifeStateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CandidatLifeStates
+     * const candidatLifeState = await prisma.candidatLifeState.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CandidatLifeStateUpdateManyArgs>(args: SelectSubset<T, CandidatLifeStateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one CandidatLifeState.
+     * @param {CandidatLifeStateUpsertArgs} args - Arguments to update or create a CandidatLifeState.
+     * @example
+     * // Update or create a CandidatLifeState
+     * const candidatLifeState = await prisma.candidatLifeState.upsert({
+     *   create: {
+     *     // ... data to create a CandidatLifeState
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CandidatLifeState we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CandidatLifeStateUpsertArgs>(args: SelectSubset<T, CandidatLifeStateUpsertArgs<ExtArgs>>): Prisma__CandidatLifeStateClient<$Result.GetResult<Prisma.$CandidatLifeStatePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of CandidatLifeStates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CandidatLifeStateCountArgs} args - Arguments to filter CandidatLifeStates to count.
+     * @example
+     * // Count the number of CandidatLifeStates
+     * const count = await prisma.candidatLifeState.count({
+     *   where: {
+     *     // ... the filter for the CandidatLifeStates we want to count
+     *   }
+     * })
+    **/
+    count<T extends CandidatLifeStateCountArgs>(
+      args?: Subset<T, CandidatLifeStateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CandidatLifeStateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CandidatLifeState.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CandidatLifeStateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CandidatLifeStateAggregateArgs>(args: Subset<T, CandidatLifeStateAggregateArgs>): Prisma.PrismaPromise<GetCandidatLifeStateAggregateType<T>>
+
+    /**
+     * Group by CandidatLifeState.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CandidatLifeStateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CandidatLifeStateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CandidatLifeStateGroupByArgs['orderBy'] }
+        : { orderBy?: CandidatLifeStateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CandidatLifeStateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCandidatLifeStateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CandidatLifeState model
+   */
+  readonly fields: CandidatLifeStateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CandidatLifeState.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CandidatLifeStateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    candidate<T extends CandidatDataDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CandidatDataDefaultArgs<ExtArgs>>): Prisma__CandidatDataClient<$Result.GetResult<Prisma.$CandidatDataPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CandidatLifeState model
+   */ 
+  interface CandidatLifeStateFieldRefs {
+    readonly id: FieldRef<"CandidatLifeState", 'String'>
+    readonly driverCategory: FieldRef<"CandidatLifeState", 'String'>
+    readonly availabilityTransport: FieldRef<"CandidatLifeState", 'Boolean'>
+    readonly maritalStatus: FieldRef<"CandidatLifeState", 'MaritalStatus'>
+    readonly cdId: FieldRef<"CandidatLifeState", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CandidatLifeState findUnique
+   */
+  export type CandidatLifeStateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CandidatLifeState
+     */
+    select?: CandidatLifeStateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CandidatLifeStateInclude<ExtArgs> | null
+    /**
+     * Filter, which CandidatLifeState to fetch.
+     */
+    where: CandidatLifeStateWhereUniqueInput
+  }
+
+  /**
+   * CandidatLifeState findUniqueOrThrow
+   */
+  export type CandidatLifeStateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CandidatLifeState
+     */
+    select?: CandidatLifeStateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CandidatLifeStateInclude<ExtArgs> | null
+    /**
+     * Filter, which CandidatLifeState to fetch.
+     */
+    where: CandidatLifeStateWhereUniqueInput
+  }
+
+  /**
+   * CandidatLifeState findFirst
+   */
+  export type CandidatLifeStateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CandidatLifeState
+     */
+    select?: CandidatLifeStateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CandidatLifeStateInclude<ExtArgs> | null
+    /**
+     * Filter, which CandidatLifeState to fetch.
+     */
+    where?: CandidatLifeStateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CandidatLifeStates to fetch.
+     */
+    orderBy?: CandidatLifeStateOrderByWithRelationInput | CandidatLifeStateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CandidatLifeStates.
+     */
+    cursor?: CandidatLifeStateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CandidatLifeStates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CandidatLifeStates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CandidatLifeStates.
+     */
+    distinct?: CandidatLifeStateScalarFieldEnum | CandidatLifeStateScalarFieldEnum[]
+  }
+
+  /**
+   * CandidatLifeState findFirstOrThrow
+   */
+  export type CandidatLifeStateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CandidatLifeState
+     */
+    select?: CandidatLifeStateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CandidatLifeStateInclude<ExtArgs> | null
+    /**
+     * Filter, which CandidatLifeState to fetch.
+     */
+    where?: CandidatLifeStateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CandidatLifeStates to fetch.
+     */
+    orderBy?: CandidatLifeStateOrderByWithRelationInput | CandidatLifeStateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CandidatLifeStates.
+     */
+    cursor?: CandidatLifeStateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CandidatLifeStates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CandidatLifeStates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CandidatLifeStates.
+     */
+    distinct?: CandidatLifeStateScalarFieldEnum | CandidatLifeStateScalarFieldEnum[]
+  }
+
+  /**
+   * CandidatLifeState findMany
+   */
+  export type CandidatLifeStateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CandidatLifeState
+     */
+    select?: CandidatLifeStateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CandidatLifeStateInclude<ExtArgs> | null
+    /**
+     * Filter, which CandidatLifeStates to fetch.
+     */
+    where?: CandidatLifeStateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CandidatLifeStates to fetch.
+     */
+    orderBy?: CandidatLifeStateOrderByWithRelationInput | CandidatLifeStateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CandidatLifeStates.
+     */
+    cursor?: CandidatLifeStateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CandidatLifeStates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CandidatLifeStates.
+     */
+    skip?: number
+    distinct?: CandidatLifeStateScalarFieldEnum | CandidatLifeStateScalarFieldEnum[]
+  }
+
+  /**
+   * CandidatLifeState create
+   */
+  export type CandidatLifeStateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CandidatLifeState
+     */
+    select?: CandidatLifeStateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CandidatLifeStateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CandidatLifeState.
+     */
+    data: XOR<CandidatLifeStateCreateInput, CandidatLifeStateUncheckedCreateInput>
+  }
+
+  /**
+   * CandidatLifeState createMany
+   */
+  export type CandidatLifeStateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CandidatLifeStates.
+     */
+    data: CandidatLifeStateCreateManyInput | CandidatLifeStateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CandidatLifeState createManyAndReturn
+   */
+  export type CandidatLifeStateCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CandidatLifeState
+     */
+    select?: CandidatLifeStateSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many CandidatLifeStates.
+     */
+    data: CandidatLifeStateCreateManyInput | CandidatLifeStateCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CandidatLifeStateIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CandidatLifeState update
+   */
+  export type CandidatLifeStateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CandidatLifeState
+     */
+    select?: CandidatLifeStateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CandidatLifeStateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CandidatLifeState.
+     */
+    data: XOR<CandidatLifeStateUpdateInput, CandidatLifeStateUncheckedUpdateInput>
+    /**
+     * Choose, which CandidatLifeState to update.
+     */
+    where: CandidatLifeStateWhereUniqueInput
+  }
+
+  /**
+   * CandidatLifeState updateMany
+   */
+  export type CandidatLifeStateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CandidatLifeStates.
+     */
+    data: XOR<CandidatLifeStateUpdateManyMutationInput, CandidatLifeStateUncheckedUpdateManyInput>
+    /**
+     * Filter which CandidatLifeStates to update
+     */
+    where?: CandidatLifeStateWhereInput
+  }
+
+  /**
+   * CandidatLifeState upsert
+   */
+  export type CandidatLifeStateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CandidatLifeState
+     */
+    select?: CandidatLifeStateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CandidatLifeStateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CandidatLifeState to update in case it exists.
+     */
+    where: CandidatLifeStateWhereUniqueInput
+    /**
+     * In case the CandidatLifeState found by the `where` argument doesn't exist, create a new CandidatLifeState with this data.
+     */
+    create: XOR<CandidatLifeStateCreateInput, CandidatLifeStateUncheckedCreateInput>
+    /**
+     * In case the CandidatLifeState was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CandidatLifeStateUpdateInput, CandidatLifeStateUncheckedUpdateInput>
+  }
+
+  /**
+   * CandidatLifeState delete
+   */
+  export type CandidatLifeStateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CandidatLifeState
+     */
+    select?: CandidatLifeStateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CandidatLifeStateInclude<ExtArgs> | null
+    /**
+     * Filter which CandidatLifeState to delete.
+     */
+    where: CandidatLifeStateWhereUniqueInput
+  }
+
+  /**
+   * CandidatLifeState deleteMany
+   */
+  export type CandidatLifeStateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CandidatLifeStates to delete
+     */
+    where?: CandidatLifeStateWhereInput
+  }
+
+  /**
+   * CandidatLifeState without action
+   */
+  export type CandidatLifeStateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CandidatLifeState
+     */
+    select?: CandidatLifeStateSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CandidatLifeStateInclude<ExtArgs> | null
   }
 
 
@@ -9262,7 +10314,7 @@ export namespace Prisma {
     id: string
     course: string
     institution: string
-    grade: string
+    grade: string | null
     startdate: Date
     enddate: Date
     cdId: string
@@ -9333,7 +10385,7 @@ export namespace Prisma {
       id: string
       course: string
       institution: string
-      grade: string
+      grade: string | null
       startdate: Date
       enddate: Date
       cdId: string
@@ -23870,6 +24922,17 @@ export namespace Prisma {
   export type CandidatDataScalarFieldEnum = (typeof CandidatDataScalarFieldEnum)[keyof typeof CandidatDataScalarFieldEnum]
 
 
+  export const CandidatLifeStateScalarFieldEnum: {
+    id: 'id',
+    driverCategory: 'driverCategory',
+    availabilityTransport: 'availabilityTransport',
+    maritalStatus: 'maritalStatus',
+    cdId: 'cdId'
+  };
+
+  export type CandidatLifeStateScalarFieldEnum = (typeof CandidatLifeStateScalarFieldEnum)[keyof typeof CandidatLifeStateScalarFieldEnum]
+
+
   export const EducationScalarFieldEnum: {
     id: 'id',
     degree: 'degree',
@@ -24147,6 +25210,15 @@ export namespace Prisma {
   export type CandidatDataOrderByRelevanceFieldEnum = (typeof CandidatDataOrderByRelevanceFieldEnum)[keyof typeof CandidatDataOrderByRelevanceFieldEnum]
 
 
+  export const CandidatLifeStateOrderByRelevanceFieldEnum: {
+    id: 'id',
+    driverCategory: 'driverCategory',
+    cdId: 'cdId'
+  };
+
+  export type CandidatLifeStateOrderByRelevanceFieldEnum = (typeof CandidatLifeStateOrderByRelevanceFieldEnum)[keyof typeof CandidatLifeStateOrderByRelevanceFieldEnum]
+
+
   export const EducationOrderByRelevanceFieldEnum: {
     id: 'id',
     degree: 'degree',
@@ -24421,6 +25493,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'MaritalStatus'
+   */
+  export type EnumMaritalStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MaritalStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'MaritalStatus[]'
+   */
+  export type ListEnumMaritalStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MaritalStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'SkillsLevel'
    */
   export type EnumSkillsLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SkillsLevel'>
@@ -24521,8 +25607,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     authAccounts?: AuthAccountListRelationFilter
-    agencydata?: XOR<AgencyDataNullableRelationFilter, AgencyDataWhereInput> | null
-    candidatdata?: XOR<CandidatDataNullableRelationFilter, CandidatDataWhereInput> | null
+    agencydata?: XOR<AgencyDataNullableScalarRelationFilter, AgencyDataWhereInput> | null
+    candidatdata?: XOR<CandidatDataNullableScalarRelationFilter, CandidatDataWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
@@ -24555,8 +25641,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     authAccounts?: AuthAccountListRelationFilter
-    agencydata?: XOR<AgencyDataNullableRelationFilter, AgencyDataWhereInput> | null
-    candidatdata?: XOR<CandidatDataNullableRelationFilter, CandidatDataWhereInput> | null
+    agencydata?: XOR<AgencyDataNullableScalarRelationFilter, AgencyDataWhereInput> | null
+    candidatdata?: XOR<CandidatDataNullableScalarRelationFilter, CandidatDataWhereInput> | null
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -24604,13 +25690,14 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"CandidatData"> | Date | string
     updatedAt?: DateTimeFilter<"CandidatData"> | Date | string
     userId?: StringFilter<"CandidatData"> | string
+    candidatLifeState?: XOR<CandidatLifeStateNullableScalarRelationFilter, CandidatLifeStateWhereInput> | null
     courses?: CoursesListRelationFilter
     education?: EducationListRelationFilter
     experience?: ExperienceListRelationFilter
     hobbies?: HobbiesListRelationFilter
     languages?: LanguagesListRelationFilter
     skills?: SkillsListRelationFilter
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type CandidatDataOrderByWithRelationInput = {
@@ -24625,6 +25712,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     userId?: SortOrder
+    candidatLifeState?: CandidatLifeStateOrderByWithRelationInput
     courses?: CoursesOrderByRelationAggregateInput
     education?: EducationOrderByRelationAggregateInput
     experience?: ExperienceOrderByRelationAggregateInput
@@ -24650,13 +25738,14 @@ export namespace Prisma {
     avatar?: StringNullableListFilter<"CandidatData">
     createdAt?: DateTimeFilter<"CandidatData"> | Date | string
     updatedAt?: DateTimeFilter<"CandidatData"> | Date | string
+    candidatLifeState?: XOR<CandidatLifeStateNullableScalarRelationFilter, CandidatLifeStateWhereInput> | null
     courses?: CoursesListRelationFilter
     education?: EducationListRelationFilter
     experience?: ExperienceListRelationFilter
     hobbies?: HobbiesListRelationFilter
     languages?: LanguagesListRelationFilter
     skills?: SkillsListRelationFilter
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "userId">
 
   export type CandidatDataOrderByWithAggregationInput = {
@@ -24693,6 +25782,62 @@ export namespace Prisma {
     userId?: StringWithAggregatesFilter<"CandidatData"> | string
   }
 
+  export type CandidatLifeStateWhereInput = {
+    AND?: CandidatLifeStateWhereInput | CandidatLifeStateWhereInput[]
+    OR?: CandidatLifeStateWhereInput[]
+    NOT?: CandidatLifeStateWhereInput | CandidatLifeStateWhereInput[]
+    id?: StringFilter<"CandidatLifeState"> | string
+    driverCategory?: StringNullableFilter<"CandidatLifeState"> | string | null
+    availabilityTransport?: BoolFilter<"CandidatLifeState"> | boolean
+    maritalStatus?: EnumMaritalStatusFilter<"CandidatLifeState"> | $Enums.MaritalStatus
+    cdId?: StringFilter<"CandidatLifeState"> | string
+    candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
+  }
+
+  export type CandidatLifeStateOrderByWithRelationInput = {
+    id?: SortOrder
+    driverCategory?: SortOrderInput | SortOrder
+    availabilityTransport?: SortOrder
+    maritalStatus?: SortOrder
+    cdId?: SortOrder
+    candidate?: CandidatDataOrderByWithRelationInput
+    _relevance?: CandidatLifeStateOrderByRelevanceInput
+  }
+
+  export type CandidatLifeStateWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    cdId?: string
+    AND?: CandidatLifeStateWhereInput | CandidatLifeStateWhereInput[]
+    OR?: CandidatLifeStateWhereInput[]
+    NOT?: CandidatLifeStateWhereInput | CandidatLifeStateWhereInput[]
+    driverCategory?: StringNullableFilter<"CandidatLifeState"> | string | null
+    availabilityTransport?: BoolFilter<"CandidatLifeState"> | boolean
+    maritalStatus?: EnumMaritalStatusFilter<"CandidatLifeState"> | $Enums.MaritalStatus
+    candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
+  }, "id" | "cdId">
+
+  export type CandidatLifeStateOrderByWithAggregationInput = {
+    id?: SortOrder
+    driverCategory?: SortOrderInput | SortOrder
+    availabilityTransport?: SortOrder
+    maritalStatus?: SortOrder
+    cdId?: SortOrder
+    _count?: CandidatLifeStateCountOrderByAggregateInput
+    _max?: CandidatLifeStateMaxOrderByAggregateInput
+    _min?: CandidatLifeStateMinOrderByAggregateInput
+  }
+
+  export type CandidatLifeStateScalarWhereWithAggregatesInput = {
+    AND?: CandidatLifeStateScalarWhereWithAggregatesInput | CandidatLifeStateScalarWhereWithAggregatesInput[]
+    OR?: CandidatLifeStateScalarWhereWithAggregatesInput[]
+    NOT?: CandidatLifeStateScalarWhereWithAggregatesInput | CandidatLifeStateScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CandidatLifeState"> | string
+    driverCategory?: StringNullableWithAggregatesFilter<"CandidatLifeState"> | string | null
+    availabilityTransport?: BoolWithAggregatesFilter<"CandidatLifeState"> | boolean
+    maritalStatus?: EnumMaritalStatusWithAggregatesFilter<"CandidatLifeState"> | $Enums.MaritalStatus
+    cdId?: StringWithAggregatesFilter<"CandidatLifeState"> | string
+  }
+
   export type EducationWhereInput = {
     AND?: EducationWhereInput | EducationWhereInput[]
     OR?: EducationWhereInput[]
@@ -24705,7 +25850,7 @@ export namespace Prisma {
     enddate?: DateTimeFilter<"Education"> | Date | string
     description?: StringNullableFilter<"Education"> | string | null
     cdId?: StringFilter<"Education"> | string
-    candidate?: XOR<CandidatDataRelationFilter, CandidatDataWhereInput>
+    candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
   }
 
   export type EducationOrderByWithRelationInput = {
@@ -24733,7 +25878,7 @@ export namespace Prisma {
     enddate?: DateTimeFilter<"Education"> | Date | string
     description?: StringNullableFilter<"Education"> | string | null
     cdId?: StringFilter<"Education"> | string
-    candidate?: XOR<CandidatDataRelationFilter, CandidatDataWhereInput>
+    candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
   }, "id">
 
   export type EducationOrderByWithAggregationInput = {
@@ -24772,7 +25917,7 @@ export namespace Prisma {
     skill?: StringFilter<"Skills"> | string
     level?: EnumSkillsLevelFilter<"Skills"> | $Enums.SkillsLevel
     cdId?: StringFilter<"Skills"> | string
-    candidate?: XOR<CandidatDataRelationFilter, CandidatDataWhereInput>
+    candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
   }
 
   export type SkillsOrderByWithRelationInput = {
@@ -24792,7 +25937,7 @@ export namespace Prisma {
     skill?: StringFilter<"Skills"> | string
     level?: EnumSkillsLevelFilter<"Skills"> | $Enums.SkillsLevel
     cdId?: StringFilter<"Skills"> | string
-    candidate?: XOR<CandidatDataRelationFilter, CandidatDataWhereInput>
+    candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
   }, "id">
 
   export type SkillsOrderByWithAggregationInput = {
@@ -24828,7 +25973,7 @@ export namespace Prisma {
     endDate?: DateTimeFilter<"Experience"> | Date | string
     description?: StringNullableFilter<"Experience"> | string | null
     cdId?: StringFilter<"Experience"> | string
-    candidate?: XOR<CandidatDataRelationFilter, CandidatDataWhereInput>
+    candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
   }
 
   export type ExperienceOrderByWithRelationInput = {
@@ -24858,7 +26003,7 @@ export namespace Prisma {
     endDate?: DateTimeFilter<"Experience"> | Date | string
     description?: StringNullableFilter<"Experience"> | string | null
     cdId?: StringFilter<"Experience"> | string
-    candidate?: XOR<CandidatDataRelationFilter, CandidatDataWhereInput>
+    candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
   }, "id">
 
   export type ExperienceOrderByWithAggregationInput = {
@@ -24899,7 +26044,7 @@ export namespace Prisma {
     language?: StringFilter<"Languages"> | string
     level?: EnumLanguageLevelFilter<"Languages"> | $Enums.LanguageLevel
     cdId?: StringFilter<"Languages"> | string
-    candidate?: XOR<CandidatDataRelationFilter, CandidatDataWhereInput>
+    candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
   }
 
   export type LanguagesOrderByWithRelationInput = {
@@ -24919,7 +26064,7 @@ export namespace Prisma {
     language?: StringFilter<"Languages"> | string
     level?: EnumLanguageLevelFilter<"Languages"> | $Enums.LanguageLevel
     cdId?: StringFilter<"Languages"> | string
-    candidate?: XOR<CandidatDataRelationFilter, CandidatDataWhereInput>
+    candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
   }, "id">
 
   export type LanguagesOrderByWithAggregationInput = {
@@ -24949,18 +26094,18 @@ export namespace Prisma {
     id?: StringFilter<"Courses"> | string
     course?: StringFilter<"Courses"> | string
     institution?: StringFilter<"Courses"> | string
-    grade?: StringFilter<"Courses"> | string
+    grade?: StringNullableFilter<"Courses"> | string | null
     startdate?: DateTimeFilter<"Courses"> | Date | string
     enddate?: DateTimeFilter<"Courses"> | Date | string
     cdId?: StringFilter<"Courses"> | string
-    candidate?: XOR<CandidatDataRelationFilter, CandidatDataWhereInput>
+    candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
   }
 
   export type CoursesOrderByWithRelationInput = {
     id?: SortOrder
     course?: SortOrder
     institution?: SortOrder
-    grade?: SortOrder
+    grade?: SortOrderInput | SortOrder
     startdate?: SortOrder
     enddate?: SortOrder
     cdId?: SortOrder
@@ -24975,18 +26120,18 @@ export namespace Prisma {
     NOT?: CoursesWhereInput | CoursesWhereInput[]
     course?: StringFilter<"Courses"> | string
     institution?: StringFilter<"Courses"> | string
-    grade?: StringFilter<"Courses"> | string
+    grade?: StringNullableFilter<"Courses"> | string | null
     startdate?: DateTimeFilter<"Courses"> | Date | string
     enddate?: DateTimeFilter<"Courses"> | Date | string
     cdId?: StringFilter<"Courses"> | string
-    candidate?: XOR<CandidatDataRelationFilter, CandidatDataWhereInput>
+    candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
   }, "id">
 
   export type CoursesOrderByWithAggregationInput = {
     id?: SortOrder
     course?: SortOrder
     institution?: SortOrder
-    grade?: SortOrder
+    grade?: SortOrderInput | SortOrder
     startdate?: SortOrder
     enddate?: SortOrder
     cdId?: SortOrder
@@ -25002,7 +26147,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Courses"> | string
     course?: StringWithAggregatesFilter<"Courses"> | string
     institution?: StringWithAggregatesFilter<"Courses"> | string
-    grade?: StringWithAggregatesFilter<"Courses"> | string
+    grade?: StringNullableWithAggregatesFilter<"Courses"> | string | null
     startdate?: DateTimeWithAggregatesFilter<"Courses"> | Date | string
     enddate?: DateTimeWithAggregatesFilter<"Courses"> | Date | string
     cdId?: StringWithAggregatesFilter<"Courses"> | string
@@ -25015,7 +26160,7 @@ export namespace Prisma {
     id?: StringFilter<"Hobbies"> | string
     hobbie?: StringFilter<"Hobbies"> | string
     cdId?: StringFilter<"Hobbies"> | string
-    candidate?: XOR<CandidatDataRelationFilter, CandidatDataWhereInput>
+    candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
   }
 
   export type HobbiesOrderByWithRelationInput = {
@@ -25033,7 +26178,7 @@ export namespace Prisma {
     NOT?: HobbiesWhereInput | HobbiesWhereInput[]
     hobbie?: StringFilter<"Hobbies"> | string
     cdId?: StringFilter<"Hobbies"> | string
-    candidate?: XOR<CandidatDataRelationFilter, CandidatDataWhereInput>
+    candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
   }, "id">
 
   export type HobbiesOrderByWithAggregationInput = {
@@ -25069,7 +26214,7 @@ export namespace Prisma {
     userId?: StringFilter<"AgencyData"> | string
     about?: StringFilter<"AgencyData"> | string
     logo?: StringNullableListFilter<"AgencyData">
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     branch?: BranchListRelationFilter
     jobOffers?: JobOffersListRelationFilter
   }
@@ -25107,7 +26252,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"AgencyData"> | Date | string
     about?: StringFilter<"AgencyData"> | string
     logo?: StringNullableListFilter<"AgencyData">
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     branch?: BranchListRelationFilter
     jobOffers?: JobOffersListRelationFilter
   }, "id" | "slug" | "userId">
@@ -25161,7 +26306,7 @@ export namespace Prisma {
     logo?: StringNullableFilter<"Branch"> | string | null
     about_branch?: StringNullableFilter<"Branch"> | string | null
     adId?: StringFilter<"Branch"> | string
-    agency?: XOR<AgencyDataRelationFilter, AgencyDataWhereInput>
+    agency?: XOR<AgencyDataScalarRelationFilter, AgencyDataWhereInput>
     jobOffers?: JobOffersListRelationFilter
   }
 
@@ -25197,7 +26342,7 @@ export namespace Prisma {
     logo?: StringNullableFilter<"Branch"> | string | null
     about_branch?: StringNullableFilter<"Branch"> | string | null
     adId?: StringFilter<"Branch"> | string
-    agency?: XOR<AgencyDataRelationFilter, AgencyDataWhereInput>
+    agency?: XOR<AgencyDataScalarRelationFilter, AgencyDataWhereInput>
     jobOffers?: JobOffersListRelationFilter
   }, "id">
 
@@ -25261,14 +26406,14 @@ export namespace Prisma {
     branchId?: StringNullableFilter<"jobOffers"> | string | null
     sectors?: SectorsListRelationFilter
     tags?: JobTagsListRelationFilter
-    categories?: XOR<CategoryNullableRelationFilter, CategoryWhereInput> | null
-    contractType?: XOR<ContractTypeJobNullableRelationFilter, ContractTypeJobWhereInput> | null
-    experienceMinimalJob?: XOR<ExperienceMinimalJobNullableRelationFilter, ExperienceMinimalJobWhereInput> | null
-    modeJob?: XOR<ModeJobNullableRelationFilter, ModeJobWhereInput> | null
-    workingTimeJob?: XOR<WorkingTimeJobNullableRelationFilter, WorkingTimeJobWhereInput> | null
-    levelEducation?: XOR<LevelEducationNullableRelationFilter, LevelEducationWhereInput> | null
-    agency?: XOR<AgencyDataRelationFilter, AgencyDataWhereInput>
-    branch?: XOR<BranchNullableRelationFilter, BranchWhereInput> | null
+    categories?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
+    contractType?: XOR<ContractTypeJobNullableScalarRelationFilter, ContractTypeJobWhereInput> | null
+    experienceMinimalJob?: XOR<ExperienceMinimalJobNullableScalarRelationFilter, ExperienceMinimalJobWhereInput> | null
+    modeJob?: XOR<ModeJobNullableScalarRelationFilter, ModeJobWhereInput> | null
+    workingTimeJob?: XOR<WorkingTimeJobNullableScalarRelationFilter, WorkingTimeJobWhereInput> | null
+    levelEducation?: XOR<LevelEducationNullableScalarRelationFilter, LevelEducationWhereInput> | null
+    agency?: XOR<AgencyDataScalarRelationFilter, AgencyDataWhereInput>
+    branch?: XOR<BranchNullableScalarRelationFilter, BranchWhereInput> | null
   }
 
   export type jobOffersOrderByWithRelationInput = {
@@ -25331,14 +26476,14 @@ export namespace Prisma {
     branchId?: StringNullableFilter<"jobOffers"> | string | null
     sectors?: SectorsListRelationFilter
     tags?: JobTagsListRelationFilter
-    categories?: XOR<CategoryNullableRelationFilter, CategoryWhereInput> | null
-    contractType?: XOR<ContractTypeJobNullableRelationFilter, ContractTypeJobWhereInput> | null
-    experienceMinimalJob?: XOR<ExperienceMinimalJobNullableRelationFilter, ExperienceMinimalJobWhereInput> | null
-    modeJob?: XOR<ModeJobNullableRelationFilter, ModeJobWhereInput> | null
-    workingTimeJob?: XOR<WorkingTimeJobNullableRelationFilter, WorkingTimeJobWhereInput> | null
-    levelEducation?: XOR<LevelEducationNullableRelationFilter, LevelEducationWhereInput> | null
-    agency?: XOR<AgencyDataRelationFilter, AgencyDataWhereInput>
-    branch?: XOR<BranchNullableRelationFilter, BranchWhereInput> | null
+    categories?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
+    contractType?: XOR<ContractTypeJobNullableScalarRelationFilter, ContractTypeJobWhereInput> | null
+    experienceMinimalJob?: XOR<ExperienceMinimalJobNullableScalarRelationFilter, ExperienceMinimalJobWhereInput> | null
+    modeJob?: XOR<ModeJobNullableScalarRelationFilter, ModeJobWhereInput> | null
+    workingTimeJob?: XOR<WorkingTimeJobNullableScalarRelationFilter, WorkingTimeJobWhereInput> | null
+    levelEducation?: XOR<LevelEducationNullableScalarRelationFilter, LevelEducationWhereInput> | null
+    agency?: XOR<AgencyDataScalarRelationFilter, AgencyDataWhereInput>
+    branch?: XOR<BranchNullableScalarRelationFilter, BranchWhereInput> | null
   }, "id" | "slug">
 
   export type jobOffersOrderByWithAggregationInput = {
@@ -25658,7 +26803,7 @@ export namespace Prisma {
     parentId?: StringNullableFilter<"Category"> | string | null
     sectors?: SectorsListRelationFilter
     jobOffers?: JobOffersListRelationFilter
-    parent?: XOR<CategoryNullableRelationFilter, CategoryWhereInput> | null
+    parent?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
     children?: CategoryListRelationFilter
   }
 
@@ -25688,7 +26833,7 @@ export namespace Prisma {
     parentId?: StringNullableFilter<"Category"> | string | null
     sectors?: SectorsListRelationFilter
     jobOffers?: JobOffersListRelationFilter
-    parent?: XOR<CategoryNullableRelationFilter, CategoryWhereInput> | null
+    parent?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
     children?: CategoryListRelationFilter
   }, "id" | "name" | "slug">
 
@@ -25727,7 +26872,7 @@ export namespace Prisma {
     slug?: StringFilter<"Sectors"> | string
     categoryId?: StringFilter<"Sectors"> | string
     jobOffer?: JobOffersListRelationFilter
-    category?: XOR<CategoryRelationFilter, CategoryWhereInput>
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
   }
 
   export type SectorsOrderByWithRelationInput = {
@@ -25749,7 +26894,7 @@ export namespace Prisma {
     NOT?: SectorsWhereInput | SectorsWhereInput[]
     categoryId?: StringFilter<"Sectors"> | string
     jobOffer?: JobOffersListRelationFilter
-    category?: XOR<CategoryRelationFilter, CategoryWhereInput>
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
   }, "id" | "name" | "slug">
 
   export type SectorsOrderByWithAggregationInput = {
@@ -25785,7 +26930,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"AuthAccount"> | Date | string
     updatedAt?: DateTimeFilter<"AuthAccount"> | Date | string
     userId?: StringNullableFilter<"AuthAccount"> | string | null
-    user?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
   export type AuthAccountOrderByWithRelationInput = {
@@ -25815,7 +26960,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"AuthAccount"> | Date | string
     updatedAt?: DateTimeFilter<"AuthAccount"> | Date | string
     userId?: StringNullableFilter<"AuthAccount"> | string | null
-    user?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id">
 
   export type AuthAccountOrderByWithAggregationInput = {
@@ -26015,6 +27160,7 @@ export namespace Prisma {
     avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
     courses?: CoursesCreateNestedManyWithoutCandidateInput
     education?: EducationCreateNestedManyWithoutCandidateInput
     experience?: ExperienceCreateNestedManyWithoutCandidateInput
@@ -26036,6 +27182,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
+    candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
     courses?: CoursesUncheckedCreateNestedManyWithoutCandidateInput
     education?: EducationUncheckedCreateNestedManyWithoutCandidateInput
     experience?: ExperienceUncheckedCreateNestedManyWithoutCandidateInput
@@ -26055,6 +27202,7 @@ export namespace Prisma {
     avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
     courses?: CoursesUpdateManyWithoutCandidateNestedInput
     education?: EducationUpdateManyWithoutCandidateNestedInput
     experience?: ExperienceUpdateManyWithoutCandidateNestedInput
@@ -26076,6 +27224,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
+    candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
     courses?: CoursesUncheckedUpdateManyWithoutCandidateNestedInput
     education?: EducationUncheckedUpdateManyWithoutCandidateNestedInput
     experience?: ExperienceUncheckedUpdateManyWithoutCandidateNestedInput
@@ -26123,6 +27272,61 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CandidatLifeStateCreateInput = {
+    id?: string
+    driverCategory?: string | null
+    availabilityTransport?: boolean
+    maritalStatus?: $Enums.MaritalStatus
+    candidate: CandidatDataCreateNestedOneWithoutCandidatLifeStateInput
+  }
+
+  export type CandidatLifeStateUncheckedCreateInput = {
+    id?: string
+    driverCategory?: string | null
+    availabilityTransport?: boolean
+    maritalStatus?: $Enums.MaritalStatus
+    cdId: string
+  }
+
+  export type CandidatLifeStateUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    driverCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    availabilityTransport?: BoolFieldUpdateOperationsInput | boolean
+    maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
+    candidate?: CandidatDataUpdateOneRequiredWithoutCandidatLifeStateNestedInput
+  }
+
+  export type CandidatLifeStateUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    driverCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    availabilityTransport?: BoolFieldUpdateOperationsInput | boolean
+    maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
+    cdId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CandidatLifeStateCreateManyInput = {
+    id?: string
+    driverCategory?: string | null
+    availabilityTransport?: boolean
+    maritalStatus?: $Enums.MaritalStatus
+    cdId: string
+  }
+
+  export type CandidatLifeStateUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    driverCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    availabilityTransport?: BoolFieldUpdateOperationsInput | boolean
+    maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
+  }
+
+  export type CandidatLifeStateUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    driverCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    availabilityTransport?: BoolFieldUpdateOperationsInput | boolean
+    maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
+    cdId?: StringFieldUpdateOperationsInput | string
   }
 
   export type EducationCreateInput = {
@@ -26384,7 +27588,7 @@ export namespace Prisma {
     id?: string
     course: string
     institution: string
-    grade: string
+    grade?: string | null
     startdate: Date | string
     enddate: Date | string
     candidate: CandidatDataCreateNestedOneWithoutCoursesInput
@@ -26394,7 +27598,7 @@ export namespace Prisma {
     id?: string
     course: string
     institution: string
-    grade: string
+    grade?: string | null
     startdate: Date | string
     enddate: Date | string
     cdId: string
@@ -26404,7 +27608,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     course?: StringFieldUpdateOperationsInput | string
     institution?: StringFieldUpdateOperationsInput | string
-    grade?: StringFieldUpdateOperationsInput | string
+    grade?: NullableStringFieldUpdateOperationsInput | string | null
     startdate?: DateTimeFieldUpdateOperationsInput | Date | string
     enddate?: DateTimeFieldUpdateOperationsInput | Date | string
     candidate?: CandidatDataUpdateOneRequiredWithoutCoursesNestedInput
@@ -26414,7 +27618,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     course?: StringFieldUpdateOperationsInput | string
     institution?: StringFieldUpdateOperationsInput | string
-    grade?: StringFieldUpdateOperationsInput | string
+    grade?: NullableStringFieldUpdateOperationsInput | string | null
     startdate?: DateTimeFieldUpdateOperationsInput | Date | string
     enddate?: DateTimeFieldUpdateOperationsInput | Date | string
     cdId?: StringFieldUpdateOperationsInput | string
@@ -26424,7 +27628,7 @@ export namespace Prisma {
     id?: string
     course: string
     institution: string
-    grade: string
+    grade?: string | null
     startdate: Date | string
     enddate: Date | string
     cdId: string
@@ -26434,7 +27638,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     course?: StringFieldUpdateOperationsInput | string
     institution?: StringFieldUpdateOperationsInput | string
-    grade?: StringFieldUpdateOperationsInput | string
+    grade?: NullableStringFieldUpdateOperationsInput | string | null
     startdate?: DateTimeFieldUpdateOperationsInput | Date | string
     enddate?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -26443,7 +27647,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     course?: StringFieldUpdateOperationsInput | string
     institution?: StringFieldUpdateOperationsInput | string
-    grade?: StringFieldUpdateOperationsInput | string
+    grade?: NullableStringFieldUpdateOperationsInput | string | null
     startdate?: DateTimeFieldUpdateOperationsInput | Date | string
     enddate?: DateTimeFieldUpdateOperationsInput | Date | string
     cdId?: StringFieldUpdateOperationsInput | string
@@ -27422,12 +28626,12 @@ export namespace Prisma {
     none?: AuthAccountWhereInput
   }
 
-  export type AgencyDataNullableRelationFilter = {
+  export type AgencyDataNullableScalarRelationFilter = {
     is?: AgencyDataWhereInput | null
     isNot?: AgencyDataWhereInput | null
   }
 
-  export type CandidatDataNullableRelationFilter = {
+  export type CandidatDataNullableScalarRelationFilter = {
     is?: CandidatDataWhereInput | null
     isNot?: CandidatDataWhereInput | null
   }
@@ -27563,6 +28767,11 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
+  export type CandidatLifeStateNullableScalarRelationFilter = {
+    is?: CandidatLifeStateWhereInput | null
+    isNot?: CandidatLifeStateWhereInput | null
+  }
+
   export type CoursesListRelationFilter = {
     every?: CoursesWhereInput
     some?: CoursesWhereInput
@@ -27599,7 +28808,7 @@ export namespace Prisma {
     none?: SkillsWhereInput
   }
 
-  export type UserRelationFilter = {
+  export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
   }
@@ -27698,9 +28907,56 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type CandidatDataRelationFilter = {
+  export type EnumMaritalStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.MaritalStatus | EnumMaritalStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMaritalStatusFilter<$PrismaModel> | $Enums.MaritalStatus
+  }
+
+  export type CandidatDataScalarRelationFilter = {
     is?: CandidatDataWhereInput
     isNot?: CandidatDataWhereInput
+  }
+
+  export type CandidatLifeStateOrderByRelevanceInput = {
+    fields: CandidatLifeStateOrderByRelevanceFieldEnum | CandidatLifeStateOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type CandidatLifeStateCountOrderByAggregateInput = {
+    id?: SortOrder
+    driverCategory?: SortOrder
+    availabilityTransport?: SortOrder
+    maritalStatus?: SortOrder
+    cdId?: SortOrder
+  }
+
+  export type CandidatLifeStateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    driverCategory?: SortOrder
+    availabilityTransport?: SortOrder
+    maritalStatus?: SortOrder
+    cdId?: SortOrder
+  }
+
+  export type CandidatLifeStateMinOrderByAggregateInput = {
+    id?: SortOrder
+    driverCategory?: SortOrder
+    availabilityTransport?: SortOrder
+    maritalStatus?: SortOrder
+    cdId?: SortOrder
+  }
+
+  export type EnumMaritalStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MaritalStatus | EnumMaritalStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMaritalStatusWithAggregatesFilter<$PrismaModel> | $Enums.MaritalStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMaritalStatusFilter<$PrismaModel>
+    _max?: NestedEnumMaritalStatusFilter<$PrismaModel>
   }
 
   export type EducationOrderByRelevanceInput = {
@@ -28015,7 +29271,7 @@ export namespace Prisma {
     about?: SortOrder
   }
 
-  export type AgencyDataRelationFilter = {
+  export type AgencyDataScalarRelationFilter = {
     is?: AgencyDataWhereInput
     isNot?: AgencyDataWhereInput
   }
@@ -28102,37 +29358,37 @@ export namespace Prisma {
     none?: jobTagsWhereInput
   }
 
-  export type CategoryNullableRelationFilter = {
+  export type CategoryNullableScalarRelationFilter = {
     is?: CategoryWhereInput | null
     isNot?: CategoryWhereInput | null
   }
 
-  export type ContractTypeJobNullableRelationFilter = {
+  export type ContractTypeJobNullableScalarRelationFilter = {
     is?: ContractTypeJobWhereInput | null
     isNot?: ContractTypeJobWhereInput | null
   }
 
-  export type ExperienceMinimalJobNullableRelationFilter = {
+  export type ExperienceMinimalJobNullableScalarRelationFilter = {
     is?: ExperienceMinimalJobWhereInput | null
     isNot?: ExperienceMinimalJobWhereInput | null
   }
 
-  export type ModeJobNullableRelationFilter = {
+  export type ModeJobNullableScalarRelationFilter = {
     is?: ModeJobWhereInput | null
     isNot?: ModeJobWhereInput | null
   }
 
-  export type WorkingTimeJobNullableRelationFilter = {
+  export type WorkingTimeJobNullableScalarRelationFilter = {
     is?: WorkingTimeJobWhereInput | null
     isNot?: WorkingTimeJobWhereInput | null
   }
 
-  export type LevelEducationNullableRelationFilter = {
+  export type LevelEducationNullableScalarRelationFilter = {
     is?: LevelEducationWhereInput | null
     isNot?: LevelEducationWhereInput | null
   }
 
-  export type BranchNullableRelationFilter = {
+  export type BranchNullableScalarRelationFilter = {
     is?: BranchWhereInput | null
     isNot?: BranchWhereInput | null
   }
@@ -28465,7 +29721,7 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type CategoryRelationFilter = {
+  export type CategoryScalarRelationFilter = {
     is?: CategoryWhereInput
     isNot?: CategoryWhereInput
   }
@@ -28497,7 +29753,7 @@ export namespace Prisma {
     categoryId?: SortOrder
   }
 
-  export type UserNullableRelationFilter = {
+  export type UserNullableScalarRelationFilter = {
     is?: UserWhereInput | null
     isNot?: UserWhereInput | null
   }
@@ -28732,6 +29988,12 @@ export namespace Prisma {
     set: string[]
   }
 
+  export type CandidatLifeStateCreateNestedOneWithoutCandidateInput = {
+    create?: XOR<CandidatLifeStateCreateWithoutCandidateInput, CandidatLifeStateUncheckedCreateWithoutCandidateInput>
+    connectOrCreate?: CandidatLifeStateCreateOrConnectWithoutCandidateInput
+    connect?: CandidatLifeStateWhereUniqueInput
+  }
+
   export type CoursesCreateNestedManyWithoutCandidateInput = {
     create?: XOR<CoursesCreateWithoutCandidateInput, CoursesUncheckedCreateWithoutCandidateInput> | CoursesCreateWithoutCandidateInput[] | CoursesUncheckedCreateWithoutCandidateInput[]
     connectOrCreate?: CoursesCreateOrConnectWithoutCandidateInput | CoursesCreateOrConnectWithoutCandidateInput[]
@@ -28778,6 +30040,12 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutCandidatdataInput, UserUncheckedCreateWithoutCandidatdataInput>
     connectOrCreate?: UserCreateOrConnectWithoutCandidatdataInput
     connect?: UserWhereUniqueInput
+  }
+
+  export type CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput = {
+    create?: XOR<CandidatLifeStateCreateWithoutCandidateInput, CandidatLifeStateUncheckedCreateWithoutCandidateInput>
+    connectOrCreate?: CandidatLifeStateCreateOrConnectWithoutCandidateInput
+    connect?: CandidatLifeStateWhereUniqueInput
   }
 
   export type CoursesUncheckedCreateNestedManyWithoutCandidateInput = {
@@ -28829,6 +30097,16 @@ export namespace Prisma {
   export type CandidatDataUpdateavatarInput = {
     set?: string[]
     push?: string | string[]
+  }
+
+  export type CandidatLifeStateUpdateOneWithoutCandidateNestedInput = {
+    create?: XOR<CandidatLifeStateCreateWithoutCandidateInput, CandidatLifeStateUncheckedCreateWithoutCandidateInput>
+    connectOrCreate?: CandidatLifeStateCreateOrConnectWithoutCandidateInput
+    upsert?: CandidatLifeStateUpsertWithoutCandidateInput
+    disconnect?: CandidatLifeStateWhereInput | boolean
+    delete?: CandidatLifeStateWhereInput | boolean
+    connect?: CandidatLifeStateWhereUniqueInput
+    update?: XOR<XOR<CandidatLifeStateUpdateToOneWithWhereWithoutCandidateInput, CandidatLifeStateUpdateWithoutCandidateInput>, CandidatLifeStateUncheckedUpdateWithoutCandidateInput>
   }
 
   export type CoursesUpdateManyWithoutCandidateNestedInput = {
@@ -28923,6 +30201,16 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCandidatdataInput, UserUpdateWithoutCandidatdataInput>, UserUncheckedUpdateWithoutCandidatdataInput>
   }
 
+  export type CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput = {
+    create?: XOR<CandidatLifeStateCreateWithoutCandidateInput, CandidatLifeStateUncheckedCreateWithoutCandidateInput>
+    connectOrCreate?: CandidatLifeStateCreateOrConnectWithoutCandidateInput
+    upsert?: CandidatLifeStateUpsertWithoutCandidateInput
+    disconnect?: CandidatLifeStateWhereInput | boolean
+    delete?: CandidatLifeStateWhereInput | boolean
+    connect?: CandidatLifeStateWhereUniqueInput
+    update?: XOR<XOR<CandidatLifeStateUpdateToOneWithWhereWithoutCandidateInput, CandidatLifeStateUpdateWithoutCandidateInput>, CandidatLifeStateUncheckedUpdateWithoutCandidateInput>
+  }
+
   export type CoursesUncheckedUpdateManyWithoutCandidateNestedInput = {
     create?: XOR<CoursesCreateWithoutCandidateInput, CoursesUncheckedCreateWithoutCandidateInput> | CoursesCreateWithoutCandidateInput[] | CoursesUncheckedCreateWithoutCandidateInput[]
     connectOrCreate?: CoursesCreateOrConnectWithoutCandidateInput | CoursesCreateOrConnectWithoutCandidateInput[]
@@ -29005,6 +30293,24 @@ export namespace Prisma {
     update?: SkillsUpdateWithWhereUniqueWithoutCandidateInput | SkillsUpdateWithWhereUniqueWithoutCandidateInput[]
     updateMany?: SkillsUpdateManyWithWhereWithoutCandidateInput | SkillsUpdateManyWithWhereWithoutCandidateInput[]
     deleteMany?: SkillsScalarWhereInput | SkillsScalarWhereInput[]
+  }
+
+  export type CandidatDataCreateNestedOneWithoutCandidatLifeStateInput = {
+    create?: XOR<CandidatDataCreateWithoutCandidatLifeStateInput, CandidatDataUncheckedCreateWithoutCandidatLifeStateInput>
+    connectOrCreate?: CandidatDataCreateOrConnectWithoutCandidatLifeStateInput
+    connect?: CandidatDataWhereUniqueInput
+  }
+
+  export type EnumMaritalStatusFieldUpdateOperationsInput = {
+    set?: $Enums.MaritalStatus
+  }
+
+  export type CandidatDataUpdateOneRequiredWithoutCandidatLifeStateNestedInput = {
+    create?: XOR<CandidatDataCreateWithoutCandidatLifeStateInput, CandidatDataUncheckedCreateWithoutCandidatLifeStateInput>
+    connectOrCreate?: CandidatDataCreateOrConnectWithoutCandidatLifeStateInput
+    upsert?: CandidatDataUpsertWithoutCandidatLifeStateInput
+    connect?: CandidatDataWhereUniqueInput
+    update?: XOR<XOR<CandidatDataUpdateToOneWithWhereWithoutCandidatLifeStateInput, CandidatDataUpdateWithoutCandidatLifeStateInput>, CandidatDataUncheckedUpdateWithoutCandidatLifeStateInput>
   }
 
   export type CandidatDataCreateNestedOneWithoutEducationInput = {
@@ -30110,6 +31416,23 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedEnumMaritalStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.MaritalStatus | EnumMaritalStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMaritalStatusFilter<$PrismaModel> | $Enums.MaritalStatus
+  }
+
+  export type NestedEnumMaritalStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MaritalStatus | EnumMaritalStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MaritalStatus[] | ListEnumMaritalStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumMaritalStatusWithAggregatesFilter<$PrismaModel> | $Enums.MaritalStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMaritalStatusFilter<$PrismaModel>
+    _max?: NestedEnumMaritalStatusFilter<$PrismaModel>
+  }
+
   export type NestedEnumSkillsLevelFilter<$PrismaModel = never> = {
     equals?: $Enums.SkillsLevel | EnumSkillsLevelFieldRefInput<$PrismaModel>
     in?: $Enums.SkillsLevel[] | ListEnumSkillsLevelFieldRefInput<$PrismaModel>
@@ -30335,6 +31658,7 @@ export namespace Prisma {
     avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
     courses?: CoursesCreateNestedManyWithoutCandidateInput
     education?: EducationCreateNestedManyWithoutCandidateInput
     experience?: ExperienceCreateNestedManyWithoutCandidateInput
@@ -30354,6 +31678,7 @@ export namespace Prisma {
     avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
     courses?: CoursesUncheckedCreateNestedManyWithoutCandidateInput
     education?: EducationUncheckedCreateNestedManyWithoutCandidateInput
     experience?: ExperienceUncheckedCreateNestedManyWithoutCandidateInput
@@ -30461,6 +31786,7 @@ export namespace Prisma {
     avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
     courses?: CoursesUpdateManyWithoutCandidateNestedInput
     education?: EducationUpdateManyWithoutCandidateNestedInput
     experience?: ExperienceUpdateManyWithoutCandidateNestedInput
@@ -30480,6 +31806,7 @@ export namespace Prisma {
     avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
     courses?: CoursesUncheckedUpdateManyWithoutCandidateNestedInput
     education?: EducationUncheckedUpdateManyWithoutCandidateNestedInput
     experience?: ExperienceUncheckedUpdateManyWithoutCandidateNestedInput
@@ -30488,11 +31815,30 @@ export namespace Prisma {
     skills?: SkillsUncheckedUpdateManyWithoutCandidateNestedInput
   }
 
+  export type CandidatLifeStateCreateWithoutCandidateInput = {
+    id?: string
+    driverCategory?: string | null
+    availabilityTransport?: boolean
+    maritalStatus?: $Enums.MaritalStatus
+  }
+
+  export type CandidatLifeStateUncheckedCreateWithoutCandidateInput = {
+    id?: string
+    driverCategory?: string | null
+    availabilityTransport?: boolean
+    maritalStatus?: $Enums.MaritalStatus
+  }
+
+  export type CandidatLifeStateCreateOrConnectWithoutCandidateInput = {
+    where: CandidatLifeStateWhereUniqueInput
+    create: XOR<CandidatLifeStateCreateWithoutCandidateInput, CandidatLifeStateUncheckedCreateWithoutCandidateInput>
+  }
+
   export type CoursesCreateWithoutCandidateInput = {
     id?: string
     course: string
     institution: string
-    grade: string
+    grade?: string | null
     startdate: Date | string
     enddate: Date | string
   }
@@ -30501,7 +31847,7 @@ export namespace Prisma {
     id?: string
     course: string
     institution: string
-    grade: string
+    grade?: string | null
     startdate: Date | string
     enddate: Date | string
   }
@@ -30675,6 +32021,31 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutCandidatdataInput, UserUncheckedCreateWithoutCandidatdataInput>
   }
 
+  export type CandidatLifeStateUpsertWithoutCandidateInput = {
+    update: XOR<CandidatLifeStateUpdateWithoutCandidateInput, CandidatLifeStateUncheckedUpdateWithoutCandidateInput>
+    create: XOR<CandidatLifeStateCreateWithoutCandidateInput, CandidatLifeStateUncheckedCreateWithoutCandidateInput>
+    where?: CandidatLifeStateWhereInput
+  }
+
+  export type CandidatLifeStateUpdateToOneWithWhereWithoutCandidateInput = {
+    where?: CandidatLifeStateWhereInput
+    data: XOR<CandidatLifeStateUpdateWithoutCandidateInput, CandidatLifeStateUncheckedUpdateWithoutCandidateInput>
+  }
+
+  export type CandidatLifeStateUpdateWithoutCandidateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    driverCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    availabilityTransport?: BoolFieldUpdateOperationsInput | boolean
+    maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
+  }
+
+  export type CandidatLifeStateUncheckedUpdateWithoutCandidateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    driverCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    availabilityTransport?: BoolFieldUpdateOperationsInput | boolean
+    maritalStatus?: EnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus
+  }
+
   export type CoursesUpsertWithWhereUniqueWithoutCandidateInput = {
     where: CoursesWhereUniqueInput
     update: XOR<CoursesUpdateWithoutCandidateInput, CoursesUncheckedUpdateWithoutCandidateInput>
@@ -30698,7 +32069,7 @@ export namespace Prisma {
     id?: StringFilter<"Courses"> | string
     course?: StringFilter<"Courses"> | string
     institution?: StringFilter<"Courses"> | string
-    grade?: StringFilter<"Courses"> | string
+    grade?: StringNullableFilter<"Courses"> | string | null
     startdate?: DateTimeFilter<"Courses"> | Date | string
     enddate?: DateTimeFilter<"Courses"> | Date | string
     cdId?: StringFilter<"Courses"> | string
@@ -30881,6 +32252,102 @@ export namespace Prisma {
     agencydata?: AgencyDataUncheckedUpdateOneWithoutUserNestedInput
   }
 
+  export type CandidatDataCreateWithoutCandidatLifeStateInput = {
+    id?: string
+    firstname: string
+    surname: string
+    birthday: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    courses?: CoursesCreateNestedManyWithoutCandidateInput
+    education?: EducationCreateNestedManyWithoutCandidateInput
+    experience?: ExperienceCreateNestedManyWithoutCandidateInput
+    hobbies?: HobbiesCreateNestedManyWithoutCandidateInput
+    languages?: LanguagesCreateNestedManyWithoutCandidateInput
+    skills?: SkillsCreateNestedManyWithoutCandidateInput
+    user: UserCreateNestedOneWithoutCandidatdataInput
+  }
+
+  export type CandidatDataUncheckedCreateWithoutCandidatLifeStateInput = {
+    id?: string
+    firstname: string
+    surname: string
+    birthday: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    avatar?: CandidatDataCreateavatarInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    courses?: CoursesUncheckedCreateNestedManyWithoutCandidateInput
+    education?: EducationUncheckedCreateNestedManyWithoutCandidateInput
+    experience?: ExperienceUncheckedCreateNestedManyWithoutCandidateInput
+    hobbies?: HobbiesUncheckedCreateNestedManyWithoutCandidateInput
+    languages?: LanguagesUncheckedCreateNestedManyWithoutCandidateInput
+    skills?: SkillsUncheckedCreateNestedManyWithoutCandidateInput
+  }
+
+  export type CandidatDataCreateOrConnectWithoutCandidatLifeStateInput = {
+    where: CandidatDataWhereUniqueInput
+    create: XOR<CandidatDataCreateWithoutCandidatLifeStateInput, CandidatDataUncheckedCreateWithoutCandidatLifeStateInput>
+  }
+
+  export type CandidatDataUpsertWithoutCandidatLifeStateInput = {
+    update: XOR<CandidatDataUpdateWithoutCandidatLifeStateInput, CandidatDataUncheckedUpdateWithoutCandidatLifeStateInput>
+    create: XOR<CandidatDataCreateWithoutCandidatLifeStateInput, CandidatDataUncheckedCreateWithoutCandidatLifeStateInput>
+    where?: CandidatDataWhereInput
+  }
+
+  export type CandidatDataUpdateToOneWithWhereWithoutCandidatLifeStateInput = {
+    where?: CandidatDataWhereInput
+    data: XOR<CandidatDataUpdateWithoutCandidatLifeStateInput, CandidatDataUncheckedUpdateWithoutCandidatLifeStateInput>
+  }
+
+  export type CandidatDataUpdateWithoutCandidatLifeStateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
+    birthday?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    courses?: CoursesUpdateManyWithoutCandidateNestedInput
+    education?: EducationUpdateManyWithoutCandidateNestedInput
+    experience?: ExperienceUpdateManyWithoutCandidateNestedInput
+    hobbies?: HobbiesUpdateManyWithoutCandidateNestedInput
+    languages?: LanguagesUpdateManyWithoutCandidateNestedInput
+    skills?: SkillsUpdateManyWithoutCandidateNestedInput
+    user?: UserUpdateOneRequiredWithoutCandidatdataNestedInput
+  }
+
+  export type CandidatDataUncheckedUpdateWithoutCandidatLifeStateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
+    birthday?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: CandidatDataUpdateavatarInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    courses?: CoursesUncheckedUpdateManyWithoutCandidateNestedInput
+    education?: EducationUncheckedUpdateManyWithoutCandidateNestedInput
+    experience?: ExperienceUncheckedUpdateManyWithoutCandidateNestedInput
+    hobbies?: HobbiesUncheckedUpdateManyWithoutCandidateNestedInput
+    languages?: LanguagesUncheckedUpdateManyWithoutCandidateNestedInput
+    skills?: SkillsUncheckedUpdateManyWithoutCandidateNestedInput
+  }
+
   export type CandidatDataCreateWithoutEducationInput = {
     id?: string
     firstname: string
@@ -30892,6 +32359,7 @@ export namespace Prisma {
     avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
     courses?: CoursesCreateNestedManyWithoutCandidateInput
     experience?: ExperienceCreateNestedManyWithoutCandidateInput
     hobbies?: HobbiesCreateNestedManyWithoutCandidateInput
@@ -30912,6 +32380,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
+    candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
     courses?: CoursesUncheckedCreateNestedManyWithoutCandidateInput
     experience?: ExperienceUncheckedCreateNestedManyWithoutCandidateInput
     hobbies?: HobbiesUncheckedCreateNestedManyWithoutCandidateInput
@@ -30946,6 +32415,7 @@ export namespace Prisma {
     avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
     courses?: CoursesUpdateManyWithoutCandidateNestedInput
     experience?: ExperienceUpdateManyWithoutCandidateNestedInput
     hobbies?: HobbiesUpdateManyWithoutCandidateNestedInput
@@ -30966,6 +32436,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
+    candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
     courses?: CoursesUncheckedUpdateManyWithoutCandidateNestedInput
     experience?: ExperienceUncheckedUpdateManyWithoutCandidateNestedInput
     hobbies?: HobbiesUncheckedUpdateManyWithoutCandidateNestedInput
@@ -30984,6 +32455,7 @@ export namespace Prisma {
     avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
     courses?: CoursesCreateNestedManyWithoutCandidateInput
     education?: EducationCreateNestedManyWithoutCandidateInput
     experience?: ExperienceCreateNestedManyWithoutCandidateInput
@@ -31004,6 +32476,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
+    candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
     courses?: CoursesUncheckedCreateNestedManyWithoutCandidateInput
     education?: EducationUncheckedCreateNestedManyWithoutCandidateInput
     experience?: ExperienceUncheckedCreateNestedManyWithoutCandidateInput
@@ -31038,6 +32511,7 @@ export namespace Prisma {
     avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
     courses?: CoursesUpdateManyWithoutCandidateNestedInput
     education?: EducationUpdateManyWithoutCandidateNestedInput
     experience?: ExperienceUpdateManyWithoutCandidateNestedInput
@@ -31058,6 +32532,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
+    candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
     courses?: CoursesUncheckedUpdateManyWithoutCandidateNestedInput
     education?: EducationUncheckedUpdateManyWithoutCandidateNestedInput
     experience?: ExperienceUncheckedUpdateManyWithoutCandidateNestedInput
@@ -31076,6 +32551,7 @@ export namespace Prisma {
     avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
     courses?: CoursesCreateNestedManyWithoutCandidateInput
     education?: EducationCreateNestedManyWithoutCandidateInput
     hobbies?: HobbiesCreateNestedManyWithoutCandidateInput
@@ -31096,6 +32572,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
+    candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
     courses?: CoursesUncheckedCreateNestedManyWithoutCandidateInput
     education?: EducationUncheckedCreateNestedManyWithoutCandidateInput
     hobbies?: HobbiesUncheckedCreateNestedManyWithoutCandidateInput
@@ -31130,6 +32607,7 @@ export namespace Prisma {
     avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
     courses?: CoursesUpdateManyWithoutCandidateNestedInput
     education?: EducationUpdateManyWithoutCandidateNestedInput
     hobbies?: HobbiesUpdateManyWithoutCandidateNestedInput
@@ -31150,6 +32628,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
+    candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
     courses?: CoursesUncheckedUpdateManyWithoutCandidateNestedInput
     education?: EducationUncheckedUpdateManyWithoutCandidateNestedInput
     hobbies?: HobbiesUncheckedUpdateManyWithoutCandidateNestedInput
@@ -31168,6 +32647,7 @@ export namespace Prisma {
     avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
     courses?: CoursesCreateNestedManyWithoutCandidateInput
     education?: EducationCreateNestedManyWithoutCandidateInput
     experience?: ExperienceCreateNestedManyWithoutCandidateInput
@@ -31188,6 +32668,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
+    candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
     courses?: CoursesUncheckedCreateNestedManyWithoutCandidateInput
     education?: EducationUncheckedCreateNestedManyWithoutCandidateInput
     experience?: ExperienceUncheckedCreateNestedManyWithoutCandidateInput
@@ -31222,6 +32703,7 @@ export namespace Prisma {
     avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
     courses?: CoursesUpdateManyWithoutCandidateNestedInput
     education?: EducationUpdateManyWithoutCandidateNestedInput
     experience?: ExperienceUpdateManyWithoutCandidateNestedInput
@@ -31242,6 +32724,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
+    candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
     courses?: CoursesUncheckedUpdateManyWithoutCandidateNestedInput
     education?: EducationUncheckedUpdateManyWithoutCandidateNestedInput
     experience?: ExperienceUncheckedUpdateManyWithoutCandidateNestedInput
@@ -31260,6 +32743,7 @@ export namespace Prisma {
     avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
     education?: EducationCreateNestedManyWithoutCandidateInput
     experience?: ExperienceCreateNestedManyWithoutCandidateInput
     hobbies?: HobbiesCreateNestedManyWithoutCandidateInput
@@ -31280,6 +32764,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
+    candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
     education?: EducationUncheckedCreateNestedManyWithoutCandidateInput
     experience?: ExperienceUncheckedCreateNestedManyWithoutCandidateInput
     hobbies?: HobbiesUncheckedCreateNestedManyWithoutCandidateInput
@@ -31314,6 +32799,7 @@ export namespace Prisma {
     avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
     education?: EducationUpdateManyWithoutCandidateNestedInput
     experience?: ExperienceUpdateManyWithoutCandidateNestedInput
     hobbies?: HobbiesUpdateManyWithoutCandidateNestedInput
@@ -31334,6 +32820,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
+    candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
     education?: EducationUncheckedUpdateManyWithoutCandidateNestedInput
     experience?: ExperienceUncheckedUpdateManyWithoutCandidateNestedInput
     hobbies?: HobbiesUncheckedUpdateManyWithoutCandidateNestedInput
@@ -31352,6 +32839,7 @@ export namespace Prisma {
     avatar?: CandidatDataCreateavatarInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
     courses?: CoursesCreateNestedManyWithoutCandidateInput
     education?: EducationCreateNestedManyWithoutCandidateInput
     experience?: ExperienceCreateNestedManyWithoutCandidateInput
@@ -31372,6 +32860,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     userId: string
+    candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
     courses?: CoursesUncheckedCreateNestedManyWithoutCandidateInput
     education?: EducationUncheckedCreateNestedManyWithoutCandidateInput
     experience?: ExperienceUncheckedCreateNestedManyWithoutCandidateInput
@@ -31406,6 +32895,7 @@ export namespace Prisma {
     avatar?: CandidatDataUpdateavatarInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
     courses?: CoursesUpdateManyWithoutCandidateNestedInput
     education?: EducationUpdateManyWithoutCandidateNestedInput
     experience?: ExperienceUpdateManyWithoutCandidateNestedInput
@@ -31426,6 +32916,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
+    candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
     courses?: CoursesUncheckedUpdateManyWithoutCandidateNestedInput
     education?: EducationUncheckedUpdateManyWithoutCandidateNestedInput
     experience?: ExperienceUncheckedUpdateManyWithoutCandidateNestedInput
@@ -33223,7 +34714,7 @@ export namespace Prisma {
     id?: string
     course: string
     institution: string
-    grade: string
+    grade?: string | null
     startdate: Date | string
     enddate: Date | string
   }
@@ -33270,7 +34761,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     course?: StringFieldUpdateOperationsInput | string
     institution?: StringFieldUpdateOperationsInput | string
-    grade?: StringFieldUpdateOperationsInput | string
+    grade?: NullableStringFieldUpdateOperationsInput | string | null
     startdate?: DateTimeFieldUpdateOperationsInput | Date | string
     enddate?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -33279,7 +34770,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     course?: StringFieldUpdateOperationsInput | string
     institution?: StringFieldUpdateOperationsInput | string
-    grade?: StringFieldUpdateOperationsInput | string
+    grade?: NullableStringFieldUpdateOperationsInput | string | null
     startdate?: DateTimeFieldUpdateOperationsInput | Date | string
     enddate?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -33288,7 +34779,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     course?: StringFieldUpdateOperationsInput | string
     institution?: StringFieldUpdateOperationsInput | string
-    grade?: StringFieldUpdateOperationsInput | string
+    grade?: NullableStringFieldUpdateOperationsInput | string | null
     startdate?: DateTimeFieldUpdateOperationsInput | Date | string
     enddate?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -34443,146 +35934,6 @@ export namespace Prisma {
   }
 
 
-
-  /**
-   * Aliases for legacy arg types
-   */
-    /**
-     * @deprecated Use UserCountOutputTypeDefaultArgs instead
-     */
-    export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use CandidatDataCountOutputTypeDefaultArgs instead
-     */
-    export type CandidatDataCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CandidatDataCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use AgencyDataCountOutputTypeDefaultArgs instead
-     */
-    export type AgencyDataCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AgencyDataCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use BranchCountOutputTypeDefaultArgs instead
-     */
-    export type BranchCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BranchCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use JobOffersCountOutputTypeDefaultArgs instead
-     */
-    export type JobOffersCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = JobOffersCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ContractTypeJobCountOutputTypeDefaultArgs instead
-     */
-    export type ContractTypeJobCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ContractTypeJobCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ExperienceMinimalJobCountOutputTypeDefaultArgs instead
-     */
-    export type ExperienceMinimalJobCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ExperienceMinimalJobCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ModeJobCountOutputTypeDefaultArgs instead
-     */
-    export type ModeJobCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ModeJobCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use WorkingTimeJobCountOutputTypeDefaultArgs instead
-     */
-    export type WorkingTimeJobCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WorkingTimeJobCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use LevelEducationCountOutputTypeDefaultArgs instead
-     */
-    export type LevelEducationCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LevelEducationCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use JobTagsCountOutputTypeDefaultArgs instead
-     */
-    export type JobTagsCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = JobTagsCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use CategoryCountOutputTypeDefaultArgs instead
-     */
-    export type CategoryCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CategoryCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use SectorsCountOutputTypeDefaultArgs instead
-     */
-    export type SectorsCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SectorsCountOutputTypeDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use UserDefaultArgs instead
-     */
-    export type UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use CandidatDataDefaultArgs instead
-     */
-    export type CandidatDataArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CandidatDataDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use EducationDefaultArgs instead
-     */
-    export type EducationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = EducationDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use SkillsDefaultArgs instead
-     */
-    export type SkillsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SkillsDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ExperienceDefaultArgs instead
-     */
-    export type ExperienceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ExperienceDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use LanguagesDefaultArgs instead
-     */
-    export type LanguagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LanguagesDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use CoursesDefaultArgs instead
-     */
-    export type CoursesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CoursesDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use HobbiesDefaultArgs instead
-     */
-    export type HobbiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = HobbiesDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use AgencyDataDefaultArgs instead
-     */
-    export type AgencyDataArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AgencyDataDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use BranchDefaultArgs instead
-     */
-    export type BranchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = BranchDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use jobOffersDefaultArgs instead
-     */
-    export type jobOffersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = jobOffersDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ContractTypeJobDefaultArgs instead
-     */
-    export type ContractTypeJobArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ContractTypeJobDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ExperienceMinimalJobDefaultArgs instead
-     */
-    export type ExperienceMinimalJobArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ExperienceMinimalJobDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use ModeJobDefaultArgs instead
-     */
-    export type ModeJobArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ModeJobDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use WorkingTimeJobDefaultArgs instead
-     */
-    export type WorkingTimeJobArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = WorkingTimeJobDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use LevelEducationDefaultArgs instead
-     */
-    export type LevelEducationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LevelEducationDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use jobTagsDefaultArgs instead
-     */
-    export type jobTagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = jobTagsDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use CategoryDefaultArgs instead
-     */
-    export type CategoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CategoryDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use SectorsDefaultArgs instead
-     */
-    export type SectorsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SectorsDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use AuthAccountDefaultArgs instead
-     */
-    export type AuthAccountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = AuthAccountDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use TokensDefaultArgs instead
-     */
-    export type TokensArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = TokensDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

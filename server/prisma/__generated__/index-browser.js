@@ -17,12 +17,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.21.1
- * Query Engine version: bf0e5e8a04cada8225617067eaa03d041e2bba36
+ * Prisma Client JS version: 6.0.1
+ * Query Engine version: 5dbef10bdbfb579e07d35cc85fb1518d357cb99e
  */
 Prisma.prismaVersion = {
-  client: "5.21.1",
-  engine: "bf0e5e8a04cada8225617067eaa03d041e2bba36"
+  client: "6.0.1",
+  engine: "5dbef10bdbfb579e07d35cc85fb1518d357cb99e"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -48,11 +48,6 @@ In case this error is unexpected for you, please report it in https://pris.ly/pr
 Prisma.PrismaClientValidationError = () => {
   const runtimeName = getRuntime().prettyName;
   throw new Error(`PrismaClientValidationError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
-In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
-)}
-Prisma.NotFoundError = () => {
-  const runtimeName = getRuntime().prettyName;
-  throw new Error(`NotFoundError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
 In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
 )}
 Prisma.Decimal = Decimal
@@ -146,6 +141,14 @@ exports.Prisma.CandidatDataScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   userId: 'userId'
+};
+
+exports.Prisma.CandidatLifeStateScalarFieldEnum = {
+  id: 'id',
+  driverCategory: 'driverCategory',
+  availabilityTransport: 'availabilityTransport',
+  maritalStatus: 'maritalStatus',
+  cdId: 'cdId'
 };
 
 exports.Prisma.EducationScalarFieldEnum = {
@@ -353,6 +356,12 @@ exports.Prisma.CandidatDataOrderByRelevanceFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.CandidatLifeStateOrderByRelevanceFieldEnum = {
+  id: 'id',
+  driverCategory: 'driverCategory',
+  cdId: 'cdId'
+};
+
 exports.Prisma.EducationOrderByRelevanceFieldEnum = {
   id: 'id',
   degree: 'degree',
@@ -518,6 +527,14 @@ exports.AuthMethod = exports.$Enums.AuthMethod = {
   DISCORD: 'DISCORD'
 };
 
+exports.MaritalStatus = exports.$Enums.MaritalStatus = {
+  NONE: 'NONE',
+  NOT_MARRIED: 'NOT_MARRIED',
+  MARRIEDNOCHILDREN: 'MARRIEDNOCHILDREN',
+  MARRIEDHAVECHILDREN: 'MARRIEDHAVECHILDREN',
+  DIVORCET: 'DIVORCET'
+};
+
 exports.SkillsLevel = exports.$Enums.SkillsLevel = {
   NONE: 'NONE',
   BEGINNER: 'BEGINNER',
@@ -550,6 +567,7 @@ exports.TokenType = exports.$Enums.TokenType = {
 exports.Prisma.ModelName = {
   User: 'User',
   CandidatData: 'CandidatData',
+  CandidatLifeState: 'CandidatLifeState',
   Education: 'Education',
   Skills: 'Skills',
   Experience: 'Experience',

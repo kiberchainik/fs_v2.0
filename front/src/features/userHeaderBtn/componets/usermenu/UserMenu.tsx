@@ -9,17 +9,17 @@ import { useRouter } from "next/navigation";
 import { useLogoutMutation } from "../../hooks";
 import { HeaderUserMenu } from "@/shared/config";
 
-export const UserMenu:FC<IUserMenuHeaderData> = ({email, isVerified, role, avatar, name}) => {
+export const UserMenu: FC<IUserMenuHeaderData> = ({ email, isVerified, role, avatar, name }) => {
     const router = useRouter()
-    const {isLoader, logout} = useLogoutMutation()
+    const { isLoader, logout } = useLogoutMutation()
     const userMenu = HeaderUserMenu(role)
-    
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger>
                 <Avatar>
                     <AvatarImage src={avatar && avatar[0]} />
-                    <AvatarFallback>{ email.slice(0, 1) }</AvatarFallback>
+                    <AvatarFallback>{email.slice(0, 1)}</AvatarFallback>
                 </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent className='w-40' align='end'>

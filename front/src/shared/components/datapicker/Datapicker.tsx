@@ -204,9 +204,9 @@ export function DateTimePicker({
 
   const dislayFormat = useMemo(() => {
     if (!displayValue) return 'Pick a date';
-    
+
     return format(
-      displayValue ,
+      displayValue,
       `${!hideTime ? 'MMM' : 'MMMM'} d, yyyy${!hideTime ? (use12HourFormat ? ' hh:mm:ss a' : ' HH:mm:ss') : ''}`
     );
   }, [displayValue, hideTime, use12HourFormat]);

@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { TypeSkillSchema, SkillSchema } from '../../schemes'
 import { useCreateSkill, useDeleteSkill, useSkills, useUpdSkill } from '../useSkills'
+import { ISkills } from '../../types'
 
 export const useSkillsLogic = () => {
     const [editingSkillId, setEditingSkillId] = useState<string | null>(null)
@@ -32,7 +33,7 @@ export const useSkillsLogic = () => {
         addForm.reset()
     }
 
-    const handleEditSkill = (skill: { id: string; skill: string; level: string }) => {
+    const handleEditSkill = (skill: ISkills) => {
         setEditingSkillId(skill.id)
         editForm.reset(skill)
     }
