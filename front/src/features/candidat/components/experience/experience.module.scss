@@ -1,0 +1,15 @@
+.cardHeader {
+    @apply flex flex-row items-center justify-between;
+}
+
+.formWrapper {
+    @apply flex flex-col gap-3 justify-between items-end p-6;
+}
+
+.experienceList {
+    @apply flex justify-between items-center w-full;
+}
+
+.editExperienceForm {
+    @apply flex justify-between items-center gap-y-1 p-2;
+}

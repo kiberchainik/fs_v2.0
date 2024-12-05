@@ -77,7 +77,7 @@ export const useCourseLogic = () => {
             })
             setEditCourseId(null)
         } catch (error) {
-            toast.error(`Failed to update skill`)
+            toast.error(`Failed to update course`)
         }
     }
 

@@ -24,9 +24,6 @@ export default function Languages() {
         setEditingLanguageId
     } = useLanguagesLogic()
 
-    console.log(typeof (languages));
-
-
     return (
         <Card className='md:w-[800px] w-full mx-5 md:mx-0'>
             <CardHeader className={styles.cardHeader}>

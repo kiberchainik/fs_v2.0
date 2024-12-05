@@ -1,26 +1,61 @@
 import { Injectable } from '@nestjs/common';
 import { CreateExperienceDto } from './dto/create-experience.dto';
 import { UpdateExperienceDto } from './dto/update-experience.dto';
+import { PrismaService } from '@/prisma/prisma.service';
 
 @Injectable()
 export class ExperienceService {
-  create(createExperienceDto: CreateExperienceDto) {
-    return 'This action adds a new experience';
+  constructor(private readonly prisma: PrismaService) { }
+
+  async create(userId: string, createExperienceDto: CreateExperienceDto) {
+    return await this.prisma.experience.create({
+      data: {
+        ...createExperienceDto,
+        candidate: {
+          connect: {
+            userId
+          }
+        }
+      }
+    })
   }
 
-  findAll() {
-    return `This action returns all experience`;
+  async findAll(userId: string) {
+    return await this.prisma.experience.findMany({
+      where: {
+        AND: [
+          {
+            candidate: {
+              userId
+            }
+          }
+        ]
+      }
+    })
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} experience`;
+  async update(id: string, userId: string, updateExperienceDto: UpdateExperienceDto) {
+    return await this.prisma.experience.updateMany({
+      where: {
+        AND: [
+          { candidate: { userId } },
+          { id }
+        ]
+      },
+      data: {
+        ...updateExperienceDto
+      }
+    })
   }
 
-  update(id: number, updateExperienceDto: UpdateExperienceDto) {
-    return `This action updates a #${id} experience`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} experience`;
+  async remove(id: string, userId: string) {
+    return await this.prisma.experience.deleteMany({
+      where: {
+        AND: [
+          { candidate: { userId } },
+          { id }
+        ]
+      }
+    })
   }
 }

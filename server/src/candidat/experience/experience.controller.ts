@@ -2,33 +2,40 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ExperienceService } from './experience.service';
 import { CreateExperienceDto } from './dto/create-experience.dto';
 import { UpdateExperienceDto } from './dto/update-experience.dto';
+import { Authorization, CurrentUser } from '@/auth/decorators';
+import { UserRole } from 'prisma/__generated__';
 
 @Controller('experience')
 export class ExperienceController {
-  constructor(private readonly experienceService: ExperienceService) {}
+  constructor(private readonly experienceService: ExperienceService) { }
 
   @Post()
-  create(@Body() createExperienceDto: CreateExperienceDto) {
-    return this.experienceService.create(createExperienceDto);
+  @Authorization(UserRole.CANDIDAT)
+  create(
+    @CurrentUser('id') userId: string,
+    @Body() createExperienceDto: CreateExperienceDto) {
+    return this.experienceService.create(userId, createExperienceDto)
   }
 
   @Get()
-  findAll() {
-    return this.experienceService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.experienceService.findOne(+id);
+  @Authorization(UserRole.CANDIDAT)
+  findAll(@CurrentUser('id') userId: string) {
+    return this.experienceService.findAll(userId)
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateExperienceDto: UpdateExperienceDto) {
-    return this.experienceService.update(+id, updateExperienceDto);
+  @Authorization(UserRole.CANDIDAT)
+  update(
+    @CurrentUser('id') userId: string,
+    @Param('id') id: string, @Body() updateExperienceDto: UpdateExperienceDto) {
+    return this.experienceService.update(id, userId, updateExperienceDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.experienceService.remove(+id);
+  @Authorization(UserRole.CANDIDAT)
+  remove(
+    @CurrentUser('id') userId: string,
+    @Param('id') id: string) {
+    return this.experienceService.remove(id, userId);
   }
 }

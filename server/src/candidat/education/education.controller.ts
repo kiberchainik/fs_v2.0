@@ -2,33 +2,44 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { EducationService } from './education.service';
 import { CreateEducationDto } from './dto/create-education.dto';
 import { UpdateEducationDto } from './dto/update-education.dto';
+import { Authorization, CurrentUser } from '@/auth/decorators';
+import { UserRole } from 'prisma/__generated__';
 
 @Controller('education')
 export class EducationController {
-  constructor(private readonly educationService: EducationService) {}
+  constructor(private readonly educationService: EducationService) { }
 
   @Post()
-  create(@Body() createEducationDto: CreateEducationDto) {
-    return this.educationService.create(createEducationDto);
+  @Authorization(UserRole.CANDIDAT)
+  create(
+    @CurrentUser('id') userId: string,
+    @Body() createEducationDto: CreateEducationDto
+  ) {
+    return this.educationService.create(userId, createEducationDto);
   }
 
   @Get()
-  findAll() {
-    return this.educationService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.educationService.findOne(+id);
+  @Authorization(UserRole.CANDIDAT)
+  findAll(@CurrentUser('id') userId: string) {
+    return this.educationService.findAll(userId);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateEducationDto: UpdateEducationDto) {
-    return this.educationService.update(+id, updateEducationDto);
+  @Authorization(UserRole.CANDIDAT)
+  update(
+    @CurrentUser('id') userId: string,
+    @Param('id') id: string,
+    @Body() updateEducationDto: UpdateEducationDto
+  ) {
+    return this.educationService.update(id, userId, updateEducationDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.educationService.remove(+id);
+  @Authorization(UserRole.CANDIDAT)
+  remove(
+    @CurrentUser('id') userId: string,
+    @Param('id') id: string
+  ) {
+    return this.educationService.remove(id, userId);
   }
 }
