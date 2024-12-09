@@ -14,7 +14,7 @@ export function HeaderSearch() {
         <>
             {focused && <div className={cn(styles.overlay, focused ? 'opacity-100' : 'opacity-0')} />}
             <div className={cn(styles.searchField, focused && 'shadow-2xl shadow-black')} ref={ref}>
-                <Button variant='ghost' className={styles.searchIcon} onClick={() => console.log('searching ...')}>
+                <Button variant='ghost' className={styles.searchIcon}>
                     <CiSearch />
                 </Button>
                 <Input type='text' placeholder='Search ...' value={searchTerm} onChange={(e) => onSearchTermChange(e)} onFocus={() => onFocus()} />

@@ -137,18 +137,18 @@ exports.Prisma.CandidatDataScalarFieldEnum = {
   phone: 'phone',
   resident: 'resident',
   about_my: 'about_my',
-  avatar: 'avatar',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  userId: 'userId'
+  userId: 'userId',
+  avatar: 'avatar'
 };
 
 exports.Prisma.CandidatLifeStateScalarFieldEnum = {
   id: 'id',
-  driverCategory: 'driverCategory',
   availabilityTransport: 'availabilityTransport',
   maritalStatus: 'maritalStatus',
-  cdId: 'cdId'
+  cdId: 'cdId',
+  driverCategory: 'driverCategory'
 };
 
 exports.Prisma.EducationScalarFieldEnum = {
@@ -328,6 +328,11 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
+};
+
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
@@ -352,13 +357,18 @@ exports.Prisma.CandidatDataOrderByRelevanceFieldEnum = {
   phone: 'phone',
   resident: 'resident',
   about_my: 'about_my',
-  avatar: 'avatar',
-  userId: 'userId'
+  userId: 'userId',
+  avatar: 'avatar'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 
 exports.Prisma.CandidatLifeStateOrderByRelevanceFieldEnum = {
   id: 'id',
-  driverCategory: 'driverCategory',
   cdId: 'cdId'
 };
 

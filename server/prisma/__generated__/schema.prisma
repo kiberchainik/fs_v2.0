@@ -1,7 +1,7 @@
 generator client {
   provider        = "prisma-client-js"
   output          = "./__generated__"
-  previewFeatures = ["fullTextSearch"]
+  previewFeatures = ["fullTextSearchPostgres"]
 }
 
 datasource db {
@@ -10,23 +10,18 @@ datasource db {
 }
 
 model User {
-  id       String   @id @default(uuid())
-  email    String   @unique
-  password String
-  role     UserRole @default(CANDIDAT)
-
-  isVerified         Boolean @default(false) @map("is_verified")
-  isTwoFactorEnabled Boolean @default(false) @map("is_two_factor_enabled")
-
-  method AuthMethod
-
-  authAccounts AuthAccount[]
-
-  agencydata   AgencyData?
-  candidatdata CandidatData?
-
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  id                 String        @id @default(uuid())
+  email              String        @unique
+  password           String
+  role               UserRole      @default(CANDIDAT)
+  isVerified         Boolean       @default(false) @map("is_verified")
+  isTwoFactorEnabled Boolean       @default(false) @map("is_two_factor_enabled")
+  method             AuthMethod
+  createdAt          DateTime      @default(now()) @map("created_at")
+  updatedAt          DateTime      @updatedAt @map("updated_at")
+  agencydata         AgencyData?
+  authAccounts       AuthAccount[]
+  candidatdata       CandidatData?
 
   @@map("users")
 }
@@ -39,11 +34,10 @@ model CandidatData {
   phone             String?
   resident          String?
   about_my          String?
-  avatar            String[]
   createdAt         DateTime           @default(now()) @map("created_at")
   updatedAt         DateTime           @updatedAt @map("updated_at")
   userId            String             @unique @map("user_id")
-  candidatLifeState CandidatLifeState?
+  avatar            String[]
   courses           Courses[]
   education         Education[]
   experience        Experience[]
@@ -51,33 +45,32 @@ model CandidatData {
   languages         Languages[]
   skills            Skills[]
   user              User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  candidatLifeState CandidatLifeState?
 
   @@map("candidat_data")
 }
 
 model CandidatLifeState {
   id                    String        @id @default(uuid())
-  driverCategory        String?       @map("driver_license_category")
   availabilityTransport Boolean       @default(false) @map("availability_transport")
   maritalStatus         MaritalStatus @default(NONE) @map("marital_status")
-
-  candidate CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  cdId      String       @unique @map("candidate_id")
+  cdId                  String        @unique @map("candidate_id")
+  driverCategory        Json?         @map("driver_license_category")
+  candidate             CandidatData  @relation(fields: [cdId], references: [id], onDelete: Cascade)
 
   @@map("candidat_life_state")
 }
 
 model Education {
-  id          String   @id @default(uuid())
+  id          String       @id @default(uuid())
   degree      String
   school      String
   grade       String?
-  startdate   DateTime @db.Date
-  enddate     DateTime @db.Date
+  startdate   DateTime     @db.Date
+  enddate     DateTime     @db.Date
   description String?
-
-  candidate CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  cdId      String       @map("candidate_id")
+  cdId        String       @map("candidate_id")
+  candidate   CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
 }
 
 model Skills {
@@ -165,39 +158,36 @@ model Branch {
 }
 
 model jobOffers {
-  id          String    @id @default(uuid())
-  title       String
-  slug        String    @unique
-  description String
-  region      String
-  province    String
-  location    String
-  reallyUpTo  DateTime? @map("really_up_to")
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime  @updatedAt @map("updated_at")
-  isValidate  Boolean   @default(false)
-  views       Int       @default(0)
-  sectors     Sectors[]
-  tags        jobTags[]
-
+  id                   String                @id @default(uuid())
+  title                String
+  slug                 String                @unique
+  description          String
+  region               String
+  province             String
+  location             String
+  reallyUpTo           DateTime?             @map("really_up_to")
+  createdAt            DateTime              @default(now()) @map("created_at")
+  updatedAt            DateTime              @updatedAt @map("updated_at")
+  isValidate           Boolean               @default(false)
+  views                Int                   @default(0)
   categoryId           String                @map("category_id")
-  categories           Category?             @relation(fields: [categoryId], references: [id])
   contratId            String?               @map("contract_id")
-  contractType         ContractTypeJob?      @relation(fields: [contratId], references: [id])
   experienceId         String?               @map("experience_id")
-  experienceMinimalJob ExperienceMinimalJob? @relation(fields: [experienceId], references: [id])
   modeId               String?               @map("mode_job_id")
-  modeJob              ModeJob?              @relation(fields: [modeId], references: [id])
   workingTimeId        String?               @map("working_time_id")
-  workingTimeJob       WorkingTimeJob?       @relation(fields: [workingTimeId], references: [id])
   levelId              String?               @map("level_education_id")
+  agencyId             String                @map("agency_id")
+  branchId             String?               @map("branch_id")
+  agency               AgencyData            @relation(fields: [agencyId], references: [id])
+  branch               Branch?               @relation(fields: [branchId], references: [id])
+  categories           Category              @relation(fields: [categoryId], references: [id])
+  contractType         ContractTypeJob?      @relation(fields: [contratId], references: [id])
+  experienceMinimalJob ExperienceMinimalJob? @relation(fields: [experienceId], references: [id])
   levelEducation       LevelEducation?       @relation(fields: [levelId], references: [id])
-
-  agencyId String     @map("agency_id")
-  agency   AgencyData @relation(fields: [agencyId], references: [id])
-
-  branchId String? @map("branch_id")
-  branch   Branch? @relation(fields: [branchId], references: [id])
+  modeJob              ModeJob?              @relation(fields: [modeId], references: [id])
+  workingTimeJob       WorkingTimeJob?       @relation(fields: [workingTimeId], references: [id])
+  sectors              Sectors[]             @relation("SectorsTojobOffers")
+  tags                 jobTags[]             @relation("jobOffersTojobTags")
 
   @@map("job_offers")
 }
@@ -246,7 +236,7 @@ model jobTags {
   id        String      @id @default(uuid())
   name      String
   slug      String
-  jobOffers jobOffers[]
+  jobOffers jobOffers[] @relation("jobOffersTojobTags")
 
   @@map("job_tags")
 }
@@ -257,53 +247,46 @@ model Category {
   slug        String      @unique
   description String
   level       Int?
-  sectors     Sectors[]
-  jobOffers   jobOffers[]
   parentId    String?
+  sectors     Sectors[]
   parent      Category?   @relation("SubCategory", fields: [parentId], references: [id])
   children    Category[]  @relation("SubCategory")
+  jobOffers   jobOffers[]
 
   @@map("categories")
 }
 
 model Sectors {
-  id       String      @id @default(uuid())
-  name     String      @unique
-  slug     String      @unique
-  jobOffer jobOffers[]
-
+  id         String      @id @default(uuid())
+  name       String      @unique
+  slug       String      @unique
   categoryId String
-  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  category   Category    @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  jobOffer   jobOffers[] @relation("SectorsTojobOffers")
 }
 
 model AuthAccount {
-  id String @id @default(uuid())
-
-  type    String
-  provide String
-
-  refreshToken String? @map("refresh_token")
-  accessToken  String? @map("access_token")
-  expiresAt    Int     @map("expires_at")
-
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  user   User?   @relation(fields: [userId], references: [id])
-  userId String? @map("user_id")
+  id           String   @id @default(uuid())
+  type         String
+  provide      String
+  refreshToken String?  @map("refresh_token")
+  accessToken  String?  @map("access_token")
+  expiresAt    Int      @map("expires_at")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+  userId       String?  @map("user_id")
+  user         User?    @relation(fields: [userId], references: [id])
 
   @@map("auth_account")
 }
 
 model Tokens {
-  id String @id @default(uuid())
-
+  id        String    @id @default(uuid())
   email     String
   token     String    @unique
   type      TokenType
   expiresIn DateTime  @map("expires_in")
-
-  createdAt DateTime @default(now()) @map("created_at")
+  createdAt DateTime  @default(now()) @map("created_at")
 
   @@map("tokens")
 }
@@ -320,6 +303,24 @@ enum MaritalStatus {
   MARRIEDNOCHILDREN
   MARRIEDHAVECHILDREN
   DIVORCET
+}
+
+enum DriverCategory {
+  AM
+  A1
+  A2
+  A
+  B1
+  B1CODE96
+  BE
+  C1
+  C1E
+  C
+  CE
+  CQC
+  D1
+  D1E
+  DE
 }
 
 enum AuthMethod {

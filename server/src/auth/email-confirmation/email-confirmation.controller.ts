@@ -9,7 +9,7 @@ export class EmailConfirmationController {
   constructor(
     private readonly emailConfirmationService: EmailConfirmationService,
     private readonly auth: AuthService
-  ) {}
+  ) { }
 
   @Post()
   @HttpCode(HttpStatus.OK)

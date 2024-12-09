@@ -6,6 +6,7 @@ export const API_URL = {
     currentUser: () => API_URL.root('/users/short-data'),
     auth: (url = '') => API_URL.root(`/auth${url}`),
     authSocial: (provider: string) => API_URL.root(`/auth/${provider}`),
+    confirmEmail: () => API_URL.root(`auth/email-confirmation`),
     file: (url: string) => API_URL.root(url),
     candidats: () => API_URL.root('/candidats'),
     candidatData: (login: string) => API_URL.root(`/candidats/${login}`),
@@ -16,6 +17,7 @@ export const API_URL = {
     candidatCourses: (id: string = '') => API_URL.root(`/courses/${id}`),
     candidatEducation: (id: string = '') => API_URL.root(`/education/${id}`),
     candidatExperience: (id: string = '') => API_URL.root(`/experience/${id}`),
+    candidatLifeStatus: () => API_URL.root(`/life-state`),
 
     agency: () => API_URL.root('/agency'),
     agencypage: (slug: string) => API_URL.root(`/agency/${slug}`),

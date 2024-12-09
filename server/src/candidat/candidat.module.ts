@@ -8,10 +8,11 @@ import { ExperienceModule } from './experience/experience.module';
 import { HobbiesModule } from './hobbies/hobbies.module';
 import { LanguagesModule } from './languages/languages.module';
 import { SkillsModule } from './skills/skills.module';
+import { CandidatLifeStateModule } from './candidat-life-state/candidat-life-state.module';
 
 @Module({
   controllers: [CandidatController],
   providers: [CandidatService, FileService],
-  imports: [CoursesModule, EducationModule, ExperienceModule, HobbiesModule, LanguagesModule, SkillsModule],
+  imports: [CoursesModule, EducationModule, ExperienceModule, HobbiesModule, LanguagesModule, SkillsModule, CandidatLifeStateModule],
 })
 export class CandidatModule { }

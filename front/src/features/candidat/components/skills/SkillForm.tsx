@@ -1,5 +1,5 @@
 import { FormControl, FormField, FormItem, FormMessage, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/components";
-import { UseFormReturn } from "react-hook-form";
+import { Controller, UseFormReturn } from "react-hook-form";
 import { TypeSkillSchema } from "../../schemes";
 
 type FormProps = {
@@ -21,7 +21,7 @@ export default function SkillForm({ formData }: FormProps) {
                     </FormItem>
                 )}
             />
-            <FormField
+            <Controller
                 control={formData.control}
                 name='level'
                 render={({ field }) => (

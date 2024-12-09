@@ -56,7 +56,7 @@ export class CandidatService {
       throw new BadRequestException('Не удалось сохранить данные')
     }
 
-    if (oldData.avatar !== undefined) oldData.avatar.map(file => {
+    if (oldData && oldData.avatar !== undefined) oldData.avatar.map(file => {
       access(join(__dirname, '..', '../src', file)).then(() => {
         unlink(join(__dirname, '..', '../src', file))
       })
