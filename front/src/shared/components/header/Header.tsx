@@ -12,7 +12,7 @@ interface IStyles {
 }
 
 export const Header: FC<PropsWithChildren<IStyles>> = ({ children, className }) => {
-    return <header className={styles.wrapper}>
+    return <header className={cn(styles.wrapper, 'dark:bg-neutral-900')}>
         <div className={cn(styles.header, className)}>
             <div className='hidden md:flex'><Logo /></div>
             <div className='flex justify-around w-full items-center'>

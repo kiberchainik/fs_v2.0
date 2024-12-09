@@ -3,10 +3,10 @@
 }
 
 .searchField {
-    @apply flex justify-end items-center z-[70] bg-white rounded-full;
+    @apply flex justify-end items-center z-[70] bg-white text-black rounded-full md:w-auto w-[49px] h-[45px];
 
     > .searchIcon {
-        @apply absolute mt-10 mr-[2px] translate-y-[-50%] text-gray-800 rounded-full cursor-pointer;
+        @apply absolute mt-10 mr-[2px] translate-y-[-50%] text-gray-800 rounded-full cursor-pointer bg-white;
     }
 }
 

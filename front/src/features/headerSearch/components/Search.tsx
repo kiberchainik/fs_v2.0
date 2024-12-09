@@ -13,8 +13,8 @@ export function HeaderSearch() {
     return (
         <>
             {focused && <div className={cn(styles.overlay, focused ? 'opacity-100' : 'opacity-0')} />}
-            <div className={cn(styles.searchField, focused && 'shadow-2xl shadow-black')} ref={ref}>
-                <Button variant='ghost' className={styles.searchIcon}>
+            <div className={cn(styles.searchField, focused && 'shadow-2xl shadow-black md:relative absolute md:w-auto w-11/12 right-0 m-5')} ref={ref}>
+                <Button variant='ghost' className={styles.searchIcon} onClick={() => onFocus()} >
                     <CiSearch />
                 </Button>
                 <Input type='text' placeholder='Search ...' value={searchTerm} onChange={(e) => onSearchTermChange(e)} onFocus={() => onFocus()} />
