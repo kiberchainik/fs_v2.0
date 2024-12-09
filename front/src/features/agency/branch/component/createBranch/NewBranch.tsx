@@ -1,7 +1,7 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 
 import {
 	Button,
@@ -221,7 +221,7 @@ export function NewBranch() {
 									)}
 								/>
 							</div>
-							<FormField
+							<Controller
 								control={form.control}
 								name="about_branch"
 								render={({ field }) => (

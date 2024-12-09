@@ -41,10 +41,6 @@ export function useSearchHeader(): UseSearchState {
         setQuery(e.target.value)
     };
 
-    useClickAway(ref, () => {
-        setFocused(false)
-    })
-
     const onFocus = () => {
         setFocused(true);
     };

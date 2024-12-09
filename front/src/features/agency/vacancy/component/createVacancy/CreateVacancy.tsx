@@ -1,7 +1,7 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 
 import {
 	Button,
@@ -197,7 +197,7 @@ export function CreateVacancy() {
 									)}
 								/>
 							</div>
-							<FormField
+							<Controller
 								control={form.control}
 								name='categoryId'
 								rules={{
@@ -239,7 +239,7 @@ export function CreateVacancy() {
 									</FormItem>
 								)}
 							/>
-							<FormField
+							<Controller
 								control={form.control}
 								name='branchId'
 								render={({ field }) => (
@@ -299,7 +299,7 @@ export function CreateVacancy() {
 									</FormItem>
 								)}
 							/>
-							<FormField
+							<Controller
 								control={form.control}
 								name="reallyUpTo"
 								render={({ field }) => (
@@ -321,7 +321,7 @@ export function CreateVacancy() {
 									<FormLabel>Opzionale</FormLabel>
 								</div>
 								<div className={styles.options_job_fields}>
-									<FormField
+									<Controller
 										control={form.control}
 										name='contractTypeId'
 										render={({ field }) => (
@@ -348,7 +348,7 @@ export function CreateVacancy() {
 											</FormItem>
 										)}
 									/>
-									<FormField
+									<Controller
 										control={form.control}
 										name='modeJobId'
 										render={({ field }) => (
@@ -375,7 +375,7 @@ export function CreateVacancy() {
 											</FormItem>
 										)}
 									/>
-									<FormField
+									<Controller
 										control={form.control}
 										name='workingTimeId'
 										render={({ field }) => (
@@ -402,7 +402,7 @@ export function CreateVacancy() {
 											</FormItem>
 										)}
 									/>
-									<FormField
+									<Controller
 										control={form.control}
 										name='levelEducationId'
 										render={({ field }) => (
@@ -429,7 +429,7 @@ export function CreateVacancy() {
 											</FormItem>
 										)}
 									/>
-									<FormField
+									<Controller
 										control={form.control}
 										name='experienceMinimalId'
 										render={({ field }) => (

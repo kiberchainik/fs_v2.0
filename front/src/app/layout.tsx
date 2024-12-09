@@ -44,7 +44,7 @@ export default function RootLayout({
               <HeaderMenu />
             </Header>
             <main className='flex-grow'>{children}</main>
-            <footer className='bg-white py-5 items-center italic text-zinc-500 font-extralight text-sm text-center'>2025 FindSolution 2.0</footer>
+            <footer className='bg-white dark:bg-neutral-900 py-5 items-center italic text-zinc-500 font-extralight text-sm text-center'>2025 FindSolution 2.0</footer>
           </div>
         </MainProvider>
       </body>

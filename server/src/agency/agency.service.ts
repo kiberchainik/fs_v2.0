@@ -5,7 +5,7 @@ import { PrismaService } from '@/prisma/prisma.service';
 import { slugify } from '@/utils';
 import { FileResponse } from '@/libs/file/file.service';
 import { join } from 'path';
-import { unlink } from 'fs/promises';
+import { access, unlink } from 'fs/promises';
 
 @Injectable()
 export class AgencyService {
@@ -40,8 +40,10 @@ export class AgencyService {
       throw new BadRequestException('Не удалось сохранить данные')
     }
 
-    if (oldData.logo !== null) oldData.logo.map(file => {
-      if (join(__dirname, '..', '../src', file)) unlink(join(__dirname, '..', '../src', file))
+    if (oldData && oldData.logo !== undefined) oldData.logo.map(file => {
+      access(join(__dirname, '..', '../src', file)).then(() => {
+        unlink(join(__dirname, '..', '../src', file))
+      })
     })
 
     return agencyData

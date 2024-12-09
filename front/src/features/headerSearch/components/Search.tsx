@@ -7,13 +7,15 @@ import { cn } from '@/shared/utils'
 import Link from 'next/link'
 import { useSearchHeader } from '../hooks/useSearchHeader'
 
+import { GrClose } from "react-icons/gr";
+
 export function HeaderSearch() {
     const { searchTerm, focused, searchResult, ref, onSearchTermChange, onFocus, onClickSearch, generatePostUrl } = useSearchHeader()
 
     return (
         <>
-            {focused && <div className={cn(styles.overlay, focused ? 'opacity-100' : 'opacity-0')} />}
-            <div className={cn(styles.searchField, focused && 'shadow-2xl shadow-black md:relative absolute md:w-auto w-11/12 right-0 m-5')} ref={ref}>
+            {focused && <div className={cn(styles.overlay, focused ? 'opacity-100' : 'opacity-0')}></div>}
+            <div className={cn(styles.searchField, focused && 'shadow-2xl shadow-black md:relative absolute md:w-auto !w-11/12 right-0 m-5')} ref={ref}>
                 <Button variant='ghost' className={styles.searchIcon} onClick={() => onFocus()} >
                     <CiSearch />
                 </Button>
@@ -33,6 +35,7 @@ export function HeaderSearch() {
                 ))}
                 {!searchTerm && <div className={styles.seqrchQueryNotFound}>Что вы хотите найти?</div>}
                 {!searchResult?.length && searchTerm && <div className={styles.seqrchQueryNotFound}>По запросу <b>{searchTerm}</b> ничего не найдено!</div>}
+                <div className='cursor-pointer' onClick={() => onClickSearch()}><GrClose /></div>
             </div>}
         </>
     )

@@ -22,7 +22,20 @@ export const UserMenu: FC<IUserMenuHeaderData> = ({ email, isVerified, role, ava
                     <AvatarFallback>{email.slice(0, 1)}</AvatarFallback>
                 </Avatar>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className='w-40' align='end'>
+            <DropdownMenuContent className='w-full' align='end'>
+                <div className='flex flex-row p-3 gap-3'>
+                    <div className=''>
+                        <Avatar>
+                            <AvatarImage src={avatar && avatar[0]} />
+                            <AvatarFallback>{email.slice(0, 1)}</AvatarFallback>
+                        </Avatar>
+                    </div>
+                    <div className='flex flex-col text-sm'>
+                        {name && <span>{name}</span>}
+                        {email && <span>{email}</span>}
+                    </div>
+                </div>
+                <hr />
                 {userMenu.map(item => {
                     const Icon = item.icon
                     return (<DropdownMenuItem key={item.href} onClick={() => router.push(item.href)} className='cursor-pointer'>
