@@ -1,23 +1,63 @@
-import { FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from "@/shared/components"
+import { Checkbox, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/components"
 import { DateTimePicker } from "@/shared/components/datapicker/Datapicker"
 import { UseFormReturn, Controller } from "react-hook-form"
-import { TypeEducationSchema } from "../../schemes"
+import { TypeExperienceSchema } from "../../../schemes"
 
 type FormProps = {
-    formData: UseFormReturn<TypeEducationSchema, any, undefined>
+    formData: UseFormReturn<TypeExperienceSchema, any, undefined>
 }
 
-export default function EducationForm({ formData }: FormProps) {
+export default function ExperienceForm({ formData }: FormProps) {
     return (
         <>
             <div className='flex md:flex-row flex-col w-full gap-3'>
                 <FormField
                     control={formData.control}
-                    name='degree'
+                    name='company'
                     render={({ field }) => (
                         <FormItem className='w-full'>
                             <FormControl>
-                                <Input placeholder='Degree' {...field} />
+                                <Input placeholder='Company' {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <Controller
+                    control={formData.control}
+                    name='contract'
+                    render={({ field }) => (
+                        <FormItem className='w-full'>
+                            <Select
+                                value={field.value}
+                                onValueChange={field.onChange}
+                            >
+                                <FormControl>
+                                    <SelectTrigger>
+                                        <SelectValue placeholder='Contract type' />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    <SelectItem value='NONE'>NONE</SelectItem>
+                                    <SelectItem value='PARTTIME'>PARTTIME</SelectItem>
+                                    <SelectItem value='SELFEMPLOYED'>SELFEMPLOYED</SelectItem>
+                                    <SelectItem value='FREELANCE'>FREELANCE</SelectItem>
+                                    <SelectItem value='CONTRACT'>CONTRACT</SelectItem>
+                                    <SelectItem value='INTERNSHIP'>INTERNSHIP</SelectItem>
+                                    <SelectItem value='APPRENTICESHIP'>APPRENTICESHIP</SelectItem>
+                                </SelectContent>
+                            </Select>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={formData.control}
+                    name='location'
+                    render={({ field }) => (
+                        <FormItem className='w-full'>
+                            <FormControl>
+                                <Input placeholder='Location' {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -25,33 +65,21 @@ export default function EducationForm({ formData }: FormProps) {
                 />
                 <FormField
                     control={formData.control}
-                    name='school'
+                    name='description'
                     render={({ field }) => (
                         <FormItem className='w-full'>
                             <FormControl>
-                                <Input placeholder='School' {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={formData.control}
-                    name='grade'
-                    render={({ field }) => (
-                        <FormItem className='w-full'>
-                            <FormControl>
-                                <Input placeholder='Grade' {...field} />
+                                <Input placeholder='Description' {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
             </div>
-            <div className='flex md:flex-row flex-col w-full gap-3 items-end'>
+            <div className='flex md:flex-row flex-col w-full gap-3'>
                 <Controller
                     control={formData.control}
-                    name="dateRange.startdate"
+                    name="dateRange.startDate"
                     render={({ field }) => (
                         <FormItem className='w-full'>
                             <FormLabel>Start day</FormLabel>
@@ -69,7 +97,7 @@ export default function EducationForm({ formData }: FormProps) {
                 />
                 <Controller
                     control={formData.control}
-                    name="dateRange.enddate"
+                    name="dateRange.endDate"
                     render={({ field }) => (
                         <FormItem className='w-full'>
                             <FormLabel>End day</FormLabel>
@@ -79,7 +107,7 @@ export default function EducationForm({ formData }: FormProps) {
                                 defaultMonth={new Date()}
                                 onChange={field.onChange}
                                 hideTime={true}
-                                min={formData.getValues().dateRange.startdate}
+                                min={formData.getValues().dateRange.startDate}
                                 max={new Date()}
                             />
                             <FormMessage />
@@ -88,13 +116,20 @@ export default function EducationForm({ formData }: FormProps) {
                 />
                 <FormField
                     control={formData.control}
-                    name='description'
+                    name='currently'
                     render={({ field }) => (
-                        <FormItem className='w-full'>
+                        <FormItem className="w-full flex flex-row items-end h-full mt-[30px] space-x-3 space-y-0 rounded-full border p-3 shadow-sm">
                             <FormControl>
-                                <Input placeholder='Description' {...field} />
+                                <Checkbox
+                                    checked={field.value}
+                                    onCheckedChange={field.onChange}
+                                />
                             </FormControl>
-                            <FormMessage />
+                            <div className="space-y-1 leading-none">
+                                <FormLabel>
+                                    Current work
+                                </FormLabel>
+                            </div>
                         </FormItem>
                     )}
                 />

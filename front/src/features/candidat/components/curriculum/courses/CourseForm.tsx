@@ -1,5 +1,5 @@
 import { FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from "@/shared/components";
-import { TypeCourseSchema } from "../../schemes";
+import { TypeCourseSchema } from "../../../schemes";
 import { Controller, UseFormReturn } from "react-hook-form";
 import { DateTimePicker } from "@/shared/components/datapicker/Datapicker";
 

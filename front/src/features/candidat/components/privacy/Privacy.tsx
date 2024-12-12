@@ -11,28 +11,25 @@ import {
 	CardTitle,
 	Form,
 	FormControl,
-	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
 	FormMessage,
-	Input,
-	Loader,
-	Switch
+	Input
 } from '@/shared/components/ui'
 
-import { useUpdProfileMutation } from '../hooks/useUpdProfileMutation'
-import { PrivacySchema, TypePrivacySchema } from '../schemes'
+import { useUpdProfileMutation } from '../../hooks/useUpdProfileMutation'
+import { PrivacySchema, TypePrivacySchema } from '../../schemes'
 import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import { EnumTokens, saveTokenStorage } from '@/shared/services'
 import { DateTimePicker } from '@/shared/components/datapicker/Datapicker'
-import { useGetPrivacy } from '../hooks'
+import { useGetPrivacy } from '../../hooks'
 import { useAppSelector } from '@/shared/hooks'
-import { ImageUpload } from './image-upload/ImageUpload'
+import { ImageUpload } from '../image-upload/ImageUpload'
 import TextEditor from '@/shared/components/ui/TextEditor'
 
-export function CandidatSettings() {
+export function Privacy() {
 	const searchParams = useSearchParams()
 
 	useEffect(() => {
@@ -67,7 +64,7 @@ export function CandidatSettings() {
 	return (
 		<Card className='md:w-[800px] w-full mx-5 md:mx-0'>
 			<CardHeader className='flex flex-row items-center justify-between'>
-				<CardTitle>Настройки профиля</CardTitle>
+				<CardTitle>Данные профиля</CardTitle>
 			</CardHeader>
 			<CardContent>
 				{<Form {...form}>

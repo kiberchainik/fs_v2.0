@@ -1,1 +1,1 @@
-export * from './CandidatSettings'
+export * from './privacy/Privacy'

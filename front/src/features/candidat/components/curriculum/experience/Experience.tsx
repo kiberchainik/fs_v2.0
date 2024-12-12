@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, Card, CardHeader, CardTitle, Form } from "@/shared/components";
-import { useExperienceLogic } from "../../hooks"
+import { useExperienceLogic } from "../../../hooks"
 import { CiEdit, CiTrash } from "react-icons/ci";
 import ExperienceForm from "./ExperienceForm";
 

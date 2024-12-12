@@ -1,76 +1,76 @@
 'use client'
 
 import { Form, Button, Card, CardHeader, CardTitle, CardContent } from '@/shared/components/ui'
-import { useSkillsLogic } from '../../hooks/useSkills'
+import { useHobbiesLogic } from '../../../hooks/useHobbies'
 import { CiEdit, CiTrash } from 'react-icons/ci'
-import SkillForm from './SkillForm'
+import HobbieForm from './HobbieForm'
 
-import styles from './skills.module.scss'
+import styles from './hobbies.module.scss'
 
-export default function Skills() {
+export default function Hobbies() {
     const {
-        deletingSkillId,
-        skills,
+        deletingHobbieId,
+        hobbies,
         addForm,
         editForm,
-        editingSkillId,
-        setEditingSkillId,
-        handleAddSkill,
-        handleEditSkill,
-        handleSaveSkill,
-        handleDeleteSkill,
+        editingHobbieId,
+        setEditingHobbieId,
+        handleAddHobbie,
+        handleEditHobbie,
+        handleSaveHobbie,
+        handleDeleteHobbie,
         isSaving,
         isAdding
-    } = useSkillsLogic()
+    } = useHobbiesLogic()
 
     return (
         <Card className='md:w-[800px] w-full mx-5 md:mx-0'>
             <CardHeader className={styles.cardHeader}>
-                <CardTitle>Candidat skills</CardTitle>
+                <CardTitle>Candidat hobbies</CardTitle>
             </CardHeader>
             <CardContent>
                 <Form {...addForm}>
                     <form
-                        onSubmit={addForm.handleSubmit(handleAddSkill)}
+                        onSubmit={addForm.handleSubmit(handleAddHobbie)}
                         className={styles.formWrapper}
                     >
-                        <SkillForm formData={addForm} />
+                        <HobbieForm formData={addForm} />
                         <Button type='submit' disabled={isAdding}>
                             {isAdding ? 'Adding...' : 'Save'}
                         </Button>
                     </form>
                 </Form>
 
-                {skills && (
+                {hobbies && (
                     <div className='mt-5'>
-                        {skills.map(skill => (
-                            <div className={styles.editSkillForm} key={skill.id}>
-                                {editingSkillId === skill.id ? (
+                        {hobbies.map(hobbie => (
+                            <div className={styles.editHobbieForm} key={hobbie.id}>
+                                {editingHobbieId === hobbie.id ? (
                                     <Form {...editForm}>
                                         <form
-                                            onSubmit={editForm.handleSubmit(() => handleSaveSkill(skill.id))}
+                                            onSubmit={editForm.handleSubmit(() => handleSaveHobbie(hobbie.id))}
                                             className={styles.formWrapper}
                                         >
-                                            <SkillForm formData={editForm} />
+                                            <HobbieForm formData={editForm} />
                                             <div className='flex gap-x-2'>
                                                 <Button type='submit' disabled={isSaving}>
                                                     {isSaving ? 'Saving...' : 'Save'}
                                                 </Button>
-                                                <Button onClick={() => setEditingSkillId(null)}>Cancel</Button>
+                                                <Button onClick={() => setEditingHobbieId(null)}>Cancel</Button>
                                             </div>
                                         </form>
                                     </Form>
                                 ) : (
-                                    <div className={styles.skillsList}>
+                                    <div className={styles.hobbiesList}>
                                         <span>
-                                            {skill.skill} - {skill.level}
+                                            {hobbie.hobbie}
                                         </span>
                                         <div className='flex gap-x-2'>
-                                            <Button onClick={() => handleEditSkill(skill)}>
+                                            <Button onClick={() => handleEditHobbie(hobbie)}>
                                                 <CiEdit />
                                             </Button>
-                                            <Button onClick={() => handleDeleteSkill(skill.id)} disabled={deletingSkillId === skill.id}>
-                                                {deletingSkillId === skill.id ? 'Deleting...' : <CiTrash />}
+                                            <Button onClick={() => handleDeleteHobbie(hobbie.id)} disabled={deletingHobbieId === hobbie.id}>
+                                                {deletingHobbieId === hobbie.id ? 'Deleting...' : <CiTrash />}
                                             </Button>
                                         </div>
                                     </div>

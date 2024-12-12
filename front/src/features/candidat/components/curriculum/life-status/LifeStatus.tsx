@@ -2,10 +2,10 @@
 
 import { Button, Card, CardContent, CardHeader, CardTitle, Checkbox, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Switch } from "@/shared/components";
 import { Controller } from "react-hook-form";
-import { driverCategory } from "../../schemes"
+import { driverCategory } from "../../../schemes"
 
 import styles from './lifestatus.module.scss'
-import { LifeStateLogic } from "../../hooks/useLifeStatus";
+import { LifeStateLogic } from "../../../hooks/useLifeStatus";
 
 export default function LifeStatus() {
     const { form, handleForm } = LifeStateLogic()

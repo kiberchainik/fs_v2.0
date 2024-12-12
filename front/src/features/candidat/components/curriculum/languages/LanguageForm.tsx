@@ -1,6 +1,6 @@
 import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/components";
 import { UseFormReturn } from "react-hook-form";
-import { TypeLanguageSchema } from "../../schemes";
+import { TypeLanguageSchema } from "../../../schemes";
 
 type FormProps = {
     formData: UseFormReturn<TypeLanguageSchema, any, undefined>

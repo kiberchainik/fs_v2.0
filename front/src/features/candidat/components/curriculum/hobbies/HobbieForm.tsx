@@ -1,6 +1,6 @@
 import { FormControl, FormField, FormItem, FormMessage, Input } from "@/shared/components";
 import { UseFormReturn } from "react-hook-form";
-import { TypeHobbieSchema } from "../../schemes";
+import { TypeHobbieSchema } from "../../../schemes";
 
 type FormProps = {
     formData: UseFormReturn<TypeHobbieSchema, any, undefined>

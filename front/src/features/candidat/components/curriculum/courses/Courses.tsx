@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, Card, CardHeader, CardTitle, Form } from "@/shared/components"
-import { useCourseLogic } from "../../hooks/useCourses"
+import { useCourseLogic } from "../../../hooks/useCourses"
 import CourseForm from "./CourseForm"
 import { CiEdit, CiTrash } from "react-icons/ci"
 

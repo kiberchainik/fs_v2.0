@@ -1,7 +1,7 @@
 'use client'
 
 import { Form, Button, Card, CardHeader, CardTitle, CardContent } from '@/shared/components/ui'
-import { useLanguagesLogic } from '../../hooks/useLanguages'
+import { useLanguagesLogic } from '../../../hooks/useLanguages'
 import { CiEdit, CiTrash } from 'react-icons/ci'
 import LanuageForm from './LanguageForm'
 

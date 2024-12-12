@@ -4,7 +4,7 @@ import { useMemo } from "react";
 
 export function useGetPrivacy() {
     const { data: privacy, isFetching } = useQuery({
-        queryKey: ['get candidat privasy'],
+        queryKey: ['get candidat privacy'],
         queryFn: () => userService.getPrivacy()
     })
 

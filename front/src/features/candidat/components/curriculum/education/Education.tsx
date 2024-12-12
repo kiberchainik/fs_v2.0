@@ -1,7 +1,7 @@
 'use client'
 
 import { Button, Card, CardHeader, CardTitle, Form } from "@/shared/components";
-import { useEducationLogic } from "../../hooks/useEducation";
+import { useEducationLogic } from "../../../hooks/useEducation";
 
 import styles from './education.module.scss'
 import { CiEdit, CiTrash } from "react-icons/ci";
