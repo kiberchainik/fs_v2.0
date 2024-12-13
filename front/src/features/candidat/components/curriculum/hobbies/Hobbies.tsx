@@ -52,7 +52,7 @@ export default function Hobbies() {
                                             className={styles.formWrapper}
                                         >
                                             <HobbieForm formData={editForm} />
-                                            <div className='flex gap-x-2'>
+                                            <div className='flex gap-x-1'>
                                                 <Button type='submit' disabled={isSaving}>
                                                     {isSaving ? 'Saving...' : 'Save'}
                                                 </Button>
@@ -65,11 +65,11 @@ export default function Hobbies() {
                                         <span>
                                             {hobbie.hobbie}
                                         </span>
-                                        <div className='flex gap-x-2'>
-                                            <Button onClick={() => handleEditHobbie(hobbie)}>
+                                        <div className='flex gap-x-1'>
+                                            <Button onClick={() => handleEditHobbie(hobbie)} variant='link'>
                                                 <CiEdit />
                                             </Button>
-                                            <Button onClick={() => handleDeleteHobbie(hobbie.id)} disabled={deletingHobbieId === hobbie.id}>
+                                            <Button onClick={() => handleDeleteHobbie(hobbie.id)} variant='link' disabled={deletingHobbieId === hobbie.id}>
                                                 {deletingHobbieId === hobbie.id ? 'Deleting...' : <CiTrash />}
                                             </Button>
                                         </div>

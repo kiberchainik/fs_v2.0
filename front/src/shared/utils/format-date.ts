@@ -1,18 +1,19 @@
 interface DateFormatOptions {
     locale?: 'ru' | 'en' | 'it'
     capitalize?: boolean
+    dateFormat?: 'year' | 'full' | 'dd/mm/yyyy'
 }
 
 export function formatDate(dateString: string | Date, options: DateFormatOptions = {}): string {
     const {
         locale = 'it',
-        capitalize = false
+        capitalize = false,
+        dateFormat
     } = options;
 
     try {
         const date = new Date(dateString);
 
-        // Проверка валидности даты
         if (isNaN(date.getTime())) {
             throw new Error('Invalid timestamp');
         }
@@ -34,14 +35,20 @@ export function formatDate(dateString: string | Date, options: DateFormatOptions
 
         const day = date.getDate().toString().padStart(2, '0');
         let month = months[locale][date.getMonth()];
-        
+
         if (capitalize) {
             month = month.charAt(0).toUpperCase() + month.slice(1);
         }
-        
+
         const year = date.getFullYear();
 
-        return `${day} ${month} ${year}`;
+        switch (dateFormat) {
+            case 'year': return `${year}`
+            case 'full': return `${day} ${month} ${year}`
+            case 'dd/mm/yyyy': return `${day}/${date.getMonth()}/${year}`
+            default: return `${day} ${month} ${year}`
+        }
+
     } catch (error) {
         console.error('Error formatting date:', error);
         return 'Invalid date';

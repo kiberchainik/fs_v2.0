@@ -52,7 +52,7 @@ export default function Skills() {
                                             className={styles.formWrapper}
                                         >
                                             <SkillForm formData={editForm} />
-                                            <div className='flex gap-x-2'>
+                                            <div className='flex gap-x-1'>
                                                 <Button type='submit' disabled={isSaving}>
                                                     {isSaving ? 'Saving...' : 'Save'}
                                                 </Button>
@@ -65,11 +65,11 @@ export default function Skills() {
                                         <span>
                                             {skill.skill} - {skill.level}
                                         </span>
-                                        <div className='flex gap-x-2'>
-                                            <Button onClick={() => handleEditSkill(skill)}>
+                                        <div className='flex gap-x-1'>
+                                            <Button onClick={() => handleEditSkill(skill)} variant='link'>
                                                 <CiEdit />
                                             </Button>
-                                            <Button onClick={() => handleDeleteSkill(skill.id)} disabled={deletingSkillId === skill.id}>
+                                            <Button onClick={() => handleDeleteSkill(skill.id)} variant='link' disabled={deletingSkillId === skill.id}>
                                                 {deletingSkillId === skill.id ? 'Deleting...' : <CiTrash />}
                                             </Button>
                                         </div>

@@ -112,7 +112,7 @@ export default function LifeStatus() {
                                 </div>
                             )}
                         />
-                        <Button type='submit'>
+                        <Button type='submit' >
                             Save
                         </Button>
                     </form>

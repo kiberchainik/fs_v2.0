@@ -53,7 +53,7 @@ export default function Languages() {
                                             className={styles.formWrapper}
                                         >
                                             <LanuageForm formData={editForm} />
-                                            <div className='flex gap-x-2'>
+                                            <div className='flex gap-x-1'>
                                                 <Button type='submit' disabled={isSaving}>
                                                     {isSaving ? 'Saving...' : 'Save'}
                                                 </Button>
@@ -66,11 +66,11 @@ export default function Languages() {
                                         <span>
                                             {language.language} - {language.level}
                                         </span>
-                                        <div className='flex gap-x-2'>
-                                            <Button onClick={() => handleEditLanguage(language)}>
+                                        <div className='flex gap-x-1'>
+                                            <Button onClick={() => handleEditLanguage(language)} variant='link'>
                                                 <CiEdit />
                                             </Button>
-                                            <Button onClick={() => handleDeleteLanguage(language.id)} disabled={deletingLanguageId === language.id}>
+                                            <Button onClick={() => handleDeleteLanguage(language.id)} variant='link' disabled={deletingLanguageId === language.id}>
                                                 {deletingLanguageId === language.id ? 'Deleting...' : <CiTrash />}
                                             </Button>
                                         </div>

@@ -49,7 +49,7 @@ export default function Courses() {
                                             className={styles.formWrapper}
                                         >
                                             <CourseForm formData={editForm} />
-                                            <div className='flex gap-x-2'>
+                                            <div className='flex gap-x-1'>
                                                 <Button type="submit" disabled={isSaving}>
                                                     {isSaving ? 'Saving...' : 'Save'}
                                                 </Button>
@@ -62,11 +62,11 @@ export default function Courses() {
                                 ) : (
                                     <div className={styles.coursesList}>
                                         <span>{course.course}</span>
-                                        <div className='flex gap-x-2'>
-                                            <Button onClick={() => handleEditCourse(course)}>
+                                        <div className='flex gap-x-1'>
+                                            <Button onClick={() => handleEditCourse(course)} variant='link'>
                                                 <CiEdit />
                                             </Button>
-                                            <Button onClick={() => handleDeleteCourse(course.id)} disabled={deletingCourseId === course.id}>
+                                            <Button onClick={() => handleDeleteCourse(course.id)} variant='link' disabled={deletingCourseId === course.id}>
                                                 {deletingCourseId === course.id ? 'Deleting...' : <CiTrash />}
                                             </Button>
                                         </div>

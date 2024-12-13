@@ -54,7 +54,7 @@ export default function Experience() {
                                                     className={styles.formWrapper}
                                                 >
                                                     <ExperienceForm formData={editForm} />
-                                                    <div className='flex gap-x-2'>
+                                                    <div className='flex gap-x-1'>
                                                         <Button type='submit' disabled={isSaving}>
                                                             {isSaving ? 'Saving...' : 'Save'}
                                                         </Button>
@@ -66,12 +66,12 @@ export default function Experience() {
                                             </Form>
                                         ) : (
                                             <div className={styles.experienceList}>
-                                                <span>{item.company}</span> = <span>{item.contract}</span>
-                                                <div className='flex gap-x-2'>
-                                                    <Button onClick={() => handleEditExperience(item)}>
+                                                <span>{item.company}</span> - <span>{item.company}</span>
+                                                <div className='flex gap-x-1'>
+                                                    <Button onClick={() => handleEditExperience(item)} variant='link'>
                                                         <CiEdit />
                                                     </Button>
-                                                    <Button onClick={() => handleDeleteExperience(item.id)} disabled={deletingExperienceId === item.id}>
+                                                    <Button onClick={() => handleDeleteExperience(item.id)} variant='link' disabled={deletingExperienceId === item.id}>
                                                         {deletingExperienceId === item.id ? 'Deleting...' : <CiTrash />}
                                                     </Button>
                                                 </div>

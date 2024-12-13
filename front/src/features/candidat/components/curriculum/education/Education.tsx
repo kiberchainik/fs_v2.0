@@ -54,7 +54,7 @@ export default function Education() {
                                                     className={styles.formWrapper}
                                                 >
                                                     <EducationForm formData={editForm} />
-                                                    <div className='flex gap-x-2'>
+                                                    <div className='flex gap-x-1'>
                                                         <Button type='submit' disabled={isSaving}>
                                                             {isSaving ? 'Saving...' : 'Save'}
                                                         </Button>
@@ -67,11 +67,11 @@ export default function Education() {
                                         ) : (
                                             <div className={styles.educationList}>
                                                 <span>{item.degree}</span>
-                                                <div className='flex gap-x-2'>
-                                                    <Button onClick={() => handleEditEducation(item)}>
+                                                <div className='flex gap-x-1'>
+                                                    <Button onClick={() => handleEditEducation(item)} variant='link'>
                                                         <CiEdit />
                                                     </Button>
-                                                    <Button onClick={() => handleDeleteEducation(item.id)} disabled={deletingEducationId === item.id}>
+                                                    <Button onClick={() => handleDeleteEducation(item.id)} variant='link' disabled={deletingEducationId === item.id}>
                                                         {deletingEducationId === item.id ? 'Deleting...' : <CiTrash />}
                                                     </Button>
                                                 </div>
