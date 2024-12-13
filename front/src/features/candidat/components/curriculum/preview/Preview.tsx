@@ -24,7 +24,7 @@ export default function PreviewsPortfolio() {
 
     return (
         <div className="bg-white p-4">
-            <Template2
+            <Template1
                 user={user!}
                 privacy={privacy!}
                 education={education!}

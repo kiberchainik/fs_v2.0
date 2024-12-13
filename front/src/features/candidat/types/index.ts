@@ -1,6 +1,7 @@
 export * from './skills.type'
 export * from './languages.type'
 export * from './hobbies.type'
+export * from './social.type'
 export * from './courses.type'
 export * from './education.type'
 export * from './experience.type'

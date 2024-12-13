@@ -20,6 +20,7 @@ model User {
   createdAt          DateTime      @default(now()) @map("created_at")
   updatedAt          DateTime      @updatedAt @map("updated_at")
   agencydata         AgencyData?
+  social             UserSocial[]
   authAccounts       AuthAccount[]
   candidatdata       CandidatData?
 
@@ -59,6 +60,15 @@ model CandidatLifeState {
   candidate             CandidatData  @relation(fields: [cdId], references: [id], onDelete: Cascade)
 
   @@map("candidat_life_state")
+}
+
+model UserSocial {
+  id         String @id @default(uuid())
+  usId       String @map("user_id")
+  socialLink String @map("social_link")
+  user       User   @relation(fields: [usId], references: [id], onDelete: Cascade)
+
+  @@map("user_social_links")
 }
 
 model Education {

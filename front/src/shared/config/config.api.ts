@@ -13,6 +13,7 @@ export const API_URL = {
     candidatProfile: () => API_URL.root('/candidat/privacy'),
     candidatSkills: (skillId: string = '') => API_URL.root(`/skills/${skillId}`),
     candidatHobbies: (hobbieId: string = '') => API_URL.root(`/hobbies/${hobbieId}`),
+    candidatSocial: (socialId: string = '') => API_URL.root(`/social/${socialId}`),
     candidatLanguages: (languageId: string = '') => API_URL.root(`/languages/${languageId}`),
     candidatCourses: (id: string = '') => API_URL.root(`/courses/${id}`),
     candidatEducation: (id: string = '') => API_URL.root(`/education/${id}`),

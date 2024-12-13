@@ -8,6 +8,7 @@ import LifeStatus from "./life-status/LifeStatus";
 import PreviewsPortfolio from "./preview/Preview";
 import Skills from "./skills/Skills"
 import Languages from "./languages/Languages";
+import Social from "./social/Social";
 
 export function Curriculum() {
     return (
@@ -20,10 +21,12 @@ export function Curriculum() {
                 <Languages />
                 <Hobbies />
                 <Skills />
+                <Social />
             </div>
             <div className='w-full h-full'>
                 <div className='sticky top-[70] self-start'>
-                    <PreviewsPortfolio /></div>
+                    <PreviewsPortfolio />
+                </div>
             </div>
         </div>
     )

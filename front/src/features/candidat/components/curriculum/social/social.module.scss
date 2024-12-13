@@ -1,0 +1,15 @@
+.cardHeader {
+    @apply flex flex-row items-center justify-between;
+}
+
+.formWrapper {
+    @apply flex md:flex-row flex-col gap-3 justify-between items-center;
+}
+
+.socialList {
+    @apply flex justify-between items-center w-full;
+}
+
+.editSocialForm {
+    @apply flex justify-between items-center gap-y-1 p-2;
+}

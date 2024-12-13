@@ -7,7 +7,6 @@ export function useGetPrivacy() {
         queryKey: ['get candidat privacy'],
         queryFn: () => userService.getPrivacy()
     })
-    console.log('use get candidat privacy');
 
     return useMemo(() => ({
         privacy,

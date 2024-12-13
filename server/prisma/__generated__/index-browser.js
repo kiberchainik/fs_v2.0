@@ -151,6 +151,12 @@ exports.Prisma.CandidatLifeStateScalarFieldEnum = {
   driverCategory: 'driverCategory'
 };
 
+exports.Prisma.UserSocialScalarFieldEnum = {
+  id: 'id',
+  usId: 'usId',
+  socialLink: 'socialLink'
+};
+
 exports.Prisma.EducationScalarFieldEnum = {
   id: 'id',
   degree: 'degree',
@@ -372,6 +378,12 @@ exports.Prisma.CandidatLifeStateOrderByRelevanceFieldEnum = {
   cdId: 'cdId'
 };
 
+exports.Prisma.UserSocialOrderByRelevanceFieldEnum = {
+  id: 'id',
+  usId: 'usId',
+  socialLink: 'socialLink'
+};
+
 exports.Prisma.EducationOrderByRelevanceFieldEnum = {
   id: 'id',
   degree: 'degree',
@@ -578,6 +590,7 @@ exports.Prisma.ModelName = {
   User: 'User',
   CandidatData: 'CandidatData',
   CandidatLifeState: 'CandidatLifeState',
+  UserSocial: 'UserSocial',
   Education: 'Education',
   Skills: 'Skills',
   Experience: 'Experience',
