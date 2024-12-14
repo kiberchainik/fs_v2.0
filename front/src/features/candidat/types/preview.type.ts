@@ -7,6 +7,7 @@ import { ILanguages } from "./languages.type"
 import { IHobbies } from "./hobbies.type"
 import { ILifeStatus } from "./life-status.type"
 import { IUserMenuHeaderData } from "@/features/userHeaderBtn/types/userMenuData.type"
+import { ISocial } from "./social.type"
 
 export interface IPreviewTemplates {
     user: IUserMenuHeaderData
@@ -18,4 +19,5 @@ export interface IPreviewTemplates {
     languages: ILanguages[]
     hobbies: IHobbies[]
     lifestatus: ILifeStatus
+    socialLinks: ISocial[]
 }

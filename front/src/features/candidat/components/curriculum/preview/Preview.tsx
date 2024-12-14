@@ -1,7 +1,7 @@
 'use client'
 
 
-import { useGetPrivacy, useEducation, useExperience, useSkills, useLanguages, useHobbies } from "@/features/candidat/hooks";
+import { useGetPrivacy, useEducation, useExperience, useSkills, useLanguages, useHobbies, useSocial } from "@/features/candidat/hooks";
 import { useCourses } from "@/features/candidat/hooks/useCourses";
 import { useGetLifeStatus } from "@/features/candidat/hooks/useLifeStatus"
 import { useAppSelector } from '@/shared/hooks';
@@ -19,6 +19,7 @@ export default function PreviewsPortfolio() {
     const { languages } = useLanguages()
     const { hobbies } = useHobbies()
     const { lifestatus } = useGetLifeStatus()
+    const { socialLinks } = useSocial()
 
     if (isFetching) return <div>Loading ...</div>
 
@@ -34,6 +35,7 @@ export default function PreviewsPortfolio() {
                 languages={languages!}
                 hobbies={hobbies!}
                 lifestatus={lifestatus!}
+                socialLinks={socialLinks!}
             />
         </div>
     )

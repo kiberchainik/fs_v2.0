@@ -1,11 +1,11 @@
 import { IPreviewTemplates } from "@/features/candidat/types/preview.type"
-import { formatDate } from "@/shared/utils"
+import { domainToSVG, formatDate } from "@/shared/utils"
 import Image from "next/image"
+import Link from "next/link"
 import { CiAt, CiGift, CiLocationOn, CiMobile3 } from "react-icons/ci"
 
-export default function Template1({ privacy, courses, education, experience, hobbies, languages, lifestatus, skills, user }: IPreviewTemplates) {
+export default function Template1({ privacy, courses, education, experience, hobbies, languages, lifestatus, skills, user, socialLinks }: IPreviewTemplates) {
     return (
-
         <div className="border-1 shadow-lg shadow-gray-700 rounded-lg ">
             <div className="flex rounded-t-lg bg-sky-500 sm:px-2 w-full">
                 <div className="h-40 w-40 overflow-hidden sm:rounded-full sm:relative sm:p-0 top-10 left-5 p-3">
@@ -25,6 +25,14 @@ export default function Template1({ privacy, courses, education, experience, hob
                             <h2 className="text-lg font-poppins font-bold text-sky-600">My Contact</h2>
                             <div className="border-2 w-20 border-sky-600 my-3"></div>
                             <div>
+                                {socialLinks && (
+                                    <div className='flex gap-2'>
+                                        {socialLinks.map(social => (
+                                            <Link href={social.socialLink} target="_blank">
+                                                <span className='text-sm' dangerouslySetInnerHTML={{ __html: domainToSVG(social.socialLink) }}></span>
+                                            </Link>
+                                        ))}
+                                    </div>)}
                                 <div className="flex items-center my-1">
                                     <span className="w-6 text-gray-700 hover:text-orange-600">
                                         <CiGift />
@@ -124,7 +132,7 @@ export default function Template1({ privacy, courses, education, experience, hob
                         <div className="py-3">
                             <h2 className="text-lg font-poppins font-bold text-sky-600">About Me</h2>
                             <div className="border-2 w-20 border-sky-600 my-3"></div>
-                            <div>
+                            <div className='text-sm'>
                                 <span>{lifestatus?.maritalStatus && lifestatus.maritalStatus}</span> / <span>{lifestatus?.driverCategory && lifestatus.driverCategory.map(patent => <p>Category: {patent.toLocaleUpperCase()}</p>)}</span> / <span>{lifestatus?.availabilityTransport && 'I have my car'}</span>
                             </div>
                             <div dangerouslySetInnerHTML={{ __html: privacy!.about_my }}></div>
