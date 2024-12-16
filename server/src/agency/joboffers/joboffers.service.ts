@@ -160,7 +160,6 @@ export class JoboffersService {
         }
       })
     }
-    console.log(vTags);
 
     const jobTags = vTags?.map((tag) => ({
       name: tag, slug: slugify(tag)

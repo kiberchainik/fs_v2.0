@@ -58,7 +58,7 @@ export default function VacancyList({ jobs, count: totalJobs, pageCount: totalPa
               limit={params.limit!}
               totalCount={totalCountJobs!}
               pageSizeSelectOptions={{
-                pageSizeOptions: [5, 10, 25, 50]
+                pageSizeOptions: [10, 25, 50]
               }}
             />
           </Card>

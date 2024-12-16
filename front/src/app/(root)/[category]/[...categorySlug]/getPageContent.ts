@@ -41,19 +41,48 @@ export const getMetadata = cache(async ({ params }: Props): Promise<ResponseMeta
     return undefined
 })
 
+function extractParents(vacancy: ICategory): { name: string; slug: string }[] {
+    const parents: { name: string; slug: string }[] = [];
+    let currentParent = vacancy.parent;
+
+    while (currentParent) {
+        parents.unshift({ name: currentParent.name, slug: currentParent.slug });
+        currentParent = currentParent.parent || null;
+    }
+
+    return parents
+}
+
 export const getPageContent = cache(async ({ params, searchParams }: Props): Promise<ResponseProps | undefined> => {
     const { categorySlug } = params
     const fullSlugString = categorySlug[categorySlug.length - 1]
 
     const categoryData = await categoryService.getCategoryDataBySlug(fullSlugString, searchParams);
     if (categoryData) {
-        const breadcrumbs = useBreadcrumbs(params);
+        const parents = extractParents(categoryData.vacancies)
+
+        const breadcrumbs = useBreadcrumbs({
+            category: params.category,
+            categorySlug,
+            parents,
+            currentCategory: { name: categoryData.vacancies.name, slug: categoryData.vacancies.slug },
+        })
         return { categoryData, breadcrumbs };
     }
 
     const jobData = await vacancyService.getVacancyDataBySlug(fullSlugString);
     if (jobData) {
-        const breadcrumbs = useBreadcrumbs(params);
+        const parents = extractParents(jobData.categories)
+        const breadcrumbs = useBreadcrumbs({
+            category: params.category,
+            categorySlug,
+            parents,
+            currentCategory: { name: jobData.categories.name, slug: jobData.categories.slug },
+            jobSlug: fullSlugString,
+            jobTitle: jobData.title,
+        })
+        console.log(jobData);
+
         return { jobData, breadcrumbs };
     }
 

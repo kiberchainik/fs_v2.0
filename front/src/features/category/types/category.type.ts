@@ -1,21 +1,35 @@
 import { IVacanciaesFullDate } from "@/features/agency/vacancy/types"
 
 export interface ICategory {
-    id: string
-    name: string
-    slug: string
-    description: string
-    children?: ICategory[]
+    id: string;
+    name: string;
+    slug: string;
+    description: string;
+    children?: { name: string; slug: string }[]
     level?: number | null
+    parent?: IParentCategory | null // Ограничиваем вложенность
     parentId?: string[]
 }
 
+// Ограниченная вложенность родителя
+export interface IParentCategory {
+    name: string;
+    slug: string;
+    parent?: IParentCategory
+}
+
+// Ответ для страницы категории
 export type TCategoryPageResponse = {
-    vacancies: Pick<ICategory, 'name' | 'description' | 'slug'> & {
-        jobOffers: IVacanciaesFullDate[]
-    }
-    count: number
-    pageCount: number
+    vacancies: {
+        id: string;
+        name: string;
+        slug: string;
+        description: string;
+        parent?: IParentCategory | undefined
+        jobOffers: IVacanciaesFullDate[];
+    };
+    count: number;
+    pageCount: number;
 }
 
 export type TBreadcrumbr = {

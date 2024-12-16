@@ -64,14 +64,14 @@ export class CategoryService {
     })
   }
 
-  async findOnebySlug(slug: string) {
-    const category = await this.prisma.category.findUnique({
-      where: { slug },
-      include: { jobOffers: true }
-    })
-    if (!category) throw new NotFoundException('CATEGORY_NOT_FOUND')
-    return category
-  }
+  // async findOnebySlug(slug: string) {
+  //   const category = await this.prisma.category.findUnique({
+  //     where: { slug },
+  //     include: { jobOffers: true }
+  //   })
+  //   if (!category) throw new NotFoundException('CATEGORY_NOT_FOUND')
+  //   return category
+  // }
 
   async byName(name: string) {
     const category = await this.prisma.category.findUnique({
@@ -145,20 +145,29 @@ export class CategoryService {
       this.prisma.category.findFirst({
         where: { slug },
         include: {
-          children: this.includeChildrenCategories(10),
+          children: {
+            where: { parentId: { not: null } },
+            select: { name: true, slug: true }
+          },
           jobOffers: {
+            where: { categories: { slug } },
             include: {
               categories: {
-                select: returnCategoryBaseObject
+                include: {
+                  parent: {
+                    select: returnCategoryBaseObject
+                  }
+                }
               },
-              agency: {
-                select: returnAgencyBaseObject
-              },
-              branch: true
+              agency: true,
+              branch: true,
             }
+          },
+          parent: {
+            select: returnCategoryBaseObject,
           }
         },
-        skip: page * limit - limit,
+        skip: (page - 1) * limit,
         take: limit
       }),
 
@@ -170,6 +179,7 @@ export class CategoryService {
         }
       })
     ])
+
     if (!vacancies) return false
 
     const pageCount = Math.ceil(vacanciesCount / limit)
@@ -182,7 +192,7 @@ export class CategoryService {
   }
 
   async findMetadataBySlug(slug: string) {
-    const vacancies = this.prisma.category.findFirst({
+    const vacancies = await this.prisma.category.findFirst({
       where: { slug },
       select: {
         name: true,

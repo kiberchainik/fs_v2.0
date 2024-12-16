@@ -9,8 +9,6 @@ import { CiCalendar, CiClock2, CiRead } from "react-icons/ci"
 import { VacancyCardAuthorInfo } from "./VCAuthorInfo";
 
 export function VacancyCard({ title, slug, description, agency, branch, categories, createdAt, reallyUpTo, views }: IVacanciaesFullDate) {
-    console.log(categories);
-
     description = description.slice(0, 150) + '...'
     return (
         <Card className='max-w-96'>

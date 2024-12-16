@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import { cn } from "shadcn-ui";
-import { useSubmitRating } from "@/hooks/useSubmitRating";
-import { useFetchRating } from "@/hooks/useFetchRating";
+import React, { useState } from "react"
+import { cn } from "@/shared/utils";
+import { useFetchRating, useSubmitRating } from "../../hooks/useRating";
 
 interface RatingStarsProps {
   userId: string;

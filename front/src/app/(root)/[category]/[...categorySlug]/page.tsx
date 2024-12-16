@@ -4,8 +4,7 @@ import CategoryMenu from "@/features/category/components/Categories";
 import JobFullPage from "./JobFullPage";
 import VacancyList from "@/features/vacancy/components/vacancyList/VacancyList";
 import { CATEGORY_DESCRIPTION, CATEGORY_NAME } from "@/shared/constants/seo.constants";
-import { Metadata } from "next";
-import { Filter } from "@/features/filter/components/Filter";
+import { Metadata } from "next"
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
     const data = await getMetadata({ params, searchParams });

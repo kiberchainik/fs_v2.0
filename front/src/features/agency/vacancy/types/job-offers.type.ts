@@ -43,6 +43,8 @@ export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'd
         }
     }
     categories: {
+        id: string,
+        description: string,
         name: string
         slug: string
     }

@@ -1,24 +1,51 @@
-export function useBreadcrumbs(params: { category: string; categorySlug?: string[]; jobSlug?: string }) {
-    const { category, categorySlug, jobSlug } = params
+interface BCProps {
+    category: string
+    categorySlug?: string[]
+    jobSlug?: string
+    jobTitle?: string
+    parents?: {
+        name: string;
+        slug: string
+    }[];
+    currentCategory?: {
+        name: string;
+        slug: string
+    }
+}
 
-    const breadcrumbs = [{ name: 'Home', href: '/' }]
+export function useBreadcrumbs(params: BCProps) {
+    const { category, categorySlug, jobSlug, parents = [], currentCategory, jobTitle } = params;
 
-    category && breadcrumbs.push({
-        'name': category.charAt(0).toUpperCase() + category.slice(1),
-        href: `/${category}`
-    })
+    const breadcrumbs = [{ name: 'Home', href: '/' }];
 
-    categorySlug && categorySlug.forEach((slug, index) => {
+    parents.forEach((parent, index) => {
         breadcrumbs.push({
-            name: slug.charAt(0).toUpperCase() + slug.slice(1),
-            href: `/${category}/${categorySlug.slice(0, index + 1).join('/')}`
-        })
+            name: parent.name,
+            href: `/${parents.slice(0, index + 1).map(p => p.slug).join('/')}`,
+        });
     })
 
-    jobSlug && breadcrumbs.push({
-        name: jobSlug.charAt(0).toUpperCase() + jobSlug.slice(1),
-        href: `${category}/${categorySlug?.join('/')}/${jobSlug}`
-    })
+    if (!parents.length && currentCategory) {
+        breadcrumbs.push({
+            name: currentCategory.name, // Используем имя текущей категории
+            href: `/${currentCategory.slug}`, // Путь только для текущей категории
+        });
+    }
 
-    return breadcrumbs
+    const lastParent = parents[parents.length - 1];
+    if (parents.length > 0 && currentCategory && (!lastParent || lastParent.slug !== currentCategory.slug)) {
+        breadcrumbs.push({
+            name: currentCategory.name, // Используем имя текущей категории
+            href: `/${parents.map(p => p.slug).join('/')}/${currentCategory.slug}`, // Путь включает родителей и текущую категорию
+        });
+    }
+
+    if (jobSlug) {
+        breadcrumbs.push({
+            name: jobTitle || jobSlug.charAt(0).toUpperCase() + jobSlug.slice(1),
+            href: `/${category}/${categorySlug?.join('/')}/${jobSlug}`,
+        });
+    }
+
+    return breadcrumbs;
 }
