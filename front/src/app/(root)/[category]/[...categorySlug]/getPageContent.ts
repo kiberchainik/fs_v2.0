@@ -81,7 +81,6 @@ export const getPageContent = cache(async ({ params, searchParams }: Props): Pro
             jobSlug: fullSlugString,
             jobTitle: jobData.title,
         })
-        console.log(jobData);
 
         return { jobData, breadcrumbs };
     }

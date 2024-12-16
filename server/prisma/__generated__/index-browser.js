@@ -210,6 +210,15 @@ exports.Prisma.HobbiesScalarFieldEnum = {
   cdId: 'cdId'
 };
 
+exports.Prisma.RatingScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  reviewerId: 'reviewerId',
+  rating: 'rating',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.AgencyDataScalarFieldEnum = {
   id: 'id',
   agency_name: 'agency_name',
@@ -427,6 +436,12 @@ exports.Prisma.HobbiesOrderByRelevanceFieldEnum = {
   cdId: 'cdId'
 };
 
+exports.Prisma.RatingOrderByRelevanceFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  reviewerId: 'reviewerId'
+};
+
 exports.Prisma.AgencyDataOrderByRelevanceFieldEnum = {
   id: 'id',
   agency_name: 'agency_name',
@@ -597,6 +612,7 @@ exports.Prisma.ModelName = {
   Languages: 'Languages',
   Courses: 'Courses',
   Hobbies: 'Hobbies',
+  Rating: 'Rating',
   AgencyData: 'AgencyData',
   Branch: 'Branch',
   jobOffers: 'jobOffers',

@@ -18,6 +18,7 @@ import { ModeJobModule } from './admin/mode-job/mode-job.module';
 import { WorkingTimeModule } from './admin/working-time/working-time.module';
 import { LevelEducationModule } from './admin/level-education/level-education.module';
 import { OpenAIModule } from './admin/openai/openai.model';
+import { RatingModule } from './rating/rating.module';
 
 @Module({
   imports: [
@@ -41,7 +42,8 @@ import { OpenAIModule } from './admin/openai/openai.model';
     ModeJobModule,
     WorkingTimeModule,
     LevelEducationModule,
-    OpenAIModule
+    OpenAIModule,
+    RatingModule
   ],
   controllers: [],
   providers: [],
