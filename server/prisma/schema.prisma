@@ -51,7 +51,8 @@ model CandidatData {
   hobbies           Hobbies[]
   languages         Languages[]
   skills            Skills[]
-  savedJobs    SavedJobs[]
+  savedJobs         SavedJobs[]
+  sendCandidature   SendCandidature[]
   user              User               @relation(fields: [userId], references: [id], onDelete: Cascade)
   candidatLifeState CandidatLifeState?
 
@@ -219,21 +220,34 @@ model jobOffers {
   workingTimeJob       WorkingTimeJob?       @relation(fields: [workingTimeId], references: [id])
   sectors              Sectors[]             @relation("SectorsTojobOffers")
   tags                 jobTags[]             @relation("jobOffersTojobTags")
-  savedBy      SavedJobs[]
+  savedBy              SavedJobs[]
+  sendCandidature      SendCandidature[]
 
   @@map("job_offers")
 }
 
 model SavedJobs {
-  id           String     @id @default(uuid())
-  candidateId  String     @map("candidate_id")
-  jobOfferId   String     @map("job_offer_id")
-  savedAt      DateTime   @default(now()) @map("saved_at")
-  candidate    CandidatData @relation(fields: [candidateId], references: [id], onDelete: Cascade)
-  jobOffer     jobOffers    @relation(fields: [jobOfferId], references: [id], onDelete: Cascade)
+  id          String       @id @default(uuid())
+  candidateId String       @map("candidate_id")
+  jobOfferId  String       @map("job_offer_id")
+  savedAt     DateTime     @default(now()) @map("saved_at")
+  candidate   CandidatData @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  jobOffer    jobOffers    @relation(fields: [jobOfferId], references: [id], onDelete: Cascade)
 
   @@unique([candidateId, jobOfferId])
   @@map("saved_jobs")
+}
+
+model SendCandidature {
+  id          String       @id @default(uuid())
+  candidateId String       @map("candidate_id")
+  jobOfferId  String       @map("job_offer_id")
+  savedAt     DateTime     @default(now()) @map("saved_at")
+  candidate   CandidatData @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  jobOffer    jobOffers    @relation(fields: [jobOfferId], references: [id], onDelete: Cascade)
+
+  @@unique([candidateId, jobOfferId])
+  @@map("send_candidature")
 }
 
 model ContractTypeJob {

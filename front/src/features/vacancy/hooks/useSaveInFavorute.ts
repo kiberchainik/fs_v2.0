@@ -5,7 +5,7 @@ import { vacancyPageServices } from "../services";
 import { toastMessageHandler } from "@/shared/utils";
 
 export const useSaveInFavorite = () => {
-    const { mutate: saveJob } = useMutation({
+    const { mutate: saveJob, isSuccess: isSaved } = useMutation({
         mutationKey: ['saveJob'],
         mutationFn: (id: string) => vacancyPageServices.saveJob(id),
         onSuccess: () => {
@@ -17,6 +17,6 @@ export const useSaveInFavorite = () => {
     })
 
     return useMemo(() => ({
-        saveJob
-    }), [saveJob])
+        saveJob, isSaved
+    }), [saveJob, isSaved])
 }

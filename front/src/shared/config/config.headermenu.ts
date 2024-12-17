@@ -3,6 +3,7 @@ import { IconType } from "react-icons"
 import { CiDesktop, CiHeart, CiMemoPad, CiPalette, CiUser } from "react-icons/ci"
 import { PiGitBranchThin } from "react-icons/pi"
 import { AGENCY_DROPDOWN_URL, CANDIDAT_DROPDOWN_URL, MAIN_URL } from "./config.url"
+import { RiMailSendLine } from "react-icons/ri"
 
 export interface MenuItems {
     icon?: IconType
@@ -88,6 +89,11 @@ export const HeaderUserMenu = (role: UserRole): MenuItems[] => {
             icon: CiHeart,
             href: CANDIDAT_DROPDOWN_URL.savedJobs(),
             title: 'Offerte salvati'
+        },
+        {
+            icon: RiMailSendLine,
+            href: CANDIDAT_DROPDOWN_URL.sendetCandidatura(),
+            title: 'Candidature inviati'
         }
     ]
 }

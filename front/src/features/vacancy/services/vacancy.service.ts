@@ -13,7 +13,11 @@ class VacancyPageService {
     }
 
     async saveJob(id: string) {
-        return await axiosPrivate.post(API_URL.savedJobs(), { jobId:id })
+        return await axiosPrivate.post(API_URL.savedJobs(), { jobId: id })
+    }
+
+    async sendCandidature(id: string) {
+        return await axiosPrivate.post(API_URL.sendedCanidature(), { jobId: id })
     }
 }
 

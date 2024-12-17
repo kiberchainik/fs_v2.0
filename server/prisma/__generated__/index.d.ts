@@ -89,6 +89,11 @@ export type jobOffers = $Result.DefaultSelection<Prisma.$jobOffersPayload>
  */
 export type SavedJobs = $Result.DefaultSelection<Prisma.$SavedJobsPayload>
 /**
+ * Model SendCandidature
+ * 
+ */
+export type SendCandidature = $Result.DefaultSelection<Prisma.$SendCandidaturePayload>
+/**
  * Model ContractTypeJob
  * 
  */
@@ -545,6 +550,16 @@ export class PrismaClient<
     * ```
     */
   get savedJobs(): Prisma.SavedJobsDelegate<ExtArgs>;
+
+  /**
+   * `prisma.sendCandidature`: Exposes CRUD operations for the **SendCandidature** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SendCandidatures
+    * const sendCandidatures = await prisma.sendCandidature.findMany()
+    * ```
+    */
+  get sendCandidature(): Prisma.SendCandidatureDelegate<ExtArgs>;
 
   /**
    * `prisma.contractTypeJob`: Exposes CRUD operations for the **ContractTypeJob** model.
@@ -1100,6 +1115,7 @@ export namespace Prisma {
     Branch: 'Branch',
     jobOffers: 'jobOffers',
     SavedJobs: 'SavedJobs',
+    SendCandidature: 'SendCandidature',
     ContractTypeJob: 'ContractTypeJob',
     ExperienceMinimalJob: 'ExperienceMinimalJob',
     ModeJob: 'ModeJob',
@@ -1125,7 +1141,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "candidatData" | "candidatLifeState" | "userSocial" | "education" | "skills" | "experience" | "languages" | "courses" | "hobbies" | "rating" | "agencyData" | "branch" | "jobOffers" | "savedJobs" | "contractTypeJob" | "experienceMinimalJob" | "modeJob" | "workingTimeJob" | "levelEducation" | "jobTags" | "category" | "sectors" | "authAccount" | "tokens"
+      modelProps: "user" | "candidatData" | "candidatLifeState" | "userSocial" | "education" | "skills" | "experience" | "languages" | "courses" | "hobbies" | "rating" | "agencyData" | "branch" | "jobOffers" | "savedJobs" | "sendCandidature" | "contractTypeJob" | "experienceMinimalJob" | "modeJob" | "workingTimeJob" | "levelEducation" | "jobTags" | "category" | "sectors" | "authAccount" | "tokens"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2179,6 +2195,76 @@ export namespace Prisma {
           }
         }
       }
+      SendCandidature: {
+        payload: Prisma.$SendCandidaturePayload<ExtArgs>
+        fields: Prisma.SendCandidatureFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SendCandidatureFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SendCandidaturePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SendCandidatureFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SendCandidaturePayload>
+          }
+          findFirst: {
+            args: Prisma.SendCandidatureFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SendCandidaturePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SendCandidatureFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SendCandidaturePayload>
+          }
+          findMany: {
+            args: Prisma.SendCandidatureFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SendCandidaturePayload>[]
+          }
+          create: {
+            args: Prisma.SendCandidatureCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SendCandidaturePayload>
+          }
+          createMany: {
+            args: Prisma.SendCandidatureCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SendCandidatureCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SendCandidaturePayload>[]
+          }
+          delete: {
+            args: Prisma.SendCandidatureDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SendCandidaturePayload>
+          }
+          update: {
+            args: Prisma.SendCandidatureUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SendCandidaturePayload>
+          }
+          deleteMany: {
+            args: Prisma.SendCandidatureDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SendCandidatureUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.SendCandidatureUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SendCandidaturePayload>
+          }
+          aggregate: {
+            args: Prisma.SendCandidatureAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSendCandidature>
+          }
+          groupBy: {
+            args: Prisma.SendCandidatureGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SendCandidatureGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SendCandidatureCountArgs<ExtArgs>
+            result: $Utils.Optional<SendCandidatureCountAggregateOutputType> | number
+          }
+        }
+      }
       ContractTypeJob: {
         payload: Prisma.$ContractTypeJobPayload<ExtArgs>
         fields: Prisma.ContractTypeJobFieldRefs
@@ -3105,6 +3191,7 @@ export namespace Prisma {
     languages: number
     skills: number
     savedJobs: number
+    sendCandidature: number
   }
 
   export type CandidatDataCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3115,6 +3202,7 @@ export namespace Prisma {
     languages?: boolean | CandidatDataCountOutputTypeCountLanguagesArgs
     skills?: boolean | CandidatDataCountOutputTypeCountSkillsArgs
     savedJobs?: boolean | CandidatDataCountOutputTypeCountSavedJobsArgs
+    sendCandidature?: boolean | CandidatDataCountOutputTypeCountSendCandidatureArgs
   }
 
   // Custom InputTypes
@@ -3175,6 +3263,13 @@ export namespace Prisma {
    */
   export type CandidatDataCountOutputTypeCountSavedJobsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SavedJobsWhereInput
+  }
+
+  /**
+   * CandidatDataCountOutputType without action
+   */
+  export type CandidatDataCountOutputTypeCountSendCandidatureArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SendCandidatureWhereInput
   }
 
 
@@ -3257,12 +3352,14 @@ export namespace Prisma {
     sectors: number
     tags: number
     savedBy: number
+    sendCandidature: number
   }
 
   export type JobOffersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sectors?: boolean | JobOffersCountOutputTypeCountSectorsArgs
     tags?: boolean | JobOffersCountOutputTypeCountTagsArgs
     savedBy?: boolean | JobOffersCountOutputTypeCountSavedByArgs
+    sendCandidature?: boolean | JobOffersCountOutputTypeCountSendCandidatureArgs
   }
 
   // Custom InputTypes
@@ -3295,6 +3392,13 @@ export namespace Prisma {
    */
   export type JobOffersCountOutputTypeCountSavedByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SavedJobsWhereInput
+  }
+
+  /**
+   * JobOffersCountOutputType without action
+   */
+  export type JobOffersCountOutputTypeCountSendCandidatureArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SendCandidatureWhereInput
   }
 
 
@@ -4889,6 +4993,7 @@ export namespace Prisma {
     languages?: boolean | CandidatData$languagesArgs<ExtArgs>
     skills?: boolean | CandidatData$skillsArgs<ExtArgs>
     savedJobs?: boolean | CandidatData$savedJobsArgs<ExtArgs>
+    sendCandidature?: boolean | CandidatData$sendCandidatureArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     candidatLifeState?: boolean | CandidatData$candidatLifeStateArgs<ExtArgs>
     _count?: boolean | CandidatDataCountOutputTypeDefaultArgs<ExtArgs>
@@ -4931,6 +5036,7 @@ export namespace Prisma {
     languages?: boolean | CandidatData$languagesArgs<ExtArgs>
     skills?: boolean | CandidatData$skillsArgs<ExtArgs>
     savedJobs?: boolean | CandidatData$savedJobsArgs<ExtArgs>
+    sendCandidature?: boolean | CandidatData$sendCandidatureArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     candidatLifeState?: boolean | CandidatData$candidatLifeStateArgs<ExtArgs>
     _count?: boolean | CandidatDataCountOutputTypeDefaultArgs<ExtArgs>
@@ -4949,6 +5055,7 @@ export namespace Prisma {
       languages: Prisma.$LanguagesPayload<ExtArgs>[]
       skills: Prisma.$SkillsPayload<ExtArgs>[]
       savedJobs: Prisma.$SavedJobsPayload<ExtArgs>[]
+      sendCandidature: Prisma.$SendCandidaturePayload<ExtArgs>[]
       user: Prisma.$UserPayload<ExtArgs>
       candidatLifeState: Prisma.$CandidatLifeStatePayload<ExtArgs> | null
     }
@@ -5335,6 +5442,7 @@ export namespace Prisma {
     languages<T extends CandidatData$languagesArgs<ExtArgs> = {}>(args?: Subset<T, CandidatData$languagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LanguagesPayload<ExtArgs>, T, "findMany"> | Null>
     skills<T extends CandidatData$skillsArgs<ExtArgs> = {}>(args?: Subset<T, CandidatData$skillsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SkillsPayload<ExtArgs>, T, "findMany"> | Null>
     savedJobs<T extends CandidatData$savedJobsArgs<ExtArgs> = {}>(args?: Subset<T, CandidatData$savedJobsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SavedJobsPayload<ExtArgs>, T, "findMany"> | Null>
+    sendCandidature<T extends CandidatData$sendCandidatureArgs<ExtArgs> = {}>(args?: Subset<T, CandidatData$sendCandidatureArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SendCandidaturePayload<ExtArgs>, T, "findMany"> | Null>
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     candidatLifeState<T extends CandidatData$candidatLifeStateArgs<ExtArgs> = {}>(args?: Subset<T, CandidatData$candidatLifeStateArgs<ExtArgs>>): Prisma__CandidatLifeStateClient<$Result.GetResult<Prisma.$CandidatLifeStatePayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     /**
@@ -5832,6 +5940,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: SavedJobsScalarFieldEnum | SavedJobsScalarFieldEnum[]
+  }
+
+  /**
+   * CandidatData.sendCandidature
+   */
+  export type CandidatData$sendCandidatureArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SendCandidature
+     */
+    select?: SendCandidatureSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SendCandidatureInclude<ExtArgs> | null
+    where?: SendCandidatureWhereInput
+    orderBy?: SendCandidatureOrderByWithRelationInput | SendCandidatureOrderByWithRelationInput[]
+    cursor?: SendCandidatureWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SendCandidatureScalarFieldEnum | SendCandidatureScalarFieldEnum[]
   }
 
   /**
@@ -16756,6 +16884,7 @@ export namespace Prisma {
     sectors?: boolean | jobOffers$sectorsArgs<ExtArgs>
     tags?: boolean | jobOffers$tagsArgs<ExtArgs>
     savedBy?: boolean | jobOffers$savedByArgs<ExtArgs>
+    sendCandidature?: boolean | jobOffers$sendCandidatureArgs<ExtArgs>
     _count?: boolean | JobOffersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["jobOffers"]>
 
@@ -16825,6 +16954,7 @@ export namespace Prisma {
     sectors?: boolean | jobOffers$sectorsArgs<ExtArgs>
     tags?: boolean | jobOffers$tagsArgs<ExtArgs>
     savedBy?: boolean | jobOffers$savedByArgs<ExtArgs>
+    sendCandidature?: boolean | jobOffers$sendCandidatureArgs<ExtArgs>
     _count?: boolean | JobOffersCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type jobOffersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -16852,6 +16982,7 @@ export namespace Prisma {
       sectors: Prisma.$SectorsPayload<ExtArgs>[]
       tags: Prisma.$jobTagsPayload<ExtArgs>[]
       savedBy: Prisma.$SavedJobsPayload<ExtArgs>[]
+      sendCandidature: Prisma.$SendCandidaturePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -17249,6 +17380,7 @@ export namespace Prisma {
     sectors<T extends jobOffers$sectorsArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$sectorsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SectorsPayload<ExtArgs>, T, "findMany"> | Null>
     tags<T extends jobOffers$tagsArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$tagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobTagsPayload<ExtArgs>, T, "findMany"> | Null>
     savedBy<T extends jobOffers$savedByArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$savedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SavedJobsPayload<ExtArgs>, T, "findMany"> | Null>
+    sendCandidature<T extends jobOffers$sendCandidatureArgs<ExtArgs> = {}>(args?: Subset<T, jobOffers$sendCandidatureArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SendCandidaturePayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -17763,6 +17895,26 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: SavedJobsScalarFieldEnum | SavedJobsScalarFieldEnum[]
+  }
+
+  /**
+   * jobOffers.sendCandidature
+   */
+  export type jobOffers$sendCandidatureArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SendCandidature
+     */
+    select?: SendCandidatureSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SendCandidatureInclude<ExtArgs> | null
+    where?: SendCandidatureWhereInput
+    orderBy?: SendCandidatureOrderByWithRelationInput | SendCandidatureOrderByWithRelationInput[]
+    cursor?: SendCandidatureWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SendCandidatureScalarFieldEnum | SendCandidatureScalarFieldEnum[]
   }
 
   /**
@@ -18704,6 +18856,933 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: SavedJobsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SendCandidature
+   */
+
+  export type AggregateSendCandidature = {
+    _count: SendCandidatureCountAggregateOutputType | null
+    _min: SendCandidatureMinAggregateOutputType | null
+    _max: SendCandidatureMaxAggregateOutputType | null
+  }
+
+  export type SendCandidatureMinAggregateOutputType = {
+    id: string | null
+    candidateId: string | null
+    jobOfferId: string | null
+    savedAt: Date | null
+  }
+
+  export type SendCandidatureMaxAggregateOutputType = {
+    id: string | null
+    candidateId: string | null
+    jobOfferId: string | null
+    savedAt: Date | null
+  }
+
+  export type SendCandidatureCountAggregateOutputType = {
+    id: number
+    candidateId: number
+    jobOfferId: number
+    savedAt: number
+    _all: number
+  }
+
+
+  export type SendCandidatureMinAggregateInputType = {
+    id?: true
+    candidateId?: true
+    jobOfferId?: true
+    savedAt?: true
+  }
+
+  export type SendCandidatureMaxAggregateInputType = {
+    id?: true
+    candidateId?: true
+    jobOfferId?: true
+    savedAt?: true
+  }
+
+  export type SendCandidatureCountAggregateInputType = {
+    id?: true
+    candidateId?: true
+    jobOfferId?: true
+    savedAt?: true
+    _all?: true
+  }
+
+  export type SendCandidatureAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SendCandidature to aggregate.
+     */
+    where?: SendCandidatureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SendCandidatures to fetch.
+     */
+    orderBy?: SendCandidatureOrderByWithRelationInput | SendCandidatureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SendCandidatureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SendCandidatures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SendCandidatures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SendCandidatures
+    **/
+    _count?: true | SendCandidatureCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SendCandidatureMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SendCandidatureMaxAggregateInputType
+  }
+
+  export type GetSendCandidatureAggregateType<T extends SendCandidatureAggregateArgs> = {
+        [P in keyof T & keyof AggregateSendCandidature]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSendCandidature[P]>
+      : GetScalarType<T[P], AggregateSendCandidature[P]>
+  }
+
+
+
+
+  export type SendCandidatureGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SendCandidatureWhereInput
+    orderBy?: SendCandidatureOrderByWithAggregationInput | SendCandidatureOrderByWithAggregationInput[]
+    by: SendCandidatureScalarFieldEnum[] | SendCandidatureScalarFieldEnum
+    having?: SendCandidatureScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SendCandidatureCountAggregateInputType | true
+    _min?: SendCandidatureMinAggregateInputType
+    _max?: SendCandidatureMaxAggregateInputType
+  }
+
+  export type SendCandidatureGroupByOutputType = {
+    id: string
+    candidateId: string
+    jobOfferId: string
+    savedAt: Date
+    _count: SendCandidatureCountAggregateOutputType | null
+    _min: SendCandidatureMinAggregateOutputType | null
+    _max: SendCandidatureMaxAggregateOutputType | null
+  }
+
+  type GetSendCandidatureGroupByPayload<T extends SendCandidatureGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SendCandidatureGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SendCandidatureGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SendCandidatureGroupByOutputType[P]>
+            : GetScalarType<T[P], SendCandidatureGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SendCandidatureSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    candidateId?: boolean
+    jobOfferId?: boolean
+    savedAt?: boolean
+    candidate?: boolean | CandidatDataDefaultArgs<ExtArgs>
+    jobOffer?: boolean | jobOffersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sendCandidature"]>
+
+  export type SendCandidatureSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    candidateId?: boolean
+    jobOfferId?: boolean
+    savedAt?: boolean
+    candidate?: boolean | CandidatDataDefaultArgs<ExtArgs>
+    jobOffer?: boolean | jobOffersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["sendCandidature"]>
+
+  export type SendCandidatureSelectScalar = {
+    id?: boolean
+    candidateId?: boolean
+    jobOfferId?: boolean
+    savedAt?: boolean
+  }
+
+  export type SendCandidatureInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    candidate?: boolean | CandidatDataDefaultArgs<ExtArgs>
+    jobOffer?: boolean | jobOffersDefaultArgs<ExtArgs>
+  }
+  export type SendCandidatureIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    candidate?: boolean | CandidatDataDefaultArgs<ExtArgs>
+    jobOffer?: boolean | jobOffersDefaultArgs<ExtArgs>
+  }
+
+  export type $SendCandidaturePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SendCandidature"
+    objects: {
+      candidate: Prisma.$CandidatDataPayload<ExtArgs>
+      jobOffer: Prisma.$jobOffersPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      candidateId: string
+      jobOfferId: string
+      savedAt: Date
+    }, ExtArgs["result"]["sendCandidature"]>
+    composites: {}
+  }
+
+  type SendCandidatureGetPayload<S extends boolean | null | undefined | SendCandidatureDefaultArgs> = $Result.GetResult<Prisma.$SendCandidaturePayload, S>
+
+  type SendCandidatureCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<SendCandidatureFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: SendCandidatureCountAggregateInputType | true
+    }
+
+  export interface SendCandidatureDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SendCandidature'], meta: { name: 'SendCandidature' } }
+    /**
+     * Find zero or one SendCandidature that matches the filter.
+     * @param {SendCandidatureFindUniqueArgs} args - Arguments to find a SendCandidature
+     * @example
+     * // Get one SendCandidature
+     * const sendCandidature = await prisma.sendCandidature.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SendCandidatureFindUniqueArgs>(args: SelectSubset<T, SendCandidatureFindUniqueArgs<ExtArgs>>): Prisma__SendCandidatureClient<$Result.GetResult<Prisma.$SendCandidaturePayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one SendCandidature that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {SendCandidatureFindUniqueOrThrowArgs} args - Arguments to find a SendCandidature
+     * @example
+     * // Get one SendCandidature
+     * const sendCandidature = await prisma.sendCandidature.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SendCandidatureFindUniqueOrThrowArgs>(args: SelectSubset<T, SendCandidatureFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SendCandidatureClient<$Result.GetResult<Prisma.$SendCandidaturePayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first SendCandidature that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SendCandidatureFindFirstArgs} args - Arguments to find a SendCandidature
+     * @example
+     * // Get one SendCandidature
+     * const sendCandidature = await prisma.sendCandidature.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SendCandidatureFindFirstArgs>(args?: SelectSubset<T, SendCandidatureFindFirstArgs<ExtArgs>>): Prisma__SendCandidatureClient<$Result.GetResult<Prisma.$SendCandidaturePayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first SendCandidature that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SendCandidatureFindFirstOrThrowArgs} args - Arguments to find a SendCandidature
+     * @example
+     * // Get one SendCandidature
+     * const sendCandidature = await prisma.sendCandidature.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SendCandidatureFindFirstOrThrowArgs>(args?: SelectSubset<T, SendCandidatureFindFirstOrThrowArgs<ExtArgs>>): Prisma__SendCandidatureClient<$Result.GetResult<Prisma.$SendCandidaturePayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more SendCandidatures that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SendCandidatureFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SendCandidatures
+     * const sendCandidatures = await prisma.sendCandidature.findMany()
+     * 
+     * // Get first 10 SendCandidatures
+     * const sendCandidatures = await prisma.sendCandidature.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const sendCandidatureWithIdOnly = await prisma.sendCandidature.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SendCandidatureFindManyArgs>(args?: SelectSubset<T, SendCandidatureFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SendCandidaturePayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a SendCandidature.
+     * @param {SendCandidatureCreateArgs} args - Arguments to create a SendCandidature.
+     * @example
+     * // Create one SendCandidature
+     * const SendCandidature = await prisma.sendCandidature.create({
+     *   data: {
+     *     // ... data to create a SendCandidature
+     *   }
+     * })
+     * 
+     */
+    create<T extends SendCandidatureCreateArgs>(args: SelectSubset<T, SendCandidatureCreateArgs<ExtArgs>>): Prisma__SendCandidatureClient<$Result.GetResult<Prisma.$SendCandidaturePayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many SendCandidatures.
+     * @param {SendCandidatureCreateManyArgs} args - Arguments to create many SendCandidatures.
+     * @example
+     * // Create many SendCandidatures
+     * const sendCandidature = await prisma.sendCandidature.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SendCandidatureCreateManyArgs>(args?: SelectSubset<T, SendCandidatureCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SendCandidatures and returns the data saved in the database.
+     * @param {SendCandidatureCreateManyAndReturnArgs} args - Arguments to create many SendCandidatures.
+     * @example
+     * // Create many SendCandidatures
+     * const sendCandidature = await prisma.sendCandidature.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SendCandidatures and only return the `id`
+     * const sendCandidatureWithIdOnly = await prisma.sendCandidature.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SendCandidatureCreateManyAndReturnArgs>(args?: SelectSubset<T, SendCandidatureCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SendCandidaturePayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a SendCandidature.
+     * @param {SendCandidatureDeleteArgs} args - Arguments to delete one SendCandidature.
+     * @example
+     * // Delete one SendCandidature
+     * const SendCandidature = await prisma.sendCandidature.delete({
+     *   where: {
+     *     // ... filter to delete one SendCandidature
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SendCandidatureDeleteArgs>(args: SelectSubset<T, SendCandidatureDeleteArgs<ExtArgs>>): Prisma__SendCandidatureClient<$Result.GetResult<Prisma.$SendCandidaturePayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one SendCandidature.
+     * @param {SendCandidatureUpdateArgs} args - Arguments to update one SendCandidature.
+     * @example
+     * // Update one SendCandidature
+     * const sendCandidature = await prisma.sendCandidature.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SendCandidatureUpdateArgs>(args: SelectSubset<T, SendCandidatureUpdateArgs<ExtArgs>>): Prisma__SendCandidatureClient<$Result.GetResult<Prisma.$SendCandidaturePayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more SendCandidatures.
+     * @param {SendCandidatureDeleteManyArgs} args - Arguments to filter SendCandidatures to delete.
+     * @example
+     * // Delete a few SendCandidatures
+     * const { count } = await prisma.sendCandidature.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SendCandidatureDeleteManyArgs>(args?: SelectSubset<T, SendCandidatureDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SendCandidatures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SendCandidatureUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SendCandidatures
+     * const sendCandidature = await prisma.sendCandidature.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SendCandidatureUpdateManyArgs>(args: SelectSubset<T, SendCandidatureUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one SendCandidature.
+     * @param {SendCandidatureUpsertArgs} args - Arguments to update or create a SendCandidature.
+     * @example
+     * // Update or create a SendCandidature
+     * const sendCandidature = await prisma.sendCandidature.upsert({
+     *   create: {
+     *     // ... data to create a SendCandidature
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SendCandidature we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SendCandidatureUpsertArgs>(args: SelectSubset<T, SendCandidatureUpsertArgs<ExtArgs>>): Prisma__SendCandidatureClient<$Result.GetResult<Prisma.$SendCandidaturePayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of SendCandidatures.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SendCandidatureCountArgs} args - Arguments to filter SendCandidatures to count.
+     * @example
+     * // Count the number of SendCandidatures
+     * const count = await prisma.sendCandidature.count({
+     *   where: {
+     *     // ... the filter for the SendCandidatures we want to count
+     *   }
+     * })
+    **/
+    count<T extends SendCandidatureCountArgs>(
+      args?: Subset<T, SendCandidatureCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SendCandidatureCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SendCandidature.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SendCandidatureAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SendCandidatureAggregateArgs>(args: Subset<T, SendCandidatureAggregateArgs>): Prisma.PrismaPromise<GetSendCandidatureAggregateType<T>>
+
+    /**
+     * Group by SendCandidature.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SendCandidatureGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SendCandidatureGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SendCandidatureGroupByArgs['orderBy'] }
+        : { orderBy?: SendCandidatureGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SendCandidatureGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSendCandidatureGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SendCandidature model
+   */
+  readonly fields: SendCandidatureFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SendCandidature.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SendCandidatureClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    candidate<T extends CandidatDataDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CandidatDataDefaultArgs<ExtArgs>>): Prisma__CandidatDataClient<$Result.GetResult<Prisma.$CandidatDataPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    jobOffer<T extends jobOffersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, jobOffersDefaultArgs<ExtArgs>>): Prisma__jobOffersClient<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SendCandidature model
+   */ 
+  interface SendCandidatureFieldRefs {
+    readonly id: FieldRef<"SendCandidature", 'String'>
+    readonly candidateId: FieldRef<"SendCandidature", 'String'>
+    readonly jobOfferId: FieldRef<"SendCandidature", 'String'>
+    readonly savedAt: FieldRef<"SendCandidature", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SendCandidature findUnique
+   */
+  export type SendCandidatureFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SendCandidature
+     */
+    select?: SendCandidatureSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SendCandidatureInclude<ExtArgs> | null
+    /**
+     * Filter, which SendCandidature to fetch.
+     */
+    where: SendCandidatureWhereUniqueInput
+  }
+
+  /**
+   * SendCandidature findUniqueOrThrow
+   */
+  export type SendCandidatureFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SendCandidature
+     */
+    select?: SendCandidatureSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SendCandidatureInclude<ExtArgs> | null
+    /**
+     * Filter, which SendCandidature to fetch.
+     */
+    where: SendCandidatureWhereUniqueInput
+  }
+
+  /**
+   * SendCandidature findFirst
+   */
+  export type SendCandidatureFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SendCandidature
+     */
+    select?: SendCandidatureSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SendCandidatureInclude<ExtArgs> | null
+    /**
+     * Filter, which SendCandidature to fetch.
+     */
+    where?: SendCandidatureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SendCandidatures to fetch.
+     */
+    orderBy?: SendCandidatureOrderByWithRelationInput | SendCandidatureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SendCandidatures.
+     */
+    cursor?: SendCandidatureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SendCandidatures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SendCandidatures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SendCandidatures.
+     */
+    distinct?: SendCandidatureScalarFieldEnum | SendCandidatureScalarFieldEnum[]
+  }
+
+  /**
+   * SendCandidature findFirstOrThrow
+   */
+  export type SendCandidatureFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SendCandidature
+     */
+    select?: SendCandidatureSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SendCandidatureInclude<ExtArgs> | null
+    /**
+     * Filter, which SendCandidature to fetch.
+     */
+    where?: SendCandidatureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SendCandidatures to fetch.
+     */
+    orderBy?: SendCandidatureOrderByWithRelationInput | SendCandidatureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SendCandidatures.
+     */
+    cursor?: SendCandidatureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SendCandidatures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SendCandidatures.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SendCandidatures.
+     */
+    distinct?: SendCandidatureScalarFieldEnum | SendCandidatureScalarFieldEnum[]
+  }
+
+  /**
+   * SendCandidature findMany
+   */
+  export type SendCandidatureFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SendCandidature
+     */
+    select?: SendCandidatureSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SendCandidatureInclude<ExtArgs> | null
+    /**
+     * Filter, which SendCandidatures to fetch.
+     */
+    where?: SendCandidatureWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SendCandidatures to fetch.
+     */
+    orderBy?: SendCandidatureOrderByWithRelationInput | SendCandidatureOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SendCandidatures.
+     */
+    cursor?: SendCandidatureWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SendCandidatures from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SendCandidatures.
+     */
+    skip?: number
+    distinct?: SendCandidatureScalarFieldEnum | SendCandidatureScalarFieldEnum[]
+  }
+
+  /**
+   * SendCandidature create
+   */
+  export type SendCandidatureCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SendCandidature
+     */
+    select?: SendCandidatureSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SendCandidatureInclude<ExtArgs> | null
+    /**
+     * The data needed to create a SendCandidature.
+     */
+    data: XOR<SendCandidatureCreateInput, SendCandidatureUncheckedCreateInput>
+  }
+
+  /**
+   * SendCandidature createMany
+   */
+  export type SendCandidatureCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SendCandidatures.
+     */
+    data: SendCandidatureCreateManyInput | SendCandidatureCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * SendCandidature createManyAndReturn
+   */
+  export type SendCandidatureCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SendCandidature
+     */
+    select?: SendCandidatureSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many SendCandidatures.
+     */
+    data: SendCandidatureCreateManyInput | SendCandidatureCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SendCandidatureIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SendCandidature update
+   */
+  export type SendCandidatureUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SendCandidature
+     */
+    select?: SendCandidatureSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SendCandidatureInclude<ExtArgs> | null
+    /**
+     * The data needed to update a SendCandidature.
+     */
+    data: XOR<SendCandidatureUpdateInput, SendCandidatureUncheckedUpdateInput>
+    /**
+     * Choose, which SendCandidature to update.
+     */
+    where: SendCandidatureWhereUniqueInput
+  }
+
+  /**
+   * SendCandidature updateMany
+   */
+  export type SendCandidatureUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SendCandidatures.
+     */
+    data: XOR<SendCandidatureUpdateManyMutationInput, SendCandidatureUncheckedUpdateManyInput>
+    /**
+     * Filter which SendCandidatures to update
+     */
+    where?: SendCandidatureWhereInput
+  }
+
+  /**
+   * SendCandidature upsert
+   */
+  export type SendCandidatureUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SendCandidature
+     */
+    select?: SendCandidatureSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SendCandidatureInclude<ExtArgs> | null
+    /**
+     * The filter to search for the SendCandidature to update in case it exists.
+     */
+    where: SendCandidatureWhereUniqueInput
+    /**
+     * In case the SendCandidature found by the `where` argument doesn't exist, create a new SendCandidature with this data.
+     */
+    create: XOR<SendCandidatureCreateInput, SendCandidatureUncheckedCreateInput>
+    /**
+     * In case the SendCandidature was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SendCandidatureUpdateInput, SendCandidatureUncheckedUpdateInput>
+  }
+
+  /**
+   * SendCandidature delete
+   */
+  export type SendCandidatureDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SendCandidature
+     */
+    select?: SendCandidatureSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SendCandidatureInclude<ExtArgs> | null
+    /**
+     * Filter which SendCandidature to delete.
+     */
+    where: SendCandidatureWhereUniqueInput
+  }
+
+  /**
+   * SendCandidature deleteMany
+   */
+  export type SendCandidatureDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SendCandidatures to delete
+     */
+    where?: SendCandidatureWhereInput
+  }
+
+  /**
+   * SendCandidature without action
+   */
+  export type SendCandidatureDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SendCandidature
+     */
+    select?: SendCandidatureSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SendCandidatureInclude<ExtArgs> | null
   }
 
 
@@ -28345,6 +29424,16 @@ export namespace Prisma {
   export type SavedJobsScalarFieldEnum = (typeof SavedJobsScalarFieldEnum)[keyof typeof SavedJobsScalarFieldEnum]
 
 
+  export const SendCandidatureScalarFieldEnum: {
+    id: 'id',
+    candidateId: 'candidateId',
+    jobOfferId: 'jobOfferId',
+    savedAt: 'savedAt'
+  };
+
+  export type SendCandidatureScalarFieldEnum = (typeof SendCandidatureScalarFieldEnum)[keyof typeof SendCandidatureScalarFieldEnum]
+
+
   export const ContractTypeJobScalarFieldEnum: {
     id: 'id',
     name: 'name'
@@ -28655,6 +29744,15 @@ export namespace Prisma {
   };
 
   export type SavedJobsOrderByRelevanceFieldEnum = (typeof SavedJobsOrderByRelevanceFieldEnum)[keyof typeof SavedJobsOrderByRelevanceFieldEnum]
+
+
+  export const SendCandidatureOrderByRelevanceFieldEnum: {
+    id: 'id',
+    candidateId: 'candidateId',
+    jobOfferId: 'jobOfferId'
+  };
+
+  export type SendCandidatureOrderByRelevanceFieldEnum = (typeof SendCandidatureOrderByRelevanceFieldEnum)[keyof typeof SendCandidatureOrderByRelevanceFieldEnum]
 
 
   export const ContractTypeJobOrderByRelevanceFieldEnum: {
@@ -29037,6 +30135,7 @@ export namespace Prisma {
     languages?: LanguagesListRelationFilter
     skills?: SkillsListRelationFilter
     savedJobs?: SavedJobsListRelationFilter
+    sendCandidature?: SendCandidatureListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     candidatLifeState?: XOR<CandidatLifeStateNullableScalarRelationFilter, CandidatLifeStateWhereInput> | null
   }
@@ -29060,6 +30159,7 @@ export namespace Prisma {
     languages?: LanguagesOrderByRelationAggregateInput
     skills?: SkillsOrderByRelationAggregateInput
     savedJobs?: SavedJobsOrderByRelationAggregateInput
+    sendCandidature?: SendCandidatureOrderByRelationAggregateInput
     user?: UserOrderByWithRelationInput
     candidatLifeState?: CandidatLifeStateOrderByWithRelationInput
     _relevance?: CandidatDataOrderByRelevanceInput
@@ -29087,6 +30187,7 @@ export namespace Prisma {
     languages?: LanguagesListRelationFilter
     skills?: SkillsListRelationFilter
     savedJobs?: SavedJobsListRelationFilter
+    sendCandidature?: SendCandidatureListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     candidatLifeState?: XOR<CandidatLifeStateNullableScalarRelationFilter, CandidatLifeStateWhereInput> | null
   }, "id" | "userId">
@@ -29871,6 +30972,7 @@ export namespace Prisma {
     sectors?: SectorsListRelationFilter
     tags?: JobTagsListRelationFilter
     savedBy?: SavedJobsListRelationFilter
+    sendCandidature?: SendCandidatureListRelationFilter
   }
 
   export type jobOffersOrderByWithRelationInput = {
@@ -29905,6 +31007,7 @@ export namespace Prisma {
     sectors?: SectorsOrderByRelationAggregateInput
     tags?: jobTagsOrderByRelationAggregateInput
     savedBy?: SavedJobsOrderByRelationAggregateInput
+    sendCandidature?: SendCandidatureOrderByRelationAggregateInput
     _relevance?: jobOffersOrderByRelevanceInput
   }
 
@@ -29943,6 +31046,7 @@ export namespace Prisma {
     sectors?: SectorsListRelationFilter
     tags?: JobTagsListRelationFilter
     savedBy?: SavedJobsListRelationFilter
+    sendCandidature?: SendCandidatureListRelationFilter
   }, "id" | "slug">
 
   export type jobOffersOrderByWithAggregationInput = {
@@ -30052,6 +31156,61 @@ export namespace Prisma {
     candidateId?: StringWithAggregatesFilter<"SavedJobs"> | string
     jobOfferId?: StringWithAggregatesFilter<"SavedJobs"> | string
     savedAt?: DateTimeWithAggregatesFilter<"SavedJobs"> | Date | string
+  }
+
+  export type SendCandidatureWhereInput = {
+    AND?: SendCandidatureWhereInput | SendCandidatureWhereInput[]
+    OR?: SendCandidatureWhereInput[]
+    NOT?: SendCandidatureWhereInput | SendCandidatureWhereInput[]
+    id?: StringFilter<"SendCandidature"> | string
+    candidateId?: StringFilter<"SendCandidature"> | string
+    jobOfferId?: StringFilter<"SendCandidature"> | string
+    savedAt?: DateTimeFilter<"SendCandidature"> | Date | string
+    candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
+    jobOffer?: XOR<JobOffersScalarRelationFilter, jobOffersWhereInput>
+  }
+
+  export type SendCandidatureOrderByWithRelationInput = {
+    id?: SortOrder
+    candidateId?: SortOrder
+    jobOfferId?: SortOrder
+    savedAt?: SortOrder
+    candidate?: CandidatDataOrderByWithRelationInput
+    jobOffer?: jobOffersOrderByWithRelationInput
+    _relevance?: SendCandidatureOrderByRelevanceInput
+  }
+
+  export type SendCandidatureWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    candidateId_jobOfferId?: SendCandidatureCandidateIdJobOfferIdCompoundUniqueInput
+    AND?: SendCandidatureWhereInput | SendCandidatureWhereInput[]
+    OR?: SendCandidatureWhereInput[]
+    NOT?: SendCandidatureWhereInput | SendCandidatureWhereInput[]
+    candidateId?: StringFilter<"SendCandidature"> | string
+    jobOfferId?: StringFilter<"SendCandidature"> | string
+    savedAt?: DateTimeFilter<"SendCandidature"> | Date | string
+    candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
+    jobOffer?: XOR<JobOffersScalarRelationFilter, jobOffersWhereInput>
+  }, "id" | "candidateId_jobOfferId">
+
+  export type SendCandidatureOrderByWithAggregationInput = {
+    id?: SortOrder
+    candidateId?: SortOrder
+    jobOfferId?: SortOrder
+    savedAt?: SortOrder
+    _count?: SendCandidatureCountOrderByAggregateInput
+    _max?: SendCandidatureMaxOrderByAggregateInput
+    _min?: SendCandidatureMinOrderByAggregateInput
+  }
+
+  export type SendCandidatureScalarWhereWithAggregatesInput = {
+    AND?: SendCandidatureScalarWhereWithAggregatesInput | SendCandidatureScalarWhereWithAggregatesInput[]
+    OR?: SendCandidatureScalarWhereWithAggregatesInput[]
+    NOT?: SendCandidatureScalarWhereWithAggregatesInput | SendCandidatureScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SendCandidature"> | string
+    candidateId?: StringWithAggregatesFilter<"SendCandidature"> | string
+    jobOfferId?: StringWithAggregatesFilter<"SendCandidature"> | string
+    savedAt?: DateTimeWithAggregatesFilter<"SendCandidature"> | Date | string
   }
 
   export type ContractTypeJobWhereInput = {
@@ -30693,6 +31852,7 @@ export namespace Prisma {
     languages?: LanguagesCreateNestedManyWithoutCandidateInput
     skills?: SkillsCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutCandidateInput
     user: UserCreateNestedOneWithoutCandidatdataInput
     candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
   }
@@ -30716,6 +31876,7 @@ export namespace Prisma {
     languages?: LanguagesUncheckedCreateNestedManyWithoutCandidateInput
     skills?: SkillsUncheckedCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsUncheckedCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutCandidateInput
     candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
   }
 
@@ -30737,6 +31898,7 @@ export namespace Prisma {
     languages?: LanguagesUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutCandidateNestedInput
     user?: UserUpdateOneRequiredWithoutCandidatdataNestedInput
     candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
   }
@@ -30760,6 +31922,7 @@ export namespace Prisma {
     languages?: LanguagesUncheckedUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUncheckedUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUncheckedUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutCandidateNestedInput
     candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
   }
 
@@ -31556,6 +32719,7 @@ export namespace Prisma {
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersUncheckedCreateInput = {
@@ -31582,6 +32746,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsUncheckedCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersUpdateInput = {
@@ -31608,6 +32773,7 @@ export namespace Prisma {
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateInput = {
@@ -31634,6 +32800,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUncheckedUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersCreateManyInput = {
@@ -31738,6 +32905,53 @@ export namespace Prisma {
   }
 
   export type SavedJobsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    candidateId?: StringFieldUpdateOperationsInput | string
+    jobOfferId?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SendCandidatureCreateInput = {
+    id?: string
+    savedAt?: Date | string
+    candidate: CandidatDataCreateNestedOneWithoutSendCandidatureInput
+    jobOffer: jobOffersCreateNestedOneWithoutSendCandidatureInput
+  }
+
+  export type SendCandidatureUncheckedCreateInput = {
+    id?: string
+    candidateId: string
+    jobOfferId: string
+    savedAt?: Date | string
+  }
+
+  export type SendCandidatureUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    candidate?: CandidatDataUpdateOneRequiredWithoutSendCandidatureNestedInput
+    jobOffer?: jobOffersUpdateOneRequiredWithoutSendCandidatureNestedInput
+  }
+
+  export type SendCandidatureUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    candidateId?: StringFieldUpdateOperationsInput | string
+    jobOfferId?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SendCandidatureCreateManyInput = {
+    id?: string
+    candidateId: string
+    jobOfferId: string
+    savedAt?: Date | string
+  }
+
+  export type SendCandidatureUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SendCandidatureUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     candidateId?: StringFieldUpdateOperationsInput | string
     jobOfferId?: StringFieldUpdateOperationsInput | string
@@ -32512,6 +33726,12 @@ export namespace Prisma {
     none?: SavedJobsWhereInput
   }
 
+  export type SendCandidatureListRelationFilter = {
+    every?: SendCandidatureWhereInput
+    some?: SendCandidatureWhereInput
+    none?: SendCandidatureWhereInput
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -32552,6 +33772,10 @@ export namespace Prisma {
   }
 
   export type SavedJobsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SendCandidatureOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -33379,6 +34603,38 @@ export namespace Prisma {
     savedAt?: SortOrder
   }
 
+  export type SendCandidatureOrderByRelevanceInput = {
+    fields: SendCandidatureOrderByRelevanceFieldEnum | SendCandidatureOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type SendCandidatureCandidateIdJobOfferIdCompoundUniqueInput = {
+    candidateId: string
+    jobOfferId: string
+  }
+
+  export type SendCandidatureCountOrderByAggregateInput = {
+    id?: SortOrder
+    candidateId?: SortOrder
+    jobOfferId?: SortOrder
+    savedAt?: SortOrder
+  }
+
+  export type SendCandidatureMaxOrderByAggregateInput = {
+    id?: SortOrder
+    candidateId?: SortOrder
+    jobOfferId?: SortOrder
+    savedAt?: SortOrder
+  }
+
+  export type SendCandidatureMinOrderByAggregateInput = {
+    id?: SortOrder
+    candidateId?: SortOrder
+    jobOfferId?: SortOrder
+    savedAt?: SortOrder
+  }
+
   export type ContractTypeJobOrderByRelevanceInput = {
     fields: ContractTypeJobOrderByRelevanceFieldEnum | ContractTypeJobOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -34028,6 +35284,13 @@ export namespace Prisma {
     connect?: SavedJobsWhereUniqueInput | SavedJobsWhereUniqueInput[]
   }
 
+  export type SendCandidatureCreateNestedManyWithoutCandidateInput = {
+    create?: XOR<SendCandidatureCreateWithoutCandidateInput, SendCandidatureUncheckedCreateWithoutCandidateInput> | SendCandidatureCreateWithoutCandidateInput[] | SendCandidatureUncheckedCreateWithoutCandidateInput[]
+    connectOrCreate?: SendCandidatureCreateOrConnectWithoutCandidateInput | SendCandidatureCreateOrConnectWithoutCandidateInput[]
+    createMany?: SendCandidatureCreateManyCandidateInputEnvelope
+    connect?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+  }
+
   export type UserCreateNestedOneWithoutCandidatdataInput = {
     create?: XOR<UserCreateWithoutCandidatdataInput, UserUncheckedCreateWithoutCandidatdataInput>
     connectOrCreate?: UserCreateOrConnectWithoutCandidatdataInput
@@ -34087,6 +35350,13 @@ export namespace Prisma {
     connectOrCreate?: SavedJobsCreateOrConnectWithoutCandidateInput | SavedJobsCreateOrConnectWithoutCandidateInput[]
     createMany?: SavedJobsCreateManyCandidateInputEnvelope
     connect?: SavedJobsWhereUniqueInput | SavedJobsWhereUniqueInput[]
+  }
+
+  export type SendCandidatureUncheckedCreateNestedManyWithoutCandidateInput = {
+    create?: XOR<SendCandidatureCreateWithoutCandidateInput, SendCandidatureUncheckedCreateWithoutCandidateInput> | SendCandidatureCreateWithoutCandidateInput[] | SendCandidatureUncheckedCreateWithoutCandidateInput[]
+    connectOrCreate?: SendCandidatureCreateOrConnectWithoutCandidateInput | SendCandidatureCreateOrConnectWithoutCandidateInput[]
+    createMany?: SendCandidatureCreateManyCandidateInputEnvelope
+    connect?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
   }
 
   export type CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput = {
@@ -34200,6 +35470,20 @@ export namespace Prisma {
     update?: SavedJobsUpdateWithWhereUniqueWithoutCandidateInput | SavedJobsUpdateWithWhereUniqueWithoutCandidateInput[]
     updateMany?: SavedJobsUpdateManyWithWhereWithoutCandidateInput | SavedJobsUpdateManyWithWhereWithoutCandidateInput[]
     deleteMany?: SavedJobsScalarWhereInput | SavedJobsScalarWhereInput[]
+  }
+
+  export type SendCandidatureUpdateManyWithoutCandidateNestedInput = {
+    create?: XOR<SendCandidatureCreateWithoutCandidateInput, SendCandidatureUncheckedCreateWithoutCandidateInput> | SendCandidatureCreateWithoutCandidateInput[] | SendCandidatureUncheckedCreateWithoutCandidateInput[]
+    connectOrCreate?: SendCandidatureCreateOrConnectWithoutCandidateInput | SendCandidatureCreateOrConnectWithoutCandidateInput[]
+    upsert?: SendCandidatureUpsertWithWhereUniqueWithoutCandidateInput | SendCandidatureUpsertWithWhereUniqueWithoutCandidateInput[]
+    createMany?: SendCandidatureCreateManyCandidateInputEnvelope
+    set?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+    disconnect?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+    delete?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+    connect?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+    update?: SendCandidatureUpdateWithWhereUniqueWithoutCandidateInput | SendCandidatureUpdateWithWhereUniqueWithoutCandidateInput[]
+    updateMany?: SendCandidatureUpdateManyWithWhereWithoutCandidateInput | SendCandidatureUpdateManyWithWhereWithoutCandidateInput[]
+    deleteMany?: SendCandidatureScalarWhereInput | SendCandidatureScalarWhereInput[]
   }
 
   export type UserUpdateOneRequiredWithoutCandidatdataNestedInput = {
@@ -34316,6 +35600,20 @@ export namespace Prisma {
     update?: SavedJobsUpdateWithWhereUniqueWithoutCandidateInput | SavedJobsUpdateWithWhereUniqueWithoutCandidateInput[]
     updateMany?: SavedJobsUpdateManyWithWhereWithoutCandidateInput | SavedJobsUpdateManyWithWhereWithoutCandidateInput[]
     deleteMany?: SavedJobsScalarWhereInput | SavedJobsScalarWhereInput[]
+  }
+
+  export type SendCandidatureUncheckedUpdateManyWithoutCandidateNestedInput = {
+    create?: XOR<SendCandidatureCreateWithoutCandidateInput, SendCandidatureUncheckedCreateWithoutCandidateInput> | SendCandidatureCreateWithoutCandidateInput[] | SendCandidatureUncheckedCreateWithoutCandidateInput[]
+    connectOrCreate?: SendCandidatureCreateOrConnectWithoutCandidateInput | SendCandidatureCreateOrConnectWithoutCandidateInput[]
+    upsert?: SendCandidatureUpsertWithWhereUniqueWithoutCandidateInput | SendCandidatureUpsertWithWhereUniqueWithoutCandidateInput[]
+    createMany?: SendCandidatureCreateManyCandidateInputEnvelope
+    set?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+    disconnect?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+    delete?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+    connect?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+    update?: SendCandidatureUpdateWithWhereUniqueWithoutCandidateInput | SendCandidatureUpdateWithWhereUniqueWithoutCandidateInput[]
+    updateMany?: SendCandidatureUpdateManyWithWhereWithoutCandidateInput | SendCandidatureUpdateManyWithWhereWithoutCandidateInput[]
+    deleteMany?: SendCandidatureScalarWhereInput | SendCandidatureScalarWhereInput[]
   }
 
   export type CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput = {
@@ -34722,6 +36020,13 @@ export namespace Prisma {
     connect?: SavedJobsWhereUniqueInput | SavedJobsWhereUniqueInput[]
   }
 
+  export type SendCandidatureCreateNestedManyWithoutJobOfferInput = {
+    create?: XOR<SendCandidatureCreateWithoutJobOfferInput, SendCandidatureUncheckedCreateWithoutJobOfferInput> | SendCandidatureCreateWithoutJobOfferInput[] | SendCandidatureUncheckedCreateWithoutJobOfferInput[]
+    connectOrCreate?: SendCandidatureCreateOrConnectWithoutJobOfferInput | SendCandidatureCreateOrConnectWithoutJobOfferInput[]
+    createMany?: SendCandidatureCreateManyJobOfferInputEnvelope
+    connect?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+  }
+
   export type SectorsUncheckedCreateNestedManyWithoutJobOfferInput = {
     create?: XOR<SectorsCreateWithoutJobOfferInput, SectorsUncheckedCreateWithoutJobOfferInput> | SectorsCreateWithoutJobOfferInput[] | SectorsUncheckedCreateWithoutJobOfferInput[]
     connectOrCreate?: SectorsCreateOrConnectWithoutJobOfferInput | SectorsCreateOrConnectWithoutJobOfferInput[]
@@ -34739,6 +36044,13 @@ export namespace Prisma {
     connectOrCreate?: SavedJobsCreateOrConnectWithoutJobOfferInput | SavedJobsCreateOrConnectWithoutJobOfferInput[]
     createMany?: SavedJobsCreateManyJobOfferInputEnvelope
     connect?: SavedJobsWhereUniqueInput | SavedJobsWhereUniqueInput[]
+  }
+
+  export type SendCandidatureUncheckedCreateNestedManyWithoutJobOfferInput = {
+    create?: XOR<SendCandidatureCreateWithoutJobOfferInput, SendCandidatureUncheckedCreateWithoutJobOfferInput> | SendCandidatureCreateWithoutJobOfferInput[] | SendCandidatureUncheckedCreateWithoutJobOfferInput[]
+    connectOrCreate?: SendCandidatureCreateOrConnectWithoutJobOfferInput | SendCandidatureCreateOrConnectWithoutJobOfferInput[]
+    createMany?: SendCandidatureCreateManyJobOfferInputEnvelope
+    connect?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -34861,6 +36173,20 @@ export namespace Prisma {
     deleteMany?: SavedJobsScalarWhereInput | SavedJobsScalarWhereInput[]
   }
 
+  export type SendCandidatureUpdateManyWithoutJobOfferNestedInput = {
+    create?: XOR<SendCandidatureCreateWithoutJobOfferInput, SendCandidatureUncheckedCreateWithoutJobOfferInput> | SendCandidatureCreateWithoutJobOfferInput[] | SendCandidatureUncheckedCreateWithoutJobOfferInput[]
+    connectOrCreate?: SendCandidatureCreateOrConnectWithoutJobOfferInput | SendCandidatureCreateOrConnectWithoutJobOfferInput[]
+    upsert?: SendCandidatureUpsertWithWhereUniqueWithoutJobOfferInput | SendCandidatureUpsertWithWhereUniqueWithoutJobOfferInput[]
+    createMany?: SendCandidatureCreateManyJobOfferInputEnvelope
+    set?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+    disconnect?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+    delete?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+    connect?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+    update?: SendCandidatureUpdateWithWhereUniqueWithoutJobOfferInput | SendCandidatureUpdateWithWhereUniqueWithoutJobOfferInput[]
+    updateMany?: SendCandidatureUpdateManyWithWhereWithoutJobOfferInput | SendCandidatureUpdateManyWithWhereWithoutJobOfferInput[]
+    deleteMany?: SendCandidatureScalarWhereInput | SendCandidatureScalarWhereInput[]
+  }
+
   export type SectorsUncheckedUpdateManyWithoutJobOfferNestedInput = {
     create?: XOR<SectorsCreateWithoutJobOfferInput, SectorsUncheckedCreateWithoutJobOfferInput> | SectorsCreateWithoutJobOfferInput[] | SectorsUncheckedCreateWithoutJobOfferInput[]
     connectOrCreate?: SectorsCreateOrConnectWithoutJobOfferInput | SectorsCreateOrConnectWithoutJobOfferInput[]
@@ -34901,6 +36227,20 @@ export namespace Prisma {
     deleteMany?: SavedJobsScalarWhereInput | SavedJobsScalarWhereInput[]
   }
 
+  export type SendCandidatureUncheckedUpdateManyWithoutJobOfferNestedInput = {
+    create?: XOR<SendCandidatureCreateWithoutJobOfferInput, SendCandidatureUncheckedCreateWithoutJobOfferInput> | SendCandidatureCreateWithoutJobOfferInput[] | SendCandidatureUncheckedCreateWithoutJobOfferInput[]
+    connectOrCreate?: SendCandidatureCreateOrConnectWithoutJobOfferInput | SendCandidatureCreateOrConnectWithoutJobOfferInput[]
+    upsert?: SendCandidatureUpsertWithWhereUniqueWithoutJobOfferInput | SendCandidatureUpsertWithWhereUniqueWithoutJobOfferInput[]
+    createMany?: SendCandidatureCreateManyJobOfferInputEnvelope
+    set?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+    disconnect?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+    delete?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+    connect?: SendCandidatureWhereUniqueInput | SendCandidatureWhereUniqueInput[]
+    update?: SendCandidatureUpdateWithWhereUniqueWithoutJobOfferInput | SendCandidatureUpdateWithWhereUniqueWithoutJobOfferInput[]
+    updateMany?: SendCandidatureUpdateManyWithWhereWithoutJobOfferInput | SendCandidatureUpdateManyWithWhereWithoutJobOfferInput[]
+    deleteMany?: SendCandidatureScalarWhereInput | SendCandidatureScalarWhereInput[]
+  }
+
   export type CandidatDataCreateNestedOneWithoutSavedJobsInput = {
     create?: XOR<CandidatDataCreateWithoutSavedJobsInput, CandidatDataUncheckedCreateWithoutSavedJobsInput>
     connectOrCreate?: CandidatDataCreateOrConnectWithoutSavedJobsInput
@@ -34927,6 +36267,34 @@ export namespace Prisma {
     upsert?: jobOffersUpsertWithoutSavedByInput
     connect?: jobOffersWhereUniqueInput
     update?: XOR<XOR<jobOffersUpdateToOneWithWhereWithoutSavedByInput, jobOffersUpdateWithoutSavedByInput>, jobOffersUncheckedUpdateWithoutSavedByInput>
+  }
+
+  export type CandidatDataCreateNestedOneWithoutSendCandidatureInput = {
+    create?: XOR<CandidatDataCreateWithoutSendCandidatureInput, CandidatDataUncheckedCreateWithoutSendCandidatureInput>
+    connectOrCreate?: CandidatDataCreateOrConnectWithoutSendCandidatureInput
+    connect?: CandidatDataWhereUniqueInput
+  }
+
+  export type jobOffersCreateNestedOneWithoutSendCandidatureInput = {
+    create?: XOR<jobOffersCreateWithoutSendCandidatureInput, jobOffersUncheckedCreateWithoutSendCandidatureInput>
+    connectOrCreate?: jobOffersCreateOrConnectWithoutSendCandidatureInput
+    connect?: jobOffersWhereUniqueInput
+  }
+
+  export type CandidatDataUpdateOneRequiredWithoutSendCandidatureNestedInput = {
+    create?: XOR<CandidatDataCreateWithoutSendCandidatureInput, CandidatDataUncheckedCreateWithoutSendCandidatureInput>
+    connectOrCreate?: CandidatDataCreateOrConnectWithoutSendCandidatureInput
+    upsert?: CandidatDataUpsertWithoutSendCandidatureInput
+    connect?: CandidatDataWhereUniqueInput
+    update?: XOR<XOR<CandidatDataUpdateToOneWithWhereWithoutSendCandidatureInput, CandidatDataUpdateWithoutSendCandidatureInput>, CandidatDataUncheckedUpdateWithoutSendCandidatureInput>
+  }
+
+  export type jobOffersUpdateOneRequiredWithoutSendCandidatureNestedInput = {
+    create?: XOR<jobOffersCreateWithoutSendCandidatureInput, jobOffersUncheckedCreateWithoutSendCandidatureInput>
+    connectOrCreate?: jobOffersCreateOrConnectWithoutSendCandidatureInput
+    upsert?: jobOffersUpsertWithoutSendCandidatureInput
+    connect?: jobOffersWhereUniqueInput
+    update?: XOR<XOR<jobOffersUpdateToOneWithWhereWithoutSendCandidatureInput, jobOffersUpdateWithoutSendCandidatureInput>, jobOffersUncheckedUpdateWithoutSendCandidatureInput>
   }
 
   export type jobOffersCreateNestedManyWithoutContractTypeInput = {
@@ -35850,6 +37218,7 @@ export namespace Prisma {
     languages?: LanguagesCreateNestedManyWithoutCandidateInput
     skills?: SkillsCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutCandidateInput
     candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
   }
 
@@ -35871,6 +37240,7 @@ export namespace Prisma {
     languages?: LanguagesUncheckedCreateNestedManyWithoutCandidateInput
     skills?: SkillsUncheckedCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsUncheckedCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutCandidateInput
     candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
   }
 
@@ -36057,6 +37427,7 @@ export namespace Prisma {
     languages?: LanguagesUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutCandidateNestedInput
     candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
   }
 
@@ -36078,6 +37449,7 @@ export namespace Prisma {
     languages?: LanguagesUncheckedUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUncheckedUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUncheckedUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutCandidateNestedInput
     candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
   }
 
@@ -36298,6 +37670,28 @@ export namespace Prisma {
 
   export type SavedJobsCreateManyCandidateInputEnvelope = {
     data: SavedJobsCreateManyCandidateInput | SavedJobsCreateManyCandidateInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SendCandidatureCreateWithoutCandidateInput = {
+    id?: string
+    savedAt?: Date | string
+    jobOffer: jobOffersCreateNestedOneWithoutSendCandidatureInput
+  }
+
+  export type SendCandidatureUncheckedCreateWithoutCandidateInput = {
+    id?: string
+    jobOfferId: string
+    savedAt?: Date | string
+  }
+
+  export type SendCandidatureCreateOrConnectWithoutCandidateInput = {
+    where: SendCandidatureWhereUniqueInput
+    create: XOR<SendCandidatureCreateWithoutCandidateInput, SendCandidatureUncheckedCreateWithoutCandidateInput>
+  }
+
+  export type SendCandidatureCreateManyCandidateInputEnvelope = {
+    data: SendCandidatureCreateManyCandidateInput | SendCandidatureCreateManyCandidateInput[]
     skipDuplicates?: boolean
   }
 
@@ -36552,6 +37946,32 @@ export namespace Prisma {
     savedAt?: DateTimeFilter<"SavedJobs"> | Date | string
   }
 
+  export type SendCandidatureUpsertWithWhereUniqueWithoutCandidateInput = {
+    where: SendCandidatureWhereUniqueInput
+    update: XOR<SendCandidatureUpdateWithoutCandidateInput, SendCandidatureUncheckedUpdateWithoutCandidateInput>
+    create: XOR<SendCandidatureCreateWithoutCandidateInput, SendCandidatureUncheckedCreateWithoutCandidateInput>
+  }
+
+  export type SendCandidatureUpdateWithWhereUniqueWithoutCandidateInput = {
+    where: SendCandidatureWhereUniqueInput
+    data: XOR<SendCandidatureUpdateWithoutCandidateInput, SendCandidatureUncheckedUpdateWithoutCandidateInput>
+  }
+
+  export type SendCandidatureUpdateManyWithWhereWithoutCandidateInput = {
+    where: SendCandidatureScalarWhereInput
+    data: XOR<SendCandidatureUpdateManyMutationInput, SendCandidatureUncheckedUpdateManyWithoutCandidateInput>
+  }
+
+  export type SendCandidatureScalarWhereInput = {
+    AND?: SendCandidatureScalarWhereInput | SendCandidatureScalarWhereInput[]
+    OR?: SendCandidatureScalarWhereInput[]
+    NOT?: SendCandidatureScalarWhereInput | SendCandidatureScalarWhereInput[]
+    id?: StringFilter<"SendCandidature"> | string
+    candidateId?: StringFilter<"SendCandidature"> | string
+    jobOfferId?: StringFilter<"SendCandidature"> | string
+    savedAt?: DateTimeFilter<"SendCandidature"> | Date | string
+  }
+
   export type UserUpsertWithoutCandidatdataInput = {
     update: XOR<UserUpdateWithoutCandidatdataInput, UserUncheckedUpdateWithoutCandidatdataInput>
     create: XOR<UserCreateWithoutCandidatdataInput, UserUncheckedCreateWithoutCandidatdataInput>
@@ -36640,6 +38060,7 @@ export namespace Prisma {
     languages?: LanguagesCreateNestedManyWithoutCandidateInput
     skills?: SkillsCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutCandidateInput
     user: UserCreateNestedOneWithoutCandidatdataInput
   }
 
@@ -36662,6 +38083,7 @@ export namespace Prisma {
     languages?: LanguagesUncheckedCreateNestedManyWithoutCandidateInput
     skills?: SkillsUncheckedCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsUncheckedCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutCandidateInput
   }
 
   export type CandidatDataCreateOrConnectWithoutCandidatLifeStateInput = {
@@ -36698,6 +38120,7 @@ export namespace Prisma {
     languages?: LanguagesUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutCandidateNestedInput
     user?: UserUpdateOneRequiredWithoutCandidatdataNestedInput
   }
 
@@ -36720,6 +38143,7 @@ export namespace Prisma {
     languages?: LanguagesUncheckedUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUncheckedUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUncheckedUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutCandidateNestedInput
   }
 
   export type UserCreateWithoutSocialInput = {
@@ -36823,6 +38247,7 @@ export namespace Prisma {
     languages?: LanguagesCreateNestedManyWithoutCandidateInput
     skills?: SkillsCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutCandidateInput
     user: UserCreateNestedOneWithoutCandidatdataInput
     candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
   }
@@ -36845,6 +38270,7 @@ export namespace Prisma {
     languages?: LanguagesUncheckedCreateNestedManyWithoutCandidateInput
     skills?: SkillsUncheckedCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsUncheckedCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutCandidateInput
     candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
   }
 
@@ -36881,6 +38307,7 @@ export namespace Prisma {
     languages?: LanguagesUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutCandidateNestedInput
     user?: UserUpdateOneRequiredWithoutCandidatdataNestedInput
     candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
   }
@@ -36903,6 +38330,7 @@ export namespace Prisma {
     languages?: LanguagesUncheckedUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUncheckedUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUncheckedUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutCandidateNestedInput
     candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
   }
 
@@ -36923,6 +38351,7 @@ export namespace Prisma {
     hobbies?: HobbiesCreateNestedManyWithoutCandidateInput
     languages?: LanguagesCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutCandidateInput
     user: UserCreateNestedOneWithoutCandidatdataInput
     candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
   }
@@ -36945,6 +38374,7 @@ export namespace Prisma {
     hobbies?: HobbiesUncheckedCreateNestedManyWithoutCandidateInput
     languages?: LanguagesUncheckedCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsUncheckedCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutCandidateInput
     candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
   }
 
@@ -36981,6 +38411,7 @@ export namespace Prisma {
     hobbies?: HobbiesUpdateManyWithoutCandidateNestedInput
     languages?: LanguagesUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutCandidateNestedInput
     user?: UserUpdateOneRequiredWithoutCandidatdataNestedInput
     candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
   }
@@ -37003,6 +38434,7 @@ export namespace Prisma {
     hobbies?: HobbiesUncheckedUpdateManyWithoutCandidateNestedInput
     languages?: LanguagesUncheckedUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUncheckedUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutCandidateNestedInput
     candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
   }
 
@@ -37023,6 +38455,7 @@ export namespace Prisma {
     languages?: LanguagesCreateNestedManyWithoutCandidateInput
     skills?: SkillsCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutCandidateInput
     user: UserCreateNestedOneWithoutCandidatdataInput
     candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
   }
@@ -37045,6 +38478,7 @@ export namespace Prisma {
     languages?: LanguagesUncheckedCreateNestedManyWithoutCandidateInput
     skills?: SkillsUncheckedCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsUncheckedCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutCandidateInput
     candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
   }
 
@@ -37081,6 +38515,7 @@ export namespace Prisma {
     languages?: LanguagesUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutCandidateNestedInput
     user?: UserUpdateOneRequiredWithoutCandidatdataNestedInput
     candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
   }
@@ -37103,6 +38538,7 @@ export namespace Prisma {
     languages?: LanguagesUncheckedUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUncheckedUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUncheckedUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutCandidateNestedInput
     candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
   }
 
@@ -37123,6 +38559,7 @@ export namespace Prisma {
     hobbies?: HobbiesCreateNestedManyWithoutCandidateInput
     skills?: SkillsCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutCandidateInput
     user: UserCreateNestedOneWithoutCandidatdataInput
     candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
   }
@@ -37145,6 +38582,7 @@ export namespace Prisma {
     hobbies?: HobbiesUncheckedCreateNestedManyWithoutCandidateInput
     skills?: SkillsUncheckedCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsUncheckedCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutCandidateInput
     candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
   }
 
@@ -37181,6 +38619,7 @@ export namespace Prisma {
     hobbies?: HobbiesUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutCandidateNestedInput
     user?: UserUpdateOneRequiredWithoutCandidatdataNestedInput
     candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
   }
@@ -37203,6 +38642,7 @@ export namespace Prisma {
     hobbies?: HobbiesUncheckedUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUncheckedUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUncheckedUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutCandidateNestedInput
     candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
   }
 
@@ -37223,6 +38663,7 @@ export namespace Prisma {
     languages?: LanguagesCreateNestedManyWithoutCandidateInput
     skills?: SkillsCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutCandidateInput
     user: UserCreateNestedOneWithoutCandidatdataInput
     candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
   }
@@ -37245,6 +38686,7 @@ export namespace Prisma {
     languages?: LanguagesUncheckedCreateNestedManyWithoutCandidateInput
     skills?: SkillsUncheckedCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsUncheckedCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutCandidateInput
     candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
   }
 
@@ -37281,6 +38723,7 @@ export namespace Prisma {
     languages?: LanguagesUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutCandidateNestedInput
     user?: UserUpdateOneRequiredWithoutCandidatdataNestedInput
     candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
   }
@@ -37303,6 +38746,7 @@ export namespace Prisma {
     languages?: LanguagesUncheckedUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUncheckedUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUncheckedUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutCandidateNestedInput
     candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
   }
 
@@ -37323,6 +38767,7 @@ export namespace Prisma {
     languages?: LanguagesCreateNestedManyWithoutCandidateInput
     skills?: SkillsCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutCandidateInput
     user: UserCreateNestedOneWithoutCandidatdataInput
     candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
   }
@@ -37345,6 +38790,7 @@ export namespace Prisma {
     languages?: LanguagesUncheckedCreateNestedManyWithoutCandidateInput
     skills?: SkillsUncheckedCreateNestedManyWithoutCandidateInput
     savedJobs?: SavedJobsUncheckedCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutCandidateInput
     candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
   }
 
@@ -37381,6 +38827,7 @@ export namespace Prisma {
     languages?: LanguagesUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutCandidateNestedInput
     user?: UserUpdateOneRequiredWithoutCandidatdataNestedInput
     candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
   }
@@ -37403,6 +38850,7 @@ export namespace Prisma {
     languages?: LanguagesUncheckedUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUncheckedUpdateManyWithoutCandidateNestedInput
     savedJobs?: SavedJobsUncheckedUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutCandidateNestedInput
     candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
   }
 
@@ -37674,6 +39122,7 @@ export namespace Prisma {
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersUncheckedCreateWithoutAgencyInput = {
@@ -37699,6 +39148,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsUncheckedCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersCreateOrConnectWithoutAgencyInput = {
@@ -37889,6 +39339,7 @@ export namespace Prisma {
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersUncheckedCreateWithoutBranchInput = {
@@ -37914,6 +39365,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsUncheckedCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersCreateOrConnectWithoutBranchInput = {
@@ -38211,6 +39663,28 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type SendCandidatureCreateWithoutJobOfferInput = {
+    id?: string
+    savedAt?: Date | string
+    candidate: CandidatDataCreateNestedOneWithoutSendCandidatureInput
+  }
+
+  export type SendCandidatureUncheckedCreateWithoutJobOfferInput = {
+    id?: string
+    candidateId: string
+    savedAt?: Date | string
+  }
+
+  export type SendCandidatureCreateOrConnectWithoutJobOfferInput = {
+    where: SendCandidatureWhereUniqueInput
+    create: XOR<SendCandidatureCreateWithoutJobOfferInput, SendCandidatureUncheckedCreateWithoutJobOfferInput>
+  }
+
+  export type SendCandidatureCreateManyJobOfferInputEnvelope = {
+    data: SendCandidatureCreateManyJobOfferInput | SendCandidatureCreateManyJobOfferInput[]
+    skipDuplicates?: boolean
+  }
+
   export type AgencyDataUpsertWithoutJobOffersInput = {
     update: XOR<AgencyDataUpdateWithoutJobOffersInput, AgencyDataUncheckedUpdateWithoutJobOffersInput>
     create: XOR<AgencyDataCreateWithoutJobOffersInput, AgencyDataUncheckedCreateWithoutJobOffersInput>
@@ -38496,6 +39970,22 @@ export namespace Prisma {
     data: XOR<SavedJobsUpdateManyMutationInput, SavedJobsUncheckedUpdateManyWithoutJobOfferInput>
   }
 
+  export type SendCandidatureUpsertWithWhereUniqueWithoutJobOfferInput = {
+    where: SendCandidatureWhereUniqueInput
+    update: XOR<SendCandidatureUpdateWithoutJobOfferInput, SendCandidatureUncheckedUpdateWithoutJobOfferInput>
+    create: XOR<SendCandidatureCreateWithoutJobOfferInput, SendCandidatureUncheckedCreateWithoutJobOfferInput>
+  }
+
+  export type SendCandidatureUpdateWithWhereUniqueWithoutJobOfferInput = {
+    where: SendCandidatureWhereUniqueInput
+    data: XOR<SendCandidatureUpdateWithoutJobOfferInput, SendCandidatureUncheckedUpdateWithoutJobOfferInput>
+  }
+
+  export type SendCandidatureUpdateManyWithWhereWithoutJobOfferInput = {
+    where: SendCandidatureScalarWhereInput
+    data: XOR<SendCandidatureUpdateManyMutationInput, SendCandidatureUncheckedUpdateManyWithoutJobOfferInput>
+  }
+
   export type CandidatDataCreateWithoutSavedJobsInput = {
     id?: string
     firstname: string
@@ -38513,6 +40003,7 @@ export namespace Prisma {
     hobbies?: HobbiesCreateNestedManyWithoutCandidateInput
     languages?: LanguagesCreateNestedManyWithoutCandidateInput
     skills?: SkillsCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutCandidateInput
     user: UserCreateNestedOneWithoutCandidatdataInput
     candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
   }
@@ -38535,6 +40026,7 @@ export namespace Prisma {
     hobbies?: HobbiesUncheckedCreateNestedManyWithoutCandidateInput
     languages?: LanguagesUncheckedCreateNestedManyWithoutCandidateInput
     skills?: SkillsUncheckedCreateNestedManyWithoutCandidateInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutCandidateInput
     candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
   }
 
@@ -38566,6 +40058,7 @@ export namespace Prisma {
     workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersUncheckedCreateWithoutSavedByInput = {
@@ -38591,6 +40084,7 @@ export namespace Prisma {
     branchId?: string | null
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersCreateOrConnectWithoutSavedByInput = {
@@ -38626,6 +40120,7 @@ export namespace Prisma {
     hobbies?: HobbiesUpdateManyWithoutCandidateNestedInput
     languages?: LanguagesUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutCandidateNestedInput
     user?: UserUpdateOneRequiredWithoutCandidatdataNestedInput
     candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
   }
@@ -38648,6 +40143,7 @@ export namespace Prisma {
     hobbies?: HobbiesUncheckedUpdateManyWithoutCandidateNestedInput
     languages?: LanguagesUncheckedUpdateManyWithoutCandidateNestedInput
     skills?: SkillsUncheckedUpdateManyWithoutCandidateNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutCandidateNestedInput
     candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
   }
 
@@ -38685,6 +40181,7 @@ export namespace Prisma {
     workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateWithoutSavedByInput = {
@@ -38710,6 +40207,231 @@ export namespace Prisma {
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutJobOfferNestedInput
+  }
+
+  export type CandidatDataCreateWithoutSendCandidatureInput = {
+    id?: string
+    firstname: string
+    surname: string
+    birthday: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    avatar?: CandidatDataCreateavatarInput | string[]
+    courses?: CoursesCreateNestedManyWithoutCandidateInput
+    education?: EducationCreateNestedManyWithoutCandidateInput
+    experience?: ExperienceCreateNestedManyWithoutCandidateInput
+    hobbies?: HobbiesCreateNestedManyWithoutCandidateInput
+    languages?: LanguagesCreateNestedManyWithoutCandidateInput
+    skills?: SkillsCreateNestedManyWithoutCandidateInput
+    savedJobs?: SavedJobsCreateNestedManyWithoutCandidateInput
+    user: UserCreateNestedOneWithoutCandidatdataInput
+    candidatLifeState?: CandidatLifeStateCreateNestedOneWithoutCandidateInput
+  }
+
+  export type CandidatDataUncheckedCreateWithoutSendCandidatureInput = {
+    id?: string
+    firstname: string
+    surname: string
+    birthday: string
+    phone?: string | null
+    resident?: string | null
+    about_my?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userId: string
+    avatar?: CandidatDataCreateavatarInput | string[]
+    courses?: CoursesUncheckedCreateNestedManyWithoutCandidateInput
+    education?: EducationUncheckedCreateNestedManyWithoutCandidateInput
+    experience?: ExperienceUncheckedCreateNestedManyWithoutCandidateInput
+    hobbies?: HobbiesUncheckedCreateNestedManyWithoutCandidateInput
+    languages?: LanguagesUncheckedCreateNestedManyWithoutCandidateInput
+    skills?: SkillsUncheckedCreateNestedManyWithoutCandidateInput
+    savedJobs?: SavedJobsUncheckedCreateNestedManyWithoutCandidateInput
+    candidatLifeState?: CandidatLifeStateUncheckedCreateNestedOneWithoutCandidateInput
+  }
+
+  export type CandidatDataCreateOrConnectWithoutSendCandidatureInput = {
+    where: CandidatDataWhereUniqueInput
+    create: XOR<CandidatDataCreateWithoutSendCandidatureInput, CandidatDataUncheckedCreateWithoutSendCandidatureInput>
+  }
+
+  export type jobOffersCreateWithoutSendCandidatureInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    agency: AgencyDataCreateNestedOneWithoutJobOffersInput
+    branch?: BranchCreateNestedOneWithoutJobOffersInput
+    categories: CategoryCreateNestedOneWithoutJobOffersInput
+    contractType?: ContractTypeJobCreateNestedOneWithoutJobOffersInput
+    experienceMinimalJob?: ExperienceMinimalJobCreateNestedOneWithoutJobOffersInput
+    levelEducation?: LevelEducationCreateNestedOneWithoutJobOffersInput
+    modeJob?: ModeJobCreateNestedOneWithoutJobOffersInput
+    workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
+    sectors?: SectorsCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsCreateNestedManyWithoutJobOffersInput
+    savedBy?: SavedJobsCreateNestedManyWithoutJobOfferInput
+  }
+
+  export type jobOffersUncheckedCreateWithoutSendCandidatureInput = {
+    id?: string
+    title: string
+    slug: string
+    description: string
+    region: string
+    province: string
+    location: string
+    reallyUpTo?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isValidate?: boolean
+    views?: number
+    categoryId: string
+    contratId?: string | null
+    experienceId?: string | null
+    modeId?: string | null
+    workingTimeId?: string | null
+    levelId?: string | null
+    agencyId: string
+    branchId?: string | null
+    sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
+    tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
+    savedBy?: SavedJobsUncheckedCreateNestedManyWithoutJobOfferInput
+  }
+
+  export type jobOffersCreateOrConnectWithoutSendCandidatureInput = {
+    where: jobOffersWhereUniqueInput
+    create: XOR<jobOffersCreateWithoutSendCandidatureInput, jobOffersUncheckedCreateWithoutSendCandidatureInput>
+  }
+
+  export type CandidatDataUpsertWithoutSendCandidatureInput = {
+    update: XOR<CandidatDataUpdateWithoutSendCandidatureInput, CandidatDataUncheckedUpdateWithoutSendCandidatureInput>
+    create: XOR<CandidatDataCreateWithoutSendCandidatureInput, CandidatDataUncheckedCreateWithoutSendCandidatureInput>
+    where?: CandidatDataWhereInput
+  }
+
+  export type CandidatDataUpdateToOneWithWhereWithoutSendCandidatureInput = {
+    where?: CandidatDataWhereInput
+    data: XOR<CandidatDataUpdateWithoutSendCandidatureInput, CandidatDataUncheckedUpdateWithoutSendCandidatureInput>
+  }
+
+  export type CandidatDataUpdateWithoutSendCandidatureInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
+    birthday?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    avatar?: CandidatDataUpdateavatarInput | string[]
+    courses?: CoursesUpdateManyWithoutCandidateNestedInput
+    education?: EducationUpdateManyWithoutCandidateNestedInput
+    experience?: ExperienceUpdateManyWithoutCandidateNestedInput
+    hobbies?: HobbiesUpdateManyWithoutCandidateNestedInput
+    languages?: LanguagesUpdateManyWithoutCandidateNestedInput
+    skills?: SkillsUpdateManyWithoutCandidateNestedInput
+    savedJobs?: SavedJobsUpdateManyWithoutCandidateNestedInput
+    user?: UserUpdateOneRequiredWithoutCandidatdataNestedInput
+    candidatLifeState?: CandidatLifeStateUpdateOneWithoutCandidateNestedInput
+  }
+
+  export type CandidatDataUncheckedUpdateWithoutSendCandidatureInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    firstname?: StringFieldUpdateOperationsInput | string
+    surname?: StringFieldUpdateOperationsInput | string
+    birthday?: StringFieldUpdateOperationsInput | string
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    resident?: NullableStringFieldUpdateOperationsInput | string | null
+    about_my?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: StringFieldUpdateOperationsInput | string
+    avatar?: CandidatDataUpdateavatarInput | string[]
+    courses?: CoursesUncheckedUpdateManyWithoutCandidateNestedInput
+    education?: EducationUncheckedUpdateManyWithoutCandidateNestedInput
+    experience?: ExperienceUncheckedUpdateManyWithoutCandidateNestedInput
+    hobbies?: HobbiesUncheckedUpdateManyWithoutCandidateNestedInput
+    languages?: LanguagesUncheckedUpdateManyWithoutCandidateNestedInput
+    skills?: SkillsUncheckedUpdateManyWithoutCandidateNestedInput
+    savedJobs?: SavedJobsUncheckedUpdateManyWithoutCandidateNestedInput
+    candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
+  }
+
+  export type jobOffersUpsertWithoutSendCandidatureInput = {
+    update: XOR<jobOffersUpdateWithoutSendCandidatureInput, jobOffersUncheckedUpdateWithoutSendCandidatureInput>
+    create: XOR<jobOffersCreateWithoutSendCandidatureInput, jobOffersUncheckedCreateWithoutSendCandidatureInput>
+    where?: jobOffersWhereInput
+  }
+
+  export type jobOffersUpdateToOneWithWhereWithoutSendCandidatureInput = {
+    where?: jobOffersWhereInput
+    data: XOR<jobOffersUpdateWithoutSendCandidatureInput, jobOffersUncheckedUpdateWithoutSendCandidatureInput>
+  }
+
+  export type jobOffersUpdateWithoutSendCandidatureInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    agency?: AgencyDataUpdateOneRequiredWithoutJobOffersNestedInput
+    branch?: BranchUpdateOneWithoutJobOffersNestedInput
+    categories?: CategoryUpdateOneRequiredWithoutJobOffersNestedInput
+    contractType?: ContractTypeJobUpdateOneWithoutJobOffersNestedInput
+    experienceMinimalJob?: ExperienceMinimalJobUpdateOneWithoutJobOffersNestedInput
+    levelEducation?: LevelEducationUpdateOneWithoutJobOffersNestedInput
+    modeJob?: ModeJobUpdateOneWithoutJobOffersNestedInput
+    workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
+    sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
+    savedBy?: SavedJobsUpdateManyWithoutJobOfferNestedInput
+  }
+
+  export type jobOffersUncheckedUpdateWithoutSendCandidatureInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    region?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    reallyUpTo?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isValidate?: BoolFieldUpdateOperationsInput | boolean
+    views?: IntFieldUpdateOperationsInput | number
+    categoryId?: StringFieldUpdateOperationsInput | string
+    contratId?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceId?: NullableStringFieldUpdateOperationsInput | string | null
+    modeId?: NullableStringFieldUpdateOperationsInput | string | null
+    workingTimeId?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
+    agencyId?: StringFieldUpdateOperationsInput | string
+    branchId?: NullableStringFieldUpdateOperationsInput | string | null
+    sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
+    tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
+    savedBy?: SavedJobsUncheckedUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersCreateWithoutContractTypeInput = {
@@ -38735,6 +40457,7 @@ export namespace Prisma {
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersUncheckedCreateWithoutContractTypeInput = {
@@ -38760,6 +40483,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsUncheckedCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersCreateOrConnectWithoutContractTypeInput = {
@@ -38811,6 +40535,7 @@ export namespace Prisma {
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersUncheckedCreateWithoutExperienceMinimalJobInput = {
@@ -38836,6 +40561,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsUncheckedCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersCreateOrConnectWithoutExperienceMinimalJobInput = {
@@ -38887,6 +40613,7 @@ export namespace Prisma {
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersUncheckedCreateWithoutModeJobInput = {
@@ -38912,6 +40639,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsUncheckedCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersCreateOrConnectWithoutModeJobInput = {
@@ -38963,6 +40691,7 @@ export namespace Prisma {
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersUncheckedCreateWithoutWorkingTimeJobInput = {
@@ -38988,6 +40717,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsUncheckedCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersCreateOrConnectWithoutWorkingTimeJobInput = {
@@ -39039,6 +40769,7 @@ export namespace Prisma {
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersUncheckedCreateWithoutLevelEducationInput = {
@@ -39064,6 +40795,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsUncheckedCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersCreateOrConnectWithoutLevelEducationInput = {
@@ -39115,6 +40847,7 @@ export namespace Prisma {
     workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     savedBy?: SavedJobsCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersUncheckedCreateWithoutTagsInput = {
@@ -39140,6 +40873,7 @@ export namespace Prisma {
     branchId?: string | null
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     savedBy?: SavedJobsUncheckedCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersCreateOrConnectWithoutTagsInput = {
@@ -39269,6 +41003,7 @@ export namespace Prisma {
     sectors?: SectorsCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersUncheckedCreateWithoutCategoriesInput = {
@@ -39294,6 +41029,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedCreateNestedManyWithoutJobOfferInput
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsUncheckedCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersCreateOrConnectWithoutCategoriesInput = {
@@ -39449,6 +41185,7 @@ export namespace Prisma {
     workingTimeJob?: WorkingTimeJobCreateNestedOneWithoutJobOffersInput
     tags?: jobTagsCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersUncheckedCreateWithoutSectorsInput = {
@@ -39474,6 +41211,7 @@ export namespace Prisma {
     branchId?: string | null
     tags?: jobTagsUncheckedCreateNestedManyWithoutJobOffersInput
     savedBy?: SavedJobsUncheckedCreateNestedManyWithoutJobOfferInput
+    sendCandidature?: SendCandidatureUncheckedCreateNestedManyWithoutJobOfferInput
   }
 
   export type jobOffersCreateOrConnectWithoutSectorsInput = {
@@ -39795,6 +41533,12 @@ export namespace Prisma {
     savedAt?: Date | string
   }
 
+  export type SendCandidatureCreateManyCandidateInput = {
+    id?: string
+    jobOfferId: string
+    savedAt?: Date | string
+  }
+
   export type CoursesUpdateWithoutCandidateInput = {
     id?: StringFieldUpdateOperationsInput | string
     course?: StringFieldUpdateOperationsInput | string
@@ -39954,6 +41698,24 @@ export namespace Prisma {
     savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type SendCandidatureUpdateWithoutCandidateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    jobOffer?: jobOffersUpdateOneRequiredWithoutSendCandidatureNestedInput
+  }
+
+  export type SendCandidatureUncheckedUpdateWithoutCandidateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    jobOfferId?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SendCandidatureUncheckedUpdateManyWithoutCandidateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    jobOfferId?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type BranchCreateManyAgencyInput = {
     id?: string
     name: string
@@ -40053,6 +41815,7 @@ export namespace Prisma {
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateWithoutAgencyInput = {
@@ -40078,6 +41841,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUncheckedUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateManyWithoutAgencyInput = {
@@ -40147,6 +41911,7 @@ export namespace Prisma {
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateWithoutBranchInput = {
@@ -40172,6 +41937,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUncheckedUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateManyWithoutBranchInput = {
@@ -40197,6 +41963,12 @@ export namespace Prisma {
   }
 
   export type SavedJobsCreateManyJobOfferInput = {
+    id?: string
+    candidateId: string
+    savedAt?: Date | string
+  }
+
+  export type SendCandidatureCreateManyJobOfferInput = {
     id?: string
     candidateId: string
     savedAt?: Date | string
@@ -40259,6 +42031,24 @@ export namespace Prisma {
     savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type SendCandidatureUpdateWithoutJobOfferInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    candidate?: CandidatDataUpdateOneRequiredWithoutSendCandidatureNestedInput
+  }
+
+  export type SendCandidatureUncheckedUpdateWithoutJobOfferInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    candidateId?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SendCandidatureUncheckedUpdateManyWithoutJobOfferInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    candidateId?: StringFieldUpdateOperationsInput | string
+    savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type jobOffersCreateManyContractTypeInput = {
     id?: string
     title: string
@@ -40304,6 +42094,7 @@ export namespace Prisma {
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateWithoutContractTypeInput = {
@@ -40329,6 +42120,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUncheckedUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateManyWithoutContractTypeInput = {
@@ -40398,6 +42190,7 @@ export namespace Prisma {
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateWithoutExperienceMinimalJobInput = {
@@ -40423,6 +42216,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUncheckedUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateManyWithoutExperienceMinimalJobInput = {
@@ -40492,6 +42286,7 @@ export namespace Prisma {
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateWithoutModeJobInput = {
@@ -40517,6 +42312,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUncheckedUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateManyWithoutModeJobInput = {
@@ -40586,6 +42382,7 @@ export namespace Prisma {
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateWithoutWorkingTimeJobInput = {
@@ -40611,6 +42408,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUncheckedUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateManyWithoutWorkingTimeJobInput = {
@@ -40680,6 +42478,7 @@ export namespace Prisma {
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateWithoutLevelEducationInput = {
@@ -40705,6 +42504,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUncheckedUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateManyWithoutLevelEducationInput = {
@@ -40752,6 +42552,7 @@ export namespace Prisma {
     workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     savedBy?: SavedJobsUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateWithoutTagsInput = {
@@ -40777,6 +42578,7 @@ export namespace Prisma {
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     savedBy?: SavedJobsUncheckedUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateManyWithoutTagsInput = {
@@ -40911,6 +42713,7 @@ export namespace Prisma {
     sectors?: SectorsUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateWithoutCategoriesInput = {
@@ -40936,6 +42739,7 @@ export namespace Prisma {
     sectors?: SectorsUncheckedUpdateManyWithoutJobOfferNestedInput
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUncheckedUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateManyWithoutCategoriesInput = {
@@ -40983,6 +42787,7 @@ export namespace Prisma {
     workingTimeJob?: WorkingTimeJobUpdateOneWithoutJobOffersNestedInput
     tags?: jobTagsUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateWithoutSectorsInput = {
@@ -41008,6 +42813,7 @@ export namespace Prisma {
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
     tags?: jobTagsUncheckedUpdateManyWithoutJobOffersNestedInput
     savedBy?: SavedJobsUncheckedUpdateManyWithoutJobOfferNestedInput
+    sendCandidature?: SendCandidatureUncheckedUpdateManyWithoutJobOfferNestedInput
   }
 
   export type jobOffersUncheckedUpdateManyWithoutSectorsInput = {

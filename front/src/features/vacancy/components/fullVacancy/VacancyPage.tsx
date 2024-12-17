@@ -9,13 +9,33 @@ import { VacancyCardAuthorInfo } from "../vacancyCard/VCAuthorInfo"
 import Breadcrumbs from "@/features/breadcrumbs/components/BreadCrumbs"
 import { Button, Heading } from "@/shared/components";
 import { UserRole } from "@/features/auth/types";
-import { useSaveInFavorite } from "../../hooks";
+import { useSandetCandidature, useSaveInFavorite } from "../../hooks";
+import { MAIN_URL } from "@/shared/config";
 
-export default function VacancyPage({ id, title, description, views, createdAt, reallyUpTo, categories, agency, branchId, branch, contractType, experienceMinimalJob, levelEducation, modeJob, workingTimeJob, breadcrumbs, savedBy }: IVacanciaesFullDate) {
+export default function VacancyPage({
+  id,
+  title,
+  description,
+  views,
+  createdAt,
+  reallyUpTo,
+  categories,
+  agency,
+  branchId,
+  branch,
+  contractType,
+  experienceMinimalJob,
+  levelEducation,
+  modeJob,
+  workingTimeJob,
+  breadcrumbs,
+  savedBy,
+  sendCandidature: curriculum
+}: IVacanciaesFullDate) {
   const authUser = useAppSelector(state => state.reducer.user.data)
   const router = useRouter()
-  const { saveJob } = useSaveInFavorite()
-console.log(authUser?.id);
+  const { saveJob, isSaved } = useSaveInFavorite()
+  const { sendCandidature, isSendet } = useSandetCandidature()
 
   const author = {
     slug: branchId ? branch.id : agency.slug,
@@ -28,16 +48,22 @@ console.log(authUser?.id);
 
   const saveInFavorite = () => {
     if (!authUser) {
-      return router.push('/auth/candidat')
+      return router.push(MAIN_URL.authCandidat())
     }
-    
-    if(authUser.role === UserRole.Candidat) {
+
+    if (authUser.role === UserRole.Candidat) {
       saveJob(id!)
     }
   }
 
-  const sendCandudature = () => {
-    console.log('job id = ' + id)
+  const sendCandudaturetoJob = () => {
+    if (!authUser) {
+      return router.push(MAIN_URL.authCandidat())
+    }
+
+    if (authUser.role === UserRole.Candidat) {
+      sendCandidature(id!)
+    }
   }
 
   return (
@@ -52,12 +78,16 @@ console.log(authUser?.id);
             {reallyUpTo && <div className={styles.reallyUpTo}>Attuale fino {formatDate(reallyUpTo)}</div>}
           </div>
           {authUser?.role !== UserRole.Agency && <div className={styles.favoriteCandidat}>
-            <Button 
+            <Button
               onClick={() => saveInFavorite()}
-              disabled={savedBy?.some(saved => saved.candidate.userId === authUser?.id)}>
+              disabled={isSaved || savedBy?.some(saved => saved.candidate.userId === authUser?.id)}
+            >
               <CiHeart />
             </Button>
-            <Button onClick={() => sendCandudature()}>
+            <Button
+              onClick={() => sendCandudaturetoJob()}
+              disabled={isSendet || curriculum?.some(cv => cv.candidate.userId === authUser?.id)}
+            >
               <CiCirclePlus /> Candidati
             </Button>
           </div>}

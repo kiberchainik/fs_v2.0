@@ -1,15 +1,15 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
-import { CreateSavedJobDto } from './dto/create-saved-job.dto'
-import { PrismaService } from '@/prisma/prisma.service';
+import { ConflictException, Injectable, NotFoundException } from '@nestjs/common'
+import { CreateSendCandidatureDto } from './dto/create-send-candidature.dto'
+import { PrismaService } from '@/prisma/prisma.service'
 import { returnCategoryBaseObject } from '@/admin/category/dto';
 import { returnAgencyBaseObject } from '@/agency/dto';
 import { returnTagsObject } from '@/agency/joboffers/dto';
 
 @Injectable()
-export class SavedJobsService {
+export class SendCandidatureService {
   constructor(private readonly prisma: PrismaService) { }
 
-  async saveJob(userId: string, jobId: CreateSavedJobDto) {
+  async sendCandidature(userId: string, jobId: CreateSendCandidatureDto) {
     const candidateData = await this.prisma.candidatData.findFirst({
       where: {
         user: {
@@ -34,7 +34,7 @@ export class SavedJobsService {
       throw new NotFoundException('Вакансия не найдена');
     }
 
-    const existingSavedJob = await this.prisma.savedJobs.findFirst({
+    const existingSavedJob = await this.prisma.sendCandidature.findFirst({
       where: {
         candidateId: candidateData.id,
         jobOfferId: jobId.jobId,
@@ -42,11 +42,11 @@ export class SavedJobsService {
     });
 
     if (existingSavedJob) {
-      throw new ConflictException('Вакансия уже добавлена в избранное');
+      throw new ConflictException('Вы уже отправили свою кандидатуру на данную вакансию! Ожидайте, с Вами обязетельно свзяжутся!');
     }
 
     try {
-      return await this.prisma.savedJobs.create({
+      return await this.prisma.sendCandidature.create({
         data: {
           candidateId: candidateData.id,
           jobOfferId: jobId.jobId,
@@ -59,13 +59,13 @@ export class SavedJobsService {
       });
     } catch (error) {
       if (error.code === 'P2002') {
-        throw new ConflictException('Вакансия уже добавлена в избранное');
+        throw new ConflictException('Вы уже отправили свою кандидатуру на данную вакансию! Ожидайте, с Вами обязетельно свзяжутся!');
       }
       throw error;
     }
   }
 
-  async removeFromSaved(userId: string, jobId: CreateSavedJobDto) {
+  async removeCandidateFromJob(userId: string, jobId: CreateSendCandidatureDto) {
     const candidateData = await this.prisma.candidatData.findFirst({
       where: { userId }
     });
@@ -74,7 +74,7 @@ export class SavedJobsService {
       throw new NotFoundException('Данные кандидата не найдены');
     }
 
-    return await this.prisma.savedJobs.delete({
+    return await this.prisma.sendCandidature.delete({
       where: {
         candidateId_jobOfferId: {
           candidateId: candidateData.id,
@@ -84,7 +84,7 @@ export class SavedJobsService {
     });
   }
 
-  async getSavedJobs(userId: string) {
+  async getCandidatureJobs(userId: string) {
     const candidateData = await this.prisma.candidatData.findFirst({
       where: { userId }
     });
@@ -93,7 +93,7 @@ export class SavedJobsService {
       throw new NotFoundException('Данные кандидата не найдены');
     }
 
-    const savedJobs = await this.prisma.savedJobs.findMany({
+    const savedJobs = await this.prisma.sendCandidature.findMany({
       where: {
         candidate: {
           userId: userId

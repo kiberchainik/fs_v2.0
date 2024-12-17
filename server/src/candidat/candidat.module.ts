@@ -11,10 +11,11 @@ import { SkillsModule } from './skills/skills.module';
 import { CandidatLifeStateModule } from './candidat-life-state/candidat-life-state.module';
 import { SocialModule } from './social/social.module';
 import { SavedJobsModule } from './saved-jobs/saved-jobs.module';
+import { SendCandidatureModule } from './send-candidature/send-candidature.module';
 
 @Module({
   controllers: [CandidatController],
   providers: [CandidatService, FileService],
-  imports: [CoursesModule, EducationModule, ExperienceModule, HobbiesModule, LanguagesModule, SkillsModule, CandidatLifeStateModule, SocialModule, SavedJobsModule],
+  imports: [CoursesModule, EducationModule, ExperienceModule, HobbiesModule, LanguagesModule, SkillsModule, CandidatLifeStateModule, SocialModule, SavedJobsModule, SendCandidatureModule],
 })
 export class CandidatModule { }

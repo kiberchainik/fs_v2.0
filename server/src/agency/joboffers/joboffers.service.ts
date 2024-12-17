@@ -34,6 +34,15 @@ export class JoboffersService {
         }
       }
     },
+    sendCandidature: {
+      select: {
+        candidate: {
+          select: {
+            userId: true
+          }
+        }
+      }
+    },
     contractType: {
       select: { name: true }
     },

@@ -6,6 +6,7 @@ import { useGetUserHeaderData } from "../../hooks";
 import { UserMenu } from "./UserMenu";
 import Link from "next/link";
 import { useAppSelector } from "@/shared/hooks"
+import { MAIN_URL } from "@/shared/config";
 
 export const UserHeaderMenu: FC = () => {
     const { data: user, isLoading, error } = useAppSelector(state => state.reducer.user)
@@ -21,8 +22,8 @@ export const UserHeaderMenu: FC = () => {
                 <UserMenu {...user} />
             ) : (
                 <>
-                    <Button variant='default'><Link href="/auth/candidat">Candidat</Link></Button>
-                    <Button variant='default'><Link href="/auth/agency">Agency</Link></Button>
+                    <Button variant='default'><Link href={MAIN_URL.authCandidat()}>Candidat</Link></Button>
+                    <Button variant='default'><Link href={MAIN_URL.authAgency()}>Agency</Link></Button>
                 </>
             )
             }
