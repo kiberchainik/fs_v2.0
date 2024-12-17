@@ -21,13 +21,14 @@ export interface IVacanciaes extends IVacancyOptions {
     location: string,
     branchId?: string,
     tags?: string[]
+    savedBy?: { candidate: { userId: string } }[]
     createdAt?: string
     reallyUpTo?: string | Date
     views?: number
     isValidate?: boolean
 }
 
-export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'description' | 'branchId'> & {
+export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'description' | 'branchId' | 'savedBy'> & {
     breadcrumbs: TBreadcrumbr
     reallyUpTo: string
     createdAt: string

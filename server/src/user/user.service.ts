@@ -28,6 +28,7 @@ export class UserService {
         const user = await this.prisma.user.findUnique({
             where: { id },
             select: {
+                id: true,
                 email: true,
                 isVerified: true,
                 role: true,
@@ -52,6 +53,7 @@ export class UserService {
         }
 
         const data = {
+            id: user.id,
             role: user.role,
             email: user.email,
             isVerified: user.isVerified,

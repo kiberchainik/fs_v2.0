@@ -4,12 +4,18 @@ import { CiCalendarDate, CiCirclePlus, CiHeart, CiRead } from "react-icons/ci"
 import { formatDate } from "@/shared/utils";
 import { useAppSelector } from "@/shared/hooks";
 import Link from "next/link";
+import { useRouter } from 'next/navigation';
 import { VacancyCardAuthorInfo } from "../vacancyCard/VCAuthorInfo"
 import Breadcrumbs from "@/features/breadcrumbs/components/BreadCrumbs"
 import { Button, Heading } from "@/shared/components";
+import { UserRole } from "@/features/auth/types";
+import { useSaveInFavorite } from "../../hooks";
 
-export default function VacancyPage({ id, title, description, views, createdAt, reallyUpTo, categories, agency, branchId, branch, contractType, experienceMinimalJob, levelEducation, modeJob, workingTimeJob, breadcrumbs }: IVacanciaesFullDate) {
-  const authUser = useAppSelector(state => state.reducer.user.data?.email)
+export default function VacancyPage({ id, title, description, views, createdAt, reallyUpTo, categories, agency, branchId, branch, contractType, experienceMinimalJob, levelEducation, modeJob, workingTimeJob, breadcrumbs, savedBy }: IVacanciaesFullDate) {
+  const authUser = useAppSelector(state => state.reducer.user.data)
+  const router = useRouter()
+  const { saveJob } = useSaveInFavorite()
+console.log(authUser?.id);
 
   const author = {
     slug: branchId ? branch.id : agency.slug,
@@ -21,8 +27,13 @@ export default function VacancyPage({ id, title, description, views, createdAt, 
   }
 
   const saveInFavorite = () => {
-    console.log('job id = ' + id)
-    console.log('authUser email = ' + authUser);
+    if (!authUser) {
+      return router.push('/auth/candidat')
+    }
+    
+    if(authUser.role === UserRole.Candidat) {
+      saveJob(id!)
+    }
   }
 
   const sendCandudature = () => {
@@ -40,14 +51,16 @@ export default function VacancyPage({ id, title, description, views, createdAt, 
             <div className={styles.createdAt}><span><CiCalendarDate /></span> {formatDate(createdAt)}</div>
             {reallyUpTo && <div className={styles.reallyUpTo}>Attuale fino {formatDate(reallyUpTo)}</div>}
           </div>
-          <div className={styles.favoriteCandidat}>
-            <Button onClick={() => saveInFavorite()}>
+          {authUser?.role !== UserRole.Agency && <div className={styles.favoriteCandidat}>
+            <Button 
+              onClick={() => saveInFavorite()}
+              disabled={savedBy?.some(saved => saved.candidate.userId === authUser?.id)}>
               <CiHeart />
             </Button>
             <Button onClick={() => sendCandudature()}>
               <CiCirclePlus /> Candidati
             </Button>
-          </div>
+          </div>}
         </div>
         <div className={styles.description}>
           <p dangerouslySetInnerHTML={{ __html: description }}></p>

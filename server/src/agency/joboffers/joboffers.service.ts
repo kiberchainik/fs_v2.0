@@ -25,6 +25,15 @@ export class JoboffersService {
     tags: {
       select: returnTagsObject
     },
+    savedBy: {
+      select: {
+        candidate: {
+          select: {
+            userId: true
+          }
+        }
+      }
+    },
     contractType: {
       select: { name: true }
     },
@@ -408,7 +417,6 @@ export class JoboffersService {
         ...this.includesAll
       },
     })
-
     return jobData
   }
 

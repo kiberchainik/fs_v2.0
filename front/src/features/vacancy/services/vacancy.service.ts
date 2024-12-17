@@ -1,5 +1,5 @@
 import { IJobsResponce, IVacanciaes } from "@/features/agency/vacancy/types";
-import { axiosPublic } from "@/shared/api";
+import { axiosPrivate, axiosPublic } from "@/shared/api";
 import { API_URL } from "@/shared/config";
 import { ISearchTerm } from "../types/searchTerm.type";
 
@@ -10,6 +10,10 @@ class VacancyPageService {
         })
 
         return data
+    }
+
+    async saveJob(id: string) {
+        return await axiosPrivate.post(API_URL.savedJobs(), { jobId:id })
     }
 }
 

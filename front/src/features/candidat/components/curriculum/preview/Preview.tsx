@@ -24,7 +24,7 @@ export default function PreviewsPortfolio() {
     if (isFetching) return <div>Loading ...</div>
 
     return (
-        <div className="bg-white p-4">
+        <div className="p-4">
             <Template1
                 user={user!}
                 privacy={privacy!}

@@ -11,14 +11,12 @@ export interface ICategory {
     parentId?: string[]
 }
 
-// Ограниченная вложенность родителя
 export interface IParentCategory {
     name: string;
     slug: string;
     parent?: IParentCategory
 }
 
-// Ответ для страницы категории
 export type TCategoryPageResponse = {
     vacancies: {
         id: string;

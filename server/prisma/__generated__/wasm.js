@@ -270,6 +270,13 @@ exports.Prisma.JobOffersScalarFieldEnum = {
   branchId: 'branchId'
 };
 
+exports.Prisma.SavedJobsScalarFieldEnum = {
+  id: 'id',
+  candidateId: 'candidateId',
+  jobOfferId: 'jobOfferId',
+  savedAt: 'savedAt'
+};
+
 exports.Prisma.ContractTypeJobScalarFieldEnum = {
   id: 'id',
   name: 'name'
@@ -486,6 +493,12 @@ exports.Prisma.jobOffersOrderByRelevanceFieldEnum = {
   branchId: 'branchId'
 };
 
+exports.Prisma.SavedJobsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  candidateId: 'candidateId',
+  jobOfferId: 'jobOfferId'
+};
+
 exports.Prisma.ContractTypeJobOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name'
@@ -616,6 +629,7 @@ exports.Prisma.ModelName = {
   AgencyData: 'AgencyData',
   Branch: 'Branch',
   jobOffers: 'jobOffers',
+  SavedJobs: 'SavedJobs',
   ContractTypeJob: 'ContractTypeJob',
   ExperienceMinimalJob: 'ExperienceMinimalJob',
   ModeJob: 'ModeJob',
