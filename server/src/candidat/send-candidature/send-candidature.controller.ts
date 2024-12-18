@@ -20,7 +20,7 @@ export class SendCandidatureController {
   @Delete(':jobId')
   @Authorization(UserRole.CANDIDAT)
   async removeFromSaved(
-    @Param('jobId') jobId: CreateSendCandidatureDto,
+    @Param('jobId') jobId: string,
     @CurrentUser('id') userId: string,
   ) {
     return await this.sendCandidatureService.removeCandidateFromJob(userId, jobId);

@@ -1,6 +1,7 @@
 import { IVacanciaesFullDate } from "@/features/agency/vacancy/types"
 import styles from './vacancyPage.module.scss'
-import { CiCalendarDate, CiCirclePlus, CiHeart, CiRead } from "react-icons/ci"
+import { CiCalendarDate, CiCirclePlus, CiHeart, CiRead, CiTrash } from "react-icons/ci"
+import { LiaHeartBrokenSolid } from "react-icons/lia"
 import { formatDate } from "@/shared/utils";
 import { useAppSelector } from "@/shared/hooks";
 import Link from "next/link";
@@ -9,7 +10,7 @@ import { VacancyCardAuthorInfo } from "../vacancyCard/VCAuthorInfo"
 import Breadcrumbs from "@/features/breadcrumbs/components/BreadCrumbs"
 import { Button, Heading } from "@/shared/components";
 import { UserRole } from "@/features/auth/types";
-import { useSandetCandidature, useSaveInFavorite } from "../../hooks";
+import { useDeleteFromCVSended, useDeleteFromFavorute, useSandetCandidature, useSaveInFavorite } from "../../hooks";
 import { MAIN_URL } from "@/shared/config";
 
 export default function VacancyPage({
@@ -36,6 +37,8 @@ export default function VacancyPage({
   const router = useRouter()
   const { saveJob, isSaved } = useSaveInFavorite()
   const { sendCandidature, isSendet } = useSandetCandidature()
+  const { deleteFormFavorite } = useDeleteFromFavorute()
+  const { deleteCVFormJob } = useDeleteFromCVSended()
 
   const author = {
     slug: branchId ? branch.id : agency.slug,
@@ -66,6 +69,14 @@ export default function VacancyPage({
     }
   }
 
+  const deleteFromFavorite = () => {
+    deleteFormFavorite(id!)
+  }
+
+  const deleteCandudatureFromJob = () => {
+    deleteCVFormJob(id!)
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.wrapperVacancy}>
@@ -78,18 +89,25 @@ export default function VacancyPage({
             {reallyUpTo && <div className={styles.reallyUpTo}>Attuale fino {formatDate(reallyUpTo)}</div>}
           </div>
           {authUser?.role !== UserRole.Agency && <div className={styles.favoriteCandidat}>
-            <Button
-              onClick={() => saveInFavorite()}
-              disabled={isSaved || savedBy?.some(saved => saved.candidate.userId === authUser?.id)}
-            >
-              <CiHeart />
-            </Button>
-            <Button
-              onClick={() => sendCandudaturetoJob()}
-              disabled={isSendet || curriculum?.some(cv => cv.candidate.userId === authUser?.id)}
-            >
-              <CiCirclePlus /> Candidati
-            </Button>
+            {isSaved || savedBy?.some(saved => saved.candidate.userId === authUser?.id) ? (
+              <Button onClick={() => deleteFromFavorite()} >
+                <LiaHeartBrokenSolid />
+              </Button>
+            ) : (
+              <Button onClick={() => saveInFavorite()}>
+                <CiHeart />
+              </Button>
+            )}
+            {isSendet || curriculum?.some(cv => cv.candidate.userId === authUser?.id) ? (
+
+              <Button onClick={() => deleteCandudatureFromJob()}>
+                <CiTrash /> Annulla candidatura
+              </Button>
+            ) : (
+              <Button onClick={() => sendCandudaturetoJob()}>
+                <CiCirclePlus /> Candidati
+              </Button>
+            )}
           </div>}
         </div>
         <div className={styles.description}>

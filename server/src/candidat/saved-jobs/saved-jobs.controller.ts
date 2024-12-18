@@ -6,7 +6,7 @@ import { UserRole } from 'prisma/__generated__';
 
 @Controller('saved-jobs')
 export class SavedJobsController {
-  constructor(private readonly savedJobsService: SavedJobsService) {}
+  constructor(private readonly savedJobsService: SavedJobsService) { }
 
   @Post()
   @Authorization(UserRole.CANDIDAT)
@@ -20,7 +20,7 @@ export class SavedJobsController {
   @Delete(':jobId')
   @Authorization(UserRole.CANDIDAT)
   async removeFromSaved(
-    @Param('jobId') jobId: CreateSavedJobDto,
+    @Param('jobId') jobId: string,
     @CurrentUser('id') userId: string,
   ) {
     return await this.savedJobsService.removeFromSaved(userId, jobId);

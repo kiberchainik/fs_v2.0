@@ -65,9 +65,13 @@ export class SendCandidatureService {
     }
   }
 
-  async removeCandidateFromJob(userId: string, jobId: CreateSendCandidatureDto) {
+  async removeCandidateFromJob(userId: string, jobId: string) {
     const candidateData = await this.prisma.candidatData.findFirst({
-      where: { userId }
+      where: {
+        user: {
+          id: userId
+        }
+      }
     });
 
     if (!candidateData) {
@@ -78,7 +82,7 @@ export class SendCandidatureService {
       where: {
         candidateId_jobOfferId: {
           candidateId: candidateData.id,
-          jobOfferId: jobId.jobId,
+          jobOfferId: jobId,
         }
       }
     });

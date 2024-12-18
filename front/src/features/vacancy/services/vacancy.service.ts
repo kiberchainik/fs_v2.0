@@ -19,6 +19,14 @@ class VacancyPageService {
     async sendCandidature(id: string) {
         return await axiosPrivate.post(API_URL.sendedCanidature(), { jobId: id })
     }
+
+    async deleteFormFavorite(id: string) {
+        return await axiosPrivate.delete(API_URL.savedJobs(id))
+    }
+
+    async deleteFromCVJob(id: string) {
+        return await axiosPrivate.delete(API_URL.sendedCanidature(id))
+    }
 }
 
 export const vacancyPageServices = new VacancyPageService()

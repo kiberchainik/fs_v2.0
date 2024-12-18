@@ -65,23 +65,32 @@ export class SavedJobsService {
     }
   }
 
-  async removeFromSaved(userId: string, jobId: CreateSavedJobDto) {
+  async removeFromSaved(userId: string, jobId: string) {
     const candidateData = await this.prisma.candidatData.findFirst({
-      where: { userId }
+      where: {
+        user: {
+          id: userId
+        }
+      }
     });
 
     if (!candidateData) {
       throw new NotFoundException('Данные кандидата не найдены');
     }
 
-    return await this.prisma.savedJobs.delete({
-      where: {
-        candidateId_jobOfferId: {
-          candidateId: candidateData.id,
-          jobOfferId: jobId.jobId,
+    try {
+      return await this.prisma.savedJobs.delete({
+        where: {
+          candidateId_jobOfferId: {
+            candidateId: candidateData.id,
+            jobOfferId: jobId,
+          }
         }
-      }
-    });
+      })
+    } catch (error) {
+      throw new ConflictException('Вакансия уже была удалена')
+    }
+
   }
 
   async getSavedJobs(userId: string) {
