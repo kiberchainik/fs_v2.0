@@ -19,7 +19,7 @@ export class CandidatController {
     return this.candidatService.create(createCandidatDto);
   }
 
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   @UseInterceptors(FilesInterceptor('files'))
   @Post('avatar')
   async uploadFile(
@@ -45,13 +45,13 @@ export class CandidatController {
   }
 
   @Get('privacy')
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   getCandidatPrivacy(@CurrentUser('id') id: string) {
     return this.candidatService.getCandidatPrivacy(id);
   }
 
   @Patch('privacy')
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   update(
     @Body() updateCandidatDto: UpdateCandidatDto,
     @CurrentUser('id') id: string

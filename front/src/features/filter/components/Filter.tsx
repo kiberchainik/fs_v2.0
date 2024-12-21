@@ -67,7 +67,6 @@ export function Filter() {
                         }}
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Категория</FormLabel>
                                 <Select
                                     disabled={isFetching}
                                     onValueChange={field.onChange}
@@ -106,7 +105,6 @@ export function Filter() {
                         name='location'
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Location</FormLabel>
                                 <FormControl>
                                     <Input
                                         placeholder='Location'
@@ -123,7 +121,6 @@ export function Filter() {
                         name='contractTypeId'
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Tipo di contratto</FormLabel>
                                 <Select
                                     onValueChange={field.onChange}
                                     defaultValue={field.value}
@@ -150,7 +147,6 @@ export function Filter() {
                         name='modeJobId'
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Modalità di lavoro</FormLabel>
                                 <Select
                                     defaultValue={field.value}
                                     onValueChange={field.onChange}
@@ -177,7 +173,6 @@ export function Filter() {
                         name='workingTimeId'
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Orario di lavoro</FormLabel>
                                 <Select
                                     defaultValue={field.value}
                                     onValueChange={field.onChange}
@@ -204,7 +199,6 @@ export function Filter() {
                         name='levelEducationId'
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Livello di istruzione</FormLabel>
                                 <Select
                                     defaultValue={field.value}
                                     onValueChange={field.onChange}
@@ -231,7 +225,6 @@ export function Filter() {
                         name='experienceMinimalId'
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Esperienza minima richiesta</FormLabel>
                                 <Select
                                     defaultValue={field.value}
                                     onValueChange={field.onChange}

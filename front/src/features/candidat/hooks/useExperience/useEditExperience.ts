@@ -5,12 +5,14 @@ import { toast } from "sonner"
 import { ExperienceSchema, TypeExperienceSchema } from "../../schemes"
 import { useExperience, useCreateExperience, useUpdExperience, useDeleteExperience } from "./useExperience"
 import { IExperience } from "../../types"
+import { useGetOptionsContractTypes } from "@/features/agency/vacancy/hooks"
 
 export const useExperienceLogic = () => {
     const [editExperienceId, setEditExperienceId] = useState<string | null>(null)
     const deleteExperienceId = useRef<string | null>(null)
 
     const { experience, isFetching } = useExperience()
+    const { contractType, isFetching: isFCT } = useGetOptionsContractTypes()
     const { newExperience, isPendingCreate, isError } = useCreateExperience()
     const { updExperience, isPendingUpdate } = useUpdExperience()
     const { deleteExperience, isPendingDelete } = useDeleteExperience()
@@ -20,7 +22,7 @@ export const useExperienceLogic = () => {
         resolver: zodResolver(ExperienceSchema),
         defaultValues: {
             company: '',
-            contract: '',
+            contractTypeId: '',
             currently: false,
             description: '',
             location: '',
@@ -53,7 +55,7 @@ export const useExperienceLogic = () => {
         setEditExperienceId(experience.id)
         editForm.reset({
             company: experience.company,
-            contract: experience.contract,
+            contractTypeId: experience.contractTypeId,
             currently: experience.currently,
             description: experience.description,
             location: experience.location,
@@ -98,6 +100,7 @@ export const useExperienceLogic = () => {
     return {
         deletingExperienceId: deleteExperienceId.current,
         experience,
+        contractType,
         addForm,
         editForm,
         editExperienceId,

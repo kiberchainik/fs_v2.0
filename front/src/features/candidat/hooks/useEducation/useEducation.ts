@@ -18,7 +18,7 @@ export function useEducation() {
         queryKey: EDUCATION_QUERY_KEY,
         queryFn: () => educationService.getEducation()
     })
-
+    console.log(education)
     return useMemo(() => ({
         education, isFetching
     }), [education, isFetching])

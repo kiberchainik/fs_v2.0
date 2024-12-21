@@ -10,7 +10,7 @@ export class SkillsController {
   constructor(private readonly skillsService: SkillsService) { }
 
   @Post()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   create(
     @CurrentUser('id') id: string,
     @Body() createSkillDto: CreateSkillDto
@@ -19,13 +19,13 @@ export class SkillsController {
   }
 
   @Get()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   findAll(@CurrentUser('id') id: string) {
     return this.skillsService.findAll(id);
   }
 
   @Patch(':id')
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   update(
     @CurrentUser('id') userId: string,
     @Param('id') id: string,
@@ -35,7 +35,7 @@ export class SkillsController {
   }
 
   @Delete(':id')
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   remove(
     @CurrentUser('id') userId: string,
     @Param('id') id: string

@@ -5,7 +5,7 @@ export interface ICategory {
     name: string;
     slug: string;
     description: string;
-    children?: { name: string; slug: string }[]
+    children?: { id: string, name: string; slug: string }[]
     level?: number | null
     parent?: IParentCategory | null // Ограничиваем вложенность
     parentId?: string[]
@@ -36,6 +36,7 @@ export type TBreadcrumbr = {
 }[]
 
 export type TCategorySelector = Omit<ICategory, 'parentId' | 'level'>
+
 export type TCategoryBySlug = Omit<TCategorySelector, 'id'> & {
     breadcrumbs: TBreadcrumbr
     category_not_found?: string

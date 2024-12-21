@@ -26,7 +26,6 @@ interface VacancyFromProps {
 export function VacancyEditForm({ vacancy }: VacancyFromProps) {
 	const { updJob, isPending, isSuccess } = useUpdateVacancyMutation()
 	const { deleteVacancy, isLoadingDelete } = useDeleteVacancy()
-	//const { generateText, gentext, isInProccess } = useGenerateDescription()
 
 	const valuesForm = {
 		title: vacancy.title,
@@ -45,13 +44,6 @@ export function VacancyEditForm({ vacancy }: VacancyFromProps) {
 		modeJobId: vacancy.modeId || '',
 		workingTimeId: vacancy.workingTimeId || ''
 	}
-
-	// const GenerateDescriptionBtn = (keywords: string | undefined) => {
-	// 	if (keywords) {
-	// 		const genDescription = generateText(keywords)
-	// 		form.setValue('description', gentext || '')
-	// 	}
-	// }
 
 	const onSubmit = (values: TypeVacancySchema) => {
 		const { tags, ...value } = values

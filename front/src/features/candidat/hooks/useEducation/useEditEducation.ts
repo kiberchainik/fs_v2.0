@@ -5,9 +5,11 @@ import { EducationSchema, TypeEducationSchema } from "../../schemes/education.sc
 import { zodResolver } from "@hookform/resolvers/zod"
 import { IEducation } from "../../types"
 import { toast } from "sonner"
+import { useGetLevelEducation } from "@/features/agency/vacancy/hooks"
 
 export const useEducationLogic = () => {
     const [editEducationId, setEditEducationId] = useState<string | null>(null)
+    const { levelEducation, isFetching: isFLE } = useGetLevelEducation()
     const deleteEducationId = useRef<string | null>(null)
 
     const { education, isFetching } = useEducation()
@@ -19,7 +21,7 @@ export const useEducationLogic = () => {
         mode: 'onChange',
         resolver: zodResolver(EducationSchema),
         defaultValues: {
-            degree: '',
+            levelId: '',
             school: '',
             grade: '',
             description: '',
@@ -51,9 +53,9 @@ export const useEducationLogic = () => {
     const handleEditEducation = (education: IEducation) => {
         setEditEducationId(education.id)
         editForm.reset({
-            degree: education.degree,
+            levelId: education.levelId,
             school: education.school,
-            grade: education.degree,
+            grade: education.grade,
             description: education.description,
             dateRange: {
                 startdate: education.startdate,
@@ -100,6 +102,7 @@ export const useEducationLogic = () => {
         addForm,
         editForm,
         editEducationId,
+        levelEducation,
         setEditEducationId,
         handleAddEducation,
         handleEditEducation,

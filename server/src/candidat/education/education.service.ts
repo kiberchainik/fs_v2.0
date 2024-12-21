@@ -8,12 +8,18 @@ export class EducationService {
   constructor(private readonly prisma: PrismaService) { }
 
   async create(userId: string, createEducationDto: CreateEducationDto) {
+    const { levelId, ...rest } = createEducationDto
     return await this.prisma.education.create({
       data: {
-        ...createEducationDto,
+        ...rest,
         candidate: {
           connect: {
             userId
+          }
+        },
+        levelEducation: {
+          connect: {
+            id: levelId
           }
         }
       }
@@ -24,6 +30,14 @@ export class EducationService {
     return await this.prisma.education.findMany({
       where: {
         candidate: { userId }
+      },
+      include: {
+        levelEducation: {
+          select: {
+            id: true,
+            name: true
+          }
+        }
       }
     })
   }

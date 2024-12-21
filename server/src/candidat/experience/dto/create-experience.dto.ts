@@ -1,12 +1,11 @@
 import { IsBoolean, IsDateString, IsOptional, IsString } from "class-validator"
-import { ContractType } from "prisma/__generated__"
 
 export class CreateExperienceDto {
     @IsString()
     company: string
 
     @IsString()
-    contract: ContractType
+    contractTypeId: string
 
     @IsString()
     @IsOptional()

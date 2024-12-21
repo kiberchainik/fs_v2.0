@@ -3,6 +3,7 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { AGENCY_URL, API_URL, CANDIDAT_URL, MAIN_URL } from '@/shared/config/'
 import { EnumTokens } from '@/shared/services'
 import { authService } from './features/auth/services'
+import { UserRole } from './features/auth/types'
 
 export async function middleware(request: NextRequest) {
 	const accessToken = request.cookies.get(EnumTokens.ACCESS_TOKEN)?.value
@@ -16,17 +17,17 @@ export async function middleware(request: NextRequest) {
 		const user = await authService.getCurrentUserData(accessToken)
 		
 		if (isAuthPage) {
-			if(user.role === 'CANDIDAT') {
+			if(user.role === UserRole.Candidat) {
 				return NextResponse.redirect(new URL(CANDIDAT_URL.root(), request.url))
 			}
 
-			if(user.role === 'AGENCY') {
+			if(user.role === UserRole.Agency) {
 				return NextResponse.redirect(new URL(AGENCY_URL.root(), request.url))
 			}
 		}
 
 		if (isAgencyProfile) {
-			if (!isAuthPage && user.role === 'AGENCY') {
+			if (!isAuthPage && user.role === UserRole.Agency) {
 				return NextResponse.next()
 			}
 	
@@ -34,7 +35,7 @@ export async function middleware(request: NextRequest) {
 		}
 	
 		if (isCandidatProfile) {
-			if (!isAuthPage && user.role === 'CANDIDAT') {
+			if (!isAuthPage && user.role === UserRole.Candidat) {
 				return NextResponse.next()
 			}
 	
@@ -57,7 +58,7 @@ export async function middleware(request: NextRequest) {
 export const config = {
 	matcher: [
 		'/auth/:path*',
-		'/candidat/:path*',
+		'/candidate/:path*',
 		'/agency/:path*'
 	]
 }

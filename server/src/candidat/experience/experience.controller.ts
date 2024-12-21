@@ -10,7 +10,7 @@ export class ExperienceController {
   constructor(private readonly experienceService: ExperienceService) { }
 
   @Post()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE )
   create(
     @CurrentUser('id') userId: string,
     @Body() createExperienceDto: CreateExperienceDto) {
@@ -18,13 +18,13 @@ export class ExperienceController {
   }
 
   @Get()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   findAll(@CurrentUser('id') userId: string) {
     return this.experienceService.findAll(userId)
   }
 
   @Patch(':id')
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   update(
     @CurrentUser('id') userId: string,
     @Param('id') id: string, @Body() updateExperienceDto: UpdateExperienceDto) {
@@ -32,7 +32,7 @@ export class ExperienceController {
   }
 
   @Delete(':id')
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   remove(
     @CurrentUser('id') userId: string,
     @Param('id') id: string) {

@@ -2,7 +2,7 @@ import { IsDateString, IsOptional, IsString } from "class-validator"
 
 export class CreateEducationDto {
     @IsString()
-    degree: string
+    levelId: string
 
     @IsString()
     school: string

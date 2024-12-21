@@ -1,6 +1,6 @@
-
 import { TBreadcrumbr } from "@/features/category/types";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator, BreadcrumbPage } from "@/shared/components"
+import { ChevronRight } from "lucide-react";
 import Link from "next/link"
 
 interface BreadcrumbsProps {
@@ -13,15 +13,17 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs }) => {
             <BreadcrumbList>
                 {breadcrumbs.map((breadcrumb, index) => (
                     <BreadcrumbItem key={index}>
-                        {index > 0 && <BreadcrumbSeparator />}
+                        {index > 0 && (
+                            <BreadcrumbSeparator />
+                        )}
                         {index < breadcrumbs.length - 1 ? (
-                            <BreadcrumbLink>
-                                <Link href={breadcrumb.href}>
-                                    {breadcrumb.name}
-                                </Link>
-                            </BreadcrumbLink>
+                            <Link href={breadcrumb.href} legacyBehavior passHref>
+                                <BreadcrumbLink>{breadcrumb.name}</BreadcrumbLink>
+                            </Link>
                         ) : (
-                            <BreadcrumbPage className="text-sm font-medium text-gray-500">{breadcrumb.name}</BreadcrumbPage>
+                            <BreadcrumbPage className="text-sm font-medium text-gray-500">
+                                {breadcrumb.name}
+                            </BreadcrumbPage>
                         )}
                     </BreadcrumbItem>
                 ))}

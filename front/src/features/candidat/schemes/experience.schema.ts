@@ -1,10 +1,8 @@
 import { z } from "zod";
 
-export const ContractType = z.enum(['PARTTIME', 'SELFEMPLOYED', 'FREELANCE', 'CONTRACT', 'INTERNSHIP', 'APPRENTICESHIP'])
-
 export const ExperienceSchema = z.object({
     company: z.string(),
-    contract: z.string(),
+    contractTypeId: z.string(),
     location: z.string().optional(),
     currently: z.boolean().default(false).optional(),
     description: z.string().optional(),

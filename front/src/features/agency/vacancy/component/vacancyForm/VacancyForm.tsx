@@ -159,7 +159,7 @@ export function VacancyForm({ values, isPending, onSubmit }: FormProps) {
                                                 <SelectItem
                                                     key={child.id}
                                                     value={child.id}
-                                                    className="pl-6" // Отступ для подкатегорий
+                                                    className="pl-6"
                                                 >
                                                     {child.name}
                                                 </SelectItem>
@@ -172,7 +172,7 @@ export function VacancyForm({ values, isPending, onSubmit }: FormProps) {
                         </FormItem>
                     )}
                 />
-                <FormField
+                <Controller
                     control={form.control}
                     name='branchId'
                     render={({ field }) => (
@@ -235,7 +235,7 @@ export function VacancyForm({ values, isPending, onSubmit }: FormProps) {
                         </FormItem>
                     )}
                 />
-                <FormField
+                <Controller
                     control={form.control}
                     name="reallyUpTo"
                     render={({ field }) => (
@@ -258,7 +258,7 @@ export function VacancyForm({ values, isPending, onSubmit }: FormProps) {
                         <FormLabel>Opzionale</FormLabel>
                     </div>
                     <div className={styles.options_job_fields}>
-                        <FormField
+                        <Controller
                             control={form.control}
                             name='contractTypeId'
                             render={({ field }) => (
@@ -284,7 +284,7 @@ export function VacancyForm({ values, isPending, onSubmit }: FormProps) {
                                 </FormItem>
                             )}
                         />
-                        <FormField
+                        <Controller
                             control={form.control}
                             name='modeJobId'
                             render={({ field }) => (
@@ -310,7 +310,7 @@ export function VacancyForm({ values, isPending, onSubmit }: FormProps) {
                                 </FormItem>
                             )}
                         />
-                        <FormField
+                        <Controller
                             control={form.control}
                             name='workingTimeId'
                             render={({ field }) => (
@@ -336,7 +336,7 @@ export function VacancyForm({ values, isPending, onSubmit }: FormProps) {
                                 </FormItem>
                             )}
                         />
-                        <FormField
+                        <Controller
                             control={form.control}
                             name='levelEducationId'
                             render={({ field }) => (
@@ -362,7 +362,7 @@ export function VacancyForm({ values, isPending, onSubmit }: FormProps) {
                                 </FormItem>
                             )}
                         />
-                        <FormField
+                        <Controller
                             control={form.control}
                             name='experienceMinimalId'
                             render={({ field }) => (

@@ -16,6 +16,8 @@ import Breadcrumbs from "@/features/breadcrumbs/components/BreadCrumbs"
 
 export default function VacancyList({ jobs, count: totalJobs, pageCount: totalPages, name, category_not_found, description, breadcrumbs }: TCategoryBySlug) {
   const { data: vacancyList, isLoading, page, totalCountJobs, limit } = useAppSelector(state => state.reducer.vacancies)
+  const authUser = useAppSelector(state => state.reducer.user.data)
+
   const dispatch = useAppDispatch()
   const searchParams = useSearchParams()
   const params: ISearchTerm = {
@@ -50,7 +52,7 @@ export default function VacancyList({ jobs, count: totalJobs, pageCount: totalPa
             <div className={styles.category_info_description}>{description}</div>
           </div>
           <div className={styles.listBlocks}>
-            {vacancyList.map(job => <VacancyCard {...job} key={job.id} />)}
+            {vacancyList.map(job => <VacancyCard {...job} key={job.id} authUser={authUser!} />)}
           </div>
           <Card className={styles.vacancyPagination}>
             <PaginationWithLinks

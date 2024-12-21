@@ -1,6 +1,5 @@
 'use client'
 
-
 import { useGetPrivacy, useEducation, useExperience, useSkills, useLanguages, useHobbies, useSocial } from "@/features/candidat/hooks";
 import { useCourses } from "@/features/candidat/hooks/useCourses";
 import { useGetLifeStatus } from "@/features/candidat/hooks/useLifeStatus"
@@ -24,8 +23,8 @@ export default function PreviewsPortfolio() {
     if (isFetching) return <div>Loading ...</div>
 
     return (
-        <div className="p-4">
-            <Template1
+        <div className="">
+            <Template2
                 user={user!}
                 privacy={privacy!}
                 education={education!}

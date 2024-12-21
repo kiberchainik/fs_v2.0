@@ -1,24 +1,40 @@
-import { FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from "@/shared/components"
+import { FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/shared/components"
 import { DateTimePicker } from "@/shared/components/datapicker/Datapicker"
 import { UseFormReturn, Controller } from "react-hook-form"
 import { TypeEducationSchema } from "../../../schemes"
+import { IOptions } from "@/features/agency/vacancy/types"
 
 type FormProps = {
+    levelEducation: IOptions[]
     formData: UseFormReturn<TypeEducationSchema, any, undefined>
 }
 
-export default function EducationForm({ formData }: FormProps) {
+export default function EducationForm({ formData, levelEducation }: FormProps) {
     return (
         <>
             <div className='flex md:flex-row flex-col w-full gap-3'>
-                <FormField
+                <Controller
                     control={formData.control}
-                    name='degree'
+                    name='levelId'
                     render={({ field }) => (
                         <FormItem className='w-full'>
-                            <FormControl>
-                                <Input placeholder='Degree' {...field} />
-                            </FormControl>
+                            <Select
+                                    defaultValue={field.value}
+                                    onValueChange={field.onChange}
+                                >
+                                    <FormControl>
+                                        <SelectTrigger>
+                                            <SelectValue placeholder='Livello di istruzione' />
+                                        </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            {levelEducation ? levelEducation.map(level => (
+                                                <SelectItem value={level.id} key={level.id}>{level.name}</SelectItem>
+                                            )) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
                             <FormMessage />
                         </FormItem>
                     )}

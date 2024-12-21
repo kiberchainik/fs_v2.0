@@ -14,6 +14,7 @@ export default function Experience() {
         addForm,
         editForm,
         editExperienceId,
+        contractType,
         setEditExperienceId,
         handleAddExperience,
         handleEditExperience,
@@ -34,7 +35,7 @@ export default function Experience() {
                     onSubmit={addForm.handleSubmit(handleAddExperience)}
                     className={styles.formWrapper}
                 >
-                    <ExperienceForm formData={addForm} />
+                    <ExperienceForm formData={addForm} contractType={contractType!} />
                     <Button type='submit' disabled={isAdding}>
                         Add course
                     </Button>
@@ -53,7 +54,7 @@ export default function Experience() {
                                                     onSubmit={editForm.handleSubmit(() => handleSaveExperience(item.id))}
                                                     className={styles.formWrapper}
                                                 >
-                                                    <ExperienceForm formData={editForm} />
+                                                    <ExperienceForm formData={editForm} contractType={contractType!} />
                                                     <div className='flex gap-x-1'>
                                                         <Button type='submit' disabled={isSaving}>
                                                             {isSaving ? 'Saving...' : 'Save'}
@@ -66,7 +67,7 @@ export default function Experience() {
                                             </Form>
                                         ) : (
                                             <div className={styles.experienceList}>
-                                                <span>{item.company}</span> - <span>{item.company}</span>
+                                                <span>{item.company}</span> - <span>{item.contractTypeJob?.name}</span>
                                                 <div className='flex gap-x-1'>
                                                     <Button onClick={() => handleEditExperience(item)} variant='link'>
                                                         <CiEdit />

@@ -10,7 +10,7 @@ export class CoursesController {
   constructor(private readonly coursesService: CoursesService) { }
 
   @Post()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   create(
     @CurrentUser('id') userId: string,
     @Body() createCourseDto: CreateCourseDto) {
@@ -18,13 +18,13 @@ export class CoursesController {
   }
 
   @Get()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   findAll(@CurrentUser('id') userId: string) {
     return this.coursesService.findAll(userId);
   }
 
   @Patch(':id')
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   update(
     @Param('id') id: string,
     @CurrentUser('id') userId: string,
@@ -33,7 +33,7 @@ export class CoursesController {
   }
 
   @Delete(':id')
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   remove(
     @CurrentUser('id') userId: string,
     @Param('id') id: string) {

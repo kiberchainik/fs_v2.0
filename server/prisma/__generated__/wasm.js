@@ -17,12 +17,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.0.1
- * Query Engine version: 5dbef10bdbfb579e07d35cc85fb1518d357cb99e
+ * Prisma Client JS version: 6.1.0
+ * Query Engine version: 11f085a2012c0f4778414c8db2651556ee0ef959
  */
 Prisma.prismaVersion = {
-  client: "6.0.1",
-  engine: "5dbef10bdbfb579e07d35cc85fb1518d357cb99e"
+  client: "6.1.0",
+  engine: "11f085a2012c0f4778414c8db2651556ee0ef959"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -159,12 +159,12 @@ exports.Prisma.UserSocialScalarFieldEnum = {
 
 exports.Prisma.EducationScalarFieldEnum = {
   id: 'id',
-  degree: 'degree',
   school: 'school',
   grade: 'grade',
   startdate: 'startdate',
   enddate: 'enddate',
   description: 'description',
+  levelId: 'levelId',
   cdId: 'cdId'
 };
 
@@ -178,12 +178,12 @@ exports.Prisma.SkillsScalarFieldEnum = {
 exports.Prisma.ExperienceScalarFieldEnum = {
   id: 'id',
   company: 'company',
-  contract: 'contract',
   location: 'location',
   currently: 'currently',
   startDate: 'startDate',
   endDate: 'endDate',
   description: 'description',
+  contractTypeId: 'contractTypeId',
   cdId: 'cdId'
 };
 
@@ -409,10 +409,10 @@ exports.Prisma.UserSocialOrderByRelevanceFieldEnum = {
 
 exports.Prisma.EducationOrderByRelevanceFieldEnum = {
   id: 'id',
-  degree: 'degree',
   school: 'school',
   grade: 'grade',
   description: 'description',
+  levelId: 'levelId',
   cdId: 'cdId'
 };
 
@@ -427,6 +427,7 @@ exports.Prisma.ExperienceOrderByRelevanceFieldEnum = {
   company: 'company',
   location: 'location',
   description: 'description',
+  contractTypeId: 'contractTypeId',
   cdId: 'cdId'
 };
 
@@ -576,7 +577,7 @@ exports.UserRole = exports.$Enums.UserRole = {
   USER: 'USER',
   ADMIN: 'ADMIN',
   MODERATOR: 'MODERATOR',
-  CANDIDAT: 'CANDIDAT',
+  CANDIDATE: 'CANDIDATE',
   AGENCY: 'AGENCY'
 };
 
@@ -603,15 +604,6 @@ exports.SkillsLevel = exports.$Enums.SkillsLevel = {
   BEGINNER: 'BEGINNER',
   EXPERIENCED: 'EXPERIENCED',
   EXPERT: 'EXPERT'
-};
-
-exports.ContractType = exports.$Enums.ContractType = {
-  PARTTIME: 'PARTTIME',
-  SELFEMPLOYED: 'SELFEMPLOYED',
-  FREELANCE: 'FREELANCE',
-  CONTRACT: 'CONTRACT',
-  INTERNSHIP: 'INTERNSHIP',
-  APPRENTICESHIP: 'APPRENTICESHIP'
 };
 
 exports.LanguageLevel = exports.$Enums.LanguageLevel = {

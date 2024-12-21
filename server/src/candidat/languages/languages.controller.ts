@@ -10,7 +10,7 @@ export class LanguagesController {
   constructor(private readonly languagesService: LanguagesService) { }
 
   @Post()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   create(
     @CurrentUser('id') userId: string,
     @Body() createLanguageDto: CreateLanguageDto
@@ -19,13 +19,13 @@ export class LanguagesController {
   }
 
   @Get()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   findAll(@CurrentUser('id') userId: string) {
     return this.languagesService.findAll(userId);
   }
 
   @Patch(':id')
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   update(
     @Param('id') id: string,
     @CurrentUser('id') userId: string,
@@ -35,7 +35,7 @@ export class LanguagesController {
   }
 
   @Delete(':id')
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   remove(
     @CurrentUser('id') userId: string,
     @Param('id') id: string

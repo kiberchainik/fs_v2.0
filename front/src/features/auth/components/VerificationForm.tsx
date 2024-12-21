@@ -16,7 +16,9 @@ export function VerificationForm () {
         verification(token)
     }, [token])
 
-    return <AuthWrapper heading="Email verificarion">
-        <div><Loader /></div>
-    </AuthWrapper>
+    return <div className="flex justify-center items-center mt-5">
+        <AuthWrapper heading="Email verificarion">
+            <div><Loader /></div>
+        </AuthWrapper>
+    </div>
 }

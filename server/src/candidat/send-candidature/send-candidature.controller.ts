@@ -9,7 +9,7 @@ export class SendCandidatureController {
   constructor(private readonly sendCandidatureService: SendCandidatureService) { }
 
   @Post()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   async saveJob(
     @Body() jobId: CreateSendCandidatureDto,
     @CurrentUser('id') userId: string,
@@ -18,7 +18,7 @@ export class SendCandidatureController {
   }
 
   @Delete(':jobId')
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   async removeFromSaved(
     @Param('jobId') jobId: string,
     @CurrentUser('id') userId: string,
@@ -27,7 +27,7 @@ export class SendCandidatureController {
   }
 
   @Get()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   async getSendetCandidature(@CurrentUser('id') userId: string) {
     return await this.sendCandidatureService.getCandidatureJobs(userId);
   }

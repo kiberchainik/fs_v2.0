@@ -9,6 +9,18 @@ interface IVacancyOptions {
     workingTimeId?: string
 }
 
+export interface ISaveInFavorites {
+    candidate: {
+        userId: string
+    }
+}
+
+export interface ISendCadidature {
+    candidate: {
+        userId: string
+    }
+}
+
 export interface IVacanciaes extends IVacancyOptions {
     id?: string,
     title: string,
@@ -21,8 +33,8 @@ export interface IVacanciaes extends IVacancyOptions {
     location: string,
     branchId?: string,
     tags?: string[]
-    savedBy?: { candidate: { userId: string } }[]
-    sendCandidature?: { candidate: { userId: string } }[]
+    savedBy?: ISaveInFavorites[]
+    sendCandidature?: ISendCadidature[]
     createdAt?: string
     reallyUpTo?: string | Date
     views?: number

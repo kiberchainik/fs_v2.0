@@ -6,6 +6,7 @@ import { useEducationLogic } from "../../../hooks/useEducation";
 import styles from './education.module.scss'
 import { CiEdit, CiTrash } from "react-icons/ci";
 import EducationForm from "./EducationForm";
+import { formatDate } from "@/shared/utils";
 
 export default function Education() {
     const {
@@ -14,6 +15,7 @@ export default function Education() {
         addForm,
         editForm,
         editEducationId,
+        levelEducation,
         setEditEducationId,
         handleAddEducation,
         handleEditEducation,
@@ -34,7 +36,7 @@ export default function Education() {
                     onSubmit={addForm.handleSubmit(handleAddEducation)}
                     className={styles.formWrapper}
                 >
-                    <EducationForm formData={addForm} />
+                    <EducationForm formData={addForm} levelEducation={levelEducation!} />
                     <Button type='submit' disabled={isAdding}>
                         Add course
                     </Button>
@@ -53,7 +55,7 @@ export default function Education() {
                                                     onSubmit={editForm.handleSubmit(() => handleSaveEducation(item.id))}
                                                     className={styles.formWrapper}
                                                 >
-                                                    <EducationForm formData={editForm} />
+                                                    <EducationForm formData={editForm} levelEducation={levelEducation!} />
                                                     <div className='flex gap-x-1'>
                                                         <Button type='submit' disabled={isSaving}>
                                                             {isSaving ? 'Saving...' : 'Save'}
@@ -66,7 +68,12 @@ export default function Education() {
                                             </Form>
                                         ) : (
                                             <div className={styles.educationList}>
-                                                <span>{item.degree}</span>
+                                                <div>
+                                                    <div>{item.school}</div>
+                                                    <div>{item.grade}</div>
+                                                    <div>{formatDate(item.startdate, { dateFormat: 'year' })} - {formatDate(item.enddate, { dateFormat: 'year' })}</div>
+                                                    {item.description && <div>{item.description}</div>}
+                                                </div>
                                                 <div className='flex gap-x-1'>
                                                     <Button onClick={() => handleEditEducation(item)} variant='link'>
                                                         <CiEdit />

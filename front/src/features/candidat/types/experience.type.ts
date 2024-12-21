@@ -1,7 +1,10 @@
 export interface IExperience {
     id: string
     company: string
-    contract: string
+    contractTypeId: string
+    contractTypeJob?: {
+        name: string
+    }
     location?: string
     currently?: boolean
     startDate: Date
@@ -10,12 +13,3 @@ export interface IExperience {
 }
 
 export type TExperienceEdit = Omit<IExperience, 'id'>
-
-export enum EContractType {
-    Parttime = 'PARTTIME',
-    Selfemployed = 'SELFEMPLOYED',
-    Freelance = 'FREELANCE',
-    Contract = 'CONTRACT',
-    Internship = 'INTERNSHIP',
-    Apprenticeship = 'APPRENTICESHIP'
-}

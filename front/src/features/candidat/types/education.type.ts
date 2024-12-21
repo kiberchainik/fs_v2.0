@@ -1,6 +1,6 @@
 export interface IEducation {
     id: string
-    degree: string
+    levelId: string
     school: string
     grade?: string
     startdate: Date

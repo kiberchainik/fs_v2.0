@@ -7,8 +7,14 @@ import styles from './vacancyCard.module.scss'
 import { CiCalendar, CiClock2, CiRead } from "react-icons/ci"
 
 import { VacancyCardAuthorInfo } from "./VCAuthorInfo";
+import { IUserMenuHeaderData } from "@/features/userHeaderBtn/types/userMenuData.type";
+import { CandidateBtns } from "../candidatBtns/CandidateBtns";
 
-export function VacancyCard({ title, slug, description, agency, branch, categories, createdAt, reallyUpTo, views }: IVacanciaesFullDate) {
+interface IVacancyCardProps extends IVacanciaesFullDate {
+    authUser: IUserMenuHeaderData
+}
+
+export function VacancyCard({ id, title, slug, description, agency, branch, categories, createdAt, reallyUpTo, views, savedBy, sendCandidature, authUser }: IVacancyCardProps) {
     description = description.slice(0, 150) + '...'
     return (
         <Card className='max-w-96'>
@@ -23,6 +29,7 @@ export function VacancyCard({ title, slug, description, agency, branch, categori
                 <div className={styles.headerDateInfo}>
                     <CiRead /> {views}
                 </div>
+                <CandidateBtns jobId={id!} authUser={authUser!} curriculum={sendCandidature!} savedBy={savedBy!} />
             </CardHeader>
             <CardDescription className='p-6' dangerouslySetInnerHTML={{ __html: description }}></CardDescription>
             <CardFooter>

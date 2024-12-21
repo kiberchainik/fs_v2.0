@@ -10,7 +10,7 @@ export class HobbiesController {
   constructor(private readonly hobbiesService: HobbiesService) { }
 
   @Post()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   create(
     @CurrentUser('id') userId: string,
     @Body() createHobbyDto: CreateHobbyDto
@@ -19,13 +19,13 @@ export class HobbiesController {
   }
 
   @Get()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   findAll(@CurrentUser('id') userId: string) {
     return this.hobbiesService.findAll(userId);
   }
 
   @Patch(':id')
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   update(
     @Param('id') id: string,
     @CurrentUser('id') userId: string,
@@ -34,7 +34,7 @@ export class HobbiesController {
   }
 
   @Delete(':id')
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   remove(
     @Param('id') id: string,
     @CurrentUser('id') userId: string

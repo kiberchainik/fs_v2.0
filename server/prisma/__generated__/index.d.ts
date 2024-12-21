@@ -206,7 +206,7 @@ export const UserRole: {
   USER: 'USER',
   ADMIN: 'ADMIN',
   MODERATOR: 'MODERATOR',
-  CANDIDAT: 'CANDIDAT',
+  CANDIDATE: 'CANDIDATE',
   AGENCY: 'AGENCY'
 };
 
@@ -718,8 +718,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.0.1
-   * Query Engine version: 5dbef10bdbfb579e07d35cc85fb1518d357cb99e
+   * Prisma Client JS version: 6.1.0
+   * Query Engine version: 11f085a2012c0f4778414c8db2651556ee0ef959
    */
   export type PrismaVersion = {
     client: string
@@ -3407,10 +3407,12 @@ export namespace Prisma {
    */
 
   export type ContractTypeJobCountOutputType = {
+    experience: number
     jobOffers: number
   }
 
   export type ContractTypeJobCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    experience?: boolean | ContractTypeJobCountOutputTypeCountExperienceArgs
     jobOffers?: boolean | ContractTypeJobCountOutputTypeCountJobOffersArgs
   }
 
@@ -3423,6 +3425,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the ContractTypeJobCountOutputType
      */
     select?: ContractTypeJobCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ContractTypeJobCountOutputType without action
+   */
+  export type ContractTypeJobCountOutputTypeCountExperienceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ExperienceWhereInput
   }
 
   /**
@@ -3531,10 +3540,12 @@ export namespace Prisma {
    */
 
   export type LevelEducationCountOutputType = {
+    education: number
     jobOffers: number
   }
 
   export type LevelEducationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    education?: boolean | LevelEducationCountOutputTypeCountEducationArgs
     jobOffers?: boolean | LevelEducationCountOutputTypeCountJobOffersArgs
   }
 
@@ -3547,6 +3558,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the LevelEducationCountOutputType
      */
     select?: LevelEducationCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * LevelEducationCountOutputType without action
+   */
+  export type LevelEducationCountOutputTypeCountEducationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EducationWhereInput
   }
 
   /**
@@ -7842,34 +7860,34 @@ export namespace Prisma {
 
   export type EducationMinAggregateOutputType = {
     id: string | null
-    degree: string | null
     school: string | null
     grade: string | null
     startdate: Date | null
     enddate: Date | null
     description: string | null
+    levelId: string | null
     cdId: string | null
   }
 
   export type EducationMaxAggregateOutputType = {
     id: string | null
-    degree: string | null
     school: string | null
     grade: string | null
     startdate: Date | null
     enddate: Date | null
     description: string | null
+    levelId: string | null
     cdId: string | null
   }
 
   export type EducationCountAggregateOutputType = {
     id: number
-    degree: number
     school: number
     grade: number
     startdate: number
     enddate: number
     description: number
+    levelId: number
     cdId: number
     _all: number
   }
@@ -7877,34 +7895,34 @@ export namespace Prisma {
 
   export type EducationMinAggregateInputType = {
     id?: true
-    degree?: true
     school?: true
     grade?: true
     startdate?: true
     enddate?: true
     description?: true
+    levelId?: true
     cdId?: true
   }
 
   export type EducationMaxAggregateInputType = {
     id?: true
-    degree?: true
     school?: true
     grade?: true
     startdate?: true
     enddate?: true
     description?: true
+    levelId?: true
     cdId?: true
   }
 
   export type EducationCountAggregateInputType = {
     id?: true
-    degree?: true
     school?: true
     grade?: true
     startdate?: true
     enddate?: true
     description?: true
+    levelId?: true
     cdId?: true
     _all?: true
   }
@@ -7983,12 +8001,12 @@ export namespace Prisma {
 
   export type EducationGroupByOutputType = {
     id: string
-    degree: string
     school: string
     grade: string | null
     startdate: Date
     enddate: Date
     description: string | null
+    levelId: string | null
     cdId: string
     _count: EducationCountAggregateOutputType | null
     _min: EducationMinAggregateOutputType | null
@@ -8011,59 +8029,64 @@ export namespace Prisma {
 
   export type EducationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    degree?: boolean
     school?: boolean
     grade?: boolean
     startdate?: boolean
     enddate?: boolean
     description?: boolean
+    levelId?: boolean
     cdId?: boolean
+    levelEducation?: boolean | Education$levelEducationArgs<ExtArgs>
     candidate?: boolean | CandidatDataDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["education"]>
 
   export type EducationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    degree?: boolean
     school?: boolean
     grade?: boolean
     startdate?: boolean
     enddate?: boolean
     description?: boolean
+    levelId?: boolean
     cdId?: boolean
+    levelEducation?: boolean | Education$levelEducationArgs<ExtArgs>
     candidate?: boolean | CandidatDataDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["education"]>
 
   export type EducationSelectScalar = {
     id?: boolean
-    degree?: boolean
     school?: boolean
     grade?: boolean
     startdate?: boolean
     enddate?: boolean
     description?: boolean
+    levelId?: boolean
     cdId?: boolean
   }
 
   export type EducationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    levelEducation?: boolean | Education$levelEducationArgs<ExtArgs>
     candidate?: boolean | CandidatDataDefaultArgs<ExtArgs>
   }
   export type EducationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    levelEducation?: boolean | Education$levelEducationArgs<ExtArgs>
     candidate?: boolean | CandidatDataDefaultArgs<ExtArgs>
   }
 
   export type $EducationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Education"
     objects: {
+      levelEducation: Prisma.$LevelEducationPayload<ExtArgs> | null
       candidate: Prisma.$CandidatDataPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      degree: string
       school: string
       grade: string | null
       startdate: Date
       enddate: Date
       description: string | null
+      levelId: string | null
       cdId: string
     }, ExtArgs["result"]["education"]>
     composites: {}
@@ -8429,6 +8452,7 @@ export namespace Prisma {
    */
   export interface Prisma__EducationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    levelEducation<T extends Education$levelEducationArgs<ExtArgs> = {}>(args?: Subset<T, Education$levelEducationArgs<ExtArgs>>): Prisma__LevelEducationClient<$Result.GetResult<Prisma.$LevelEducationPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     candidate<T extends CandidatDataDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CandidatDataDefaultArgs<ExtArgs>>): Prisma__CandidatDataClient<$Result.GetResult<Prisma.$CandidatDataPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -8460,12 +8484,12 @@ export namespace Prisma {
    */ 
   interface EducationFieldRefs {
     readonly id: FieldRef<"Education", 'String'>
-    readonly degree: FieldRef<"Education", 'String'>
     readonly school: FieldRef<"Education", 'String'>
     readonly grade: FieldRef<"Education", 'String'>
     readonly startdate: FieldRef<"Education", 'DateTime'>
     readonly enddate: FieldRef<"Education", 'DateTime'>
     readonly description: FieldRef<"Education", 'String'>
+    readonly levelId: FieldRef<"Education", 'String'>
     readonly cdId: FieldRef<"Education", 'String'>
   }
     
@@ -8782,6 +8806,21 @@ export namespace Prisma {
      * Filter which Educations to delete
      */
     where?: EducationWhereInput
+  }
+
+  /**
+   * Education.levelEducation
+   */
+  export type Education$levelEducationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LevelEducation
+     */
+    select?: LevelEducationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LevelEducationInclude<ExtArgs> | null
+    where?: LevelEducationWhereInput
   }
 
   /**
@@ -9733,36 +9772,36 @@ export namespace Prisma {
   export type ExperienceMinAggregateOutputType = {
     id: string | null
     company: string | null
-    contract: $Enums.ContractType | null
     location: string | null
     currently: boolean | null
     startDate: Date | null
     endDate: Date | null
     description: string | null
+    contractTypeId: string | null
     cdId: string | null
   }
 
   export type ExperienceMaxAggregateOutputType = {
     id: string | null
     company: string | null
-    contract: $Enums.ContractType | null
     location: string | null
     currently: boolean | null
     startDate: Date | null
     endDate: Date | null
     description: string | null
+    contractTypeId: string | null
     cdId: string | null
   }
 
   export type ExperienceCountAggregateOutputType = {
     id: number
     company: number
-    contract: number
     location: number
     currently: number
     startDate: number
     endDate: number
     description: number
+    contractTypeId: number
     cdId: number
     _all: number
   }
@@ -9771,36 +9810,36 @@ export namespace Prisma {
   export type ExperienceMinAggregateInputType = {
     id?: true
     company?: true
-    contract?: true
     location?: true
     currently?: true
     startDate?: true
     endDate?: true
     description?: true
+    contractTypeId?: true
     cdId?: true
   }
 
   export type ExperienceMaxAggregateInputType = {
     id?: true
     company?: true
-    contract?: true
     location?: true
     currently?: true
     startDate?: true
     endDate?: true
     description?: true
+    contractTypeId?: true
     cdId?: true
   }
 
   export type ExperienceCountAggregateInputType = {
     id?: true
     company?: true
-    contract?: true
     location?: true
     currently?: true
     startDate?: true
     endDate?: true
     description?: true
+    contractTypeId?: true
     cdId?: true
     _all?: true
   }
@@ -9880,12 +9919,12 @@ export namespace Prisma {
   export type ExperienceGroupByOutputType = {
     id: string
     company: string
-    contract: $Enums.ContractType
     location: string | null
     currently: boolean
     startDate: Date
     endDate: Date
     description: string | null
+    contractTypeId: string | null
     cdId: string
     _count: ExperienceCountAggregateOutputType | null
     _min: ExperienceMinAggregateOutputType | null
@@ -9909,62 +9948,67 @@ export namespace Prisma {
   export type ExperienceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     company?: boolean
-    contract?: boolean
     location?: boolean
     currently?: boolean
     startDate?: boolean
     endDate?: boolean
     description?: boolean
+    contractTypeId?: boolean
     cdId?: boolean
+    contractTypeJob?: boolean | Experience$contractTypeJobArgs<ExtArgs>
     candidate?: boolean | CandidatDataDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["experience"]>
 
   export type ExperienceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     company?: boolean
-    contract?: boolean
     location?: boolean
     currently?: boolean
     startDate?: boolean
     endDate?: boolean
     description?: boolean
+    contractTypeId?: boolean
     cdId?: boolean
+    contractTypeJob?: boolean | Experience$contractTypeJobArgs<ExtArgs>
     candidate?: boolean | CandidatDataDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["experience"]>
 
   export type ExperienceSelectScalar = {
     id?: boolean
     company?: boolean
-    contract?: boolean
     location?: boolean
     currently?: boolean
     startDate?: boolean
     endDate?: boolean
     description?: boolean
+    contractTypeId?: boolean
     cdId?: boolean
   }
 
   export type ExperienceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    contractTypeJob?: boolean | Experience$contractTypeJobArgs<ExtArgs>
     candidate?: boolean | CandidatDataDefaultArgs<ExtArgs>
   }
   export type ExperienceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    contractTypeJob?: boolean | Experience$contractTypeJobArgs<ExtArgs>
     candidate?: boolean | CandidatDataDefaultArgs<ExtArgs>
   }
 
   export type $ExperiencePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Experience"
     objects: {
+      contractTypeJob: Prisma.$ContractTypeJobPayload<ExtArgs> | null
       candidate: Prisma.$CandidatDataPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       company: string
-      contract: $Enums.ContractType
       location: string | null
       currently: boolean
       startDate: Date
       endDate: Date
       description: string | null
+      contractTypeId: string | null
       cdId: string
     }, ExtArgs["result"]["experience"]>
     composites: {}
@@ -10330,6 +10374,7 @@ export namespace Prisma {
    */
   export interface Prisma__ExperienceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    contractTypeJob<T extends Experience$contractTypeJobArgs<ExtArgs> = {}>(args?: Subset<T, Experience$contractTypeJobArgs<ExtArgs>>): Prisma__ContractTypeJobClient<$Result.GetResult<Prisma.$ContractTypeJobPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     candidate<T extends CandidatDataDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CandidatDataDefaultArgs<ExtArgs>>): Prisma__CandidatDataClient<$Result.GetResult<Prisma.$CandidatDataPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -10362,12 +10407,12 @@ export namespace Prisma {
   interface ExperienceFieldRefs {
     readonly id: FieldRef<"Experience", 'String'>
     readonly company: FieldRef<"Experience", 'String'>
-    readonly contract: FieldRef<"Experience", 'ContractType'>
     readonly location: FieldRef<"Experience", 'String'>
     readonly currently: FieldRef<"Experience", 'Boolean'>
     readonly startDate: FieldRef<"Experience", 'DateTime'>
     readonly endDate: FieldRef<"Experience", 'DateTime'>
     readonly description: FieldRef<"Experience", 'String'>
+    readonly contractTypeId: FieldRef<"Experience", 'String'>
     readonly cdId: FieldRef<"Experience", 'String'>
   }
     
@@ -10684,6 +10729,21 @@ export namespace Prisma {
      * Filter which Experiences to delete
      */
     where?: ExperienceWhereInput
+  }
+
+  /**
+   * Experience.contractTypeJob
+   */
+  export type Experience$contractTypeJobArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ContractTypeJob
+     */
+    select?: ContractTypeJobSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ContractTypeJobInclude<ExtArgs> | null
+    where?: ContractTypeJobWhereInput
   }
 
   /**
@@ -19926,6 +19986,7 @@ export namespace Prisma {
   export type ContractTypeJobSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    experience?: boolean | ContractTypeJob$experienceArgs<ExtArgs>
     jobOffers?: boolean | ContractTypeJob$jobOffersArgs<ExtArgs>
     _count?: boolean | ContractTypeJobCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["contractTypeJob"]>
@@ -19941,6 +20002,7 @@ export namespace Prisma {
   }
 
   export type ContractTypeJobInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    experience?: boolean | ContractTypeJob$experienceArgs<ExtArgs>
     jobOffers?: boolean | ContractTypeJob$jobOffersArgs<ExtArgs>
     _count?: boolean | ContractTypeJobCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -19949,6 +20011,7 @@ export namespace Prisma {
   export type $ContractTypeJobPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ContractTypeJob"
     objects: {
+      experience: Prisma.$ExperiencePayload<ExtArgs>[]
       jobOffers: Prisma.$jobOffersPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -20318,6 +20381,7 @@ export namespace Prisma {
    */
   export interface Prisma__ContractTypeJobClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    experience<T extends ContractTypeJob$experienceArgs<ExtArgs> = {}>(args?: Subset<T, ContractTypeJob$experienceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExperiencePayload<ExtArgs>, T, "findMany"> | Null>
     jobOffers<T extends ContractTypeJob$jobOffersArgs<ExtArgs> = {}>(args?: Subset<T, ContractTypeJob$jobOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -20661,6 +20725,26 @@ export namespace Prisma {
      * Filter which ContractTypeJobs to delete
      */
     where?: ContractTypeJobWhereInput
+  }
+
+  /**
+   * ContractTypeJob.experience
+   */
+  export type ContractTypeJob$experienceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Experience
+     */
+    select?: ExperienceSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExperienceInclude<ExtArgs> | null
+    where?: ExperienceWhereInput
+    orderBy?: ExperienceOrderByWithRelationInput | ExperienceOrderByWithRelationInput[]
+    cursor?: ExperienceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ExperienceScalarFieldEnum | ExperienceScalarFieldEnum[]
   }
 
   /**
@@ -23574,6 +23658,7 @@ export namespace Prisma {
   export type LevelEducationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    education?: boolean | LevelEducation$educationArgs<ExtArgs>
     jobOffers?: boolean | LevelEducation$jobOffersArgs<ExtArgs>
     _count?: boolean | LevelEducationCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["levelEducation"]>
@@ -23589,6 +23674,7 @@ export namespace Prisma {
   }
 
   export type LevelEducationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    education?: boolean | LevelEducation$educationArgs<ExtArgs>
     jobOffers?: boolean | LevelEducation$jobOffersArgs<ExtArgs>
     _count?: boolean | LevelEducationCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -23597,6 +23683,7 @@ export namespace Prisma {
   export type $LevelEducationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "LevelEducation"
     objects: {
+      education: Prisma.$EducationPayload<ExtArgs>[]
       jobOffers: Prisma.$jobOffersPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -23966,6 +24053,7 @@ export namespace Prisma {
    */
   export interface Prisma__LevelEducationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    education<T extends LevelEducation$educationArgs<ExtArgs> = {}>(args?: Subset<T, LevelEducation$educationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EducationPayload<ExtArgs>, T, "findMany"> | Null>
     jobOffers<T extends LevelEducation$jobOffersArgs<ExtArgs> = {}>(args?: Subset<T, LevelEducation$jobOffersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$jobOffersPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -24309,6 +24397,26 @@ export namespace Prisma {
      * Filter which LevelEducations to delete
      */
     where?: LevelEducationWhereInput
+  }
+
+  /**
+   * LevelEducation.education
+   */
+  export type LevelEducation$educationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Education
+     */
+    select?: EducationSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EducationInclude<ExtArgs> | null
+    where?: EducationWhereInput
+    orderBy?: EducationOrderByWithRelationInput | EducationOrderByWithRelationInput[]
+    cursor?: EducationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EducationScalarFieldEnum | EducationScalarFieldEnum[]
   }
 
   /**
@@ -29273,12 +29381,12 @@ export namespace Prisma {
 
   export const EducationScalarFieldEnum: {
     id: 'id',
-    degree: 'degree',
     school: 'school',
     grade: 'grade',
     startdate: 'startdate',
     enddate: 'enddate',
     description: 'description',
+    levelId: 'levelId',
     cdId: 'cdId'
   };
 
@@ -29298,12 +29406,12 @@ export namespace Prisma {
   export const ExperienceScalarFieldEnum: {
     id: 'id',
     company: 'company',
-    contract: 'contract',
     location: 'location',
     currently: 'currently',
     startDate: 'startDate',
     endDate: 'endDate',
     description: 'description',
+    contractTypeId: 'contractTypeId',
     cdId: 'cdId'
   };
 
@@ -29616,10 +29724,10 @@ export namespace Prisma {
 
   export const EducationOrderByRelevanceFieldEnum: {
     id: 'id',
-    degree: 'degree',
     school: 'school',
     grade: 'grade',
     description: 'description',
+    levelId: 'levelId',
     cdId: 'cdId'
   };
 
@@ -29640,6 +29748,7 @@ export namespace Prisma {
     company: 'company',
     location: 'location',
     description: 'description',
+    contractTypeId: 'contractTypeId',
     cdId: 'cdId'
   };
 
@@ -29946,20 +30055,6 @@ export namespace Prisma {
    * Reference to a field of type 'SkillsLevel[]'
    */
   export type ListEnumSkillsLevelFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SkillsLevel[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'ContractType'
-   */
-  export type EnumContractTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContractType'>
-    
-
-
-  /**
-   * Reference to a field of type 'ContractType[]'
-   */
-  export type ListEnumContractTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContractType[]'>
     
 
 
@@ -30333,25 +30428,27 @@ export namespace Prisma {
     OR?: EducationWhereInput[]
     NOT?: EducationWhereInput | EducationWhereInput[]
     id?: StringFilter<"Education"> | string
-    degree?: StringFilter<"Education"> | string
     school?: StringFilter<"Education"> | string
     grade?: StringNullableFilter<"Education"> | string | null
     startdate?: DateTimeFilter<"Education"> | Date | string
     enddate?: DateTimeFilter<"Education"> | Date | string
     description?: StringNullableFilter<"Education"> | string | null
+    levelId?: StringNullableFilter<"Education"> | string | null
     cdId?: StringFilter<"Education"> | string
+    levelEducation?: XOR<LevelEducationNullableScalarRelationFilter, LevelEducationWhereInput> | null
     candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
   }
 
   export type EducationOrderByWithRelationInput = {
     id?: SortOrder
-    degree?: SortOrder
     school?: SortOrder
     grade?: SortOrderInput | SortOrder
     startdate?: SortOrder
     enddate?: SortOrder
     description?: SortOrderInput | SortOrder
+    levelId?: SortOrderInput | SortOrder
     cdId?: SortOrder
+    levelEducation?: LevelEducationOrderByWithRelationInput
     candidate?: CandidatDataOrderByWithRelationInput
     _relevance?: EducationOrderByRelevanceInput
   }
@@ -30361,24 +30458,25 @@ export namespace Prisma {
     AND?: EducationWhereInput | EducationWhereInput[]
     OR?: EducationWhereInput[]
     NOT?: EducationWhereInput | EducationWhereInput[]
-    degree?: StringFilter<"Education"> | string
     school?: StringFilter<"Education"> | string
     grade?: StringNullableFilter<"Education"> | string | null
     startdate?: DateTimeFilter<"Education"> | Date | string
     enddate?: DateTimeFilter<"Education"> | Date | string
     description?: StringNullableFilter<"Education"> | string | null
+    levelId?: StringNullableFilter<"Education"> | string | null
     cdId?: StringFilter<"Education"> | string
+    levelEducation?: XOR<LevelEducationNullableScalarRelationFilter, LevelEducationWhereInput> | null
     candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
   }, "id">
 
   export type EducationOrderByWithAggregationInput = {
     id?: SortOrder
-    degree?: SortOrder
     school?: SortOrder
     grade?: SortOrderInput | SortOrder
     startdate?: SortOrder
     enddate?: SortOrder
     description?: SortOrderInput | SortOrder
+    levelId?: SortOrderInput | SortOrder
     cdId?: SortOrder
     _count?: EducationCountOrderByAggregateInput
     _max?: EducationMaxOrderByAggregateInput
@@ -30390,12 +30488,12 @@ export namespace Prisma {
     OR?: EducationScalarWhereWithAggregatesInput[]
     NOT?: EducationScalarWhereWithAggregatesInput | EducationScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Education"> | string
-    degree?: StringWithAggregatesFilter<"Education"> | string
     school?: StringWithAggregatesFilter<"Education"> | string
     grade?: StringNullableWithAggregatesFilter<"Education"> | string | null
     startdate?: DateTimeWithAggregatesFilter<"Education"> | Date | string
     enddate?: DateTimeWithAggregatesFilter<"Education"> | Date | string
     description?: StringNullableWithAggregatesFilter<"Education"> | string | null
+    levelId?: StringNullableWithAggregatesFilter<"Education"> | string | null
     cdId?: StringWithAggregatesFilter<"Education"> | string
   }
 
@@ -30456,26 +30554,28 @@ export namespace Prisma {
     NOT?: ExperienceWhereInput | ExperienceWhereInput[]
     id?: StringFilter<"Experience"> | string
     company?: StringFilter<"Experience"> | string
-    contract?: EnumContractTypeFilter<"Experience"> | $Enums.ContractType
     location?: StringNullableFilter<"Experience"> | string | null
     currently?: BoolFilter<"Experience"> | boolean
     startDate?: DateTimeFilter<"Experience"> | Date | string
     endDate?: DateTimeFilter<"Experience"> | Date | string
     description?: StringNullableFilter<"Experience"> | string | null
+    contractTypeId?: StringNullableFilter<"Experience"> | string | null
     cdId?: StringFilter<"Experience"> | string
+    contractTypeJob?: XOR<ContractTypeJobNullableScalarRelationFilter, ContractTypeJobWhereInput> | null
     candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
   }
 
   export type ExperienceOrderByWithRelationInput = {
     id?: SortOrder
     company?: SortOrder
-    contract?: SortOrder
     location?: SortOrderInput | SortOrder
     currently?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     description?: SortOrderInput | SortOrder
+    contractTypeId?: SortOrderInput | SortOrder
     cdId?: SortOrder
+    contractTypeJob?: ContractTypeJobOrderByWithRelationInput
     candidate?: CandidatDataOrderByWithRelationInput
     _relevance?: ExperienceOrderByRelevanceInput
   }
@@ -30486,25 +30586,26 @@ export namespace Prisma {
     OR?: ExperienceWhereInput[]
     NOT?: ExperienceWhereInput | ExperienceWhereInput[]
     company?: StringFilter<"Experience"> | string
-    contract?: EnumContractTypeFilter<"Experience"> | $Enums.ContractType
     location?: StringNullableFilter<"Experience"> | string | null
     currently?: BoolFilter<"Experience"> | boolean
     startDate?: DateTimeFilter<"Experience"> | Date | string
     endDate?: DateTimeFilter<"Experience"> | Date | string
     description?: StringNullableFilter<"Experience"> | string | null
+    contractTypeId?: StringNullableFilter<"Experience"> | string | null
     cdId?: StringFilter<"Experience"> | string
+    contractTypeJob?: XOR<ContractTypeJobNullableScalarRelationFilter, ContractTypeJobWhereInput> | null
     candidate?: XOR<CandidatDataScalarRelationFilter, CandidatDataWhereInput>
   }, "id">
 
   export type ExperienceOrderByWithAggregationInput = {
     id?: SortOrder
     company?: SortOrder
-    contract?: SortOrder
     location?: SortOrderInput | SortOrder
     currently?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     description?: SortOrderInput | SortOrder
+    contractTypeId?: SortOrderInput | SortOrder
     cdId?: SortOrder
     _count?: ExperienceCountOrderByAggregateInput
     _max?: ExperienceMaxOrderByAggregateInput
@@ -30517,12 +30618,12 @@ export namespace Prisma {
     NOT?: ExperienceScalarWhereWithAggregatesInput | ExperienceScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Experience"> | string
     company?: StringWithAggregatesFilter<"Experience"> | string
-    contract?: EnumContractTypeWithAggregatesFilter<"Experience"> | $Enums.ContractType
     location?: StringNullableWithAggregatesFilter<"Experience"> | string | null
     currently?: BoolWithAggregatesFilter<"Experience"> | boolean
     startDate?: DateTimeWithAggregatesFilter<"Experience"> | Date | string
     endDate?: DateTimeWithAggregatesFilter<"Experience"> | Date | string
     description?: StringNullableWithAggregatesFilter<"Experience"> | string | null
+    contractTypeId?: StringNullableWithAggregatesFilter<"Experience"> | string | null
     cdId?: StringWithAggregatesFilter<"Experience"> | string
   }
 
@@ -31219,12 +31320,14 @@ export namespace Prisma {
     NOT?: ContractTypeJobWhereInput | ContractTypeJobWhereInput[]
     id?: StringFilter<"ContractTypeJob"> | string
     name?: StringFilter<"ContractTypeJob"> | string
+    experience?: ExperienceListRelationFilter
     jobOffers?: JobOffersListRelationFilter
   }
 
   export type ContractTypeJobOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    experience?: ExperienceOrderByRelationAggregateInput
     jobOffers?: jobOffersOrderByRelationAggregateInput
     _relevance?: ContractTypeJobOrderByRelevanceInput
   }
@@ -31235,6 +31338,7 @@ export namespace Prisma {
     OR?: ContractTypeJobWhereInput[]
     NOT?: ContractTypeJobWhereInput | ContractTypeJobWhereInput[]
     name?: StringFilter<"ContractTypeJob"> | string
+    experience?: ExperienceListRelationFilter
     jobOffers?: JobOffersListRelationFilter
   }, "id">
 
@@ -31383,12 +31487,14 @@ export namespace Prisma {
     NOT?: LevelEducationWhereInput | LevelEducationWhereInput[]
     id?: StringFilter<"LevelEducation"> | string
     name?: StringFilter<"LevelEducation"> | string
+    education?: EducationListRelationFilter
     jobOffers?: JobOffersListRelationFilter
   }
 
   export type LevelEducationOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    education?: EducationOrderByRelationAggregateInput
     jobOffers?: jobOffersOrderByRelationAggregateInput
     _relevance?: LevelEducationOrderByRelevanceInput
   }
@@ -31399,6 +31505,7 @@ export namespace Prisma {
     OR?: LevelEducationWhereInput[]
     NOT?: LevelEducationWhereInput | LevelEducationWhereInput[]
     name?: StringFilter<"LevelEducation"> | string
+    education?: EducationListRelationFilter
     jobOffers?: JobOffersListRelationFilter
   }, "id">
 
@@ -32065,62 +32172,61 @@ export namespace Prisma {
 
   export type EducationCreateInput = {
     id?: string
-    degree: string
     school: string
     grade?: string | null
     startdate: Date | string
     enddate: Date | string
     description?: string | null
+    levelEducation?: LevelEducationCreateNestedOneWithoutEducationInput
     candidate: CandidatDataCreateNestedOneWithoutEducationInput
   }
 
   export type EducationUncheckedCreateInput = {
     id?: string
-    degree: string
     school: string
     grade?: string | null
     startdate: Date | string
     enddate: Date | string
     description?: string | null
+    levelId?: string | null
     cdId: string
   }
 
   export type EducationUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    degree?: StringFieldUpdateOperationsInput | string
     school?: StringFieldUpdateOperationsInput | string
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     startdate?: DateTimeFieldUpdateOperationsInput | Date | string
     enddate?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    levelEducation?: LevelEducationUpdateOneWithoutEducationNestedInput
     candidate?: CandidatDataUpdateOneRequiredWithoutEducationNestedInput
   }
 
   export type EducationUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    degree?: StringFieldUpdateOperationsInput | string
     school?: StringFieldUpdateOperationsInput | string
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     startdate?: DateTimeFieldUpdateOperationsInput | Date | string
     enddate?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
     cdId?: StringFieldUpdateOperationsInput | string
   }
 
   export type EducationCreateManyInput = {
     id?: string
-    degree: string
     school: string
     grade?: string | null
     startdate: Date | string
     enddate: Date | string
     description?: string | null
+    levelId?: string | null
     cdId: string
   }
 
   export type EducationUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    degree?: StringFieldUpdateOperationsInput | string
     school?: StringFieldUpdateOperationsInput | string
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     startdate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32130,12 +32236,12 @@ export namespace Prisma {
 
   export type EducationUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    degree?: StringFieldUpdateOperationsInput | string
     school?: StringFieldUpdateOperationsInput | string
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     startdate?: DateTimeFieldUpdateOperationsInput | Date | string
     enddate?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
     cdId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -32190,67 +32296,66 @@ export namespace Prisma {
   export type ExperienceCreateInput = {
     id?: string
     company: string
-    contract: $Enums.ContractType
     location?: string | null
     currently?: boolean
     startDate: Date | string
     endDate: Date | string
     description?: string | null
+    contractTypeJob?: ContractTypeJobCreateNestedOneWithoutExperienceInput
     candidate: CandidatDataCreateNestedOneWithoutExperienceInput
   }
 
   export type ExperienceUncheckedCreateInput = {
     id?: string
     company: string
-    contract: $Enums.ContractType
     location?: string | null
     currently?: boolean
     startDate: Date | string
     endDate: Date | string
     description?: string | null
+    contractTypeId?: string | null
     cdId: string
   }
 
   export type ExperienceUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     company?: StringFieldUpdateOperationsInput | string
-    contract?: EnumContractTypeFieldUpdateOperationsInput | $Enums.ContractType
     location?: NullableStringFieldUpdateOperationsInput | string | null
     currently?: BoolFieldUpdateOperationsInput | boolean
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    contractTypeJob?: ContractTypeJobUpdateOneWithoutExperienceNestedInput
     candidate?: CandidatDataUpdateOneRequiredWithoutExperienceNestedInput
   }
 
   export type ExperienceUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     company?: StringFieldUpdateOperationsInput | string
-    contract?: EnumContractTypeFieldUpdateOperationsInput | $Enums.ContractType
     location?: NullableStringFieldUpdateOperationsInput | string | null
     currently?: BoolFieldUpdateOperationsInput | boolean
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    contractTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     cdId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ExperienceCreateManyInput = {
     id?: string
     company: string
-    contract: $Enums.ContractType
     location?: string | null
     currently?: boolean
     startDate: Date | string
     endDate: Date | string
     description?: string | null
+    contractTypeId?: string | null
     cdId: string
   }
 
   export type ExperienceUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     company?: StringFieldUpdateOperationsInput | string
-    contract?: EnumContractTypeFieldUpdateOperationsInput | $Enums.ContractType
     location?: NullableStringFieldUpdateOperationsInput | string | null
     currently?: BoolFieldUpdateOperationsInput | boolean
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32261,12 +32366,12 @@ export namespace Prisma {
   export type ExperienceUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     company?: StringFieldUpdateOperationsInput | string
-    contract?: EnumContractTypeFieldUpdateOperationsInput | $Enums.ContractType
     location?: NullableStringFieldUpdateOperationsInput | string | null
     currently?: BoolFieldUpdateOperationsInput | boolean
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    contractTypeId?: NullableStringFieldUpdateOperationsInput | string | null
     cdId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -32961,24 +33066,28 @@ export namespace Prisma {
   export type ContractTypeJobCreateInput = {
     id?: string
     name: string
+    experience?: ExperienceCreateNestedManyWithoutContractTypeJobInput
     jobOffers?: jobOffersCreateNestedManyWithoutContractTypeInput
   }
 
   export type ContractTypeJobUncheckedCreateInput = {
     id?: string
     name: string
+    experience?: ExperienceUncheckedCreateNestedManyWithoutContractTypeJobInput
     jobOffers?: jobOffersUncheckedCreateNestedManyWithoutContractTypeInput
   }
 
   export type ContractTypeJobUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    experience?: ExperienceUpdateManyWithoutContractTypeJobNestedInput
     jobOffers?: jobOffersUpdateManyWithoutContractTypeNestedInput
   }
 
   export type ContractTypeJobUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    experience?: ExperienceUncheckedUpdateManyWithoutContractTypeJobNestedInput
     jobOffers?: jobOffersUncheckedUpdateManyWithoutContractTypeNestedInput
   }
 
@@ -33117,24 +33226,28 @@ export namespace Prisma {
   export type LevelEducationCreateInput = {
     id?: string
     name: string
+    education?: EducationCreateNestedManyWithoutLevelEducationInput
     jobOffers?: jobOffersCreateNestedManyWithoutLevelEducationInput
   }
 
   export type LevelEducationUncheckedCreateInput = {
     id?: string
     name: string
+    education?: EducationUncheckedCreateNestedManyWithoutLevelEducationInput
     jobOffers?: jobOffersUncheckedCreateNestedManyWithoutLevelEducationInput
   }
 
   export type LevelEducationUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    education?: EducationUpdateManyWithoutLevelEducationNestedInput
     jobOffers?: jobOffersUpdateManyWithoutLevelEducationNestedInput
   }
 
   export type LevelEducationUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    education?: EducationUncheckedUpdateManyWithoutLevelEducationNestedInput
     jobOffers?: jobOffersUncheckedUpdateManyWithoutLevelEducationNestedInput
   }
 
@@ -33965,6 +34078,11 @@ export namespace Prisma {
     socialLink?: SortOrder
   }
 
+  export type LevelEducationNullableScalarRelationFilter = {
+    is?: LevelEducationWhereInput | null
+    isNot?: LevelEducationWhereInput | null
+  }
+
   export type EducationOrderByRelevanceInput = {
     fields: EducationOrderByRelevanceFieldEnum | EducationOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -33973,34 +34091,34 @@ export namespace Prisma {
 
   export type EducationCountOrderByAggregateInput = {
     id?: SortOrder
-    degree?: SortOrder
     school?: SortOrder
     grade?: SortOrder
     startdate?: SortOrder
     enddate?: SortOrder
     description?: SortOrder
+    levelId?: SortOrder
     cdId?: SortOrder
   }
 
   export type EducationMaxOrderByAggregateInput = {
     id?: SortOrder
-    degree?: SortOrder
     school?: SortOrder
     grade?: SortOrder
     startdate?: SortOrder
     enddate?: SortOrder
     description?: SortOrder
+    levelId?: SortOrder
     cdId?: SortOrder
   }
 
   export type EducationMinOrderByAggregateInput = {
     id?: SortOrder
-    degree?: SortOrder
     school?: SortOrder
     grade?: SortOrder
     startdate?: SortOrder
     enddate?: SortOrder
     description?: SortOrder
+    levelId?: SortOrder
     cdId?: SortOrder
   }
 
@@ -34048,11 +34166,9 @@ export namespace Prisma {
     _max?: NestedEnumSkillsLevelFilter<$PrismaModel>
   }
 
-  export type EnumContractTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.ContractType | EnumContractTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.ContractType[] | ListEnumContractTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ContractType[] | ListEnumContractTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumContractTypeFilter<$PrismaModel> | $Enums.ContractType
+  export type ContractTypeJobNullableScalarRelationFilter = {
+    is?: ContractTypeJobWhereInput | null
+    isNot?: ContractTypeJobWhereInput | null
   }
 
   export type ExperienceOrderByRelevanceInput = {
@@ -34064,47 +34180,37 @@ export namespace Prisma {
   export type ExperienceCountOrderByAggregateInput = {
     id?: SortOrder
     company?: SortOrder
-    contract?: SortOrder
     location?: SortOrder
     currently?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     description?: SortOrder
+    contractTypeId?: SortOrder
     cdId?: SortOrder
   }
 
   export type ExperienceMaxOrderByAggregateInput = {
     id?: SortOrder
     company?: SortOrder
-    contract?: SortOrder
     location?: SortOrder
     currently?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     description?: SortOrder
+    contractTypeId?: SortOrder
     cdId?: SortOrder
   }
 
   export type ExperienceMinOrderByAggregateInput = {
     id?: SortOrder
     company?: SortOrder
-    contract?: SortOrder
     location?: SortOrder
     currently?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     description?: SortOrder
+    contractTypeId?: SortOrder
     cdId?: SortOrder
-  }
-
-  export type EnumContractTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.ContractType | EnumContractTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.ContractType[] | ListEnumContractTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ContractType[] | ListEnumContractTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumContractTypeWithAggregatesFilter<$PrismaModel> | $Enums.ContractType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumContractTypeFilter<$PrismaModel>
-    _max?: NestedEnumContractTypeFilter<$PrismaModel>
   }
 
   export type EnumLanguageLevelFilter<$PrismaModel = never> = {
@@ -34424,19 +34530,9 @@ export namespace Prisma {
     isNot?: CategoryWhereInput
   }
 
-  export type ContractTypeJobNullableScalarRelationFilter = {
-    is?: ContractTypeJobWhereInput | null
-    isNot?: ContractTypeJobWhereInput | null
-  }
-
   export type ExperienceMinimalJobNullableScalarRelationFilter = {
     is?: ExperienceMinimalJobWhereInput | null
     isNot?: ExperienceMinimalJobWhereInput | null
-  }
-
-  export type LevelEducationNullableScalarRelationFilter = {
-    is?: LevelEducationWhereInput | null
-    isNot?: LevelEducationWhereInput | null
   }
 
   export type ModeJobNullableScalarRelationFilter = {
@@ -35658,10 +35754,26 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSocialInput, UserUpdateWithoutSocialInput>, UserUncheckedUpdateWithoutSocialInput>
   }
 
+  export type LevelEducationCreateNestedOneWithoutEducationInput = {
+    create?: XOR<LevelEducationCreateWithoutEducationInput, LevelEducationUncheckedCreateWithoutEducationInput>
+    connectOrCreate?: LevelEducationCreateOrConnectWithoutEducationInput
+    connect?: LevelEducationWhereUniqueInput
+  }
+
   export type CandidatDataCreateNestedOneWithoutEducationInput = {
     create?: XOR<CandidatDataCreateWithoutEducationInput, CandidatDataUncheckedCreateWithoutEducationInput>
     connectOrCreate?: CandidatDataCreateOrConnectWithoutEducationInput
     connect?: CandidatDataWhereUniqueInput
+  }
+
+  export type LevelEducationUpdateOneWithoutEducationNestedInput = {
+    create?: XOR<LevelEducationCreateWithoutEducationInput, LevelEducationUncheckedCreateWithoutEducationInput>
+    connectOrCreate?: LevelEducationCreateOrConnectWithoutEducationInput
+    upsert?: LevelEducationUpsertWithoutEducationInput
+    disconnect?: LevelEducationWhereInput | boolean
+    delete?: LevelEducationWhereInput | boolean
+    connect?: LevelEducationWhereUniqueInput
+    update?: XOR<XOR<LevelEducationUpdateToOneWithWhereWithoutEducationInput, LevelEducationUpdateWithoutEducationInput>, LevelEducationUncheckedUpdateWithoutEducationInput>
   }
 
   export type CandidatDataUpdateOneRequiredWithoutEducationNestedInput = {
@@ -35690,14 +35802,26 @@ export namespace Prisma {
     update?: XOR<XOR<CandidatDataUpdateToOneWithWhereWithoutSkillsInput, CandidatDataUpdateWithoutSkillsInput>, CandidatDataUncheckedUpdateWithoutSkillsInput>
   }
 
+  export type ContractTypeJobCreateNestedOneWithoutExperienceInput = {
+    create?: XOR<ContractTypeJobCreateWithoutExperienceInput, ContractTypeJobUncheckedCreateWithoutExperienceInput>
+    connectOrCreate?: ContractTypeJobCreateOrConnectWithoutExperienceInput
+    connect?: ContractTypeJobWhereUniqueInput
+  }
+
   export type CandidatDataCreateNestedOneWithoutExperienceInput = {
     create?: XOR<CandidatDataCreateWithoutExperienceInput, CandidatDataUncheckedCreateWithoutExperienceInput>
     connectOrCreate?: CandidatDataCreateOrConnectWithoutExperienceInput
     connect?: CandidatDataWhereUniqueInput
   }
 
-  export type EnumContractTypeFieldUpdateOperationsInput = {
-    set?: $Enums.ContractType
+  export type ContractTypeJobUpdateOneWithoutExperienceNestedInput = {
+    create?: XOR<ContractTypeJobCreateWithoutExperienceInput, ContractTypeJobUncheckedCreateWithoutExperienceInput>
+    connectOrCreate?: ContractTypeJobCreateOrConnectWithoutExperienceInput
+    upsert?: ContractTypeJobUpsertWithoutExperienceInput
+    disconnect?: ContractTypeJobWhereInput | boolean
+    delete?: ContractTypeJobWhereInput | boolean
+    connect?: ContractTypeJobWhereUniqueInput
+    update?: XOR<XOR<ContractTypeJobUpdateToOneWithWhereWithoutExperienceInput, ContractTypeJobUpdateWithoutExperienceInput>, ContractTypeJobUncheckedUpdateWithoutExperienceInput>
   }
 
   export type CandidatDataUpdateOneRequiredWithoutExperienceNestedInput = {
@@ -36297,6 +36421,13 @@ export namespace Prisma {
     update?: XOR<XOR<jobOffersUpdateToOneWithWhereWithoutSendCandidatureInput, jobOffersUpdateWithoutSendCandidatureInput>, jobOffersUncheckedUpdateWithoutSendCandidatureInput>
   }
 
+  export type ExperienceCreateNestedManyWithoutContractTypeJobInput = {
+    create?: XOR<ExperienceCreateWithoutContractTypeJobInput, ExperienceUncheckedCreateWithoutContractTypeJobInput> | ExperienceCreateWithoutContractTypeJobInput[] | ExperienceUncheckedCreateWithoutContractTypeJobInput[]
+    connectOrCreate?: ExperienceCreateOrConnectWithoutContractTypeJobInput | ExperienceCreateOrConnectWithoutContractTypeJobInput[]
+    createMany?: ExperienceCreateManyContractTypeJobInputEnvelope
+    connect?: ExperienceWhereUniqueInput | ExperienceWhereUniqueInput[]
+  }
+
   export type jobOffersCreateNestedManyWithoutContractTypeInput = {
     create?: XOR<jobOffersCreateWithoutContractTypeInput, jobOffersUncheckedCreateWithoutContractTypeInput> | jobOffersCreateWithoutContractTypeInput[] | jobOffersUncheckedCreateWithoutContractTypeInput[]
     connectOrCreate?: jobOffersCreateOrConnectWithoutContractTypeInput | jobOffersCreateOrConnectWithoutContractTypeInput[]
@@ -36304,11 +36435,32 @@ export namespace Prisma {
     connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
   }
 
+  export type ExperienceUncheckedCreateNestedManyWithoutContractTypeJobInput = {
+    create?: XOR<ExperienceCreateWithoutContractTypeJobInput, ExperienceUncheckedCreateWithoutContractTypeJobInput> | ExperienceCreateWithoutContractTypeJobInput[] | ExperienceUncheckedCreateWithoutContractTypeJobInput[]
+    connectOrCreate?: ExperienceCreateOrConnectWithoutContractTypeJobInput | ExperienceCreateOrConnectWithoutContractTypeJobInput[]
+    createMany?: ExperienceCreateManyContractTypeJobInputEnvelope
+    connect?: ExperienceWhereUniqueInput | ExperienceWhereUniqueInput[]
+  }
+
   export type jobOffersUncheckedCreateNestedManyWithoutContractTypeInput = {
     create?: XOR<jobOffersCreateWithoutContractTypeInput, jobOffersUncheckedCreateWithoutContractTypeInput> | jobOffersCreateWithoutContractTypeInput[] | jobOffersUncheckedCreateWithoutContractTypeInput[]
     connectOrCreate?: jobOffersCreateOrConnectWithoutContractTypeInput | jobOffersCreateOrConnectWithoutContractTypeInput[]
     createMany?: jobOffersCreateManyContractTypeInputEnvelope
     connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type ExperienceUpdateManyWithoutContractTypeJobNestedInput = {
+    create?: XOR<ExperienceCreateWithoutContractTypeJobInput, ExperienceUncheckedCreateWithoutContractTypeJobInput> | ExperienceCreateWithoutContractTypeJobInput[] | ExperienceUncheckedCreateWithoutContractTypeJobInput[]
+    connectOrCreate?: ExperienceCreateOrConnectWithoutContractTypeJobInput | ExperienceCreateOrConnectWithoutContractTypeJobInput[]
+    upsert?: ExperienceUpsertWithWhereUniqueWithoutContractTypeJobInput | ExperienceUpsertWithWhereUniqueWithoutContractTypeJobInput[]
+    createMany?: ExperienceCreateManyContractTypeJobInputEnvelope
+    set?: ExperienceWhereUniqueInput | ExperienceWhereUniqueInput[]
+    disconnect?: ExperienceWhereUniqueInput | ExperienceWhereUniqueInput[]
+    delete?: ExperienceWhereUniqueInput | ExperienceWhereUniqueInput[]
+    connect?: ExperienceWhereUniqueInput | ExperienceWhereUniqueInput[]
+    update?: ExperienceUpdateWithWhereUniqueWithoutContractTypeJobInput | ExperienceUpdateWithWhereUniqueWithoutContractTypeJobInput[]
+    updateMany?: ExperienceUpdateManyWithWhereWithoutContractTypeJobInput | ExperienceUpdateManyWithWhereWithoutContractTypeJobInput[]
+    deleteMany?: ExperienceScalarWhereInput | ExperienceScalarWhereInput[]
   }
 
   export type jobOffersUpdateManyWithoutContractTypeNestedInput = {
@@ -36323,6 +36475,20 @@ export namespace Prisma {
     update?: jobOffersUpdateWithWhereUniqueWithoutContractTypeInput | jobOffersUpdateWithWhereUniqueWithoutContractTypeInput[]
     updateMany?: jobOffersUpdateManyWithWhereWithoutContractTypeInput | jobOffersUpdateManyWithWhereWithoutContractTypeInput[]
     deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type ExperienceUncheckedUpdateManyWithoutContractTypeJobNestedInput = {
+    create?: XOR<ExperienceCreateWithoutContractTypeJobInput, ExperienceUncheckedCreateWithoutContractTypeJobInput> | ExperienceCreateWithoutContractTypeJobInput[] | ExperienceUncheckedCreateWithoutContractTypeJobInput[]
+    connectOrCreate?: ExperienceCreateOrConnectWithoutContractTypeJobInput | ExperienceCreateOrConnectWithoutContractTypeJobInput[]
+    upsert?: ExperienceUpsertWithWhereUniqueWithoutContractTypeJobInput | ExperienceUpsertWithWhereUniqueWithoutContractTypeJobInput[]
+    createMany?: ExperienceCreateManyContractTypeJobInputEnvelope
+    set?: ExperienceWhereUniqueInput | ExperienceWhereUniqueInput[]
+    disconnect?: ExperienceWhereUniqueInput | ExperienceWhereUniqueInput[]
+    delete?: ExperienceWhereUniqueInput | ExperienceWhereUniqueInput[]
+    connect?: ExperienceWhereUniqueInput | ExperienceWhereUniqueInput[]
+    update?: ExperienceUpdateWithWhereUniqueWithoutContractTypeJobInput | ExperienceUpdateWithWhereUniqueWithoutContractTypeJobInput[]
+    updateMany?: ExperienceUpdateManyWithWhereWithoutContractTypeJobInput | ExperienceUpdateManyWithWhereWithoutContractTypeJobInput[]
+    deleteMany?: ExperienceScalarWhereInput | ExperienceScalarWhereInput[]
   }
 
   export type jobOffersUncheckedUpdateManyWithoutContractTypeNestedInput = {
@@ -36465,6 +36631,13 @@ export namespace Prisma {
     deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
   }
 
+  export type EducationCreateNestedManyWithoutLevelEducationInput = {
+    create?: XOR<EducationCreateWithoutLevelEducationInput, EducationUncheckedCreateWithoutLevelEducationInput> | EducationCreateWithoutLevelEducationInput[] | EducationUncheckedCreateWithoutLevelEducationInput[]
+    connectOrCreate?: EducationCreateOrConnectWithoutLevelEducationInput | EducationCreateOrConnectWithoutLevelEducationInput[]
+    createMany?: EducationCreateManyLevelEducationInputEnvelope
+    connect?: EducationWhereUniqueInput | EducationWhereUniqueInput[]
+  }
+
   export type jobOffersCreateNestedManyWithoutLevelEducationInput = {
     create?: XOR<jobOffersCreateWithoutLevelEducationInput, jobOffersUncheckedCreateWithoutLevelEducationInput> | jobOffersCreateWithoutLevelEducationInput[] | jobOffersUncheckedCreateWithoutLevelEducationInput[]
     connectOrCreate?: jobOffersCreateOrConnectWithoutLevelEducationInput | jobOffersCreateOrConnectWithoutLevelEducationInput[]
@@ -36472,11 +36645,32 @@ export namespace Prisma {
     connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
   }
 
+  export type EducationUncheckedCreateNestedManyWithoutLevelEducationInput = {
+    create?: XOR<EducationCreateWithoutLevelEducationInput, EducationUncheckedCreateWithoutLevelEducationInput> | EducationCreateWithoutLevelEducationInput[] | EducationUncheckedCreateWithoutLevelEducationInput[]
+    connectOrCreate?: EducationCreateOrConnectWithoutLevelEducationInput | EducationCreateOrConnectWithoutLevelEducationInput[]
+    createMany?: EducationCreateManyLevelEducationInputEnvelope
+    connect?: EducationWhereUniqueInput | EducationWhereUniqueInput[]
+  }
+
   export type jobOffersUncheckedCreateNestedManyWithoutLevelEducationInput = {
     create?: XOR<jobOffersCreateWithoutLevelEducationInput, jobOffersUncheckedCreateWithoutLevelEducationInput> | jobOffersCreateWithoutLevelEducationInput[] | jobOffersUncheckedCreateWithoutLevelEducationInput[]
     connectOrCreate?: jobOffersCreateOrConnectWithoutLevelEducationInput | jobOffersCreateOrConnectWithoutLevelEducationInput[]
     createMany?: jobOffersCreateManyLevelEducationInputEnvelope
     connect?: jobOffersWhereUniqueInput | jobOffersWhereUniqueInput[]
+  }
+
+  export type EducationUpdateManyWithoutLevelEducationNestedInput = {
+    create?: XOR<EducationCreateWithoutLevelEducationInput, EducationUncheckedCreateWithoutLevelEducationInput> | EducationCreateWithoutLevelEducationInput[] | EducationUncheckedCreateWithoutLevelEducationInput[]
+    connectOrCreate?: EducationCreateOrConnectWithoutLevelEducationInput | EducationCreateOrConnectWithoutLevelEducationInput[]
+    upsert?: EducationUpsertWithWhereUniqueWithoutLevelEducationInput | EducationUpsertWithWhereUniqueWithoutLevelEducationInput[]
+    createMany?: EducationCreateManyLevelEducationInputEnvelope
+    set?: EducationWhereUniqueInput | EducationWhereUniqueInput[]
+    disconnect?: EducationWhereUniqueInput | EducationWhereUniqueInput[]
+    delete?: EducationWhereUniqueInput | EducationWhereUniqueInput[]
+    connect?: EducationWhereUniqueInput | EducationWhereUniqueInput[]
+    update?: EducationUpdateWithWhereUniqueWithoutLevelEducationInput | EducationUpdateWithWhereUniqueWithoutLevelEducationInput[]
+    updateMany?: EducationUpdateManyWithWhereWithoutLevelEducationInput | EducationUpdateManyWithWhereWithoutLevelEducationInput[]
+    deleteMany?: EducationScalarWhereInput | EducationScalarWhereInput[]
   }
 
   export type jobOffersUpdateManyWithoutLevelEducationNestedInput = {
@@ -36491,6 +36685,20 @@ export namespace Prisma {
     update?: jobOffersUpdateWithWhereUniqueWithoutLevelEducationInput | jobOffersUpdateWithWhereUniqueWithoutLevelEducationInput[]
     updateMany?: jobOffersUpdateManyWithWhereWithoutLevelEducationInput | jobOffersUpdateManyWithWhereWithoutLevelEducationInput[]
     deleteMany?: jobOffersScalarWhereInput | jobOffersScalarWhereInput[]
+  }
+
+  export type EducationUncheckedUpdateManyWithoutLevelEducationNestedInput = {
+    create?: XOR<EducationCreateWithoutLevelEducationInput, EducationUncheckedCreateWithoutLevelEducationInput> | EducationCreateWithoutLevelEducationInput[] | EducationUncheckedCreateWithoutLevelEducationInput[]
+    connectOrCreate?: EducationCreateOrConnectWithoutLevelEducationInput | EducationCreateOrConnectWithoutLevelEducationInput[]
+    upsert?: EducationUpsertWithWhereUniqueWithoutLevelEducationInput | EducationUpsertWithWhereUniqueWithoutLevelEducationInput[]
+    createMany?: EducationCreateManyLevelEducationInputEnvelope
+    set?: EducationWhereUniqueInput | EducationWhereUniqueInput[]
+    disconnect?: EducationWhereUniqueInput | EducationWhereUniqueInput[]
+    delete?: EducationWhereUniqueInput | EducationWhereUniqueInput[]
+    connect?: EducationWhereUniqueInput | EducationWhereUniqueInput[]
+    update?: EducationUpdateWithWhereUniqueWithoutLevelEducationInput | EducationUpdateWithWhereUniqueWithoutLevelEducationInput[]
+    updateMany?: EducationUpdateManyWithWhereWithoutLevelEducationInput | EducationUpdateManyWithWhereWithoutLevelEducationInput[]
+    deleteMany?: EducationScalarWhereInput | EducationScalarWhereInput[]
   }
 
   export type jobOffersUncheckedUpdateManyWithoutLevelEducationNestedInput = {
@@ -36981,23 +37189,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumSkillsLevelFilter<$PrismaModel>
     _max?: NestedEnumSkillsLevelFilter<$PrismaModel>
-  }
-
-  export type NestedEnumContractTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.ContractType | EnumContractTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.ContractType[] | ListEnumContractTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ContractType[] | ListEnumContractTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumContractTypeFilter<$PrismaModel> | $Enums.ContractType
-  }
-
-  export type NestedEnumContractTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.ContractType | EnumContractTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.ContractType[] | ListEnumContractTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.ContractType[] | ListEnumContractTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumContractTypeWithAggregatesFilter<$PrismaModel> | $Enums.ContractType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumContractTypeFilter<$PrismaModel>
-    _max?: NestedEnumContractTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumLanguageLevelFilter<$PrismaModel = never> = {
@@ -37527,22 +37718,22 @@ export namespace Prisma {
 
   export type EducationCreateWithoutCandidateInput = {
     id?: string
-    degree: string
     school: string
     grade?: string | null
     startdate: Date | string
     enddate: Date | string
     description?: string | null
+    levelEducation?: LevelEducationCreateNestedOneWithoutEducationInput
   }
 
   export type EducationUncheckedCreateWithoutCandidateInput = {
     id?: string
-    degree: string
     school: string
     grade?: string | null
     startdate: Date | string
     enddate: Date | string
     description?: string | null
+    levelId?: string | null
   }
 
   export type EducationCreateOrConnectWithoutCandidateInput = {
@@ -37558,23 +37749,23 @@ export namespace Prisma {
   export type ExperienceCreateWithoutCandidateInput = {
     id?: string
     company: string
-    contract: $Enums.ContractType
     location?: string | null
     currently?: boolean
     startDate: Date | string
     endDate: Date | string
     description?: string | null
+    contractTypeJob?: ContractTypeJobCreateNestedOneWithoutExperienceInput
   }
 
   export type ExperienceUncheckedCreateWithoutCandidateInput = {
     id?: string
     company: string
-    contract: $Enums.ContractType
     location?: string | null
     currently?: boolean
     startDate: Date | string
     endDate: Date | string
     description?: string | null
+    contractTypeId?: string | null
   }
 
   export type ExperienceCreateOrConnectWithoutCandidateInput = {
@@ -37803,12 +37994,12 @@ export namespace Prisma {
     OR?: EducationScalarWhereInput[]
     NOT?: EducationScalarWhereInput | EducationScalarWhereInput[]
     id?: StringFilter<"Education"> | string
-    degree?: StringFilter<"Education"> | string
     school?: StringFilter<"Education"> | string
     grade?: StringNullableFilter<"Education"> | string | null
     startdate?: DateTimeFilter<"Education"> | Date | string
     enddate?: DateTimeFilter<"Education"> | Date | string
     description?: StringNullableFilter<"Education"> | string | null
+    levelId?: StringNullableFilter<"Education"> | string | null
     cdId?: StringFilter<"Education"> | string
   }
 
@@ -37834,12 +38025,12 @@ export namespace Prisma {
     NOT?: ExperienceScalarWhereInput | ExperienceScalarWhereInput[]
     id?: StringFilter<"Experience"> | string
     company?: StringFilter<"Experience"> | string
-    contract?: EnumContractTypeFilter<"Experience"> | $Enums.ContractType
     location?: StringNullableFilter<"Experience"> | string | null
     currently?: BoolFilter<"Experience"> | boolean
     startDate?: DateTimeFilter<"Experience"> | Date | string
     endDate?: DateTimeFilter<"Experience"> | Date | string
     description?: StringNullableFilter<"Experience"> | string | null
+    contractTypeId?: StringNullableFilter<"Experience"> | string | null
     cdId?: StringFilter<"Experience"> | string
   }
 
@@ -38230,6 +38421,23 @@ export namespace Prisma {
     reviews?: RatingUncheckedUpdateManyWithoutReviewerNestedInput
   }
 
+  export type LevelEducationCreateWithoutEducationInput = {
+    id?: string
+    name: string
+    jobOffers?: jobOffersCreateNestedManyWithoutLevelEducationInput
+  }
+
+  export type LevelEducationUncheckedCreateWithoutEducationInput = {
+    id?: string
+    name: string
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutLevelEducationInput
+  }
+
+  export type LevelEducationCreateOrConnectWithoutEducationInput = {
+    where: LevelEducationWhereUniqueInput
+    create: XOR<LevelEducationCreateWithoutEducationInput, LevelEducationUncheckedCreateWithoutEducationInput>
+  }
+
   export type CandidatDataCreateWithoutEducationInput = {
     id?: string
     firstname: string
@@ -38277,6 +38485,29 @@ export namespace Prisma {
   export type CandidatDataCreateOrConnectWithoutEducationInput = {
     where: CandidatDataWhereUniqueInput
     create: XOR<CandidatDataCreateWithoutEducationInput, CandidatDataUncheckedCreateWithoutEducationInput>
+  }
+
+  export type LevelEducationUpsertWithoutEducationInput = {
+    update: XOR<LevelEducationUpdateWithoutEducationInput, LevelEducationUncheckedUpdateWithoutEducationInput>
+    create: XOR<LevelEducationCreateWithoutEducationInput, LevelEducationUncheckedCreateWithoutEducationInput>
+    where?: LevelEducationWhereInput
+  }
+
+  export type LevelEducationUpdateToOneWithWhereWithoutEducationInput = {
+    where?: LevelEducationWhereInput
+    data: XOR<LevelEducationUpdateWithoutEducationInput, LevelEducationUncheckedUpdateWithoutEducationInput>
+  }
+
+  export type LevelEducationUpdateWithoutEducationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUpdateManyWithoutLevelEducationNestedInput
+  }
+
+  export type LevelEducationUncheckedUpdateWithoutEducationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutLevelEducationNestedInput
   }
 
   export type CandidatDataUpsertWithoutEducationInput = {
@@ -38438,6 +38669,23 @@ export namespace Prisma {
     candidatLifeState?: CandidatLifeStateUncheckedUpdateOneWithoutCandidateNestedInput
   }
 
+  export type ContractTypeJobCreateWithoutExperienceInput = {
+    id?: string
+    name: string
+    jobOffers?: jobOffersCreateNestedManyWithoutContractTypeInput
+  }
+
+  export type ContractTypeJobUncheckedCreateWithoutExperienceInput = {
+    id?: string
+    name: string
+    jobOffers?: jobOffersUncheckedCreateNestedManyWithoutContractTypeInput
+  }
+
+  export type ContractTypeJobCreateOrConnectWithoutExperienceInput = {
+    where: ContractTypeJobWhereUniqueInput
+    create: XOR<ContractTypeJobCreateWithoutExperienceInput, ContractTypeJobUncheckedCreateWithoutExperienceInput>
+  }
+
   export type CandidatDataCreateWithoutExperienceInput = {
     id?: string
     firstname: string
@@ -38485,6 +38733,29 @@ export namespace Prisma {
   export type CandidatDataCreateOrConnectWithoutExperienceInput = {
     where: CandidatDataWhereUniqueInput
     create: XOR<CandidatDataCreateWithoutExperienceInput, CandidatDataUncheckedCreateWithoutExperienceInput>
+  }
+
+  export type ContractTypeJobUpsertWithoutExperienceInput = {
+    update: XOR<ContractTypeJobUpdateWithoutExperienceInput, ContractTypeJobUncheckedUpdateWithoutExperienceInput>
+    create: XOR<ContractTypeJobCreateWithoutExperienceInput, ContractTypeJobUncheckedCreateWithoutExperienceInput>
+    where?: ContractTypeJobWhereInput
+  }
+
+  export type ContractTypeJobUpdateToOneWithWhereWithoutExperienceInput = {
+    where?: ContractTypeJobWhereInput
+    data: XOR<ContractTypeJobUpdateWithoutExperienceInput, ContractTypeJobUncheckedUpdateWithoutExperienceInput>
+  }
+
+  export type ContractTypeJobUpdateWithoutExperienceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUpdateManyWithoutContractTypeNestedInput
+  }
+
+  export type ContractTypeJobUncheckedUpdateWithoutExperienceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    jobOffers?: jobOffersUncheckedUpdateManyWithoutContractTypeNestedInput
   }
 
   export type CandidatDataUpsertWithoutExperienceInput = {
@@ -39533,11 +39804,13 @@ export namespace Prisma {
   export type ContractTypeJobCreateWithoutJobOffersInput = {
     id?: string
     name: string
+    experience?: ExperienceCreateNestedManyWithoutContractTypeJobInput
   }
 
   export type ContractTypeJobUncheckedCreateWithoutJobOffersInput = {
     id?: string
     name: string
+    experience?: ExperienceUncheckedCreateNestedManyWithoutContractTypeJobInput
   }
 
   export type ContractTypeJobCreateOrConnectWithoutJobOffersInput = {
@@ -39563,11 +39836,13 @@ export namespace Prisma {
   export type LevelEducationCreateWithoutJobOffersInput = {
     id?: string
     name: string
+    education?: EducationCreateNestedManyWithoutLevelEducationInput
   }
 
   export type LevelEducationUncheckedCreateWithoutJobOffersInput = {
     id?: string
     name: string
+    education?: EducationUncheckedCreateNestedManyWithoutLevelEducationInput
   }
 
   export type LevelEducationCreateOrConnectWithoutJobOffersInput = {
@@ -39812,11 +40087,13 @@ export namespace Prisma {
   export type ContractTypeJobUpdateWithoutJobOffersInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    experience?: ExperienceUpdateManyWithoutContractTypeJobNestedInput
   }
 
   export type ContractTypeJobUncheckedUpdateWithoutJobOffersInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    experience?: ExperienceUncheckedUpdateManyWithoutContractTypeJobNestedInput
   }
 
   export type ExperienceMinimalJobUpsertWithoutJobOffersInput = {
@@ -39854,11 +40131,13 @@ export namespace Prisma {
   export type LevelEducationUpdateWithoutJobOffersInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    education?: EducationUpdateManyWithoutLevelEducationNestedInput
   }
 
   export type LevelEducationUncheckedUpdateWithoutJobOffersInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    education?: EducationUncheckedUpdateManyWithoutLevelEducationNestedInput
   }
 
   export type ModeJobUpsertWithoutJobOffersInput = {
@@ -40434,6 +40713,38 @@ export namespace Prisma {
     savedBy?: SavedJobsUncheckedUpdateManyWithoutJobOfferNestedInput
   }
 
+  export type ExperienceCreateWithoutContractTypeJobInput = {
+    id?: string
+    company: string
+    location?: string | null
+    currently?: boolean
+    startDate: Date | string
+    endDate: Date | string
+    description?: string | null
+    candidate: CandidatDataCreateNestedOneWithoutExperienceInput
+  }
+
+  export type ExperienceUncheckedCreateWithoutContractTypeJobInput = {
+    id?: string
+    company: string
+    location?: string | null
+    currently?: boolean
+    startDate: Date | string
+    endDate: Date | string
+    description?: string | null
+    cdId: string
+  }
+
+  export type ExperienceCreateOrConnectWithoutContractTypeJobInput = {
+    where: ExperienceWhereUniqueInput
+    create: XOR<ExperienceCreateWithoutContractTypeJobInput, ExperienceUncheckedCreateWithoutContractTypeJobInput>
+  }
+
+  export type ExperienceCreateManyContractTypeJobInputEnvelope = {
+    data: ExperienceCreateManyContractTypeJobInput | ExperienceCreateManyContractTypeJobInput[]
+    skipDuplicates?: boolean
+  }
+
   export type jobOffersCreateWithoutContractTypeInput = {
     id?: string
     title: string
@@ -40494,6 +40805,22 @@ export namespace Prisma {
   export type jobOffersCreateManyContractTypeInputEnvelope = {
     data: jobOffersCreateManyContractTypeInput | jobOffersCreateManyContractTypeInput[]
     skipDuplicates?: boolean
+  }
+
+  export type ExperienceUpsertWithWhereUniqueWithoutContractTypeJobInput = {
+    where: ExperienceWhereUniqueInput
+    update: XOR<ExperienceUpdateWithoutContractTypeJobInput, ExperienceUncheckedUpdateWithoutContractTypeJobInput>
+    create: XOR<ExperienceCreateWithoutContractTypeJobInput, ExperienceUncheckedCreateWithoutContractTypeJobInput>
+  }
+
+  export type ExperienceUpdateWithWhereUniqueWithoutContractTypeJobInput = {
+    where: ExperienceWhereUniqueInput
+    data: XOR<ExperienceUpdateWithoutContractTypeJobInput, ExperienceUncheckedUpdateWithoutContractTypeJobInput>
+  }
+
+  export type ExperienceUpdateManyWithWhereWithoutContractTypeJobInput = {
+    where: ExperienceScalarWhereInput
+    data: XOR<ExperienceUpdateManyMutationInput, ExperienceUncheckedUpdateManyWithoutContractTypeJobInput>
   }
 
   export type jobOffersUpsertWithWhereUniqueWithoutContractTypeInput = {
@@ -40746,6 +41073,36 @@ export namespace Prisma {
     data: XOR<jobOffersUpdateManyMutationInput, jobOffersUncheckedUpdateManyWithoutWorkingTimeJobInput>
   }
 
+  export type EducationCreateWithoutLevelEducationInput = {
+    id?: string
+    school: string
+    grade?: string | null
+    startdate: Date | string
+    enddate: Date | string
+    description?: string | null
+    candidate: CandidatDataCreateNestedOneWithoutEducationInput
+  }
+
+  export type EducationUncheckedCreateWithoutLevelEducationInput = {
+    id?: string
+    school: string
+    grade?: string | null
+    startdate: Date | string
+    enddate: Date | string
+    description?: string | null
+    cdId: string
+  }
+
+  export type EducationCreateOrConnectWithoutLevelEducationInput = {
+    where: EducationWhereUniqueInput
+    create: XOR<EducationCreateWithoutLevelEducationInput, EducationUncheckedCreateWithoutLevelEducationInput>
+  }
+
+  export type EducationCreateManyLevelEducationInputEnvelope = {
+    data: EducationCreateManyLevelEducationInput | EducationCreateManyLevelEducationInput[]
+    skipDuplicates?: boolean
+  }
+
   export type jobOffersCreateWithoutLevelEducationInput = {
     id?: string
     title: string
@@ -40806,6 +41163,22 @@ export namespace Prisma {
   export type jobOffersCreateManyLevelEducationInputEnvelope = {
     data: jobOffersCreateManyLevelEducationInput | jobOffersCreateManyLevelEducationInput[]
     skipDuplicates?: boolean
+  }
+
+  export type EducationUpsertWithWhereUniqueWithoutLevelEducationInput = {
+    where: EducationWhereUniqueInput
+    update: XOR<EducationUpdateWithoutLevelEducationInput, EducationUncheckedUpdateWithoutLevelEducationInput>
+    create: XOR<EducationCreateWithoutLevelEducationInput, EducationUncheckedCreateWithoutLevelEducationInput>
+  }
+
+  export type EducationUpdateWithWhereUniqueWithoutLevelEducationInput = {
+    where: EducationWhereUniqueInput
+    data: XOR<EducationUpdateWithoutLevelEducationInput, EducationUncheckedUpdateWithoutLevelEducationInput>
+  }
+
+  export type EducationUpdateManyWithWhereWithoutLevelEducationInput = {
+    where: EducationScalarWhereInput
+    data: XOR<EducationUpdateManyMutationInput, EducationUncheckedUpdateManyWithoutLevelEducationInput>
   }
 
   export type jobOffersUpsertWithWhereUniqueWithoutLevelEducationInput = {
@@ -41491,23 +41864,23 @@ export namespace Prisma {
 
   export type EducationCreateManyCandidateInput = {
     id?: string
-    degree: string
     school: string
     grade?: string | null
     startdate: Date | string
     enddate: Date | string
     description?: string | null
+    levelId?: string | null
   }
 
   export type ExperienceCreateManyCandidateInput = {
     id?: string
     company: string
-    contract: $Enums.ContractType
     location?: string | null
     currently?: boolean
     startDate: Date | string
     endDate: Date | string
     description?: string | null
+    contractTypeId?: string | null
   }
 
   export type HobbiesCreateManyCandidateInput = {
@@ -41568,65 +41941,65 @@ export namespace Prisma {
 
   export type EducationUpdateWithoutCandidateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    degree?: StringFieldUpdateOperationsInput | string
     school?: StringFieldUpdateOperationsInput | string
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     startdate?: DateTimeFieldUpdateOperationsInput | Date | string
     enddate?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    levelEducation?: LevelEducationUpdateOneWithoutEducationNestedInput
   }
 
   export type EducationUncheckedUpdateWithoutCandidateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    degree?: StringFieldUpdateOperationsInput | string
     school?: StringFieldUpdateOperationsInput | string
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     startdate?: DateTimeFieldUpdateOperationsInput | Date | string
     enddate?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EducationUncheckedUpdateManyWithoutCandidateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    degree?: StringFieldUpdateOperationsInput | string
     school?: StringFieldUpdateOperationsInput | string
     grade?: NullableStringFieldUpdateOperationsInput | string | null
     startdate?: DateTimeFieldUpdateOperationsInput | Date | string
     enddate?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    levelId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ExperienceUpdateWithoutCandidateInput = {
     id?: StringFieldUpdateOperationsInput | string
     company?: StringFieldUpdateOperationsInput | string
-    contract?: EnumContractTypeFieldUpdateOperationsInput | $Enums.ContractType
     location?: NullableStringFieldUpdateOperationsInput | string | null
     currently?: BoolFieldUpdateOperationsInput | boolean
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    contractTypeJob?: ContractTypeJobUpdateOneWithoutExperienceNestedInput
   }
 
   export type ExperienceUncheckedUpdateWithoutCandidateInput = {
     id?: StringFieldUpdateOperationsInput | string
     company?: StringFieldUpdateOperationsInput | string
-    contract?: EnumContractTypeFieldUpdateOperationsInput | $Enums.ContractType
     location?: NullableStringFieldUpdateOperationsInput | string | null
     currently?: BoolFieldUpdateOperationsInput | boolean
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    contractTypeId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ExperienceUncheckedUpdateManyWithoutCandidateInput = {
     id?: StringFieldUpdateOperationsInput | string
     company?: StringFieldUpdateOperationsInput | string
-    contract?: EnumContractTypeFieldUpdateOperationsInput | $Enums.ContractType
     location?: NullableStringFieldUpdateOperationsInput | string | null
     currently?: BoolFieldUpdateOperationsInput | boolean
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    contractTypeId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type HobbiesUpdateWithoutCandidateInput = {
@@ -42049,6 +42422,17 @@ export namespace Prisma {
     savedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ExperienceCreateManyContractTypeJobInput = {
+    id?: string
+    company: string
+    location?: string | null
+    currently?: boolean
+    startDate: Date | string
+    endDate: Date | string
+    description?: string | null
+    cdId: string
+  }
+
   export type jobOffersCreateManyContractTypeInput = {
     id?: string
     title: string
@@ -42069,6 +42453,39 @@ export namespace Prisma {
     levelId?: string | null
     agencyId: string
     branchId?: string | null
+  }
+
+  export type ExperienceUpdateWithoutContractTypeJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    currently?: BoolFieldUpdateOperationsInput | boolean
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    candidate?: CandidatDataUpdateOneRequiredWithoutExperienceNestedInput
+  }
+
+  export type ExperienceUncheckedUpdateWithoutContractTypeJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    currently?: BoolFieldUpdateOperationsInput | boolean
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    cdId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ExperienceUncheckedUpdateManyWithoutContractTypeJobInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    location?: NullableStringFieldUpdateOperationsInput | string | null
+    currently?: BoolFieldUpdateOperationsInput | boolean
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    cdId?: StringFieldUpdateOperationsInput | string
   }
 
   export type jobOffersUpdateWithoutContractTypeInput = {
@@ -42433,6 +42850,16 @@ export namespace Prisma {
     branchId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type EducationCreateManyLevelEducationInput = {
+    id?: string
+    school: string
+    grade?: string | null
+    startdate: Date | string
+    enddate: Date | string
+    description?: string | null
+    cdId: string
+  }
+
   export type jobOffersCreateManyLevelEducationInput = {
     id?: string
     title: string
@@ -42453,6 +42880,36 @@ export namespace Prisma {
     workingTimeId?: string | null
     agencyId: string
     branchId?: string | null
+  }
+
+  export type EducationUpdateWithoutLevelEducationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    school?: StringFieldUpdateOperationsInput | string
+    grade?: NullableStringFieldUpdateOperationsInput | string | null
+    startdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    enddate?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    candidate?: CandidatDataUpdateOneRequiredWithoutEducationNestedInput
+  }
+
+  export type EducationUncheckedUpdateWithoutLevelEducationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    school?: StringFieldUpdateOperationsInput | string
+    grade?: NullableStringFieldUpdateOperationsInput | string | null
+    startdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    enddate?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    cdId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type EducationUncheckedUpdateManyWithoutLevelEducationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    school?: StringFieldUpdateOperationsInput | string
+    grade?: NullableStringFieldUpdateOperationsInput | string | null
+    startdate?: DateTimeFieldUpdateOperationsInput | Date | string
+    enddate?: DateTimeFieldUpdateOperationsInput | Date | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    cdId?: StringFieldUpdateOperationsInput | string
   }
 
   export type jobOffersUpdateWithoutLevelEducationInput = {

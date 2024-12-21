@@ -1,17 +1,18 @@
+'use client'
+
 import { IVacanciaesFullDate } from "@/features/agency/vacancy/types"
 import styles from './vacancyPage.module.scss'
-import { CiCalendarDate, CiCirclePlus, CiHeart, CiRead, CiTrash } from "react-icons/ci"
-import { LiaHeartBrokenSolid } from "react-icons/lia"
+import { CiCalendarDate, CiRead } from "react-icons/ci"
 import { formatDate } from "@/shared/utils";
 import { useAppSelector } from "@/shared/hooks";
 import Link from "next/link";
-import { useRouter } from 'next/navigation';
 import { VacancyCardAuthorInfo } from "../vacancyCard/VCAuthorInfo"
 import Breadcrumbs from "@/features/breadcrumbs/components/BreadCrumbs"
 import { Button, Heading } from "@/shared/components";
 import { UserRole } from "@/features/auth/types";
-import { useDeleteFromCVSended, useDeleteFromFavorute, useSandetCandidature, useSaveInFavorite } from "../../hooks";
-import { MAIN_URL } from "@/shared/config";
+import { CandidateBtns } from "../candidatBtns/CandidateBtns";
+import { useEffect, useState } from "react";
+import DOMPurify from 'isomorphic-dompurify';
 
 export default function VacancyPage({
   id,
@@ -34,11 +35,12 @@ export default function VacancyPage({
   sendCandidature: curriculum
 }: IVacanciaesFullDate) {
   const authUser = useAppSelector(state => state.reducer.user.data)
-  const router = useRouter()
-  const { saveJob, isSaved } = useSaveInFavorite()
-  const { sendCandidature, isSendet } = useSandetCandidature()
-  const { deleteFormFavorite } = useDeleteFromFavorute()
-  const { deleteCVFormJob } = useDeleteFromCVSended()
+  const [isClient, setIsClient] = useState(false);
+  const sanitizedContent = DOMPurify.sanitize(description || '');
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const author = {
     slug: branchId ? branch.id : agency.slug,
@@ -47,34 +49,6 @@ export default function VacancyPage({
     logo: branchId ? branch.logo : agency.logo,
     email: branchId ? branch.email : agency.user.email,
     phone: branchId ? branch.phone : agency.phone,
-  }
-
-  const saveInFavorite = () => {
-    if (!authUser) {
-      return router.push(MAIN_URL.authCandidat())
-    }
-
-    if (authUser.role === UserRole.Candidat) {
-      saveJob(id!)
-    }
-  }
-
-  const sendCandudaturetoJob = () => {
-    if (!authUser) {
-      return router.push(MAIN_URL.authCandidat())
-    }
-
-    if (authUser.role === UserRole.Candidat) {
-      sendCandidature(id!)
-    }
-  }
-
-  const deleteFromFavorite = () => {
-    deleteFormFavorite(id!)
-  }
-
-  const deleteCandudatureFromJob = () => {
-    deleteCVFormJob(id!)
   }
 
   return (
@@ -89,29 +63,16 @@ export default function VacancyPage({
             {reallyUpTo && <div className={styles.reallyUpTo}>Attuale fino {formatDate(reallyUpTo)}</div>}
           </div>
           {authUser?.role !== UserRole.Agency && <div className={styles.favoriteCandidat}>
-            {isSaved || savedBy?.some(saved => saved.candidate.userId === authUser?.id) ? (
-              <Button onClick={() => deleteFromFavorite()} >
-                <LiaHeartBrokenSolid />
-              </Button>
-            ) : (
-              <Button onClick={() => saveInFavorite()}>
-                <CiHeart />
-              </Button>
-            )}
-            {isSendet || curriculum?.some(cv => cv.candidate.userId === authUser?.id) ? (
-
-              <Button onClick={() => deleteCandudatureFromJob()}>
-                <CiTrash /> Annulla candidatura
-              </Button>
-            ) : (
-              <Button onClick={() => sendCandudaturetoJob()}>
-                <CiCirclePlus /> Candidati
-              </Button>
-            )}
+            <CandidateBtns jobId={id!} authUser={authUser!} curriculum={curriculum!} savedBy={savedBy!} />
           </div>}
         </div>
         <div className={styles.description}>
-          <p dangerouslySetInnerHTML={{ __html: description }}></p>
+          {isClient && (
+            <div
+              dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+              className="prose max-w-none"
+            />
+          )}
         </div>
       </div>
       <div className={styles.authorSector}>

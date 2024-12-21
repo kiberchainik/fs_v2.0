@@ -9,7 +9,7 @@ export class CandidatLifeStateController {
   constructor(private readonly candidatLifeStateService: CandidatLifeStateService) { }
 
   @Post()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   create(
     @CurrentUser('id') userId: string,
     @Body() createCandidatLifeStateDto: CreateCandidatLifeStateDto
@@ -18,7 +18,7 @@ export class CandidatLifeStateController {
   }
 
   @Get()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   findOne(
     @CurrentUser('id') userId: string
   ) {
@@ -26,7 +26,7 @@ export class CandidatLifeStateController {
   }
 
   @Delete()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   remove(
     @CurrentUser('id') userId: string
   ) {

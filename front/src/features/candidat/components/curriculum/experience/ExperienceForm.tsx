@@ -1,13 +1,15 @@
-import { Checkbox, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/components"
+import { Checkbox, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/shared/components"
 import { DateTimePicker } from "@/shared/components/datapicker/Datapicker"
 import { UseFormReturn, Controller } from "react-hook-form"
 import { TypeExperienceSchema } from "../../../schemes"
+import { IOptions } from "@/features/agency/vacancy/types"
 
 type FormProps = {
+    contractType: IOptions[]
     formData: UseFormReturn<TypeExperienceSchema, any, undefined>
 }
 
-export default function ExperienceForm({ formData }: FormProps) {
+export default function ExperienceForm({ formData, contractType }: FormProps) {
     return (
         <>
             <div className='flex md:flex-row flex-col w-full gap-3'>
@@ -25,7 +27,7 @@ export default function ExperienceForm({ formData }: FormProps) {
                 />
                 <Controller
                     control={formData.control}
-                    name='contract'
+                    name='contractTypeId'
                     render={({ field }) => (
                         <FormItem className='w-full'>
                             <Select
@@ -38,13 +40,11 @@ export default function ExperienceForm({ formData }: FormProps) {
                                     </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
-                                    <SelectItem value='NONE'>NONE</SelectItem>
-                                    <SelectItem value='PARTTIME'>PARTTIME</SelectItem>
-                                    <SelectItem value='SELFEMPLOYED'>SELFEMPLOYED</SelectItem>
-                                    <SelectItem value='FREELANCE'>FREELANCE</SelectItem>
-                                    <SelectItem value='CONTRACT'>CONTRACT</SelectItem>
-                                    <SelectItem value='INTERNSHIP'>INTERNSHIP</SelectItem>
-                                    <SelectItem value='APPRENTICESHIP'>APPRENTICESHIP</SelectItem>
+                                    <SelectGroup>
+                                        {contractType ? contractType.map(type => (
+                                            <SelectItem value={type.id} key={type.id}>{type.name}</SelectItem>
+                                        )) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+                                    </SelectGroup>
                                 </SelectContent>
                             </Select>
                             <FormMessage />

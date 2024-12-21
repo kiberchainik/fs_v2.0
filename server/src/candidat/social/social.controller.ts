@@ -10,7 +10,7 @@ export class SocialController {
   constructor(private readonly socialService: SocialService) { }
 
   @Post()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   create(
     @CurrentUser('id') userId: string,
     @Body() createSocialDto: CreateSocialDto) {
@@ -18,13 +18,13 @@ export class SocialController {
   }
 
   @Get()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   findAll(@CurrentUser('id') userId: string) {
     return this.socialService.findAll(userId)
   }
 
   @Patch(':id')
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   update(
     @CurrentUser('id') userId: string,
     @Param('id') id: string,
@@ -34,7 +34,7 @@ export class SocialController {
   }
 
   @Delete(':id')
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   remove(
     @CurrentUser('id') userId: string,
     @Param('id') id: string

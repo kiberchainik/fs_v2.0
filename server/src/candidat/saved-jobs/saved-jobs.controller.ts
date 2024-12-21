@@ -9,7 +9,7 @@ export class SavedJobsController {
   constructor(private readonly savedJobsService: SavedJobsService) { }
 
   @Post()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   async saveJob(
     @Body() jobId: CreateSavedJobDto,
     @CurrentUser('id') userId: string,
@@ -18,7 +18,7 @@ export class SavedJobsController {
   }
 
   @Delete(':jobId')
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   async removeFromSaved(
     @Param('jobId') jobId: string,
     @CurrentUser('id') userId: string,
@@ -27,7 +27,7 @@ export class SavedJobsController {
   }
 
   @Get()
-  @Authorization(UserRole.CANDIDAT)
+  @Authorization(UserRole.CANDIDATE)
   async getSavedJobs(@CurrentUser('id') userId: string) {
     return await this.savedJobsService.getSavedJobs(userId);
   }

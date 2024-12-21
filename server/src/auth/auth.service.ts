@@ -106,7 +106,7 @@ export class AuthService {
                 isVerified: true,
                 method: AuthMethod.GOOGLE,
                 password: '',
-                role: UserRole.CANDIDAT
+                role: UserRole.CANDIDATE
             })
 		}
 

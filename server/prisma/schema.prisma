@@ -13,7 +13,7 @@ model User {
   id                 String        @id @default(uuid())
   email              String        @unique
   password           String
-  role               UserRole      @default(CANDIDAT)
+  role               UserRole      @default(CANDIDATE)
   isVerified         Boolean       @default(false) @map("is_verified")
   isTwoFactorEnabled Boolean       @default(false) @map("is_two_factor_enabled")
   method             AuthMethod
@@ -24,10 +24,8 @@ model User {
   authAccounts       AuthAccount[]
   candidatdata       CandidatData?
 
-  // Рейтинги, которые пользователь получил
   ratings Rating[] @relation("UserRatings")
 
-  // Рейтинги, которые пользователь поставил
   reviews Rating[] @relation("ReviewerRatings")
 
   @@map("users")
@@ -81,12 +79,13 @@ model UserSocial {
 
 model Education {
   id          String       @id @default(uuid())
-  degree      String
   school      String
   grade       String?
   startdate   DateTime     @db.Date
   enddate     DateTime     @db.Date
   description String?
+  levelId     String?      @map("level_education_id")
+  levelEducation       LevelEducation?       @relation(fields: [levelId], references: [id])
   cdId        String       @map("candidate_id")
   candidate   CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
 }
@@ -102,12 +101,13 @@ model Skills {
 model Experience {
   id          String       @id @default(uuid())
   company     String
-  contract    ContractType
   location    String?
   currently   Boolean      @default(false)
   startDate   DateTime
   endDate     DateTime
   description String?
+  contractTypeId String?      @map("contract_type_id")
+  contractTypeJob ContractTypeJob? @relation(fields: [contractTypeId], references: [id])
   cdId        String       @map("candidate_id")
   candidate   CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
 }
@@ -253,6 +253,7 @@ model SendCandidature {
 model ContractTypeJob {
   id        String      @id @default(uuid())
   name      String
+  experience Experience[]
   jobOffers jobOffers[]
 
   @@map("contract_type")
@@ -285,6 +286,7 @@ model WorkingTimeJob {
 model LevelEducation {
   id        String      @id @default(uuid())
   name      String
+  education Education[]
   jobOffers jobOffers[]
 
   @@map("level_education")
@@ -395,7 +397,7 @@ enum UserRole {
   USER
   ADMIN
   MODERATOR
-  CANDIDAT
+  CANDIDATE
   AGENCY
 }
 

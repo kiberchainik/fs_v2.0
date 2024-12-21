@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const EducationSchema = z.object({
-    degree: z.string(),
+    levelId: z.string(),
     school: z.string(),
     grade: z.string().optional(),
     dateRange: z.object(

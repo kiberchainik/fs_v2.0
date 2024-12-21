@@ -4,7 +4,9 @@ import { categoryService } from '@/features/category/services'
 import VacancyList from '@/features/vacancy/components/vacancyList/VacancyList';
 import { vacancyPageServices } from '@/features/vacancy/services';
 import { CATEGORY_DESCRIPTION, CATEGORY_NAME, CATEGORY_NOT_FOUND } from '@/shared/constants/seo.constants';
+import { LoaderCircle } from 'lucide-react';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { cache } from 'react';
 
 export const revalidate = 60;
@@ -39,57 +41,37 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 export default async function CategoryPage({ params, searchParams }: Props) {
     const { vacancies, count, pageCount } = await getCategoryData({ params, searchParams })
 
+    if (!vacancies) {
+        return notFound()
+    }
+
     const breadcrumbs = useBreadcrumbs({
         category: params.category,
-        currentCategory: { name: vacancies.name, slug: vacancies.slug },
+        currentCategory: { 
+            name: vacancies.name, 
+            slug: vacancies.slug 
+        },
     })
 
-    if (!vacancies) {
-        const { count, items: vacancies, pageCount } = await vacancyPageServices.getVacancyList(searchParams)
-
-        return (
-            <div className='my-6'>
-                <div className='flex gap-5 justify-between m-10'>
-                    <div className='w-1/3 hidden md:block'>
-                        <CategoryMenu />
-                    </div>
-                    <div className='flex flex-col gap-y-5 w-full'>
-                        <VacancyList
-                            name={CATEGORY_NAME}
-                            description={CATEGORY_DESCRIPTION}
-                            slug={'/'}
-                            jobs={vacancies}
-                            count={count}
-                            pageCount={pageCount}
-                            breadcrumbs={breadcrumbs}
-                            category_not_found={CATEGORY_NOT_FOUND}
-                        />
-                    </div>
+    return (
+        <div className='my-6'>
+            <div className='flex gap-5 justify-between m-10'>
+                <div className='w-1/3 hidden md:block'>
+                    <CategoryMenu />
+                </div>
+                <div className='flex flex-col gap-y-5 w-full'>
+                    <VacancyList
+                        name={vacancies.name || CATEGORY_NAME}
+                        description={vacancies.description || CATEGORY_DESCRIPTION}
+                        slug={vacancies.slug || '/'}
+                        jobs={vacancies.jobOffers || []}
+                        count={count}
+                        pageCount={pageCount}
+                        breadcrumbs={breadcrumbs}
+                        category_not_found={!vacancies.name ? CATEGORY_NOT_FOUND : undefined}
+                    />
                 </div>
             </div>
-        )
-    }
-
-    if (vacancies) {
-        return (
-            <div className='my-6'>
-                <div className='flex gap-5 justify-between m-10'>
-                    <div className='w-1/3 hidden md:block'>
-                        <CategoryMenu />
-                    </div>
-                    <div className='flex flex-col gap-y-5 w-full'>
-                        <VacancyList
-                            name={vacancies.name}
-                            description={vacancies.description}
-                            slug={vacancies.slug}
-                            jobs={vacancies.jobOffers}
-                            count={count}
-                            pageCount={pageCount}
-                            breadcrumbs={breadcrumbs}
-                        />
-                    </div>
-                </div>
-            </div>
-        )
-    }
+        </div>
+    )
 }

@@ -4,10 +4,10 @@ import Image from "next/image";
 
 export default function Template2({ privacy, courses, education, experience, hobbies, languages, lifestatus, skills, user }: IPreviewTemplates) {
     return (
-        <div className="container mx-auto py-8">
-            <div className="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
+        <div className="container mx-auto">
+            <div className="grid grid-cols-4 sm:grid-cols-12 gap-2">
                 <div className="col-span-4 sm:col-span-3">
-                    <div className="bg-white shadow rounded-lg p-6">
+                    <div className="bg-white shadow rounded-lg p-2">
                         <div className="flex flex-col items-center">
                             <Image src={user.avatar![0]} alt={`${privacy.firstname}`} fill className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0" />
                             <h1 className="text-xl font-bold">{privacy.firstname} {privacy.surname}</h1>
@@ -80,7 +80,7 @@ export default function Template2({ privacy, courses, education, experience, hob
                         {education && education.map(item => (
                             <div className="mb-6">
                                 <div className="flex justify-between flex-wrap gap-2 w-full">
-                                    <span className="text-gray-700 font-bold">{item.degree}</span>
+                                    <span className="text-gray-700 font-bold">{item.grade}</span>
                                     <p>
                                         <span className="text-gray-700 mr-2">at {item.school}</span>
                                         <span className="text-gray-700">{formatDate(item.startdate, { dateFormat: 'year' })} - {formatDate(item.enddate, { dateFormat: 'year' })}</span>
@@ -96,7 +96,7 @@ export default function Template2({ privacy, courses, education, experience, hob
                                 <div className="flex justify-between flex-wrap gap-2 w-full">
                                     <span className="text-gray-700 font-bold">{item.company}</span>
                                     <p>
-                                        <span className="text-gray-700 mr-2">at {item.contract}</span>
+                                        <span className="text-gray-700 mr-2">at {item.contractTypeJob?.name}</span>
                                         <span className="text-gray-700">{formatDate(item.startDate, { dateFormat: 'year' })} - {
                                             item.currently ? 'Current work' : formatDate(item.endDate, { dateFormat: 'year' })
                                         }</span>

@@ -8,12 +8,18 @@ export class ExperienceService {
   constructor(private readonly prisma: PrismaService) { }
 
   async create(userId: string, createExperienceDto: CreateExperienceDto) {
+    const { contractTypeId, ...rest } = createExperienceDto
     return await this.prisma.experience.create({
       data: {
-        ...createExperienceDto,
+        ...rest,
         candidate: {
           connect: {
             userId
+          }
+        },
+        contractTypeJob: {
+          connect: {
+            id: contractTypeId
           }
         }
       }
@@ -23,18 +29,18 @@ export class ExperienceService {
   async findAll(userId: string) {
     return await this.prisma.experience.findMany({
       where: {
-        AND: [
-          {
-            candidate: {
-              userId
-            }
-          }
-        ]
+        candidate: {
+          userId
+        }
+      },
+      include: {
+        contractTypeJob: true
       }
     })
   }
 
   async update(id: string, userId: string, updateExperienceDto: UpdateExperienceDto) {
+    const { contractTypeId, ...rest } = updateExperienceDto
     return await this.prisma.experience.updateMany({
       where: {
         AND: [
@@ -43,7 +49,8 @@ export class ExperienceService {
         ]
       },
       data: {
-        ...updateExperienceDto
+        ...updateExperienceDto,
+        contractTypeId
       }
     })
   }

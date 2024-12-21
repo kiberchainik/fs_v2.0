@@ -4,7 +4,18 @@ import Image from "next/image"
 import Link from "next/link"
 import { CiAt, CiGift, CiLocationOn, CiMobile3 } from "react-icons/ci"
 
-export default function Template1({ privacy, courses, education, experience, hobbies, languages, lifestatus, skills, user, socialLinks }: IPreviewTemplates) {
+export default function Template1({ 
+    privacy, 
+    courses, 
+    education, 
+    experience, 
+    hobbies, 
+    languages, 
+    lifestatus, 
+    skills, 
+    user, 
+    socialLinks 
+}: IPreviewTemplates) {
     return (
         <div className="border-1 shadow-lg shadow-gray-700 rounded-lg ">
             <div className="flex rounded-t-lg bg-sky-500 sm:px-2 w-full">
@@ -24,12 +35,12 @@ export default function Template1({ privacy, courses, education, experience, hob
                         <div className="py-3 sm:order-none order-3">
                             <h2 className="text-lg font-poppins font-bold text-sky-600">My Contact</h2>
                             <div className="border-2 w-20 border-sky-600 my-3"></div>
-                            <div>
+                            <div className='text-sm'>
                                 {socialLinks && (
                                     <div className='flex gap-2'>
                                         {socialLinks.map(social => (
                                             <Link href={social.socialLink} target="_blank">
-                                                <span className='text-sm' dangerouslySetInnerHTML={{ __html: domainToSVG(social.socialLink) }}></span>
+                                                <span className='text-sm' dangerouslySetInnerHTML={{ __html: domainToSVG(social.socialLink) }} key={social.socialLink}></span>
                                             </Link>
                                         ))}
                                     </div>)}
@@ -59,74 +70,39 @@ export default function Template1({ privacy, courses, education, experience, hob
                                 </div>
                             </div>
                         </div>
-                        <div className="py-3 sm:order-none order-1">
-                            <h2 className="text-lg font-poppins font-bold text-sky-600">Courses</h2>
-                            <div className="border-2 w-20 border-sky-600 my-3"></div>
-                            <div className="flex flex-col space-y-1">
-                                {education && education.map(item => (
-                                    <div className="flex flex-col">
-                                        <p className="font-semibold text-xs text-gray-700">
-                                            {formatDate(item.startdate, { dateFormat: 'year' })} - {formatDate(item.enddate, { dateFormat: 'year' })}
-                                        </p>
-                                        <p className="text-sm font-medium">
-                                            <span className="text-green-700">{item.degree}</span>, {item.school}
-                                        </p>
-                                        {item.description && <p className="font-bold text-xs text-gray-700 mb-2">{item.description}</p>}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="py-3 sm:order-none order-1">
-                            <h2 className="text-lg font-poppins font-bold text-sky-600">Education</h2>
-                            <div className="border-2 w-20 border-sky-600 my-3"></div>
-                            <div className="flex flex-col space-y-1">
-                                {courses && courses.map(course => (
-                                    <div className="flex flex-col">
-                                        <p className="font-semibold text-xs text-gray-700">
-                                            {formatDate(course.startdate)} - {formatDate(course.enddate)}
-                                        </p>
-                                        <p className="text-sm font-medium">
-                                            <span className="text-green-700">{course.course}</span>
-                                            <span className="text-green-700">{course.institution}</span>
-                                        </p>
-                                        {course.grade && <p className="font-bold text-xs text-gray-700 mb-2">{course.grade}</p>}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="py-3 sm:order-none order-2">
-                            <h2 className="text-lg font-poppins font-bold text-sky-600">Skills</h2>
-                            <div className="border-2 w-20 border-sky-600 my-3"></div>
-                            <div>
-                                {skills && skills.map(skill => (
-                                    <div className="flex items-center my-1">
-                                        <div className="ml-2">{skill.skill} - {skill.level}</div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        <div className="py-3 sm:order-none order-2">
+                        {languages && <div className="py-3 sm:order-none order-2">
                             <h2 className="text-lg font-poppins font-bold text-sky-600">Languages</h2>
                             <div className="border-2 w-20 border-sky-600 my-3"></div>
-                            <div>
-                                {languages && languages.map(lang => (
-                                    <div className="flex items-center my-1">
+                            <div className='text-sm'>
+                                {languages.map(lang => (
+                                    <div className="flex items-center my-1" key={lang.id}>
                                         <div className="ml-2">{lang.language} - {lang.level}</div>
                                     </div>
                                 ))}
                             </div>
-                        </div>
-                        <div className="py-3 sm:order-none order-2">
+                        </div>}
+                        {skills && <div className="py-3 sm:order-none order-2">
+                            <h2 className="text-lg font-poppins font-bold text-sky-600">Skills</h2>
+                            <div className="border-2 w-20 border-sky-600 my-3"></div>
+                            <div className='text-sm'>
+                                {skills.map(skill => (
+                                    <div className="flex items-center my-1" key={skill.id}>
+                                        <div className="ml-2">{skill.skill} - {skill.level}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>}
+                        {hobbies && <div className="py-3 sm:order-none order-2">
                             <h2 className="text-lg font-poppins font-bold text-sky-600">Hobbie</h2>
                             <div className="border-2 w-20 border-sky-600 my-3"></div>
                             <div>
-                                {hobbies && hobbies.map(hobbie => (
-                                    <div className="flex items-center my-1">
+                                {hobbies.map(hobbie => (
+                                    <div className="flex items-center my-1" key={hobbie.id}>
                                         <div className="ml-2">{hobbie.hobbie}</div>
                                     </div>
                                 ))}
                             </div>
-                        </div>
+                        </div>}
                     </div>
                     <div className="flex flex-col sm:w-2/3 order-first sm:order-none sm:-mt-10">
                         <div className="py-3">
@@ -137,24 +113,58 @@ export default function Template1({ privacy, courses, education, experience, hob
                             </div>
                             <div dangerouslySetInnerHTML={{ __html: privacy!.about_my }}></div>
                         </div>
-                        <div className="py-3">
-                            <h2 className="text-lg font-poppins font-bold text-sky-600">Professional Experience</h2>
+                        {education && <div className="py-3">
+                            <h2 className="text-lg font-poppins font-bold text-sky-600">Educazione</h2>
                             <div className="border-2 w-20 border-sky-600 my-3"></div>
                             <div className="flex flex-col">
-                                {experience && experience.map(item => (
-                                    <div className="flex flex-col">
-                                        <p className="text-lg font-bold text-gray-700">{item.contract}</p>
+                                {education.map(item => (
+                                    <div className="flex flex-col" key={item.id}>
+                                        <p className="text-lg font-bold text-gray-700">{item.school}</p>
                                         <p className="font-semibold text-sm text-gray-700">
-                                            {formatDate(item.startDate)} - {
-                                                item.currently ? 'Currently work' : formatDate(item.endDate)
-                                            }
+                                            {formatDate(item.startdate, { dateFormat: 'year' })} - {formatDate(item.enddate, { dateFormat: 'year' })}
                                         </p>
-                                        <p className="font-semibold text-sm text-gray-700 mt-2 mb-1">{item.contract}</p>
+                                        <p className="font-semibold text-sm text-gray-700 mt-2 mb-1">
+                                            <span className="text-green-700">{item.grade}</span>, {item.school}
+                                        </p>
                                         {item.description && <p className="font-semibold text-sm text-gray-700 mt-2 mb-1">{item.description}</p>}
                                     </div>
                                 ))}
                             </div>
-                        </div>
+                        </div>}
+                        {courses && <div className="py-3">
+                            <h2 className="text-lg font-poppins font-bold text-sky-600">Corse</h2>
+                            <div className="border-2 w-20 border-sky-600 my-3"></div>
+                            <div className="flex flex-col">
+                                {courses.map(item => (
+                                    <div className="flex flex-col" key={item.id}>
+                                        <p className="font-semibold text-sm text-gray-700">
+                                            {formatDate(item.startdate, { dateFormat: 'year' })} - {formatDate(item.enddate, { dateFormat: 'year' })}
+                                        </p>
+                                        <p className="font-semibold text-sm text-gray-700 mt-2 mb-1">
+                                            <span className="text-green-700">{item.course}</span>, {item.institution}
+                                        </p>
+                                        {item.grade && <p className="font-bold text-xs text-gray-700 mb-2">{item.grade}</p>}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>}
+                        {experience && <div className="py-3">
+                            <h2 className="text-lg font-poppins font-bold text-sky-600">Professional Experience</h2>
+                            <div className="border-2 w-20 border-sky-600 my-3"></div>
+                            <div className="flex flex-col">
+                                {experience.map(item => (
+                                    <div className="flex flex-col" key={item.id}>
+                                        <p className="text-lg font-bold text-gray-700">{item.company}, {item.contractTypeJob?.name}</p>
+                                        <p className="font-semibold text-sm text-gray-700">
+                                            {formatDate(item.startDate, { dateFormat: 'year' })} - {
+                                                item.currently ? 'Currently work' : formatDate(item.endDate, { dateFormat: 'year' })
+                                            }
+                                        </p>
+                                        {item.description && <p className="font-semibold text-sm text-gray-700 mt-2 mb-1">{item.description}</p>}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>}
                     </div>
                 </div>
             </div>

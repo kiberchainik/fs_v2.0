@@ -6,8 +6,6 @@ import { API_URL } from "@/shared/config";
 class UserService {
     public async getPrivacy() {
         const { data } = await axiosPrivate.get<IPrivacy>(API_URL.candidatProfile())
-        console.log('user privacy: ' + data);
-
         return data
     }
 

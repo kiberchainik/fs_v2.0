@@ -23,8 +23,8 @@ export function Curriculum() {
                 <Skills />
                 <Social />
             </div>
-            <div className='w-full h-full'>
-                <div className='sticky top-[70] self-start'>
+            <div className='w-full h-full flex'>
+                <div className='sticky top-[70px] self-start'>
                     <PreviewsPortfolio />
                 </div>
             </div>
