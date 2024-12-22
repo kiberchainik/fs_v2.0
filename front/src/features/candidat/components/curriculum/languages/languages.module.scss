@@ -6,8 +6,30 @@
     @apply flex md:flex-row flex-col gap-3 justify-between items-center w-full;
 }
 
+.formEditWrapper {
+    @apply flex md:flex-row flex-col gap-3 justify-between items-center w-full px-6 border border-l-2 border-r-2 border-r-blue-400 border-l-orange-400 p-4 text-sm rounded-2xl;
+}
+
 .languagesList {
-    @apply flex justify-between items-center w-full;
+    @apply flex justify-between items-center w-full px-6 border border-l-2 border-r-2 border-r-blue-400 border-l-orange-400 p-4 text-sm rounded-2xl;
+
+    > .border_language_info {
+        > .language_info_title {
+            @apply uppercase text-base font-extrabold
+        }
+
+        > .language_info_grade {
+            @apply text-slate-800 gap-x-3;
+
+            > .language_info_years {
+                @apply font-bold
+            }
+        }
+
+        > .language_info_description {
+            @apply text-gray-500
+        }
+    }
 }
 
 .editLanguagesForm {

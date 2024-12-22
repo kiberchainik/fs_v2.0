@@ -3,11 +3,33 @@
 }
 
 .formWrapper {
-    @apply flex flex-col gap-3 justify-between items-end p-6;
+    @apply flex flex-col gap-3 justify-between items-end px-6;
+}
+
+.formEditWrapper {
+    @apply flex flex-col gap-3 justify-between items-end px-6 w-full border border-l-2 border-r-2 border-r-blue-400 border-l-orange-400 p-4 text-sm rounded-2xl;
 }
 
 .educationList {
-    @apply flex justify-between items-center w-full px-6;
+    @apply flex justify-between items-center w-full px-6 border border-l-2 border-r-2 border-r-blue-400 border-l-orange-400 p-4 text-sm rounded-2xl;
+
+    > .border_education_info {
+        > .education_info_title {
+            @apply uppercase text-base font-extrabold
+        }
+
+        > .education_info_grade {
+            @apply text-slate-800 gap-x-3;
+
+            > .education_info_years {
+                @apply font-bold
+            }
+        }
+
+        > .education_info_description {
+            @apply text-gray-500
+        }
+    }
 }
 
 .editEducationForm {

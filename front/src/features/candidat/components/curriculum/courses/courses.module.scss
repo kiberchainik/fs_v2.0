@@ -6,8 +6,30 @@
     @apply flex flex-col gap-3 justify-between items-end p-6;
 }
 
+.formEditWrapper {
+    @apply flex flex-col gap-3 justify-between items-end px-6 w-full border border-l-2 border-r-2 border-r-blue-400 border-l-orange-400 p-4 text-sm rounded-2xl;
+}
+
 .coursesList {
-    @apply flex justify-between items-center w-full px-6;
+    @apply flex justify-between items-center w-full px-6 border border-l-2 border-r-2 border-r-blue-400 border-l-orange-400 p-4 text-sm rounded-2xl;
+
+    > .course_info {
+        > .course_info_title {
+            @apply uppercase text-base font-extrabold
+        }
+
+        > .course_info_institution {
+            @apply text-slate-800 gap-x-3;
+
+            > .course_info_years {
+                @apply font-bold
+            }
+        }
+
+        > .course_info_description {
+            @apply text-gray-500
+        }
+    }
 }
 
 .editCourseForm {

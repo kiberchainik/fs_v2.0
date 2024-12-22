@@ -46,7 +46,7 @@ export default function Courses() {
                                     <Form {...editForm}>
                                         <form
                                             onSubmit={editForm.handleSubmit(() => handleSaveCourse(course.id))}
-                                            className={styles.formWrapper}
+                                            className={styles.formEditWrapper}
                                         >
                                             <CourseForm formData={editForm} />
                                             <div className='flex gap-x-1'>
@@ -61,12 +61,14 @@ export default function Courses() {
                                     </Form>
                                 ) : (
                                     <div className={styles.coursesList}>
-                                        <span>{course.course}</span>
+                                        <div className={styles.course_info}>
+                                            <span className={styles.course_info_title}>{course.course}</span> \ <span className={styles.course_info_institution}>{course.institution}</span>
+                                        </div>
                                         <div className='flex gap-x-1'>
-                                            <Button onClick={() => handleEditCourse(course)} variant='link'>
+                                            <Button onClick={() => handleEditCourse(course)} variant='secondary'>
                                                 <CiEdit />
                                             </Button>
-                                            <Button onClick={() => handleDeleteCourse(course.id)} variant='link' disabled={deletingCourseId === course.id}>
+                                            <Button onClick={() => handleDeleteCourse(course.id)} variant='destructive' disabled={deletingCourseId === course.id}>
                                                 {deletingCourseId === course.id ? 'Deleting...' : <CiTrash />}
                                             </Button>
                                         </div>

@@ -53,7 +53,7 @@ export default function Education() {
                                             <Form {...editForm}>
                                                 <form
                                                     onSubmit={editForm.handleSubmit(() => handleSaveEducation(item.id))}
-                                                    className={styles.formWrapper}
+                                                    className={styles.formEditWrapper}
                                                 >
                                                     <EducationForm formData={editForm} levelEducation={levelEducation!} />
                                                     <div className='flex gap-x-1'>
@@ -68,18 +68,17 @@ export default function Education() {
                                             </Form>
                                         ) : (
                                             <div className={styles.educationList}>
-                                                <div>
-                                                    <div>{item.school}</div>
-                                                    <div>{item.grade}</div>
-                                                    <div>{formatDate(item.startdate, { dateFormat: 'year' })} - {formatDate(item.enddate, { dateFormat: 'year' })}</div>
-                                                    {item.description && <div>{item.description}</div>}
+                                                <div className={styles.border_education_info}>
+                                                    <div className={styles.education_info_title}>{item.school}</div>
+                                                    <div className={styles.education_info_grade}><span className={styles.education_info_years}>{formatDate(item.startdate, { dateFormat: 'year' })} - {formatDate(item.enddate, { dateFormat: 'year' })}</span> \ <span>{item.grade}</span></div>
+                                                    {item.description && <div className={styles.education_info_description}>{item.description}</div>}
                                                 </div>
-                                                <div className='flex gap-x-1'>
-                                                    <Button onClick={() => handleEditEducation(item)} variant='link'>
-                                                        <CiEdit />
+                                                <div className='flex gap-x-2'>
+                                                    <Button onClick={() => handleEditEducation(item)} variant='secondary' className='p-3'>
+                                                        <CiEdit className='text-lg' />
                                                     </Button>
-                                                    <Button onClick={() => handleDeleteEducation(item.id)} variant='link' disabled={deletingEducationId === item.id}>
-                                                        {deletingEducationId === item.id ? 'Deleting...' : <CiTrash />}
+                                                    <Button onClick={() => handleDeleteEducation(item.id)} variant='destructive' disabled={deletingEducationId === item.id} className='p-3'>
+                                                        {deletingEducationId === item.id ? 'Deleting...' : <CiTrash className='text-lg text-white' />}
                                                     </Button>
                                                 </div>
                                             </div>

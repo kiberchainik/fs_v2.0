@@ -1,7 +1,7 @@
 'use client'
 
 import { Form, Button, Card, CardHeader, CardTitle, CardContent } from '@/shared/components/ui'
-import { useLanguagesLogic } from '../../../hooks/useLanguages'
+import { useLanguagesLogic } from '../../../hooks'
 import { CiEdit, CiTrash } from 'react-icons/ci'
 import LanuageForm from './LanguageForm'
 
@@ -50,7 +50,7 @@ export default function Languages() {
                                     <Form {...editForm}>
                                         <form
                                             onSubmit={editForm.handleSubmit(() => handleSaveLanguage(language.id))}
-                                            className={styles.formWrapper}
+                                            className={styles.formEditWrapper}
                                         >
                                             <LanuageForm formData={editForm} />
                                             <div className='flex gap-x-1'>
@@ -63,14 +63,14 @@ export default function Languages() {
                                     </Form>
                                 ) : (
                                     <div className={styles.languagesList}>
-                                        <span>
-                                            {language.language} - {language.level}
-                                        </span>
+                                        <div className={styles.border_language_info}>
+                                            <span className={styles.language_info_title}>{language.language}</span> \ <span className={styles.language_info_grade}>{language.level}</span>
+                                        </div>
                                         <div className='flex gap-x-1'>
-                                            <Button onClick={() => handleEditLanguage(language)} variant='link'>
+                                            <Button onClick={() => handleEditLanguage(language)} variant='secondary'>
                                                 <CiEdit />
                                             </Button>
-                                            <Button onClick={() => handleDeleteLanguage(language.id)} variant='link' disabled={deletingLanguageId === language.id}>
+                                            <Button onClick={() => handleDeleteLanguage(language.id)} variant='destructive' disabled={deletingLanguageId === language.id}>
                                                 {deletingLanguageId === language.id ? 'Deleting...' : <CiTrash />}
                                             </Button>
                                         </div>
