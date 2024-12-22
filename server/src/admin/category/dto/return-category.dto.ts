@@ -1,4 +1,4 @@
-import { Prisma } from "prisma/__generated__";
+import { Prisma } from "@prisma/client";
 
 export const returnCategoryBaseObject: Prisma.CategorySelect = {
 	id: true,

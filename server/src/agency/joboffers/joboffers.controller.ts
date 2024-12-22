@@ -4,7 +4,7 @@ import { CreateJobofferDto } from './dto/create-joboffer.dto'
 import { UpdateJobofferDto } from './dto/update-joboffer.dto'
 import { JobOffersDto } from './dto'
 import { Authorization, CurrentUser } from '@/auth/decorators'
-import { UserRole } from 'prisma/__generated__'
+import { UserRole } from '@prisma/client'
 import { FilterJobsDto } from './dto/filterJobs.dto'
 
 @Controller('joboffers')

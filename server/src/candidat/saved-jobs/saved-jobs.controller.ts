@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { SavedJobsService } from './saved-jobs.service';
 import { CreateSavedJobDto } from './dto/create-saved-job.dto'
 import { Authorization, CurrentUser } from '@/auth/decorators';
-import { UserRole } from 'prisma/__generated__';
+import { UserRole } from '@prisma/client';
 
 @Controller('saved-jobs')
 export class SavedJobsController {

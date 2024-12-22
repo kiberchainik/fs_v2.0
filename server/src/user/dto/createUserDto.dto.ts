@@ -1,12 +1,12 @@
 import { IsEmail, IsString, MinLength, IsNotEmpty } from "class-validator";
-import { AuthMethod, UserRole } from "prisma/__generated__";
+import { AuthMethod, UserRole } from "@prisma/client";
 
 export class CreateUserDto {
-    @IsNotEmpty({message: 'Email обязателен для указания'})
-    @IsEmail({}, {message: 'Не верный формат email'})
+    @IsNotEmpty({ message: 'Email обязателен для указания' })
+    @IsEmail({}, { message: 'Не верный формат email' })
     email: string
 
-    @MinLength(6, {message: 'Пароль обязателен и не может быть менее 6 символов'})
+    @MinLength(6, { message: 'Пароль обязателен и не может быть менее 6 символов' })
     @IsString()
     password: string
 
@@ -14,6 +14,6 @@ export class CreateUserDto {
 
     isVerified: boolean
 
-    @IsString({message: 'Вы регистируетесь как кандидат или как агентвоство? '})
+    @IsString({ message: 'Вы регистируетесь как кандидат или как агентвоство? ' })
     role: UserRole
 }

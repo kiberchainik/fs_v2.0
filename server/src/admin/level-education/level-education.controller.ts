@@ -3,11 +3,11 @@ import { LevelEducationService } from './level-education.service';
 import { CreateLevelEducationDto } from './dto/create-level-education.dto';
 import { UpdateLevelEducationDto } from './dto/update-level-education.dto';
 import { Authorization } from '@/auth/decorators';
-import { UserRole } from 'prisma/__generated__';
+import { UserRole } from '@prisma/client';
 
 @Controller('level-education')
 export class LevelEducationController {
-  constructor(private readonly levelEducationService: LevelEducationService) {}
+  constructor(private readonly levelEducationService: LevelEducationService) { }
 
   @Authorization(UserRole.ADMIN)
   @Post()

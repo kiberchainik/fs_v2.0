@@ -1,7 +1,7 @@
 import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common'
 import { CreateCategoryDto, CreateSectorDto, PaginationCategoryQueryDto, returnCategoryBaseObject, UpdateCategoryDto, UpdateSectorDto } from './dto'
 import { PrismaService } from '@/prisma/prisma.service'
-import { Prisma } from 'prisma/__generated__'
+import { Prisma } from '@prisma/client'
 import { DBError, slugify } from '@/utils'
 import { returnAgencyBaseObject } from '@/agency/dto'
 import { JobOffersDto } from '@/agency/joboffers/dto'

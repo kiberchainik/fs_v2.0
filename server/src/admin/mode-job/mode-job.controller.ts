@@ -3,11 +3,11 @@ import { ModeJobService } from './mode-job.service';
 import { CreateModeJobDto } from './dto/create-mode-job.dto';
 import { UpdateModeJobDto } from './dto/update-mode-job.dto';
 import { Authorization } from '@/auth/decorators';
-import { UserRole } from 'prisma/__generated__';
+import { UserRole } from '@prisma/client';
 
 @Controller('mode-job')
 export class ModeJobController {
-  constructor(private readonly modeJobService: ModeJobService) {}
+  constructor(private readonly modeJobService: ModeJobService) { }
 
   @Authorization(UserRole.ADMIN)
   @Post()

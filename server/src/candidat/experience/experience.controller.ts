@@ -3,14 +3,14 @@ import { ExperienceService } from './experience.service';
 import { CreateExperienceDto } from './dto/create-experience.dto';
 import { UpdateExperienceDto } from './dto/update-experience.dto';
 import { Authorization, CurrentUser } from '@/auth/decorators';
-import { UserRole } from 'prisma/__generated__';
+import { UserRole } from '@prisma/client';
 
 @Controller('experience')
 export class ExperienceController {
   constructor(private readonly experienceService: ExperienceService) { }
 
   @Post()
-  @Authorization(UserRole.CANDIDATE )
+  @Authorization(UserRole.CANDIDATE)
   create(
     @CurrentUser('id') userId: string,
     @Body() createExperienceDto: CreateExperienceDto) {

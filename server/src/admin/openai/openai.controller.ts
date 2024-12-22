@@ -1,11 +1,11 @@
 import { Controller, Post, Body } from "@nestjs/common";
 import { OpenAIService } from "./openai.service";
 import { Authorization } from "@/auth/decorators";
-import { UserRole } from "prisma/__generated__";
+import { UserRole } from "@prisma/client";
 
 @Controller("ai-generate")
 export class OpenAIController {
-  constructor(private readonly openAIService: OpenAIService) {}
+  constructor(private readonly openAIService: OpenAIService) { }
 
   @Post()
   @Authorization(UserRole.AGENCY)

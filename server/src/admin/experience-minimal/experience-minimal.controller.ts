@@ -3,11 +3,11 @@ import { ExperienceMinimalService } from './experience-minimal.service';
 import { CreateExperienceMinimalDto } from './dto/create-experience-minimal.dto';
 import { UpdateExperienceMinimalDto } from './dto/update-experience-minimal.dto';
 import { Authorization } from '@/auth/decorators';
-import { UserRole } from 'prisma/__generated__';
+import { UserRole } from '@prisma/client';
 
 @Controller('experience-minimal')
 export class ExperienceMinimalController {
-  constructor(private readonly experienceMinimalService: ExperienceMinimalService) {}
+  constructor(private readonly experienceMinimalService: ExperienceMinimalService) { }
 
   @Authorization(UserRole.ADMIN)
   @Post()

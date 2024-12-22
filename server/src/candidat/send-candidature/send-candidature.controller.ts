@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { SendCandidatureService } from './send-candidature.service'
 import { CreateSendCandidatureDto } from './dto/create-send-candidature.dto'
 import { Authorization, CurrentUser } from '@/auth/decorators'
-import { UserRole } from 'prisma/__generated__'
+import { UserRole } from '@prisma/client'
 
 @Controller('send-candidature')
 export class SendCandidatureController {

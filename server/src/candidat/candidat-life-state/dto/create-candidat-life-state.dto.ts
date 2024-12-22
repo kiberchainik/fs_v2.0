@@ -1,6 +1,6 @@
 import { Type } from "class-transformer";
 import { IsArray, IsBoolean, IsOptional, IsString } from "class-validator";
-import { DriverCategory, MaritalStatus } from "prisma/__generated__";
+import { DriverCategory, MaritalStatus } from "@prisma/client";
 
 export class CreateCandidatLifeStateDto {
     @IsArray()

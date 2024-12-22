@@ -3,11 +3,11 @@ import { WorkingTimeService } from './working-time.service';
 import { CreateWorkingTimeDto } from './dto/create-working-time.dto';
 import { UpdateWorkingTimeDto } from './dto/update-working-time.dto';
 import { Authorization } from '@/auth/decorators';
-import { UserRole } from 'prisma/__generated__';
+import { UserRole } from '@prisma/client';
 
 @Controller('working-time')
 export class WorkingTimeController {
-  constructor(private readonly workingTimeService: WorkingTimeService) {}
+  constructor(private readonly workingTimeService: WorkingTimeService) { }
 
   @Authorization(UserRole.ADMIN)
   @Post()

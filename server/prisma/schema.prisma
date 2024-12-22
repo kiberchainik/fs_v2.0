@@ -1,6 +1,6 @@
 generator client {
   provider        = "prisma-client-js"
-  output          = "./__generated__"
+  //output          = "./__generated__"
   previewFeatures = ["fullTextSearchPostgres"]
 }
 
@@ -78,16 +78,16 @@ model UserSocial {
 }
 
 model Education {
-  id          String       @id @default(uuid())
-  school      String
-  grade       String?
-  startdate   DateTime     @db.Date
-  enddate     DateTime     @db.Date
-  description String?
-  levelId     String?      @map("level_education_id")
-  levelEducation       LevelEducation?       @relation(fields: [levelId], references: [id])
-  cdId        String       @map("candidate_id")
-  candidate   CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
+  id             String          @id @default(uuid())
+  school         String
+  grade          String?
+  startdate      DateTime        @db.Date
+  enddate        DateTime        @db.Date
+  description    String?
+  levelId        String?         @map("level_education_id")
+  levelEducation LevelEducation? @relation(fields: [levelId], references: [id])
+  cdId           String          @map("candidate_id")
+  candidate      CandidatData    @relation(fields: [cdId], references: [id], onDelete: Cascade)
 }
 
 model Skills {
@@ -99,17 +99,17 @@ model Skills {
 }
 
 model Experience {
-  id          String       @id @default(uuid())
-  company     String
-  location    String?
-  currently   Boolean      @default(false)
-  startDate   DateTime
-  endDate     DateTime
-  description String?
-  contractTypeId String?      @map("contract_type_id")
+  id              String           @id @default(uuid())
+  company         String
+  location        String?
+  currently       Boolean          @default(false)
+  startDate       DateTime
+  endDate         DateTime
+  description     String?
+  contractTypeId  String?          @map("contract_type_id")
   contractTypeJob ContractTypeJob? @relation(fields: [contractTypeId], references: [id])
-  cdId        String       @map("candidate_id")
-  candidate   CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
+  cdId            String           @map("candidate_id")
+  candidate       CandidatData     @relation(fields: [cdId], references: [id], onDelete: Cascade)
 }
 
 model Languages {
@@ -251,10 +251,10 @@ model SendCandidature {
 }
 
 model ContractTypeJob {
-  id        String      @id @default(uuid())
-  name      String
+  id         String       @id @default(uuid())
+  name       String
   experience Experience[]
-  jobOffers jobOffers[]
+  jobOffers  jobOffers[]
 
   @@map("contract_type")
 }
@@ -406,15 +406,6 @@ enum SkillsLevel {
   BEGINNER
   EXPERIENCED
   EXPERT
-}
-
-enum ContractType {
-  PARTTIME
-  SELFEMPLOYED
-  FREELANCE
-  CONTRACT
-  INTERNSHIP
-  APPRENTICESHIP
 }
 
 enum LanguageLevel {

@@ -223,18 +223,6 @@ export const SkillsLevel: {
 export type SkillsLevel = (typeof SkillsLevel)[keyof typeof SkillsLevel]
 
 
-export const ContractType: {
-  PARTTIME: 'PARTTIME',
-  SELFEMPLOYED: 'SELFEMPLOYED',
-  FREELANCE: 'FREELANCE',
-  CONTRACT: 'CONTRACT',
-  INTERNSHIP: 'INTERNSHIP',
-  APPRENTICESHIP: 'APPRENTICESHIP'
-};
-
-export type ContractType = (typeof ContractType)[keyof typeof ContractType]
-
-
 export const LanguageLevel: {
   NATIVESPEAKER: 'NATIVESPEAKER',
   FLUENT: 'FLUENT',
@@ -269,10 +257,6 @@ export const UserRole: typeof $Enums.UserRole
 export type SkillsLevel = $Enums.SkillsLevel
 
 export const SkillsLevel: typeof $Enums.SkillsLevel
-
-export type ContractType = $Enums.ContractType
-
-export const ContractType: typeof $Enums.ContractType
 
 export type LanguageLevel = $Enums.LanguageLevel
 

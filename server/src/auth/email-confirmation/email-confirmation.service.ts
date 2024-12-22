@@ -5,7 +5,7 @@ import { ConfirmationDto } from './dto/confirmation.dto';
 import { MailService } from '@/libs/mail/mail.service';
 import { UserService } from '@/user/user.service';
 import { AuthService } from '@/auth/auth.service'
-import { TokenType, User } from 'prisma/__generated__';
+import { TokenType, User } from '@prisma/client';
 
 @Injectable()
 export class EmailConfirmationService {
@@ -13,8 +13,8 @@ export class EmailConfirmationService {
         private readonly prisma: PrismaService,
         private readonly mail: MailService,
         private readonly user: UserService,
-        @Inject(forwardRef(() => AuthService)) private readonly auth:AuthService
-    ) {}
+        @Inject(forwardRef(() => AuthService)) private readonly auth: AuthService
+    ) { }
 
     async newVerificaion(dto: ConfirmationDto) {
         const existToken = await this.prisma.tokens.findUnique({
@@ -24,17 +24,17 @@ export class EmailConfirmationService {
             }
         })
 
-        if(!existToken) {
+        if (!existToken) {
             throw new NotFoundException('Token verified not found')
         }
-        
+
         const hasExpired = new Date(existToken.expiresIn) < new Date()
-        if(hasExpired) {
+        if (hasExpired) {
             throw new BadRequestException('Токен для верификации eamil просрочен, авторизутесь для получения письма с новой сылкой верификации!')
         }
 
         const existingUser = await this.user.findByEmail(existToken.email)
-        if(!existingUser) throw new NotFoundException('User not found')
+        if (!existingUser) throw new NotFoundException('User not found')
 
         await this.prisma.user.update({
             where: {
@@ -45,7 +45,7 @@ export class EmailConfirmationService {
             }
         })
 
-        if(existToken) {
+        if (existToken) {
             await this.prisma.tokens.delete({
                 where: {
                     id: existToken.id,
@@ -55,8 +55,8 @@ export class EmailConfirmationService {
         }
 
         const tokens = this.auth.issueTokens(existingUser.id, existingUser.email, existingUser.role)
-        
-        return {existingUser, ...tokens}
+
+        return { existingUser, ...tokens }
     }
 
     async sendVerificationToken(user: User) {
@@ -67,13 +67,13 @@ export class EmailConfirmationService {
         return true
     }
 
-    private async generateVerificationToken(email:string) {
+    private async generateVerificationToken(email: string) {
         const token = uuidv4()
         const expiresIn = new Date(new Date().getTime() + 3600 * 1000)
 
         const existToken = await this.existingToken(email)
 
-        if(existToken) {
+        if (existToken) {
             await this.prisma.tokens.delete({
                 where: {
                     id: existToken.id,
@@ -83,7 +83,7 @@ export class EmailConfirmationService {
         }
 
         const verificationToken = await this.prisma.tokens.create({
-            data:{
+            data: {
                 email,
                 token,
                 expiresIn,
@@ -94,7 +94,7 @@ export class EmailConfirmationService {
         return verificationToken
     }
 
-    private async existingToken(email:string) {
+    private async existingToken(email: string) {
         return await this.prisma.tokens.findFirst({
             where: {
                 email,

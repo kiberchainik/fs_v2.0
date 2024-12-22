@@ -3,11 +3,11 @@ import { ContractTypeService } from './contract-type.service';
 import { CreateContractTypeDto } from './dto/create-contract-type.dto';
 import { UpdateContractTypeDto } from './dto/update-contract-type.dto';
 import { Authorization } from '@/auth/decorators';
-import { UserRole } from 'prisma/__generated__';
+import { UserRole } from '@prisma/client';
 
 @Controller('contract-type')
 export class ContractTypeController {
-  constructor(private readonly contractTypeService: ContractTypeService) {}
+  constructor(private readonly contractTypeService: ContractTypeService) { }
 
   @Authorization(UserRole.ADMIN)
   @Post()

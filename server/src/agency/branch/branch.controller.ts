@@ -5,7 +5,7 @@ import { UpdateBranchDto } from './dto/update-branch.dto'
 import { FilesInterceptor } from '@nestjs/platform-express'
 import { FileService } from '@/libs/file/file.service';
 import { Authorization, CurrentUser } from '@/auth/decorators';
-import { UserRole } from 'prisma/__generated__';
+import { UserRole } from '@prisma/client';
 import { Response } from 'express'
 
 @Controller('branch')

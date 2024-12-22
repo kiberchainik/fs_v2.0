@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsString } from "class-validator"
-import { LanguageLevel } from "prisma/__generated__"
+import { LanguageLevel } from "@prisma/client"
 
 export class CreateLanguageDto {
     @IsNotEmpty({ message: 'Language обязателен для указания' })

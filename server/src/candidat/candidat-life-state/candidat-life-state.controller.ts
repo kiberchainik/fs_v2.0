@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { CandidatLifeStateService } from './candidat-life-state.service';
 import { CreateCandidatLifeStateDto } from './dto/create-candidat-life-state.dto';
 import { Authorization, CurrentUser } from '@/auth/decorators';
-import { UserRole } from 'prisma/__generated__';
+import { UserRole } from '@prisma/client';
 
 @Controller('life-state')
 export class CandidatLifeStateController {

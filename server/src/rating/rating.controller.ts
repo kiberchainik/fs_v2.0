@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Param } from "@nestjs/common";
 import { RatingService } from "./rating.service";
 import { CreateRatingDto } from "./dto/create-rating.dto";
 import { Authorization } from "@/auth/decorators";
-import { UserRole } from "prisma/__generated__";
+import { UserRole } from "@prisma/client";
 
 @Controller("rating")
 export class RatingController {

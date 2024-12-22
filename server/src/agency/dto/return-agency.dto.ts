@@ -1,9 +1,9 @@
-import { Prisma } from 'prisma/__generated__'
+import { Prisma } from '@prisma/client'
 
 export const returnAgencyBaseObject: Prisma.AgencyDataSelect = {
-	slug: true,
+    slug: true,
     agency_name: true,
-	about: true,
+    about: true,
     address: true,
     logo: true,
     p_iva_c_f: true,

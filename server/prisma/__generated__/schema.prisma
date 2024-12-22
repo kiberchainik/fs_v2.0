@@ -408,15 +408,6 @@ enum SkillsLevel {
   EXPERT
 }
 
-enum ContractType {
-  PARTTIME
-  SELFEMPLOYED
-  FREELANCE
-  CONTRACT
-  INTERNSHIP
-  APPRENTICESHIP
-}
-
 enum LanguageLevel {
   NATIVESPEAKER
   FLUENT
