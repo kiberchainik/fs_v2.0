@@ -1,0 +1,7 @@
+.spinnerContainer {
+  @apply flex justify-center items-center h-screen;
+}
+
+.spinnerIcon {
+  @apply text-xl animate-spin;
+}

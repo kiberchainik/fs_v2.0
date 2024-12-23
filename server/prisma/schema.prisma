@@ -24,11 +24,21 @@ model User {
   authAccounts       AuthAccount[]
   candidatdata       CandidatData?
 
-  ratings Rating[] @relation("UserRatings")
-
-  reviews Rating[] @relation("ReviewerRatings")
+  ratings  Rating[]  @relation("UserRatings")
+  messages Message[]
+  reviews  Rating[]  @relation("ReviewerRatings")
 
   @@map("users")
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  userId    String
+  text      String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([userId, createdAt])
 }
 
 model CandidatData {
@@ -49,6 +59,7 @@ model CandidatData {
   hobbies           Hobbies[]
   languages         Languages[]
   skills            Skills[]
+  jobContacts       JobContacts[]
   savedJobs         SavedJobs[]
   sendCandidature   SendCandidature[]
   user              User               @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -218,6 +229,7 @@ model jobOffers {
   levelEducation       LevelEducation?       @relation(fields: [levelId], references: [id])
   modeJob              ModeJob?              @relation(fields: [modeId], references: [id])
   workingTimeJob       WorkingTimeJob?       @relation(fields: [workingTimeId], references: [id])
+  jobContacts          JobContacts[]
   sectors              Sectors[]             @relation("SectorsTojobOffers")
   tags                 jobTags[]             @relation("jobOffersTojobTags")
   savedBy              SavedJobs[]
@@ -338,6 +350,26 @@ model AuthAccount {
   user         User?    @relation(fields: [userId], references: [id])
 
   @@map("auth_account")
+}
+
+model Contacts {
+  id      String @id @default(uuid())
+  name    String
+  email   String
+  message String
+
+  createdAt DateTime @default(now())
+
+  @@map("contacts")
+}
+
+model JobContacts {
+  id         String         @id @default(uuid())
+  message    String
+  jobId      jobOffers[]
+  candidatId CandidatData[]
+
+  @@map("job_contacts")
 }
 
 model Tokens {

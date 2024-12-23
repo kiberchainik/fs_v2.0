@@ -19,6 +19,8 @@ import { WorkingTimeModule } from './admin/working-time/working-time.module';
 import { LevelEducationModule } from './admin/level-education/level-education.module';
 import { OpenAIModule } from './admin/openai/openai.model';
 import { RatingModule } from './rating/rating.module';
+import { ChatModule } from './messenger/chat.module';
+import { ContactsModule } from './contacts/contacts.module';
 
 @Module({
   imports: [
@@ -43,9 +45,11 @@ import { RatingModule } from './rating/rating.module';
     WorkingTimeModule,
     LevelEducationModule,
     OpenAIModule,
-    RatingModule
+    RatingModule,
+    ChatModule,
+    ContactsModule
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }
