@@ -51,7 +51,7 @@ export function CreateVacancy() {
 				<CardTitle>Create new vacancy</CardTitle>
 			</CardHeader>
 			<CardContent>
-				<VacancyForm values={defaultValues} onSubmit={onSubmit} isPending={isPending} />
+				<VacancyForm values={defaultValues} onSubmit={onSubmit} isPending={isPending} isSuccess={isSuccess} defaultValues={defaultValues} />
 			</CardContent>
 		</Card>
 	)

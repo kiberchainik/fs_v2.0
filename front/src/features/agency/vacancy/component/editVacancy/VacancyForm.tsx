@@ -66,7 +66,7 @@ export function VacancyEditForm({ vacancy }: VacancyFromProps) {
 				</ConfirmModal>
 			</CardHeader>
 			<CardContent>
-				<VacancyForm values={valuesForm} onSubmit={onSubmit} isPending={isPending} />
+				<VacancyForm values={valuesForm} onSubmit={onSubmit} isPending={isPending} isSuccess={isSuccess} />
 			</CardContent>
 		</Card>
 	)

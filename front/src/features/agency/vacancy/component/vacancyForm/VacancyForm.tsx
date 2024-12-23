@@ -25,14 +25,17 @@ import TextEditor from '@/shared/components/ui/TextEditor'
 import { DateTimePicker } from '@/shared/components/datapicker/Datapicker'
 
 import styles from './vacancy.module.scss'
+import Spinner from '@/shared/components/Spinner/Spinner'
 
 interface FormProps {
     values: TypeVacancySchema
     onSubmit: (values: TypeVacancySchema) => void
     isPending: boolean
+    isSuccess: boolean
+    defaultValues?: TypeVacancySchema
 }
 
-export function VacancyForm({ values, isPending, onSubmit }: FormProps) {
+export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultValues }: FormProps) {
     const { categories, isFetching } = useCategory()
     const { contractType, isFetching: isFCT } = useGetOptionsContractTypes()
     const { experienceMinimal, isFetching: isFEM } = useGetExperienceMinimal()
@@ -47,6 +50,10 @@ export function VacancyForm({ values, isPending, onSubmit }: FormProps) {
         resolver: zodResolver(VacancySchema),
         values
     })
+
+    // if (isSuccess) {
+    //     form.reset(defaultValues)
+    // }
 
     return (
         <Form {...form}>
@@ -120,7 +127,7 @@ export function VacancyForm({ values, isPending, onSubmit }: FormProps) {
                                 <FormLabel>Region</FormLabel>
                                 <FormControl>
                                     <Input
-                                        placeholder='Regopn'
+                                        placeholder='Region'
                                         disabled={isPending}
                                         type='text'
                                         {...field}
@@ -131,7 +138,7 @@ export function VacancyForm({ values, isPending, onSubmit }: FormProps) {
                         )}
                     />
                 </div>
-                <FormField
+                <Controller
                     control={form.control}
                     name='categoryId'
                     rules={{
@@ -172,7 +179,7 @@ export function VacancyForm({ values, isPending, onSubmit }: FormProps) {
                         </FormItem>
                     )}
                 />
-                <Controller
+                {branches && <Controller
                     control={form.control}
                     name='branchId'
                     render={({ field }) => (
@@ -189,16 +196,16 @@ export function VacancyForm({ values, isPending, onSubmit }: FormProps) {
                                 </FormControl>
                                 <SelectContent>
                                     <SelectGroup>
-                                        {branches ? branches.map(branch => (
+                                        {branches.map(branch => (
                                             <SelectItem value={branch.id} key={branch.id}>{branch.name}</SelectItem>
-                                        )) : <SelectItem value='0' key={'without_branch'}>Категорий нет!</SelectItem>}
+                                        ))}
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>
                         </FormItem>
                     )}
-                />
-                <FormField
+                />}
+                <Controller
                     control={form.control}
                     name="description"
                     render={({ field }) => (
@@ -391,7 +398,7 @@ export function VacancyForm({ values, isPending, onSubmit }: FormProps) {
                     </div>
                 </div>
                 <Button type='submit' disabled={isPending}>
-                    Сохранить
+                    {isPending ? <Spinner /> : <span>Save</span>}
                 </Button>
             </form>
         </Form>
