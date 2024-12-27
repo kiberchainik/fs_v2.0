@@ -24,8 +24,9 @@ export const API_URL = {
 
     agency: () => API_URL.root('/agency'),
     agencypage: (slug: string) => API_URL.root(`/agency/${slug}`),
+    agencyMetadataBySlug: (slug: string) => API_URL.root(`/agency/metadata-by-slug/${slug}`),
     agencyProfile: () => API_URL.root('/agency/profile'),
-    agencyEditProfile: () => API_URL.root('/agency'),
+    //agencyEditProfile: () => API_URL.root('/agency'),
 
     vacancy: (id: string = '') => API_URL.root(`/joboffers/${id}`),
     contacts: () => API_URL.root('/contacts'),

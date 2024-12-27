@@ -27,7 +27,7 @@ export function VacancyCardAuthorInfo({ name, slug, email, location, phone, logo
                 </div>
                 <div>
                     <Button variant='outline' size='sm'>
-                        <Link href={MAIN_URL.branchPageInfo(slug)}>{name}</Link>
+                        <Link href={MAIN_URL.agencyPageInfo(slug)}>{name}</Link>
                     </Button>
                 </div>
             </div>

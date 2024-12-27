@@ -2,10 +2,12 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateAgencyDto } from './dto/create-agency.dto';
 import { UpdateAgencyDto } from './dto/update-agency.dto';
 import { PrismaService } from '@/prisma/prisma.service';
-import { slugify } from '@/utils';
+import { PaginationQueryDto, slugify } from '@/utils';
 import { FileResponse } from '@/libs/file/file.service';
 import { join } from 'path';
 import { access, unlink } from 'fs/promises';
+import { UserRole } from '@prisma/client';
+import { returnCategoryBaseObject } from '@/admin/category/dto';
 
 @Injectable()
 export class AgencyService {
@@ -72,34 +74,125 @@ export class AgencyService {
     })
   }
 
-  async agencyDatabySlug(slug: string) {
-    return await this.prisma.agencyData.findUnique({
-      where: { slug },
-      include: {
-        user: {
-          select: {
-            email: true,
+  async agencyDataBySlug(slug: string, { page, limit }: PaginationQueryDto) {
+    const [agencyData, jobsCount] = await this.prisma.$transaction([
+      this.prisma.agencyData.findFirst({
+        where: { slug },
+        include: {
+          user: {
+            select: {
+              email: true,
+              ratings: true
+            }
+          },
+          branch: true,
+          jobOffers: {
+            include: {
+              categories: {
+                include: {
+                  parent: {
+                    select: returnCategoryBaseObject
+                  }
+                }
+              }
+            }
           }
         },
-        branch: true,
-        jobOffers: true
+        skip: (page - 1) * limit,
+        take: limit
+      }),
+
+      this.prisma.jobOffers.count({
+        where: {
+          agency: {
+            slug
+          }
+        }
+      })
+    ])
+
+    if (!agencyData) return false
+
+    const pageCount = Math.ceil(jobsCount / limit)
+
+    return {
+      agencyData,
+      count: jobsCount,
+      pageCount
+    }
+  }
+
+  async findMetadataBySlug(slug: string) {
+    const agencyData = await this.prisma.agencyData.findFirst({
+      where: { slug },
+      select: {
+        agency_name: true,
+        about: true,
+        logo: true
       }
     })
+
+    if (!agencyData) return false
+
+    return agencyData
   }
 
-  findAll() {
-    return `This action returns all agency`;
+  async findAll({ page, limit }: PaginationQueryDto) {
+    const [agencies, agenciesCount] = await this.prisma.$transaction([
+      this.prisma.agencyData.findMany({
+        where: {
+          user: {
+            role: UserRole.AGENCY
+          }
+        },
+        select: {
+          agency_name: true,
+          about: true,
+          address: true,
+          logo: true,
+          phone: true,
+          slug: true,
+          createdAt: true,
+          user: {
+            select: {
+              email: true,
+              ratings: true
+            }
+          }
+        },
+        skip: (page - 1) * limit,
+        take: limit
+      }),
+
+      this.prisma.agencyData.count({
+        where: {
+          user: {
+            role: UserRole.AGENCY
+          }
+        }
+      })
+    ])
+
+    if (!agencies) return false
+
+    const pageCount = Math.ceil(agenciesCount / limit)
+
+    return {
+      agencies,
+      count: agenciesCount,
+      pageCount
+    }
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return `This action returns a #${id} agency`;
   }
 
-  update(id: number, updateAgencyDto: UpdateAgencyDto) {
+  update(id: string, updateAgencyDto: UpdateAgencyDto) {
     return `This action updates a #${id} agency`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} agency`;
   }
 }

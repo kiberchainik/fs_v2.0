@@ -25,7 +25,7 @@ export type TCategoryPageResponse = {
         description: string;
         parent?: IParentCategory | undefined
         jobOffers: IVacanciaesFullDate[];
-    };
+    }
     count: number;
     pageCount: number;
 }

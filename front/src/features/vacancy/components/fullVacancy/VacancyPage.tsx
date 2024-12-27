@@ -35,8 +35,8 @@ export default function VacancyPage({
   sendCandidature: curriculum
 }: IVacanciaesFullDate) {
   const authUser = useAppSelector(state => state.reducer.user.data)
-  const [isClient, setIsClient] = useState(false);
-  const sanitizedContent = DOMPurify.sanitize(description || '');
+  const [isClient, setIsClient] = useState(false)
+  const sanitizedContent = DOMPurify.sanitize(description || '')
 
   useEffect(() => {
     setIsClient(true);

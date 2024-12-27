@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { ChevronDown, ChevronRight } from "lucide-react";
-import { useCategory } from "../hooks";
-import { Button, Card } from "@/shared/components";
-import Link from "next/link";
-import { MAIN_URL } from "@/shared/config";
+import { useState } from "react"
+import { ChevronDown, ChevronRight } from "lucide-react"
+import { useCategory } from "../hooks"
+import { Button, Card } from "@/shared/components"
+import Link from "next/link"
 
 export default function CategoryMenu() {
   const { categories, isFetching } = useCategory()

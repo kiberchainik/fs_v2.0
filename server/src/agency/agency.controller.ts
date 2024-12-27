@@ -5,6 +5,7 @@ import { UserRole } from '@prisma/client';
 import { Authorization, CurrentUser } from '@/auth/decorators';
 import { FileService } from '@/libs/file/file.service';
 import { FilesInterceptor } from '@nestjs/platform-express';
+import { PaginationQueryDto } from '@/utils';
 
 @Controller('agency')
 export class AgencyController {
@@ -47,22 +48,35 @@ export class AgencyController {
   }
 
   @Get()
-  findAll() {
-    return this.agencyService.findAll();
+  findAll(
+    @Query() searchTerm: PaginationQueryDto
+  ) {
+    return this.agencyService.findAll(searchTerm)
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.agencyService.findOne(+id);
+  @Get(':slug')
+  async findOne(
+    @Param('slug') slug: string,
+    @Query() pagination: PaginationQueryDto
+  ) {
+    return await this.agencyService.agencyDataBySlug(slug, pagination)
+  }
+
+  @Get('metadata-by-slug/:slug')
+  @HttpCode(HttpStatus.OK)
+  async getMetadataBySlug(
+    @Param('slug') slug: string
+  ) {
+    return await this.agencyService.findMetadataBySlug(slug);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAgencyDto: UpdateAgencyDto) {
-    return this.agencyService.update(+id, updateAgencyDto);
+    return this.agencyService.update(id, updateAgencyDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.agencyService.remove(+id);
+    return this.agencyService.remove(id);
   }
 }

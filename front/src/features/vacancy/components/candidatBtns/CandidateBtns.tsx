@@ -51,7 +51,7 @@ export function CandidateBtns({ jobId, authUser, curriculum, savedBy }: Candidat
     }
 
     return (
-        <>{isSaved || savedBy?.some(saved => saved.candidate.userId === authUser?.id) ? (
+        <div className='flex gap-x-2'>{isSaved || savedBy?.some(saved => saved.candidate.userId === authUser?.id) ? (
             <Button onClick={() => deleteFromFavorite()} >
                 <LiaHeartBrokenSolid />
             </Button>
@@ -70,6 +70,6 @@ export function CandidateBtns({ jobId, authUser, curriculum, savedBy }: Candidat
                     <CiCirclePlus /> Candidati
                 </Button>
             )}
-        </>
+        </div>
     )
 }

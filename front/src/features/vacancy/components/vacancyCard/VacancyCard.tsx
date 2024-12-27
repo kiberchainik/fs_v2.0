@@ -1,21 +1,29 @@
-import { IVacanciaesFullDate } from "@/features/agency/vacancy/types";
+import { IVacanciaesFullDate } from "@/features/agency/vacancy/types"
 import { Button, Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/shared/components"
-import { formatDate, generatePostUrl } from "@/shared/utils";
-import Link from "next/link";
+import { formatDate, generatePostUrl } from "@/shared/utils"
+import Link from "next/link"
 
 import styles from './vacancyCard.module.scss'
 import { CiCalendar, CiClock2, CiRead } from "react-icons/ci"
 
-import { VacancyCardAuthorInfo } from "./VCAuthorInfo";
-import { IUserMenuHeaderData } from "@/features/userHeaderBtn/types/userMenuData.type";
-import { CandidateBtns } from "../candidatBtns/CandidateBtns";
+import { VacancyCardAuthorInfo } from "./VCAuthorInfo"
+import { IUserMenuHeaderData } from "@/features/userHeaderBtn/types/userMenuData.type"
+import { CandidateBtns } from "../candidatBtns/CandidateBtns"
+import { useEffect, useState } from "react"
+import DOMPurify from 'isomorphic-dompurify'
 
 interface IVacancyCardProps extends IVacanciaesFullDate {
     authUser: IUserMenuHeaderData
 }
 
 export function VacancyCard({ id, title, slug, description, agency, branch, categories, createdAt, reallyUpTo, views, savedBy, sendCandidature, authUser }: IVacancyCardProps) {
-    description = description.slice(0, 150) + '...'
+    const [isClient, setIsClient] = useState(false);
+    const sanitizedContent = DOMPurify.sanitize(description.slice(0, 150) + '...' || '')
+    useEffect(() => {
+        setIsClient(true)
+    }, [])
+    console.log(agency);
+
     return (
         <Card className='max-w-96'>
             <CardHeader>
@@ -31,7 +39,7 @@ export function VacancyCard({ id, title, slug, description, agency, branch, cate
                 </div>
                 <CandidateBtns jobId={id!} authUser={authUser!} curriculum={sendCandidature!} savedBy={savedBy!} />
             </CardHeader>
-            <CardDescription className='p-6' dangerouslySetInnerHTML={{ __html: description }}></CardDescription>
+            {isClient && <CardDescription className='p-6' dangerouslySetInnerHTML={{ __html: sanitizedContent }}></CardDescription>}
             <CardFooter>
                 {
                     branch ? (
@@ -54,7 +62,6 @@ export function VacancyCard({ id, title, slug, description, agency, branch, cate
                         />
                     )
                 }
-
             </CardFooter>
         </Card>
     )

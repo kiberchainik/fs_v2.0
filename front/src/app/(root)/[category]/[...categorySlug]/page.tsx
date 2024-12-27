@@ -8,7 +8,6 @@ import { Metadata } from "next"
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
     const data = await getMetadata({ params, searchParams });
-
     return {
         title: data?.jobData?.title || data?.categoryData?.name || CATEGORY_NAME,
         description: data?.jobData?.description || data?.categoryData?.description || CATEGORY_DESCRIPTION,
@@ -22,11 +21,10 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 export default async function Page({ params, searchParams }: Props) {
     const data = await getPageContent({ params, searchParams })
 
-    if (data?.categoryData?.vacancies) {
+    if (data && data.categoryData && data.categoryData.vacancies) {
         return (
             <div className="flex gap-5 justify-between m-10">
                 <div className="w-1/3 hidden md:grid h-full gap-y-5">
-                    {/* <Filter /> */}
                     <CategoryMenu />
                 </div>
                 <div className="flex flex-col gap-y-5 w-full">
@@ -44,7 +42,7 @@ export default async function Page({ params, searchParams }: Props) {
         );
     }
 
-    if (data?.jobData?.agency) {
+    if (data && data.jobData && data.jobData.agency) {
         return (
             <div className="mt-6">
                 <div className="flex gap-5 justify-between m-10">

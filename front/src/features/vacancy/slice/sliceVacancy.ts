@@ -1,12 +1,13 @@
 import { IVacanciaesFullDate } from "@/features/agency/vacancy/types";
+import { PAGE_LIMIT_DEFAULT, PAGE_NUM_DEFAULT } from "@/shared/constants/seo.constants";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface VacancySlice {
     data: IVacanciaesFullDate[] | null
     isLoading: boolean
     error: string | null
-    limit?: number
-    page?: number
+    limit?: string
+    page?: string
     totalPages: number
     totalCountJobs: number
     sortBy: "title" | "createdAt" | "views";
@@ -16,8 +17,8 @@ const initialState: VacancySlice = {
     data: null,
     isLoading: false,
     error: null,
-    limit: 10,
-    page: 1,
+    limit: PAGE_LIMIT_DEFAULT,
+    page: PAGE_NUM_DEFAULT,
     totalPages: 1,
     totalCountJobs: 1,
     sortBy: "createdAt"

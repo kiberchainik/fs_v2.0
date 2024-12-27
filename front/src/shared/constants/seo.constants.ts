@@ -5,6 +5,11 @@ export const NO_INDEX_PAGE = {
     }
 }
 
+export const PAGE_NUM_DEFAULT = '1'
+export const PAGE_LIMIT_DEFAULT = '10'
+
+export const AGENSY_NOT_FOUND = 'Agensy not found!'
+
 export const CATEGORY_NOT_FOUND = 'Категория которую вы пытаетесь открыть не сущестувет или вы ошиблись при вводе адреса, но вы так же можете воспользоваться фильтром'
 
 export const SITE_NAME = 'Curriculum gratis per il lavoro dei tuoi sogni!'
@@ -15,3 +20,6 @@ export const CATEGORY_DESCRIPTION = 'Su questa pagina trovi una selezione di cat
 
 export const JOBS_PAGE_NAME = 'Scopri le ultime offerte di lavoro'
 export const JOBS_PAGE_DESCRIPTION = 'Trova il tuo prossimo impiego tra centinaia di annunci aggiornati per ogni settore. Dalle posizioni junior a quelle manageriali, offriamo opportunità in tutta Italia. Cerca la tua professione, filtra per località e inizia subito a candidarti alle migliori opportunità di carriera.'
+
+export const AGENCI_PAGE_NAME = 'Elenco di agenzie di lavoro'
+export const AGENCY_PAGE_DESCRIPTION = 'Scopri tutte le agenzie di lavoro con una breve statistica. Trova l\'agenzia giusta per le tue esigenze di impiego.'

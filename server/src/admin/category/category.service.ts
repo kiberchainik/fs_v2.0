@@ -5,6 +5,7 @@ import { Prisma } from '@prisma/client'
 import { DBError, slugify } from '@/utils'
 import { returnAgencyBaseObject } from '@/agency/dto'
 import { JobOffersDto } from '@/agency/joboffers/dto'
+import { emit } from 'process'
 
 @Injectable()
 export class CategoryService {
@@ -159,7 +160,15 @@ export class CategoryService {
                   }
                 }
               },
-              agency: true,
+              agency: {
+                include: {
+                  user: {
+                    select: {
+                      email: true
+                    }
+                  }
+                }
+              },
               branch: true,
             }
           },

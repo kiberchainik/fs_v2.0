@@ -1,9 +1,8 @@
 'use client'
 
-import { IVacanciaesFullDate } from "@/features/agency/vacancy/types";
-import CarouselJobs from "@/features/carousel/components/Carousel";
-import VacancyPage from "@/features/vacancy/components/fullVacancy/VacancyPage";
-import { Card } from "@/shared/components";
+import { IVacanciaesFullDate } from "@/features/agency/vacancy/types"
+import VacancyPage from "@/features/vacancy/components/fullVacancy/VacancyPage"
+import { Card } from "@/shared/components"
 
 export default function JobFullPage(jobData: IVacanciaesFullDate) {
     return (

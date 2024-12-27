@@ -15,15 +15,9 @@ import Filter from "../sorted/Filter";
 import Breadcrumbs from "@/features/breadcrumbs/components/BreadCrumbs"
 
 export default function VacancyList({ jobs, count: totalJobs, pageCount: totalPages, name, category_not_found, description, breadcrumbs }: TCategoryBySlug) {
-  const { data: vacancyList, isLoading, page, totalCountJobs, limit } = useAppSelector(state => state.reducer.vacancies)
   const authUser = useAppSelector(state => state.reducer.user.data)
-
   const dispatch = useAppDispatch()
   const searchParams = useSearchParams()
-  const params: ISearchTerm = {
-    page: parseInt((searchParams.get('page') as string) || page!.toString()),
-    limit: parseInt((searchParams.get('limit') as string) || limit!.toString())
-  }
 
   useEffect(() => {
     if (jobs) {
@@ -39,7 +33,13 @@ export default function VacancyList({ jobs, count: totalJobs, pageCount: totalPa
     }
   }, [jobs])
 
+  const { data: vacancyList, isLoading, page, totalCountJobs, limit } = useAppSelector(state => state.reducer.vacancies)
+  const params: ISearchTerm = {
+    page: parseInt((searchParams.get('page') as string) || page!),
+    limit: parseInt((searchParams.get('limit') as string) || limit!)
+  }
   if (!vacancyList) return null
+
   return (
     <>
       <Filter />

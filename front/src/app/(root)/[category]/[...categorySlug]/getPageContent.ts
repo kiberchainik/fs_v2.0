@@ -29,11 +29,13 @@ export const getMetadata = cache(async ({ params }: Props): Promise<ResponseMeta
     const fullSlugString = categorySlug[categorySlug.length - 1]
 
     const categoryData = await categoryService.getCategoryMetaDataBySlug(fullSlugString);
+
     if (categoryData) {
         return { categoryData }
     }
 
     const jobData = await vacancyService.getVacancyMetaDataBySlug(fullSlugString)
+
     if (jobData) {
         return { jobData }
     }
@@ -58,6 +60,7 @@ export const getPageContent = cache(async ({ params, searchParams }: Props): Pro
     const fullSlugString = categorySlug[categorySlug.length - 1]
 
     const categoryData = await categoryService.getCategoryDataBySlug(fullSlugString, searchParams);
+
     if (categoryData) {
         const parents = extractParents(categoryData.vacancies)
 

@@ -1,5 +1,6 @@
 import { TBreadcrumbr } from "@/features/category/types"
 import { TPagination } from "."
+import { IAgencyData } from "../../profile/types/agensy.type"
 
 interface IVacancyOptions {
     contractTypeId?: string
@@ -46,7 +47,7 @@ export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'd
     reallyUpTo: string
     createdAt: string
     views: number
-    agency: {
+    agency: Pick<IAgencyData, 'agency_name' | 'logo' | 'phone' | 'address' | 'slug'> & {
         agency_name: string
         logo: string
         phone: string
