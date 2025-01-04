@@ -8,8 +8,10 @@ export const API_URL = {
     authSocial: (provider: string) => API_URL.root(`/auth/${provider}`),
     confirmEmail: () => API_URL.root(`auth/email-confirmation`),
     file: (url: string) => API_URL.root(url),
+
+    candidatsCarousel: (limit: number) => API_URL.root(`/candidat/carousel/${limit}`),
     candidats: () => API_URL.root('/candidats'),
-    candidatData: (login: string) => API_URL.root(`/candidats/${login}`),
+    candidatData: (login: string) => API_URL.root(`/candidat/${login}`),
     candidatProfile: () => API_URL.root('/candidat/privacy'),
     candidatSkills: (skillId: string = '') => API_URL.root(`/skills/${skillId}`),
     candidatHobbies: (hobbieId: string = '') => API_URL.root(`/hobbies/${hobbieId}`),
@@ -19,6 +21,7 @@ export const API_URL = {
     candidatEducation: (id: string = '') => API_URL.root(`/education/${id}`),
     candidatExperience: (id: string = '') => API_URL.root(`/experience/${id}`),
     candidatLifeStatus: () => API_URL.root(`/life-state`),
+
     savedJobs: (id: string = '') => API_URL.root(`/saved-jobs/${id}`),
     sendedCanidature: (id: string = '') => API_URL.root(`/send-candidature/${id}`),
 
@@ -26,6 +29,7 @@ export const API_URL = {
     agencypage: (slug: string) => API_URL.root(`/agency/${slug}`),
     agencyMetadataBySlug: (slug: string) => API_URL.root(`/agency/metadata-by-slug/${slug}`),
     agencyProfile: () => API_URL.root('/agency/profile'),
+    agenciesCarousel: (limit: number) => API_URL.root(`/agency/carousel/${limit}`),
     //agencyEditProfile: () => API_URL.root('/agency'),
 
     vacancy: (id: string = '') => API_URL.root(`/joboffers/${id}`),
@@ -38,9 +42,12 @@ export const API_URL = {
     getJobBySlug: (slug: string) => API_URL.root(`/joboffers/by-slug/${slug}`),
     getMetadataJobBySlug: (slug: string) => API_URL.root(`/joboffers/metadata-by-slug/${slug}`),
     getJobByCategory: (slug: string) => API_URL.root(`/joboffers/by-category/${slug}`),
+    jobsForCarousel: (limit: number) => API_URL.root(`/joboffers/carousel/${limit}`),
     options: (option: string) => API_URL.root(`/${option}`),
+
     branch: (url = '') => API_URL.root(`/branch/${url}`),
     deleteManyBranch: () => API_URL.root(`/branch/delete-many`),
+
     category: (id: string = '') => API_URL.root(`/category${id}`),
     categoryBySlug: (slug: string) => API_URL.root(`/category/by-slug/${slug}`),
     categoryMetadataBySlug: (slug: string) => API_URL.root(`/category/metadata-by-slug/${slug}`)

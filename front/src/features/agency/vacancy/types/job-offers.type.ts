@@ -28,6 +28,12 @@ export interface IVacanciaes extends IVacancyOptions {
     slug?: string,
     description: string,
     categoryId: string,
+    categories: {
+        id: string,
+        description: string,
+        name: string
+        slug: string
+    }
     sectors?: string[],
     region: string,
     province: string,

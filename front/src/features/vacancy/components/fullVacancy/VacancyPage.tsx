@@ -3,7 +3,7 @@
 import { IVacanciaesFullDate } from "@/features/agency/vacancy/types"
 import styles from './vacancyPage.module.scss'
 import { CiCalendarDate, CiRead } from "react-icons/ci"
-import { formatDate } from "@/shared/utils";
+import { formatDate, generatePostUrl } from "@/shared/utils";
 import { useAppSelector } from "@/shared/hooks";
 import Link from "next/link";
 import { VacancyCardAuthorInfo } from "../vacancyCard/VCAuthorInfo"
@@ -86,7 +86,7 @@ export default function VacancyPage({
         <VacancyCardAuthorInfo {...author} />
         <div className={styles.authorSector_btn}>
           <Button variant='default'>
-            <Link href={'#'}>Altri offerte</Link>
+            <Link href={generatePostUrl(categories)}>Altri offerte</Link>
           </Button>
         </div>
       </div>

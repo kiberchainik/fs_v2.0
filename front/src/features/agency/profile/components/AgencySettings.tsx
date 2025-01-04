@@ -37,6 +37,7 @@ export function AgencySettings() {
 			phone: user?.phone || '',
 			about: user?.about || '',
 			p_iva_c_f: user?.p_iva_c_f || '',
+			url: user?.url || '',
 			isTwoFactorEnabled: false
 		}
 	})
@@ -160,6 +161,24 @@ export function AgencySettings() {
 										<FormControl>
 											<Input
 												placeholder='P.IVA/CF'
+												disabled={isLoading}
+												type='text'
+												{...field}
+											/>
+										</FormControl>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<FormField
+								control={form.control}
+								name='url'
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Agency url</FormLabel>
+										<FormControl>
+											<Input
+												placeholder='Agency url'
 												disabled={isLoading}
 												type='text'
 												{...field}

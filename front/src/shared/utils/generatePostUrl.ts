@@ -8,7 +8,12 @@ function generateCategoryUrl(category: CategoryNode): string {
     return path;
 }
 
-export function generatePostUrl(category: CategoryNode, slug: string): string {
+export function generatePostUrl(category: CategoryNode, slug?: string): string {
     const categoryPath = generateCategoryUrl(category);
-    return `/${categoryPath}/${slug}`;
+
+    if (slug) {
+        return `/${categoryPath}/${slug}`
+    }
+
+    return `/${categoryPath}`
 }

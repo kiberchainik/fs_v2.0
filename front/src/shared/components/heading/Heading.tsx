@@ -5,7 +5,7 @@ interface IHeading {
     className?: string
 }
 
-export const Heading:FC<PropsWithChildren<IHeading>> = ({children, className}) => {
+export const Heading: FC<PropsWithChildren<IHeading>> = ({ children, className }) => {
     return (
         <h1 className={cn('text-2xl font-semibold', className)}>{children}</h1>
     )

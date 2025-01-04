@@ -1,4 +1,4 @@
-import { ArrayMinSize, IsNotEmpty, IsOptional, IsPhoneNumber, IsString } from "class-validator"
+import { ArrayMinSize, IsNotEmpty, IsOptional, IsPhoneNumber, IsString, IsUrl } from "class-validator"
 
 export class CreateAgencyDto {
   @IsNotEmpty({ message: 'Название фирмы нужно указать обязательно' })
@@ -19,6 +19,11 @@ export class CreateAgencyDto {
   @IsNotEmpty({ message: 'Регистрационный номер нужно указать обязательно' })
   @IsString()
   p_iva_c_f: string
+
+  @IsString()
+  @IsUrl()
+  @IsOptional()
+  url?: string
 
   @IsString({
     message: 'Укажите хотя бы одну картинку',

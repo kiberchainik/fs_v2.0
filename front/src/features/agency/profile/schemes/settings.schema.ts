@@ -16,6 +16,7 @@ export const SettingsSchema = z.object({
     about: z.string().min(100, {
         message: 'Write please short description'
     }),
+    url: z.string().url().optional(),
     p_iva_c_f: z.string().min(1, {
         message: 'Write please P.IVA or agency CF'
     }),

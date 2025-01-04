@@ -24,6 +24,7 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   metadataBase: new URL(process.env.APP_URL as string),
   openGraph: {
+    images: [{ url: '/public/favicon.ico' }],
     type: 'website',
     siteName: SITE_NAME,
     emails: ['support@findsol.it']
@@ -43,7 +44,7 @@ export default function RootLayout({
             <Header>
               <HeaderMenu />
             </Header>
-            <main className='flex-grow'>{children}</main>
+            <main className='flex-grow m-5'>{children}</main>
             <footer className='bg-white dark:bg-neutral-900 py-5 mt-10 items-center italic text-zinc-500 font-extralight text-sm text-center'>2025 FindSolution 2.0</footer>
           </div>
         </MainProvider>

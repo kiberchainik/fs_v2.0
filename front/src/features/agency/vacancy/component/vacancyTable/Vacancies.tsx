@@ -24,6 +24,7 @@ export function Vacancies() {
 			id: vacancy.id,
 			title: vacancy.title,
 			slug: vacancy.slug,
+			categories: vacancy.categories,
 			createdAt: formatDate(vacancy.createdAt!),
 			reallyUpTo: vacancy.reallyUpTo ? formatDate(vacancy.reallyUpTo) : ' - ',
 			views: vacancy.views,

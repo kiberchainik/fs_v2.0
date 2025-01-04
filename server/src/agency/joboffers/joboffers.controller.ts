@@ -28,6 +28,13 @@ export class JoboffersController {
     return this.joboffersService.findAll(jobOffersDto);
   }
 
+  @Get('carousel/:limit')
+  getJobsForMainCarousel(
+    @Param('limit') limit: string
+  ) {
+    return this.joboffersService.getJobsForMainCarousel(limit)
+  }
+
   @Get('searchTerm')
   findAllBySearchTerm(
     @Query('query') searchTerm: string

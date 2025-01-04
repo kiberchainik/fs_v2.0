@@ -20,6 +20,22 @@ export class CandidatService {
     return `This action returns all candidat`;
   }
 
+  async getCarouselCandidats(limit: number) {
+    return await this.prisma.candidatData.findMany({
+      take: limit,
+      select: {
+        avatar: true,
+        firstname: true,
+        surname: true,
+        education: {
+          select: {
+            grade: true,
+          }
+        }
+      }
+    })
+  }
+
   async getCandidatPrivacy(id: string) {
     return await this.prisma.candidatData.findUnique({
       where: {

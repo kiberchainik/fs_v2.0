@@ -24,6 +24,7 @@ export class AgencyService {
       p_iva_c_f: regDto.p_iva_c_f,
       about: regDto.about,
       logo: regDto.logo,
+      url: regDto.url,
       userId
     }
 
@@ -71,6 +72,23 @@ export class AgencyService {
   async agencyData(userId: string) {
     return await this.prisma.agencyData.findUnique({
       where: { userId }
+    })
+  }
+
+  async getAgenciesForCarousel(limit: number) {
+    return await this.prisma.agencyData.findMany({
+      take: limit,
+      select: {
+        agency_name: true,
+        logo: true,
+        slug: true,
+        url: true,
+        user: {
+          select: {
+            email: true
+          }
+        }
+      }
     })
   }
 

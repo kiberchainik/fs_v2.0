@@ -175,6 +175,7 @@ model AgencyData {
   userId      String      @unique @map("user_id")
   about       String
   logo        String[]
+  url         String?
   user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   branch      Branch[]
   jobOffers   jobOffers[]

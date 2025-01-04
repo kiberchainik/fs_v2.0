@@ -70,6 +70,14 @@ export class AgencyController {
     return await this.agencyService.findMetadataBySlug(slug);
   }
 
+  @Get('carousel/:limit')
+  @HttpCode(HttpStatus.OK)
+  async getAgenciesForCarousel(
+    @Param('limit') limit: number
+  ) {
+    return await this.agencyService.getAgenciesForCarousel(limit);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAgencyDto: UpdateAgencyDto) {
     return this.agencyService.update(id, updateAgencyDto);

@@ -1,3 +1,15 @@
+.agencyCardWrapper {
+    @apply flex flex-col;
+
+    .agencyCard {
+        @apply p-5 flex flex-col md:flex-row gap-5;
+
+        > .agencyLogo {
+            @apply w-48 h-48 rounded-full !relative;
+        }
+    }
+}
+
 .headerDateInfo {
     @apply flex text-gray-500 text-sm items-center gap-1;
 }

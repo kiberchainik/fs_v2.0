@@ -11,7 +11,8 @@ import {
 	DropdownMenuTrigger
 } from '@/shared/components'
 
-import { MAIN_URL, AGENCY_URL } from '@/shared/config'
+import { AGENCY_URL } from '@/shared/config'
+import { generatePostUrl } from '@/shared/utils'
 
 export interface IVacancyColumn {
 	id: string | undefined
@@ -21,6 +22,12 @@ export interface IVacancyColumn {
 	reallyUpTo: string | undefined
 	views: number | undefined
 	isValidate: string
+	categories: {
+		id: string,
+		description: string,
+		name: string
+		slug: string
+	}
 }
 
 export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
@@ -138,7 +145,7 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 				<DropdownMenuContent align='end'>
 					<DropdownMenuLabel>Действия</DropdownMenuLabel>
 					<Link
-						href={MAIN_URL.fullVacancy(row.original.slug)}
+						href={generatePostUrl(row.original.categories, row.original.slug!)}
 						target='_blank'
 					>
 						<DropdownMenuItem>

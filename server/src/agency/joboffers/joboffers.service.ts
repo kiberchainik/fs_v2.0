@@ -390,6 +390,29 @@ export class JoboffersService {
     return await this.prisma.jobOffers.findMany({
       where: {
         agency: { userId }
+      },
+      include: {
+        categories: {
+          select: returnCategoryBaseObject
+        }
+      }
+    })
+  }
+
+  async getJobsForMainCarousel(userId: string) {
+    return await this.prisma.jobOffers.findMany({
+      where: {
+        isValidate: true
+      },
+      select: {
+        slug: true,
+        title: true,
+        description: true,
+        views: true,
+        createdAt: true,
+        categories: {
+          select: returnCategoryBaseObject
+        }
       }
     })
   }

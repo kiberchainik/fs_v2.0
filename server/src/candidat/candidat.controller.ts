@@ -44,6 +44,13 @@ export class CandidatController {
     return this.candidatService.findAll();
   }
 
+  @Get('carousel/:limit')
+  getCarouselCandidats(
+    @Param('limit') limit: number
+  ) {
+    return this.candidatService.getCarouselCandidats(limit);
+  }
+
   @Get('privacy')
   @Authorization(UserRole.CANDIDATE)
   getCandidatPrivacy(@CurrentUser('id') id: string) {

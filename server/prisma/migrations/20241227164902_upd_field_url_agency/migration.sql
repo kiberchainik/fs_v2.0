@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "agency_data" ALTER COLUMN "logo" DROP NOT NULL,
+ALTER COLUMN "logo" SET DATA TYPE TEXT;
