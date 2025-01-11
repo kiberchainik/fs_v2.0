@@ -2,15 +2,17 @@ import { Controller, Post, Body, Param, HttpCode, HttpStatus } from '@nestjs/com
 import { PasswordRecoveryService } from './password-recovery.service';
 import { Recaptcha } from '@nestlab/google-recaptcha';
 import { NewPasswordDto, ResetPasswordDto } from './dto';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('auth/password-recovery')
 export class PasswordRecoveryController {
-  constructor(private readonly passwordRecoveryService: PasswordRecoveryService) {}
+  constructor(private readonly passwordRecoveryService: PasswordRecoveryService) { }
 
   @Recaptcha()
   @Post('reset')
   @HttpCode(HttpStatus.OK)
-  async reset (
+  async reset(
     @Body() dto: ResetPasswordDto
   ) {
     return this.passwordRecoveryService.reset(dto);

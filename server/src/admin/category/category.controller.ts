@@ -4,7 +4,9 @@ import { CreateCategoryDto, CreateSectorDto, UpdateCategoryDto, UpdateSectorDto 
 import { Authorization } from '@/auth/decorators';
 import { UserRole } from '@prisma/client';
 import { JobOffersDto } from '@/agency/joboffers/dto';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('category')
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) { }

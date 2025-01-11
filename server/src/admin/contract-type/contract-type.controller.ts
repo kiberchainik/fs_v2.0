@@ -4,7 +4,9 @@ import { CreateContractTypeDto } from './dto/create-contract-type.dto';
 import { UpdateContractTypeDto } from './dto/update-contract-type.dto';
 import { Authorization } from '@/auth/decorators';
 import { UserRole } from '@prisma/client';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('contract-type')
 export class ContractTypeController {
   constructor(private readonly contractTypeService: ContractTypeService) { }

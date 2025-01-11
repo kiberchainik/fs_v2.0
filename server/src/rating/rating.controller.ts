@@ -3,7 +3,9 @@ import { RatingService } from "./rating.service";
 import { CreateRatingDto } from "./dto/create-rating.dto";
 import { Authorization } from "@/auth/decorators";
 import { UserRole } from "@prisma/client";
+import { ApiExcludeController } from "@nestjs/swagger";
 
+@ApiExcludeController()
 @Controller("rating")
 export class RatingController {
   constructor(private readonly ratingService: RatingService) { }

@@ -4,7 +4,9 @@ import { CreateCourseDto } from './dto/create-course.dto';
 import { UpdateCourseDto } from './dto/update-course.dto';
 import { Authorization, CurrentUser } from '@/auth/decorators';
 import { UserRole } from '@prisma/client';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('courses')
 export class CoursesController {
   constructor(private readonly coursesService: CoursesService) { }

@@ -43,6 +43,26 @@ export class AuthService {
         }
     }
 
+    async createNewAgency(dto: RegisterDto) {
+        const isExist = await this.user.findByEmail(dto.email) //if !user, returned throw
+        if (isExist) {
+            throw new BadRequestException('Agenzia gia esiste')
+        }
+
+        const { authAccounts, isTwoFactorEnabled, isVerified, method, role, updatedAt, password, ...agency } = await this.user.create({
+            email: dto.email,
+            password: dto.password,
+            isVerified: true,
+            method: AuthMethod.CREDENTIALS,
+            role: UserRole.AGENCY
+        })
+
+
+
+        const { accessToken, refreshToken } = this.issueTokens(agency.id, agency.email, role)
+        return { ...agency, accessToken }
+    }
+
     async login(dto: LoginDto) {
         const user = await this.validateUser(dto.email) //if !user, returned throw
 
@@ -71,6 +91,17 @@ export class AuthService {
         return { ...user, ...tokens }
     }
 
+    async loginWithAPI(dto: LoginDto) {
+        const { authAccounts, isTwoFactorEnabled, isVerified, method, password, updatedAt, role, ...user } = await this.validateUser(dto.email) //if !user, returned throw
+
+        const isValidPass = await verify(password, dto.password)
+
+        if (!isValidPass) throw new UnauthorizedException('Email or password is wrong!')
+
+        const tokens = this.issueTokens(user.id, user.email, role)
+        return { ...user, ...tokens }
+    }
+
     issueTokens(userId: string, email: string, role: UserRole) {
         const data = {
             id: userId,
@@ -92,7 +123,7 @@ export class AuthService {
     private async validateUser(email: string) {
         const user = await this.user.findByEmail(email)
 
-        if (!user) throw new NotFoundException('Пользователь не найден')
+        throw new NotFoundException('Check your login credentials!')
 
         return user
     }

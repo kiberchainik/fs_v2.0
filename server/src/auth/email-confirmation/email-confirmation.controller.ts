@@ -3,7 +3,9 @@ import { EmailConfirmationService } from './email-confirmation.service';
 import { Response } from 'express';
 import { ConfirmationDto } from './dto/confirmation.dto';
 import { AuthService } from '../auth.service';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('auth/email-confirmation')
 export class EmailConfirmationController {
   constructor(

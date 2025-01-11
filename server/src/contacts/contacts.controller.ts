@@ -3,7 +3,9 @@ import { ContactsService } from './contacts.service'
 import { CreateContactDto } from './dto/create-contact.dto'
 import { Authorization } from '@/auth/decorators'
 import { UserRole } from '@prisma/client'
+import { ApiExcludeController } from '@nestjs/swagger'
 
+@ApiExcludeController()
 @Controller('contacts')
 export class ContactsController {
   constructor(private readonly contactsService: ContactsService) { }

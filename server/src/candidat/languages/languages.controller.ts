@@ -4,7 +4,9 @@ import { CreateLanguageDto } from './dto/create-language.dto';
 import { UpdateLanguageDto } from './dto/update-language.dto';
 import { Authorization, CurrentUser } from '@/auth/decorators';
 import { UserRole } from '@prisma/client';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('languages')
 export class LanguagesController {
   constructor(private readonly languagesService: LanguagesService) { }

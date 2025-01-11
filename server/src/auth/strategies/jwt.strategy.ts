@@ -18,8 +18,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 	}
 
 	async validate({ id }: { id: string }) {
-		if(!id) throw new UnauthorizedException('Вам нужно авторизоваться заново!')
-		
+		if (!id) throw new UnauthorizedException('Вам нужно авторизоваться заново!')
+
 		return this.userService.findById(id)
 	}
 }

@@ -4,7 +4,9 @@ import { CreateWorkingTimeDto } from './dto/create-working-time.dto';
 import { UpdateWorkingTimeDto } from './dto/update-working-time.dto';
 import { Authorization } from '@/auth/decorators';
 import { UserRole } from '@prisma/client';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('working-time')
 export class WorkingTimeController {
   constructor(private readonly workingTimeService: WorkingTimeService) { }

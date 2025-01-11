@@ -2,7 +2,9 @@ import { Controller, Post, Body } from "@nestjs/common";
 import { OpenAIService } from "./openai.service";
 import { Authorization } from "@/auth/decorators";
 import { UserRole } from "@prisma/client";
+import { ApiExcludeController } from "@nestjs/swagger";
 
+@ApiExcludeController()
 @Controller("ai-generate")
 export class OpenAIController {
   constructor(private readonly openAIService: OpenAIService) { }

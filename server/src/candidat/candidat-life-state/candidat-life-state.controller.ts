@@ -3,7 +3,9 @@ import { CandidatLifeStateService } from './candidat-life-state.service';
 import { CreateCandidatLifeStateDto } from './dto/create-candidat-life-state.dto';
 import { Authorization, CurrentUser } from '@/auth/decorators';
 import { UserRole } from '@prisma/client';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('life-state')
 export class CandidatLifeStateController {
   constructor(private readonly candidatLifeStateService: CandidatLifeStateService) { }

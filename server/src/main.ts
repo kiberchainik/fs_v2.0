@@ -31,8 +31,8 @@ async function bootstrap() {
     cookie: {
       domain: config.getOrThrow<string>('SESSION_DOMAIN'),
       maxAge: msFn(config.getOrThrow<StringValue>('SESSION_MAX_AGE')),
-      httpOnly: true, //config.getOrThrow<StringValue>('SESSION_HTTP_ONLY'),
-      secure: false, //config.getOrThrow<StringValue>('SESSION_SECURE')
+      httpOnly: config.getOrThrow<boolean>('SESSION_HTTP_ONLY'),
+      secure: config.getOrThrow<boolean>('SESSION_SECURE'),
       sameSite: 'lax'
     },
     store: new RedisStore({
@@ -48,10 +48,17 @@ async function bootstrap() {
   })
 
   const configSwagger = new DocumentBuilder()
-    .setTitle('FindSolution APIs')
-    .setDescription('The FS API description')
+    .setTitle('Lavoro Ideale REST API')
+    .setDescription('Documentazione dell\'API REST di LavIdea. Questa API permette alle agenzie di lavoro di connettersi al nostro sito per pubblicare le loro offerte di lavoro, scaricare i curriculum vitae degli utenti registrati e ricevere analisi dettagliate sulle loro offerte di lavoro. Utilizzando gli endpoint forniti, le agenzie possono gestire facilmente le loro risorse e ottimizzare il processo di reclutamento. Assicuratevi di seguire le linee guida per un utilizzo efficace e sicuro dell\'API')
     .setVersion('1.0')
-    .addTag('fs')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        in: 'header'
+      },
+      'JWT-auth',
+    )
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, configSwagger);
   SwaggerModule.setup('api', app, documentFactory);

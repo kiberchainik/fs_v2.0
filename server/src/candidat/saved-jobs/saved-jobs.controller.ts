@@ -3,7 +3,9 @@ import { SavedJobsService } from './saved-jobs.service';
 import { CreateSavedJobDto } from './dto/create-saved-job.dto'
 import { Authorization, CurrentUser } from '@/auth/decorators';
 import { UserRole } from '@prisma/client';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('saved-jobs')
 export class SavedJobsController {
   constructor(private readonly savedJobsService: SavedJobsService) { }

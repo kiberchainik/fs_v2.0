@@ -4,7 +4,9 @@ import { CreateModeJobDto } from './dto/create-mode-job.dto';
 import { UpdateModeJobDto } from './dto/update-mode-job.dto';
 import { Authorization } from '@/auth/decorators';
 import { UserRole } from '@prisma/client';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('mode-job')
 export class ModeJobController {
   constructor(private readonly modeJobService: ModeJobService) { }

@@ -6,6 +6,7 @@ import { Authorization, CurrentUser } from '@/auth/decorators';
 import { FileService } from '@/libs/file/file.service';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { PaginationQueryDto } from '@/utils';
+import { ApiBody, ApiConsumes, ApiExcludeEndpoint, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @Controller('agency')
 export class AgencyController {
@@ -14,6 +15,9 @@ export class AgencyController {
     private readonly file: FileService
   ) { }
 
+  @ApiOperation({ summary: 'Compilazione delle informazioni dell\'agenzia prima di aggiungere annunci' })
+  @ApiResponse({ status: 200, description: 'Le informazioni dell\'agenzia sono state aggiunte con successo' })
+  @ApiBody({ type: CreateAgencyDto })
   @Post('settings')
   @Authorization(UserRole.AGENCY)
   @HttpCode(HttpStatus.OK)
@@ -21,6 +25,7 @@ export class AgencyController {
     return this.agencyService.create(id, createAgencyDto);
   }
 
+  @ApiExcludeEndpoint()
   @Authorization(UserRole.AGENCY)
   @Get('profile')
   getAgencyData(@CurrentUser('id') id: string) {
@@ -29,6 +34,21 @@ export class AgencyController {
 
   @Authorization(UserRole.AGENCY)
   @UseInterceptors(FilesInterceptor('files'))
+  @ApiExcludeEndpoint()
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        comment: { type: 'string' },
+        outletId: { type: 'integer' },
+        file: {
+          type: 'string',
+          format: 'binary',
+        },
+      },
+    },
+  })
   @Post('logo')
   async uploadFile(
     @UploadedFiles(
@@ -47,6 +67,7 @@ export class AgencyController {
     return fileData
   }
 
+  @ApiExcludeEndpoint()
   @Get()
   findAll(
     @Query() searchTerm: PaginationQueryDto
@@ -54,6 +75,7 @@ export class AgencyController {
     return this.agencyService.findAll(searchTerm)
   }
 
+  @ApiExcludeEndpoint()
   @Get(':slug')
   async findOne(
     @Param('slug') slug: string,
@@ -62,6 +84,7 @@ export class AgencyController {
     return await this.agencyService.agencyDataBySlug(slug, pagination)
   }
 
+  @ApiExcludeEndpoint()
   @Get('metadata-by-slug/:slug')
   @HttpCode(HttpStatus.OK)
   async getMetadataBySlug(
@@ -70,6 +93,7 @@ export class AgencyController {
     return await this.agencyService.findMetadataBySlug(slug);
   }
 
+  @ApiExcludeEndpoint()
   @Get('carousel/:limit')
   @HttpCode(HttpStatus.OK)
   async getAgenciesForCarousel(
@@ -78,11 +102,16 @@ export class AgencyController {
     return await this.agencyService.getAgenciesForCarousel(limit);
   }
 
+  @ApiOperation({ summary: 'Aggiornamento delle informazioni dell\'agenzia' })
+  @ApiResponse({ status: 200, description: 'Le informazioni dell\'agenzia sono state aggiornate con successo' })
+  @ApiBody({ type: CreateAgencyDto })
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAgencyDto: UpdateAgencyDto) {
     return this.agencyService.update(id, updateAgencyDto);
   }
 
+  @ApiOperation({ summary: 'Cancellazione account dell\'agenzia' })
+  @ApiResponse({ status: 200, description: 'Le informazioni dell\'agenzia sono state aggiornate con successo' })
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.agencyService.remove(id);

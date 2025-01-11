@@ -4,7 +4,9 @@ import { CreateExperienceMinimalDto } from './dto/create-experience-minimal.dto'
 import { UpdateExperienceMinimalDto } from './dto/update-experience-minimal.dto';
 import { Authorization } from '@/auth/decorators';
 import { UserRole } from '@prisma/client';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('experience-minimal')
 export class ExperienceMinimalController {
   constructor(private readonly experienceMinimalService: ExperienceMinimalService) { }

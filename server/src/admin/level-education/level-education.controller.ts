@@ -4,7 +4,9 @@ import { CreateLevelEducationDto } from './dto/create-level-education.dto';
 import { UpdateLevelEducationDto } from './dto/update-level-education.dto';
 import { Authorization } from '@/auth/decorators';
 import { UserRole } from '@prisma/client';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('level-education')
 export class LevelEducationController {
   constructor(private readonly levelEducationService: LevelEducationService) { }

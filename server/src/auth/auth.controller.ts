@@ -1,14 +1,14 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, Post, Query, Req, Res, UnauthorizedException, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, Res, UnauthorizedException, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service'
 import { Request, Response } from 'express'
-import { LoginDto, RegisterDto } from './dto'
+import { LoginDto, RegisterDto, OpenAPIAgencyResponse } from './dto'
 import { Recaptcha } from '@nestlab/google-recaptcha'
 import { ConfigService } from '@nestjs/config'
 import { REFRESH_TOKEN_NAME } from '@/libs/common/constants'
 import { AuthGuard } from '@nestjs/passport'
-import { ApiBearerAuth, ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
+import { ApiBearerAuth, ApiBody, ApiCreatedResponse, ApiExcludeEndpoint, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
 
-@ApiTags('auth')
+@ApiTags('Agenzia di lavoro')
 @Controller('auth')
 export class AuthController {
 	constructor(
@@ -16,9 +16,7 @@ export class AuthController {
 		private readonly config: ConfigService
 	) { }
 
-	@ApiOperation({ summary: 'User registration' })
-	@ApiBody({ type: RegisterDto })
-	@ApiResponse({ status: 200, description: 'After successful registration, be sure to open your email and follow the email confirmation link. After that, you refresh in your account!' })
+	@ApiExcludeEndpoint()
 	@Post('register')
 	@Recaptcha()
 	@HttpCode(HttpStatus.OK)
@@ -26,10 +24,32 @@ export class AuthController {
 		return this.authService.register(dto)
 	}
 
-	@ApiOperation({ summary: 'User log in' })
+	@ApiOperation({ summary: 'Registrazione nuova agenzia' })
+	@ApiBody({ type: RegisterDto })
+	@ApiCreatedResponse({ description: 'Registrazione avvenuta con successo. <b>Per motivi di siccurezza response data non comprende password</b>!', type: OpenAPIAgencyResponse })
+	@Post('new-agency')
+	@HttpCode(HttpStatus.OK)
+	async newAgency(@Body() dto: RegisterDto) {
+		return this.authService.createNewAgency(dto)
+	}
+
+	@ApiOperation({ summary: 'Autorizzazione dell\'agenzia' })
 	@ApiBody({ type: LoginDto })
-	@ApiResponse({ status: 200, description: 'After successful authorization you will be returned accessToken' })
-	@ApiResponse({ status: 403, description: 'If you have not confirmed your email after registration, then you will receive an error and a new link will be sent to confirm your email. After confirming your email, you will be able to log in to your account' })
+	@ApiResponse({ status: 200, description: 'Autorizzazione avvenuta con successo', type: OpenAPIAgencyResponse })
+	@Post('login-agency')
+	@Recaptcha()
+	@HttpCode(HttpStatus.OK)
+	async loginWithAPI(
+		@Body() dto: LoginDto,
+		@Res({ passthrough: true }) res: Response
+	) {
+		const { refreshToken, ...response } = await this.authService.loginWithAPI(dto)
+		this.authService.addRefreshTokenToResponse(res, refreshToken)
+
+		return response
+	}
+
+	@ApiExcludeEndpoint()
 	@Post('login')
 	@Recaptcha()
 	@HttpCode(HttpStatus.OK)
@@ -44,6 +64,7 @@ export class AuthController {
 		//return this.authService.login(req, dto)
 	}
 
+	@ApiExcludeEndpoint()
 	@ApiBearerAuth()
 	@HttpCode(200)
 	@Post('access-token')
@@ -65,10 +86,12 @@ export class AuthController {
 		return response
 	}
 
+	@ApiExcludeEndpoint()
 	@Get('google')
 	@UseGuards(AuthGuard('google'))
 	async googleAuth(@Req() req: Request) { }
 
+	@ApiExcludeEndpoint()
 	@Get('google/callback')
 	@UseGuards(AuthGuard('google'))
 	async googleAuthCallback(
@@ -83,10 +106,12 @@ export class AuthController {
 		)
 	}
 
+	@ApiExcludeEndpoint()
 	@Get('facebook')
 	@UseGuards(AuthGuard('facebook'))
 	async facebookAuth(@Req() req) { }
 
+	@ApiExcludeEndpoint()
 	@Get('facebook/redirect')
 	@UseGuards(AuthGuard('facebook'))
 	async facebookAuthCallback(
@@ -101,10 +126,12 @@ export class AuthController {
 		)
 	}
 
+	@ApiExcludeEndpoint()
 	@Get('instagram')
 	@UseGuards(AuthGuard('instagram'))
 	async instagramLogin(@Req() req: Request) { }
 
+	@ApiExcludeEndpoint()
 	@Get('instagram/callback')
 	@UseGuards(AuthGuard('instagram'))
 	async instagramLoginCallback(
@@ -119,10 +146,12 @@ export class AuthController {
 		)
 	}
 
+	@ApiExcludeEndpoint()
 	@Get('linkedin')
 	@UseGuards(AuthGuard('linkedin'))
 	async linkedinLogin(@Req() req: Request) { }
 
+	@ApiExcludeEndpoint()
 	@Get('linkedin/callback')
 	@UseGuards(AuthGuard('linkedin'))
 	async linkedinLoginCallback(
@@ -137,10 +166,12 @@ export class AuthController {
 		)
 	}
 
+	@ApiExcludeEndpoint()
 	@Get('telegram')
 	@UseGuards(AuthGuard('telegram'))
 	async telegramLogin(@Req() req: Request) { }
 
+	@ApiExcludeEndpoint()
 	@Get('telegram/callback')
 	@UseGuards(AuthGuard('telegram'))
 	async telegramCallback(
@@ -155,6 +186,7 @@ export class AuthController {
 		)
 	}
 
+	@ApiExcludeEndpoint()
 	@HttpCode(200)
 	@Post('logout')
 	async logout(@Res({ passthrough: true }) res: Response) {

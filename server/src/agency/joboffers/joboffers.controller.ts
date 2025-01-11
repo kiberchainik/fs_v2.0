@@ -6,7 +6,9 @@ import { JobOffersDto } from './dto'
 import { Authorization, CurrentUser } from '@/auth/decorators'
 import { UserRole } from '@prisma/client'
 import { FilterJobsDto } from './dto/filterJobs.dto'
+import { ApiBearerAuth } from '@nestjs/swagger'
 
+@ApiBearerAuth('JWT-auth')
 @Controller('joboffers')
 export class JoboffersController {
   constructor(private readonly joboffersService: JoboffersService) { }

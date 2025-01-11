@@ -3,7 +3,9 @@ import { SendCandidatureService } from './send-candidature.service'
 import { CreateSendCandidatureDto } from './dto/create-send-candidature.dto'
 import { Authorization, CurrentUser } from '@/auth/decorators'
 import { UserRole } from '@prisma/client'
+import { ApiExcludeController } from '@nestjs/swagger'
 
+@ApiExcludeController()
 @Controller('send-candidature')
 export class SendCandidatureController {
   constructor(private readonly sendCandidatureService: SendCandidatureService) { }
