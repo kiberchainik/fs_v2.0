@@ -384,6 +384,16 @@ model Tokens {
   @@map("tokens")
 }
 
+model LastProcessedIndex {
+  id           String   @id @default(uuid())
+  userId       String   @unique @map("user_id")
+  process_type String   @map("process_type")
+  index        Int
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("last_processed_index")
+}
+
 enum TokenType {
   VERIFICATION
   TWO_FACTOR

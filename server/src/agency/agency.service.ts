@@ -83,6 +83,9 @@ export class AgencyService {
         logo: true,
         slug: true,
         url: true,
+        about: true,
+        address: true,
+        phone: true,
         user: {
           select: {
             email: true

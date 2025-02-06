@@ -5,8 +5,8 @@ import { UpdateBranchDto } from './dto/update-branch.dto'
 import { FilesInterceptor } from '@nestjs/platform-express'
 import { FileService } from '@/libs/file/file.service';
 import { Authorization, CurrentUser } from '@/auth/decorators';
-import { UserRole } from '@prisma/client';
-import { Response } from 'express'
+import { UserRole } from '@prisma/client'
+import { ApiExcludeEndpoint } from '@nestjs/swagger';
 
 @Controller('branch')
 export class BranchController {
@@ -35,6 +35,7 @@ export class BranchController {
     return this.branchService.createPackage(userId, createBranchDto)
   }
 
+  @ApiExcludeEndpoint()
   @Authorization(UserRole.AGENCY)
   @UseInterceptors(FilesInterceptor('files'))
   @Post('logo')
@@ -53,6 +54,7 @@ export class BranchController {
     //return this.branchService.updLogo(id, fileData)
   }
 
+  @ApiExcludeEndpoint()
   @Get()
   @Authorization(UserRole.AGENCY)
   async findAll(@CurrentUser('id') userId: string) {

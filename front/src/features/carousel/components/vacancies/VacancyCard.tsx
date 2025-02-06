@@ -5,7 +5,7 @@ import Link from "next/link"
 import { formatDate, generatePostUrl } from "@/shared/utils"
 import { CiRead } from "react-icons/ci"
 
-export const CandidatCard: FC<ICarouselJobs> = ({ categories, createdAt, slug, title, views }) => {
+export const VacancyCard: FC<ICarouselJobs> = ({ categories, createdAt, slug, title, views }) => {
     return (
         <CarouselItem className="md:basis-1/2 lg:basis-1/5">
             <Card>

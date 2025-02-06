@@ -12,12 +12,31 @@ export class CandidatService {
     private readonly prisma: PrismaService
   ) { }
 
-  create(createCandidatDto: CreateCandidatDto) {
-    return 'This action adds a new candidat';
-  }
-
-  findAll() {
-    return `This action returns all candidat`;
+  async findAll() {
+    return await this.prisma.candidatData.findMany({
+      select: {
+        id: true,
+        birthday: true,
+        avatar: true,
+        firstname: true,
+        surname: true,
+        user: {
+          select: {
+            email: true
+          }
+        },
+        education: {
+          select: {
+            grade: true,
+          }
+        },
+        skills: {
+          select: {
+            skill: true
+          }
+        }
+      }
+    })
   }
 
   async getCarouselCandidats(limit: number) {
@@ -27,9 +46,19 @@ export class CandidatService {
         avatar: true,
         firstname: true,
         surname: true,
+        user: {
+          select: {
+            email: true
+          }
+        },
         education: {
           select: {
             grade: true,
+          }
+        },
+        skills: {
+          select: {
+            skill: true
           }
         }
       }

@@ -3,7 +3,7 @@
 import Spinner from "@/shared/components/Spinner/Spinner";
 import { useGetAgencies } from "../../hooks/useAgencyCarousel";
 import { CarouselMain } from "../CarouselMain"
-import { CandidatCard } from "./AgencyCard";
+import { AgencyCard } from "./AgencyCard";
 
 export default function Agencies() {
     const title = "Agencies"
@@ -12,7 +12,7 @@ export default function Agencies() {
         <CarouselMain titleCarousel={title}>
             {isFetching && <div className="w-full text-center p-5"><Spinner /></div>}
             {agencies && agencies.map((agency) => (
-                <CandidatCard key={agency.agency_name} {...agency} />
+                <AgencyCard key={agency.agency_name} {...agency} />
             ))}
         </CarouselMain>
     )

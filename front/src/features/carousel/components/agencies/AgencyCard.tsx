@@ -1,11 +1,11 @@
 import { FC } from "react"
-import { ICarouselAgencies, ICarouselCandidate } from "../../types/carousel.type"
+import { ICarouselAgencies } from "../../types/carousel.type"
 import { Button, CarouselItem } from "@/shared/components"
 import Image from "next/image"
 import Link from "next/link"
 import { MAIN_URL } from "@/shared/config"
 
-export const CandidatCard: FC<ICarouselAgencies> = ({ agency_name, logo, slug, user, url }) => {
+export const AgencyCard: FC<ICarouselAgencies> = ({ agency_name, logo, slug, user, url, about }) => {
     return (
         <CarouselItem key={slug}>
             <div className="flex flex-col items-center gap-y-2">

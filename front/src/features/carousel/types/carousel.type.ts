@@ -12,6 +12,9 @@ export interface ICarouselAgencies {
     logo: string,
     slug: string,
     url: string,
+    about: string,
+    address: string,
+    phone: string,
     user: {
         email: string
     }

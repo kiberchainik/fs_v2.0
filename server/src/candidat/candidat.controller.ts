@@ -1,12 +1,13 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, MaxFileSizeValidator, ParseFilePipe, Query, UploadedFiles } from '@nestjs/common';
 import { CandidatService } from './candidat.service';
-import { CreateCandidatDto } from './dto/create-candidat.dto';
-import { UpdateCandidatDto } from './dto/update-candidat.dto';
+import { UpdateCandidatDto, OpenAPICandidatsResponse } from './dto'
 import { Authorization, CurrentUser } from '@/auth/decorators';
 import { UserRole } from '@prisma/client';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { FileService } from '@/libs/file/file.service';
+import { ApiExcludeEndpoint, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
 
+@ApiTags('Candidats')
 @Controller('candidat')
 export class CandidatController {
   constructor(
@@ -14,11 +15,7 @@ export class CandidatController {
     private readonly file: FileService
   ) { }
 
-  @Post()
-  create(@Body() createCandidatDto: CreateCandidatDto) {
-    return this.candidatService.create(createCandidatDto);
-  }
-
+  @ApiExcludeEndpoint()
   @Authorization(UserRole.CANDIDATE)
   @UseInterceptors(FilesInterceptor('files'))
   @Post('avatar')
@@ -39,11 +36,14 @@ export class CandidatController {
     return fileData
   }
 
+  @ApiOperation({ summary: 'Elenco dei candadati' })
+  @ApiResponse({ status: 200, description: 'Elenco dei tutti candidati registrati sul portale', type: OpenAPICandidatsResponse })
   @Get()
   findAll() {
     return this.candidatService.findAll();
   }
 
+  @ApiExcludeEndpoint()
   @Get('carousel/:limit')
   getCarouselCandidats(
     @Param('limit') limit: number
@@ -51,12 +51,14 @@ export class CandidatController {
     return this.candidatService.getCarouselCandidats(limit);
   }
 
+  @ApiExcludeEndpoint()
   @Get('privacy')
   @Authorization(UserRole.CANDIDATE)
   getCandidatPrivacy(@CurrentUser('id') id: string) {
     return this.candidatService.getCandidatPrivacy(id);
   }
 
+  @ApiExcludeEndpoint()
   @Patch('privacy')
   @Authorization(UserRole.CANDIDATE)
   update(
@@ -66,6 +68,7 @@ export class CandidatController {
     return this.candidatService.update(id, updateCandidatDto);
   }
 
+  @ApiExcludeEndpoint()
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.candidatService.remove(id);

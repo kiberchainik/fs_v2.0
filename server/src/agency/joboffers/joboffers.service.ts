@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateJobofferDto, UpdateJobofferDto, JobOffersDto, returnTagsObject } from './dto'
 import { CategoryService } from 'src/admin/category/category.service';
 import { Prisma } from '@prisma/client';
@@ -60,9 +60,7 @@ export class JoboffersService {
     }
   }
 
-  async create(userId: string, createJobofferDto: CreateJobofferDto) {
-    const { id } = await this.getAgencyDataId(userId)
-
+  private CreateNewJob = async (idAgency: string, createJobofferDto: CreateJobofferDto) => {
     const {
       categoryId: categories,
       branchId,
@@ -96,46 +94,121 @@ export class JoboffersService {
       workingTimeJob: workingTimeId ? ({ connect: { id: workingTimeId } }) : {}
     }
 
-    if (id) {
-      const newJob = await this.prisma.jobOffers.create({
-        data: {
-          ...jobOffers,
-          slug: slugify(createJobofferDto.title),
-          categories: {
-            connect: { id: categories }
-          },
-          sectors: {
-            connect: jobSectors
-          },
-          tags: {
-            create: jobTags
-          },
-          agency: {
-            connect: { id }
-          },
-          ...optionals
+    const newJob = await this.prisma.jobOffers.create({
+      data: {
+        ...jobOffers,
+        slug: slugify(createJobofferDto.slug ? createJobofferDto.slug : createJobofferDto.title),
+        categories: {
+          connect: { id: categories }
         },
-        include: {
-          ...this.includesAll,
-          sectors: true,
-          branch: true
-        }
-      })
+        sectors: {
+          connect: jobSectors
+        },
+        tags: {
+          create: jobTags
+        },
+        agency: {
+          connect: { id: idAgency }
+        },
+        ...optionals
+      },
+      include: {
+        ...this.includesAll,
+        sectors: true,
+        branch: true
+      }
+    })
 
+    await this.prisma.jobOffers.update({
+      where: { id: newJob.id },
+      data: { slug: `${newJob.slug}_${newJob.id.split('-')[0]}` }
+    })
+
+    if (branchId) {
       await this.prisma.jobOffers.update({
         where: { id: newJob.id },
-        data: { slug: `${newJob.slug}_${newJob.id.split('-')[0]}` }
+        data: { branchId }
       })
+    }
 
-      if (branchId) {
-        await this.prisma.jobOffers.update({
-          where: { id: newJob.id },
-          data: { branchId }
-        })
+    return newJob
+  }
+
+  private async getLastProcessedIndex(userId: string) {
+    const progress = await this.prisma.lastProcessedIndex({
+      where: {
+        AND: [
+          { userId },
+          { process_type: 'createJobPackage' }
+        ]
+      },
+      select: { last_processed_index: true }
+    });
+    return progress ? progress.last_processed_index : null;
+  }
+
+  private async updateLastProcessedIndex(userId: string, lastProcessedIndex: number) {
+    await this.prisma.lastProcessedIndex.upsert({
+      where: {
+        AND: [
+          { userId },
+          { process_type: 'createJobPackage' }
+        ]
+      },
+      update: { last_processed_index: lastProcessedIndex },
+      create: { user_id: userId, process_type: 'createJobPackage', last_processed_index: lastProcessedIndex }
+    });
+  }
+
+  private async deleteProgress(userId: string) {
+    await this.prisma.lastProcessedIndex.deleteMany({
+      where: {
+        AND: [
+          { userId },
+          { process_type: 'createJobPackage' }
+        ]
+      }
+    });
+  }
+
+  async create(userId: string, createJobofferDto: CreateJobofferDto) {
+    const { id } = await this.getAgencyDataId(userId)
+
+    if (id) throw new NotFoundException('Per aggiungere filiali e annunci, completa il profilo!')
+
+    this.CreateNewJob(id, createJobofferDto)
+  }
+
+  async createPackage(userId: string, createJobofferDto: CreateJobofferDto[]) {
+    const batchSize: number = 500
+    const delay: number = 1000
+    const startIndex: number = 0 // Индекс начала добавления
+    const { id } = await this.getAgencyDataId(userId)
+
+    if (!id) throw new BadRequestException('Per aggiungere filiali e annunci, completa il profilo!')
+
+    let lastProcessedIndex = await this.getLastProcessedIndex(userId) || startIndex
+
+    try {
+      for (let i = startIndex; i < createJobofferDto.length; i += batchSize) {
+        const batch = createJobofferDto.slice(i, i + batchSize)
+
+        for (let j = 0; j < batch.length; j++) {
+          const jobOffer = batch[j]
+          await this.CreateNewJob(id, jobOffer)
+          lastProcessedIndex = i + j + 1
+        }
+
+        await new Promise(resolve => setTimeout(resolve, delay))
       }
 
-      return newJob
-    } else throw new NotFoundException('Заполните все данные о агентстве!')
+      await this.deleteProgress(userId)
+      return ('Gli annunci sono stati aggiunti con successo')
+    } catch (error) {
+      await this.updateLastProcessedIndex(userId, lastProcessedIndex)
+      await this.prisma.$disconnect()
+      throw new BadRequestException(`Errore durante l'aggiunta degli utenti all'indice ${i}: ${error}`)
+    }
   }
 
   async update(idJob: string, userId: string, updateJobofferDto: UpdateJobofferDto) {

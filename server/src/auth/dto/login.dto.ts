@@ -18,6 +18,10 @@ export class LoginDto {
     @MinLength(6, { message: 'Password length from 6 simbols' })
     password: string
 
+    @ApiProperty({
+        required: false,
+        description: 'Codice di verifica per l\'accesso, se e\' stato selezionato two-factor authentication (2FA)'
+    })
     @IsOptional()
     @IsString()
     code: string

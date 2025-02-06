@@ -24,14 +24,12 @@ export class AuthController {
 		return this.authService.register(dto)
 	}
 
-	@ApiOperation({ summary: 'Registrazione nuova agenzia' })
-	@ApiBody({ type: RegisterDto })
-	@ApiCreatedResponse({ description: 'Registrazione avvenuta con successo. <b>Per motivi di siccurezza response data non comprende password</b>!', type: OpenAPIAgencyResponse })
-	@Post('new-agency')
-	@HttpCode(HttpStatus.OK)
-	async newAgency(@Body() dto: RegisterDto) {
-		return this.authService.createNewAgency(dto)
-	}
+	// @ApiExcludeEndpoint()
+	// @Post('new-agency')
+	// @HttpCode(HttpStatus.OK)
+	// async newAgency(@Body() dto: RegisterDto) {
+	// 	return this.authService.createNewAgency(dto)
+	// }
 
 	@ApiOperation({ summary: 'Autorizzazione dell\'agenzia' })
 	@ApiBody({ type: LoginDto })
