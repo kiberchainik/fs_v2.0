@@ -1,4 +1,4 @@
-import { PaginationQueryDto } from "@/utils";
+import { PaginationQueryDto } from "@/libs/common/utils";
 import { IsOptional, IsEnum } from "class-validator";
 
 enum OrderByEnum {

@@ -12,7 +12,7 @@ import { Button, Heading } from "@/shared/components";
 import { UserRole } from "@/features/auth/types";
 import { CandidateBtns } from "../candidatBtns/CandidateBtns";
 import { useEffect, useState } from "react";
-import DOMPurify from 'isomorphic-dompurify';
+import { Description } from "@radix-ui/react-alert-dialog";
 
 export default function VacancyPage({
   id,
@@ -36,7 +36,6 @@ export default function VacancyPage({
 }: IVacanciaesFullDate) {
   const authUser = useAppSelector(state => state.reducer.user.data)
   const [isClient, setIsClient] = useState(false)
-  const sanitizedContent = DOMPurify.sanitize(description || '')
 
   useEffect(() => {
     setIsClient(true);
@@ -68,10 +67,7 @@ export default function VacancyPage({
         </div>
         <div className={styles.description}>
           {isClient && (
-            <div
-              dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-              className="prose max-w-none"
-            />
+            <div className="prose max-w-none"><Description>{description}</Description></div>
           )}
         </div>
       </div>

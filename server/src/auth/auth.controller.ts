@@ -6,7 +6,7 @@ import { Recaptcha } from '@nestlab/google-recaptcha'
 import { ConfigService } from '@nestjs/config'
 import { REFRESH_TOKEN_NAME } from '@/libs/common/constants'
 import { AuthGuard } from '@nestjs/passport'
-import { ApiBearerAuth, ApiBody, ApiCreatedResponse, ApiExcludeEndpoint, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
+import { ApiBearerAuth, ApiBody, ApiExcludeEndpoint, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
 
 @ApiTags('Agenzia di lavoro')
 @Controller('auth')
@@ -23,13 +23,6 @@ export class AuthController {
 	async register(@Body() dto: RegisterDto) {
 		return this.authService.register(dto)
 	}
-
-	// @ApiExcludeEndpoint()
-	// @Post('new-agency')
-	// @HttpCode(HttpStatus.OK)
-	// async newAgency(@Body() dto: RegisterDto) {
-	// 	return this.authService.createNewAgency(dto)
-	// }
 
 	@ApiOperation({ summary: 'Autorizzazione dell\'agenzia' })
 	@ApiBody({ type: LoginDto })

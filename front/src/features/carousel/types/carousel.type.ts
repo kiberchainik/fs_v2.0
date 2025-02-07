@@ -2,6 +2,13 @@ export interface ICarouselCandidate {
     firstname: string;
     surname: string;
     avatar: string[];
+    about_my: string;
+    skills: {
+        skill: string
+    }[]
+    user: {
+        email: string;
+    }
     education: {
         grade: string;
     }[]
@@ -26,6 +33,10 @@ export interface ICarouselJobs {
     description: string
     views: string
     createdAt: string
+    agency: {
+        agency_name: string,
+        logo: string
+    }
     categories: {
         id: string,
         description: string,

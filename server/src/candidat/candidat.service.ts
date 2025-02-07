@@ -46,6 +46,7 @@ export class CandidatService {
         avatar: true,
         firstname: true,
         surname: true,
+        about_my: true,
         user: {
           select: {
             email: true

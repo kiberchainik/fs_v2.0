@@ -6,8 +6,9 @@ import { FilesInterceptor } from '@nestjs/platform-express'
 import { FileService } from '@/libs/file/file.service';
 import { Authorization, CurrentUser } from '@/auth/decorators';
 import { UserRole } from '@prisma/client'
-import { ApiExcludeEndpoint } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiExcludeEndpoint } from '@nestjs/swagger';
 
+@ApiBearerAuth('JWT-auth')
 @Controller('branch')
 export class BranchController {
   constructor(

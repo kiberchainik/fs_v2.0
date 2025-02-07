@@ -1,4 +1,4 @@
-import { PaginationQueryDto } from "@/utils"
+import { PaginationQueryDto } from "@/libs/common/utils"
 import { Type } from "class-transformer"
 import { IsBoolean, IsNumber, IsOptional, IsString } from "class-validator"
 

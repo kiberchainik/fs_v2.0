@@ -5,14 +5,15 @@ import { Prisma } from '@prisma/client';
 import { returnCategoryBaseObject } from 'src/admin/category/dto'
 import { returnAgencyBaseObject } from 'src/agency/dto'
 import { PrismaService } from '@/prisma/prisma.service';
-import { slugify } from '@/utils';
+import { LastProcessIndexService, slugify } from '@/libs/common/utils';
 import { FilterJobsDto } from './dto/filterJobs.dto';
 
 @Injectable()
 export class JoboffersService {
   constructor(
     private readonly prisma: PrismaService,
-    private readonly categoryService: CategoryService
+    private readonly categoryService: CategoryService,
+    private readonly lastProcessIndex: LastProcessIndexService
   ) { }
 
   private includesAll: Prisma.jobOffersInclude = {
@@ -134,43 +135,6 @@ export class JoboffersService {
     return newJob
   }
 
-  private async getLastProcessedIndex(userId: string) {
-    const progress = await this.prisma.lastProcessedIndex({
-      where: {
-        AND: [
-          { userId },
-          { process_type: 'createJobPackage' }
-        ]
-      },
-      select: { last_processed_index: true }
-    });
-    return progress ? progress.last_processed_index : null;
-  }
-
-  private async updateLastProcessedIndex(userId: string, lastProcessedIndex: number) {
-    await this.prisma.lastProcessedIndex.upsert({
-      where: {
-        AND: [
-          { userId },
-          { process_type: 'createJobPackage' }
-        ]
-      },
-      update: { last_processed_index: lastProcessedIndex },
-      create: { user_id: userId, process_type: 'createJobPackage', last_processed_index: lastProcessedIndex }
-    });
-  }
-
-  private async deleteProgress(userId: string) {
-    await this.prisma.lastProcessedIndex.deleteMany({
-      where: {
-        AND: [
-          { userId },
-          { process_type: 'createJobPackage' }
-        ]
-      }
-    });
-  }
-
   async create(userId: string, createJobofferDto: CreateJobofferDto) {
     const { id } = await this.getAgencyDataId(userId)
 
@@ -187,7 +151,7 @@ export class JoboffersService {
 
     if (!id) throw new BadRequestException('Per aggiungere filiali e annunci, completa il profilo!')
 
-    let lastProcessedIndex = await this.getLastProcessedIndex(userId) || startIndex
+    let lastProcessedIndex = await this.lastProcessIndex.getLastProcessedIndex(userId) || startIndex
 
     try {
       for (let i = startIndex; i < createJobofferDto.length; i += batchSize) {
@@ -202,12 +166,12 @@ export class JoboffersService {
         await new Promise(resolve => setTimeout(resolve, delay))
       }
 
-      await this.deleteProgress(userId)
+      await this.lastProcessIndex.deleteProgress(userId)
       return ('Gli annunci sono stati aggiunti con successo')
     } catch (error) {
-      await this.updateLastProcessedIndex(userId, lastProcessedIndex)
+      await this.lastProcessIndex.updateLastProcessedIndex(userId, lastProcessedIndex)
       await this.prisma.$disconnect()
-      throw new BadRequestException(`Errore durante l'aggiunta degli utenti all'indice ${i}: ${error}`)
+      throw new BadRequestException(`Errore durante l'aggiunta degli utenti all'indice ${lastProcessedIndex}: ${error}`)
     }
   }
 
@@ -483,6 +447,12 @@ export class JoboffersService {
         description: true,
         views: true,
         createdAt: true,
+        agency: {
+          select: {
+            agency_name: true,
+            logo: true
+          }
+        },
         categories: {
           select: returnCategoryBaseObject
         }

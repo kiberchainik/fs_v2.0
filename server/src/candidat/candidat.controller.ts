@@ -5,8 +5,9 @@ import { Authorization, CurrentUser } from '@/auth/decorators';
 import { UserRole } from '@prisma/client';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { FileService } from '@/libs/file/file.service';
-import { ApiExcludeEndpoint, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
+import { ApiBearerAuth, ApiExcludeEndpoint, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
 
+@ApiBearerAuth('JWT-auth')
 @ApiTags('Candidats')
 @Controller('candidat')
 export class CandidatController {

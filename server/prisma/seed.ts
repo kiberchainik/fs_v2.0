@@ -1,4 +1,4 @@
-import { slugify } from '../src/utils/slugify';
+import { slugify } from '../src/libs/common/utils/slugify';
 import { PrismaService } from '../src/prisma/prisma.service';
 
 async function main() {

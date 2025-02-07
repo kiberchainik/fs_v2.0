@@ -98,6 +98,8 @@ export class AuthService {
 
         if (!isValidPass) throw new UnauthorizedException('Email or password is wrong!')
 
+        if (role !== UserRole.AGENCY) throw new UnauthorizedException('You are not an agency!')
+
         const tokens = this.issueTokens(user.id, user.email, role)
         return { ...user, ...tokens }
     }
@@ -123,7 +125,7 @@ export class AuthService {
     private async validateUser(email: string) {
         const user = await this.user.findByEmail(email)
 
-        throw new NotFoundException('Check your login credentials!')
+        if (!user) throw new NotFoundException('Check your login credentials!')
 
         return user
     }

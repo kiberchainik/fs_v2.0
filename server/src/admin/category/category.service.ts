@@ -2,10 +2,8 @@ import { BadRequestException, ConflictException, Injectable, NotFoundException }
 import { CreateCategoryDto, CreateSectorDto, PaginationCategoryQueryDto, returnCategoryBaseObject, UpdateCategoryDto, UpdateSectorDto } from './dto'
 import { PrismaService } from '@/prisma/prisma.service'
 import { Prisma } from '@prisma/client'
-import { DBError, slugify } from '@/utils'
-import { returnAgencyBaseObject } from '@/agency/dto'
+import { DBError, slugify } from '@/libs/common/utils'
 import { JobOffersDto } from '@/agency/joboffers/dto'
-import { emit } from 'process'
 
 @Injectable()
 export class CategoryService {

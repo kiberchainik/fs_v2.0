@@ -1,5 +1,5 @@
 import { IVacanciaesFullDate } from "@/features/agency/vacancy/types"
-import { Button, Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/shared/components"
+import { Button, Card, CardDescription, CardFooter, CardHeader, CardTitle, Description } from "@/shared/components"
 import { formatDate, generatePostUrl } from "@/shared/utils"
 import Link from "next/link"
 
@@ -10,7 +10,6 @@ import { VacancyCardAuthorInfo } from "./VCAuthorInfo"
 import { IUserMenuHeaderData } from "@/features/userHeaderBtn/types/userMenuData.type"
 import { CandidateBtns } from "../candidatBtns/CandidateBtns"
 import { useEffect, useState } from "react"
-import DOMPurify from 'isomorphic-dompurify'
 
 interface IVacancyCardProps extends IVacanciaesFullDate {
     authUser: IUserMenuHeaderData
@@ -18,11 +17,9 @@ interface IVacancyCardProps extends IVacanciaesFullDate {
 
 export function VacancyCard({ id, title, slug, description, agency, branch, categories, createdAt, reallyUpTo, views, savedBy, sendCandidature, authUser }: IVacancyCardProps) {
     const [isClient, setIsClient] = useState(false);
-    const sanitizedContent = DOMPurify.sanitize(description.slice(0, 150) + '...' || '')
     useEffect(() => {
         setIsClient(true)
     }, [])
-    console.log(agency);
 
     return (
         <Card className='max-w-96'>
@@ -39,7 +36,7 @@ export function VacancyCard({ id, title, slug, description, agency, branch, cate
                 </div>
                 <CandidateBtns jobId={id!} authUser={authUser!} curriculum={sendCandidature!} savedBy={savedBy!} />
             </CardHeader>
-            {isClient && <CardDescription className='p-6' dangerouslySetInnerHTML={{ __html: sanitizedContent }}></CardDescription>}
+            {isClient && <CardDescription className='p-6'><Description>{description.slice(0, 150) + '...' || ''}</Description></CardDescription>}
             <CardFooter>
                 {
                     branch ? (

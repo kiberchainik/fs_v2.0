@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateAgencyDto } from './dto/create-agency.dto';
 import { UpdateAgencyDto } from './dto/update-agency.dto';
 import { PrismaService } from '@/prisma/prisma.service';
-import { PaginationQueryDto, slugify } from '@/utils';
+import { PaginationQueryDto, slugify } from '@/libs/common/utils';
 import { FileResponse } from '@/libs/file/file.service';
 import { join } from 'path';
 import { access, unlink } from 'fs/promises';

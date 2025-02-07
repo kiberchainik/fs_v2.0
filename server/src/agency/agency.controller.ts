@@ -5,7 +5,7 @@ import { UserRole } from '@prisma/client';
 import { Authorization, CurrentUser } from '@/auth/decorators';
 import { FileService } from '@/libs/file/file.service';
 import { FilesInterceptor } from '@nestjs/platform-express';
-import { PaginationQueryDto } from '@/utils';
+import { PaginationQueryDto } from '@/libs/common/utils';
 import { ApiBody, ApiConsumes, ApiExcludeController, ApiExcludeEndpoint, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @ApiExcludeController()
