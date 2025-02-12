@@ -9,7 +9,7 @@ export const CandidatCard: FC<ICarouselCandidate> = ({ avatar, education, firstn
             <div className="mb-6 rounded-3xl bg-white p-6 w-[350px] text-[#335371]">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                        <Image className="mr-5 rounded-full object-cover h-20 w-20 shadow-xl shadow-blue-300/30" height={80} width={80} src={avatar[0]} alt={firstname} />
+                        <Image className="mr-5 rounded-full object-cover h-20 w-20 shadow-2xl shadow-slate-700-500/20" height={80} width={80} src={avatar[0]} alt={firstname} />
                         <div>
                             <h3 className="text-base font-semibold text-gray-900">{`${firstname} ${surname}`}</h3>
                             <span className="block text-xs font-normal">{user.email}</span>

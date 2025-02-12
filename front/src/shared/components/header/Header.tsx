@@ -17,7 +17,7 @@ export const Header: FC<PropsWithChildren<IStyles>> = ({ children, className }) 
             <div className='hidden md:flex'><Logo /></div>
             <div className='flex justify-around w-full items-center'>
                 {children}
-                <HeaderSearch />
+                {/* <HeaderSearch /> */}
             </div>
             <div className='flex gap-x-2 items-center'>
                 <UserHeaderMenu />

@@ -1,36 +1,51 @@
+'use client'
+
 import { FC } from "react"
 import { ICarouselJobs } from "../../types/carousel.type"
-import { Button, Card, CarouselItem, Description } from "@/shared/components"
+import { Button, Description } from "@/shared/components"
 import Link from "next/link"
 import { formatDate, generatePostUrl } from "@/shared/utils"
 import Image from "next/image"
+import { PiEyeLight } from "react-icons/pi"
 
-export const VacancyCard: FC<ICarouselJobs> = ({ categories, createdAt, slug, title, views, agency, description }) => {
+export const VacancyCard: FC<ICarouselJobs> = ({ categories, createdAt, slug, title, views, agency, description, contractType, experienceMinimalJob, levelEducation, modeJob, reallyUpTo, workingTimeJob }) => {
     return (
-        <CarouselItem className="md:basis-1/2 lg:basis-1/5">
-            <div className='break-inside relative overflow-hidden flex flex-col justify-between space-y-3 text-sm rounded-xl max-w-[23rem] p-4 mb-4 bg-white text-black dark:bg-slate-800 dark:text-white'>
-                <div className='flex items-center justify-between font-medium'>
-                    <span className='uppercase text-xs text-[#335371]'>{agency.agency_name}</span>
-                    <span className='text-xs text-slate-500'>{formatDate(createdAt)}</span>
-                </div>
-                <div className='flex flex-row items-center space-x-3'>
-                    <div className='flex flex-none items-center justify-center w-14 h-14 rounded-full bg-white p-5 shadow-2xl shadow-slate-700-500/20'>
-                        <Image src={agency.logo[0]} alt={agency.agency_name} width={28} height={28} className="h-7 max-w-7" />
+        <div className="md:w-[410px] w-80 mb-4">
+            <div className="shadow-2xl shadow-sky-300/20 rounded-3xl bg-white p-6">
+                <div className="flex flex-row items-center gap-x-5">
+                    <div className="shadow-2xl shadow-slate-700-500/20 rounded-2xl p-5">
+                        <Image src={agency.logo[0]} alt={agency.agency_name} width={64} height={64} className="h-16 w-16" />
                     </div>
-                    <span className='text-base font-medium'>{title}</span>
+                    <div className="company-info">
+                        <h4 className="mb-0">
+                            <a className="text-2xl text-[#1e356a] font-semibold">{agency.agency_name}</a>
+                        </h4>
+                        <small className="text-[#069cd0] text-base">{formatDate(createdAt)}</small>
+                    </div>
                 </div>
-                <div><Description>{description.substring(0, 100) + '...'}</Description></div>
-                <div className='flex justify-between items-center'>
-                    <button className='flex items-center justify-center text-xs font-medium rounded-full px-4 py-1 space-x-1 border-2 border-black bg-white hover:bg-black hover:text-white text-black dark:bg-slate-800 dark:text-white dark:border-white dark:hover:bg-white dark:hover:text-black'>
-                        <Link href={generatePostUrl(categories, slug)} className="flex items-center justify-center space-x-1">
-                            <span>Leggi di piu</span>
-                            <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
-                                <path d='M5 12h13M12 5l7 7-7 7' />
-                            </svg>
-                        </Link>
-                    </button>
+                <div className="py-4 mt-3">
+                    <ul className="flex flex-row flex-wrap gap-2 text-sm">
+                        {contractType !== null && <li className="rounded-full bg-[#dcf6fc] text-[#249ab2] py-2 px-3">{contractType.name}</li>}
+                        {levelEducation !== null && <li className="rounded-full bg-[#e0f2e5] text-[#2bb853] p-2">{levelEducation.name}</li>}
+                        {modeJob !== null && <li className="rounded-full bg-[#fef3d9] text-[#b38626] p-2">{modeJob.name}</li>}
+                        {workingTimeJob !== null && <li className="rounded-full bg-[#f2e1d5] text-[#f97316] p-2">{workingTimeJob.name}</li>}
+                    </ul>
+                    <h4 className="mb-3 mt-4 text-3xl text-[#1e356a] font-bold">
+                        <Link href={generatePostUrl(categories, slug)}>{title}</Link>
+                    </h4>
+                    <small className="text-sm text-[#069cd0]"><Description>{description.substring(0, 100) + '...'}</Description></small>
+                </div>
+                <div className="flex flex-row items-center border-t border-dashed pt-4 justify-between">
+                    <div className="flex flex-row gap-x-2 items-center">
+                        <PiEyeLight className="text-primary text-2xl" /> <span className="text-primary font-light text-xl">{views}</span>
+                    </div>
+                    <div className="">
+                        <Button>
+                            <Link href={generatePostUrl(categories, slug)} className="">Legi di piu ...</Link>
+                        </Button>
+                    </div>
                 </div>
             </div>
-        </CarouselItem>
+        </div>
     )
 }

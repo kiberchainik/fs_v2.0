@@ -455,7 +455,13 @@ export class JoboffersService {
         },
         categories: {
           select: returnCategoryBaseObject
-        }
+        },
+        contractType: true,
+        experienceMinimalJob: true,
+        levelEducation: true,
+        modeJob: true,
+        workingTimeJob: true,
+        reallyUpTo: true
       }
     })
   }

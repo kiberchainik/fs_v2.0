@@ -8,11 +8,10 @@ import { useAppSelector } from "@/shared/hooks";
 import Link from "next/link";
 import { VacancyCardAuthorInfo } from "../vacancyCard/VCAuthorInfo"
 import Breadcrumbs from "@/features/breadcrumbs/components/BreadCrumbs"
-import { Button, Heading } from "@/shared/components";
+import { Button, Description, Heading } from "@/shared/components";
 import { UserRole } from "@/features/auth/types";
 import { CandidateBtns } from "../candidatBtns/CandidateBtns";
 import { useEffect, useState } from "react";
-import { Description } from "@radix-ui/react-alert-dialog";
 
 export default function VacancyPage({
   id,

@@ -2,7 +2,7 @@
     @apply absolute md:flex md:relative top-16 left-0 md:top-0 md:left-0 md:w-full w-full md:justify-center bg-white md:bg-transparent shadow-lg md:shadow-none z-40 md:z-auto transform transition-all duration-300 ease-in-out;
 
     > .list {
-        @apply flex flex-col md:flex-row items-center gap-4 p-4 md:p-0;
+        @apply flex flex-col md:flex-row items-center gap-4 p-4 md:p-0 uppercase text-[#335371];
     }
 }
 

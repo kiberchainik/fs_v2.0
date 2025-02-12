@@ -1,13 +1,13 @@
 'use client'
 
-import { Button, Card, CardContent, CardHeader, CardTitle, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/shared/components";
+import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input, Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/shared/components";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { FilterVacancySchema, TypeFilterVacancies } from "../schemes/filter.schema"
 import { useGetOptionsContractTypes, useGetExperienceMinimal, useGetLevelEducation, useGetModeJob, useGetWorkingTime } from "@/features/agency/vacancy/hooks";
 import { useCategory } from "@/features/category/hooks"
 import { useFilterVacancy } from "../hooks/useFilterVacancy"
-import { useAppDispatch, useAppSelector } from "@/shared/hooks"
+import { useAppDispatch } from "@/shared/hooks"
 import { useEffect } from "react"
 import { setCountTotalJobs, setError, setJobs, setLoading, setPageCount } from "@/features/vacancy/slice/sliceVacancy"
 

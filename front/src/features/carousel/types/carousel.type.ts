@@ -43,4 +43,25 @@ export interface ICarouselJobs {
         name: string
         slug: string
     }
+    reallyUpTo: string
+    contractType: {
+        id: string
+        name: string
+    }
+    experienceMinimalJob: {
+        id: string
+        name: string
+    }
+    levelEducation: {
+        id: string
+        name: string
+    }
+    modeJob: {
+        id: string
+        name: string
+    }
+    workingTimeJob: {
+        id: string
+        name: string
+    }
 }
