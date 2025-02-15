@@ -1,6 +1,6 @@
-import createNextGlobeGenPlugin from "next-globe-gen/plugin"
+import createNextIntlPlugin from 'next-intl/plugin'
 
-const withNextGlobeGen = createNextGlobeGenPlugin()
+const withNextIntl = createNextIntlPlugin()
 
 /** @type {import('next').NextConfig} */
 
@@ -33,6 +33,6 @@ const nextConfig = {
             }
         ]
     }
-};
+}
 
-export default withNextGlobeGen(nextConfig)
+export default withNextIntl(nextConfig)

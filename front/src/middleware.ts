@@ -5,10 +5,11 @@ import { EnumTokens } from '@/shared/services'
 import { authService } from './features/auth/services'
 import { UserRole } from './features/auth/types'
 
-import { middleware as nextGlobeMiddleware } from "next-globe-gen/middleware"
+import createMiddleware from 'next-intl/middleware'
+import { routing } from './i18n/routing'
 
 export async function middleware(request: NextRequest) {
-	await nextGlobeMiddleware(request)
+	createMiddleware(routing)
 	const accessToken = request.cookies.get(EnumTokens.ACCESS_TOKEN)?.value
 
 	const isAuthPage = request.url.includes(API_URL.auth())
@@ -63,6 +64,7 @@ export const config = {
 		'/auth/:path*',
 		'/candidate/:path*',
 		'/agency/:path*',
-		"/((?!_next|.*\\.).*)"
+		'/',
+		'/(it|en|ru|ro)/:path*'
 	]
 }

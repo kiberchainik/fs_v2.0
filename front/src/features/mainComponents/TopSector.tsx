@@ -10,7 +10,7 @@ import { useGetOptionsContractTypes } from "../agency/vacancy/hooks"
 import { useFilterVacancy } from "../filter/hooks/useFilterVacancy"
 
 import styles from './maincomponents.module.scss'
-import { useTranslations } from "next-globe-gen"
+import { useTranslations } from "next-intl"
 
 export const TopSector = () => {
     const t = useTranslations();
@@ -34,12 +34,8 @@ export const TopSector = () => {
         <div className={styles.wrapper_sector}>
             <div className={styles.hero_banner}>
                 <div className={styles.hero_banner__content}>
-                    <h1>{t('topsector.topSector.h1')}</h1>
-                    <p>
-                        Esplora le nostre categorie di offerte di lavoro e scopri numerose opportunità in vari settori.
-                        Dagli ingegneri ai contabili, dalle risorse umane ai tecnici informatici: abbiamo annunci aggiornati per tutte le figure professionali richieste oggi.
-                        Trova la tua posizione ideale e candidati facilmente online.
-                    </p>
+                    <h1>{t('homePage.topSector.h1')}</h1>
+                    <p>{t('homePage.topSector.p')}</p>
                     <div className={styles.hero_banner__content__tags}>
                         <span>
                             <a href="#">#operaio</a>
