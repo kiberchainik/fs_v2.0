@@ -4,7 +4,7 @@ import { cn } from "@/shared/utils";
 import { Logo } from "@/shared/components";
 import { ToggleTheme } from "../ui";
 import { UserHeaderMenu } from "@/features/userHeaderBtn/componets/usermenu/UserHeaderDropdownMenu"
-import { HeaderSearch } from "@/features/headerSearch/components/Search";
+import { HeaderSearch } from "@/features/headerSearch/components/Search"
 
 interface IStyles {
     className?: string

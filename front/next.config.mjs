@@ -1,4 +1,9 @@
+import createNextGlobeGenPlugin from "next-globe-gen/plugin"
+
+const withNextGlobeGen = createNextGlobeGenPlugin()
+
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
     reactStrictMode: false,
     experimental: {
@@ -30,4 +35,4 @@ const nextConfig = {
     }
 };
 
-export default nextConfig;
+export default withNextGlobeGen(nextConfig)

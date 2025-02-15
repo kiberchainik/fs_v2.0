@@ -5,23 +5,26 @@ import { EnumTokens } from '@/shared/services'
 import { authService } from './features/auth/services'
 import { UserRole } from './features/auth/types'
 
+import { middleware as nextGlobeMiddleware } from "next-globe-gen/middleware"
+
 export async function middleware(request: NextRequest) {
+	await nextGlobeMiddleware(request)
 	const accessToken = request.cookies.get(EnumTokens.ACCESS_TOKEN)?.value
 
 	const isAuthPage = request.url.includes(API_URL.auth())
-	
+
 	const isCandidatProfile = request.url.includes(CANDIDAT_URL.root())
 	const isAgencyProfile = request.url.includes(AGENCY_URL.root())
 
 	if (accessToken) {
 		const user = await authService.getCurrentUserData(accessToken)
-		
+
 		if (isAuthPage) {
-			if(user.role === UserRole.Candidat) {
+			if (user.role === UserRole.Candidat) {
 				return NextResponse.redirect(new URL(CANDIDAT_URL.root(), request.url))
 			}
 
-			if(user.role === UserRole.Agency) {
+			if (user.role === UserRole.Agency) {
 				return NextResponse.redirect(new URL(AGENCY_URL.root(), request.url))
 			}
 		}
@@ -30,21 +33,21 @@ export async function middleware(request: NextRequest) {
 			if (!isAuthPage && user.role === UserRole.Agency) {
 				return NextResponse.next()
 			}
-	
+
 			return NextResponse.rewrite(new URL('/404', request.url))
 		}
-	
+
 		if (isCandidatProfile) {
 			if (!isAuthPage && user.role === UserRole.Candidat) {
 				return NextResponse.next()
 			}
-	
+
 			return NextResponse.rewrite(new URL('/404', request.url))
 		}
 
 	}
 
-	if(isAuthPage) {
+	if (isAuthPage) {
 		if (accessToken === undefined) {
 			return NextResponse.next()
 		}
@@ -59,6 +62,7 @@ export const config = {
 	matcher: [
 		'/auth/:path*',
 		'/candidate/:path*',
-		'/agency/:path*'
+		'/agency/:path*',
+		"/((?!_next|.*\\.).*)"
 	]
 }

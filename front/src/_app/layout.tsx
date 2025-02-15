@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@/shared/styles/globals.scss";
 import { MainProvider } from "@/shared/providers"
-import { SITE_DESCRIPTION, SITE_NAME } from "@/shared/constants/seo.constants";
+import { SITE_DESCRIPTION, SITE_NAME } from "@/shared/constants/seo.constants"
 import { Header } from "@/shared/components";
 import { HeaderMenu } from "@/features/headerMenu/components/HeaderMenu"
+import { useLocale } from "next-globe-gen"
 
 const manrope = localFont({
   src: [
@@ -47,8 +48,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = useLocale();
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={`${manrope.variable} font-sans`}>
         <MainProvider>
           <div className="flex min-h-screen flex-col">

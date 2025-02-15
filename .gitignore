@@ -5,6 +5,7 @@
 /server/redis
 
 /front/.next
+/front/src/app
 /front/node_modules
 
 # Logs

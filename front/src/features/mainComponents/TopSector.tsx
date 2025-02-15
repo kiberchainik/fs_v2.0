@@ -10,8 +10,10 @@ import { useGetOptionsContractTypes } from "../agency/vacancy/hooks"
 import { useFilterVacancy } from "../filter/hooks/useFilterVacancy"
 
 import styles from './maincomponents.module.scss'
+import { useTranslations } from "next-globe-gen"
 
 export const TopSector = () => {
+    const t = useTranslations();
     const { categories, isFetching } = useCategory()
     const { contractType, isFetching: isFCT } = useGetOptionsContractTypes()
     const { filterParams } = useFilterVacancy()
@@ -32,7 +34,7 @@ export const TopSector = () => {
         <div className={styles.wrapper_sector}>
             <div className={styles.hero_banner}>
                 <div className={styles.hero_banner__content}>
-                    <h1>Trova lavoro per ogni professione.</h1>
+                    <h1>{t('topsector.topSector.h1')}</h1>
                     <p>
                         Esplora le nostre categorie di offerte di lavoro e scopri numerose opportunità in vari settori.
                         Dagli ingegneri ai contabili, dalle risorse umane ai tecnici informatici: abbiamo annunci aggiornati per tutte le figure professionali richieste oggi.

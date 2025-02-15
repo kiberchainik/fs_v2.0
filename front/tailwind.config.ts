@@ -5,6 +5,7 @@ const config: Config = {
 	content: [
 		"./src/shared/components/ui/*.{js,ts,jsx,tsx,mdx}",
 		"./src/shared/components/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/_app/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
 		"./src/features/**/*.{js,ts,jsx,tsx,mdx}",
 	],
