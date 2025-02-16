@@ -5,10 +5,10 @@ import { EnumTokens } from '@/shared/services'
 import { authService } from './features/auth/services'
 import { UserRole } from './features/auth/types'
 
-import createMiddleware from 'next-intl/middleware'
-import { routing } from './i18n/routing'
+//import createMiddleware from 'next-intl/middleware'
+//import { routing } from './i18n/_routing'
 
-export default createMiddleware(routing)
+//export default createMiddleware(routing)
 
 export async function middleware(request: NextRequest) {
 	const accessToken = request.cookies.get(EnumTokens.ACCESS_TOKEN)?.value
@@ -65,7 +65,7 @@ export const config = {
 		'/auth/:path*',
 		'/candidate/:path*',
 		'/agency/:path*',
-		'/',
-		'/(it|en|ru|ro)/:path*'
+		//'/',
+		//'/(it|en|ru|ro)/:path*'
 	]
 }

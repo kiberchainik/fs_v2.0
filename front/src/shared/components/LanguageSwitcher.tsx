@@ -1,7 +1,7 @@
 "use client"
 
 import { useLocale, useTranslations } from 'next-intl'
-import { Link, usePathname } from '@/i18n/routing'
+import { Link, usePathname } from '@/i18n/_routing'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui'
 import { IoLanguageOutline } from "react-icons/io5"
 
