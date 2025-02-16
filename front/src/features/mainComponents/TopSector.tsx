@@ -13,7 +13,7 @@ import styles from './maincomponents.module.scss'
 import { useTranslations } from "next-intl"
 
 export const TopSector = () => {
-    const t = useTranslations();
+    const t = useTranslations('homePage.topSector');
     const { categories, isFetching } = useCategory()
     const { contractType, isFetching: isFCT } = useGetOptionsContractTypes()
     const { filterParams } = useFilterVacancy()
@@ -34,8 +34,8 @@ export const TopSector = () => {
         <div className={styles.wrapper_sector}>
             <div className={styles.hero_banner}>
                 <div className={styles.hero_banner__content}>
-                    <h1>{t('homePage.topSector.h1')}</h1>
-                    <p>{t('homePage.topSector.p')}</p>
+                    <h1>{t('h1')}</h1>
+                    <p>{t('p')}</p>
                     <div className={styles.hero_banner__content__tags}>
                         <span>
                             <a href="#">#operaio</a>
