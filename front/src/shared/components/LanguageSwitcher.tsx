@@ -1,15 +1,24 @@
 "use client"
 
-import { useLocale, useTranslations } from 'next-intl'
-import { Link, usePathname } from '@/i18n/_routing'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui'
+import { useLocale } from 'next-intl'
+import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui'
 import { IoLanguageOutline } from "react-icons/io5"
+import { useTransition } from 'react'
+import { Language, setLanguage } from '@/i18n'
 
 export default function LanguageSwitcher() {
-    const t = useTranslations('LocaleSwitcher')
-    //const locale = useLocale()
-    //const otherLocale = locale === 'en' ? 'de' : 'en'
-    const pathname = usePathname();
+    const [isPending, startTransition] = useTransition()
+    const locale = useLocale()
+
+    const changeLanguage = (locale: Language) => {
+        startTransition(async () => {
+            try {
+                await setLanguage(locale)
+            } catch (error) {
+                console.log(error)
+            }
+        })
+    }
 
     return (
         <DropdownMenu>
@@ -18,24 +27,24 @@ export default function LanguageSwitcher() {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
                 <DropdownMenuItem>
-                    <Link href={pathname} locale="en">
+                    <Button variant={'link'} onClick={() => changeLanguage('en')}>
                         English
-                    </Link>
+                    </Button>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                    <Link href={pathname} locale="ru">
+                    <Button variant={'link'} onClick={() => changeLanguage('ru')}>
                         Русский
-                    </Link>
+                    </Button>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                    <Link href={pathname} locale="it">
+                    <Button variant={'link'} onClick={() => changeLanguage('it')}>
                         Italiano
-                    </Link>
+                    </Button>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                    <Link href={pathname} locale="ro">
+                    <Button variant={'link'} onClick={() => changeLanguage('ro')}>
                         Romeno
-                    </Link>
+                    </Button>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
