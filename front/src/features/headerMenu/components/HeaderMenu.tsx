@@ -18,7 +18,7 @@ export function HeaderMenu() {
 
     return (
         <>
-            <div className="md:hidden">
+            <div className="min-[920px]:hidden">
                 <Button onClick={toggleMenu} className="focus:outline-none" aria-label="Toggle Menu">
                     {isMenuOpen ? (
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -32,7 +32,7 @@ export function HeaderMenu() {
                 </Button>
             </div>
 
-            <nav className={cn(styles.headerNav, isMenuOpen ? styles.toggleOpen : styles.toggleClose, 'md:opacity-100 md:scale-100 md:pointer-events-auto')}>
+            <nav className={cn(styles.headerNav, isMenuOpen ? styles.toggleOpen : styles.toggleClose, 'min-[920px]:opacity-100 min-[920px]:scale-100 min-[920px]:pointer-events-auto')}>
                 <ul className={styles.list}>
                     {headerMenu.map((menu) => (
                         <Link href={menu.href} key={menu.href}>

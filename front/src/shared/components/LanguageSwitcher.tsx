@@ -22,29 +22,23 @@ export default function LanguageSwitcher() {
 
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger>
-                <IoLanguageOutline />
+            <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="icon">
+                    <IoLanguageOutline />
+                </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-                <DropdownMenuItem>
-                    <Button variant={'link'} onClick={() => changeLanguage('en')}>
-                        English
-                    </Button>
+                <DropdownMenuItem onClick={() => changeLanguage('en')}>
+                    English
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                    <Button variant={'link'} onClick={() => changeLanguage('ru')}>
-                        Русский
-                    </Button>
+                <DropdownMenuItem onClick={() => changeLanguage('ru')}>
+                    Русский
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                    <Button variant={'link'} onClick={() => changeLanguage('it')}>
-                        Italiano
-                    </Button>
+                <DropdownMenuItem onClick={() => changeLanguage('it')}>
+                    Italiano
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                    <Button variant={'link'} onClick={() => changeLanguage('ro')}>
-                        Romeno
-                    </Button>
+                <DropdownMenuItem onClick={() => changeLanguage('ro')}>
+                    Romeno
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

@@ -13,16 +13,16 @@ interface IStyles {
 }
 
 export const Header: FC<PropsWithChildren<IStyles>> = ({ children, className }) => {
-    return <header className={cn(styles.wrapper, 'dark:bg-neutral-900')}>
+    return <header className={cn(styles.wrapper, 'dark:bg-neutral-900/80')}>
         <div className={cn(styles.header, className)}>
-            <div className='hidden md:flex'><Logo /></div>
-            <div className='flex justify-around w-full items-center'>
+            <div className='hidden sm:flex'><Logo /></div>
+            <div className='flex w-full items-center'>
                 {children}
                 {/* <HeaderSearch /> */}
             </div>
             <div className='flex gap-x-2 items-center'>
-                <LanguageSwitcher />
                 <UserHeaderMenu />
+                <LanguageSwitcher />
                 <ToggleTheme />
             </div>
         </div>

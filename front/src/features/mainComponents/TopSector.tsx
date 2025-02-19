@@ -8,9 +8,9 @@ import { useForm } from "react-hook-form";
 import { useCategory } from "../category/hooks"
 import { useGetOptionsContractTypes } from "../agency/vacancy/hooks"
 import { useFilterVacancy } from "../filter/hooks/useFilterVacancy"
+import { useTranslations } from "next-intl"
 
 import styles from './maincomponents.module.scss'
-import { useTranslations } from "next-intl"
 
 export const TopSector = () => {
     const t = useTranslations('homePage.topSector');
@@ -38,7 +38,7 @@ export const TopSector = () => {
                     <p>{t('p')}</p>
                     <div className={styles.hero_banner__content__tags}>
                         <span>
-                            <a href="#">#operaio</a>
+                            <a href="#" className="dark:bg-opacity-20">#operaio</a>
                         </span>
                         <span>
                             <a href="#">#contabile</a>
@@ -62,7 +62,6 @@ export const TopSector = () => {
                             quality={100}
                             width={500}
                             height={500}
-                            layout="responsive"
                             className="!w-[500px] !h-[500px]"
                         />
                     </div>
@@ -71,9 +70,9 @@ export const TopSector = () => {
             <div className={styles.hero_form}>
                 {<Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
-                        <div className='shadow-2xl shadow-sky-300/20 p-10 bg-white mb-2 rounded-3xl'>
+                        <div className='shadow-2xl shadow-sky-300/20 p-10 bg-white mb-2 rounded-3xl  dark:bg-neutral-900 dark:shadow-sky-600/10'>
                             <div className='flex md:flex-row flex-col gap-5 items-center justify-between'>
-                                <div className='w-full border-none md:border-r md:border-solid border-gray-100 md:pr-5'>
+                                <div className='w-full border-none md:border-r md:border-solid border-gray-100 dark:border-gray-700 md:pr-5'>
                                     <div className="form-group">
                                         <div className="input-box">
                                             <FormField
@@ -84,7 +83,7 @@ export const TopSector = () => {
                                                 }}
                                                 render={({ field }) => (
                                                     <FormItem className="border-none">
-                                                        <FormLabel className='text-lg font-bold text-[#17233e]'>Settore</FormLabel>
+                                                        <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>Settore</FormLabel>
                                                         <Select
                                                             disabled={isFetching}
                                                             onValueChange={field.onChange}
@@ -121,7 +120,7 @@ export const TopSector = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className='w-full border-none md:border-r md:border-solid border-gray-100 md:pr-5'>
+                                <div className='w-full border-none md:border-r md:border-solid border-gray-100 dark:border-gray-700 md:pr-5'>
                                     <div className="form-group">
                                         <div className="input-box">
                                             <FormField
@@ -129,7 +128,7 @@ export const TopSector = () => {
                                                 name='location'
                                                 render={({ field }) => (
                                                     <FormItem>
-                                                        <FormLabel className='text-lg font-bold text-[#17233e]'>Località</FormLabel>
+                                                        <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>Località</FormLabel>
                                                         <FormControl>
                                                             <Input
                                                                 placeholder='Località'
@@ -145,7 +144,7 @@ export const TopSector = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className='w-full border-none md:border-r md:border-solid border-gray-100 md:pr-5'>
+                                <div className='w-full border-none md:border-r md:border-solid border-gray-100 dark:border-gray-700 md:pr-5'>
                                     <div className="form-group">
                                         <div className="input-box">
                                             <FormField
@@ -153,7 +152,7 @@ export const TopSector = () => {
                                                 name='contractTypeId'
                                                 render={({ field }) => (
                                                     <FormItem>
-                                                        <FormLabel className='text-lg font-bold text-[#17233e]'>Tipo di contratto</FormLabel>
+                                                        <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>Tipo di contratto</FormLabel>
                                                         <Select
                                                             onValueChange={field.onChange}
                                                             defaultValue={field.value}

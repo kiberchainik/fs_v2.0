@@ -2,32 +2,32 @@
     @apply max-w-screen-xl mt-5 px-8 xl:px-16 mx-auto;
 
     > .hero_banner {
-        @apply grid grid-flow-row sm:grid-flow-col grid-rows-2 md:grid-rows-1 sm:grid-cols-2 gap-8 sm:py-6 py-16;
+        @apply flex lg:flex-row flex-col gap-8 sm:py-6 py-16;
 
         > .hero_banner__content {
-            @apply flex flex-col justify-center items-start row-start-2 sm:row-start-1;
+            @apply flex flex-col justify-center items-start lg:w-1/2;
 
             > h1 {
-                @apply text-3xl lg:text-4xl xl:text-5xl font-medium text-black dark:text-slate-100 leading-normal;
+                @apply text-3xl lg:text-4xl xl:text-5xl font-medium dark:text-slate-300 leading-normal;
             }
 
             > p {
-                @apply text-black mt-4 mb-6;
+                @apply dark:text-slate-300 mt-4 mb-6;
             }
 
             > .hero_banner__content__tags {
-                @apply mt-5 flex flex-wrap gap-2;
+                @apply mt-5 flex flex-wrap sm:gap-4 md:gap-2;
 
                 > span {
                     > a {
-                        @apply text-[#17233e] bg-[#d3e7ee] py-2 px-4 rounded-full text-sm;
+                        @apply text-[#17233e] bg-[#d3e7ee] py-2 px-4 rounded-full text-sm dark:text-slate-500 dark:bg-zinc-800;
                     }
                 }
             }
         }
 
         > .hero_banner__image {
-            @apply flex w-full;
+            @apply sm:flex w-full lg:w-1/2 hidden;
 
             > .hero_banner__image__img img {
                 @apply h-full w-full;

@@ -3,6 +3,7 @@
 import Spinner from "@/shared/components/Spinner/Spinner"
 import { useJobsCarousel } from "../../hooks/useJobsCarousel"
 import { VacancyCard } from "./VacancyCard"
+import { VacancySkeleton } from "./VacancySkeleton"
 
 export default function Vacancies() {
     const title = "Trova lavoro ideale velocemente"
@@ -15,7 +16,13 @@ export default function Vacancies() {
                 <p className="text-lg text-[#069cd0]">Trova rapidamente il lavoro ideale e inizia una nuova avventura professionale.<br />Le migliori agenzie ti stanno aspettando con offerte di lavoro che corrispondono alle tue competenze e aspirazioni</p>
             </div>
             <div className="flex md:flex-wrap md:flex-row md:gap-y-5 flex-col items-start mt-10 md:justify-between">
-                {isFetching && <div className="w-full text-center p-5"><Spinner /></div>}
+                {isFetching &&
+                    <>
+                        <VacancySkeleton />
+                        <VacancySkeleton />
+                        <VacancySkeleton />
+                    </>
+                }
                 {jobs && jobs.map((job) => (
                     <VacancyCard key={job.slug} {...job} />
                 ))}

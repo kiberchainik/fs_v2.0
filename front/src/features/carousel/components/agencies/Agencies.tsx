@@ -4,6 +4,7 @@ import Spinner from "@/shared/components/Spinner/Spinner";
 import { useGetAgencies } from "../../hooks/useAgencyCarousel";
 import { CarouselMain } from "../CarouselMain"
 import { AgencyCard } from "./AgencyCard";
+import { AgencySkeleton } from "./AgencySkeleton";
 
 export default function Agencies() {
     const title = "Risorse umane a portata di clic"
@@ -11,9 +12,9 @@ export default function Agencies() {
     const { agencies, isFetching } = useGetAgencies()
 
     return (
-        <div className="bg-[#f4d2ba] py-16 px-10 m-10 rounded-3xl bg-opacity-50">
+        <div className="bg-[#f4d2ba] dark:bg-neutral-900 py-16 px-10 m-10 rounded-3xl bg-opacity-50">
             <CarouselMain titleCarousel={title} subText={subText}>
-                {isFetching && <div className="w-full text-center p-5"><Spinner /></div>}
+                {isFetching && <div className="w-full text-center p-5"><AgencySkeleton /></div>}
                 {agencies && agencies.map((agency) => (
                     <AgencyCard key={agency.agency_name} {...agency} />
                 ))}
