@@ -48,6 +48,7 @@ export const MAIN_URL = {
     home: () => MAIN_URL.root('/'),
     categories: (slug: string = '') => MAIN_URL.root(`/offerte-di-lavoro/${slug}`),
     candidats: () => MAIN_URL.root(`/candidati`),
+    candidatData: (slug: string) => MAIN_URL.root(`/candidati/${slug}`),
     vacancyList: () => MAIN_URL.root(`/offerte-di-lavoro`),
     agencyPageInfo: (slug: string) => MAIN_URL.root(`/agenzia-di-lavoro/${slug}`),
     branchPageInfo: (id: string) => MAIN_URL.root(`/about-filial/${id}`),

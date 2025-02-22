@@ -12,6 +12,7 @@ datasource db {
 model User {
   id                 String        @id @default(uuid())
   email              String        @unique
+  login              String        @unique
   password           String
   role               UserRole      @default(CANDIDATE)
   isVerified         Boolean       @default(false) @map("is_verified")
@@ -209,6 +210,7 @@ model jobOffers {
   region               String
   province             String
   location             String
+  salary               Int                   @default(0)
   reallyUpTo           DateTime?             @map("really_up_to")
   createdAt            DateTime              @default(now()) @map("created_at")
   updatedAt            DateTime              @updatedAt @map("updated_at")

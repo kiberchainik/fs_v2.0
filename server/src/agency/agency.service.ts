@@ -115,7 +115,13 @@ export class AgencyService {
                     select: returnCategoryBaseObject
                   }
                 }
-              }
+              },
+              agency: true,
+              contractType: true,
+              experienceMinimalJob: true,
+              levelEducation: true,
+              modeJob: true,
+              workingTimeJob: true
             }
           }
         },
@@ -174,6 +180,7 @@ export class AgencyService {
           phone: true,
           slug: true,
           createdAt: true,
+          url: true,
           user: {
             select: {
               email: true,

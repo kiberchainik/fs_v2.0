@@ -34,7 +34,7 @@ export const CarouselMain: FC<PropsWithChildren<CarouselProps>> = ({ children, t
                     opts={{
                         align: "start",
                     }}
-                    className="w-full flex flex-col items-start min-h-52"
+                    className="max-w-screen-sx md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto"
                 >
                     <div className={cn("flex items-center w-full px-4", titleCarousel ? 'justify-between' : 'justify-end')}>
                         {titleCarousel && <Heading className="mb-5 text-[#1e356a] dark:text-[#fafaf9] text-4xl">{titleCarousel}</Heading>}
@@ -43,9 +43,9 @@ export const CarouselMain: FC<PropsWithChildren<CarouselProps>> = ({ children, t
                             <CarouselNext />
                         </div>}
                     </div>
-                    {subText && <p className="text-lg text-[#069cd0] px-4">{subText}</p>}
+                    {subText && <p className="text-lg text-[#069cd0] px-4 mb-10">{subText}</p>}
                     <div>
-                        <CarouselContent className="pt-10">
+                        <CarouselContent className="-ml-2 md:-ml-4">
                             {children}
                         </CarouselContent>
                     </div>

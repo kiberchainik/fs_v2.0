@@ -450,7 +450,8 @@ export class JoboffersService {
         agency: {
           select: {
             agency_name: true,
-            logo: true
+            logo: true,
+            slug: true
           }
         },
         categories: {

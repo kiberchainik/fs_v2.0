@@ -1,10 +1,11 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
-import { CreateCandidatDto } from './dto/create-candidat.dto';
-import { UpdateCandidatDto } from './dto/update-candidat.dto';
-import { PrismaService } from '@/prisma/prisma.service';
-import { join } from 'path';
-import { unlink, access } from 'fs/promises';
+import { BadRequestException, Injectable } from '@nestjs/common'
+import { UpdateCandidatDto } from './dto/update-candidat.dto'
+import { PrismaService } from '@/prisma/prisma.service'
+import { join } from 'path'
+import { unlink, access } from 'fs/promises'
 import { FileResponse } from '@/libs/file/file.service'
+import { PaginationQueryDto } from '@/libs/common/utils'
+import { UserRole } from '@prisma/client'
 
 @Injectable()
 export class CandidatService {
@@ -12,31 +13,54 @@ export class CandidatService {
     private readonly prisma: PrismaService
   ) { }
 
-  async findAll() {
-    return await this.prisma.candidatData.findMany({
-      select: {
-        id: true,
-        birthday: true,
-        avatar: true,
-        firstname: true,
-        surname: true,
-        user: {
-          select: {
-            email: true
+  async findAll({ page, limit }: PaginationQueryDto) {
+    const [candidats, candidatCount] = await this.prisma.$transaction([
+      this.prisma.candidatData.findMany({
+        select: {
+          id: true,
+          birthday: true,
+          avatar: true,
+          firstname: true,
+          surname: true,
+          user: {
+            select: {
+              email: true,
+            }
+          },
+          education: {
+            select: {
+              grade: true,
+            }
+          },
+          skills: {
+            select: {
+              skill: true
+            }
           }
         },
-        education: {
-          select: {
-            grade: true,
-          }
-        },
-        skills: {
-          select: {
-            skill: true
+        skip: (page - 1) * limit,
+        take: limit
+      }),
+
+      this.prisma.candidatData.count({
+        where: {
+          user: {
+            role: UserRole.CANDIDATE
           }
         }
-      }
-    })
+      })
+    ])
+
+    if (!candidats) return false
+
+    const pageCount = Math.ceil(candidatCount / limit)
+
+    return {
+      candidats,
+      count: candidatCount,
+      pageCount
+    }
+
   }
 
   async getCarouselCandidats(limit: number) {
@@ -62,6 +86,103 @@ export class CandidatService {
             skill: true
           }
         }
+      }
+    })
+  }
+
+  async getCandidatByEmail(email: string) {
+    return await this.prisma.candidatData.findMany({
+      where: {
+        user: {
+          email
+        }
+      },
+      select: {
+        about_my: true,
+        avatar: true,
+        birthday: true,
+        candidatLifeState: {
+          omit: {
+            cdId: true,
+            id: true,
+          }
+        },
+        firstname: true,
+        surname: true,
+        phone: true,
+        resident: true,
+        jobContacts: true,
+        createdAt: true,
+        user: {
+          select: {
+            id: true,
+            email: true,
+            social: {
+              select: {
+                socialLink: true
+              }
+            }
+          }
+        },
+        education: {
+          select: {
+            grade: true,
+            startdate: true,
+            enddate: true,
+            description: true
+          }
+        },
+        experience: {
+          select: {
+            company: true,
+            description: true,
+            startDate: true,
+            endDate: true,
+            location: true,
+            contractTypeJob: {
+              select: {
+                name: true
+              }
+            }
+          }
+        },
+        skills: {
+          select: {
+            skill: true
+          }
+        },
+        courses: {
+          select: {
+            course: true
+          }
+        },
+        hobbies: {
+          select: {
+            hobbie: true
+          }
+        },
+        languages: {
+          select: {
+            language: true,
+            level: true
+          }
+        },
+      }
+    })
+  }
+
+  async getCandidatMetaDate(email: string) {
+    return await this.prisma.candidatData.findMany({
+      where: {
+        user: {
+          email
+        }
+      },
+      select: {
+        about_my: true,
+        avatar: true,
+        firstname: true,
+        surname: true
       }
     })
   }

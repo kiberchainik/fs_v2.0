@@ -2,7 +2,8 @@
 
 import React, { useState } from "react"
 import { cn } from "@/shared/utils";
-import { useFetchRating, useSubmitRating } from "../../hooks/useRating";
+import { useFetchRating, useSubmitRating } from "../hooks"
+import { Button } from "@/shared/components";
 
 interface RatingStarsProps {
   userId: string;
@@ -10,8 +11,8 @@ interface RatingStarsProps {
 }
 
 export const RatingStars: React.FC<RatingStarsProps> = ({ userId, reviewerId }) => {
-  const { data: currentRating } = useFetchRating(userId);
-  const { mutate: submitRating } = useSubmitRating();
+  const { currentRating } = useFetchRating(userId);
+  const { submitRating } = useSubmitRating();
 
   const [hoveredRating, setHoveredRating] = useState<number | null>(null);
 
@@ -22,18 +23,18 @@ export const RatingStars: React.FC<RatingStarsProps> = ({ userId, reviewerId }) 
   return (
     <div className="flex space-x-1">
       {[1, 2, 3, 4, 5].map((star) => (
-        <button
+        <Button
           key={star}
           className={cn(
             "w-6 h-6 rounded-full",
-            star <= (hoveredRating || currentRating || 0) ? "bg-yellow-400" : "bg-gray-200"
+            star <= (hoveredRating || currentRating?.data.rating || 0) ? "bg-yellow-400" : "bg-gray-200"
           )}
           onMouseEnter={() => setHoveredRating(star)}
           onMouseLeave={() => setHoveredRating(null)}
           onClick={() => handleClick(star)}
         >
           ★
-        </button>
+        </Button>
       ))}
     </div>
   );

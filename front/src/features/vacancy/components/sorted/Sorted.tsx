@@ -8,7 +8,7 @@ import { RootState } from "@/shared/store";
 import { setSortBy, sortJobs } from "../../slice/sliceVacancy";
 import { DialogFilter } from "@/features/filter/components/DialogFilter";
 
-export default function VacancyFilter() {
+export default function Sorted() {
   const dispatch = useAppDispatch();
   const sortBy = useAppSelector((state: RootState) => state.reducer.vacancies.sortBy)
 
@@ -36,7 +36,6 @@ export default function VacancyFilter() {
             </Select>
           </div>
           <div className='flex justify-end gap-x-1'>
-            <DialogFilter />
             <Button variant='link' size='sm' className='text-xl'>
               <CiGrid41 />
             </Button>

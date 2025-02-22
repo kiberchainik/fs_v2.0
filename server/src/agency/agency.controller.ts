@@ -50,10 +50,10 @@ export class AgencyController {
   }
 
   @Get()
-  findAll(
+  async findAll(
     @Query() searchTerm: PaginationQueryDto
   ) {
-    return this.agencyService.findAll(searchTerm)
+    return await this.agencyService.findAll(searchTerm)
   }
 
   @Get(':slug')

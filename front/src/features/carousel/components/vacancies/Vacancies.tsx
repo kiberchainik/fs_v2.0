@@ -1,6 +1,5 @@
 'use client'
 
-import Spinner from "@/shared/components/Spinner/Spinner"
 import { useJobsCarousel } from "../../hooks/useJobsCarousel"
 import { VacancyCard } from "./VacancyCard"
 import { VacancySkeleton } from "./VacancySkeleton"

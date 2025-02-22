@@ -13,6 +13,10 @@ export interface MenuItems {
 export const headerMainMenu = (): MenuItems[] => {
     return [
         {
+            href: MAIN_URL.home(),
+            title: 'Home'
+        },
+        {
             href: MAIN_URL.categories(),
             title: 'Offerte di lavoro'
         },

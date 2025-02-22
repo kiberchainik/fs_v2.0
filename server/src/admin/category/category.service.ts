@@ -168,6 +168,11 @@ export class CategoryService {
                 }
               },
               branch: true,
+              contractType: true,
+              experienceMinimalJob: true,
+              levelEducation: true,
+              modeJob: true,
+              workingTimeJob: true
             }
           },
           parent: {

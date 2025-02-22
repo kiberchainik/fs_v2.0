@@ -23,3 +23,6 @@ export const JOBS_PAGE_DESCRIPTION = 'Trova il tuo prossimo impiego tra centinai
 
 export const AGENCI_PAGE_NAME = 'Elenco di agenzie di lavoro'
 export const AGENCY_PAGE_DESCRIPTION = 'Scopri tutte le agenzie di lavoro con una breve statistica. Trova l\'agenzia giusta per le tue esigenze di impiego.'
+
+export const CANDIDAT_PAGE_NAME = 'Scopri i migliori candidati disponibili'
+export const CANDIDAT_PAGE_DESCRIPTION = 'Esplora i profili dei candidati, confronta le loro competenze e scegli i professionisti più adatti alle tue esigenze. Con LavIdea.it, la ricerca del personale diventa semplice ed efficace.'

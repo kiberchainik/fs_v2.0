@@ -12,6 +12,8 @@ export class CreateUserDto {
 
     method: AuthMethod
 
+    login: string
+
     isVerified: boolean
 
     @IsString({ message: 'Вы регистируетесь как кандидат или как агентвоство? ' })

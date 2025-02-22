@@ -1,10 +1,10 @@
 'use client'
 
-import Spinner from "@/shared/components/Spinner/Spinner";
 import { useGetAgencies } from "../../hooks/useAgencyCarousel";
 import { CarouselMain } from "../CarouselMain"
 import { AgencyCard } from "./AgencyCard";
 import { AgencySkeleton } from "./AgencySkeleton";
+import { CarouselItem } from "@/shared/components";
 
 export default function Agencies() {
     const title = "Risorse umane a portata di clic"
@@ -16,7 +16,9 @@ export default function Agencies() {
             <CarouselMain titleCarousel={title} subText={subText}>
                 {isFetching && <div className="w-full text-center p-5"><AgencySkeleton /></div>}
                 {agencies && agencies.map((agency) => (
-                    <AgencyCard key={agency.agency_name} {...agency} />
+                    <CarouselItem key={agency.slug}>
+                        <AgencyCard key={agency.agency_name} {...agency} />
+                    </CarouselItem>
                 ))}
             </CarouselMain>
         </div>

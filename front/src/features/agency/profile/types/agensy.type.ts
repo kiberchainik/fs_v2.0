@@ -1,5 +1,5 @@
 import { IUser } from "@/features/auth/types";
-import { IJobsResponce, IVacanciaesFullDate } from "../../vacancy/types";
+import { IVacanciaesFullDate } from "../../vacancy/types";
 
 export interface IAgencyData {
     id: string

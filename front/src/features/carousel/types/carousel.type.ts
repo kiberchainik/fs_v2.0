@@ -16,7 +16,7 @@ export interface ICarouselCandidate {
 
 export interface ICarouselAgencies {
     agency_name: string,
-    logo: string,
+    logo: string[],
     slug: string,
     url: string,
     about: string,
@@ -28,14 +28,15 @@ export interface ICarouselAgencies {
 }
 
 export interface ICarouselJobs {
-    slug: string
+    slug?: string
     title: string
     description: string
-    views: string
+    views: number
     createdAt: string
     agency: {
         agency_name: string,
         logo: string
+        slug: string
     }
     categories: {
         id: string,

@@ -10,8 +10,9 @@ export const API_URL = {
     file: (url: string) => API_URL.root(url),
 
     candidatsCarousel: (limit: number) => API_URL.root(`/candidat/carousel/${limit}`),
-    candidats: () => API_URL.root('/candidats'),
-    candidatData: (login: string) => API_URL.root(`/candidat/${login}`),
+    candidats: () => API_URL.root('/candidat'),
+    candidatData: (email: string) => API_URL.root(`/candidat/${email}`),
+    candidatMetaData: (email: string) => API_URL.root(`/candidat/meta-data/${email}`),
     candidatProfile: () => API_URL.root('/candidat/privacy'),
     candidatSkills: (skillId: string = '') => API_URL.root(`/skills/${skillId}`),
     candidatHobbies: (hobbieId: string = '') => API_URL.root(`/hobbies/${hobbieId}`),

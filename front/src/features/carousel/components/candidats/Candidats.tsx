@@ -5,6 +5,7 @@ import { useGetCandidats } from "../../hooks/useCandidatCarousel";
 import { CarouselMain } from "../CarouselMain"
 import { CandidatCard } from "./CandidatCard";
 import { CandidatSkeleton } from "./CandidatSkeleton";
+import { CarouselItem } from "@/shared/components";
 
 export default function Candidats() {
     const { candidats, isFetching } = useGetCandidats()
@@ -22,7 +23,9 @@ export default function Candidats() {
                 <CarouselMain>
                     {isFetching && <div className="w-full text-center p-5"><CandidatSkeleton /></div>}
                     {candidats && candidats.map((candidat) => (
-                        <CandidatCard key={candidat.firstname + candidat.surname} {...candidat} />
+                        <CarouselItem key={candidat.surname + candidat.firstname}>
+                            <CandidatCard {...candidat} />
+                        </CarouselItem>
                     ))}
                 </CarouselMain>
             </div>

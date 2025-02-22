@@ -13,8 +13,8 @@ export enum AuthMethod {
 
 export interface IAccount {
     id: string
-    createdAt: string
-    updatedAt: string
+    createdAt: Date
+    updatedAt: Date
     type: string
     provider: string
     refreshToken: string
@@ -25,8 +25,8 @@ export interface IAccount {
 
 export interface IUser {
     id: string
-    createdAt: string
-    updatedAt: string
+    createdAt: Date
+    updatedAt: Date
     email: string
     role: UserRole
     isVerified: boolean
@@ -37,7 +37,7 @@ export interface IUser {
 
 export interface IPrivacy {
     avatar: string[]
-    birthday: string
+    birthday: Date
     firstname: string
     surname: string
     resident: string

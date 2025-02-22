@@ -11,13 +11,13 @@ export class RatingController {
   constructor(private readonly ratingService: RatingService) { }
 
   @Post()
-  @Authorization(UserRole.AGENCY)
+  //@Authorization(UserRole.AGENCY)
   async create(@Body() createRatingDto: CreateRatingDto) {
     return this.ratingService.create(createRatingDto);
   }
 
   @Get(":userId")
-  @Authorization(UserRole.AGENCY)
+  //@Authorization(UserRole.AGENCY)
   async findOne(@Param("userId") userId: string) {
     return this.ratingService.findUserRating(userId);
   }

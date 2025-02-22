@@ -17,6 +17,7 @@ export class BranchController {
   ) { }
 
   @Post()
+  @ApiExcludeEndpoint()
   @Authorization(UserRole.AGENCY)
   @UsePipes(new ValidationPipe())
   create(

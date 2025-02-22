@@ -1,11 +1,12 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, MaxFileSizeValidator, ParseFilePipe, Query, UploadedFiles } from '@nestjs/common';
 import { CandidatService } from './candidat.service';
-import { UpdateCandidatDto, OpenAPICandidatsResponse } from './dto'
+import { UpdateCandidatDto, OpenAPICandidatsResponse, OpenAPICandidatFullDateResponse } from './dto'
 import { Authorization, CurrentUser } from '@/auth/decorators';
 import { UserRole } from '@prisma/client';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import { FileService } from '@/libs/file/file.service';
 import { ApiBearerAuth, ApiExcludeEndpoint, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
+import { PaginationQueryDto } from '@/libs/common/utils';
 
 @ApiBearerAuth('JWT-auth')
 @ApiTags('Candidats')
@@ -40,8 +41,29 @@ export class CandidatController {
   @ApiOperation({ summary: 'Elenco dei candadati' })
   @ApiResponse({ status: 200, description: 'Elenco dei tutti candidati registrati sul portale', type: OpenAPICandidatsResponse })
   @Get()
-  findAll() {
-    return this.candidatService.findAll();
+  findAll(@Query() searchTerm: PaginationQueryDto) {
+    return this.candidatService.findAll(searchTerm)
+  }
+
+
+  @ApiExcludeEndpoint()
+  @Get(':email')
+  getCandidatByEmail(@Param('email') email: string) {
+    return this.candidatService.getCandidatByEmail(email)
+  }
+
+  @ApiExcludeEndpoint()
+  @Get('/meta-data/:email')
+  getCandidatMetaDate(@Param('email') email: string) {
+    return this.candidatService.getCandidatMetaDate(email)
+  }
+
+  @ApiOperation({ summary: 'Candidato con i dati personali' })
+  @ApiResponse({ status: 200, description: 'Tutti i dati del candidato', type: OpenAPICandidatFullDateResponse })
+  @Authorization(UserRole.AGENCY)
+  @Get('/for-agency/:email')
+  getCandidatByEmailForAgency(@Param('email') email: string) {
+    return this.candidatService.getCandidatByEmail(email)
   }
 
   @ApiExcludeEndpoint()

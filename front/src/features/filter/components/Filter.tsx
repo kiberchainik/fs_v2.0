@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input, Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/shared/components";
+import { Button, Card, CardTitle, Form, FormControl, FormField, FormItem, FormMessage, Input, Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/shared/components";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { FilterVacancySchema, TypeFilterVacancies } from "../schemes/filter.schema"
@@ -56,7 +56,8 @@ export function Filter() {
     }
 
     return (
-        <>
+        <Card className="w-full p-5 dark:bg-neutral-900">
+            <CardTitle className="p-5">Cerca con filtro</CardTitle>
             {<Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className='grid gap-2 space-y-2'>
                     <FormField
@@ -251,6 +252,6 @@ export function Filter() {
                     </Button>
                 </form>
             </Form>}
-        </>
+        </Card>
     )
 }

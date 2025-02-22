@@ -1,5 +1,5 @@
 import { Type } from "class-transformer"
-import { IsArray, IsOptional, IsString, Validate, ValidatorConstraint, ValidatorConstraintInterface } from "class-validator"
+import { IsArray, IsNumber, IsOptional, IsString, Validate, ValidatorConstraint, ValidatorConstraintInterface } from "class-validator"
 
 @ValidatorConstraint({ name: 'isArrayString' })
 export class isArrayString implements ValidatorConstraintInterface {
@@ -16,64 +16,68 @@ export class isArrayString implements ValidatorConstraintInterface {
 }
 
 export class CreateJobofferDto {
-    @IsString()
-    title: string
+  @IsString()
+  title: string
 
-    @IsString()
-    slug?: string
+  @IsString()
+  slug?: string
 
-    @IsString()
-    description: string
+  @IsString()
+  description: string
 
-    @IsString()
-    categoryId: string
+  @IsString()
+  categoryId: string
 
-    @IsArray()
-    @Type(() => String)
-    @Validate(isArrayString, { message: 'Sector ids array value must a string' })
-    @IsOptional()
-    sectors?: string[]
+  @IsArray()
+  @Type(() => String)
+  @Validate(isArrayString, { message: 'Sector ids array value must a string' })
+  @IsOptional()
+  sectors?: string[]
 
-    @IsString()
-    region: string
+  @IsString()
+  region: string
 
-    @IsString()
-    province: string
+  @IsString()
+  province: string
 
-    @IsString()
-    location: string
+  @IsString()
+  location: string
 
-    @IsString()
-    @IsOptional()
-    reallyUpTo: string
-    
-    @IsString()
-    @IsOptional()
-    branchId?: string
+  @IsNumber()
+  @IsOptional()
+  salary: number
 
-    @IsArray()
-    @IsString({each: true})
-    @Type(()=> String)
-    @IsOptional()
-    tags: string[]
+  @IsString()
+  @IsOptional()
+  reallyUpTo: string
 
-    @IsString()
-    @IsOptional()
-    contractTypeId: string
+  @IsString()
+  @IsOptional()
+  branchId?: string
 
-    @IsString()
-    @IsOptional()
-    experienceMinimalId: string
+  @IsArray()
+  @IsString({ each: true })
+  @Type(() => String)
+  @IsOptional()
+  tags: string[]
 
-    @IsString()
-    @IsOptional()
-    levelEducationId: string
+  @IsString()
+  @IsOptional()
+  contractTypeId: string
 
-    @IsString()
-    @IsOptional()
-    modeJobId: string
+  @IsString()
+  @IsOptional()
+  experienceMinimalId: string
 
-    @IsString()
-    @IsOptional()
-    workingTimeId: string
+  @IsString()
+  @IsOptional()
+  levelEducationId: string
+
+  @IsString()
+  @IsOptional()
+  modeJobId: string
+
+  @IsString()
+  @IsOptional()
+  workingTimeId: string
 }

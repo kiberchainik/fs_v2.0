@@ -27,8 +27,10 @@ export class AuthService {
             throw new BadRequestException('Польхователь с такими данными уже существует!')
         }
 
+        const login = dto.email.split('@')[0]
         const newUser = await this.user.create({
             email: dto.email,
+            login,
             password: dto.password,
             isVerified: false,
             method: AuthMethod.CREDENTIALS,
@@ -42,26 +44,6 @@ export class AuthService {
             message: 'Registration successfully. Please open you email for verified code!'
         }
     }
-
-    // async createNewAgency(dto: RegisterDto) {
-    //     const isExist = await this.user.findByEmail(dto.email) //if !user, returned throw
-    //     if (isExist) {
-    //         throw new BadRequestException('Agenzia gia esiste')
-    //     }
-
-    //     const { authAccounts, isTwoFactorEnabled, isVerified, method, role, updatedAt, password, ...agency } = await this.user.create({
-    //         email: dto.email,
-    //         password: dto.password,
-    //         isVerified: true,
-    //         method: AuthMethod.CREDENTIALS,
-    //         role: UserRole.AGENCY
-    //     })
-
-
-
-    //     const { accessToken, refreshToken } = this.issueTokens(agency.id, agency.email, role)
-    //     return { ...agency, accessToken }
-    // }
 
     async login(dto: LoginDto) {
         const user = await this.validateUser(dto.email) //if !user, returned throw
@@ -133,9 +115,11 @@ export class AuthService {
     async validateOAuthLogin(req: any) {
         let user = await this.user.findByEmail(req.user.email)
 
+        const login = req.user.email.split('@')[0]
         if (!user) {
             user = await this.user.create({
                 email: req.user.email,
+                login,
                 isVerified: true,
                 method: AuthMethod.GOOGLE,
                 password: '',

@@ -73,6 +73,13 @@ export class OpenAPIJobsResponse {
     location: string
 
     @ApiProperty({
+        description: 'Stipendio mensile. Parametro è opzionale',
+        example: '1500',
+        required: false
+    })
+    salary: number
+
+    @ApiProperty({
         description: 'Data di scadenza dell\'offerta di lavoro',
         example: '2021-11-30T23:59:59.000Z',
         type: Date,

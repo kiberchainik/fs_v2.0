@@ -34,11 +34,12 @@ export interface IVacanciaes extends IVacancyOptions {
         name: string
         slug: string
     }
-    sectors?: string[],
-    region: string,
+    sectors?: string[]
+    region: string
     province: string,
-    location: string,
-    branchId?: string,
+    location: string
+    salary: number
+    branchId?: string
     tags?: string[]
     savedBy?: ISaveInFavorites[]
     sendCandidature?: ISendCadidature[]
@@ -48,12 +49,12 @@ export interface IVacanciaes extends IVacancyOptions {
     isValidate?: boolean
 }
 
-export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'description' | 'branchId' | 'savedBy' | 'sendCandidature'> & {
+export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'description' | 'branchId' | 'savedBy' | 'sendCandidature' | 'location' | 'salary'> & {
     breadcrumbs: TBreadcrumbr
     reallyUpTo: string
     createdAt: string
     views: number
-    agency: Pick<IAgencyData, 'agency_name' | 'logo' | 'phone' | 'address' | 'slug'> & {
+    agency: {
         agency_name: string
         logo: string
         phone: string
@@ -81,11 +82,11 @@ export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'd
         email: string
         phone: string
     }
-    contractType: { name: string } | null
-    experienceMinimalJob: { name: string } | null
-    levelEducation: { name: string } | null
-    modeJob: { name: string } | null
-    workingTimeJob: { name: string } | null
+    contractType: { id: string, name: string }
+    experienceMinimalJob: { id: string, name: string }
+    levelEducation: { id: string, name: string }
+    modeJob: { id: string, name: string }
+    workingTimeJob: { id: string, name: string }
 }
 
 export type IVacanciaesEdit =
