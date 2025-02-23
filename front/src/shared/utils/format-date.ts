@@ -1,7 +1,7 @@
 interface DateFormatOptions {
     locale?: 'ru' | 'en' | 'it'
     capitalize?: boolean
-    dateFormat?: 'year' | 'full' | 'dd/mm/yyyy'
+    dateFormat?: 'year' | 'full' | 'dd/mm/yyyy' | 'mm/yyyy'
 }
 
 export function formatDate(dateString: string | Date, options: DateFormatOptions = {}): string {
@@ -46,6 +46,7 @@ export function formatDate(dateString: string | Date, options: DateFormatOptions
             case 'year': return `${year}`
             case 'full': return `${day} ${month} ${year}`
             case 'dd/mm/yyyy': return `${day}/${date.getMonth()}/${year}`
+            case 'mm/yyyy': return `${date.getMonth()}/${year}`
             default: return `${day} ${month} ${year}`
         }
 

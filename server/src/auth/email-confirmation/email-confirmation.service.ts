@@ -54,7 +54,7 @@ export class EmailConfirmationService {
             })
         }
 
-        const tokens = this.auth.issueTokens(existingUser.id, existingUser.email, existingUser.role)
+        const tokens = this.auth.issueTokens(existingUser.id, existingUser.email, existingUser.login, existingUser.role)
 
         return { existingUser, ...tokens }
     }

@@ -41,16 +41,16 @@ export const TopSector = () => {
                             <a href="#" className="dark:bg-opacity-20">#operaio</a>
                         </span>
                         <span>
-                            <a href="#">#contabile</a>
+                            <a href="#" className="dark:bg-opacity-20">#contabile</a>
                         </span>
                         <span>
-                            <a href="#">#economista</a>
+                            <a href="#" className="dark:bg-opacity-20">#economista</a>
                         </span>
                         <span>
-                            <a href="#">#venditore</a>
+                            <a href="#" className="dark:bg-opacity-20">#venditore</a>
                         </span>
                         <span>
-                            <a href="#">#autista</a>
+                            <a href="#" className="dark:bg-opacity-20">#autista</a>
                         </span>
                     </div>
                 </div>

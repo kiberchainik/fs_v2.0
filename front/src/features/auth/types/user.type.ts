@@ -28,6 +28,7 @@ export interface IUser {
     createdAt: Date
     updatedAt: Date
     email: string
+    login: string
     role: UserRole
     isVerified: boolean
     isTwoFactorEnabled: boolean

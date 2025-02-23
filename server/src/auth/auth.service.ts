@@ -69,7 +69,7 @@ export class AuthService {
         //     await this.twoFactorAuth.validateTwoFactorToken(user.email, dto.code)
         // }
 
-        const tokens = this.issueTokens(user.id, user.email, user.role)
+        const tokens = this.issueTokens(user.id, user.email, user.login, user.role)
         return { ...user, ...tokens }
     }
 
@@ -82,14 +82,15 @@ export class AuthService {
 
         if (role !== UserRole.AGENCY) throw new UnauthorizedException('You are not an agency!')
 
-        const tokens = this.issueTokens(user.id, user.email, role)
+        const tokens = this.issueTokens(user.id, user.email, user.login, role)
         return { ...user, ...tokens }
     }
 
-    issueTokens(userId: string, email: string, role: UserRole) {
+    issueTokens(userId: string, email: string, login: string, role: UserRole) {
         const data = {
             id: userId,
             email,
+            login,
             role
         }
 
@@ -115,11 +116,10 @@ export class AuthService {
     async validateOAuthLogin(req: any) {
         let user = await this.user.findByEmail(req.user.email)
 
-        const login = req.user.email.split('@')[0]
         if (!user) {
             user = await this.user.create({
                 email: req.user.email,
-                login,
+                login: req.user.email.split('@')[0],
                 isVerified: true,
                 method: AuthMethod.GOOGLE,
                 password: '',
@@ -127,7 +127,7 @@ export class AuthService {
             })
         }
 
-        const tokens = this.issueTokens(user.id, user.email, user.role)
+        const tokens = this.issueTokens(user.id, user.email, user.login, user.role)
 
         return { user, ...tokens }
     }
@@ -138,7 +138,7 @@ export class AuthService {
 
         const user = await this.user.findById(result.id)
 
-        const tokens = this.issueTokens(user.id, user.email, user.role)
+        const tokens = this.issueTokens(user.id, user.email, user.login, user.role)
 
         return { user, ...tokens }
     }

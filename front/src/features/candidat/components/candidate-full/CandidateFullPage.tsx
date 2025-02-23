@@ -3,11 +3,13 @@
 import { FC } from "react"
 import { ICandidatFullData } from "../../types"
 import Image from "next/image"
-import { Heading } from "@/shared/components"
+import { Button, Description, Heading } from "@/shared/components"
 import { IoLocationSharp } from "react-icons/io5"
 import { useAppSelector } from "@/shared/hooks"
 import { RatingStars } from "@/features/rating/components/RatingStars"
 import { UserRole } from "@/features/auth/types"
+import { formatDate } from "@/shared/utils"
+import { GiOrganigram } from "react-icons/gi"
 
 export const CandidateFull: FC<ICandidatFullData> = ({
     avatar,
@@ -31,215 +33,136 @@ export const CandidateFull: FC<ICandidatFullData> = ({
     const authUser = useAppSelector(state => state.reducer.user.data)
     return (
         <div className="flex flex-col md:flex-row">
-            <div className="w-full md:w-4/6">
-                <div className="w-full flex flex-col md:flex-row items-center justify-between">
-                    <div className="candidate-brief-item">
-                        <div className="row align-items-center">
-                            <div className="shadow-2xl shadow-slate-700-500/50 dark:shadow-gray-300-100">
-                                <Image src={avatar[0]} alt={firstname + surname} height={100} width={100} className="w-[100px] h-[100px] rounded-3xl" />
-                            </div>
-                            <div className="flext flex-col gap-2">
-                                <div className="flex flex-col md:flex-row gap-3 items-end">
-                                    <Heading>{surname} {firstname}</Heading>
-                                    <small className="flex flex-row items-center"><IoLocationSharp /> {resident}</small>
-                                </div>
-                                <small>UI/UX Designer. Frontend Developer</small>
-                                <div className="flex flex-row gap-2 items-center">
-                                    {authUser?.role === UserRole.Agency && <div className="rating me-1">
-                                        <RatingStars userId={user.id} reviewerId={authUser.id} />
-                                    </div>}
-                                </div>
-                                <ul className="mb-0">
-                                    <li><a className="bg-grey rounded p-2 px-3 small mb-1 d-inline-block" href="job-grid.html">Adobe XD</a></li>
-                                    <li><a className="bg-grey rounded p-2 px-3 small mb-1 d-inline-block" href="job-grid.html">Figma</a></li>
-                                    <li><a className="bg-grey rounded p-2 px-3 small mb-1 d-inline-block" href="job-grid.html">Photoshop</a></li>
-                                </ul>
-                            </div>
-                            <div className="col-lg-3 col-md-4 col-sm-4 mb-2"><a href="#" className="job-btn1 btn1 d-inline-block">Download CV</a></div>
+            <div className="w-full md:w-4/6 md:p-5">
+                <div className="w-full flex flex-col md:flex-row items-center justify-between gap-x-5">
+                    <div className="shadow-2xl shadow-slate-700-500/50 dark:shadow-gray-300-100 w-[130px] rounded-3xl">
+                        <Image src={avatar[0]} alt={firstname + surname} height={100} width={100} className="w-[100px] h-[100px] rounded-3xl" />
+                    </div>
+                    <div className="flext flex-col gap-2 w-full">
+                        <div className="flex flex-col md:flex-row gap-3 items-end">
+                            <Heading>{surname} {firstname}</Heading>
+                            <small className="flex flex-row items-center"><IoLocationSharp /> {resident}</small>
                         </div>
+                        <div className="flex flex-row gap-2 items-center">{education && education.map(edu => <small className="text-base">{edu.grade}</small>)}</div>
+                        <div className="flex flex-row gap-2 items-center">
+                            {authUser?.role === UserRole.Agency && <div className="rating me-1">
+                                <RatingStars userId={user.id} reviewerId={authUser.id} />
+                            </div>}
+                        </div>
+                        <ul className="mt-3 flex flex-row gap-3 items-center">
+                            {candidatLifeState.availabilityTransport && <li>
+                                <span className="bg-[#e7eae2] dark:bg-opacity-20 rounded-full p-2 px-3 mb-1">
+                                    Automunito
+                                </span>
+                            </li>}
+                            {candidatLifeState.driverCategory && <li className="flex flex-row gap-1">
+                                {candidatLifeState.driverCategory.map((patent) => (
+                                    <span className="bg-[#e7eae2] dark:bg-opacity-20 rounded-full p-2 px-4">
+                                        {patent}
+                                    </span>))}
+                            </li>}
+                            {candidatLifeState.maritalStatus && <li>
+                                <span className="bg-[#e7eae2] dark:bg-opacity-20 rounded-full p-2 px-3 mb-1">
+                                    {candidatLifeState.maritalStatus}
+                                </span>
+                            </li>}
+                        </ul>
+                    </div>
+                    <div className="">
+                        <Button variant='outline'>Download CV</Button>
                     </div>
                 </div>
 
-                <div className="single-content border-t mt-4 pt-4">
-                    <div className="job-description mb-2">
-                        <h4>About Me</h4>
-                        <p className="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat enim a erat sit vulputate elementum. Risus nec viverra ornare venenatis proin ac varius tristique ut. Vitae egestasLorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat enim a erat sit vulputate elementum orci. Risus nec viverra ornare venenatis proin ac varius ut. Vitae egestas tellus amet nulla cursus in that. Pellentesque placerat maecenas egestas ullamcorper sed sarinto.</p>
+                <div className="border-neutral-200 dark:border-neutral-800 border-t-2 border-dashed mt-5 pt-5">
+                    <div className="">
+                        <Heading className="border-b border-neutral-900/20 dark:border-neutral-800 border-dashed pb-2 inline-block p-3 mb-1">Su di me...</Heading>
+                        <Description>{about_my}</Description>
                     </div>
-                    <div className="job-description mb-2">
-                        <h4>Professional SKills</h4>
-                        <div className="job-progress">
-                            <div className="row">
-                                <div className="col-lg-6 mb-3">
-                                    <span>HTML &amp; CSS</span>
-                                    <div className="progress">
-
+                    {skills.length > 0 && <div className="mt-10">
+                        <Heading className="border-b border-neutral-900/20 dark:border-neutral-800 border-dashed pb-2 inline-block p-3">Professional skills...</Heading>
+                        <div className="grid grid-cols-3 gap-5">
+                            {skills.map(skill => (
+                                <div key={skill.skill} className="flex flex-col gap-y-2 justify-start">
+                                    <span className="text-sm">{skill.level}</span>
+                                    <div className="text-xl font-semibold">
+                                        {skill.skill}
                                     </div>
+                                </div>))}
+                        </div>
+                    </div>}
+
+                    {hobbies.length > 0 && <div className="mt-10">
+                        <Heading className="border-b border-neutral-900/20 dark:border-neutral-800 border-dashed pb-2 inline-block p-3">Hobbies...</Heading>
+                        <div className="grid grid-cols-3 gap-5">
+                            {hobbies.map(hobbie => (
+                                <div key={hobbie.hobbie} className="text-base">
+                                    {hobbie.hobbie}
+                                </div>))}
+                        </div>
+                    </div>}
+
+                    {experience.length > 0 && <div className="mt-10">
+                        <Heading className="border-b border-neutral-900/20 dark:border-neutral-800 border-dashed pb-2 inline-block p-3">Mia esperienza...</Heading>
+                        <div className="flex flex-col gap-y-2 mt-3">
+                            {experience.map(exp => (
+                                <div key={exp.company} className="">
+                                    <span className="text-lg font-semibold">{exp.company}</span> / <span className="text-sm font-light">{formatDate(exp.endDate, { 'dateFormat': 'year' })} - {formatDate(exp.endDate, { 'dateFormat': 'year' })}</span>
                                 </div>
+                            ))}
+                        </div>
+                    </div>}
+
+                    {(education.length > 0 || courses.length > 0) && <div className="w-full border border-solid border-neutral-900/20 dark:border-neutral-800 p-5 rounded-3xl mt-10">
+                        <div className="grid grid-cols-2 lg:grid-rows-2 gap-5 h-full">
+                            <div className="flex flex-col gap-y-2">
+                                <Heading className="pb-2 inline-block p-3">Educazione...</Heading>
+                                <ul className="list-disc flex flex-col gap-y-2 pl-7 text-[#335371] text-lg">
+                                    {education && education.map(edu => (
+                                        <li>{edu.grade} ({formatDate(edu.startdate, { 'dateFormat': 'year' })} - {formatDate(edu.enddate, { 'dateFormat': 'year' })})</li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="flex flex-col gap-y-2">
+                                <Heading className="pb-2 inline-block p-3">Corsi...</Heading>
+                                <ul className="list-disc flex flex-col gap-y-2 pl-7 text-[#335371] text-lg">
+                                    {courses && courses.map(cours => (
+                                        <li>{cours.course} ({formatDate(cours.startdate, { 'dateFormat': 'year' })} - {formatDate(cours.enddate, { 'dateFormat': 'year' })})</li>
+                                    ))}
+                                </ul>
                             </div>
                         </div>
-                    </div>
+                    </div>}
 
-                    <div className="job-description mb-2">
-                        <h4>Work Experience</h4>
-                        <ul className="list-group ps-3">
-                            <li>A portfolio demonstrating well thought through and polished end to end customer journeys</li>
-                            <li>5+ years of industry experience in interactive design and / or visual design</li>
-                            <li>HTML, CSS, XHTML, XML</li>
-                            <li>Hypervisors, SAN’s, load balancers, firewalls, and Web Application Firewall (WAF)</li>
-                            <li>Experience with Higher Logic (a collaboration platform)</li>
-                            <li>MongoDB, Drupal</li>
-                            <li>Mobile App Development (iOS and Android)</li>
-                            <li>Episerver CMS</li><li>Microsoft Team Foundation Server</li>
-                            <li>Speaker Management System (Planstone)</li>
-                        </ul>
-                    </div>
-
-                    <div className="job-description border-all p-4 pb-2 rounded mb-4">
-                        <div className="row">
-                            <div className="col-lg-6">
-                                <div className="job-description-list mb-2">
-                                    <h4>Education</h4>
-                                    <ul className="list-group ps-3">
-                                        <li>Cambridge University(2001-2004)</li>
-                                        <li>Design at University of Michigan(2004 - 2008)</li>
-                                        <li>Institute of Technology(2013 - 2017)</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="col-lg-6">
-                                <div className="job-description-list mb-2">
-                                    <h4>Awards &amp; Certificates</h4>
-                                    <ul className="list-group ps-3">
-                                        <li>Certified in Learning and Performance (CPLP)</li>
-                                        <li>Best Design Awards 2021</li>
-                                        <li>Perfect Attendance Programs</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="job-single-title">
-                        <div className="row align-items-center">
-                            <div className="col-lg-8 col-md-6">
-                                <div className="social-links">
-                                    <ul>
-                                        <li>Share This:</li>
-                                        <li><a href="#"><i className="fab fa-facebook" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i className="fab fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i className="fab fa-instagram" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i className="fab fa-linkedin" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="col-lg-4 col-md-6 text-end">
-                                <div className="desc-btn d-flex align-items-center float-end">
-                                    <a href="#" className="job-btn btn1 me-2">Hire Now</a>
-                                    <a href="#" className="job-btn1 btn1">Save</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="job-list border-t mt-3 pt-4">
-                        <h4>Work History</h4>
-                        <div className="job-card border-all p-4 pb-2 rounded bg-white position-relative mb-4">
-                            <div className="row align-items-center">
-                                <div className="col-lg-4 col-md-6 mb-2">
-                                    <div className="company-pro d-flex align-items-center">
-                                        <div className="image-box bg-white box-shadow p-3 px-4 rounded d-inline-block"><i className="flaticon-worker fs-2"></i></div>
-                                        <div className="company-info ms-3">
-                                            <h5 className="mb-0"><a className="name-job theme" href="employer-singles.html">AB Marketer LTD</a></h5>
-                                            <small>California 125, US</small>
+                    <div className="mt-5 pt-5">
+                        <Heading className="pb-2 inline-block p-3">La storia di esperienza</Heading>
+                        <div className="flex flex-col gap-y-5">
+                            {experience.length > 0 && experience.map((exp) => (
+                                <div className="w-full border border-solid border-neutral-900/20 bg-white dark:bg-neutral-900 dark:border-neutral-800 p-5 rounded-3xl">
+                                    <div className="flex flex-col flex-wrap md:flex-row items-center gap-7">
+                                        <div className="flex flex-row gap-x-4 items-center">
+                                            <div className="bg-white dark:bg-neutral-800 shadow-2xl shadow-slate-700-500/50 dark:shadow-gray-300-100 p-8 rounded-2xl inline-block"><GiOrganigram className="text-3xl" /></div>
+                                            <div className="">
+                                                <Heading>{exp.company}</Heading>
+                                                <small className="flex flex-row items-center"><IoLocationSharp /> {exp.location}</small>
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col gap-y-3">
+                                            <Heading>{exp.position ? exp.position : 'Details'}</Heading>
+                                            <div className="mb-2">
+                                                <span className="text-sm">{formatDate(exp.startDate, { 'locale': 'it', 'dateFormat': 'mm/yyyy' })} | {formatDate(exp.endDate, { 'locale': 'it', 'dateFormat': 'mm/yyyy' })}</span>
+                                            </div>
+                                            <div className="mb-2">
+                                                <span className="rounded-full dark:bg-opacity-10 bg-[#dcf6fc] text-[#249ab2] py-2 px-3">Contract type</span>
+                                            </div>
+                                            <div className="mb-2">
+                                                <span className="text-base">{exp.description}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-lg-5 col-md-6 mb-2">
-                                    <h4 className="mb-1"><a href="job-single.html">Digital Marketor</a></h4>
-                                    <ul className="job-list mb-2">
-                                        <li className="job-cats small">Fulltime |</li>
-                                        <li className="job-cats small">Senior |</li>
-                                        <li className="job-cats small">Senior</li>
-                                    </ul>
-                                    <ul className="job-list mb-2">
-                                        <li className="job-cats small rounded p-2 px-3 fulltime">Fulltime</li>
-                                        <li className="job-cats small rounded p-2 px-3 private">Private</li>
-                                        <li className="job-cats small rounded p-2 px-3 urgent">Urgent</li>
-                                    </ul>
-                                </div>
-                                <div className="col-lg-3 mb-2">
-                                    <div className="job-sidecontent text-lg-end text-md-center">
-                                        <a href="job-single.html" className="btn1 job-btn">View Detail</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="job-card border-all p-4 pb-2 rounded bg-white position-relative mb-4">
-                            <div className="row align-items-center">
-                                <div className="col-lg-4 col-md-6 mb-2">
-                                    <div className="company-pro d-flex align-items-center">
-                                        <div className="image-box bg-white box-shadow p-3 px-4 rounded d-inline-block"><i className="flaticon-auction fs-2"></i></div>
-                                        <div className="company-info ms-3">
-                                            <h5 className="mb-0"><a className="name-job theme" href="employer-singles.html">Tourt Design LTD</a></h5>
-                                            <small>California 125, US</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-5 col-md-6 mb-2">
-                                    <h4 className="mb-1"><a href="job-single.html">Supervisor</a></h4>
-                                    <ul className="job-list mb-2">
-                                        <li className="job-cats small">Fulltime |</li>
-                                        <li className="job-cats small">Senior |</li>
-                                        <li className="job-cats small">Senior</li>
-                                    </ul>
-                                    <ul className="job-list mb-2">
-                                        <li className="job-cats small rounded p-2 px-3 fulltime">Fulltime</li>
-                                        <li className="job-cats small rounded p-2 px-3 private">Private</li>
-                                        <li className="job-cats small rounded p-2 px-3 urgent">Urgent</li>
-                                    </ul>
-                                </div>
-                                <div className="col-lg-3 mb-2">
-                                    <div className="job-sidecontent text-lg-end text-md-center">
-                                        <a href="job-single.html" className="btn1 job-btn">View Detail</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="job-card border-all p-4 pb-2 rounded bg-white position-relative mb-4">
-                            <div className="row align-items-center">
-                                <div className="col-lg-4 col-md-6 mb-2">
-                                    <div className="company-pro d-flex align-items-center">
-                                        <div className="image-box bg-white box-shadow p-3 px-4 rounded d-inline-block"><i className="flaticon-accounting fs-2"></i></div>
-                                        <div className="company-info ms-3">
-                                            <h5 className="mb-0"><a className="name-job theme" href="employer-singles.html">Designer Land</a></h5>
-                                            <small>California 125, US</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-5 col-md-6 mb-2">
-                                    <h4 className="mb-1"><a href="job-single.html">Full Stack Engineer</a></h4>
-                                    <ul className="job-list mb-2">
-                                        <li className="job-cats small">Fulltime |</li>
-                                        <li className="job-cats small">Senior |</li>
-                                        <li className="job-cats small">Senior</li>
-                                    </ul>
-                                    <ul className="job-list mb-2">
-                                        <li className="job-cats small rounded p-2 px-3 fulltime">Fulltime</li>
-                                        <li className="job-cats small rounded p-2 px-3 private">Private</li>
-                                        <li className="job-cats small rounded p-2 px-3 urgent">Urgent</li>
-                                    </ul>
-                                </div>
-                                <div className="col-lg-3 mb-2">
-                                    <div className="job-sidecontent text-lg-end text-md-center">
-                                        <a href="job-single.html" className="btn1 job-btn">View Detail</a>
-                                    </div>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
-
                 </div>
             </div>
 

@@ -30,6 +30,7 @@ export class UserService {
             select: {
                 id: true,
                 email: true,
+                login: true,
                 isVerified: true,
                 role: true,
                 candidatdata: {
@@ -55,6 +56,7 @@ export class UserService {
         const data = {
             id: user.id,
             role: user.role,
+            login: user.login,
             email: user.email,
             isVerified: user.isVerified,
             name: user.agencydata?.agency_name || user.candidatdata?.firstname,
@@ -88,6 +90,7 @@ export class UserService {
         const user = await this.prisma.user.create({
             data: {
                 email: dto.email,
+                login: dto.email.split('@')[0],
                 password: dto.password ? await hash(dto.password) : '',
                 method: dto.method,
                 isVerified: dto.isVerified,

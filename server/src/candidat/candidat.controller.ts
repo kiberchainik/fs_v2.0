@@ -47,23 +47,23 @@ export class CandidatController {
 
 
   @ApiExcludeEndpoint()
-  @Get(':email')
-  getCandidatByEmail(@Param('email') email: string) {
-    return this.candidatService.getCandidatByEmail(email)
+  @Get(':login')
+  getCandidatByEmail(@Param('login') login: string) {
+    return this.candidatService.getCandidatByEmail(login)
   }
 
   @ApiExcludeEndpoint()
-  @Get('/meta-data/:email')
-  getCandidatMetaDate(@Param('email') email: string) {
-    return this.candidatService.getCandidatMetaDate(email)
+  @Get('/meta-data/:login')
+  getCandidatMetaDate(@Param('login') login: string) {
+    return this.candidatService.getCandidatMetaDate(login)
   }
 
   @ApiOperation({ summary: 'Candidato con i dati personali' })
   @ApiResponse({ status: 200, description: 'Tutti i dati del candidato', type: OpenAPICandidatFullDateResponse })
   @Authorization(UserRole.AGENCY)
-  @Get('/for-agency/:email')
-  getCandidatByEmailForAgency(@Param('email') email: string) {
-    return this.candidatService.getCandidatByEmail(email)
+  @Get('/for-agency/:login')
+  getCandidatByEmailForAgency(@Param('login') login: string) {
+    return this.candidatService.getCandidatByEmail(login)
   }
 
   @ApiExcludeEndpoint()

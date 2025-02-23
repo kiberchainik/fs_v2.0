@@ -25,6 +25,7 @@ export class CandidatService {
           user: {
             select: {
               email: true,
+              login: true
             }
           },
           education: {
@@ -73,7 +74,8 @@ export class CandidatService {
         about_my: true,
         user: {
           select: {
-            email: true
+            email: true,
+            login: true
           }
         },
         education: {
@@ -90,11 +92,11 @@ export class CandidatService {
     })
   }
 
-  async getCandidatByEmail(email: string) {
+  async getCandidatByEmail(login: string) {
     return await this.prisma.candidatData.findMany({
       where: {
         user: {
-          email
+          login
         }
       },
       select: {
@@ -117,6 +119,7 @@ export class CandidatService {
           select: {
             id: true,
             email: true,
+            login: true,
             social: {
               select: {
                 socialLink: true
@@ -137,6 +140,7 @@ export class CandidatService {
             company: true,
             description: true,
             startDate: true,
+            position: true,
             endDate: true,
             location: true,
             contractTypeJob: {
@@ -153,7 +157,10 @@ export class CandidatService {
         },
         courses: {
           select: {
-            course: true
+            course: true,
+            enddate: true,
+            startdate: true,
+            grade: true,
           }
         },
         hobbies: {
@@ -171,11 +178,11 @@ export class CandidatService {
     })
   }
 
-  async getCandidatMetaDate(email: string) {
+  async getCandidatMetaDate(login: string) {
     return await this.prisma.candidatData.findMany({
       where: {
         user: {
-          email
+          login
         }
       },
       select: {

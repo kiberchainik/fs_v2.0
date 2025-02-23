@@ -113,6 +113,7 @@ model Skills {
 model Experience {
   id              String           @id @default(uuid())
   company         String
+  position        String?
   location        String?
   currently       Boolean          @default(false)
   startDate       DateTime

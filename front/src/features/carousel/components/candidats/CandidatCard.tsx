@@ -13,7 +13,7 @@ export const CandidatCard: FC<ICarouselCandidate> = ({ avatar, education, firstn
                     <Image className="mr-5 rounded-full object-cover h-20 w-20 shadow-2xl shadow-slate-700-500/20" height={80} width={80} src={avatar[0]} alt={firstname} />
                     <div>
                         <h3 className="text-base font-semibold text-gray-900 dark:text-[#fafaf9]">
-                            <Link href={MAIN_URL.candidatData(user.email)}>{`${firstname} ${surname}`}</Link>
+                            <Link href={MAIN_URL.candidatData(user.login)}>{`${firstname} ${surname}`}</Link>
                         </h3>
                         <span className="block text-sm font-normal">{user.email}</span>
                     </div>

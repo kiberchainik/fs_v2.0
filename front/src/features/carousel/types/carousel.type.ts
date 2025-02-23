@@ -8,6 +8,7 @@ export interface ICarouselCandidate {
     }[]
     user: {
         email: string;
+        login: string;
     }
     education: {
         grade: string;
