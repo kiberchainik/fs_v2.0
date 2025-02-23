@@ -1,14 +1,15 @@
 import { BadRequestException, Injectable } from "@nestjs/common";
+import { ConfigService } from "@nestjs/config";
 import OpenAI from "openai";
 
 @Injectable()
 export class OpenAIService {
   private openai: OpenAI;
 
-  constructor() {
+  constructor(private configService: ConfigService) {
     // Инициализация OpenAI с ключом API
     this.openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY, // Используйте переменные окружения для безопасности
+      apiKey: configService.get('OPENAI_API_KEY'), // Используйте переменные окружения для безопасности
       organization: "org-xHuZXiJD3P6WAPMYzsDn5GrU"
     });
   }

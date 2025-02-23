@@ -1,14 +1,15 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, Profile, VerifyCallback } from 'passport-linkedin-oauth2';
 
 @Injectable()
 export class LinkedInStrategy extends PassportStrategy(Strategy, 'linkedin') {
-    constructor() {
+    constructor(private configService: ConfigService) {
         super({
-            clientID: process.env.LINKEDIN_CLIENT_ID, // ID приложения LinkedIn
-            clientSecret: process.env.LINKEDIN_CLIENT_SECRET, // Секретный ключ приложения
-            callbackURL: process.env.LINKEDIN_CALLBACK_URL, // URL возврата
+            clientID: configService.get('LINKEDIN_CLIENT_ID'), // ID приложения LinkedIn
+            clientSecret: configService.get('LINKEDIN_CLIENT_SECRET'), // Секретный ключ приложения
+            callbackURL: configService.get('LINKEDIN_CALLBACK_URL'), // URL возврата
             scope: ['r_emailaddress', 'r_liteprofile'], // Запрашиваемые данные
         });
     }

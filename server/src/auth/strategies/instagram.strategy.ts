@@ -1,14 +1,15 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, Profile, VerifyCallback } from 'passport-instagram';
 
 @Injectable()
 export class InstagramStrategy extends PassportStrategy(Strategy, 'instagram') {
-    constructor() {
+    constructor(private configService: ConfigService) {
         super({
-            clientID: process.env.INSTAGRAM_CLIENT_ID, // ID приложения Instagram
-            clientSecret: process.env.INSTAGRAM_CLIENT_SECRET, // Секретный ключ
-            callbackURL: process.env.INSTAGRAM_CALLBACK_URL, // URL возврата после авторизации
+            clientID: configService.get('INSTAGRAM_CLIENT_ID'), // ID приложения Instagram
+            clientSecret: configService.get('INSTAGRAM_CLIENT_SECRET'), // Секретный ключ
+            callbackURL: configService.get('INSTAGRAM_CALLBACK_URL'), // URL возврата после авторизации
         });
     }
 
