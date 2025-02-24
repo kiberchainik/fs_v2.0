@@ -29,6 +29,8 @@ export const VacancySchema = z.object({
         message: 'Write full description of vacancy'
     }),
 
+    salary: z.number().optional(),
+
     reallyUpTo: z.date().optional(),
 
     agencyId: z.string().optional(),

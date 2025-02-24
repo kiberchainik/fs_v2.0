@@ -26,6 +26,7 @@ export const useExperienceLogic = () => {
             currently: false,
             description: '',
             location: '',
+            position: '',
             dateRange: {
                 startDate: new Date(),
                 endDate: new Date()

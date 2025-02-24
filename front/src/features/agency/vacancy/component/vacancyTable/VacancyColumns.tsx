@@ -27,7 +27,7 @@ export interface IVacancyColumn {
 		description: string,
 		name: string
 		slug: string
-	}
+	} | undefined
 }
 
 export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
@@ -145,7 +145,7 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 				<DropdownMenuContent align='end'>
 					<DropdownMenuLabel>Действия</DropdownMenuLabel>
 					<Link
-						href={generatePostUrl(row.original.categories, row.original.slug!)}
+						href={generatePostUrl(row.original.categories!, row.original.slug!)}
 						target='_blank'
 					>
 						<DropdownMenuItem>

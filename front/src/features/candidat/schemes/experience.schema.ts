@@ -4,6 +4,7 @@ export const ExperienceSchema = z.object({
     company: z.string(),
     contractTypeId: z.string(),
     location: z.string().optional(),
+    position: z.string().optional(),
     currently: z.boolean().default(false).optional(),
     description: z.string().optional(),
     dateRange: z.object(

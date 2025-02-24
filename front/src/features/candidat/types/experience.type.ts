@@ -1,7 +1,7 @@
 export interface IExperience {
     id: string
     company: string
-    position: string
+    position?: string
     contractTypeId: string
     contractTypeJob?: {
         name: string

@@ -28,7 +28,7 @@ export interface IVacanciaes extends IVacancyOptions {
     slug?: string,
     description: string,
     categoryId: string,
-    categories: {
+    categories?: {
         id: string,
         description: string,
         name: string
@@ -38,7 +38,7 @@ export interface IVacanciaes extends IVacancyOptions {
     region: string
     province: string,
     location: string
-    salary: number
+    salary?: number
     branchId?: string
     tags?: string[]
     savedBy?: ISaveInFavorites[]
