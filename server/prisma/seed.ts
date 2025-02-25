@@ -465,6 +465,7 @@ async function main() {
             { name: 'Laurea breve (3 anni)' },
             { name: 'Diploma di Maturita' },
             { name: 'Licenza media' },
+            { name: 'Scuola secondaria' },
             { name: 'Altri titoli, certificati e patenti' },
         ]
     }).then(() => {

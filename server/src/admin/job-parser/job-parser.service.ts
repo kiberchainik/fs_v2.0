@@ -1,0 +1,77 @@
+import { slugify } from '@/libs/common/utils'
+import { PrismaService } from '@/prisma/prisma.service'
+import { Injectable } from '@nestjs/common'
+import axios from 'axios'
+import * as cheerio from 'cheerio'
+
+@Injectable()
+export class JobParserService {
+  constructor(private readonly prisma: PrismaService) {}
+
+  async parseJob(url: string) {
+    try {
+      const { data } = await axios.get(url);
+      const $ = cheerio.load(data);
+
+      const getText = (selector: string) => $(selector).text().trim() || null;
+      const getArrayText = (selector: string) => $(selector).map((_, el) => $(el).text().trim()).get();
+
+      const title = getText('h1.content-block__title');
+      const description = getText('.basic-layout__main > .body-copy > .content')
+      const location = getText('.behat-location').split(',')[0].trim() || null
+      const province = getText('.behat-location').split(',')[2].trim() || null
+      const salary = getText('.behat-salary')
+      const contract_type = getText('.behat-jobType > span.cards__meta-item--link > a.cards__meta-item--link')
+      const working_time = getText('.behat-hours')
+      const tags = getArrayText('.collapsible__content--wrapper > ul > li > p')
+
+      let reallyUpTo = null;
+      try {
+        const dateText = getText('span.word-break')?.split('scade il')[1]?.trim();
+        if (dateText) {
+          reallyUpTo = new Date(dateText);
+        }
+      } catch (e) {
+        console.warn(`Ошибка обработки даты: ${e.message}`);
+      }
+
+      // Дожидаемся запросов к БД
+      const contractType = contract_type 
+        ? await this.prisma.contractTypeJob.findFirst({
+            where: { name: { contains: contract_type.replace(/[':]/g, ''), mode: 'insensitive' } },
+            select: { id: true }
+          }) 
+        : null;
+
+      const workingTimeId = working_time
+        ? await this.prisma.workingTimeJob.findFirst({
+            where: { name: { contains: working_time.replace(/[':]/g, ''), mode: 'insensitive' } },
+            select: { id: true }
+          })
+        : null;
+
+      return {
+        title,
+        slug: title ? slugify(title) : null,
+        description,
+        categoryId: '',
+        sectors: [],
+        tags,
+        region: province,
+        province,
+        location,
+        salary: salary ? Number(salary.replace(/\D/g, '')) : null,
+        reallyUpTo,
+        branchId: null,
+        contractType,
+        experienceMinimalId: null,
+        levelEducationId: null,
+        modeJobId: null,
+        workingTimeId,
+      };
+    } catch (error) {
+      console.error(`Ошибка при парсинге ${url}:`, error.message);
+      return null;
+    }
+  }
+}

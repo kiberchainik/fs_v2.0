@@ -1,16 +1,17 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
-import OpenAI from "openai";
+import { BadRequestException, Injectable } from "@nestjs/common"
+import { ConfigService } from "@nestjs/config"
+//import OpenAI from "openai"
+import Together from "together-ai"
 
 @Injectable()
 export class OpenAIService {
-  private openai: OpenAI;
+  //private openai: OpenAI
+  private together: Together
 
   constructor(private configService: ConfigService) {
     // Инициализация OpenAI с ключом API
-    this.openai = new OpenAI({
-      apiKey: configService.get('OPENAI_API_KEY'), // Используйте переменные окружения для безопасности
-      organization: "org-xHuZXiJD3P6WAPMYzsDn5GrU"
+    this.together = new Together({
+      apiKey: configService.get('TOGETHER_API_KEY')
     });
   }
 
@@ -20,22 +21,17 @@ export class OpenAIService {
 
         for (let attempt = 1; attempt <= maxRetries; attempt++) {
             try {
-                const response = await this.openai.chat.completions.create({
-                    model: "gpt-4o-mini-2024-07-18",
-                    messages: [
-                        {
-                            role: "user",
-                            content: prompt,
-                        }
-                    ],
+                const response = await this.together.completions.create({
+                    model: "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+                    prompt: prompt,
                     max_tokens: 1000,
                     temperature: 0.8,
                 });
 
                 // Получаем ответ
-                const generatedText = response.choices[0].message?.content;
-                console.log("Сгенерированный текст:", generatedText);
-                return generatedText || null;
+                const generatedText = response.choices?.[0]?.text?.trim() || null
+                console.log("Сгенерированный текст: ", generatedText)
+                return generatedText
             } catch (error: any) {
                 if (error.status === 429) {
                     if (attempt < maxRetries) {

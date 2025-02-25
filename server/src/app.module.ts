@@ -22,6 +22,7 @@ import { RatingModule } from './rating/rating.module';
 import { ChatModule } from './messenger/chat.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { RestrictAccessMiddleware } from './restrict-access.middleware';
+import { JobParserModule } from './admin/job-parser/job-parser.module';
 
 @Module({
   imports: [
@@ -48,13 +49,12 @@ import { RestrictAccessMiddleware } from './restrict-access.middleware';
     OpenAIModule,
     RatingModule,
     ChatModule,
-    ContactsModule
+    ContactsModule,
+    JobParserModule
   ],
   controllers: [],
   providers: [],
 })
 export class AppModule { configure(consumer: MiddlewareConsumer) {
-  consumer
-    .apply(RestrictAccessMiddleware)
-    .forRoutes({ path: '*', method: RequestMethod.ALL });
-} }
+  consumer.apply(RestrictAccessMiddleware).forRoutes({ path: '*', method: RequestMethod.ALL })
+}}
