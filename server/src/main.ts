@@ -8,6 +8,7 @@ import * as session from 'express-session'
 import msFn, { StringValue } from './libs/common/utils/ms.utils'
 import RedisStore from 'connect-redis'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
+import { RestrictAccessMiddleware } from './restrict-access.middleware'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
@@ -62,7 +63,7 @@ async function bootstrap() {
     )
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, configSwagger);
-  SwaggerModule.setup('api', app, documentFactory);
+  SwaggerModule.setup('swagger', app, documentFactory);
 
   await app.listen(process.env.APP_PORT || 3000, '0.0.0.0')
 }

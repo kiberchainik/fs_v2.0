@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { IS_DEV_ENV } from './libs/common/utils/is-dev.utils';
 import { PrismaModule } from './prisma/prisma.module';
@@ -21,6 +21,7 @@ import { OpenAIModule } from './admin/openai/openai.model';
 import { RatingModule } from './rating/rating.module';
 import { ChatModule } from './messenger/chat.module';
 import { ContactsModule } from './contacts/contacts.module';
+import { RestrictAccessMiddleware } from './restrict-access.middleware';
 
 @Module({
   imports: [
@@ -52,4 +53,8 @@ import { ContactsModule } from './contacts/contacts.module';
   controllers: [],
   providers: [],
 })
-export class AppModule { }
+export class AppModule { configure(consumer: MiddlewareConsumer) {
+  consumer
+    .apply(RestrictAccessMiddleware)
+    .forRoutes({ path: '*', method: RequestMethod.ALL });
+} }
