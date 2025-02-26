@@ -2,10 +2,19 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import * as fs from 'fs';
 import * as path from 'path';
+import { Cron } from '@nestjs/schedule';
 
 @Injectable()
 export class SitemapService {
   constructor(private readonly prisma: PrismaService) {}
+
+
+
+@Cron('0 0 * * *') // Раз в сутки в 00:00
+async updateSitemap() {
+  await this.generateSitemap();
+}
+
 
   async generateSitemap() {
     const categories = await this.prisma.category.findMany({
