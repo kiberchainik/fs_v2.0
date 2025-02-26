@@ -49,7 +49,7 @@ export interface IVacanciaes extends IVacancyOptions {
     isValidate?: boolean
 }
 
-export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'description' | 'branchId' | 'savedBy' | 'sendCandidature' | 'location' | 'salary'> & {
+export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'description' | 'branchId' | 'savedBy' | 'sendCandidature' | 'location' | 'region' | 'province' | 'salary'> & {
     breadcrumbs: TBreadcrumbr
     reallyUpTo: string
     createdAt: string
