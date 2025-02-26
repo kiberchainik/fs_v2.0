@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 export const MiddleSector = () => {
     return (
-        <div className="flex my-10 px-10 w-screen -ml-5">
+        <div className="flex my-10 px-10 -ml-5">
             <div className="flex flex-col md:flex-row gap-2 items-center justify-between">
                 <div className="md:w-1/2">
                     <div className="">
