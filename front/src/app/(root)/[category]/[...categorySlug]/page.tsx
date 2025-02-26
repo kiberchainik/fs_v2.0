@@ -54,7 +54,7 @@ export default async function Page({ params, searchParams }: Props) {
                         <JobFullPage {...data.jobData} breadcrumbs={data.breadcrumbs} />
                     </div>
                 </div>
-                {data.jobData.categories.slug && <div className="w-screen -ml-5 mt-20 border-t border-slate-200 border-dashed flex flex-col items-center justify-center">
+                {data.jobData.categories.slug && <div className="-ml-5 mt-20 border-t border-slate-200 border-dashed flex flex-col items-center justify-center">
                     <div className="text-left">
                         <h2 className="text-[50px] text-[#1e356a] font-bold">Lavori <span className="font-normal text-[#069cd0]">in evidenza</span> correlati</h2>
                         <p className="text-lg text-[#069cd0]">Mantieni il tuo valore e trova il lavoro che dà qualità alla tua vita</p>
