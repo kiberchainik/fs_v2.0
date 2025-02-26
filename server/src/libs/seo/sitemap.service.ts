@@ -8,9 +8,7 @@ import { Cron } from '@nestjs/schedule';
 export class SitemapService {
   constructor(private readonly prisma: PrismaService) {}
 
-
-
-@Cron('0 0 * * *') // Раз в сутки в 00:00
+@Cron('0 0 */3 * *') // Раз в сутки в 00:00
 async updateSitemap() {
   await this.generateSitemap();
 }
