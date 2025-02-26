@@ -8,7 +8,7 @@ export class LastProcessIndexService {
     ) { }
 
     public async getLastProcessedIndex(userId: string) {
-        const progress = await this.prisma.lastProcessedIndex.findMany({
+        const progress = await this.prisma.lastProcessedIndex.findFirst({
             where: {
                 AND: [
                     { userId },
@@ -17,7 +17,7 @@ export class LastProcessIndexService {
             },
             select: { index: true }
         })
-        return progress ? progress[0].index : null
+        return progress ? progress.index : null
     }
 
     public async updateLastProcessedIndex(userId: string, lastProcessedIndex: number) {
@@ -39,4 +39,3 @@ export class LastProcessIndexService {
         })
     }
 }
-

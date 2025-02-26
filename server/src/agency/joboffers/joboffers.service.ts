@@ -73,6 +73,7 @@ export class JoboffersService {
       levelEducationId,
       modeJobId,
       workingTimeId,
+      reallyUpTo,
       ...jobOffers
     } = createJobofferDto
 
@@ -99,6 +100,7 @@ export class JoboffersService {
       data: {
         ...jobOffers,
         slug: slugify(createJobofferDto.slug ? createJobofferDto.slug : createJobofferDto.title),
+        reallyUpTo: reallyUpTo ? new Date(reallyUpTo).toISOString() : null,
         categories: {
           connect: { id: categories }
         },
