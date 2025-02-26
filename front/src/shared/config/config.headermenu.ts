@@ -3,6 +3,7 @@ import { IconType } from "react-icons"
 import { CiDesktop, CiHeart, CiLocationArrow1, CiMemoPad, CiPalette, CiUser } from "react-icons/ci"
 import { PiGitBranchThin } from "react-icons/pi"
 import { AGENCY_DROPDOWN_URL, CANDIDAT_DROPDOWN_URL, MAIN_URL } from "./config.url"
+import { useTranslations } from "next-intl"
 
 export interface MenuItems {
     icon?: IconType
@@ -11,92 +12,95 @@ export interface MenuItems {
 }
 
 export const headerMainMenu = (): MenuItems[] => {
+    const header_menu = useTranslations('header.header_menu')
+
     return [
         {
             href: MAIN_URL.home(),
-            title: 'Home'
+            title: header_menu('home')
         },
         {
             href: MAIN_URL.categories(),
-            title: 'Offerte di lavoro'
+            title: header_menu('categories')
         },
         {
             href: MAIN_URL.candidats(),
-            title: 'Candidati'
+            title: header_menu('candidats')
         },
         {
             href: MAIN_URL.about(),
-            title: 'Chi siamo'
+            title: header_menu('about')
         },
         {
             href: MAIN_URL.contacts(),
-            title: 'Contattaci'
+            title: header_menu('contacts')
         }
     ]
 }
 
 export const HeaderUserMenu = (role: UserRole): MenuItems[] => {
+    const account_header_btns = useTranslations('header.account_header_btns')
     return role === UserRole.Agency ? [
         {
             icon: CiDesktop,
             href: AGENCY_DROPDOWN_URL.dashboard(),
-            title: 'Dashboard'
+            title: account_header_btns('dashboard')
         },
         {
             icon: CiUser,
             href: AGENCY_DROPDOWN_URL.profile(),
-            title: 'Profile'
+            title: account_header_btns('Profile')
         },
         {
             icon: PiGitBranchThin,
             href: AGENCY_DROPDOWN_URL.branch(),
-            title: 'All branches'
+            title: account_header_btns('branch')
         },
         {
             icon: PiGitBranchThin,
             href: AGENCY_DROPDOWN_URL.branch('create'),
-            title: 'New branch'
+            title: account_header_btns('new_branch')
         },
         {
             icon: CiPalette,
             href: AGENCY_DROPDOWN_URL.vacancy(),
-            title: 'All vacancies'
+            title: account_header_btns('vacancy')
         },
         {
             icon: CiPalette,
             href: AGENCY_DROPDOWN_URL.vacancy('create'),
-            title: 'Create vacancy'
+            title: account_header_btns('new_vacancy')
         },
         {
             icon: CiHeart,
             href: AGENCY_DROPDOWN_URL.favorites(),
-            title: 'Workers favorites'
+            title: account_header_btns('favorites')
         }
     ] : [
         {
             icon: CiDesktop,
             href: CANDIDAT_DROPDOWN_URL.dashboard(),
-            title: 'Profile'
+            title: account_header_btns('Profile')
         },
         {
             icon: CiUser,
             href: CANDIDAT_DROPDOWN_URL.privacy(),
-            title: 'Privacy'
+            title: account_header_btns('privacy')
         },
         {
             icon: CiMemoPad,
             href: CANDIDAT_DROPDOWN_URL.portfolio(),
-            title: 'Curriculum'
+            title: account_header_btns('portfolio')
         },
         {
             icon: CiHeart,
             href: CANDIDAT_DROPDOWN_URL.savedJobs(),
-            title: 'Offerte salvati'
+            title: account_header_btns('savedJobs')
         },
         {
             icon: CiLocationArrow1,
             href: CANDIDAT_DROPDOWN_URL.sendetCandidatura(),
-            title: 'Candidature inviati'
+            title: account_header_btns('sendetCandidatura')
         }
     ]
 }

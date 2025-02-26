@@ -1,8 +1,47 @@
 {
+    "header": {
+        "header_menu": {
+            "home": "Acasă",
+            "categories": "Oferte de muncă",
+            "candidats": "Candidați",
+            "about": "Despre noi",
+            "contacts": "Contactează-ne"
+        },
+        "account_header_btns": {
+            "btn_candidat": "Candidați",
+            "btn_agency": "Agenție",
+            "dashboard": "Tablou de bord",
+            "profile": "Profil",
+            "branch": "Toate sucursalele",
+            "new_branch": "Sucursala nouă",
+            "vacancy": "Toate posturile vacante",
+            "new_vacancy": "Creează post vacant",
+            "favorites": "Lucrători favoriți",
+            "privacy": "Confidențialitate",
+            "portfolio": "Curriculum",
+            "savedJobs": "Oferte salvate",
+            "sendetCandidatura": "Candidaturi trimise"
+        },
+        "theme_btns": {
+            "theme_site": "Tema site-ului",
+            "light": "Luminos",
+            "dark": "Întunecat",
+            "system": "Sistem"
+        }
+    },
     "homePage": {
         "topSector": {
             "h1": "Găsiți locuri de muncă pentru fiecare profesie",
-            "p": "Explorați categoriile noastre de locuri de muncă și descoperiți numeroase oportunități în diverse sectoare. De la ingineri la contabili, de la resurse umane la tehnicieni IT: am anunțuri actualizate pentru toate personalitățile profesionale solicitate astăzi. Găsește-ți poziția ideală și aplică cu ușurință online."
+            "p": "Explorați categoriile noastre de locuri de muncă și descoperiți numeroase oportunități în diverse sectoare. De la ingineri la contabili, de la resurse umane la tehnicieni IT: am anunțuri actualizate pentru toate personalitățile profesionale solicitate astăzi. Găsește-ți poziția ideală și aplică cu ușurință online.",
+            "operaio": "#muncitor",
+            "contabile": "#contabil",
+            "economista": "#economist",
+            "venditore": "#vânzător",
+            "autista": "#șofer",
+            "sector": "Sector",
+            "località": "Localitate",
+            "contractTypeId": "Tip contract",
+            "without_branch": "Fără sucursală"
         }
     }
 }

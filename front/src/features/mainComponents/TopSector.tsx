@@ -13,7 +13,7 @@ import { useTranslations } from "next-intl"
 import styles from './maincomponents.module.scss'
 
 export const TopSector = () => {
-    const t = useTranslations('homePage.topSector');
+    const t = useTranslations('homePage.topSector')
     const { categories, isFetching } = useCategory()
     const { contractType, isFetching: isFCT } = useGetOptionsContractTypes()
     const { filterParams } = useFilterVacancy()
@@ -38,19 +38,19 @@ export const TopSector = () => {
                     <p>{t('p')}</p>
                     <div className={styles.hero_banner__content__tags}>
                         <span>
-                            <a href="#" className="dark:bg-opacity-20">#operaio</a>
+                            <a href="#" className="dark:bg-opacity-20">{t('operaio')}</a>
                         </span>
                         <span>
-                            <a href="#" className="dark:bg-opacity-20">#contabile</a>
+                            <a href="#" className="dark:bg-opacity-20">{t('contabile')}</a>
                         </span>
                         <span>
-                            <a href="#" className="dark:bg-opacity-20">#economista</a>
+                            <a href="#" className="dark:bg-opacity-20">{t('economista')}</a>
                         </span>
                         <span>
-                            <a href="#" className="dark:bg-opacity-20">#venditore</a>
+                            <a href="#" className="dark:bg-opacity-20">{t('venditore')}</a>
                         </span>
                         <span>
-                            <a href="#" className="dark:bg-opacity-20">#autista</a>
+                            <a href="#" className="dark:bg-opacity-20">{t('autista')}</a>
                         </span>
                     </div>
                 </div>
@@ -83,7 +83,7 @@ export const TopSector = () => {
                                                 }}
                                                 render={({ field }) => (
                                                     <FormItem className="border-none">
-                                                        <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>Settore</FormLabel>
+                                                        <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>{t('sector')}</FormLabel>
                                                         <Select
                                                             disabled={isFetching}
                                                             onValueChange={field.onChange}
@@ -128,7 +128,7 @@ export const TopSector = () => {
                                                 name='location'
                                                 render={({ field }) => (
                                                     <FormItem>
-                                                        <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>Località</FormLabel>
+                                                        <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>{t('località')}</FormLabel>
                                                         <FormControl>
                                                             <Input
                                                                 placeholder='Località'
@@ -152,7 +152,7 @@ export const TopSector = () => {
                                                 name='contractTypeId'
                                                 render={({ field }) => (
                                                     <FormItem>
-                                                        <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>Tipo di contratto</FormLabel>
+                                                        <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>{t('contractTypeId')}</FormLabel>
                                                         <Select
                                                             onValueChange={field.onChange}
                                                             defaultValue={field.value}
@@ -167,7 +167,7 @@ export const TopSector = () => {
                                                                 <SelectGroup>
                                                                     {contractType ? contractType.map(type => (
                                                                         <SelectItem value={type.id} key={type.id}>{type.name}</SelectItem>
-                                                                    )) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+                                                                    )) : <SelectItem value='0' key={'without_branch'}>{t('without_branch')}</SelectItem>}
                                                                 </SelectGroup>
                                                             </SelectContent>
                                                         </Select>

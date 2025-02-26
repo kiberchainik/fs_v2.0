@@ -1,8 +1,47 @@
 {
+    "header": {
+        "header_menu": {
+            "home": "Home",
+            "categories": "Job offers",
+            "candidats": "Candidates",
+            "about": "About us",
+            "contacts": "Contact us"
+        },
+        "account_header_btns": {
+            "btn_candidat": "Candidate",
+            "btn_agency": "Agency",
+            "dashboard": "Dashboard",
+            "profile": "Profile",
+            "branch": "All branches",
+            "new_branch": "New branch",
+            "vacancy": "All vacancies",
+            "new_vacancy": "Create vacancy",
+            "favorites": "Workers favorites",
+            "privacy": "Privacy",
+            "portfolio": "Curriculum",
+            "savedJobs": "Saved offers",
+            "sendetCandidatura": "Sent applications"
+        },
+        "theme_btns": {
+            "theme_site": "Site theme",
+            "light": "Light",
+            "dark": "Dark",
+            "system": "System"
+        }
+    },
     "homePage": {
         "topSector": {
             "h1": "Find a job for any profession",
-            "p": "Explore our job categories and discover a wide range of opportunities in a variety of industries. From engineers to accountants, human resources to IT technicians, we have up-to-date job listings for all the roles in demand today. Find your ideal position and apply easily online."
+            "p": "Explore our job categories and discover a wide range of opportunities in a variety of industries. From engineers to accountants, human resources to IT technicians, we have up-to-date job listings for all the roles in demand today. Find your ideal position and apply easily online.",
+            "operaio": "#worker",
+            "contabile": "#accountant",
+            "economista": "#economist",
+            "venditore": "#seller",
+            "autista": "#driver",
+            "sector": "Sector",
+            "località": "Location",
+            "contractTypeId": "ContractTypeId",
+            "without_branch": "Without branch"
         }
     }
 }

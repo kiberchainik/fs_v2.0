@@ -2,12 +2,12 @@
 
 import { FC } from "react";
 import { IUserMenuHeaderData } from "../../types/userMenuData.type";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/shared/components/ui";
-import { Avatar, AvatarImage, AvatarFallback } from "@/shared/components/ui";
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/shared/components/ui"
+import { Avatar, AvatarImage, AvatarFallback } from "@/shared/components/ui"
 import { IoIosLogOut } from "react-icons/io"
-import { useRouter } from "next/navigation";
-import { useLogoutMutation } from "../../hooks";
-import { HeaderUserMenu } from "@/shared/config";
+import { useRouter } from "next/navigation"
+import { useLogoutMutation } from "../../hooks"
+import { HeaderUserMenu } from "@/shared/config"
 
 export const UserMenu: FC<IUserMenuHeaderData> = ({ email, isVerified, role, avatar, name }) => {
     const router = useRouter()
@@ -47,7 +47,7 @@ export const UserMenu: FC<IUserMenuHeaderData> = ({ email, isVerified, role, ava
                     onClick={() => logout()}
                     className='cursor-pointer'
                 >
-                    <IoIosLogOut className='mr-2 size-4' /> Выйти
+                    <IoIosLogOut className='mr-2 size-4' /> Logout
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

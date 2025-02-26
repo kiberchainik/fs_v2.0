@@ -4,8 +4,7 @@ import { cn } from "@/shared/utils";
 import { Logo } from "@/shared/components";
 import { ToggleTheme } from "../ui";
 import { UserHeaderMenu } from "@/features/userHeaderBtn/componets/usermenu/UserHeaderDropdownMenu"
-import { HeaderSearch } from "@/features/headerSearch/components/Search"
-import LanguageSwitcher from "../LanguageSwitcher";
+import LanguageSwitcher from "../LanguageSwitcher"
 
 interface IStyles {
     className?: string
@@ -18,7 +17,6 @@ export const Header: FC<PropsWithChildren<IStyles>> = ({ children, className }) 
             <div className='hidden sm:flex'><Logo /></div>
             <div className='flex w-full items-center'>
                 {children}
-                {/* <HeaderSearch /> */}
             </div>
             <div className='flex gap-x-2 items-center'>
                 <UserHeaderMenu />

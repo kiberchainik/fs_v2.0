@@ -6,9 +6,11 @@ import { CarouselMain } from "../CarouselMain"
 import { CandidatCard } from "./CandidatCard";
 import { CandidatSkeleton } from "./CandidatSkeleton";
 import { CarouselItem } from "@/shared/components";
+import { useTranslations } from "next-intl";
 
 export default function Candidats() {
     const { candidats, isFetching } = useGetCandidats()
+        const t = useTranslations('homePage.topSector')
     return (
         <div className="-mr-5 flex flex-col md:flex-row bg-[#cee5ec] dark:bg-[#091b20] -ml-5 gap-20 my-20 md:h-[450px] items-center">
             <div className="flex flex-col gap-2 w-full md:w-[40%] bg-[#b1dbe9] dark:bg-[#082933] p-10 h-full items-center justify-center">
