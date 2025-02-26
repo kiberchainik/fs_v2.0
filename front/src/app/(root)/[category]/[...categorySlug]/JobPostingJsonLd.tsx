@@ -1,29 +1,31 @@
+import { IVacanciaesFullDate } from "@/features/agency/vacancy/types";
+
 export default function JobPostingJsonLd({ job }: { job: any }) {
   const jsonLd = {
     "@context": "https://schema.org/",
     "@type": "JobPosting",
     "title": job.title,
     "description": job.description,
-    "datePosted": job.datePosted,
-    "validThrough": job.validThrough,
-    "employmentType": job.employmentType,
+    "datePosted": job.createdAt,
+    "validThrough": job.reallyUpTo || new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split("T")[0], // +30 дней
+    "employmentType": job.contractType.name,
     "hiringOrganization": {
       "@type": "Organization",
-      "name": job.companyName,
-      "sameAs": job.companyWebsite
+      "name": job.agency.agency_name,
+      "sameAs": job.agency.slug
     },
     "jobLocation": {
       "@type": "Place",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": job.address.street,
-        "addressLocality": job.address.city,
-        "addressCountry": job.address.country
+        "streetAddress": job.location,
+        "addressLocality": job.agency,
+        "addressCountry": 'Italia'
       }
     },
     "baseSalary": {
       "@type": "MonetaryAmount",
-      "currency": job.currency,
+      "currency": '',
       "value": {
         "@type": "QuantitativeValue",
         "value": job.salary,

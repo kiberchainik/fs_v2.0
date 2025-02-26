@@ -23,6 +23,7 @@ import { ChatModule } from './messenger/chat.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { RestrictAccessMiddleware } from './restrict-access.middleware';
 import { JobParserModule } from './admin/job-parser/job-parser.module';
+import { SitemapModule } from './admin/sitemap/sitemap.module';
 
 @Module({
   imports: [

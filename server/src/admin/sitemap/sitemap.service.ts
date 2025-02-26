@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
-import * as fs from 'fs';
-import * as path from 'path';
-import { Cron } from '@nestjs/schedule';
+import { Injectable } from '@nestjs/common'
+import * as fs from 'fs'
+import * as path from 'path'
+import { PrismaService } from '@/prisma/prisma.service'
+import { Cron } from '@nestjs/schedule'
 
 @Injectable()
 export class SitemapService {

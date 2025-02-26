@@ -13,13 +13,13 @@ export class JobParserService {
       const { data } = await axios.get(url);
       const $ = cheerio.load(data);
 
-      const getText = (selector: string) => $(selector).text().trim() || null;
+      const getText = (selector: string) => $(selector).text().trim() || '';
       const getArrayText = (selector: string) => $(selector).map((_, el) => $(el).text().trim()).get();
 
       const title = getText('h1.content-block__title');
-      const description = getText('.basic-layout__main > .body-copy > .content')
-      const location = getText('.behat-location').split(',')[0].trim() || null
-      const province = getText('.behat-location').split(',')[2].trim() || null
+      const description = getArrayText('.basic-layout__main > .body-copy > .content > p')
+      const location = getText('.behat-location').split(',')[0].trim() || ''
+      const province = getText('.behat-location').split(',')[2].trim() || ''
       const salary = getText('.behat-salary')
       const contract_type = getText('.behat-jobType > span.cards__meta-item--link > a.cards__meta-item--link')
       const working_time = getText('.behat-hours')
@@ -27,50 +27,47 @@ export class JobParserService {
 
       let reallyUpTo = null;
       try {
-        const dateText = getText('span.word-break')?.split('scade il')[1]?.trim();
+        const dateText = getText('.notice-in-page--width > span.word-break').split('scade il')[2]?.trim()
+
         if (dateText) {
           reallyUpTo = new Date(dateText);
-        }
-      } catch (e) {
+        } else reallyUpTo = getText('.notice-in-page--width > span.word-break').split('questa offerta di lavoro ')[2]?.trim()
+
+        } catch (e) {
         console.warn(`Ошибка обработки даты: ${e.message}`);
       }
 
-      // Дожидаемся запросов к БД
-      const contractType = contract_type 
-        ? await this.prisma.contractTypeJob.findFirst({
-            where: { name: { contains: contract_type.replace(/[':]/g, ''), mode: 'insensitive' } },
-            select: { id: true }
-          }) 
-        : null;
+      const contractType = await this.prisma.contractTypeJob.findFirst({
+        where: { name: { contains: contract_type.replace(/[':]/g, ''), mode: 'insensitive' } },
+        select: { id: true }
+      })
 
-      const workingTimeId = working_time
-        ? await this.prisma.workingTimeJob.findFirst({
-            where: { name: { contains: working_time.replace(/[':]/g, ''), mode: 'insensitive' } },
-            select: { id: true }
-          })
-        : null;
+      const workingTimeId = await this.prisma.workingTimeJob.findFirst({
+        where: { name: { contains: working_time.replace(/[':]/g, ''), mode: 'insensitive' } },
+        select: { id: true }
+      })
 
       return {
         title,
-        slug: title ? slugify(title) : null,
-        description,
+        slug: title ? slugify(title) : '',
+        description: description.map(text => `<p>${text}</p>`).join("\n"),
         categoryId: '',
         sectors: [],
-        tags,
+        tags: tags.length === 0 ? [title] : tags,
         region: province,
         province,
         location,
-        salary: salary ? Number(salary.replace(/\D/g, '')) : null,
+        salary: salary ? Number(salary.match(/\d{1,3}(?:\.\d{3})*(?:,\d+)?/)[0].replace(/\./g, '')) : 0,
         reallyUpTo,
-        branchId: null,
-        contractType,
-        experienceMinimalId: null,
-        levelEducationId: null,
-        modeJobId: null,
-        workingTimeId,
-      };
+        branchId: '',
+        contractId: contractType ? contractType.id : '',
+        experienceMinimalId: '',
+        levelEducationId: '',
+        modeJobId: '',
+        workingTimeId: workingTimeId ? workingTimeId.id : '',
+      }
     } catch (error) {
-      console.error(`Ошибка при парсинге ${url}:`, error.message);
+      console.error(`Ошибка при парсинге ${url}:`, error.message)
       return null;
     }
   }
