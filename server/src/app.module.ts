@@ -50,7 +50,8 @@ import { JobParserModule } from './admin/job-parser/job-parser.module';
     RatingModule,
     ChatModule,
     ContactsModule,
-    JobParserModule
+    JobParserModule,
+    SitemapModule
   ],
   controllers: [],
   providers: [],
