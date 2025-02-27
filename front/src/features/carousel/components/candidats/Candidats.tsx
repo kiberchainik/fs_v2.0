@@ -1,12 +1,11 @@
 'use client'
 
-import Spinner from "@/shared/components/Spinner/Spinner";
-import { useGetCandidats } from "../../hooks/useCandidatCarousel";
+import { useGetCandidats } from "../../hooks/useCandidatCarousel"
 import { CarouselMain } from "../CarouselMain"
-import { CandidatCard } from "./CandidatCard";
-import { CandidatSkeleton } from "./CandidatSkeleton";
-import { CarouselItem } from "@/shared/components";
-import { useTranslations } from "next-intl";
+import { CandidatCard } from "./CandidatCard"
+import { CandidatSkeleton } from "./CandidatSkeleton"
+import { CarouselItem } from "@/shared/components"
+import { useTranslations } from "next-intl"
 
 export default function Candidats() {
     const { candidats, isFetching } = useGetCandidats()

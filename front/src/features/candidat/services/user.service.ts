@@ -10,7 +10,7 @@ class UserService {
     }
 
     public async updateProfile(data: TypePrivacySchema) {
-        return await axiosPrivate.patch<IUser>(API_URL.candidatProfile(), data)
+        return await axiosPrivate.patch<IUser>(API_URL.patchCandidatProfile(), data)
     }
 }
 

@@ -1,6 +1,8 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { JobParserService } from './job-parser.service';
+import { ApiExcludeController } from '@nestjs/swagger';
 
+@ApiExcludeController()
 @Controller('jobs')
 export class JobParserController {
   constructor(private readonly jobParserService: JobParserService) {}

@@ -75,13 +75,6 @@ export class CandidatController {
   }
 
   @ApiExcludeEndpoint()
-  @Get('privacy')
-  @Authorization(UserRole.CANDIDATE)
-  getCandidatPrivacy(@CurrentUser('id') id: string) {
-    return this.candidatService.getCandidatPrivacy(id);
-  }
-
-  @ApiExcludeEndpoint()
   @Patch('privacy')
   @Authorization(UserRole.CANDIDATE)
   update(

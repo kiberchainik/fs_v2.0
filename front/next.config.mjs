@@ -29,7 +29,7 @@ const nextConfig = {
         return [
             {
                 source: '/static/:path*',
-                destination: `/${process.env.SERVER_URL}/static/:path*`
+                destination: `${process.env.SERVER_URL}/static/:path*`
             }
         ]
     }

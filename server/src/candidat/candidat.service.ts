@@ -194,14 +194,6 @@ export class CandidatService {
     })
   }
 
-  async getCandidatPrivacy(id: string) {
-    return await this.prisma.candidatData.findUnique({
-      where: {
-        userId: id
-      }
-    })
-  }
-
   async update(id: string, updateCandidatDto: UpdateCandidatDto) {
     const _data = {
       firstname: updateCandidatDto.name,

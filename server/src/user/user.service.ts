@@ -66,9 +66,23 @@ export class UserService {
         return data
     }
 
+    async getCandidatPrivacy(id: string) {
+        return await this.prisma.candidatData.findUnique({
+          where: {
+            userId: id
+          }
+        })
+    }
+
     async findByEmail(email: string) {
-        const user = await this.prisma.user.findUnique({
-            where: { email },
+        const login = email.split('@')[0]
+        const user = await this.prisma.user.findFirst({
+            where: { 
+                OR: [
+                    {email},
+                    {login}
+                ]
+            },
             include: {
                 authAccounts: true
             }

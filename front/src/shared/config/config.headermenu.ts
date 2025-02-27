@@ -49,7 +49,7 @@ export const HeaderUserMenu = (role: UserRole): MenuItems[] => {
         {
             icon: CiUser,
             href: AGENCY_DROPDOWN_URL.profile(),
-            title: account_header_btns('Profile')
+            title: account_header_btns('profile')
         },
         {
             icon: PiGitBranchThin,
@@ -80,7 +80,7 @@ export const HeaderUserMenu = (role: UserRole): MenuItems[] => {
         {
             icon: CiDesktop,
             href: CANDIDAT_DROPDOWN_URL.dashboard(),
-            title: account_header_btns('Profile')
+            title: account_header_btns('profile')
         },
         {
             icon: CiUser,

@@ -2,7 +2,8 @@ import { Body, Controller, Get, HttpCode, HttpStatus, Param, Patch } from '@nest
 import { UserService } from './user.service';
 import { Authorization, CurrentUser } from '@/auth/decorators'
 import { UpdateUserDto } from './dto';
-import { ApiExcludeController } from '@nestjs/swagger';
+import { ApiExcludeController, ApiExcludeEndpoint } from '@nestjs/swagger';
+import { UserRole } from '@prisma/client';
 
 @ApiExcludeController()
 @Controller('users')
@@ -16,6 +17,13 @@ export class UserController {
     const { password, ...user } = await this.userService.findById(id)
 
     return user
+  }
+
+  @ApiExcludeEndpoint()
+  @Get('privacy')
+  @Authorization(UserRole.CANDIDATE)
+  getCandidatPrivacy(@CurrentUser('id') id: string) {
+    return this.userService.getCandidatPrivacy(id);
   }
 
   @Authorization()

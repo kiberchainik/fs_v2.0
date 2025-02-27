@@ -54,6 +54,7 @@ export function Privacy() {
 			//isTwoFactorEnabled: false
 		}
 	})
+//console.log(form.getValues().about_my);
 
 	const { updProfile, isPending } = useUpdProfileMutation()
 
