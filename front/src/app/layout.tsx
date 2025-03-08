@@ -45,15 +45,10 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({
-  children,
-  //params: { locale }
+  children
 }: Readonly<{
-  children: React.ReactNode;
-  //params: { locale: string };
+  children: React.ReactNode
 }>) {
-  // if (!routing.locales.includes(locale as any)) {
-  //   notFound();
-  // }
   const locale = await getLocale()
   const messages = await getMessages()
 
