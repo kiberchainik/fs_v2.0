@@ -1,32 +1,31 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
-import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class RestrictAccessMiddleware implements NestMiddleware {
-  constructor(private configService: ConfigService) {}
-
   use(req: Request, res: Response, next: NextFunction) {
-    const allowedSwaggerPaths = ['/swagger']
-    const allowedApiPath = '/api'
-    const allowedOrigin = this.configService.get<string>('ALLOWED_ORIGIN')
+    const allowedSwaggerPaths = ['/developers'] // Swagger открыт всем
+    const allowedOrigins = ['https://lavidea.it'] // Только твой фронт
 
-    if (allowedSwaggerPaths.some(path => req.path.startsWith(path))) {
+    const origin = req.headers.origin;
+    const path = req.path;
+
+    // Разрешаем Swagger без проверки Origin
+    if (allowedSwaggerPaths.some(swaggerPath => path.startsWith(swaggerPath))) {
       return next();
     }
 
-    const origin = req.headers.origin || req.headers.referer
-    const host = req.headers.host
-
-    if (req.path.startsWith(allowedApiPath) && origin && origin.includes(allowedOrigin)) {
-      return next()
-    }
-
-    if (host && (host.includes('localhost') || host.includes('127.0.0.1'))) {
+    // Разрешаем запросы без Origin (например, внутренние серверные запросы)
+    if (!origin) {
       return next();
     }
 
-    // Блокируем все остальные запросы
+    // Разрешаем запросы только от указанного фронта
+    if (allowedOrigins.includes(origin)) {
+      return next();
+    }
+
+    // Если не прошло ни одно условие — запрет доступа
     return res.status(403).json({ message: 'Access Denied' });
   }
 }
