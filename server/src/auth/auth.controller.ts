@@ -18,7 +18,7 @@ export class AuthController {
 
 	@ApiExcludeEndpoint()
 	@Post('register')
-	@Recaptcha()
+	@Recaptcha({ action: 'register', score: 0.5 })
 	@HttpCode(HttpStatus.OK)
 	async register(@Body() dto: RegisterDto) {
 		return this.authService.register(dto)
@@ -28,7 +28,7 @@ export class AuthController {
 	@ApiBody({ type: LoginDto })
 	@ApiResponse({ status: 200, description: 'Autorizzazione avvenuta con successo', type: OpenAPIAgencyResponse })
 	@Post('login-agency')
-	@Recaptcha()
+	//@Recaptcha()
 	@HttpCode(HttpStatus.OK)
 	async loginWithAPI(
 		@Body() dto: LoginDto,
@@ -42,7 +42,7 @@ export class AuthController {
 
 	@ApiExcludeEndpoint()
 	@Post('login')
-	@Recaptcha()
+	@Recaptcha({ action: 'login', score: 0.5 })
 	@HttpCode(HttpStatus.OK)
 	async login(
 		@Body() dto: LoginDto,

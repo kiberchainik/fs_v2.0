@@ -5,11 +5,11 @@ import { contactsServices } from "../services/contacts.service"
 import { toastMessageHandler } from "@/shared/utils"
 import { toast } from "sonner"
 import { useAppSelector } from "@/shared/hooks"
-import { useState } from "react"
+import { useReCaptcha } from "@/shared/providers/ReCaptchaProvider"
 
 export const useContacts = () => {
     const { data: user } = useAppSelector(state => state.reducer.user)
-    const [recaptchaValue, setRecaptchValue] = useState<string | null>(null)
+    const { executeRecaptcha } = useReCaptcha()
 
     const form = useForm<TypeContactSchema>({
         mode: 'onChange',
@@ -32,11 +32,12 @@ export const useContacts = () => {
         }
     })
 
-    const onSubmit = (data: TypeContactSchema) => {
-        if (recaptchaValue) {
+    const onSubmit = async (data: TypeContactSchema) => {
+        const token = await executeRecaptcha()
+        if (token) {
             mutate(data)
         } else {
-            toast.error('Per favore, conferma che non sei un robot')
+            toast.error('Captcha error')
         }
 
     }
@@ -44,7 +45,6 @@ export const useContacts = () => {
     return {
         form,
         onSubmit,
-        isPending,
-        setRecaptchValue
+        isPending
     }
 }

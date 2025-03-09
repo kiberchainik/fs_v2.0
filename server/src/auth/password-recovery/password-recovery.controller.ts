@@ -9,7 +9,7 @@ import { ApiExcludeController } from '@nestjs/swagger';
 export class PasswordRecoveryController {
   constructor(private readonly passwordRecoveryService: PasswordRecoveryService) { }
 
-  @Recaptcha()
+  @Recaptcha({ action: 'reset', score: 0.5 })
   @Post('reset')
   @HttpCode(HttpStatus.OK)
   async reset(
@@ -18,7 +18,7 @@ export class PasswordRecoveryController {
     return this.passwordRecoveryService.reset(dto);
   }
 
-  @Recaptcha()
+  @Recaptcha({ action: 'new', score: 0.5 })
   @Post('new/:token')
   @HttpCode(HttpStatus.OK)
   async newPassword(

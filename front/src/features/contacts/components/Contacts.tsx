@@ -1,16 +1,15 @@
-'use client';
+'use client'
 
 import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from '@/shared/components'
-import { useContacts } from '../hooks/useContacts';
-import { Textarea } from '@/shared/components/ui';
+import { useContacts } from '../hooks/useContacts'
+import { Textarea } from '@/shared/components/ui'
 import Spinner from '@/shared/components/Spinner/Spinner'
-import ReCAPTCHA from 'react-google-recaptcha';
-import { useTheme } from 'next-themes';
-import { MiddleSector } from '@/features/mainComponents';
+import { useTheme } from 'next-themes'
+import { MiddleSector } from '@/features/mainComponents'
 
 export default function Contacts() {
     const { theme } = useTheme()
-    const { form, onSubmit, isPending, setRecaptchValue } = useContacts()
+    const { form, onSubmit, isPending } = useContacts()
 
     return (<>
         <section className="w-full flex flex-col gap-10">
@@ -75,7 +74,6 @@ export default function Contacts() {
                             )}
                         />
                         <div className="comment-btn text-center">
-                            <div className='w-full py-3 justify-center items-center flex'><ReCAPTCHA sitekey={process.env.GOOGLE_RECAPTCHA_SITE_KEY as string} onChange={setRecaptchValue} theme={theme === 'light' ? 'light' : 'dark'} /></div>
                             <Button type="submit" disabled={isPending}>
                                 {isPending ? <Spinner /> : <span>Send</span>}
                             </Button>

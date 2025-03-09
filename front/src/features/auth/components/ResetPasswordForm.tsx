@@ -6,15 +6,14 @@ import { AuthWrapper } from ".";
 import { ResetPasswordSchema, TypeResetPasswordSchema } from "../schemes";
 import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from "@/shared/components/ui";
 import { useTheme } from "next-themes";
-import { useState } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
 import { toast } from "sonner";
-import { useResetPasswordMutation } from "../hooks";
+import { useResetPasswordMutation } from "../hooks"
+import { useReCaptcha } from "@/shared/providers/ReCaptchaProvider";
 
-export function ResetPasswordForm () {
-    const {theme} = useTheme()
-    const [recaptchaValue, setRecaptchValue] = useState<string | null>(null)
-    
+export function ResetPasswordForm() {
+    const { theme } = useTheme()
+    const { executeRecaptcha } = useReCaptcha()
+
     const form = useForm<TypeResetPasswordSchema>({
         resolver: zodResolver(ResetPasswordSchema),
         defaultValues: {
@@ -22,25 +21,26 @@ export function ResetPasswordForm () {
         }
     })
 
-    const {reset, isLoading} = useResetPasswordMutation()
+    const { reset, isLoading } = useResetPasswordMutation()
 
-    const onSubmit = (values: TypeResetPasswordSchema) => {
-        if(!recaptchaValue) {
+    const onSubmit = async (values: TypeResetPasswordSchema) => {
+        const token = await executeRecaptcha()
+        if (!token) {
             toast.error('Enter captcha')
         } else {
-            reset({values, recaptcha: recaptchaValue})
+            reset({ values, recaptcha: token })
         }
     }
 
     return (
-        <AuthWrapper 
+        <AuthWrapper
             heading="Reset"
             description="Compile all fields for login"
         >
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
                     <FormField control={form.control} name="email"
-                        render={({field}) => (
+                        render={({ field }) => (
                             <FormItem>
                                 <FormLabel>Email</FormLabel>
                                 <FormControl><Input placeholder="Your email" type="email" {...field} disabled={isLoading} /></FormControl>
@@ -48,7 +48,6 @@ export function ResetPasswordForm () {
                             </FormItem>
                         )}
                     />
-                    <ReCAPTCHA sitekey={process.env.GOOGLE_RECAPTCHA_SITE_KEY as string} onChange={setRecaptchValue} theme={theme === 'light' ? 'light' : 'dark'} />
                     <Button type="submit" disabled={isLoading}>Reset password</Button>
                 </form>
             </Form>

@@ -7,17 +7,16 @@ import { LoginSchema, TypeLoginSchema } from "../schemes";
 import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from "@/shared/components/ui";
 import { useTheme } from "next-themes";
 import { useState } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
 import { toast } from "sonner";
 import { useLoginMutation } from "../hooks";
 import Link from "next/link";
+import { useReCaptcha } from "@/shared/providers/ReCaptchaProvider";
 
-export function LoginForm ({isShowSocial}:{isShowSocial: boolean}) {
-    const {theme} = useTheme()
-    const [recaptchaValue, setRecaptchValue] = useState<string | null>(null)
+export function LoginForm({ isShowSocial }: { isShowSocial: boolean }) {
+    const { theme } = useTheme()
+    const { executeRecaptcha } = useReCaptcha()
     const [isTwoFactor, setTowFactor] = useState<boolean>(false)
 
-    
     const form = useForm<TypeLoginSchema>({
         resolver: zodResolver(LoginSchema),
         defaultValues: {
@@ -26,18 +25,19 @@ export function LoginForm ({isShowSocial}:{isShowSocial: boolean}) {
         }
     })
 
-    const {login, isLoading} = useLoginMutation(setTowFactor)
+    const { login, isLoading } = useLoginMutation(setTowFactor)
 
-    const onSubmit = (values: TypeLoginSchema) => {
-        if(!recaptchaValue) {
-            toast.error('Enter captcha')
+    const onSubmit = async (values: TypeLoginSchema) => {
+        const token = await executeRecaptcha()
+        if (!token) {
+            toast.error('Captcha error')
         } else {
-            login({values, recaptcha: recaptchaValue})
+            login({ values, recaptcha: token })
         }
     }
 
     return (
-        <AuthWrapper 
+        <AuthWrapper
             heading="Login"
             description="Compile all fields for login"
             isShowSocial={isShowSocial}
@@ -46,7 +46,7 @@ export function LoginForm ({isShowSocial}:{isShowSocial: boolean}) {
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
                     {isTwoFactor && (
                         <FormField control={form.control} name="code"
-                            render={({field}) => (
+                            render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Code</FormLabel>
                                     <FormControl><Input placeholder="Verification code" {...field} disabled={isLoading} /></FormControl>
@@ -57,7 +57,7 @@ export function LoginForm ({isShowSocial}:{isShowSocial: boolean}) {
                     )}
                     {!isTwoFactor && (
                         <><FormField control={form.control} name="email"
-                            render={({field}) => (
+                            render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Email</FormLabel>
                                     <FormControl><Input placeholder="Your email" type="email" {...field} disabled={isLoading} /></FormControl>
@@ -65,20 +65,19 @@ export function LoginForm ({isShowSocial}:{isShowSocial: boolean}) {
                                 </FormItem>
                             )}
                         />
-                        <FormField control={form.control} name="password"
-                            render={({field}) => (
-                                <FormItem>
-                                    <div className='flex items-center justify-between'>
-                                        <FormLabel>Password</FormLabel>
-                                        <Link href='/auth/reset-password' className='ml-auto inline-block text-sm underline'>Reset password</Link>
-                                    </div>
-                                    <FormControl><Input placeholder="Your password" type="password" {...field} disabled={isLoading} /></FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        /></>
+                            <FormField control={form.control} name="password"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <div className='flex items-center justify-between'>
+                                            <FormLabel>Password</FormLabel>
+                                            <Link href='/auth/reset-password' className='ml-auto inline-block text-sm underline'>Reset password</Link>
+                                        </div>
+                                        <FormControl><Input placeholder="Your password" type="password" {...field} disabled={isLoading} /></FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            /></>
                     )}
-                    <ReCAPTCHA sitekey={process.env.GOOGLE_RECAPTCHA_SITE_KEY as string} onChange={setRecaptchValue} theme={theme === 'light' ? 'light' : 'dark'} />
                     <Button type="submit" disabled={isLoading}>Login</Button>
                 </form>
             </Form>

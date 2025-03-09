@@ -4,6 +4,7 @@ import { CreateContactDto } from './dto/create-contact.dto'
 import { Authorization } from '@/auth/decorators'
 import { UserRole } from '@prisma/client'
 import { ApiExcludeController } from '@nestjs/swagger'
+import { Recaptcha } from '@nestlab/google-recaptcha'
 
 @ApiExcludeController()
 @Controller('contacts')
@@ -11,6 +12,7 @@ export class ContactsController {
   constructor(private readonly contactsService: ContactsService) { }
 
   @Post()
+  @Recaptcha({ action: 'contacts', score: 0.5 })
   create(@Body() createContactDto: CreateContactDto) {
     return this.contactsService.create(createContactDto);
   }

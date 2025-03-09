@@ -8,7 +8,7 @@ type TAuthProps = {
     isShowSocial: boolean
 }
 
-export function UserAuth({role, isShowSocial}:TAuthProps) {
+export async function UserAuth({ role, isShowSocial }: TAuthProps) {
     return (
         <div className='flex justify-center items-center mt-5'>
             <Tabs defaultValue="login" className="w-[400px]">
