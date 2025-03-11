@@ -27,7 +27,7 @@ export default function Education() {
     } = useEducationLogic()
 
     return (
-        <Card className="md:w-[800px] w-full mx-5 md:mx-0">
+        <Card className="w-full">
             <CardHeader className={styles.cardHeader}>
                 <CardTitle>Candidat education</CardTitle>
             </CardHeader>
@@ -44,7 +44,7 @@ export default function Education() {
             </Form>
             {
                 education && (
-                    <div className='mt-5'>
+                    <div className='mt-5 p-6'>
                         {
                             education.map(item => (
                                 <div className={styles.editEducationForm} key={item.id}>

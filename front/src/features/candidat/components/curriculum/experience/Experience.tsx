@@ -44,7 +44,7 @@ export default function Experience() {
             </Form>
             {
                 experience && (
-                    <div className='mt-5'>
+                    <div className='mt-5 p-6'>
                         {
                             experience.map(item => (
                                 <div className={styles.editExperienceForm} key={item.id}>

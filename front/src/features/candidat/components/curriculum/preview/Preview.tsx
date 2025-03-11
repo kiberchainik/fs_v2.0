@@ -7,6 +7,7 @@ import { useAppSelector } from '@/shared/hooks';
 
 import Template1 from './templates/Template1';
 import Template2 from "./templates/Template2";
+import Template3 from "./templates/Template3";
 
 export default function PreviewsPortfolio() {
     const { data: user, isLoading, error } = useAppSelector(state => state.reducer.user)
@@ -24,7 +25,7 @@ export default function PreviewsPortfolio() {
 
     return (
         <div className="">
-            <Template1
+            <Template3
                 user={user!}
                 privacy={privacy!}
                 education={education!}

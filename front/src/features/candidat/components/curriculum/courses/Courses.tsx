@@ -22,7 +22,7 @@ export default function Courses() {
         isSaving
     } = useCourseLogic()
     return (
-        <Card className="md:w-[800px] w-full mx-5 md:mx-0">
+        <Card className="w-full">
             <CardHeader className={styles.cardHeader}>
                 <CardTitle>Candidat courses</CardTitle>
             </CardHeader>
@@ -39,7 +39,7 @@ export default function Courses() {
             </Form>
             {
                 courses && (
-                    <div className='mt-5'>
+                    <div className='mt-5 p-6'>
                         {courses.map(course => (
                             <div className={styles.editCourseForm} key={course.id}>
                                 {editCourseId === course.id ? (

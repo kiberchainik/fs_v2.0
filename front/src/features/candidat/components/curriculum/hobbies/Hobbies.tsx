@@ -24,7 +24,7 @@ export default function Hobbies() {
     } = useHobbiesLogic()
 
     return (
-        <Card className='md:w-[800px] w-full mx-5 md:mx-0'>
+        <Card className='w-full'>
             <CardHeader className={styles.cardHeader}>
                 <CardTitle>Candidat hobbies</CardTitle>
             </CardHeader>
@@ -42,7 +42,7 @@ export default function Hobbies() {
                 </Form>
 
                 {hobbies && (
-                    <div className='mt-5'>
+                    <div className='mt-5 p-6'>
                         {hobbies.map(hobbie => (
                             <div className={styles.editHobbieForm} key={hobbie.id}>
                                 {editingHobbieId === hobbie.id ? (

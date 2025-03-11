@@ -24,7 +24,7 @@ export default function Social() {
     } = useSocialLogic()
 
     return (
-        <Card className='md:w-[800px] w-full mx-5 md:mx-0'>
+        <Card className='w-full'>
             <CardHeader className={styles.cardHeader}>
                 <CardTitle>Candidat social links</CardTitle>
             </CardHeader>
@@ -42,7 +42,7 @@ export default function Social() {
                 </Form>
 
                 {socialLinks && (
-                    <div className='mt-5'>
+                    <div className='mt-5 p-6'>
                         {socialLinks.map(social => (
                             <div className={styles.editSocialForm} key={social.id}>
                                 {editingSocialId === social.id ? (

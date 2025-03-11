@@ -24,7 +24,7 @@ export default function Skills() {
     } = useSkillsLogic()
 
     return (
-        <Card className='md:w-[800px] w-full mx-5 md:mx-0'>
+        <Card className='w-full'>
             <CardHeader className={styles.cardHeader}>
                 <CardTitle>Candidat skills</CardTitle>
             </CardHeader>
@@ -42,7 +42,7 @@ export default function Skills() {
                 </Form>
 
                 {skills && (
-                    <div className='mt-5'>
+                    <div className='mt-5 p-6'>
                         {skills.map(skill => (
                             <div className={styles.editSkillForm} key={skill.id}>
                                 {editingSkillId === skill.id ? (

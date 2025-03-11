@@ -10,7 +10,7 @@ import { LifeStateLogic } from "../../../hooks/useLifeStatus";
 export default function LifeStatus() {
     const { form, handleForm } = LifeStateLogic()
     return (
-        <Card className='md:w-[800px] w-full mx-5 md:mx-0'>
+        <Card className='w-full'>
             <CardHeader>
                 <CardTitle>Candidat life position</CardTitle>
             </CardHeader>
@@ -69,7 +69,7 @@ export default function LifeStatus() {
                             control={form.control}
                             name="driverCategory"
                             render={() => (
-                                <div className='border rounded-md p-3'>
+                                <div className='border rounded-md p-3 w-full'>
                                     <div className="mb-4 w-full text-left">
                                         <FormLabel className="text-base">Driver category</FormLabel>
                                     </div>

@@ -1,11 +1,16 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
+import { AppModule } from './app.module';
+import { NestFactory } from '@nestjs/core';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class RestrictAccessMiddleware implements NestMiddleware {
-  use(req: Request, res: Response, next: NextFunction) {
+  async use(req: Request, res: Response, next: NextFunction) {
     const allowedSwaggerPaths = ['/developers'] // Swagger открыт всем
-    const allowedOrigins = ['https://lavidea.it'] // Только твой фронт
+    const app = await NestFactory.create(AppModule)
+    const config = app.get(ConfigService)
+    const allowedOrigins = [config.getOrThrow<string>('ALLOWED_ORIGIN')] // Только твой фронт
 
     const origin = req.headers.origin;
     const path = req.path;

@@ -1,5 +1,3 @@
-'use client'
-
 import Courses from "./courses/Courses";
 import Education from "./education/Education";
 import Experience from "./experience/Experience";
@@ -13,7 +11,7 @@ import Social from "./social/Social";
 export function Curriculum() {
     return (
         <div className='flex flex-col md:flex-row gap-x-5 justify-between mt-10 w-full px-10'>
-            <div className='grid gap-y-3 md:w-8/12 w-full'>
+            <div className='grid gap-y-3 md:w-4/5 w-full'>
                 <LifeStatus />
                 <Education />
                 <Experience />
@@ -23,8 +21,8 @@ export function Curriculum() {
                 <Skills />
                 <Social />
             </div>
-            <div className='w-full h-full flex'>
-                <div className='sticky top-[70px] self-start'>
+            <div className='w-full md:w-1/5 h-auto flex'>
+                <div className='sticky top-[90px] self-start'>
                     <PreviewsPortfolio />
                 </div>
             </div>
