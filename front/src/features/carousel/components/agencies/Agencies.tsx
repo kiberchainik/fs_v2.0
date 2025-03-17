@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from "next-intl";
 import { useGetAgencies } from "../../hooks/useAgencyCarousel";
 import { CarouselMain } from "../CarouselMain"
 import { AgencyCard } from "./AgencyCard";
@@ -7,8 +8,9 @@ import { AgencySkeleton } from "./AgencySkeleton";
 import { CarouselItem } from "@/shared/components";
 
 export default function Agencies() {
-    const title = "Risorse umane a portata di clic"
-    const subText = "Scopri le migliori agenzie di lavoro nella tua zona"
+    const t = useTranslations('homePage.agencySector')
+    const title = t('title')
+    const subText = t('subTitle')
     const { agencies, isFetching } = useGetAgencies()
 
     return (

@@ -11,9 +11,11 @@ import { toast } from "sonner";
 import { useLoginMutation } from "../hooks";
 import Link from "next/link";
 import { useReCaptcha } from "@/shared/providers/ReCaptchaProvider";
+import { useTranslations } from "next-intl";
 
 export function LoginForm({ isShowSocial }: { isShowSocial: boolean }) {
     const { theme } = useTheme()
+    const t = useTranslations('authPage.login')
     const { executeRecaptcha } = useReCaptcha()
     const [isTwoFactor, setTowFactor] = useState<boolean>(false)
 
@@ -48,7 +50,7 @@ export function LoginForm({ isShowSocial }: { isShowSocial: boolean }) {
                         <FormField control={form.control} name="code"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Code</FormLabel>
+                                    <FormLabel>{t('code')}</FormLabel>
                                     <FormControl><Input placeholder="Verification code" {...field} disabled={isLoading} /></FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -56,29 +58,31 @@ export function LoginForm({ isShowSocial }: { isShowSocial: boolean }) {
                         />
                     )}
                     {!isTwoFactor && (
-                        <><FormField control={form.control} name="email"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Email</FormLabel>
-                                    <FormControl><Input placeholder="Your email" type="email" {...field} disabled={isLoading} /></FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
+                        <>
+                            <FormField control={form.control} name="email"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>{t('email')}</FormLabel>
+                                        <FormControl><Input placeholder="Your email" type="email" {...field} disabled={isLoading} /></FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
                             <FormField control={form.control} name="password"
                                 render={({ field }) => (
                                     <FormItem>
                                         <div className='flex items-center justify-between'>
-                                            <FormLabel>Password</FormLabel>
-                                            <Link href='/auth/reset-password' className='ml-auto inline-block text-sm underline'>Reset password</Link>
+                                            <FormLabel>{t('password')}</FormLabel>
+                                            <Link href='/auth/reset-password' className='ml-auto inline-block text-sm underline'>{t('reset_password')}</Link>
                                         </div>
                                         <FormControl><Input placeholder="Your password" type="password" {...field} disabled={isLoading} /></FormControl>
                                         <FormMessage />
                                     </FormItem>
                                 )}
-                            /></>
+                            />
+                        </>
                     )}
-                    <Button type="submit" disabled={isLoading}>Login</Button>
+                    <Button type="submit" disabled={isLoading}>{t('login')}</Button>
                 </form>
             </Form>
         </AuthWrapper>

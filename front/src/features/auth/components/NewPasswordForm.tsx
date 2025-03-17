@@ -1,14 +1,14 @@
 'use client'
 
-import { useForm } from "react-hook-form";
+import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
-import { AuthWrapper } from ".";
-import { NewPasswordSchema, TypeNewPasswordSchema } from "../schemes";
-import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from "@/shared/components/ui";
-import { useTheme } from "next-themes";
-import { toast } from "sonner";
+import { AuthWrapper } from "."
+import { NewPasswordSchema, TypeNewPasswordSchema } from "../schemes"
+import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from "@/shared/components/ui"
+import { useTheme } from "next-themes"
+import { toast } from "sonner"
 import { useNewPasswordMutation } from "../hooks"
-import { useReCaptcha } from "@/shared/providers/ReCaptchaProvider";
+import { useReCaptcha } from "@/shared/providers/ReCaptchaProvider"
 
 export function NewPasswordForm() {
     const { theme } = useTheme()

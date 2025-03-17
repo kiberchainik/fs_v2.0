@@ -2,10 +2,12 @@
 
 import { Button } from '@/shared/components'
 import { MAIN_URL } from '@/shared/config'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export const MiddleSector = () => {
+    const t = useTranslations('homePage.middleSector')
     return (
         <div className="flex my-10 px-10 -ml-5">
             <div className="flex flex-col md:flex-row gap-2 items-center justify-between">
@@ -16,13 +18,13 @@ export const MiddleSector = () => {
                 </div>
                 <div className="md:w-1/2 m-4">
                     <div className="items-center text-left">
-                        <h4 className="text-[#1967D3] text-2xl">Lavoro Ideale</h4>
-                        <h2 className="border-b border-dashed mb-5 pb-5 text-6xl leading-[5rem] font-semibold">Il Ponte Tra Agenzia e Candidato</h2>
-                        <p className="mb-3">Semplifica la selezione di personale con lavidea.it. Pubblica le offerte di lavoro e trova in breve tempo professionisti motivati e competenti per ogni settore</p>
-                        <p>Crea il tuo CV in pochi minuti e gratuitamente e cerca tra tante offerte di lavoro aggiornate in Italia</p>
+                        <h4 className="text-[#1967D3] text-2xl">{t('h4')}</h4>
+                        <h2 className="border-b border-dashed mb-5 pb-5 text-6xl leading-[5rem] font-semibold">{t('h2')}</h2>t
+                        <p className="mb-3">{t('p_p1')}</p>
+                        <p>{t('p_p2')}</p>
                         <div className="flex items-center justify-center mt-5 gap-x-5">
-                            <Button variant='default'><Link href={MAIN_URL.authCandidat()}>Candidat</Link></Button>
-                            <Button variant='default'><Link href={MAIN_URL.authAgency()}>Agency</Link></Button>
+                            <Button variant='default'><Link href={MAIN_URL.authCandidat()}>{t('btn_candidat')}</Link></Button>
+                            <Button variant='default'><Link href={MAIN_URL.authAgency()}>{t('btn_agency')}</Link></Button>
                         </div>
                     </div>
                 </div>

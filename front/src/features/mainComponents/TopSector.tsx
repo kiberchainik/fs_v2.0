@@ -91,7 +91,7 @@ export const TopSector = () => {
                                                         >
                                                             <FormControl>
                                                                 <SelectTrigger className="!border-none !shadow-none">
-                                                                    <SelectValue placeholder='Settore' />
+                                                                    <SelectValue placeholder={t('sector')} />
                                                                 </SelectTrigger>
                                                             </FormControl>
                                                             <SelectContent>
@@ -131,7 +131,7 @@ export const TopSector = () => {
                                                         <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>{t('località')}</FormLabel>
                                                         <FormControl>
                                                             <Input
-                                                                placeholder='Località'
+                                                                placeholder={t('località')}
                                                                 type='text'
                                                                 {...field}
                                                                 className="!border-none !shadow-none"
@@ -152,7 +152,7 @@ export const TopSector = () => {
                                                 name='contractTypeId'
                                                 render={({ field }) => (
                                                     <FormItem>
-                                                        <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>{t('contractTypeId')}</FormLabel>
+                                                        <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>{t('contractType')}</FormLabel>
                                                         <Select
                                                             onValueChange={field.onChange}
                                                             defaultValue={field.value}
@@ -160,7 +160,7 @@ export const TopSector = () => {
                                                         >
                                                             <FormControl>
                                                                 <SelectTrigger className="!border-none !shadow-none">
-                                                                    <SelectValue placeholder='Tipo di contratto' />
+                                                                    <SelectValue placeholder={t('contractType')} />
                                                                 </SelectTrigger>
                                                             </FormControl>
                                                             <SelectContent>
@@ -177,7 +177,7 @@ export const TopSector = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <Button type='submit'>Cerca</Button>
+                                <Button type='submit'>{t('search_btn')}</Button>
                             </div>
                         </div>
                     </form>

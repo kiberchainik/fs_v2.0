@@ -10,8 +10,10 @@ import { useFilterVacancy } from "../hooks/useFilterVacancy"
 import { useAppDispatch } from "@/shared/hooks"
 import { useEffect } from "react"
 import { setCountTotalJobs, setError, setJobs, setLoading, setPageCount } from "@/features/vacancy/slice/sliceVacancy"
+import { useTranslations } from "next-intl";
 
 export function Filter() {
+    const t = useTranslations('jobOffers.filter')
     const { categories, isFetching } = useCategory()
     const { contractType, isFetching: isFCT } = useGetOptionsContractTypes()
     const { experienceMinimal, isFetching: isFEM } = useGetExperienceMinimal()
@@ -57,14 +59,14 @@ export function Filter() {
 
     return (
         <Card className="w-full p-5 dark:bg-neutral-900">
-            <CardTitle className="p-5">Cerca con filtro</CardTitle>
+            <CardTitle className="p-5">{t('filter_title')}</CardTitle>
             {<Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className='grid gap-2 space-y-2'>
                     <FormField
                         control={form.control}
                         name='categoryId'
                         rules={{
-                            required: 'Категория обязательна'
+                            required: t('category_error_empty')
                         }}
                         render={({ field }) => (
                             <FormItem>
@@ -75,7 +77,7 @@ export function Filter() {
                                 >
                                     <FormControl>
                                         <SelectTrigger>
-                                            <SelectValue placeholder='Категория товара' />
+                                            <SelectValue placeholder={('category_placeholder')} />
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
@@ -108,7 +110,7 @@ export function Filter() {
                             <FormItem>
                                 <FormControl>
                                     <Input
-                                        placeholder='Location'
+                                        placeholder={t('location')}
                                         type='text'
                                         {...field}
                                     />
@@ -129,14 +131,14 @@ export function Filter() {
                                 >
                                     <FormControl>
                                         <SelectTrigger>
-                                            <SelectValue placeholder='Tipo di contratto' />
+                                            <SelectValue placeholder={t('contractType')} />
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
                                         <SelectGroup>
-                                            {contractType ? contractType.map(type => (
+                                            {contractType && contractType.map(type => (
                                                 <SelectItem value={type.id} key={type.id}>{type.name}</SelectItem>
-                                            )) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+                                            ))}
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>
@@ -155,14 +157,14 @@ export function Filter() {
                                 >
                                     <FormControl>
                                         <SelectTrigger>
-                                            <SelectValue placeholder='Modalità di lavoro' />
+                                            <SelectValue placeholder={t('modeJob')} />
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
                                         <SelectGroup>
-                                            {modeJob ? modeJob.map(mode => (
+                                            {modeJob && modeJob.map(mode => (
                                                 <SelectItem value={mode.id} key={mode.id}>{mode.name}</SelectItem>
-                                            )) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+                                            ))}
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>
@@ -181,14 +183,14 @@ export function Filter() {
                                 >
                                     <FormControl>
                                         <SelectTrigger>
-                                            <SelectValue placeholder='Orario di lavoro' />
+                                            <SelectValue placeholder={t('workingTime')} />
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
                                         <SelectGroup>
-                                            {workingTime ? workingTime.map(time => (
+                                            {workingTime && workingTime.map(time => (
                                                 <SelectItem value={time.id} key={time.id}>{time.name}</SelectItem>
-                                            )) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+                                            ))}
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>
@@ -207,14 +209,14 @@ export function Filter() {
                                 >
                                     <FormControl>
                                         <SelectTrigger>
-                                            <SelectValue placeholder='Livello di istruzione' />
+                                            <SelectValue placeholder={t('levelEducation')} />
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
                                         <SelectGroup>
-                                            {levelEducation ? levelEducation.map(level => (
+                                            {levelEducation && levelEducation.map(level => (
                                                 <SelectItem value={level.id} key={level.id}>{level.name}</SelectItem>
-                                            )) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+                                            ))}
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>
@@ -233,14 +235,14 @@ export function Filter() {
                                 >
                                     <FormControl>
                                         <SelectTrigger>
-                                            <SelectValue placeholder='Esperienza minima richiesta' />
+                                            <SelectValue placeholder={t('experienceMinimal')} />
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
                                         <SelectGroup>
-                                            {experienceMinimal ? experienceMinimal.map(experience => (
+                                            {experienceMinimal && experienceMinimal.map(experience => (
                                                 <SelectItem value={experience.id} key={experience.id}>{experience.name}</SelectItem>
-                                            )) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+                                            ))}
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>
@@ -248,7 +250,7 @@ export function Filter() {
                         )}
                     />
                     <Button type='submit' disabled={isPending}>
-                        Выбрать вакансии
+                        {t('search_btn')}
                     </Button>
                 </form>
             </Form>}

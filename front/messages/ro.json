@@ -40,8 +40,9 @@
             "autista": "#șofer",
             "sector": "Sector",
             "località": "Localitate",
-            "contractTypeId": "Tip contract",
-            "without_branch": "Fără sucursală"
+            "contractType": "Tip contract",
+            "without_branch": "Fără sucursală",
+            "search_btn": "Caută"
         }
     }
 }

@@ -40,8 +40,9 @@
             "autista": "#driver",
             "sector": "Sector",
             "località": "Location",
-            "contractTypeId": "ContractTypeId",
-            "without_branch": "Without branch"
+            "contractType": "ContractTypeId",
+            "without_branch": "Without branch",
+            "search_btn": "Search job"
         }
     }
 }

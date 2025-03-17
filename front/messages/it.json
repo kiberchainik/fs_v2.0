@@ -40,8 +40,102 @@
             "autista": "#autista",
             "sector": "Settore",
             "località": "Località",
-            "contractTypeId": "Tipo contratto",
-            "without_branch": "Senza filiale"
+            "contractType": "Tipo contratto",
+            "without_branch": "Senza filiale",
+            "search_btn": "Cerca"
+        },
+        "candidatsSector": {
+            "h2_p1": "I nuovi talenti",
+            "h2_p2": "su LavIdea",
+            "short_desc": "La nostra piattaforma mette a disposizione profili aggiornati, strumenti di selezione e tutto il necessario per individuare i migliori talenti"
+        },
+        "middleSector": {
+            "h4": "Lavoro Ideale",
+            "h2": "Il Ponte Tra Agenzia e Candidato",
+            "p_p1": "Semplifica la selezione di personale con lavidea.it. Pubblica le offerte di lavoro e trova in breve tempo professionisti motivati e competenti per ogni settore",
+            "p_p2": "Crea il tuo CV in pochi minuti e gratuitamente e cerca tra tante offerte di lavoro aggiornate in Italia",
+            "btn_candidat": "Candidato",
+            "btn_agency": "Agenzia"
+        },
+        "agencySector": {
+            "title": "Risorse umane a portata di clic",
+            "subTitle": "Scopri le migliori agenzie di lavoro nella tua zona"
+        },
+        "vacanciesSector": {
+            "title": "Trova lavoro ideale velocemente",
+            "subTitle": "Scopri le migliori opportunità di lavoro disponibili. Trova rapidamente il lavoro ideale che corrisponde alle tue competenze e aspirazioni.",
+            "h2_p1": "Trova",
+            "h2_p2": "Lavoro Ideale",
+            "h2_p3": "in pochi minuti",
+            "short_desc_p1": "Trova rapidamente il lavoro ideale e inizia una nuova avventura professionale.",
+            "short_desc_p2": "Le migliori agenzie ti stanno aspettando con offerte di lavoro che corrispondono alle tue competenze e aspirazioni"
+        }
+    },
+    "jobOffers": {
+        "filter": {
+            "filter_title": "Cerca con filtro",
+            "category_error_empty": "Per cerca scegli categoria",
+            "category_placeholder": "Categoria",
+            "location": "Località",
+            "contractType": "Tipo di contratto",
+            "modeJob": "Modalità di lavoro",
+            "workingTime": "Orario di lavoro",
+            "levelEducation": "Livello di istruzione",
+            "experienceMinimal": "Esperienza minima richiesta",
+            "search_btn": "Cerca offerte di lavoro"
+        }
+    },
+    "candidatsPage": {
+        "h4": "Su LavIdea.it",
+        "h2": "Сandidati Ideali",
+        "description_p1": "Scopri i migliori candidati disponibili e trova il talento giusto per la tua azienda. Esplora i profili dei candidati, confronta le loro competenze e scegli i professionisti più adatti alle tue esigenze.",
+        "description_p2": "Con LavIdea.it, la ricerca del personale diventa semplice ed efficace. Non perdere l'opportunità di migliorare il tuo team con i migliori talenti sul mercato."
+    },
+    "chisiamoPage": {
+        "title_h3": "Lavoro ideale - è la tua risorsa online per tutto ciò che riguarda il lavoro",
+        "desc_title_p1": "Creazione gratuita di un CV",
+        "desc_p1": "Il tuo curriculum vitae è il tuo biglietto da visita per i potenziali datori di lavoro. Il nostro strumento gratuito per la creazione di un curriculum vitae ti aiuterà a creare un curriculum vitae professionale e accattivante in pochi minuti.",
+        "desc_title_p2": "Ricerca di lavoro con filtro",
+        "desc_p2": "La nostra ricerca di lavoro con filtro ti consente di trovare i lavori perfetti in base alle tue competenze, alla tua esperienza e ai tuoi interessi.",
+        "desc_title_p3": "Ricerca di lavoro e collocamento",
+        "desc_p3": "Ti aiutiamo a trovare il lavoro giusto per te. Il nostro team di esperti ti guiderà attraverso il processo di ricerca di lavoro e ti aiuterà a ottenere un colloquio.",
+        "desc_title_p4": "Ampia selezione di agenzie di lavoro",
+        "desc_p4": "Collaboriamo con le migliori agenzie di lavoro del paese. Questo significa che hai accesso a una vasta gamma di opportunità di lavoro.",
+        "desc_title_p5": "Pubblicazione gratuita delle tue offerte di lavoro per le agenzie",
+        "desc_p5": "Se sei un datore di lavoro, puoi pubblicare gratuitamente le tue offerte di lavoro sul nostro sito. In questo modo, puoi raggiungere un vasto pubblico di candidati.",
+        "desc_title_p6": "Ricerca e selezione di candidati per qualsiasi tipo di lavoro",
+        "desc_p6": "Ti aiutiamo a trovare i candidati perfetti per le tue esigenze. Il nostro sito ti aiuterà a selezionare i candidati più qualificati e adatti alla tua azienda.",
+        "chisiamoPage_title_h2_p1": "Vantaggi dell'utilizzo",
+        "chisiamoPage_title_h2_p2": "del nostro sito",
+        "chisiamoPage_p": "Siamo la tua soluzione unica per tutte le tue esigenze di lavoro. Che tu sia un candidato alla ricerca di un lavoro o un datore di lavoro alla ricerca di candidati, abbiamo ciò che ti serve. Registrati subito e inizia a trovare il lavoro ideale o candidati perfetti!",
+        "block1_h4": "È gratuito",
+        "block1_p": "Il nostro sito è gratuito da utilizzare",
+        "block2_h4": "È facile",
+        "block2_p": "Il nostro sito è facile da navigare e utilizzare",
+        "block3_h4": "È efficace",
+        "block3_p": "Il nostro sito ti aiuta a trovare il lavoro perfetto.",
+        "block4_h4": "È sicuro",
+        "block4_p": "Il nostro sito è sicuro e protetto."
+    },
+    "contactsPage": {
+        "h2_p1": "Do You Have Any",
+        "h2_p2": "Questions?",
+        "description": "As opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum",
+        "name": "Nome",
+        "email": "Email",
+        "message": "Messaggio",
+        "send": "Send"
+    },
+    "authPage": {
+        "login": {
+            "code": "Codice",
+            "email": "Email",
+            "password": "Password",
+            "login_btn": "Login",
+            "reset_password": "Recupera password"
+        },
+        "register": {
+            "": ""
         }
     }
 }

@@ -6,16 +6,18 @@ import { Textarea } from '@/shared/components/ui'
 import Spinner from '@/shared/components/Spinner/Spinner'
 import { useTheme } from 'next-themes'
 import { MiddleSector } from '@/features/mainComponents'
+import { useTranslations } from 'next-intl'
 
 export default function Contacts() {
     const { theme } = useTheme()
     const { form, onSubmit, isPending } = useContacts()
+    const t = useTranslations('contactsPage')
 
     return (<>
         <section className="w-full flex flex-col gap-10">
             <div className="border-b border-dashed mb-5 pb-5 text-center w-3/4 mx-auto">
-                <h2 className="text-5xl leading-[5rem] font-semibold">Do You Have Any <span className="text-[#1967D3] text-5xl">Questions?</span></h2>
-                <p className="mb-3">As opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum</p>
+                <h2 className="text-5xl leading-[5rem] font-semibold">{t('h2_p1')} <span className="text-[#1967D3] text-5xl">{t('h2_p2')}</span></h2>
+                <p className="mb-3">{t('description')}</p>
             </div>
             <div className="w-3/4 mx-auto">
                 <Form {...form}>
@@ -32,7 +34,7 @@ export default function Contacts() {
                                 }}
                                 render={({ field }) => (
                                     <FormItem className='mb-3 w-full bg-'>
-                                        <FormLabel className="block font-bold mb-[2px] text-primary">Nome</FormLabel>
+                                        <FormLabel className="block font-bold mb-[2px] text-primary">{t('name')}</FormLabel>
                                         <FormControl>
                                             <Input placeholder='Nome' {...field} className='bg-white py-5' />
                                         </FormControl>
@@ -48,7 +50,7 @@ export default function Contacts() {
                                 }}
                                 render={({ field }) => (
                                     <FormItem className='mb-3 w-full'>
-                                        <FormLabel className="block font-bold mb-[2px] text-primary">Email</FormLabel>
+                                        <FormLabel className="block font-bold mb-[2px] text-primary">{t('email')}</FormLabel>
                                         <FormControl>
                                             <Input placeholder='Email' {...field} className='bg-white py-5' />
                                         </FormControl>
@@ -65,7 +67,7 @@ export default function Contacts() {
                             }}
                             render={({ field }) => (
                                 <FormItem className='mb-3 w-full'>
-                                    <FormLabel className="block font-bold mb-[2px] text-primary">Messaggio</FormLabel>
+                                    <FormLabel className="block font-bold mb-[2px] text-primary">{t('message')}</FormLabel>
                                     <FormControl>
                                         <Textarea placeholder='Messaggio' rows={10} {...field} className='bg-white' />
                                     </FormControl>
@@ -75,7 +77,7 @@ export default function Contacts() {
                         />
                         <div className="comment-btn text-center">
                             <Button type="submit" disabled={isPending}>
-                                {isPending ? <Spinner /> : <span>Send</span>}
+                                {isPending ? <Spinner /> : <span>{t('send')}</span>}
                             </Button>
                         </div>
                     </form>

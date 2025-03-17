@@ -40,8 +40,9 @@
             "autista": "#водитель",
             "sector": "Категория",
             "località": "Местоположение",
-            "contractTypeId": "Тип контракта",
-            "without_branch": "Без филиала"
+            "contractType": "Тип контракта",
+            "without_branch": "Без филиала",
+            "search_btn": "Подобрать вакансии"
         }
     }
 }
