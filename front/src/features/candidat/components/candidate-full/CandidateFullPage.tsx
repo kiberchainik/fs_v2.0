@@ -12,6 +12,7 @@ import { formatDate } from "@/shared/utils"
 import { GiOrganigram } from "react-icons/gi"
 import { LiaBirthdayCakeSolid } from "react-icons/lia"
 import { MdOutlineLocalPhone, MdOutlineLocationOn, MdOutlineMarkEmailRead } from "react-icons/md"
+import { useTranslations } from "next-intl"
 
 export const CandidateFull: FC<ICandidatFullData> = ({
     avatar,
@@ -32,6 +33,7 @@ export const CandidateFull: FC<ICandidatFullData> = ({
     jobContacts,
     resident
 }) => {
+    const t = useTranslations('contactsPage.candidatFullData')
     const authUser = useAppSelector(state => state.reducer.user.data)
     return (
         <div className="flex flex-col md:flex-row">
@@ -54,7 +56,7 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                         <ul className="mt-3 flex flex-row gap-3 items-center">
                             {candidatLifeState.availabilityTransport && <li>
                                 <span className="bg-[#e7eae2] dark:bg-opacity-20 rounded-full p-2 px-3 mb-1">
-                                    Automunito
+                                    {t('availabilityTransport')}
                                 </span>
                             </li>}
                             {candidatLifeState.driverCategory && <li className="flex flex-row gap-1">
@@ -71,17 +73,17 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                         </ul>
                     </div>
                     <div className="">
-                        <Button variant='outline'>Download CV</Button>
+                        <Button variant='outline'>{t('downloadCV')}</Button>
                     </div>
                 </div>
 
                 <div className="border-neutral-200 dark:border-neutral-800 border-t-2 border-dashed mt-5 pt-5">
                     <div className="">
-                        <Heading className="border-b border-neutral-900/20 dark:border-neutral-800 border-dashed pb-2 inline-block p-3 mb-1">Su di me...</Heading>
+                        <Heading className="border-b border-neutral-900/20 dark:border-neutral-800 border-dashed pb-2 inline-block p-3 mb-1">{t('aboutMy')}</Heading>
                         <Description>{about_my}</Description>
                     </div>
                     {skills.length > 0 && <div className="mt-10">
-                        <Heading className="border-b border-neutral-900/20 dark:border-neutral-800 border-dashed pb-2 inline-block p-3">Professional skills...</Heading>
+                        <Heading className="border-b border-neutral-900/20 dark:border-neutral-800 border-dashed pb-2 inline-block p-3">{t('skills')}</Heading>
                         <div className="grid grid-cols-3 gap-5">
                             {skills.map((skill, idx) => (
                                 <div key={skill.skill + idx} className="flex flex-col gap-y-2 justify-start">
@@ -94,7 +96,7 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                     </div>}
 
                     {hobbies.length > 0 && <div className="mt-10">
-                        <Heading className="border-b border-neutral-900/20 dark:border-neutral-800 border-dashed pb-2 inline-block p-3">Hobbies...</Heading>
+                        <Heading className="border-b border-neutral-900/20 dark:border-neutral-800 border-dashed pb-2 inline-block p-3">{t('hobbies')}</Heading>
                         <div className="grid grid-cols-3 gap-5">
                             {hobbies.map((hobbie, idx) => (
                                 <div key={hobbie.hobbie + idx} className="text-base">
@@ -103,8 +105,18 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                         </div>
                     </div>}
 
+                    {languages.length > 0 && <div className="mt-10">
+                        <Heading className="border-b border-neutral-900/20 dark:border-neutral-800 border-dashed pb-2 inline-block p-3">{t('languages')}</Heading>
+                        <div className="grid grid-cols-3 gap-5">
+                            {languages.map((lang, idx) => (
+                                <div key={lang.language + idx} className="text-base">
+                                    {lang.language} - {lang.level}
+                                </div>))}
+                        </div>
+                    </div>}
+
                     {experience.length > 0 && <div className="mt-10">
-                        <Heading className="border-b border-neutral-900/20 dark:border-neutral-800 border-dashed pb-2 inline-block p-3">Mia esperienza...</Heading>
+                        <Heading className="border-b border-neutral-900/20 dark:border-neutral-800 border-dashed pb-2 inline-block p-3">{t('experience')}</Heading>
                         <div className="flex flex-col gap-y-2 mt-3">
                             {experience.map((exp, idx) => (
                                 <div key={exp.company + idx} className="">
@@ -117,7 +129,7 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                     {(education.length > 0 || courses.length > 0) && <div className="w-full border border-solid border-neutral-900/20 dark:border-neutral-800 p-5 rounded-3xl mt-10">
                         <div className="grid grid-cols-2 lg:grid-rows-2 gap-5 h-full">
                             <div className="flex flex-col gap-y-2">
-                                <Heading className="pb-2 inline-block p-3">Educazione...</Heading>
+                                <Heading className="pb-2 inline-block p-3">{t('eduacation')}</Heading>
                                 <ul className="list-disc flex flex-col gap-y-2 pl-7 text-[#335371] text-lg">
                                     {education && education.map((edu, idx) => (
                                         <li key={edu.school + idx}>{edu.grade} ({formatDate(edu.startdate, { 'dateFormat': 'year' })} - {formatDate(edu.enddate, { 'dateFormat': 'year' })})</li>
@@ -125,7 +137,7 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                                 </ul>
                             </div>
                             <div className="flex flex-col gap-y-2">
-                                <Heading className="pb-2 inline-block p-3">Corsi...</Heading>
+                                <Heading className="pb-2 inline-block p-3">{t('courses')}</Heading>
                                 <ul className="list-disc flex flex-col gap-y-2 pl-7 text-[#335371] text-lg">
                                     {courses && courses.map((cours, idx) => (
                                         <li key={cours.institution + idx}>{cours.course} ({formatDate(cours.startdate, { 'dateFormat': 'year' })} - {formatDate(cours.enddate, { 'dateFormat': 'year' })})</li>
@@ -136,7 +148,7 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                     </div>}
 
                     <div className="mt-5 pt-5">
-                        <Heading className="pb-2 inline-block p-3">La storia di esperienza</Heading>
+                        <Heading className="pb-2 inline-block p-3">{t('experienceStory')}</Heading>
                         <div className="flex flex-col gap-y-5">
                             {experience.length > 0 && experience.map((exp, idx) => (
                                 <div key={exp.company + idx} className="w-full border border-solid border-neutral-900/20 bg-white dark:bg-neutral-900 dark:border-neutral-800 p-5 rounded-3xl">
@@ -154,7 +166,7 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                                                 <span className="text-sm">{formatDate(exp.startDate, { 'locale': 'it', 'dateFormat': 'mm/yyyy' })} | {formatDate(exp.endDate, { 'locale': 'it', 'dateFormat': 'mm/yyyy' })}</span>
                                             </div>
                                             <div className="mb-2">
-                                                <span className="rounded-full dark:bg-opacity-10 bg-[#dcf6fc] text-[#249ab2] py-2 px-3">Contract type</span>
+                                                <span className="rounded-full dark:bg-opacity-10 bg-[#dcf6fc] text-[#249ab2] py-2 px-3">{t('contractType')}</span>
                                             </div>
                                             <div className="mb-2">
                                                 <span className="text-base">{exp.description}</span>
@@ -171,7 +183,7 @@ export const CandidateFull: FC<ICandidatFullData> = ({
             <div className="w-full h-full lg:w-2/6 p-5 bg-[#e7eae2] dark:bg-[#484841] rounded">
                 <div className="sidebar-list bg-grey p-4 rounded">
                     <div className="grid gap-y-4 bg-white p-4 rounded-3xl">
-                        <h4 className="small-heading">Contact Info</h4>
+                        <h4 className="small-heading">{t('contacts')}</h4>
                         <Image src="/map.jpg" alt="contact" height={152} width={305} className="rounded-3xl mb-2 w-full h-[152px]" />
                         <div className="info-address">
                             <ul>

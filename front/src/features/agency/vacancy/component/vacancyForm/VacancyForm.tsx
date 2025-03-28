@@ -26,6 +26,7 @@ import { DateTimePicker } from '@/shared/components/datapicker/Datapicker'
 
 import styles from './vacancy.module.scss'
 import Spinner from '@/shared/components/Spinner/Spinner'
+import { useTranslations } from 'next-intl'
 
 interface FormProps {
     values: TypeVacancySchema
@@ -36,13 +37,13 @@ interface FormProps {
 }
 
 export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultValues }: FormProps) {
+    const t = useTranslations('agencyVacancy.vacancyForm')
     const { categories, isFetching } = useCategory()
     const { contractType, isFetching: isFCT } = useGetOptionsContractTypes()
     const { experienceMinimal, isFetching: isFEM } = useGetExperienceMinimal()
     const { levelEducation, isFetching: isFLE } = useGetLevelEducation()
     const { modeJob, isFetching: isFMJ } = useGetModeJob()
     const { workingTime, isFetching: isFWT } = useGetWorkingTime()
-
     const { branches, isFetching: isFetchingBranch } = useGetBranch()
 
     const form = useForm<TypeVacancySchema>({
@@ -50,10 +51,6 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
         resolver: zodResolver(VacancySchema),
         values
     })
-
-    // if (isSuccess) {
-    //     form.reset(defaultValues)
-    // }
 
     return (
         <Form {...form}>
@@ -65,14 +62,14 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
                     control={form.control}
                     name='title'
                     rules={{
-                        required: 'Title is required'
+                        required: t('titleEmpty')
                     }}
                     render={({ field }) => (
                         <FormItem className='mt-4'>
-                            <FormLabel>Job title</FormLabel>
+                            <FormLabel>{t('title')}</FormLabel>
                             <FormControl>
                                 <Input
-                                    placeholder='Job title'
+                                    placeholder={t('title')}
                                     disabled={isPending}
                                     type='text'
                                     {...field}
@@ -86,12 +83,15 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
                     <FormField
                         control={form.control}
                         name='location'
+                        rules={{
+                            required: t('localEmpty')
+                        }}
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Location</FormLabel>
+                                <FormLabel>{t('local')}</FormLabel>
                                 <FormControl>
                                     <Input
-                                        placeholder='Location'
+                                        placeholder={t('local')}
                                         disabled={isPending}
                                         type='text'
                                         {...field}
@@ -104,12 +104,15 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
                     <FormField
                         control={form.control}
                         name='province'
+                        rules={{
+                            required: t('provinceEmpty')
+                        }}
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Province</FormLabel>
+                                <FormLabel>{t('province')}</FormLabel>
                                 <FormControl>
                                     <Input
-                                        placeholder='Province'
+                                        placeholder={t('province')}
                                         disabled={isPending}
                                         type='text'
                                         {...field}
@@ -122,12 +125,15 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
                     <FormField
                         control={form.control}
                         name='region'
+                        rules={{
+                            required: t('regionEmpty')
+                        }}
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Region</FormLabel>
+                                <FormLabel>{t('region')}</FormLabel>
                                 <FormControl>
                                     <Input
-                                        placeholder='Region'
+                                        placeholder={t('region')}
                                         disabled={isPending}
                                         type='text'
                                         {...field}
@@ -142,18 +148,18 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
                     control={form.control}
                     name='categoryId'
                     rules={{
-                        required: 'Категория обязательна'
+                        required: t('categoryEmpty')
                     }}
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Категория</FormLabel>
+                            <FormLabel>{t('category')}</FormLabel>
                             <Select
                                 onValueChange={field.onChange}
                                 defaultValue={field.value}
                             >
                                 <FormControl>
                                     <SelectTrigger>
-                                        <SelectValue placeholder='Категория' />
+                                        <SelectValue placeholder={t('category')} />
                                     </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
@@ -184,14 +190,14 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
                     name='branchId'
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Branch</FormLabel>
+                            <FormLabel>{t('branch')}</FormLabel>
                             <Select
                                 onValueChange={field.onChange}
                                 defaultValue={field.value}
                             >
                                 <FormControl>
                                     <SelectTrigger>
-                                        <SelectValue placeholder='Brach is required' />
+                                        <SelectValue placeholder={t('branch')} />
                                     </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
@@ -208,9 +214,12 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
                 <Controller
                     control={form.control}
                     name="description"
+                    rules={{
+                        required: t('descriptionEmpty')
+                    }}
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Description</FormLabel>
+                            <FormLabel>{t('description')}</FormLabel>
                             <FormControl>
                                 <TextEditor description={field.value} onChange={field.onChange} />
                             </FormControl>
@@ -224,20 +233,20 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
                     render={({ field }) => (
                         <FormItem>
                             <div className='flex justify-between items-center'>
-                                <FormLabel>Tags</FormLabel>
+                                <FormLabel>{t('tags')}</FormLabel>
                                 {/* <FormLabel>
                                         <Button variant='link' onClick={() => GenerateDescriptionBtn(field.value)}>Generate description with tags</Button>
                                     </FormLabel> */}
                             </div>
                             <FormControl>
                                 <Input
-                                    placeholder='Tags'
+                                    placeholder={t('tags')}
                                     disabled={isPending}
                                     type='text'
                                     {...field}
                                 />
                             </FormControl>
-                            <FormDescription>All tags must be separated by comma</FormDescription>
+                            <FormDescription>{t('tagsDescription')}</FormDescription>
                             <FormMessage />
                         </FormItem>
                     )}
@@ -247,7 +256,7 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
                     name="reallyUpTo"
                     render={({ field }) => (
                         <FormItem className="flex flex-col">
-                            <FormLabel>Reall up to</FormLabel>
+                            <FormLabel>{t('reallyUpTo')}</FormLabel>
                             <DateTimePicker
                                 use12HourFormat={false}
                                 value={field.value}
@@ -262,7 +271,7 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
                 />
                 <div className={styles.options_job}>
                     <div className={styles.options_job_label}>
-                        <FormLabel>Opzionale</FormLabel>
+                        <FormLabel>{t('optional')}</FormLabel>
                     </div>
                     <div className={styles.options_job_fields}>
                         <Controller
@@ -270,21 +279,21 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
                             name='contractTypeId'
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Tipo di contratto</FormLabel>
+                                    <FormLabel>{t('contract')}</FormLabel>
                                     <Select
                                         onValueChange={field.onChange}
                                         defaultValue={field.value}
                                     >
                                         <FormControl>
                                             <SelectTrigger>
-                                                <SelectValue placeholder='Tipo di contratto' />
+                                                <SelectValue placeholder={t('contract')} />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
                                             <SelectGroup>
-                                                {contractType ? contractType.map(type => (
+                                                {contractType && contractType.map(type => (
                                                     <SelectItem value={type.id} key={type.id}>{type.name}</SelectItem>
-                                                )) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+                                                ))}
                                             </SelectGroup>
                                         </SelectContent>
                                     </Select>
@@ -296,21 +305,21 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
                             name='modeJobId'
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Modalità di lavoro</FormLabel>
+                                    <FormLabel>{t('modejob')}</FormLabel>
                                     <Select
                                         defaultValue={field.value}
                                         onValueChange={field.onChange}
                                     >
                                         <FormControl>
                                             <SelectTrigger>
-                                                <SelectValue placeholder='Modalità di lavoro' />
+                                                <SelectValue placeholder={t('modejob')} />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
                                             <SelectGroup>
-                                                {modeJob ? modeJob.map(mode => (
+                                                {modeJob && modeJob.map(mode => (
                                                     <SelectItem value={mode.id} key={mode.id}>{mode.name}</SelectItem>
-                                                )) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+                                                ))}
                                             </SelectGroup>
                                         </SelectContent>
                                     </Select>
@@ -322,21 +331,21 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
                             name='workingTimeId'
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Orario di lavoro</FormLabel>
+                                    <FormLabel>{t('workSchedule')}</FormLabel>
                                     <Select
                                         defaultValue={field.value}
                                         onValueChange={field.onChange}
                                     >
                                         <FormControl>
                                             <SelectTrigger>
-                                                <SelectValue placeholder='Orario di lavoro' />
+                                                <SelectValue placeholder={t('workSchedule')} />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
                                             <SelectGroup>
-                                                {workingTime ? workingTime.map(time => (
+                                                {workingTime && workingTime.map(time => (
                                                     <SelectItem value={time.id} key={time.id}>{time.name}</SelectItem>
-                                                )) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+                                                ))}
                                             </SelectGroup>
                                         </SelectContent>
                                     </Select>
@@ -348,21 +357,21 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
                             name='levelEducationId'
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Livello di istruzione</FormLabel>
+                                    <FormLabel>{t('eduacation')}</FormLabel>
                                     <Select
                                         defaultValue={field.value}
                                         onValueChange={field.onChange}
                                     >
                                         <FormControl>
                                             <SelectTrigger>
-                                                <SelectValue placeholder='Livello di istruzione' />
+                                                <SelectValue placeholder={t('eduacation')} />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
                                             <SelectGroup>
-                                                {levelEducation ? levelEducation.map(level => (
+                                                {levelEducation && levelEducation.map(level => (
                                                     <SelectItem value={level.id} key={level.id}>{level.name}</SelectItem>
-                                                )) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+                                                ))}
                                             </SelectGroup>
                                         </SelectContent>
                                     </Select>
@@ -374,21 +383,21 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
                             name='experienceMinimalId'
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Esperienza minima richiesta</FormLabel>
+                                    <FormLabel>{t('experience')}</FormLabel>
                                     <Select
                                         defaultValue={field.value}
                                         onValueChange={field.onChange}
                                     >
                                         <FormControl>
                                             <SelectTrigger>
-                                                <SelectValue placeholder='Esperienza minima richiesta' />
+                                                <SelectValue placeholder={t('experience')} />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
                                             <SelectGroup>
-                                                {experienceMinimal ? experienceMinimal.map(experience => (
+                                                {experienceMinimal && experienceMinimal.map(experience => (
                                                     <SelectItem value={experience.id} key={experience.id}>{experience.name}</SelectItem>
-                                                )) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+                                                ))}
                                             </SelectGroup>
                                         </SelectContent>
                                     </Select>
@@ -398,7 +407,7 @@ export function VacancyForm({ values, isPending, onSubmit, isSuccess, defaultVal
                     </div>
                 </div>
                 <Button type='submit' disabled={isPending}>
-                    {isPending ? <Spinner /> : <span>Save</span>}
+                    {isPending ? <Spinner /> : <span>{t('fromBtn')}</span>}
                 </Button>
             </form>
         </Form>

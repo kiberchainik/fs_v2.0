@@ -12,6 +12,7 @@ import {
 } from '@/shared/components'
 
 import { MAIN_URL, AGENCY_URL } from '@/shared/config'
+import { useTranslations } from 'next-intl'
 
 export interface IBranchColumn {
 	name: string,
@@ -20,7 +21,7 @@ export interface IBranchColumn {
 	email: string
 	phone: string
 }
-
+const t = useTranslations('branch.branchColumns')
 export const branchColumns: ColumnDef<IBranchColumn>[] = [
 	{
 		id: "select",
@@ -31,14 +32,14 @@ export const branchColumns: ColumnDef<IBranchColumn>[] = [
 					(table.getIsSomePageRowsSelected() && "indeterminate")
 				}
 				onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-				aria-label="Select all"
+				aria-label={t('selectAll')}
 			/>
 		),
 		cell: ({ row }) => (
 			<Checkbox
 				checked={row.getIsSelected()}
 				onCheckedChange={(value) => row.toggleSelected(!!value)}
-				aria-label="Select row"
+				aria-label={t('selectRow')}
 				value={row.original.id}
 			/>
 		),
@@ -53,7 +54,7 @@ export const branchColumns: ColumnDef<IBranchColumn>[] = [
 						column.toggleSorting(column.getIsSorted() === 'asc')
 					}
 				>
-					Название
+					{t('name')}
 					<ArrowUpDown className='ml-2 size-4' />
 				</Button>
 			)
@@ -69,7 +70,7 @@ export const branchColumns: ColumnDef<IBranchColumn>[] = [
 						column.toggleSorting(column.getIsSorted() === 'asc')
 					}
 				>
-					Location
+					{t('location')}
 					<ArrowUpDown className='ml-2 size-4' />
 				</Button>
 			)
@@ -85,7 +86,7 @@ export const branchColumns: ColumnDef<IBranchColumn>[] = [
 						column.toggleSorting(column.getIsSorted() === 'asc')
 					}
 				>
-					Email
+					{t('email')}
 					<ArrowUpDown className='ml-2 size-4' />
 				</Button>
 			)
@@ -101,7 +102,7 @@ export const branchColumns: ColumnDef<IBranchColumn>[] = [
 						column.toggleSorting(column.getIsSorted() === 'asc')
 					}
 				>
-					Phone
+					{t('phone')}
 					<ArrowUpDown className='ml-2 size-4' />
 				</Button>
 			)
@@ -109,7 +110,7 @@ export const branchColumns: ColumnDef<IBranchColumn>[] = [
 	},
 	{
 		accessorKey: 'actions',
-		header: 'Действия',
+		header: t('azioni'),
 		cell: ({ row }) => (
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
@@ -118,14 +119,14 @@ export const branchColumns: ColumnDef<IBranchColumn>[] = [
 					</Button>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent align='end'>
-					<DropdownMenuLabel>Действия</DropdownMenuLabel>
+					<DropdownMenuLabel>{t('azioni')}</DropdownMenuLabel>
 					<Link
 						href={MAIN_URL.branchPageInfo(row.original.id)}
 						target='_blank'
 					>
 						<DropdownMenuItem>
 							<ExternalLink className='size-4 mr-2' />
-							Страница с продуктом
+							{t('link')}
 						</DropdownMenuItem>
 					</Link>
 					<Link
@@ -133,7 +134,7 @@ export const branchColumns: ColumnDef<IBranchColumn>[] = [
 					>
 						<DropdownMenuItem>
 							<Pencil className='size-4 mr-2' />
-							Изменить
+							{t('edit')}
 						</DropdownMenuItem>
 					</Link>
 				</DropdownMenuContent>

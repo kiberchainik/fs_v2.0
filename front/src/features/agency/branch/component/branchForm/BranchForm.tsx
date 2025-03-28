@@ -13,6 +13,7 @@ import { ImageUpload } from '../image-upload/ImageUpload'
 import TextEditor from '@/shared/components/ui/TextEditor'
 import { BranchSchema, TypeBranchSchema } from '../../schemes'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useTranslations } from 'next-intl'
 
 interface BranchFormProps {
     values: TypeBranchSchema
@@ -21,6 +22,7 @@ interface BranchFormProps {
 }
 
 export function BranchForm({ values, onSubmit, isPending }: BranchFormProps) {
+    const t = useTranslations('branch.branchForm')
     const form = useForm<TypeBranchSchema>({
         mode: 'onChange',
         resolver: zodResolver(BranchSchema),
@@ -37,11 +39,11 @@ export function BranchForm({ values, onSubmit, isPending }: BranchFormProps) {
                     control={form.control}
                     name='logo'
                     rules={{
-                        required: 'Загрузите хотя бы одну картинку'
+                        required: t('labelLogoEmpty')
                     }}
                     render={({ field }) => (
                         <FormItem className='mt-4'>
-                            <FormLabel>Filial logo</FormLabel>
+                            <FormLabel>{t('labelLogo')}</FormLabel>
                             <FormControl>
                                 <ImageUpload
                                     isDisabled={isPending}
@@ -61,10 +63,10 @@ export function BranchForm({ values, onSubmit, isPending }: BranchFormProps) {
                     }}
                     render={({ field }) => (
                         <FormItem className='mt-4'>
-                            <FormLabel>Filial name</FormLabel>
+                            <FormLabel>{t('labelName')}</FormLabel>
                             <FormControl>
                                 <Input
-                                    placeholder='Filial name'
+                                    placeholder={t('labelName')}
                                     disabled={isPending}
                                     type='text'
                                     defaultValue={field.value}
@@ -81,10 +83,10 @@ export function BranchForm({ values, onSubmit, isPending }: BranchFormProps) {
                         name='address'
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Full address</FormLabel>
+                                <FormLabel>{t('labelAdress')}</FormLabel>
                                 <FormControl>
                                     <Input
-                                        placeholder='Full address'
+                                        placeholder={t('labelAdress')}
                                         disabled={isPending}
                                         type='text'
                                         defaultValue={field.value}
@@ -100,10 +102,10 @@ export function BranchForm({ values, onSubmit, isPending }: BranchFormProps) {
                         name='location'
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Location</FormLabel>
+                                <FormLabel>{t('labelLocation')}</FormLabel>
                                 <FormControl>
                                     <Input
-                                        placeholder='Location'
+                                        placeholder={t('labelLocation')}
                                         disabled={isPending}
                                         type='text'
                                         defaultValue={field.value}
@@ -119,10 +121,10 @@ export function BranchForm({ values, onSubmit, isPending }: BranchFormProps) {
                         name='region'
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Region</FormLabel>
+                                <FormLabel>{t('labelRegion')}</FormLabel>
                                 <FormControl>
                                     <Input
-                                        placeholder='Region'
+                                        placeholder={t('labelRegion')}
                                         disabled={isPending}
                                         type='text'
                                         defaultValue={field.value}
@@ -140,10 +142,10 @@ export function BranchForm({ values, onSubmit, isPending }: BranchFormProps) {
                         name='email'
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Contact email</FormLabel>
+                                <FormLabel>{t('labelEmail')}</FormLabel>
                                 <FormControl>
                                     <Input
-                                        placeholder='Contact email'
+                                        placeholder={t('labelEmail')}
                                         disabled={isPending}
                                         type='text'
                                         defaultValue={field.value}
@@ -159,10 +161,10 @@ export function BranchForm({ values, onSubmit, isPending }: BranchFormProps) {
                         name="phone"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Contact phone</FormLabel>
+                                <FormLabel>{t('Telefono')}</FormLabel>
                                 <FormControl>
                                     <Input
-                                        placeholder='Contact phone'
+                                        placeholder={t('Telefono')}
                                         disabled={isPending}
                                         type='text'
                                         defaultValue={field.value}
@@ -178,10 +180,10 @@ export function BranchForm({ values, onSubmit, isPending }: BranchFormProps) {
                         name="fax"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Fax</FormLabel>
+                                <FormLabel>{t('labelFax')}</FormLabel>
                                 <FormControl>
                                     <Input
-                                        placeholder='Fax'
+                                        placeholder={t('labelFax')}
                                         disabled={isPending}
                                         type='text'
                                         defaultValue={field.value}
@@ -198,16 +200,16 @@ export function BranchForm({ values, onSubmit, isPending }: BranchFormProps) {
                     name="about_branch"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Description</FormLabel>
+                            <FormLabel>{t('labelDescription')}</FormLabel>
                             <FormControl>
-                                <TextEditor description={field.value ? field.value : 'About filifal'} onChange={field.onChange} />
+                                <TextEditor description={field.value ? field.value : t('labelDescription')} onChange={field.onChange} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
                 <Button type='submit' disabled={isPending}>
-                    Сохранить
+                    {t('dranchBtn')}
                 </Button>
             </form>
         </Form>

@@ -15,6 +15,7 @@ import { useUpdateBranchMutation } from '../../hooks'
 import { ConfirmModal } from '@/shared/components/modals/ConfirmModals'
 import { IoMdTrash } from 'react-icons/io'
 import { BranchForm } from '../branchForm/BranchForm'
+import { useTranslations } from 'next-intl'
 
 export function EditBranchComponent(branchData: IBranch) {
 	const { updateBranch, isPending } = useUpdateBranchMutation()
@@ -24,10 +25,12 @@ export function EditBranchComponent(branchData: IBranch) {
 		updateBranch(values)
 	}
 
+	const t = useTranslations('branch')
+
 	return (
 		<Card className='md:w-[800px] w-full mx-5 md:mx-0'>
 			<CardHeader className='flex flex-row items-center justify-between'>
-				<CardTitle>Edit filial {branchData.name}</CardTitle>
+				<CardTitle>{t('editBranchBtn')} {branchData.name}</CardTitle>
 				<ConfirmModal handleClick={() => deleteBranch()}>
 					<Button size='icon' variant='outline' disabled={isLoadingDelete}>
 						<IoMdTrash className='text-red-500' />

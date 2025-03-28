@@ -20,6 +20,8 @@ import { useRegisterMutation } from "../hooks";
 import { UserRole } from "../types";
 import { useState } from "react";
 import { useReCaptcha } from "@/shared/providers/ReCaptchaProvider";
+import { useTranslations } from "next-intl";
+import Spinner from "@/shared/components/Spinner/Spinner";
 
 type TRegisterProps = {
     role: UserRole
@@ -28,6 +30,7 @@ type TRegisterProps = {
 
 export function RegisterForm({ role, isShowSocial }: TRegisterProps) {
     const { theme } = useTheme();
+    const t = useTranslations('authPage.register')
     const { executeRecaptcha } = useReCaptcha()
     const { register } = useRegisterMutation();
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,23 +49,15 @@ export function RegisterForm({ role, isShowSocial }: TRegisterProps) {
     const onSubmit = async (values: TypeRegisterSchema) => {
         const token = await executeRecaptcha()
         setIsSubmitting(true);
-        console.log("Form submitted with values:", values);
 
         try {
-            console.log("Recaptcha token received:", token);
-
             if (!token) {
-                toast.error("Captcha verification failed. Please try again.");
+                toast.error(t('captchaError'));
                 return;
             }
-
-            console.log("Sending request to register function...");
             const response = await register({ values, recaptcha: token });
-            console.log("Server response:", response);
-
         } catch (error) {
-            console.error("Register error:", error);
-            toast.error("An unexpected error occurred. Please try again.");
+            toast.error(t('anyError'));
         } finally {
             setIsSubmitting(false);
         }
@@ -71,8 +66,8 @@ export function RegisterForm({ role, isShowSocial }: TRegisterProps) {
 
     return (
         <AuthWrapper
-            heading="Registration"
-            description="Fill in all fields to register or log in"
+            heading={t('heading')}
+            description={t('description')}
             isShowSocial={isShowSocial}
         >
             <Form {...form}>
@@ -82,10 +77,10 @@ export function RegisterForm({ role, isShowSocial }: TRegisterProps) {
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Name</FormLabel>
+                                <FormLabel>{t('formLabelName')}</FormLabel>
                                 <FormControl>
                                     <Input
-                                        placeholder="Your name"
+                                        placeholder={t('formLabelName')}
                                         {...field}
                                         disabled={isSubmitting}
                                     />
@@ -99,10 +94,10 @@ export function RegisterForm({ role, isShowSocial }: TRegisterProps) {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email</FormLabel>
+                                <FormLabel>{t('formLabelEmail')}</FormLabel>
                                 <FormControl>
                                     <Input
-                                        placeholder="Your email"
+                                        placeholder={t('formLabelEmail')}
                                         type="email"
                                         {...field}
                                         disabled={isSubmitting}
@@ -117,10 +112,10 @@ export function RegisterForm({ role, isShowSocial }: TRegisterProps) {
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Password</FormLabel>
+                                <FormLabel>{t('formLabelPassword')}</FormLabel>
                                 <FormControl>
                                     <Input
-                                        placeholder="Your password"
+                                        placeholder={t('formLabelPassword')}
                                         type="password"
                                         {...field}
                                         disabled={isSubmitting}
@@ -135,10 +130,10 @@ export function RegisterForm({ role, isShowSocial }: TRegisterProps) {
                         name="passwordRepeat"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Repeat password</FormLabel>
+                                <FormLabel>{t('formLabelPasswordRepeat')}</FormLabel>
                                 <FormControl>
                                     <Input
-                                        placeholder="Confirm password"
+                                        placeholder={t('formLabelPasswordRepeat')}
                                         type="password"
                                         {...field}
                                         disabled={isSubmitting}
@@ -149,7 +144,7 @@ export function RegisterForm({ role, isShowSocial }: TRegisterProps) {
                         )}
                     />
                     <Button type="submit" disabled={isSubmitting}>
-                        {isSubmitting ? "Processing..." : "Create account"}
+                        {isSubmitting ? <Spinner /> : t('formBtm')}
                     </Button>
                 </form>
             </Form>

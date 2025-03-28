@@ -3,6 +3,7 @@ import { DateTimePicker } from "@/shared/components/datapicker/Datapicker"
 import { UseFormReturn, Controller } from "react-hook-form"
 import { TypeEducationSchema } from "../../../schemes"
 import { IOptions } from "@/features/agency/vacancy/types"
+import { useTranslations } from "next-intl"
 
 type FormProps = {
     levelEducation: IOptions[]
@@ -10,31 +11,33 @@ type FormProps = {
 }
 
 export default function EducationForm({ formData, levelEducation }: FormProps) {
+    const t = useTranslations('curriculum.education')
     return (
         <>
             <div className='flex md:flex-row flex-col w-full gap-3'>
                 <Controller
                     control={formData.control}
                     name='levelId'
+                    rules={{ required: t('fieldEmpty') }}
                     render={({ field }) => (
                         <FormItem className='w-full'>
                             <Select
-                                    defaultValue={field.value}
-                                    onValueChange={field.onChange}
-                                >
-                                    <FormControl>
-                                        <SelectTrigger>
-                                            <SelectValue placeholder='Livello di istruzione' />
-                                        </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent>
-                                        <SelectGroup>
-                                            {levelEducation ? levelEducation.map(level => (
-                                                <SelectItem value={level.id} key={level.id}>{level.name}</SelectItem>
-                                            )) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
-                                        </SelectGroup>
-                                    </SelectContent>
-                                </Select>
+                                defaultValue={field.value}
+                                onValueChange={field.onChange}
+                            >
+                                <FormControl>
+                                    <SelectTrigger>
+                                        <SelectValue placeholder={t('fieldEducation')} />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        {levelEducation && levelEducation.map(level => (
+                                            <SelectItem value={level.id} key={level.id}>{level.name}</SelectItem>
+                                        ))}
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
                             <FormMessage />
                         </FormItem>
                     )}
@@ -42,10 +45,12 @@ export default function EducationForm({ formData, levelEducation }: FormProps) {
                 <FormField
                     control={formData.control}
                     name='school'
+                    rules={{ required: t('fieldEmpty') }}
                     render={({ field }) => (
                         <FormItem className='w-full'>
+                            <FormLabel>{t('fieldInstitute')}</FormLabel>
                             <FormControl>
-                                <Input placeholder='School' {...field} />
+                                <Input placeholder={t('fieldInstitute')} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -54,10 +59,12 @@ export default function EducationForm({ formData, levelEducation }: FormProps) {
                 <FormField
                     control={formData.control}
                     name='grade'
+                    rules={{ required: t('fieldEmpty') }}
                     render={({ field }) => (
                         <FormItem className='w-full'>
+                            <FormLabel>{t('fieldGrade')}</FormLabel>
                             <FormControl>
-                                <Input placeholder='Grade' {...field} />
+                                <Input placeholder={t('fieldGrade')} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -68,9 +75,10 @@ export default function EducationForm({ formData, levelEducation }: FormProps) {
                 <Controller
                     control={formData.control}
                     name="dateRange.startdate"
+                    rules={{ required: t('fieldEmpty') }}
                     render={({ field }) => (
                         <FormItem className='w-full'>
-                            <FormLabel>Start day</FormLabel>
+                            <FormLabel>{t('fieldStartDate')}</FormLabel>
                             <DateTimePicker
                                 use12HourFormat={false}
                                 value={field.value}
@@ -86,9 +94,10 @@ export default function EducationForm({ formData, levelEducation }: FormProps) {
                 <Controller
                     control={formData.control}
                     name="dateRange.enddate"
+                    rules={{ required: t('fieldEmpty') }}
                     render={({ field }) => (
                         <FormItem className='w-full'>
-                            <FormLabel>End day</FormLabel>
+                            <FormLabel>{t('fieldEndDate')}</FormLabel>
                             <DateTimePicker
                                 use12HourFormat={false}
                                 value={field.value}
@@ -107,8 +116,9 @@ export default function EducationForm({ formData, levelEducation }: FormProps) {
                     name='description'
                     render={({ field }) => (
                         <FormItem className='w-full'>
+                            <FormLabel>{t('fieldDescription')}</FormLabel>
                             <FormControl>
-                                <Input placeholder='Description' {...field} />
+                                <Input placeholder={t('fieldDescription')} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>

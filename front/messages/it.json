@@ -86,6 +86,7 @@
         }
     },
     "candidatsPage": {
+        "candidatListEmpty": "Non ci sono candidati, non aspettare, fai primo!",
         "h4": "Su LavIdea.it",
         "h2": "Сandidati Ideali",
         "description_p1": "Scopri i migliori candidati disponibili e trova il talento giusto per la tua azienda. Esplora i profili dei candidati, confronta le loro competenze e scegli i professionisti più adatti alle tue esigenze.",
@@ -124,18 +125,253 @@
         "name": "Nome",
         "email": "Email",
         "message": "Messaggio",
-        "send": "Send"
+        "send": "Send",
+        "candidatFullData": {
+            "availabilityTransport": "Automunito",
+            "downloadCV": "Scarica CV",
+            "aboutMy": "Su di me ...",
+            "skills": "Professional skills ...",
+            "hobbies": "Hobbies ...",
+            "languages": "Lingue ...",
+            "experience": "Mia esperienza ...",
+            "eduacation": "Educazione ...",
+            "courses": "Corsi ...",
+            "experienceStory": "La storia di esperienza",
+            "contractType": "Tipo di contratto",
+            "contacts": "Candidato"
+        },
+        "candidatureSended": {
+            "error": "Errore:",
+            "candidatureSendedEmpty": "Non ci sono offerte salvate"
+        }
     },
     "authPage": {
+        "tabLogin": "Accesso",
+        "tabRegister": "Nuovo account",
         "login": {
+            "heading": "Aria privata",
+            "description": "Compili login e password per accedere",
             "code": "Codice",
             "email": "Email",
             "password": "Password",
             "login_btn": "Login",
-            "reset_password": "Recupera password"
+            "reset_password": "Recupera password",
+            "captchaError": "Captcha non è valida, riprova piu tardi"
+        },
+        "newPassword": {
+            "heading": "Nouvo password",
+            "description": "Scrivi nouvo password",
+            "formLabel": "Password",
+            "formBtn": "Login"
         },
         "register": {
-            "": ""
+            "heading": "Nuovo account",
+            "description": "Compila tutti campi per creare nouvo account",
+            "captchaError": "Captcha non è valida, riprova piu tardi",
+            "anyError": "Si è verificato un errore imprevisto. Per favore riprova.",
+            "formLabelName": "Scrivi tou nome",
+            "formLabelEmail": "Scrivi Email",
+            "formLabelPassword": "Inserisci password",
+            "formLabelPasswordRepeat": "Ripeti password",
+            "formBtm": "Crea account"
+        },
+        "resetPassword": {
+            "formLabelEmail": "Scrivi Email",
+            "formBtm": "Recupera password",
+            "heading": "Nouvo password",
+            "description": "Scrivi nouvo password",
+            "captchaError": "Captcha non è valida, riprova piu tardi"
+        }
+    },
+    "agency": {
+        "agencyList": {
+            "agencyListEmpty": "Non ci sono agenzie di lavoro",
+            "h2": "Agenzie di lavoro",
+            "p": "Scopri la lista di agenzie di reclutamento. Ogni agenzia è specializzata in diversi settori e offre una vasta gamma di opportunità di lavoro. Trova l'agenzia che meglio si adatta alle tue esigenze e inizia la tua ricerca di lavoro con noi. Le migliori agenzie sono qui per aiutarti a trovare il lavoro dei tuoi sogni."
+        },
+        "agencyFullDate": {
+            "followBtn": "Sequire questa agenzia",
+            "agencySiteBtn": "Sito dell'agenzia",
+            "contactInfo": "Info dell'agenzia",
+            "vacancies": "Offerte di lavoro"
+        }
+    },
+    "branch": {
+        "branchList": "Tutti filiali",
+        "createBranchBtn": "Nouvo filiale",
+        "editBranchBtn": "Modifica filiale",
+        "deleteBranchBtn": "Elimina filiale",
+        "branchForm": {
+            "labelLogo": "Carica logo",
+            "labelLogoEmpty": "Carica almeno un logo",
+            "labelName": "Nome del filiale",
+            "labelAdress": "Indirizio",
+            "labelLocation": "Città",
+            "labelRegion": "Regione",
+            "labelEmail": "Email",
+            "labelPhone": "Telefono",
+            "labelFax": "Fax",
+            "labelDescription": "Descrizione corto per filiale",
+            "dranchBtn": "Salva"
+        },
+        "branchColumns": {
+            "selectAll": "Seleziona tutto",
+            "selectRow": "Seleziona",
+            "name": "Nome del filiale",
+            "location": "Città",
+            "email": "Email",
+            "phone": "Phone",
+            "azioni": "Azioni",
+            "link": "Apri link",
+            "edit": "Modifica"
+        }
+    },
+    "imgUpload": {
+        "uploadBtn": "Carica imagini"
+    },
+    "agencySettings": {
+        "formTitle": "I dati dell'agenzia",
+        "labelLogo": "Carica logo",
+        "labelLogoEmpty": "Carica almeno un imagine",
+        "labelAgencyName": "Nome dell'agenzia",
+        "labelAgencyAdress": "Indirizzo",
+        "labelAgencyAbout": "Descrizione dell'agenzia",
+        "labelAgencyContacts": "Telefono",
+        "labelAgencyCF": "P.IVA/CF",
+        "labelAgencyURL": "Link dell'agenzia",
+        "labelAgencyBtn": "Salva"
+    },
+    "agencyVacancy": {
+        "createVacancy": {
+            "formTitle": "Nuova offerta di lavoro"
+        },
+        "editVacancy": {
+            "formTitle": "Modifica"
+        },
+        "vacancyForm": {
+            "title": "Titolo dell'offerta",
+            "titleEmpty": "Il titolo dell'offerta è obbligatorio",
+            "local": "Città",
+            "localEmpty": "Città dell'offerta è obbligatorio",
+            "province": "Provincia",
+            "provinceEmpty": "Provincia dell'offerta è obbligatorio",
+            "region": "Regione",
+            "regionEmpty": "Regione dell'offerta è obbligatorio",
+            "category": "Categoria",
+            "categoryEmpty": "Categoria dell'offerta è obbligatorio",
+            "branch": "Filiale dell'offerta di lavoro",
+            "description": "Descrizione dell'offerta",
+            "descriptionEmpty": "Descrizione dell'offerta è obbligatorio",
+            "tags": "I paroli chiave",
+            "tagsDescription": "I tag devono essere separati da una virgola",
+            "reallyUpTo": "Data di scadenza dell'offerta",
+            "optional": "Opzionale",
+            "contract": "Tipo di contratto",
+            "modejob": "Tipo di lavoro",
+            "workSchedule": "Orario di lavoro",
+            "eduacation": "Livelo di educazione",
+            "experience": "Esperienza",
+            "fromBtn": "Salva"
+        },
+        "vacanceList": {
+            "allVacancies": "Tutti offerte di lavoro",
+            "create": "Nuova offerta di lavoro",
+            "trash": "Elimina"
+        },
+        "vacancyColumn": {
+            "selectAll": "Seleziona tutto",
+            "select": "Seleziona",
+            "title": "Titolo",
+            "createdAt": "Data creazione",
+            "reallyUpTo": "Data di scadenza dell'offerta",
+            "views": "Visitori",
+            "isValidate": "Lo stato",
+            "actions": "Azioni",
+            "link": "Pagina dell'offerta",
+            "edit": "Modifica"
+        }
+    },
+    "curriculum": {
+        "courses": {
+            "CourseTitle": "Elenco dei corsi",
+            "CreateCourseBtn": "Nuovo",
+            "SaveCourseBtn": "Salva",
+            "CancelCourseBtn": "Annulla",
+            "fieldEmpty": "Il campo è vuoto",
+            "fieldCourse": "Il corso",
+            "fieldInstitute": "Istituto",
+            "fieldGrade": "Grado di completamento",
+            "fieldEndDate": "Data fine",
+            "fieldStartDate": "Data inizio"
+        },
+        "education": {
+            "EducationTitle": "Elenco dei corsi",
+            "CreateEducationBtn": "Nuovo",
+            "SaveEducationBtn": "Salva",
+            "CancelEducationBtn": "Annulla",
+            "fieldEmpty": "Il campo è vuoto",
+            "fieldEducation": "Livello di istruzione",
+            "fieldInstitute": "Istituto",
+            "fieldGrade": "Grado di completamento",
+            "fieldEndDate": "Data fine",
+            "fieldStartDate": "Data inizio",
+            "fieldDescription": "Descrizione"
+        },
+        "experience": {
+            "ExperienceTitle": "Elenco delle esperienze",
+            "CreateExperienceBtn": "Nuovo",
+            "SaveExperienceBtn": "Salva",
+            "CancelExperienceBtn": "Annulla",
+            "CurrentExperience": "Il posto attuale",
+            "fieldEmpty": "Il campo è vuoto",
+            "fieldPosition": "Posizione",
+            "fieldCompany": "Azienda",
+            "fieldContractType": "Tipo di contratto",
+            "fieldLocation": "Località",
+            "fieldEndDate": "Data fine",
+            "fieldStartDate": "Data inizio",
+            "fieldDescription": "Descrizione"
+        },
+        "hobbies": {
+            "HobbiesTitle": "Elenco degli hobby",
+            "CreateHobbiesBtn": "Nuovo",
+            "SaveHobbiesBtn": "Salva",
+            "CancelHobbiesBtn": "Annulla",
+            "fieldEmpty": "Il campo è vuoto",
+            "fieldHobbies": "Hobby"
+        },
+        "languages": {
+            "LanguagesTitle": "Elenco delle lingue",
+            "CreateLanguagesBtn": "Nuovo",
+            "SaveLanguagesBtn": "Salva",
+            "CancelLanguagesBtn": "Annulla",
+            "fieldEmpty": "Il campo è vuoto",
+            "fieldLanguage": "Lingua",
+            "fieldLevel": "Livello",
+            "levelbasic": "Base",
+            "levelintermediate": "Intermedio",
+            "leveladvanced": "Avanzato",
+            "levelfluent": "Fluente"
+        },
+        "lifeStatus": {
+            "fieldEmpty": "Il campo è obbligatorio",
+            "fieldLifeStatus": "Stato di vita",
+            "Genere": "Sesso",
+            "man": "Maschio",
+            "woman": "Femmina",
+            "national": "Nazionalità",
+            "haveAuto": "Automunito",
+            "driverCategory": "Categoria di guida",
+            "SaveLanguagesBtn": "Salva",
+            "maritalStatus": "Stato civile",
+            "single": "Single",
+            "married": "Sposato/a",
+            "divorced": "Divorziato/a",
+            "widowed": "Vedovo/a",
+            "separated": "Separato/a",
+            "cohabiting": "Convivente",
+            "children": "Figli",
+            "noChildren": "Nessuno"
         }
     }
 }

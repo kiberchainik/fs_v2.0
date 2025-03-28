@@ -27,16 +27,16 @@ export function useBreadcrumbs(params: BCProps) {
 
     if (!parents.length && currentCategory) {
         breadcrumbs.push({
-            name: currentCategory.name, // Используем имя текущей категории
-            href: `/${currentCategory.slug}`, // Путь только для текущей категории
+            name: currentCategory.name,
+            href: `/${currentCategory.slug}`,
         });
     }
 
     const lastParent = parents[parents.length - 1];
     if (parents.length > 0 && currentCategory && (!lastParent || lastParent.slug !== currentCategory.slug)) {
         breadcrumbs.push({
-            name: currentCategory.name, // Используем имя текущей категории
-            href: `/${parents.map(p => p.slug).join('/')}/${currentCategory.slug}`, // Путь включает родителей и текущую категорию
+            name: currentCategory.name,
+            href: `/${parents.map(p => p.slug).join('/')}/${currentCategory.slug}`,
         });
     }
 

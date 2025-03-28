@@ -6,8 +6,11 @@ import { CiEdit, CiTrash } from 'react-icons/ci'
 import LanuageForm from './LanguageForm'
 
 import styles from './languages.module.scss'
+import { useTranslations } from 'next-intl'
+import Spinner from '@/shared/components/Spinner/Spinner'
 
 export default function Languages() {
+    const t = useTranslations('curriculum.languages')
     const {
         addForm,
         deletingLanguageId,
@@ -27,7 +30,7 @@ export default function Languages() {
     return (
         <Card className='w-full'>
             <CardHeader className={styles.cardHeader}>
-                <CardTitle>Candidat lanuages</CardTitle>
+                <CardTitle>{t('LanguagesTitle')}</CardTitle>
             </CardHeader>
             <CardContent>
                 <Form {...addForm}>
@@ -37,7 +40,7 @@ export default function Languages() {
                     >
                         <LanuageForm formData={addForm} />
                         <Button type='submit' disabled={isAdding}>
-                            {isAdding ? 'Adding...' : 'Save'}
+                            {isAdding ? <Spinner /> : t('CreateLanguagesBtn')}
                         </Button>
                     </form>
                 </Form>
@@ -55,9 +58,9 @@ export default function Languages() {
                                             <LanuageForm formData={editForm} />
                                             <div className='flex gap-x-1'>
                                                 <Button type='submit' disabled={isSaving}>
-                                                    {isSaving ? 'Saving...' : 'Save'}
+                                                    {isSaving ? <Spinner /> : t('SaveLanguagesBtn')}
                                                 </Button>
-                                                <Button onClick={() => setEditingLanguageId(null)}>Cancel</Button>
+                                                <Button onClick={() => setEditingLanguageId(null)}>{t('CancelLanguagesBtn')}</Button>
                                             </div>
                                         </form>
                                     </Form>
@@ -71,7 +74,7 @@ export default function Languages() {
                                                 <CiEdit />
                                             </Button>
                                             <Button onClick={() => handleDeleteLanguage(language.id)} variant='destructive' disabled={deletingLanguageId === language.id}>
-                                                {deletingLanguageId === language.id ? 'Deleting...' : <CiTrash />}
+                                                {deletingLanguageId === language.id ? <Spinner /> : <CiTrash />}
                                             </Button>
                                         </div>
                                     </div>

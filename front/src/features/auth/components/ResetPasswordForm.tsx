@@ -9,9 +9,11 @@ import { useTheme } from "next-themes";
 import { toast } from "sonner";
 import { useResetPasswordMutation } from "../hooks"
 import { useReCaptcha } from "@/shared/providers/ReCaptchaProvider";
+import { useTranslations } from "next-intl";
 
 export function ResetPasswordForm() {
     const { theme } = useTheme()
+    const t = useTranslations('authPage.resetPassword')
     const { executeRecaptcha } = useReCaptcha()
 
     const form = useForm<TypeResetPasswordSchema>({
@@ -26,7 +28,7 @@ export function ResetPasswordForm() {
     const onSubmit = async (values: TypeResetPasswordSchema) => {
         const token = await executeRecaptcha()
         if (!token) {
-            toast.error('Enter captcha')
+            toast.error(t('captchaError'))
         } else {
             reset({ values, recaptcha: token })
         }
@@ -34,21 +36,21 @@ export function ResetPasswordForm() {
 
     return (
         <AuthWrapper
-            heading="Reset"
-            description="Compile all fields for login"
+            heading={t('heading')}
+            description={t('description')}
         >
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
                     <FormField control={form.control} name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email</FormLabel>
-                                <FormControl><Input placeholder="Your email" type="email" {...field} disabled={isLoading} /></FormControl>
+                                <FormLabel>{t('formLabelEmail')}</FormLabel>
+                                <FormControl><Input placeholder={t('formLabelEmail')} type="email" {...field} disabled={isLoading} /></FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" disabled={isLoading}>Reset password</Button>
+                    <Button type="submit" disabled={isLoading}>{t('formBtm')}</Button>
                 </form>
             </Form>
         </AuthWrapper>

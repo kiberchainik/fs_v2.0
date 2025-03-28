@@ -6,8 +6,11 @@ import { CiEdit, CiTrash } from 'react-icons/ci'
 import HobbieForm from './HobbieForm'
 
 import styles from './hobbies.module.scss'
+import { useTranslations } from 'next-intl'
+import Spinner from '@/shared/components/Spinner/Spinner'
 
 export default function Hobbies() {
+    const t = useTranslations('curriculum.hobbies')
     const {
         deletingHobbieId,
         hobbies,
@@ -26,7 +29,7 @@ export default function Hobbies() {
     return (
         <Card className='w-full'>
             <CardHeader className={styles.cardHeader}>
-                <CardTitle>Candidat hobbies</CardTitle>
+                <CardTitle>{t('HobbiesTitle')}</CardTitle>
             </CardHeader>
             <CardContent>
                 <Form {...addForm}>
@@ -36,7 +39,7 @@ export default function Hobbies() {
                     >
                         <HobbieForm formData={addForm} />
                         <Button type='submit' disabled={isAdding}>
-                            {isAdding ? 'Adding...' : 'Save'}
+                            {isAdding ? <Spinner /> : t('CreateHobbiesBtn')}
                         </Button>
                     </form>
                 </Form>
@@ -54,9 +57,9 @@ export default function Hobbies() {
                                             <HobbieForm formData={editForm} />
                                             <div className='flex gap-x-1'>
                                                 <Button type='submit' disabled={isSaving}>
-                                                    {isSaving ? 'Saving...' : 'Save'}
+                                                    {isSaving ? <Spinner /> : t('SaveHobbiesBtn')}
                                                 </Button>
-                                                <Button onClick={() => setEditingHobbieId(null)}>Cancel</Button>
+                                                <Button onClick={() => setEditingHobbieId(null)}>{t('CancelHobbiesBtn')}</Button>
                                             </div>
                                         </form>
                                     </Form>
@@ -70,7 +73,7 @@ export default function Hobbies() {
                                                 <CiEdit />
                                             </Button>
                                             <Button onClick={() => handleDeleteHobbie(hobbie.id)} variant='link' disabled={deletingHobbieId === hobbie.id}>
-                                                {deletingHobbieId === hobbie.id ? 'Deleting...' : <CiTrash />}
+                                                {deletingHobbieId === hobbie.id ? <Spinner /> : <CiTrash />}
                                             </Button>
                                         </div>
                                     </div>

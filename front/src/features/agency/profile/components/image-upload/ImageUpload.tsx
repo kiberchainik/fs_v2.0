@@ -7,6 +7,7 @@ import styles from './ImageUpload.module.scss'
 import { cn } from '@/shared/utils'
 import { useUpload } from '../../hooks/useUpload'
 import { Button } from '@/shared/components'
+import { useTranslations } from 'next-intl'
 
 interface ImageUploadProps {
 	isDisabled: boolean
@@ -15,6 +16,7 @@ interface ImageUploadProps {
 }
 
 export function ImageUpload({ isDisabled, onChange, value }: ImageUploadProps) {
+	const t = useTranslations('imgUpload')
 	const { handleButtonClick, isUploading, fileInputRef, handleFileChange } = useUpload(onChange)
 
 	return (
@@ -35,8 +37,7 @@ export function ImageUpload({ isDisabled, onChange, value }: ImageUploadProps) {
 					'mt-4': value.length
 				})}
 			>
-				<ImagePlus />
-				Загрузить картинки
+				<ImagePlus /> {t('uploadBtn')}
 			</Button>
 			<input
 				type='file'

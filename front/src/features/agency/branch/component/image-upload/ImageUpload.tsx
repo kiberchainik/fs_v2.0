@@ -4,9 +4,9 @@ import { ImagePlus } from 'lucide-react'
 import Image from 'next/image'
 
 import styles from './ImageUpload.module.scss'
-import { cn } from '@/shared/utils'
 import { Button } from '@/shared/components/ui'
 import { useUpload } from '../../hooks'
+import { useTranslations } from 'next-intl'
 
 interface ImageUploadProps {
 	isDisabled?: boolean
@@ -15,6 +15,7 @@ interface ImageUploadProps {
 }
 
 export function ImageUpload({ isDisabled, onChange, value }: ImageUploadProps) {
+	const t = useTranslations('imgUpload')
 	const { handleButtonClick, isUploading, fileInputRef, handleFileChange } = useUpload(onChange)
 
 	return (
@@ -30,8 +31,7 @@ export function ImageUpload({ isDisabled, onChange, value }: ImageUploadProps) {
 				variant='secondary'
 				onClick={handleButtonClick}
 				className='mt-4'>
-				<ImagePlus />
-				Загрузить картинки
+				<ImagePlus /> {t('uploadBtn')}
 			</Button>
 			<input
 				type='file'

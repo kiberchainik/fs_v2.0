@@ -10,10 +10,12 @@ import { IoLocationSharp } from "react-icons/io5"
 import { RatingStars } from "@/features/rating/components/RatingStars"
 import { formatDate } from "@/shared/utils"
 import { VacancyCard } from "@/features/carousel/components/vacancies/VacancyCard"
+import { useTranslations } from "next-intl"
 
 
 export default function AgencyDataWithJobs({ agencyData, count, pageCount }: TAgencyDataResponse) {
     const authUser = useAppSelector(state => state.reducer.user.data)
+    const t = useTranslations('agency.agencyFullDate')
 
     return (
         <div className={styles.agencyCardWrapper}>
@@ -35,12 +37,12 @@ export default function AgencyDataWithJobs({ agencyData, count, pageCount }: TAg
                         </div>
                         <div className="mt-4 flex flex-row gap-3">
                             <span className="text-[#17233e] bg-[#d3e7ee] py-2 px-4 rounded-full text-sm dark:text-slate-500 dark:bg-zinc-800">{formatDate(agencyData.createdAt)}</span>
-                            <Link target="_blank" href={agencyData.url} className="text-[#17233e] bg-[#d3e7ee] py-2 px-4 rounded-full text-sm dark:text-slate-500 dark:bg-zinc-800">Agency site</Link>
+                            <Link target="_blank" href={agencyData.url} className="text-[#17233e] bg-[#d3e7ee] py-2 px-4 rounded-full text-sm dark:text-slate-500 dark:bg-zinc-800">{t('agencySiteBtn')}</Link>
                         </div>
                     </div>
                 </div>
                 <div className="">
-                    <Button>Следить за вакансиями</Button>
+                    <Button>{t('followBtn')}</Button>
                 </div>
             </div>
             <div>

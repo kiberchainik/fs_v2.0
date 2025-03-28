@@ -1,21 +1,25 @@
-import { Button, Form, FormControl, FormField, FormItem, FormMessage, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/components";
+import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shared/components";
 import { UseFormReturn } from "react-hook-form";
 import { TypeLanguageSchema } from "../../../schemes";
+import { useTranslations } from "next-intl";
 
 type FormProps = {
     formData: UseFormReturn<TypeLanguageSchema, any, undefined>
 }
 
 export default function LanguageForm({ formData }: FormProps) {
+    const t = useTranslations('curriculum.languages')
     return (
         <>
             <FormField
                 control={formData.control}
                 name='language'
+                rules={{ required: t('fieldEmpty') }}
                 render={({ field }) => (
                     <FormItem className='w-full'>
+                        <FormLabel>{t('fieldLanguage')}</FormLabel>
                         <FormControl>
-                            <Input placeholder='Lanuage' {...field} />
+                            <Input placeholder={t('fieldLanguage')} {...field} />
                         </FormControl>
                         <FormMessage />
                     </FormItem>
@@ -24,6 +28,7 @@ export default function LanguageForm({ formData }: FormProps) {
             <FormField
                 control={formData.control}
                 name='level'
+                rules={{ required: t('fieldEmpty') }}
                 render={({ field }) => (
                     <FormItem className='w-full'>
                         <Select
@@ -32,15 +37,14 @@ export default function LanguageForm({ formData }: FormProps) {
                         >
                             <FormControl>
                                 <SelectTrigger>
-                                    <SelectValue placeholder='Lanuage level' />
+                                    <SelectValue placeholder={t('fieldLevel')} />
                                 </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                                <SelectItem value='NONE'>NONE</SelectItem>
-                                <SelectItem value='NATIVESPEAKER'>NATIVESPEAKER</SelectItem>
-                                <SelectItem value='BASIC'>BASIC</SelectItem>
-                                <SelectItem value='VERYGOOD'>VERYGOOD</SelectItem>
-                                <SelectItem value='FLUENT'>FLUENT</SelectItem>
+                                <SelectItem value={t('levelbasic')}>{t('levelbasic')}</SelectItem>
+                                <SelectItem value={t('levelintermediate')}>{t('levelintermediate')}</SelectItem>
+                                <SelectItem value={t('leveladvanced')}>{t('leveladvanced')}</SelectItem>
+                                <SelectItem value={t('levelfluent')}>{t('levelfluent')}</SelectItem>
                             </SelectContent>
                         </Select>
                         <FormMessage />

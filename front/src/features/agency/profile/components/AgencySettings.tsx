@@ -23,8 +23,10 @@ import {
 import { useGetAgencyData, useUpdProfileMutation } from '../hooks'
 import { SettingsSchema, TypeSettingsSchema } from '../schemes'
 import { ImageUpload } from './image-upload/ImageUpload'
+import { useTranslations } from 'next-intl'
 
 export function AgencySettings() {
+	const t = useTranslations('agencySettings')
 	const { user, isLoading, error } = useGetAgencyData()
 
 	const form = useForm<TypeSettingsSchema>({
@@ -51,7 +53,7 @@ export function AgencySettings() {
 	return (
 		<Card className='md:w-[800px] w-full mx-5 md:mx-0'>
 			<CardHeader className='flex flex-row items-center justify-between'>
-				<CardTitle>Настройки профиля агентства</CardTitle>
+				<CardTitle>{t('formTitle')}</CardTitle>
 			</CardHeader>
 			<CardContent>
 				{
@@ -64,11 +66,11 @@ export function AgencySettings() {
 								control={form.control}
 								name='logo'
 								rules={{
-									required: 'Загрузите хотя бы одну картинку'
+									required: t('labelLogoEmpty')
 								}}
 								render={({ field }) => (
 									<FormItem className='mt-4'>
-										<FormLabel>Logo</FormLabel>
+										<FormLabel>{t('labelLogo')}</FormLabel>
 										<FormControl>
 											<ImageUpload
 												isDisabled={isLoading}
@@ -85,10 +87,10 @@ export function AgencySettings() {
 								name='agency_name'
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Agency name</FormLabel>
+										<FormLabel>{t('labelAgencyName')}</FormLabel>
 										<FormControl>
 											<Input
-												placeholder='Agency name'
+												placeholder={t('labelAgencyName')}
 												disabled={isLoading}
 												type='text'
 												{...field}
@@ -103,10 +105,10 @@ export function AgencySettings() {
 								name='address'
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Agency address</FormLabel>
+										<FormLabel>{t('labelAgencyAdress')}</FormLabel>
 										<FormControl>
 											<Input
-												placeholder='Agency address'
+												placeholder={t('labelAgencyAdress')}
 												disabled={isLoading}
 												type='text'
 												{...field}
@@ -121,10 +123,10 @@ export function AgencySettings() {
 								name='about'
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>About agency</FormLabel>
+										<FormLabel>{t('labelAgencyAbout')}</FormLabel>
 										<FormControl>
 											<Input
-												placeholder='About agency'
+												placeholder={t('labelAgencyAbout')}
 												disabled={isLoading}
 												type='text'
 												{...field}
@@ -139,10 +141,10 @@ export function AgencySettings() {
 								name='phone'
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Agency contacts</FormLabel>
+										<FormLabel>{t('labelAgencyContacts')}</FormLabel>
 										<FormControl>
 											<Input
-												placeholder='Agency contacts'
+												placeholder={t('labelAgencyContacts')}
 												disabled={isLoading}
 												type='text'
 												{...field}
@@ -157,10 +159,10 @@ export function AgencySettings() {
 								name='p_iva_c_f'
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>P.IVA/CF</FormLabel>
+										<FormLabel>{t('labelAgencyCF')}</FormLabel>
 										<FormControl>
 											<Input
-												placeholder='P.IVA/CF'
+												placeholder={t('labelAgencyCF')}
 												disabled={isLoading}
 												type='text'
 												{...field}
@@ -175,10 +177,10 @@ export function AgencySettings() {
 								name='url'
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel>Agency url</FormLabel>
+										<FormLabel>{t('labelAgencyURL')}</FormLabel>
 										<FormControl>
 											<Input
-												placeholder='Agency url'
+												placeholder={t('labelAgencyURL')}
 												disabled={isLoading}
 												type='text'
 												{...field}
@@ -189,7 +191,7 @@ export function AgencySettings() {
 								)}
 							/>
 							<Button type='submit' disabled={isLoading}>
-								Сохранить
+								{t('labelAgencyBtn')}
 							</Button>
 						</form>
 					</Form>

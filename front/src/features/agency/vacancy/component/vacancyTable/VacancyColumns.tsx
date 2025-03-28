@@ -13,6 +13,7 @@ import {
 
 import { AGENCY_URL } from '@/shared/config'
 import { generatePostUrl } from '@/shared/utils'
+import { useTranslations } from 'next-intl'
 
 export interface IVacancyColumn {
 	id: string | undefined
@@ -30,6 +31,8 @@ export interface IVacancyColumn {
 	} | undefined
 }
 
+const t = useTranslations('agencyVacancy.vacancyColumn')
+
 export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 	{
 		id: "select",
@@ -40,14 +43,14 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 					(table.getIsSomePageRowsSelected() && "indeterminate")
 				}
 				onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-				aria-label="Select all"
+				aria-label={t('selectAll')}
 			/>
 		),
 		cell: ({ row }) => (
 			<Checkbox
 				checked={row.getIsSelected()}
 				onCheckedChange={(value) => row.toggleSelected(!!value)}
-				aria-label="Select row"
+				aria-label={t('select')}
 				value={row.original.id}
 			/>
 		),
@@ -62,7 +65,7 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 						column.toggleSorting(column.getIsSorted() === 'asc')
 					}
 				>
-					Название
+					{t('title')}
 					<ArrowUpDown className='ml-2 size-4' />
 				</Button>
 			)
@@ -78,7 +81,7 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 						column.toggleSorting(column.getIsSorted() === 'desc')
 					}
 				>
-					Created
+					{t('createdAt')}
 					<ArrowUpDown className='ml-2 size-4' />
 				</Button>
 			)
@@ -94,7 +97,7 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 						column.toggleSorting(column.getIsSorted() === 'asc')
 					}
 				>
-					Really up to
+					{t('reallyUpTo')}
 					<ArrowUpDown className='ml-2 size-4' />
 				</Button>
 			)
@@ -110,7 +113,7 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 						column.toggleSorting(column.getIsSorted() === 'asc')
 					}
 				>
-					Views
+					{t('views')}
 					<ArrowUpDown className='ml-2 size-4' />
 				</Button>
 			)
@@ -126,7 +129,7 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 						column.toggleSorting(column.getIsSorted() === 'asc')
 					}
 				>
-					Is verified
+					{t('isValidate')}
 					<ArrowUpDown className='ml-2 size-4' />
 				</Button>
 			)
@@ -134,7 +137,7 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 	},
 	{
 		accessorKey: 'actions',
-		header: 'Действия',
+		header: t('actions'),
 		cell: ({ row }) => (
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
@@ -143,14 +146,14 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 					</Button>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent align='end'>
-					<DropdownMenuLabel>Действия</DropdownMenuLabel>
+					<DropdownMenuLabel>{t('actions')}</DropdownMenuLabel>
 					<Link
 						href={generatePostUrl(row.original.categories!, row.original.slug!)}
 						target='_blank'
 					>
 						<DropdownMenuItem>
 							<ExternalLink className='size-4 mr-2' />
-							Страница с продуктом
+							{t('')}
 						</DropdownMenuItem>
 					</Link>
 					<Link
@@ -158,7 +161,7 @@ export const vacancyColumns: ColumnDef<IVacancyColumn>[] = [
 					>
 						<DropdownMenuItem>
 							<Pencil className='size-4 mr-2' />
-							Изменить
+							{t('edit')}
 						</DropdownMenuItem>
 					</Link>
 				</DropdownMenuContent>

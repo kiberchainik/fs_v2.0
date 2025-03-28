@@ -6,13 +6,15 @@ import { driverCategory } from "../../../schemes"
 
 import styles from './lifestatus.module.scss'
 import { LifeStateLogic } from "../../../hooks/useLifeStatus";
+import { useTranslations } from "next-intl";
 
 export default function LifeStatus() {
+    const t = useTranslations('curriculum.lifeStatus')
     const { form, handleForm } = LifeStateLogic()
     return (
         <Card className='w-full'>
             <CardHeader>
-                <CardTitle>Candidat life position</CardTitle>
+                <CardTitle>{t('fieldLifeStatus')}</CardTitle>
             </CardHeader>
             <CardContent>
                 <Form {...form}>
@@ -24,6 +26,7 @@ export default function LifeStatus() {
                             <Controller
                                 control={form.control}
                                 name='maritalStatus'
+                                rules={{ required: t('fieldEmpty') }}
                                 render={({ field }) => (
                                     <FormItem className='w-full'>
                                         <Select
@@ -32,15 +35,18 @@ export default function LifeStatus() {
                                         >
                                             <FormControl>
                                                 <SelectTrigger>
-                                                    <SelectValue placeholder='Marital status' />
+                                                    <SelectValue placeholder={t('maritalStatus')} />
                                                 </SelectTrigger>
                                             </FormControl>
                                             <SelectContent>
-                                                <SelectItem value='NONE'>NONE</SelectItem>
-                                                <SelectItem value='NOT_MARRIED'>NOT MARRIED</SelectItem>
-                                                <SelectItem value='MARRIEDNOCHILDREN'>MARRIED NO CHILDREN</SelectItem>
-                                                <SelectItem value='MARRIEDHAVECHILDREN'>MARRIED HAVE CHILDREN</SelectItem>
-                                                <SelectItem value='DIVORCET'>DIVORCET</SelectItem>
+                                                <SelectItem value={t('single')}>{t('single')}</SelectItem>
+                                                <SelectItem value={t('married')}>{t('married')}</SelectItem>
+                                                <SelectItem value={t('divorced')}>{t('divorced')}</SelectItem>
+                                                <SelectItem value={t('widowed')}>{t('widowed')}</SelectItem>
+                                                <SelectItem value={t('separated')}>{t('separated')}</SelectItem>
+                                                <SelectItem value={t('cohabiting')}>{t('cohabiting')}</SelectItem>
+                                                <SelectItem value={t('children')}>{t('children')}</SelectItem>
+                                                <SelectItem value={t('noChildren')}>{t('noChildren')}</SelectItem>
                                             </SelectContent>
                                         </Select>
                                         <FormMessage />
@@ -53,7 +59,7 @@ export default function LifeStatus() {
                                 render={({ field }) => (
                                     <FormItem className="flex flex-row items-center justify-between gap-3 rounded-full border p-2 shadow-sm w-full">
                                         <div className="space-y-0.5">
-                                            <FormLabel>I have my car</FormLabel>
+                                            <FormLabel>{t('haveAuto')}</FormLabel>
                                         </div>
                                         <FormControl>
                                             <Switch
@@ -71,7 +77,7 @@ export default function LifeStatus() {
                             render={() => (
                                 <div className='border rounded-md p-3 w-full'>
                                     <div className="mb-4 w-full text-left">
-                                        <FormLabel className="text-base">Driver category</FormLabel>
+                                        <FormLabel className="text-base">{t('driverCategory')}</FormLabel>
                                     </div>
                                     <FormItem className="flex flex-wrap items-center gap-3">
                                         {driverCategory.map((item) => (
@@ -112,9 +118,7 @@ export default function LifeStatus() {
                                 </div>
                             )}
                         />
-                        <Button type='submit' >
-                            Save
-                        </Button>
+                        <Button type='submit' >{t('SaveLanguagesBtn')}</Button>
                     </form>
                 </Form>
             </CardContent>

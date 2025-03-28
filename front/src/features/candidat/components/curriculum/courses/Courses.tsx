@@ -6,8 +6,11 @@ import CourseForm from "./CourseForm"
 import { CiEdit, CiTrash } from "react-icons/ci"
 
 import styles from './courses.module.scss'
+import { useTranslations } from "next-intl"
+import Spinner from "@/shared/components/Spinner/Spinner"
 
 export default function Courses() {
+    const t = useTranslations('curriculum.courses')
     const {
         courses,
         addForm,
@@ -24,7 +27,7 @@ export default function Courses() {
     return (
         <Card className="w-full">
             <CardHeader className={styles.cardHeader}>
-                <CardTitle>Candidat courses</CardTitle>
+                <CardTitle>{t('CourseTitle')}</CardTitle>
             </CardHeader>
             <Form {...addForm}>
                 <form
@@ -32,9 +35,7 @@ export default function Courses() {
                     className={styles.formWrapper}
                 >
                     <CourseForm formData={addForm} />
-                    <Button type='submit'>
-                        Add course
-                    </Button>
+                    <Button type='submit'>{t('CreateCourseBtn')}</Button>
                 </form>
             </Form>
             {
@@ -51,10 +52,10 @@ export default function Courses() {
                                             <CourseForm formData={editForm} />
                                             <div className='flex gap-x-1'>
                                                 <Button type="submit" disabled={isSaving}>
-                                                    {isSaving ? 'Saving...' : 'Save'}
+                                                    {isSaving ? <Spinner /> : t('SaveCourseBtn')}
                                                 </Button>
                                                 <Button onClick={() => setEditCourseId(null)}>
-                                                    Cancel
+                                                    {t('CancelCourseBtn')}
                                                 </Button>
                                             </div>
                                         </form>
@@ -69,7 +70,7 @@ export default function Courses() {
                                                 <CiEdit />
                                             </Button>
                                             <Button onClick={() => handleDeleteCourse(course.id)} variant='destructive' disabled={deletingCourseId === course.id}>
-                                                {deletingCourseId === course.id ? 'Deleting...' : <CiTrash />}
+                                                {deletingCourseId === course.id ? <Spinner /> : <CiTrash />}
                                             </Button>
                                         </div>
                                     </div>

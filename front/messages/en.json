@@ -44,5 +44,308 @@
             "without_branch": "Without branch",
             "search_btn": "Search job"
         }
+    },
+    "jobOffers": {
+        "filter": {
+            "filter_title": "Search with filter",
+            "category_error_empty": "To search, choose a category",
+            "category_placeholder": "Category",
+            "location": "Location",
+            "contractType": "Contract type",
+            "modeJob": "Work mode",
+            "workingTime": "Work schedule",
+            "levelEducation": "Education level",
+            "experienceMinimal": "Minimum required experience",
+            "search_btn": "Search job offers"
+        }
+    },
+    "candidatsPage": {
+        "candidatListEmpty": "There are no candidates, don't wait, be the first!",
+        "h4": "On LavIdea.it",
+        "h2": "Ideal Candidates",
+        "description_p1": "Discover the best candidates available and find the right talent for your company. Explore candidate profiles, compare their skills, and choose the professionals best suited to your needs.",
+        "description_p2": "With LavIdea.it, finding personnel becomes simple and effective. Don't miss the opportunity to improve your team with the best talents on the market."
+    },
+    "chisiamoPage": {
+        "title_h3": "Ideal Work - your online resource for everything related to work",
+        "desc_title_p1": "Free CV creation",
+        "desc_p1": "Your curriculum vitae is your business card for potential employers. Our free CV creation tool will help you create a professional and attractive CV in minutes.",
+        "desc_title_p2": "Job search with filter",
+        "desc_p2": "Our job search with filter allows you to find the perfect jobs based on your skills, experience, and interests.",
+        "desc_title_p3": "Job search and placement",
+        "desc_p3": "We help you find the right job for you. Our team of experts will guide you through the job search process and help you secure an interview.",
+        "desc_title_p4": "Wide selection of employment agencies",
+        "desc_p4": "We collaborate with the best employment agencies in the country. This means you have access to a wide range of job opportunities.",
+        "desc_title_p5": "Free posting of your job offers for agencies",
+        "desc_p5": "If you are an employer, you can post your job offers for free on our site. This way, you can reach a wide audience of candidates.",
+        "desc_title_p6": "Search and selection of candidates for any type of job",
+        "desc_p6": "We help you find the perfect candidates for your needs. Our site will help you select the most qualified and suitable candidates for your company.",
+        "chisiamoPage_title_h2_p1": "Advantages of using",
+        "chisiamoPage_title_h2_p2": "our site",
+        "chisiamoPage_p": "We are your one-stop solution for all your work-related needs. Whether you are a candidate looking for a job or an employer looking for candidates, we have what you need. Register now and start finding the ideal job or perfect candidates!",
+        "block1_h4": "It's free",
+        "block1_p": "Our site is free to use",
+        "block2_h4": "It's easy",
+        "block2_p": "Our site is easy to navigate and use",
+        "block3_h4": "It's effective",
+        "block3_p": "Our site helps you find the perfect job.",
+        "block4_h4": "It's secure",
+        "block4_p": "Our site is safe and secure."
+    },
+    "contactsPage": {
+        "h2_p1": "Do You Have Any",
+        "h2_p2": "Questions?",
+        "description": "Unlike 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum.",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "send": "Send",
+        "candidatFullData": {
+            "availabilityTransport": "Own transport",
+            "downloadCV": "Download CV",
+            "aboutMy": "About me ...",
+            "skills": "Professional skills ...",
+            "hobbies": "Hobbies ...",
+            "languages": "Languages ...",
+            "experience": "My experience ...",
+            "eduacation": "Education ...",
+            "courses": "Courses ...",
+            "experienceStory": "Experience history",
+            "contractType": "Contract type",
+            "contacts": "Candidate"
+        },
+        "candidatureSended": {
+            "error": "Error:",
+            "candidatureSendedEmpty": "No saved offers"
+        }
+    },
+    "authPage": {
+        "tabLogin": "Login",
+        "tabRegister": "New account",
+        "login": {
+            "heading": "Private area",
+            "description": "Fill in login and password to access",
+            "code": "Code",
+            "email": "Email",
+            "password": "Password",
+            "login_btn": "Login",
+            "reset_password": "Recover password",
+            "captchaError": "Captcha is invalid, please try again later"
+        },
+        "newPassword": {
+            "heading": "New password",
+            "description": "Enter a new password",
+            "formLabel": "Password",
+            "formBtn": "Login"
+        },
+        "register": {
+            "heading": "New account",
+            "description": "Fill in all fields to create a new account",
+            "captchaError": "Captcha is invalid, please try again later",
+            "anyError": "An unexpected error occurred. Please try again.",
+            "formLabelName": "Enter your name",
+            "formLabelEmail": "Enter Email",
+            "formLabelPassword": "Enter password",
+            "formLabelPasswordRepeat": "Repeat password",
+            "formBtm": "Create account"
+        },
+        "resetPassword": {
+            "formLabelEmail": "Enter Email",
+            "formBtm": "Recover password",
+            "heading": "New password",
+            "description": "Enter a new password",
+            "captchaError": "Captcha is invalid, please try again later"
+        }
+    },
+    "agency": {
+        "agencyList": {
+            "agencyListEmpty": "There are no recruitment agencies",
+            "h2": "Recruitment Agencies",
+            "p": "Discover the list of recruitment agencies. Each agency specializes in different sectors and offers a wide range of job opportunities. Find the agency that best suits your needs and start your job search with us. The best agencies are here to help you find the job of your dreams."
+        },
+        "agencyFullDate": {
+            "followBtn": "Follow this agency",
+            "agencySiteBtn": "Agency website",
+            "contactInfo": "Agency info",
+            "vacancies": "Job offers"
+        }
+    },
+    "branch": {
+        "branchList": "All branches",
+        "createBranchBtn": "New branch",
+        "editBranchBtn": "Edit branch",
+        "deleteBranchBtn": "Delete branch",
+        "branchForm": {
+            "labelLogo": "Upload logo",
+            "labelLogoEmpty": "Upload at least one logo",
+            "labelName": "Branch name",
+            "labelAdress": "Address",
+            "labelLocation": "City",
+            "labelRegion": "Region",
+            "labelEmail": "Email",
+            "labelPhone": "Phone",
+            "labelFax": "Fax",
+            "labelDescription": "Short description for branch",
+            "dranchBtn": "Save"
+        },
+        "branchColumns": {
+            "selectAll": "Select all",
+            "selectRow": "Select",
+            "name": "Branch name",
+            "location": "City",
+            "email": "Email",
+            "phone": "Phone",
+            "azioni": "Actions",
+            "link": "Open link",
+            "edit": "Edit"
+        }
+    },
+    "imgUpload": {
+        "uploadBtn": "Upload images"
+    },
+    "agencySettings": {
+        "formTitle": "Agency data",
+        "labelLogo": "Upload logo",
+        "labelLogoEmpty": "Upload at least one image",
+        "labelAgencyName": "Agency name",
+        "labelAgencyAdress": "Address",
+        "labelAgencyAbout": "Agency description",
+        "labelAgencyContacts": "Phone",
+        "labelAgencyCF": "P.IVA/CF",
+        "labelAgencyURL": "Agency link",
+        "labelAgencyBtn": "Save"
+    },
+    "agencyVacancy": {
+        "createVacancy": {
+            "formTitle": "New job offer"
+        },
+        "editVacancy": {
+            "formTitle": "Edit"
+        },
+        "vacancyForm": {
+            "title": "Job title",
+            "titleEmpty": "Job title is required",
+            "local": "City",
+            "localEmpty": "City is required",
+            "province": "Province",
+            "provinceEmpty": "Province is required",
+            "region": "Region",
+            "regionEmpty": "Region is required",
+            "category": "Category",
+            "categoryEmpty": "Category is required",
+            "branch": "Branch of the job offer",
+            "description": "Job description",
+            "descriptionEmpty": "Job description is required",
+            "tags": "Keywords",
+            "tagsDescription": "Tags must be separated by a comma",
+            "reallyUpTo": "Job offer expiration date",
+            "optional": "Optional",
+            "contract": "Contract type",
+            "modejob": "Job type",
+            "workSchedule": "Work schedule",
+            "eduacation": "Education level",
+            "experience": "Experience",
+            "fromBtn": "Save"
+        },
+        "vacanceList": {
+            "allVacancies": "All job offers",
+            "create": "New job offer",
+            "trash": "Delete"
+        },
+        "vacancyColumn": {
+            "selectAll": "Select all",
+            "select": "Select",
+            "title": "Title",
+            "createdAt": "Creation date",
+            "reallyUpTo": "Expiration date",
+            "views": "Visitors",
+            "isValidate": "Status",
+            "actions": "Actions",
+            "link": "Job offer page",
+            "edit": "Edit"
+        }
+    },
+    "curriculum": {
+        "courses": {
+            "CourseTitle": "List of courses",
+            "CreateCourseBtn": "New",
+            "SaveCourseBtn": "Save",
+            "CancelCourseBtn": "Cancel",
+            "fieldEmpty": "The field is empty",
+            "fieldCourse": "Course",
+            "fieldInstitute": "Institute",
+            "fieldGrade": "Completion grade",
+            "fieldEndDate": "End date",
+            "fieldStartDate": "Start date"
+        },
+        "education": {
+            "EducationTitle": "List of education",
+            "CreateEducationBtn": "New",
+            "SaveEducationBtn": "Save",
+            "CancelEducationBtn": "Cancel",
+            "fieldEmpty": "The field is empty",
+            "fieldEducation": "Education level",
+            "fieldInstitute": "Institute",
+            "fieldGrade": "Completion grade",
+            "fieldEndDate": "End date",
+            "fieldStartDate": "Start date",
+            "fieldDescription": "Description"
+        },
+        "experience": {
+            "ExperienceTitle": "List of experiences",
+            "CreateExperienceBtn": "New",
+            "SaveExperienceBtn": "Save",
+            "CancelExperienceBtn": "Cancel",
+            "CurrentExperience": "Current position",
+            "fieldEmpty": "The field is empty",
+            "fieldPosition": "Position",
+            "fieldCompany": "Company",
+            "fieldContractType": "Contract type",
+            "fieldLocation": "Location",
+            "fieldEndDate": "End date",
+            "fieldStartDate": "Start date",
+            "fieldDescription": "Description"
+        },
+        "hobbies": {
+            "HobbiesTitle": "List of hobbies",
+            "CreateHobbiesBtn": "New",
+            "SaveHobbiesBtn": "Save",
+            "CancelHobbiesBtn": "Cancel",
+            "fieldEmpty": "The field is empty",
+            "fieldHobbies": "Hobbies"
+        },
+        "languages": {
+            "LanguagesTitle": "List of languages",
+            "CreateLanguagesBtn": "New",
+            "SaveLanguagesBtn": "Save",
+            "CancelLanguagesBtn": "Cancel",
+            "fieldEmpty": "The field is empty",
+            "fieldLanguage": "Language",
+            "fieldLevel": "Level",
+            "levelbasic": "Basic",
+            "levelintermediate": "Intermediate",
+            "leveladvanced": "Advanced",
+            "levelfluent": "Fluent"
+        },
+        "lifeStatus": {
+            "fieldEmpty": "The field is required",
+            "fieldLifeStatus": "Life status",
+            "Genere": "Gender",
+            "man": "Male",
+            "woman": "Female",
+            "national": "Nationality",
+            "haveAuto": "Owns a car",
+            "driverCategory": "Driver's category",
+            "SaveLanguagesBtn": "Save",
+            "maritalStatus": "Marital status",
+            "single": "Single",
+            "married": "Married",
+            "divorced": "Divorced",
+            "widowed": "Widowed",
+            "separated": "Separated",
+            "cohabiting": "Cohabiting",
+            "children": "Children",
+            "noChildren": "None"
+        }
     }
 }

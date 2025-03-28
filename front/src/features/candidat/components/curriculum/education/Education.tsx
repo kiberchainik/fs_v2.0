@@ -7,8 +7,11 @@ import styles from './education.module.scss'
 import { CiEdit, CiTrash } from "react-icons/ci";
 import EducationForm from "./EducationForm";
 import { formatDate } from "@/shared/utils";
+import { useTranslations } from "next-intl";
+import Spinner from "@/shared/components/Spinner/Spinner";
 
 export default function Education() {
+    const t = useTranslations('curriculum.education')
     const {
         deletingEducationId,
         education,
@@ -29,7 +32,7 @@ export default function Education() {
     return (
         <Card className="w-full">
             <CardHeader className={styles.cardHeader}>
-                <CardTitle>Candidat education</CardTitle>
+                <CardTitle>{t('EducationTitle')}</CardTitle>
             </CardHeader>
             <Form {...addForm}>
                 <form
@@ -37,9 +40,7 @@ export default function Education() {
                     className={styles.formWrapper}
                 >
                     <EducationForm formData={addForm} levelEducation={levelEducation!} />
-                    <Button type='submit' disabled={isAdding}>
-                        Add course
-                    </Button>
+                    <Button type='submit' disabled={isAdding}>{t('CreateEducationBtn')}</Button>
                 </form>
             </Form>
             {
@@ -58,11 +59,9 @@ export default function Education() {
                                                     <EducationForm formData={editForm} levelEducation={levelEducation!} />
                                                     <div className='flex gap-x-1'>
                                                         <Button type='submit' disabled={isSaving}>
-                                                            {isSaving ? 'Saving...' : 'Save'}
+                                                            {isSaving ? <Spinner /> : t('SaveEducationBtn')}
                                                         </Button>
-                                                        <Button onClick={() => setEditEducationId(null)}>
-                                                            Cancel
-                                                        </Button>
+                                                        <Button onClick={() => setEditEducationId(null)}>{t('CancelEducationBtn')}</Button>
                                                     </div>
                                                 </form>
                                             </Form>
@@ -78,7 +77,7 @@ export default function Education() {
                                                         <CiEdit className='text-lg' />
                                                     </Button>
                                                     <Button onClick={() => handleDeleteEducation(item.id)} variant='destructive' disabled={deletingEducationId === item.id} className='p-3'>
-                                                        {deletingEducationId === item.id ? 'Deleting...' : <CiTrash className='text-lg text-white' />}
+                                                        {deletingEducationId === item.id ? <Spinner /> : <CiTrash className='text-lg text-white' />}
                                                     </Button>
                                                 </div>
                                             </div>

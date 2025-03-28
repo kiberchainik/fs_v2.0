@@ -16,7 +16,7 @@ export const CandidatList = ({ candidats, count, pageCount }: ICandidatResponse)
         limit: parseInt((searchParams.get('limit') as string) || PAGE_LIMIT_DEFAULT)
     }
 
-    if (candidats.length === 0) return <div>Agency list is empty!</div>
+    if (candidats.length === 0) return <div>{t('candidatListEmpty')}</div>
 
     return (
         <div className="container mx-auto">

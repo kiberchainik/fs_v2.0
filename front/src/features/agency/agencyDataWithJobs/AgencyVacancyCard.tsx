@@ -2,11 +2,10 @@
 
 import { IUserMenuHeaderData } from "@/features/userHeaderBtn/types/userMenuData.type"
 import { IVacanciaesFullDate } from "../vacancy/types"
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/shared/components"
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle, Description } from "@/shared/components"
 import { CandidateBtns } from "@/features/vacancy/components/candidatBtns/CandidateBtns"
 import { formatDate, generatePostUrl } from "@/shared/utils"
 import { CiCalendar, CiClock2, CiRead } from "react-icons/ci"
-import DOMPurify from 'isomorphic-dompurify'
 
 import styles from './agencyData.module.scss'
 import { useEffect, useState } from "react"
@@ -18,7 +17,6 @@ interface IVacancyCardProps extends IVacanciaesFullDate {
 
 export default function AgencyVacancyCard({ id, title, slug, description, categories, createdAt, reallyUpTo, views, savedBy, sendCandidature, authUser }: IVacancyCardProps) {
     const [isClient, setIsClient] = useState(false);
-    const sanitizedContent = DOMPurify.sanitize(description.slice(0, 150) + '...' || '')
     useEffect(() => {
         setIsClient(true)
     }, [])
@@ -40,9 +38,10 @@ export default function AgencyVacancyCard({ id, title, slug, description, catego
             </CardHeader>
             {isClient && (
                 <CardDescription
-                    dangerouslySetInnerHTML={{ __html: sanitizedContent }}
                     className="prose max-w-none"
-                ></CardDescription>
+                >
+                    <Description>{description.slice(0, 150) + '...'}</Description>
+                </CardDescription>
             )}
             <CardFooter>
 

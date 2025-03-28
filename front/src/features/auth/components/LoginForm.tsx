@@ -32,7 +32,7 @@ export function LoginForm({ isShowSocial }: { isShowSocial: boolean }) {
     const onSubmit = async (values: TypeLoginSchema) => {
         const token = await executeRecaptcha()
         if (!token) {
-            toast.error('Captcha error')
+            toast.error(t('captchaError'))
         } else {
             login({ values, recaptcha: token })
         }
@@ -40,8 +40,8 @@ export function LoginForm({ isShowSocial }: { isShowSocial: boolean }) {
 
     return (
         <AuthWrapper
-            heading="Login"
-            description="Compile all fields for login"
+            heading={t('heading')}
+            description={t('description')}
             isShowSocial={isShowSocial}
         >
             <Form {...form}>

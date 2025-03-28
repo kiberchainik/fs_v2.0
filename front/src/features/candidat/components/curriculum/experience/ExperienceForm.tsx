@@ -3,6 +3,7 @@ import { DateTimePicker } from "@/shared/components/datapicker/Datapicker"
 import { UseFormReturn, Controller } from "react-hook-form"
 import { TypeExperienceSchema } from "../../../schemes"
 import { IOptions } from "@/features/agency/vacancy/types"
+import { useTranslations } from "next-intl"
 
 type FormProps = {
     contractType: IOptions[]
@@ -10,16 +11,19 @@ type FormProps = {
 }
 
 export default function ExperienceForm({ formData, contractType }: FormProps) {
+    const t = useTranslations('curriculum.experience')
     return (
         <>
             <div className='flex md:flex-row flex-col w-full gap-3'>
                 <FormField
                     control={formData.control}
                     name='company'
+                    rules={{ required: t('fieldEmpty') }}
                     render={({ field }) => (
                         <FormItem className='w-full'>
+                            <FormLabel>{t('fieldCompany')}</FormLabel>
                             <FormControl>
-                                <Input placeholder='Company' {...field} />
+                                <Input placeholder={t('fieldCompany')} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -28,6 +32,7 @@ export default function ExperienceForm({ formData, contractType }: FormProps) {
                 <Controller
                     control={formData.control}
                     name='contractTypeId'
+                    rules={{ required: t('fieldEmpty') }}
                     render={({ field }) => (
                         <FormItem className='w-full'>
                             <Select
@@ -36,14 +41,14 @@ export default function ExperienceForm({ formData, contractType }: FormProps) {
                             >
                                 <FormControl>
                                     <SelectTrigger>
-                                        <SelectValue placeholder='Contract type' />
+                                        <SelectValue placeholder={t('fieldContractType')} />
                                     </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
                                     <SelectGroup>
-                                        {contractType ? contractType.map(type => (
+                                        {contractType && contractType.map(type => (
                                             <SelectItem value={type.id} key={type.id}>{type.name}</SelectItem>
-                                        )) : <SelectItem value='0' key={'without_branch'}>Non ci sono i dati</SelectItem>}
+                                        ))}
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>
@@ -54,10 +59,12 @@ export default function ExperienceForm({ formData, contractType }: FormProps) {
                 <FormField
                     control={formData.control}
                     name='location'
+                    rules={{ required: t('fieldEmpty') }}
                     render={({ field }) => (
                         <FormItem className='w-full'>
+                            <FormLabel>{t('fieldLocation')}</FormLabel>
                             <FormControl>
-                                <Input placeholder='Location' {...field} />
+                                <Input placeholder={t('fieldLocation')} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -69,7 +76,7 @@ export default function ExperienceForm({ formData, contractType }: FormProps) {
                     render={({ field }) => (
                         <FormItem className='w-full'>
                             <FormControl>
-                                <Input placeholder='Description' {...field} />
+                                <Input placeholder={t('fieldDescription')} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -80,9 +87,10 @@ export default function ExperienceForm({ formData, contractType }: FormProps) {
                 <Controller
                     control={formData.control}
                     name="dateRange.startDate"
+                    rules={{ required: t('fieldEmpty') }}
                     render={({ field }) => (
                         <FormItem className='w-full'>
-                            <FormLabel>Start day</FormLabel>
+                            <FormLabel>{t('fieldStartDate')}</FormLabel>
                             <DateTimePicker
                                 use12HourFormat={false}
                                 value={field.value}
@@ -100,7 +108,7 @@ export default function ExperienceForm({ formData, contractType }: FormProps) {
                     name="dateRange.endDate"
                     render={({ field }) => (
                         <FormItem className='w-full'>
-                            <FormLabel>End day</FormLabel>
+                            <FormLabel>{t('fieldEndDate')}</FormLabel>
                             <DateTimePicker
                                 use12HourFormat={false}
                                 value={field.value}
@@ -127,7 +135,7 @@ export default function ExperienceForm({ formData, contractType }: FormProps) {
                             </FormControl>
                             <div className="space-y-1 leading-none">
                                 <FormLabel>
-                                    Current work
+                                    {t('CurrentExperience')}
                                 </FormLabel>
                             </div>
                         </FormItem>

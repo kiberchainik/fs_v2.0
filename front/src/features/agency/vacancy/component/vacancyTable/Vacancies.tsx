@@ -13,11 +13,13 @@ import { formatDate } from "@/shared/utils"
 import { useState } from "react"
 import { CiTrash } from "react-icons/ci"
 import { useDeleteManyVacancy } from "../../hooks/useDeleteVacancy"
+import { useTranslations } from "next-intl"
 
 export function Vacancies() {
 	const { vacancyList, isFetching } = useGetVacancy()
 	const { deleteManyVacancy } = useDeleteManyVacancy()
 	const [selectedIds, setSelectedIds] = useState<string[]>([])
+	const t = useTranslations('agencyVacancy.vacanceList')
 
 	const formattedVacancies: IVacancyColumn[] = vacancyList
 		? vacancyList.map(vacancy => ({
@@ -42,18 +44,17 @@ export function Vacancies() {
 			) : (
 				<>
 					<div className={styles.header}>
-						<Heading>All vacancies</Heading>
+						<Heading>{t('allVacancies')}</Heading>
 
 						<div className={styles.buttons}>
 							<Link href={AGENCY_URL.createOffers()}>
 								<Button variant='outline'>
-									<Plus />
-									Создать
+									<Plus /> {t('create')}
 								</Button>
 							</Link>
 							{selectedIds.length > 0 && (
 								<Button variant='default' onClick={() => handleDeleteMany()}>
-									<CiTrash /> Удалить
+									<CiTrash /> {t('trash')}
 								</Button>
 							)}
 						</div>

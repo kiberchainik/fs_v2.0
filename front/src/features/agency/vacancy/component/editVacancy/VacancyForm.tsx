@@ -18,12 +18,14 @@ import { IoMdTrash } from 'react-icons/io'
 import { useDeleteVacancy } from '../../hooks/useDeleteVacancy'
 import { joinNamesWithComma, splitTagsWithComa } from '@/shared/utils'
 import { VacancyForm } from '../vacancyForm/VacancyForm'
+import { useTranslations } from 'next-intl'
 
 interface VacancyFromProps {
 	vacancy: IVacanciaesEdit
 }
 
 export function VacancyEditForm({ vacancy }: VacancyFromProps) {
+	const t = useTranslations('agencyVacancy.editVacancy')
 	const { updJob, isPending, isSuccess } = useUpdateVacancyMutation()
 	const { deleteVacancy, isLoadingDelete } = useDeleteVacancy()
 
@@ -58,7 +60,7 @@ export function VacancyEditForm({ vacancy }: VacancyFromProps) {
 	return (
 		<Card className='md:w-[800px] w-full mx-5 md:mx-0'>
 			<CardHeader className='flex flex-row items-center justify-between'>
-				<CardTitle>Edit {vacancy.title}</CardTitle>
+				<CardTitle>{t('formTitle')} {vacancy.title}</CardTitle>
 				<ConfirmModal handleClick={() => deleteVacancy()}>
 					<Button size='icon' variant='outline' disabled={isLoadingDelete}>
 						<IoMdTrash className='text-red-500 size-6' />

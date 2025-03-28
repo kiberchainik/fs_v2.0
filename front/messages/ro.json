@@ -44,5 +44,308 @@
             "without_branch": "Fără sucursală",
             "search_btn": "Caută"
         }
+    },
+    "jobOffers": {
+        "filter": {
+            "filter_title": "Caută cu filtru",
+            "category_error_empty": "Pentru a căuta, alege o categorie",
+            "category_placeholder": "Categorie",
+            "location": "Localitate",
+            "contractType": "Tip de contract",
+            "modeJob": "Mod de lucru",
+            "workingTime": "Program de lucru",
+            "levelEducation": "Nivel de educație",
+            "experienceMinimal": "Experiență minimă necesară",
+            "search_btn": "Caută oferte de muncă"
+        }
+    },
+    "candidatsPage": {
+        "candidatListEmpty": "Nu există candidați, nu aștepta, fii primul!",
+        "h4": "Despre LavIdea.ro",
+        "h2": "Candidați Ideali",
+        "description_p1": "Descoperă cei mai buni candidați disponibili și găsește talentul potrivit pentru compania ta. Explorează profilurile candidaților, compară competențele lor și alege profesioniștii care se potrivesc cel mai bine nevoilor tale.",
+        "description_p2": "Cu LavIdea.ro, căutarea de personal devine simplă și eficientă. Nu rata ocazia de a-ți îmbunătăți echipa cu cele mai bune talente de pe piață."
+    },
+    "chisiamoPage": {
+        "title_h3": "Locul de muncă ideal - este resursa ta online pentru tot ce ține de muncă",
+        "desc_title_p1": "Creare gratuită a unui CV",
+        "desc_p1": "Curriculum vitae-ul tău este cartea ta de vizită pentru potențialii angajatori. Instrumentul nostru gratuit de creare a unui CV te va ajuta să creezi un CV profesional și atractiv în câteva minute.",
+        "desc_title_p2": "Căutare de muncă cu filtru",
+        "desc_p2": "Căutarea noastră de muncă cu filtru îți permite să găsești locurile de muncă perfecte în funcție de competențele, experiența și interesele tale.",
+        "desc_title_p3": "Căutare de muncă și plasare",
+        "desc_p3": "Te ajutăm să găsești locul de muncă potrivit pentru tine. Echipa noastră de experți te va ghida prin procesul de căutare a unui loc de muncă și te va ajuta să obții un interviu.",
+        "desc_title_p4": "Selecție largă de agenții de muncă",
+        "desc_p4": "Colaborăm cu cele mai bune agenții de muncă din țară. Acest lucru înseamnă că ai acces la o gamă largă de oportunități de muncă.",
+        "desc_title_p5": "Publicare gratuită a ofertelor tale de muncă pentru agenții",
+        "desc_p5": "Dacă ești angajator, poți publica gratuit ofertele tale de muncă pe site-ul nostru. În acest fel, poți ajunge la un public larg de candidați.",
+        "desc_title_p6": "Căutare și selecție de candidați pentru orice tip de muncă",
+        "desc_p6": "Te ajutăm să găsești candidații perfecți pentru nevoile tale. Site-ul nostru te va ajuta să selectezi cei mai calificați și potriviți candidați pentru compania ta.",
+        "chisiamoPage_title_h2_p1": "Avantajele utilizării",
+        "chisiamoPage_title_h2_p2": "site-ului nostru",
+        "chisiamoPage_p": "Suntem soluția ta unică pentru toate nevoile tale legate de muncă. Fie că ești un candidat în căutarea unui loc de muncă sau un angajator în căutarea de candidați, avem ceea ce îți trebuie. Înregistrează-te acum și începe să găsești locul de muncă ideal sau candidații perfecți!",
+        "block1_h4": "Este gratuit",
+        "block1_p": "Site-ul nostru este gratuit de utilizat",
+        "block2_h4": "Este ușor",
+        "block2_p": "Site-ul nostru este ușor de navigat și utilizat",
+        "block3_h4": "Este eficient",
+        "block3_p": "Site-ul nostru te ajută să găsești locul de muncă perfect.",
+        "block4_h4": "Este sigur",
+        "block4_p": "Site-ul nostru este sigur și protejat."
+    },
+    "contactsPage": {
+        "h2_p1": "Aveți",
+        "h2_p2": "Întrebări?",
+        "description": "Spre deosebire de utilizarea 'Conținut aici, conținut aici', făcându-l să arate ca un text lizibil în limba română. Multe pachete de publicare desktop și editori de pagini web folosesc acum Lorem Ipsum",
+        "name": "Nume",
+        "email": "Email",
+        "message": "Mesaj",
+        "send": "Trimite",
+        "candidatFullData": {
+            "availabilityTransport": "Deține mașină",
+            "downloadCV": "Descarcă CV",
+            "aboutMy": "Despre mine ...",
+            "skills": "Competențe profesionale ...",
+            "hobbies": "Hobby-uri ...",
+            "languages": "Limbi ...",
+            "experience": "Experiența mea ...",
+            "eduacation": "Educație ...",
+            "courses": "Cursuri ...",
+            "experienceStory": "Povestea experienței",
+            "contractType": "Tip de contract",
+            "contacts": "Contacte candidat"
+        },
+        "candidatureSended": {
+            "error": "Eroare:",
+            "candidatureSendedEmpty": "Nu există oferte salvate"
+        }
+    },
+    "authPage": {
+        "tabLogin": "Autentificare",
+        "tabRegister": "Cont nou",
+        "login": {
+            "heading": "Zona privată",
+            "description": "Completați login-ul și parola pentru a accesa",
+            "code": "Cod",
+            "email": "Email",
+            "password": "Parolă",
+            "login_btn": "Autentificare",
+            "reset_password": "Recuperare parolă",
+            "captchaError": "Captcha nu este validă, încercați din nou mai târziu"
+        },
+        "newPassword": {
+            "heading": "Parolă nouă",
+            "description": "Introduceți parola nouă",
+            "formLabel": "Parolă",
+            "formBtn": "Autentificare"
+        },
+        "register": {
+            "heading": "Cont nou",
+            "description": "Completați toate câmpurile pentru a crea un cont nou",
+            "captchaError": "Captcha nu este validă, încercați din nou mai târziu",
+            "anyError": "A apărut o eroare neașteptată. Vă rugăm să încercați din nou.",
+            "formLabelName": "Introduceți numele dvs.",
+            "formLabelEmail": "Introduceți Email",
+            "formLabelPassword": "Introduceți parola",
+            "formLabelPasswordRepeat": "Repetați parola",
+            "formBtm": "Creați cont"
+        },
+        "resetPassword": {
+            "formLabelEmail": "Introduceți Email",
+            "formBtm": "Recuperare parolă",
+            "heading": "Parolă nouă",
+            "description": "Introduceți parola nouă",
+            "captchaError": "Captcha nu este validă, încercați din nou mai târziu"
+        }
+    },
+    "agency": {
+        "agencyList": {
+            "agencyListEmpty": "Nu există agenții de muncă",
+            "h2": "Agenții de muncă",
+            "p": "Descoperă lista agențiilor de recrutare. Fiecare agenție este specializată în diverse sectoare și oferă o gamă largă de oportunități de muncă. Găsește agenția care se potrivește cel mai bine nevoilor tale și începe căutarea unui loc de muncă cu noi. Cele mai bune agenții sunt aici pentru a te ajuta să găsești locul de muncă al visurilor tale."
+        },
+        "agencyFullDate": {
+            "followBtn": "Urmărește această agenție",
+            "agencySiteBtn": "Site-ul agenției",
+            "contactInfo": "Informații despre agenție",
+            "vacancies": "Oferte de muncă"
+        }
+    },
+    "branch": {
+        "branchList": "Toate filialele",
+        "createBranchBtn": "Filială nouă",
+        "editBranchBtn": "Editează filiala",
+        "deleteBranchBtn": "Șterge filiala",
+        "branchForm": {
+            "labelLogo": "Încarcă logo",
+            "labelLogoEmpty": "Încarcă cel puțin un logo",
+            "labelName": "Numele filialei",
+            "labelAdress": "Adresă",
+            "labelLocation": "Oraș",
+            "labelRegion": "Regiune",
+            "labelEmail": "Email",
+            "labelPhone": "Telefon",
+            "labelFax": "Fax",
+            "labelDescription": "Descriere scurtă pentru filială",
+            "dranchBtn": "Salvează"
+        },
+        "branchColumns": {
+            "selectAll": "Selectează tot",
+            "selectRow": "Selectează",
+            "name": "Numele filialei",
+            "location": "Oraș",
+            "email": "Email",
+            "phone": "Telefon",
+            "azioni": "Acțiuni",
+            "link": "Deschide link",
+            "edit": "Editează"
+        }
+    },
+    "imgUpload": {
+        "uploadBtn": "Încarcă imagini"
+    },
+    "agencySettings": {
+        "formTitle": "Datele agenției",
+        "labelLogo": "Încarcă logo",
+        "labelLogoEmpty": "Încarcă cel puțin o imagine",
+        "labelAgencyName": "Numele agenției",
+        "labelAgencyAdress": "Adresă",
+        "labelAgencyAbout": "Descrierea agenției",
+        "labelAgencyContacts": "Telefon",
+        "labelAgencyCF": "CUI",
+        "labelAgencyURL": "Link-ul agenției",
+        "labelAgencyBtn": "Salvează"
+    },
+    "agencyVacancy": {
+        "createVacancy": {
+            "formTitle": "Ofertă de muncă nouă"
+        },
+        "editVacancy": {
+            "formTitle": "Editează"
+        },
+        "vacancyForm": {
+            "title": "Titlul ofertei",
+            "titleEmpty": "Titlul ofertei este obligatoriu",
+            "local": "Oraș",
+            "localEmpty": "Orașul ofertei este obligatoriu",
+            "province": "Județ",
+            "provinceEmpty": "Județul ofertei este obligatoriu",
+            "region": "Regiune",
+            "regionEmpty": "Regiunea ofertei este obligatorie",
+            "category": "Categorie",
+            "categoryEmpty": "Categoria ofertei este obligatorie",
+            "branch": "Filiala ofertei de muncă",
+            "description": "Descrierea ofertei",
+            "descriptionEmpty": "Descrierea ofertei este obligatorie",
+            "tags": "Cuvinte cheie",
+            "tagsDescription": "Tag-urile trebuie separate prin virgulă",
+            "reallyUpTo": "Data expirării ofertei",
+            "optional": "Opțional",
+            "contract": "Tip de contract",
+            "modejob": "Tip de muncă",
+            "workSchedule": "Program de lucru",
+            "eduacation": "Nivel de educație",
+            "experience": "Experiență",
+            "fromBtn": "Salvează"
+        },
+        "vacanceList": {
+            "allVacancies": "Toate ofertele de muncă",
+            "create": "Ofertă de muncă nouă",
+            "trash": "Șterge"
+        },
+        "vacancyColumn": {
+            "selectAll": "Selectează tot",
+            "select": "Selectează",
+            "title": "Titlu",
+            "createdAt": "Data creării",
+            "reallyUpTo": "Data expirării ofertei",
+            "views": "Vizitatori",
+            "isValidate": "Stare",
+            "actions": "Acțiuni",
+            "link": "Pagina ofertei",
+            "edit": "Editează"
+        }
+    },
+    "curriculum": {
+        "courses": {
+            "CourseTitle": "Lista cursurilor",
+            "CreateCourseBtn": "Nou",
+            "SaveCourseBtn": "Salvează",
+            "CancelCourseBtn": "Anulează",
+            "fieldEmpty": "Câmpul este gol",
+            "fieldCourse": "Cursul",
+            "fieldInstitute": "Instituție",
+            "fieldGrade": "Grad de completare",
+            "fieldEndDate": "Data de sfârșit",
+            "fieldStartDate": "Data de început"
+        },
+        "education": {
+            "EducationTitle": "Lista cursurilor",
+            "CreateEducationBtn": "Nou",
+            "SaveEducationBtn": "Salvează",
+            "CancelEducationBtn": "Anulează",
+            "fieldEmpty": "Câmpul este gol",
+            "fieldEducation": "Nivel de educație",
+            "fieldInstitute": "Instituție",
+            "fieldGrade": "Grad de completare",
+            "fieldEndDate": "Data de sfârșit",
+            "fieldStartDate": "Data de început",
+            "fieldDescription": "Descriere"
+        },
+        "experience": {
+            "ExperienceTitle": "Lista experiențelor",
+            "CreateExperienceBtn": "Nou",
+            "SaveExperienceBtn": "Salvează",
+            "CancelExperienceBtn": "Anulează",
+            "CurrentExperience": "Locul actual",
+            "fieldEmpty": "Câmpul este gol",
+            "fieldPosition": "Poziție",
+            "fieldCompany": "Companie",
+            "fieldContractType": "Tip de contract",
+            "fieldLocation": "Localitate",
+            "fieldEndDate": "Data de sfârșit",
+            "fieldStartDate": "Data de început",
+            "fieldDescription": "Descriere"
+        },
+        "hobbies": {
+            "HobbiesTitle": "Lista hobby-urilor",
+            "CreateHobbiesBtn": "Nou",
+            "SaveHobbiesBtn": "Salvează",
+            "CancelHobbiesBtn": "Anulează",
+            "fieldEmpty": "Câmpul este gol",
+            "fieldHobbies": "Hobby-uri"
+        },
+        "languages": {
+            "LanguagesTitle": "Lista limbilor",
+            "CreateLanguagesBtn": "Nou",
+            "SaveLanguagesBtn": "Salvează",
+            "CancelLanguagesBtn": "Anulează",
+            "fieldEmpty": "Câmpul este gol",
+            "fieldLanguage": "Limbă",
+            "fieldLevel": "Nivel",
+            "levelbasic": "De bază",
+            "levelintermediate": "Intermediar",
+            "leveladvanced": "Avansat",
+            "levelfluent": "Fluent"
+        },
+        "lifeStatus": {
+            "fieldEmpty": "Câmpul este obligatoriu",
+            "fieldLifeStatus": "Stare de viață",
+            "Genere": "Sex",
+            "man": "Bărbat",
+            "woman": "Femeie",
+            "national": "Naționalitate",
+            "haveAuto": "Deține mașină",
+            "driverCategory": "Categorie de permis",
+            "SaveLanguagesBtn": "Salvează",
+            "maritalStatus": "Stare civilă",
+            "single": "Necăsătorit/ă",
+            "married": "Căsătorit/ă",
+            "divorced": "Divorțat/ă",
+            "widowed": "Văduv/ă",
+            "separated": "Separat/ă",
+            "cohabiting": "Cohabitant/ă",
+            "children": "Copii",
+            "noChildren": "Niciunul"
+        }
     }
 }

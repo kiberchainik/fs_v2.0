@@ -12,12 +12,13 @@ import { Plus } from "lucide-react"
 import { branchColumns } from "./BranchColumns"
 import { useState } from "react"
 import { CiTrash } from "react-icons/ci"
+import { useTranslations } from "next-intl"
 
 export function Branch() {
     const { branches, isFetching } = useGetBranch()
     const { deleteManyBranch } = useDeleteManyBranch()
     const [selectedIds, setSelectedIds] = useState<string[]>([])
-    console.log(selectedIds);
+    const t = useTranslations('branch')
 
 
     const handleDeleteMany = () => {
@@ -41,19 +42,18 @@ export function Branch() {
                 ? <DataTableLoading />
                 : <>
                     <div className={styles.header}>
-                        <Heading>All filials</Heading>
+                        <Heading>{t('branchList')}</Heading>
                         <div className={styles.buttons}>
                             <Link
                                 href={AGENCY_URL.createBranch()}
                             >
                                 <Button variant='outline'>
-                                    <Plus />
-                                    Создать
+                                    <Plus /> {t('createBranchBtn')}
                                 </Button>
                             </Link>
                             {selectedIds.length > 0 && (
                                 <Button variant='default' onClick={() => handleDeleteMany()}>
-                                    <CiTrash /> Удалить
+                                    <CiTrash /> {t('deleteBranchBtn')}
                                 </Button>
                             )}
                         </div>

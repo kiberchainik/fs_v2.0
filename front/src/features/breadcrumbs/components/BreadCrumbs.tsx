@@ -1,6 +1,5 @@
 import { TBreadcrumbr } from "@/features/category/types";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator, BreadcrumbPage } from "@/shared/components"
-import { ChevronRight } from "lucide-react";
 import Link from "next/link"
 
 interface BreadcrumbsProps {
