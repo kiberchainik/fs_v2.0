@@ -43,6 +43,32 @@
             "contractType": "ContractTypeId",
             "without_branch": "Without branch",
             "search_btn": "Search job"
+        },
+        "candidatsSector": {
+            "h2_p1": "The new talents",
+            "h2_p2": "on LavIdea",
+            "short_desc": "Our platform provides updated profiles, selection tools, and everything needed to identify the best talents"
+        },
+        "middleSector": {
+            "h4": "Ideal Work",
+            "h2": "The Bridge Between Agency and Candidate",
+            "p_p1": "Simplify personnel selection with lavidea.it. Post job offers and quickly find motivated and competent professionals for every sector",
+            "p_p2": "Create your CV in just a few minutes for free and search among many updated job offers in Italy",
+            "btn_candidat": "Candidate",
+            "btn_agency": "Agency"
+        },
+        "agencySector": {
+            "title": "Human resources at your fingertips",
+            "subTitle": "Discover the best employment agencies in your area"
+        },
+        "vacanciesSector": {
+            "title": "Find your ideal job quickly",
+            "subTitle": "Discover the best job opportunities available. Quickly find the ideal job that matches your skills and aspirations.",
+            "h2_p1": "Find",
+            "h2_p2": "Ideal Work",
+            "h2_p3": "in just a few minutes",
+            "short_desc_p1": "Quickly find your ideal job and start a new professional adventure.",
+            "short_desc_p2": "The best agencies are waiting for you with job offers that match your skills and aspirations"
         }
     },
     "jobOffers": {

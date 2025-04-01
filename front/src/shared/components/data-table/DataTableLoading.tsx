@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Loader } from '../ui'
+import { Loader } from '../ui/'
 
 import styles from './DataTable.module.scss'
 

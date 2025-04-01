@@ -22,8 +22,8 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow
-} from '../ui'
-import { Input } from '../ui'
+} from '../ui/'
+import { Input } from '../ui/'
 
 import styles from './DataTable.module.scss'
 import { DataTablePagination } from './DataTablePagination'

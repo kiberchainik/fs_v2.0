@@ -7,7 +7,7 @@ import {
     FormLabel,
     FormMessage,
     Input
-} from '@/shared/components/ui'
+} from '@/shared/components'
 import { Controller, useForm } from 'react-hook-form'
 import { ImageUpload } from '../image-upload/ImageUpload'
 import TextEditor from '@/shared/components/ui/TextEditor'

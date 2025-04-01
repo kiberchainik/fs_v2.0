@@ -25,10 +25,7 @@ export const useEducationLogic = () => {
             school: '',
             grade: '',
             description: '',
-            dateRange: {
-                startdate: new Date(),
-                enddate: new Date()
-            }
+            dateRange: undefined
         }
     })
 
@@ -58,8 +55,8 @@ export const useEducationLogic = () => {
             grade: education.grade,
             description: education.description,
             dateRange: {
-                startdate: education.startdate,
-                enddate: education.enddate
+                startdate: new Date(education.startdate),
+                enddate: new Date(education.enddate)
             }
         })
     }
@@ -68,7 +65,7 @@ export const useEducationLogic = () => {
         const educationData = editForm.getValues()
         const isValid = editForm.formState.isValid
 
-        if (isValid) return
+        if (!isValid) return
 
         try {
             const { dateRange, ...educationDate } = educationData

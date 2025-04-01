@@ -6,7 +6,6 @@ import { CiBoxList, CiFilter, CiGrid41 } from "react-icons/ci"
 import { useAppDispatch, useAppSelector } from "@/shared/hooks";
 import { RootState } from "@/shared/store";
 import { setSortBy, sortJobs } from "../../slice/sliceVacancy";
-import { DialogFilter } from "@/features/filter/components/DialogFilter";
 
 export default function Sorted() {
   const dispatch = useAppDispatch();

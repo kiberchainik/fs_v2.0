@@ -44,12 +44,11 @@ const TextEditor: FC<ITextEditor> = ({ description, onChange }) => {
       }),
     ],
     immediatelyRender: false,
-    content: description, // Set the initial content with the provided value
+    content: description,
     onUpdate: ({ editor }) => {
-      onChange(editor.getHTML()); // Call the onChange callback with the updated HTML content
+      onChange(editor.getHTML())
     },
   });
-//console.log(description);
 
   return (
     <>

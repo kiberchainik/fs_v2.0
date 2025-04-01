@@ -1,4 +1,4 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components/ui";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components";
 import { LoginForm } from "./LoginForm";
 import { RegisterForm } from "./RegisterForm";
 import { UserRole } from "../types";

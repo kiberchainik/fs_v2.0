@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl"
 
 type FormProps = {
     contractType: IOptions[]
-    formData: UseFormReturn<TypeExperienceSchema, any, undefined>
+    formData: UseFormReturn<TypeExperienceSchema, any, TypeExperienceSchema>
 }
 
 export default function ExperienceForm({ formData, contractType }: FormProps) {

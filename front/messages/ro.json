@@ -43,6 +43,32 @@
             "contractType": "Tip contract",
             "without_branch": "Fără sucursală",
             "search_btn": "Caută"
+        },
+        "candidatsSector": {
+            "h2_p1": "Noi talente",
+            "h2_p2": "pe LavIdea",
+            "short_desc": "Platforma noastră oferă profiluri actualizate, instrumente de selecție și tot ce este necesar pentru a identifica cele mai bune talente"
+        },
+        "middleSector": {
+            "h4": "Loc de muncă ideal",
+            "h2": "Podul dintre agenție și candidat",
+            "p_p1": "Simplifică selecția de personal cu lavidea.ro. Publică ofertele de muncă și găsește rapid profesioniști motivați și competenți pentru fiecare sector",
+            "p_p2": "Creează-ți CV-ul în câteva minute și gratuit și caută printre numeroase oferte de muncă actualizate în România",
+            "btn_candidat": "Candidat",
+            "btn_agency": "Agenție"
+        },
+        "agencySector": {
+            "title": "Resurse umane la un clic distanță",
+            "subTitle": "Descoperă cele mai bune agenții de muncă din zona ta"
+        },
+        "vacanciesSector": {
+            "title": "Găsește locul de muncă ideal rapid",
+            "subTitle": "Descoperă cele mai bune oportunități de muncă disponibile. Găsește rapid locul de muncă ideal care corespunde competențelor și aspirațiilor tale.",
+            "h2_p1": "Găsește",
+            "h2_p2": "Locul de muncă ideal",
+            "h2_p3": "în câteva minute",
+            "short_desc_p1": "Găsește rapid locul de muncă ideal și începe o nouă aventură profesională.",
+            "short_desc_p2": "Cele mai bune agenții te așteaptă cu oferte de muncă care corespund competențelor și aspirațiilor tale"
         }
     },
     "jobOffers": {

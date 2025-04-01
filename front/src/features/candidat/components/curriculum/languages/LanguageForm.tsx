@@ -4,7 +4,7 @@ import { TypeLanguageSchema } from "../../../schemes";
 import { useTranslations } from "next-intl";
 
 type FormProps = {
-    formData: UseFormReturn<TypeLanguageSchema, any, undefined>
+    formData: UseFormReturn<TypeLanguageSchema, any, TypeLanguageSchema>
 }
 
 export default function LanguageForm({ formData }: FormProps) {

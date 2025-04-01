@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl"
 
 type FormProps = {
     levelEducation: IOptions[]
-    formData: UseFormReturn<TypeEducationSchema, any, undefined>
+    formData: UseFormReturn<TypeEducationSchema, any, TypeEducationSchema>
 }
 
 export default function EducationForm({ formData, levelEducation }: FormProps) {

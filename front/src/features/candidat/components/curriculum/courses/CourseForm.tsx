@@ -5,7 +5,7 @@ import { DateTimePicker } from "@/shared/components/datapicker/Datapicker";
 import { useTranslations } from "next-intl";
 
 type FormProps = {
-    formData: UseFormReturn<TypeCourseSchema, any, undefined>
+    formData: UseFormReturn<TypeCourseSchema, any, TypeCourseSchema>
 }
 
 export default function CourseForm({ formData }: FormProps) {

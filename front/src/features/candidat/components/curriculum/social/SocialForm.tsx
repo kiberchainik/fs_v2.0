@@ -3,7 +3,7 @@ import { UseFormReturn } from "react-hook-form";
 import { TypeSocialSchema } from "../../../schemes";
 
 type FormProps = {
-    formData: UseFormReturn<TypeSocialSchema, any, undefined>
+    formData: UseFormReturn<TypeSocialSchema, any, TypeSocialSchema>
 }
 
 export default function SocialForm({ formData }: FormProps) {

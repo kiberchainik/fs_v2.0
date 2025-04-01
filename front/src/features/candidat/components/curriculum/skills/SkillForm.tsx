@@ -3,7 +3,7 @@ import { Controller, UseFormReturn } from "react-hook-form";
 import { TypeSkillSchema } from "../../../schemes";
 
 type FormProps = {
-    formData: UseFormReturn<TypeSkillSchema, any, undefined>
+    formData: UseFormReturn<TypeSkillSchema, any, TypeSkillSchema>
 }
 
 export default function SkillForm({ formData }: FormProps) {

@@ -5,7 +5,7 @@ import { formatDate, generatePostUrl } from "@/shared/utils"
 import { useAppSelector } from "@/shared/hooks"
 import Link from "next/link"
 import Image from "next/image"
-import { Button, Description, Heading } from "@/shared/components"
+import { Heading } from "@/shared/components"
 import { UserRole } from "@/features/auth/types"
 import { CandidateBtns } from "../candidatBtns/CandidateBtns"
 import { useEffect, useState } from "react"
@@ -19,6 +19,7 @@ import { IoIosTime } from "react-icons/io"
 
 import styles from './vacancyPage.module.scss'
 import { MAIN_URL } from "@/shared/config"
+import { Description, Button } from "@/shared/components"
 
 export default function VacancyPage({
   id,

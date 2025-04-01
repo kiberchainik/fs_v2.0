@@ -16,7 +16,7 @@ import {
 	FormLabel,
 	FormMessage,
 	Input
-} from '@/shared/components/ui'
+} from '@/shared/components'
 
 import { useUpdProfileMutation } from '../../hooks/useUpdProfileMutation'
 import { PrivacySchema, TypePrivacySchema } from '../../schemes'
@@ -54,7 +54,6 @@ export function Privacy() {
 			//isTwoFactorEnabled: false
 		}
 	})
-//console.log(form.getValues().about_my);
 
 	const { updProfile, isPending } = useUpdProfileMutation()
 

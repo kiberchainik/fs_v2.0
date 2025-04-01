@@ -4,7 +4,7 @@ import { TypeHobbieSchema } from "../../../schemes";
 import { useTranslations } from "next-intl";
 
 type FormProps = {
-    formData: UseFormReturn<TypeHobbieSchema, any, undefined>
+    formData: UseFormReturn<TypeHobbieSchema, any, TypeHobbieSchema>
 }
 
 export default function HobbieForm({ formData }: FormProps) {
