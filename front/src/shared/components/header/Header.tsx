@@ -1,10 +1,9 @@
 import { FC, PropsWithChildren, ReactElement } from "react";
 import styles from './header.module.scss'
 import { cn } from "@/shared/utils";
-import { Logo } from "@/shared/components";
+import { Logo, LanguageSwitcher } from "@/shared/components";
 import { ToggleTheme } from "../ui/";
 import { UserHeaderMenu } from "@/features/userHeaderBtn/componets/usermenu/UserHeaderDropdownMenu"
-import LanguageSwitcher from "../LanguageSwitcher"
 
 interface IStyles {
     className?: string

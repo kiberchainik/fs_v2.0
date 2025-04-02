@@ -6,7 +6,7 @@ import { IoLanguageOutline } from "react-icons/io5"
 import { useTransition } from 'react'
 import { Language, setLanguage } from '@/i18n'
 
-export default function LanguageSwitcher() {
+export const LanguageSwitcher = () => {
     const [isPending, startTransition] = useTransition()
     const locale = useLocale()
 

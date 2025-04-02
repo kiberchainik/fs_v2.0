@@ -1,3 +1,5 @@
+'use client'
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/components";
 import { LoginForm } from "./LoginForm";
 import { RegisterForm } from "./RegisterForm";
