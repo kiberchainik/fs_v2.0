@@ -6,8 +6,11 @@ import { CiEdit, CiTrash } from 'react-icons/ci'
 import SocialForm from './SocialForm'
 
 import styles from './social.module.scss'
+import { useTranslations } from 'next-intl'
+import Spinner from '@/shared/components/Spinner/Spinner'
 
 export default function Social() {
+    const t = useTranslations('curriculum.social')
     const {
         deletingSocialId,
         socialLinks,
@@ -26,7 +29,7 @@ export default function Social() {
     return (
         <Card className='w-full'>
             <CardHeader className={styles.cardHeader}>
-                <CardTitle>Candidat social links</CardTitle>
+                <CardTitle>{t('SocialTitle')}</CardTitle>
             </CardHeader>
             <CardContent>
                 <Form {...addForm}>
@@ -36,7 +39,7 @@ export default function Social() {
                     >
                         <SocialForm formData={addForm} />
                         <Button type='submit' disabled={isAdding}>
-                            {isAdding ? 'Adding...' : 'Save'}
+                            {isAdding ? <Spinner /> : t('CreateSocialBtn')}
                         </Button>
                     </form>
                 </Form>
@@ -54,9 +57,9 @@ export default function Social() {
                                             <SocialForm formData={editForm} />
                                             <div className='flex gap-x-1'>
                                                 <Button type='submit' disabled={isSaving}>
-                                                    {isSaving ? 'Saving...' : 'Save'}
+                                                    {isSaving ? <Spinner /> : t('SaveSocialBtn')}
                                                 </Button>
-                                                <Button onClick={() => setEditingSocialId(null)}>Cancel</Button>
+                                                <Button onClick={() => setEditingSocialId(null)}>{t('CancelSocialBtn')}</Button>
                                             </div>
                                         </form>
                                     </Form>
@@ -70,7 +73,7 @@ export default function Social() {
                                                 <CiEdit />
                                             </Button>
                                             <Button onClick={() => handleDeleteSocial(social.id)} variant='link' disabled={deletingSocialId === social.id}>
-                                                {deletingSocialId === social.id ? 'Deleting...' : <CiTrash />}
+                                                {deletingSocialId === social.id ? <Spinner /> : <CiTrash />}
                                             </Button>
                                         </div>
                                     </div>

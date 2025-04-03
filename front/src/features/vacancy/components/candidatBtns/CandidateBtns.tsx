@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation"
 import { IUserMenuHeaderData } from "@/features/userHeaderBtn/types/userMenuData.type"
 import { UserRole } from "@/features/auth/types"
 import { ISaveInFavorites, ISendCadidature } from "@/features/agency/vacancy/types"
+import { useTranslations } from "next-intl"
 
 interface CandidateBtnsProps {
     jobId: string
@@ -16,6 +17,7 @@ interface CandidateBtnsProps {
 }
 
 export function CandidateBtns({ jobId, authUser, curriculum, savedBy }: CandidateBtnsProps) {
+    const t = useTranslations('candidat.candidature')
     const router = useRouter()
     const { saveJob, isSaved } = useSaveInFavorite()
     const { sendCandidature, isSendet } = useSandetCandidature()
@@ -63,11 +65,11 @@ export function CandidateBtns({ jobId, authUser, curriculum, savedBy }: Candidat
             {isSendet || curriculum?.some(cv => cv.candidate.userId === authUser?.id) ? (
 
                 <Button onClick={() => deleteCandudatureFromJob()}>
-                    <CiTrash /> Annulla candidatura
+                    <CiTrash /> {t('cancel_candidature')}
                 </Button>
             ) : (
                 <Button onClick={() => sendCandudaturetoJob()}>
-                    <CiCirclePlus /> Candidati
+                    <CiCirclePlus /> {t('send_candidature')}
                 </Button>
             )}
         </div>

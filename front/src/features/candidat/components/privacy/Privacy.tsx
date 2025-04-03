@@ -28,10 +28,11 @@ import { useGetPrivacy } from '../../hooks'
 import { useAppSelector } from '@/shared/hooks'
 import { ImageUpload } from '../image-upload/ImageUpload'
 import TextEditor from '@/shared/components/ui/TextEditor'
+import { useTranslations } from 'next-intl'
 
 export function Privacy() {
 	const searchParams = useSearchParams()
-
+	const t = useTranslations('candidat.privacy')
 	useEffect(() => {
 		const accessToken = searchParams.get(EnumTokens.ACCESS_TOKEN)
 		if (accessToken) saveTokenStorage(accessToken)
@@ -64,7 +65,7 @@ export function Privacy() {
 	return (
 		<Card className='md:w-[800px] w-full mx-5 md:mx-0'>
 			<CardHeader className='flex flex-row items-center justify-between'>
-				<CardTitle>Данные профиля</CardTitle>
+				<CardTitle>{t('title')}</CardTitle>
 			</CardHeader>
 			<CardContent>
 				{<Form {...form}>
@@ -76,11 +77,11 @@ export function Privacy() {
 							control={form.control}
 							name='avatar'
 							rules={{
-								required: 'Загрузите хотя бы одну картинку'
+								required: t('avatatEmpty')
 							}}
 							render={({ field }) => (
 								<FormItem className='mt-4'>
-									<FormLabel>Avatar</FormLabel>
+									<FormLabel>{t('avatar')}</FormLabel>
 									<FormControl>
 										<ImageUpload
 											isDisabled={isLoading}
@@ -97,7 +98,7 @@ export function Privacy() {
 							name='email'
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Почта</FormLabel>
+									<FormLabel>Email</FormLabel>
 									<FormControl>
 										<Input
 											placeholder='ivan@example.com'
@@ -115,7 +116,7 @@ export function Privacy() {
 							name='name'
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Nome</FormLabel>
+									<FormLabel>{t('name')}</FormLabel>
 									<FormControl>
 										<Input
 											placeholder='Nome'
@@ -133,7 +134,7 @@ export function Privacy() {
 							name='lastname'
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Cognome</FormLabel>
+									<FormLabel>{t('surname')}</FormLabel>
 									<FormControl>
 										<Input
 											placeholder='Cognome'
@@ -151,7 +152,7 @@ export function Privacy() {
 							name="birthday"
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Birthday</FormLabel>
+									<FormLabel>{t('birthday')}</FormLabel>
 									<DateTimePicker
 										use12HourFormat={false}
 										value={field.value}
@@ -169,10 +170,10 @@ export function Privacy() {
 							name='resident'
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Address resident</FormLabel>
+									<FormLabel>{t('resident')}</FormLabel>
 									<FormControl>
 										<Input
-											placeholder='Address resident'
+											placeholder={t('resident')}
 											disabled={isFetching}
 											type='text'
 											{...field}
@@ -187,7 +188,7 @@ export function Privacy() {
 							name='about_my'
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>About my</FormLabel>
+									<FormLabel>{t('description')}</FormLabel>
 									<FormControl>
 										<TextEditor description={field.value} onChange={field.onChange} />
 									</FormControl>
@@ -200,10 +201,10 @@ export function Privacy() {
 							name='phone'
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Mobile</FormLabel>
+									<FormLabel>{t('phone')}</FormLabel>
 									<FormControl>
 										<Input
-											placeholder='Mobile'
+											placeholder={t('phone')}
 											disabled={isFetching}
 											type='text'
 											{...field}
@@ -213,9 +214,7 @@ export function Privacy() {
 								</FormItem>
 							)}
 						/>
-						<Button type='submit' disabled={isFetching}>
-							Salva
-						</Button>
+						<Button type='submit' disabled={isFetching}>{t('saveBtn')}</Button>
 					</form>
 				</Form>
 				}

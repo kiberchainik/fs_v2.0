@@ -30,7 +30,7 @@ export default function Contacts() {
                                 control={form.control}
                                 name='name'
                                 rules={{
-                                    required: 'Field is required'
+                                    required: t('fieldEmpty')
                                 }}
                                 render={({ field }) => (
                                     <FormItem className='mb-3 w-full bg-'>
@@ -46,7 +46,7 @@ export default function Contacts() {
                                 control={form.control}
                                 name='email'
                                 rules={{
-                                    required: 'Field is required'
+                                    required: t('fieldEmpty')
                                 }}
                                 render={({ field }) => (
                                     <FormItem className='mb-3 w-full'>
@@ -63,7 +63,7 @@ export default function Contacts() {
                             control={form.control}
                             name='message'
                             rules={{
-                                required: 'Field is required'
+                                required: t('fieldEmpty')
                             }}
                             render={({ field }) => (
                                 <FormItem className='mb-3 w-full'>

@@ -63,7 +63,7 @@ export function LoginForm({ isShowSocial }: { isShowSocial: boolean }) {
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>{t('email')}</FormLabel>
-                                        <FormControl><Input placeholder="Your email" type="email" {...field} disabled={isLoading} /></FormControl>
+                                        <FormControl><Input placeholder={t('email')} type="email" {...field} disabled={isLoading} /></FormControl>
                                         <FormMessage />
                                     </FormItem>
                                 )}
@@ -75,14 +75,14 @@ export function LoginForm({ isShowSocial }: { isShowSocial: boolean }) {
                                             <FormLabel>{t('password')}</FormLabel>
                                             <Link href='/auth/reset-password' className='ml-auto inline-block text-sm underline'>{t('reset_password')}</Link>
                                         </div>
-                                        <FormControl><Input placeholder="Your password" type="password" {...field} disabled={isLoading} /></FormControl>
+                                        <FormControl><Input placeholder={t('password')} type="password" {...field} disabled={isLoading} /></FormControl>
                                         <FormMessage />
                                     </FormItem>
                                 )}
                             />
                         </>
                     )}
-                    <Button type="submit" disabled={isLoading}>{t('login')}</Button>
+                    <Button type="submit" disabled={isLoading}>{t('login_btn')}</Button>
                 </form>
             </Form>
         </AuthWrapper>

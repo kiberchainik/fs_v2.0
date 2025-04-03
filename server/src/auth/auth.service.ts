@@ -48,6 +48,9 @@ export class AuthService {
     async login(dto: LoginDto) {
         const user = await this.validateUser(dto.email) //if !user, returned throw
 
+        if (user.method !== AuthMethod.CREDENTIALS)
+            throw new UnauthorizedException('You registered via social. To login, use the social and specify the password for access in the account settings!')
+
         const isValidPass = await verify(user.password, dto.password)
 
         if (!isValidPass) throw new UnauthorizedException('Email or password is wrong!')

@@ -4,8 +4,10 @@ import { Button, Description } from "@/shared/components"
 import Image from "next/image"
 import Link from "next/link"
 import { MAIN_URL } from "@/shared/config"
+import { useTranslations } from "next-intl"
 
 export const AgencyCard: FC<ICarouselAgencies> = ({ agency_name, logo, slug, user, url, about }) => {
+    const t = useTranslations('homePage.agencySector')
     return (
         <div className="flex flex-col items-center gap-y-3 bg-white dark:bg-neutral-800 p-5 rounded-3xl w-[350px] h-full">
             <div className="bg-white dark:bg-neutral-800 p-5 shadow-2xl shadow-slate-700-500/20 dark:shadow-gray-300-100 rounded-2xl">
@@ -19,10 +21,10 @@ export const AgencyCard: FC<ICarouselAgencies> = ({ agency_name, logo, slug, use
                 </span>
                 <div className="flex gap-x-2 pt-5 border-t border-dashed border-[#ccc]/50 w-full justify-between">
                     <Button>
-                        <Link href={MAIN_URL.agencyPageInfo(slug)}>Tutte offerte</Link>
+                        <Link href={MAIN_URL.agencyPageInfo(slug)}>{t('total')}</Link>
                     </Button>
                     <Button variant='link'>
-                        <Link href={url} target="_blank">Agency website</Link>
+                        <Link href={url} target="_blank">{t('agency_site')}</Link>
                     </Button>
                 </div>
             </div>

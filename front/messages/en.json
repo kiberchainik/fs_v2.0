@@ -59,7 +59,9 @@
         },
         "agencySector": {
             "title": "Human resources at your fingertips",
-            "subTitle": "Discover the best employment agencies in your area"
+            "subTitle": "Discover the best employment agencies in your area",
+            "total": "All offers",
+            "agency_site": "Agency website"
         },
         "vacanciesSector": {
             "title": "Find your ideal job quickly",
@@ -126,6 +128,7 @@
         "email": "Email",
         "message": "Message",
         "send": "Send",
+        "fieldEmpty": "The field cannot be empty",
         "candidatFullData": {
             "availabilityTransport": "Own transport",
             "downloadCV": "Download CV",
@@ -372,6 +375,59 @@
             "cohabiting": "Cohabiting",
             "children": "Children",
             "noChildren": "None"
+        },
+        "skills": {
+            "SkillsTitle": "List of skills",
+            "CreateSkillsBtn": "New",
+            "SaveSkillsBtn": "Save",
+            "CancelSkillsBtn": "Cancel",
+            "fieldEmpty": "The field is empty",
+            "fieldSkillLevel": "Skill level",
+            "begginer": "Beginner",
+            "experienced": "Intermediate",
+            "expert": "Expert"
+        },
+        "social": {
+            "SocialTitle": "List of social links",
+            "CreateSocialBtn": "New",
+            "SaveSocialBtn": "Save",
+            "CancelSocialBtn": "Cancel",
+            "fieldEmpty": "The field is empty",
+            "fieldSocialLink": "Social profile link"
+        },
+        "previews": {
+            "contacts": "Contacts",
+            "languages": "Languages",
+            "skills": "Skills",
+            "hobbies": "Hobbies",
+            "about_me": "About me",
+            "driver_category": "Driver's license",
+            "have_auto": "Owns a car",
+            "experience": "Experience",
+            "currently_work": "Currently working",
+            "education": "Education",
+            "courses": "Courses",
+            "lifeStatus": "Life status",
+            "social": "Social",
+            "downloadCV": "Download CV"
+        }
+    },
+    "candidat": {
+        "imgUpload": "Upload image",
+        "privacy": {
+            "title": "Privacy",
+            "avatatEmpty": "Upload image",
+            "avatar": "Image",
+            "name": "Name",
+            "surname": "Surname",
+            "email": "Email",
+            "phone": "Phone",
+            "resident": "Residential address",
+            "description": "Description",
+            "descriptionEmpty": "Description is required",
+            "saveBtn": "Save",
+            "national": "Nationality",
+            "birthday": "Date of birth"
         }
     }
 }

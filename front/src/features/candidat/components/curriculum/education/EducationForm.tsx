@@ -104,7 +104,7 @@ export default function EducationForm({ formData, levelEducation }: FormProps) {
                                 defaultMonth={new Date()}
                                 onChange={field.onChange}
                                 hideTime={true}
-                                min={formData.getValues().dateRange.startdate}
+                                min={formData.getValues()?.dateRange?.startdate || new Date()}
                                 max={new Date()}
                             />
                             <FormMessage />

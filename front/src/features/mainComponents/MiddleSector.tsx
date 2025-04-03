@@ -19,7 +19,7 @@ export const MiddleSector = () => {
                 <div className="md:w-1/2 m-4">
                     <div className="items-center text-left">
                         <h4 className="text-[#1967D3] text-2xl">{t('h4')}</h4>
-                        <h2 className="border-b border-dashed mb-5 pb-5 text-6xl leading-[5rem] font-semibold">{t('h2')}</h2>t
+                        <h2 className="border-b border-dashed mb-5 pb-5 text-6xl leading-[5rem] font-semibold">{t('h2')}</h2>
                         <p className="mb-3">{t('p_p1')}</p>
                         <p>{t('p_p2')}</p>
                         <div className="flex items-center justify-center mt-5 gap-x-5">

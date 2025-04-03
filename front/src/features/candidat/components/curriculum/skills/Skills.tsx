@@ -6,8 +6,11 @@ import { CiEdit, CiTrash } from 'react-icons/ci'
 import SkillForm from './SkillForm'
 
 import styles from './skills.module.scss'
+import { useTranslations } from 'next-intl'
+import Spinner from '@/shared/components/Spinner/Spinner'
 
 export default function Skills() {
+    const t = useTranslations('curriculum.skills')
     const {
         deletingSkillId,
         skills,
@@ -26,7 +29,7 @@ export default function Skills() {
     return (
         <Card className='w-full'>
             <CardHeader className={styles.cardHeader}>
-                <CardTitle>Candidat skills</CardTitle>
+                <CardTitle>{t('SkillsTitle')}</CardTitle>
             </CardHeader>
             <CardContent>
                 <Form {...addForm}>
@@ -36,7 +39,7 @@ export default function Skills() {
                     >
                         <SkillForm formData={addForm} />
                         <Button type='submit' disabled={isAdding}>
-                            {isAdding ? 'Adding...' : 'Save'}
+                            {isAdding ? <Spinner /> : t('CreateSkillsBtn')}
                         </Button>
                     </form>
                 </Form>
@@ -54,9 +57,9 @@ export default function Skills() {
                                             <SkillForm formData={editForm} />
                                             <div className='flex gap-x-1'>
                                                 <Button type='submit' disabled={isSaving}>
-                                                    {isSaving ? 'Saving...' : 'Save'}
+                                                    {isSaving ? <Spinner /> : t('SaveSkillsBtn')}
                                                 </Button>
-                                                <Button onClick={() => setEditingSkillId(null)}>Cancel</Button>
+                                                <Button onClick={() => setEditingSkillId(null)}>{t('CancelSkillsBtn')}</Button>
                                             </div>
                                         </form>
                                     </Form>
@@ -70,7 +73,7 @@ export default function Skills() {
                                                 <CiEdit />
                                             </Button>
                                             <Button onClick={() => handleDeleteSkill(skill.id)} variant='link' disabled={deletingSkillId === skill.id}>
-                                                {deletingSkillId === skill.id ? 'Deleting...' : <CiTrash />}
+                                                {deletingSkillId === skill.id ? <Spinner /> : <CiTrash />}
                                             </Button>
                                         </div>
                                     </div>

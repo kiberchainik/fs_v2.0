@@ -1,9 +1,11 @@
 import { IPreviewTemplates } from "@/features/candidat/types/preview.type";
 import { Description } from "@/shared/components";
 import { formatDate } from "@/shared/utils";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export default function Template2({ privacy, courses, education, experience, hobbies, languages, lifestatus, skills, user }: IPreviewTemplates) {
+    const t = useTranslations('curriculum.previews')
     return (
         <div className="flex flex-row gap-2">
             <div className="w-2/6">
@@ -15,11 +17,11 @@ export default function Template2({ privacy, courses, education, experience, hob
                     </div>
                     <div className="my-2 pt-1 border-dashed border-gray-400 text-[7px]">
                         <p>{lifestatus?.maritalStatus && lifestatus.maritalStatus}</p>
-                        <p>{lifestatus?.driverCategory && lifestatus.driverCategory.map(patent => <p>Category: {patent.toLocaleUpperCase()}</p>)}</p>
+                        <p>{lifestatus?.driverCategory && lifestatus.driverCategory.map(patent => <p>{t('driver_category')}: {patent.toLocaleUpperCase()}</p>)}</p>
                         <p>{lifestatus?.availabilityTransport && 'I have my car'}</p>
                         <div className="my-2 border-t border-gray-300">
                             {skills.length > 0 && <div className="mt-1">
-                                <span className="text-gray-700 uppercase font-bold tracking-wider mb-2">Skills</span>
+                                <span className="text-gray-700 uppercase font-bold tracking-wider mb-2">{t('skills')}</span>
                                 <ul className="flex flex-col gap-1">
                                     {skills.map(skill => (
                                         <li>{skill.skill}</li>
@@ -27,7 +29,7 @@ export default function Template2({ privacy, courses, education, experience, hob
                                 </ul>
                             </div>}
                             {languages.length > 0 && <div className="mt-1">
-                                <span className="text-gray-700 uppercase font-bold tracking-wider mb-2">Languages</span>
+                                <span className="text-gray-700 uppercase font-bold tracking-wider mb-2">{t('languages')}</span>
                                 <ul className="flex flex-col gap-1">
                                     {languages.map(lang => (
                                         <li>{lang.language}</li>
@@ -35,7 +37,7 @@ export default function Template2({ privacy, courses, education, experience, hob
                                 </ul>
                             </div>}
                             {hobbies.length > 0 && <div className="mt-1">
-                                <span className="text-gray-700 uppercase font-bold tracking-wider mb-2">Hobbies</span>
+                                <span className="text-gray-700 uppercase font-bold tracking-wider mb-2">{t('hobbies')}</span>
                                 <ul className="flex flex-col gap-1">
                                     {hobbies.map(hobbie => (
                                         <li>{hobbie.hobbie}</li>
@@ -48,11 +50,11 @@ export default function Template2({ privacy, courses, education, experience, hob
             </div>
             <div className="w-4/6">
                 <div className="bg-white shadow rounded-lg p-6">
-                    <h2 className="text-xs font-bold mb-2">About Me</h2>
+                    <h2 className="text-xs font-bold mb-2">{t('about_me')}</h2>
                     <Description className="text-[7px]">{privacy!.about_my}</Description>
 
                     {education.length > 0 && <>
-                        <h2 className="text-xs font-bold mt-2 mb-1">Education</h2>
+                        <h2 className="text-xs font-bold mt-2 mb-1">{t('education')}</h2>
                         {education.map(item => (
                             <div className="mb-2 text-[7px] text-gray-700">
                                 <div className="flex flex-col gap-1">
@@ -64,7 +66,7 @@ export default function Template2({ privacy, courses, education, experience, hob
                         ))}
                     </>}
                     {experience.length > 0 && <>
-                        <h2 className="text-xs font-bold mt-2 mb-1">Experience</h2>
+                        <h2 className="text-xs font-bold mt-2 mb-1">{t('experience')}</h2>
                         {experience.map(item => (
                             <div className="mb-2 text-[7px] text-gray-700">
                                 <div className="flex flex-col gap-1">
@@ -72,7 +74,7 @@ export default function Template2({ privacy, courses, education, experience, hob
                                     <p>
                                         <span className="mr-2">{item.contractTypeJob?.name}</span>
                                         <span className="">{formatDate(item.startDate, { dateFormat: 'year' })} - {
-                                            item.currently ? 'Current work' : formatDate(item.endDate, { dateFormat: 'year' })
+                                            item.currently ? t('currently_work') : formatDate(item.endDate, { dateFormat: 'year' })
                                         }</span>
                                     </p>
                                 </div>
@@ -83,7 +85,7 @@ export default function Template2({ privacy, courses, education, experience, hob
                     </>
                     }
                     {courses.length > 0 && <>
-                        <h2 className="text-xl font-bold mt-6 mb-4">Courses</h2>
+                        <h2 className="text-xl font-bold mt-6 mb-4">{t('courses')}</h2>
                         {courses.map(course => (
                             <div className="mb-2 text-[7px] text-gray-700">
                                 <div className="flex flex-col gap-1">

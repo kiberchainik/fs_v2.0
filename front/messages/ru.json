@@ -59,7 +59,9 @@
         },
         "agencySector": {
             "title": "Кадровые ресурсы на расстоянии одного клика",
-            "subTitle": "Ознакомьтесь с лучшими кадровыми агентствами в вашем регионе"
+            "subTitle": "Ознакомьтесь с лучшими кадровыми агентствами в вашем регионе",
+            "total": "Все предложения",
+            "agency_site": "Сайт агентства"
         },
         "vacanciesSector": {
             "title": "Найдите идеальную работу быстро",
@@ -126,6 +128,7 @@
         "email": "Электронная почта",
         "message": "Сообщение",
         "send": "Отправить",
+        "fieldEmpty": "Поле не может быть пустым",
         "candidatFullData": {
             "availabilityTransport": "Наличие автомобиля",
             "downloadCV": "Скачать резюме",
@@ -372,6 +375,59 @@
             "cohabiting": "Сожительствующий",
             "children": "Дети",
             "noChildren": "Нет"
+        },
+        "skills": {
+            "SkillsTitle": "Список навыков",
+            "CreateSkillsBtn": "Новый",
+            "SaveSkillsBtn": "Сохранить",
+            "CancelSkillsBtn": "Отменить",
+            "fieldEmpty": "Поле пустое",
+            "fieldSkillLevel": "Уровень навыка",
+            "begginer": "Начальный уровень",
+            "experienced": "Базовый уровень",
+            "expert": "Эксперт"
+        },
+        "social": {
+            "SocialTitle": "Список социальных сетей",
+            "CreateSocialBtn": "Новый",
+            "SaveSocialBtn": "Сохранить",
+            "CancelSocialBtn": "Отменить",
+            "fieldEmpty": "Поле пустое",
+            "fieldSocialLink": "Ссылка на профиль в соцсетях"
+        },
+        "previews": {
+            "contacts": "Контакты",
+            "languages": "Языки",
+            "skills": "Навыки",
+            "hobbies": "Хобби",
+            "about_me": "Обо мне",
+            "driver_category": "Категория водительских прав",
+            "have_auto": "Наличие автомобиля",
+            "experience": "Опыт",
+            "currently_work": "Текущее место работы",
+            "education": "Образование",
+            "courses": "Курсы",
+            "lifeStatus": "Семейное положение",
+            "social": "Социальные сети",
+            "downloadCV": "Скачать резюме"
+        }
+    },
+    "candidat": {
+        "imgUpload": "Загрузить изображение",
+        "privacy": {
+            "title": "Конфиденциальность",
+            "avatatEmpty": "Загрузите изображение",
+            "avatar": "Изображение",
+            "name": "Имя",
+            "surname": "Фамилия",
+            "email": "Электронная почта",
+            "phone": "Телефон",
+            "resident": "Адрес проживания",
+            "description": "Описание",
+            "descriptionEmpty": "Описание обязательно",
+            "saveBtn": "Сохранить",
+            "national": "Национальность",
+            "birthday": "Дата рождения"
         }
     }
 }

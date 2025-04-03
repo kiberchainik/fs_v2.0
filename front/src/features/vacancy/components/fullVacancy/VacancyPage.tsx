@@ -20,6 +20,7 @@ import { IoIosTime } from "react-icons/io"
 import styles from './vacancyPage.module.scss'
 import { MAIN_URL } from "@/shared/config"
 import { Description, Button } from "@/shared/components"
+import { useTranslations } from "next-intl"
 
 export default function VacancyPage({
   id,
@@ -43,6 +44,7 @@ export default function VacancyPage({
   location,
   salary
 }: IVacanciaesFullDate) {
+  const t = useTranslations('vacancy_page')
   const authUser = useAppSelector(state => state.reducer.user.data)
   const [isClient, setIsClient] = useState(false)
 

@@ -7,6 +7,7 @@ import styles from './ImageUpload.module.scss'
 import { cn } from '@/shared/utils'
 import { useUpload } from '../../hooks/useUpload'
 import { Button } from '@/shared/components'
+import { useTranslations } from 'next-intl'
 
 interface ImageUploadProps {
 	isDisabled: boolean
@@ -16,13 +17,14 @@ interface ImageUploadProps {
 
 export function ImageUpload({ isDisabled, onChange, value }: ImageUploadProps) {
 	const { handleButtonClick, isUploading, fileInputRef, handleFileChange } = useUpload(onChange)
+	const t = useTranslations('candidat')
 
 	return (
 		<div>
 			<div className={styles.image_container}>
 				{value.map(url => (
 					<div key={url} className={styles.image_wrapper}>
-						<Image src={url} alt='Картинка' fill />
+						<Image src={url} alt='user_avatar' fill />
 					</div>
 				))}
 			</div>
@@ -36,7 +38,7 @@ export function ImageUpload({ isDisabled, onChange, value }: ImageUploadProps) {
 				})}
 			>
 				<ImagePlus />
-				Загрузить картинки
+				{t('imgUpload')}
 			</Button>
 			<input
 				type='file'

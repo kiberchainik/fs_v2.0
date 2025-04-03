@@ -50,8 +50,8 @@ export class AuthController {
 	) {
 		const { refreshToken, password, ...response } = await this.authService.login(dto)
 		this.authService.addRefreshTokenToResponse(res, refreshToken)
-
 		return response
+
 		//return this.authService.login(req, dto)
 	}
 

@@ -77,7 +77,7 @@ export function Filter() {
                                 >
                                     <FormControl>
                                         <SelectTrigger>
-                                            <SelectValue placeholder={('category_placeholder')} />
+                                            <SelectValue placeholder={t('category_placeholder')} />
                                         </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>

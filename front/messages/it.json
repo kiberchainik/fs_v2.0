@@ -59,7 +59,9 @@
         },
         "agencySector": {
             "title": "Risorse umane a portata di clic",
-            "subTitle": "Scopri le migliori agenzie di lavoro nella tua zona"
+            "subTitle": "Scopri le migliori agenzie di lavoro nella tua zona",
+            "total": "Tutte offerte",
+            "agency_site": "Sito dell'agenzia"
         },
         "vacanciesSector": {
             "title": "Trova lavoro ideale velocemente",
@@ -119,13 +121,14 @@
         "block4_p": "Il nostro sito è sicuro e protetto."
     },
     "contactsPage": {
-        "h2_p1": "Do You Have Any",
-        "h2_p2": "Questions?",
-        "description": "As opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum",
+        "h2_p1": "Hai delle",
+        "h2_p2": "domande?",
+        "description": "Invece di usare 'Contenuto qui, contenuto qui', rendendolo simile a un inglese leggibile. Molti pacchetti di desktop publishing e editor di pagine web ora usano Lorem Ipsum",
         "name": "Nome",
         "email": "Email",
         "message": "Messaggio",
         "send": "Send",
+        "fieldEmpty": "Il campo non puo essere vuoto",
         "candidatFullData": {
             "availabilityTransport": "Automunito",
             "downloadCV": "Scarica CV",
@@ -372,6 +375,64 @@
             "cohabiting": "Convivente",
             "children": "Figli",
             "noChildren": "Nessuno"
+        },
+        "skills": {
+            "SkillsTitle": "Elenco delle competenze",
+            "CreateSkillsBtn": "Nuovo",
+            "SaveSkillsBtn": "Salva",
+            "CancelSkillsBtn": "Annulla",
+            "fieldEmpty": "Il campo è vuoto",
+            "fieldSkillLevel": "Livello di competenza",
+            "begginer": "Primo livello",
+            "experienced": "Livelo base",
+            "expert": "Esperto"
+        },
+        "social": {
+            "SocialTitle": "Elenco dei social",
+            "CreateSocialBtn": "Nuovo",
+            "SaveSocialBtn": "Salva",
+            "CancelSocialBtn": "Annulla",
+            "fieldEmpty": "Il campo è vuoto",
+            "fieldSocialLink": "Social link sul profilo"
+        },
+        "previews": {
+            "contacts": "Contatti",
+            "languages": "Lingue",
+            "skills": "Competenze",
+            "hobbies": "Passioni",
+            "about_me": "Su di me",
+            "driver_category": "Patente",
+            "have_auto": "Automunito",
+            "experience": "Esperienza",
+            "currently_work": "Attualmente lavoro",
+            "education": "Educazione",
+            "courses": "Corsi",
+            "lifeStatus": "Stato di vita",
+            "social": "Social",
+            "downloadCV": "Scarica CV"
         }
-    }
+    },
+    "candidat": {
+        "imgUpload": "Carica immagine",
+        "privacy": {
+            "title": "Privacy",
+            "avatatEmpty": "Carica immagine",
+            "avatar": "Immagine",
+            "name": "Nome",
+            "surname": "Cognome",
+            "email": "Email",
+            "phone": "Telefono",
+            "resident": "Indirizzo di residenza",
+            "description": "Descrizione",
+            "descriptionEmpty": "Descrizione è obbligatorio",
+            "saveBtn": "Salva",
+            "national": "Nazionalità",
+            "birthday": "Data di nascita"
+        },
+        "candidature": {
+            "cancel_candidature": "Annulla candidatura",
+            "send_candidature": "Candidati"
+        }
+    },
+    "vacancy_page": {}
 }

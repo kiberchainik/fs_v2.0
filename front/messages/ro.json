@@ -59,7 +59,9 @@
         },
         "agencySector": {
             "title": "Resurse umane la un clic distanță",
-            "subTitle": "Descoperă cele mai bune agenții de muncă din zona ta"
+            "subTitle": "Descoperă cele mai bune agenții de muncă din zona ta",
+            "total": "Toate ofertele",
+            "agency_site": "Site-ul agenției"
         },
         "vacanciesSector": {
             "title": "Găsește locul de muncă ideal rapid",
@@ -126,6 +128,7 @@
         "email": "Email",
         "message": "Mesaj",
         "send": "Trimite",
+        "fieldEmpty": "Câmpul nu poate fi gol",
         "candidatFullData": {
             "availabilityTransport": "Deține mașină",
             "downloadCV": "Descarcă CV",
@@ -372,6 +375,59 @@
             "cohabiting": "Cohabitant/ă",
             "children": "Copii",
             "noChildren": "Niciunul"
+        },
+        "skills": {
+            "SkillsTitle": "Lista competențelor",
+            "CreateSkillsBtn": "Nou",
+            "SaveSkillsBtn": "Salvează",
+            "CancelSkillsBtn": "Anulează",
+            "fieldEmpty": "Câmpul este gol",
+            "fieldSkillLevel": "Nivel de competență",
+            "begginer": "Începător",
+            "experienced": "Nivel de bază",
+            "expert": "Expert"
+        },
+        "social": {
+            "SocialTitle": "Lista rețelelor sociale",
+            "CreateSocialBtn": "Nou",
+            "SaveSocialBtn": "Salvează",
+            "CancelSocialBtn": "Anulează",
+            "fieldEmpty": "Câmpul este gol",
+            "fieldSocialLink": "Link social pe profil"
+        },
+        "previews": {
+            "contacts": "Contacte",
+            "languages": "Limbi",
+            "skills": "Competențe",
+            "hobbies": "Hobby-uri",
+            "about_me": "Despre mine",
+            "driver_category": "Categorie permis",
+            "have_auto": "Deține mașină",
+            "experience": "Experiență",
+            "currently_work": "Lucrez în prezent",
+            "education": "Educație",
+            "courses": "Cursuri",
+            "lifeStatus": "Stare de viață",
+            "social": "Rețele sociale",
+            "downloadCV": "Descarcă CV"
+        }
+    },
+    "candidat": {
+        "imgUpload": "Încarcă imagine",
+        "privacy": {
+            "title": "Confidențialitate",
+            "avatatEmpty": "Încarcă imagine",
+            "avatar": "Imagine",
+            "name": "Nume",
+            "surname": "Prenume",
+            "email": "Email",
+            "phone": "Telefon",
+            "resident": "Adresă de reședință",
+            "description": "Descriere",
+            "descriptionEmpty": "Descrierea este obligatorie",
+            "saveBtn": "Salvează",
+            "national": "Naționalitate",
+            "birthday": "Data nașterii"
         }
     }
 }
