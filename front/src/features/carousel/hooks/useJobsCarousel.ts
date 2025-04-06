@@ -5,7 +5,7 @@ import { useMemo } from "react"
 export function useJobsCarousel() {
     const { data: jobs, isFetching } = useQuery({
         queryKey: ['get jobs for carousel'],
-        queryFn: () => carouselService.getJobs()
+        queryFn: () => carouselService.getJobs(15)
     })
 
     return useMemo(() => ({

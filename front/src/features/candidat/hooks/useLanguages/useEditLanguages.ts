@@ -13,7 +13,7 @@ export const useLanguagesLogic = () => {
     const { language, isPendingUpdate } = useUpdLanguage()
     const { deleteLanguage, isPendingDelete } = useDeleteLanguage()
 
-    const addForm = useForm<TypeLanguageSchema>({
+    const addForm = useForm<TypeLanguageSchema, any, TypeLanguageSchema>({
         mode: 'onChange',
         resolver: zodResolver(LanguageSchema),
         values: {
@@ -22,7 +22,7 @@ export const useLanguagesLogic = () => {
         }
     })
 
-    const editForm = useForm<TypeLanguageSchema>({
+    const editForm = useForm<TypeLanguageSchema, any, TypeLanguageSchema>({
         mode: 'onChange',
         resolver: zodResolver(LanguageSchema)
     })

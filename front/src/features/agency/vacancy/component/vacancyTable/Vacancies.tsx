@@ -19,6 +19,7 @@ export function Vacancies() {
 	const { vacancyList, isFetching } = useGetVacancy()
 	const { deleteManyVacancy } = useDeleteManyVacancy()
 	const [selectedIds, setSelectedIds] = useState<string[]>([])
+	const columns = vacancyColumns()
 	const t = useTranslations('agencyVacancy.vacanceList')
 
 	const formattedVacancies: IVacancyColumn[] = vacancyList
@@ -61,7 +62,7 @@ export function Vacancies() {
 					</div>
 					<div className={styles.table}>
 						<DataTable
-							columns={vacancyColumns}
+							columns={columns}
 							data={formattedVacancies}
 							filterKey='title'
 							onSelectionChange={setSelectedIds}

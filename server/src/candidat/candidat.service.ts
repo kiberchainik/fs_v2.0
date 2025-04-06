@@ -219,7 +219,7 @@ export class CandidatService {
     })
 
     if (!candidat) {
-      throw new BadRequestException('Не удалось сохранить данные')
+      throw new BadRequestException('I dati non sono stati aggiornati')
     }
 
     if (oldData && oldData.avatar !== undefined) oldData.avatar.map(file => {
@@ -242,7 +242,7 @@ export class CandidatService {
     })
 
     if (!avatar) {
-      return new BadRequestException('Upload error!')
+      throw new BadRequestException('Immagine non caricata!')
     }
 
     return avatar

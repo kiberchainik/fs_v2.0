@@ -67,7 +67,7 @@ export class AuthController {
 
 		if (!refreshTokenFromCookies) {
 			this.authService.removeRefreshTokenFromResponse(res)
-			throw new UnauthorizedException('Refresh токен не прошел')
+			throw new UnauthorizedException('Refresh token non trovato')
 		}
 
 		const { refreshToken, ...response } = await this.authService.getNewTokens(refreshTokenFromCookies)
@@ -93,7 +93,7 @@ export class AuthController {
 		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
 		return res.redirect(
-			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat/privacy?accessToken=${response.accessToken}`
+			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidate/privacy?accessToken=${response.accessToken}`
 		)
 	}
 
@@ -113,7 +113,7 @@ export class AuthController {
 		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
 		return res.redirect(
-			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat/privacy?accessToken=${response.accessToken}`
+			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidate/privacy?accessToken=${response.accessToken}`
 		)
 	}
 
@@ -133,7 +133,7 @@ export class AuthController {
 		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
 		return res.redirect(
-			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat/privacy?accessToken=${response.accessToken}`
+			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidate/privacy?accessToken=${response.accessToken}`
 		)
 	}
 
@@ -153,7 +153,7 @@ export class AuthController {
 		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
 		return res.redirect(
-			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat/privacy?accessToken=${response.accessToken}`
+			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidate/privacy?accessToken=${response.accessToken}`
 		)
 	}
 
@@ -173,7 +173,7 @@ export class AuthController {
 		this.authService.addRefreshTokenToResponse(res, refreshToken)
 
 		return res.redirect(
-			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidat/privacy?accessToken=${response.accessToken}`
+			`${this.config.getOrThrow<string>('ALLOWED_ORIGIN') as string}/candidate/privacy?accessToken=${response.accessToken}`
 		)
 	}
 

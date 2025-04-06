@@ -15,7 +15,7 @@ export const useCourseLogic = () => {
     const { course, isPendingUpdate } = useUpdCourse()
     const { deleteCourse, isPendingDelete } = useDeleteCourse()
 
-    const addForm = useForm<TypeCourseSchema>({
+    const addForm = useForm<TypeCourseSchema, any, TypeCourseSchema>({
         mode: 'onChange',
         resolver: zodResolver(CourseSchema),
         defaultValues: {
@@ -29,7 +29,7 @@ export const useCourseLogic = () => {
         }
     })
 
-    const editForm = useForm<TypeCourseSchema>({
+    const editForm = useForm<TypeCourseSchema, any, TypeCourseSchema>({
         mode: 'onChange',
         resolver: zodResolver(CourseSchema)
     })

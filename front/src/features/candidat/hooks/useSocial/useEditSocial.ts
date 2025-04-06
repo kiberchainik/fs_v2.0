@@ -14,14 +14,14 @@ export const useSocialLogic = () => {
     const { social, isPendingUpdate } = useUpdSocial()
     const { deleteSocial, isPendingDelete } = useDeleteSocial()
 
-    const addForm = useForm<TypeSocialSchema>({
+    const addForm = useForm<TypeSocialSchema, any, TypeSocialSchema>({
         resolver: zodResolver(SocialSchema),
         defaultValues: {
             social: '',
         },
     })
 
-    const editForm = useForm<TypeSocialSchema>({
+    const editForm = useForm<TypeSocialSchema, any, TypeSocialSchema>({
         mode: 'onChange',
         resolver: zodResolver(SocialSchema)
     })

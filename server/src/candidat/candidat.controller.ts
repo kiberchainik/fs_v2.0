@@ -21,21 +21,21 @@ export class CandidatController {
   @Authorization(UserRole.CANDIDATE)
   @UseInterceptors(FilesInterceptor('files'))
   @Post('avatar')
-  async uploadFile(
+  async caricaFile(
     @UploadedFiles(
       new ParseFilePipe({
-        validators: [new MaxFileSizeValidator({ maxSize: 2 * 1024 * 1024, message: "Файл должен быть не более 2mb" })]
+        validators: [new MaxFileSizeValidator({ maxSize: 5 * 1024 * 1024, message: "Il file non deve essere più di 5MB" })]
       })
     ) files: Express.Multer.File[],
     @CurrentUser('id') id: string,
     @Query('folder') folder?: string
   ) {
-    const newFiles = await this.file.filterFiles(files)
-    const fileData = await this.file.saveFiles(newFiles, id)
+    const nuoviFile = await this.file.filterFiles(files)
+    const datiFile = await this.file.saveFiles(nuoviFile, id)
 
-    //this.agencyService.updLogo(id, fileData)
+    //this.agencyService.updLogo(id, datiFile)
 
-    return fileData
+    return datiFile
   }
 
   @ApiOperation({ summary: 'Elenco dei candadati' })

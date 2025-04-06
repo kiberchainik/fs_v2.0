@@ -19,15 +19,15 @@ export class TwoFactorAuthService {
         })
 
         if (!existToken) {
-            throw new NotFoundException('Two factor code not found')
+            throw new NotFoundException('Two factor code non trovato')
         }
 
-        if (existToken.token !== code) throw new BadRequestException('Two factor code is wrong')
+        if (existToken.token !== code) throw new BadRequestException('Two factor code errato!')
 
         const hasExpired = new Date(existToken.expiresIn) < new Date()
 
         if (hasExpired) {
-            throw new BadRequestException('Two factor code invalid naher!')
+            throw new BadRequestException('Two factor code errato!')
         }
 
         await this.prisma.tokens.delete({

@@ -57,10 +57,10 @@ export default function Template3({ privacy, courses, education, experience, hob
                                 <h5 className="mb-2 font-bold text-xs">
                                     {ed.school}
                                 </h5>
-                                <p className="text-[10px] text-gray-700 dark:text-gray-300 flex flex-col">
+                                <div className="text-[10px] text-gray-700 dark:text-gray-300 flex flex-col">
                                     <span>{ed.grade}</span>
                                     <span>{ed.description}</span>
-                                </p>
+                                </div>
                             </li>))}
                         </ul>
                     </div>}
@@ -78,9 +78,9 @@ export default function Template3({ privacy, courses, education, experience, hob
                                 <h5 className="mb-2 font-bold text-xs">
                                     {exp.company}
                                 </h5>
-                                <p className="text-[10px] text-gray-700 dark:text-gray-300">
+                                <div className="text-[10px] text-gray-700 dark:text-gray-300">
                                     {exp.description}
-                                </p>
+                                </div>
                             </li>))}
                         </ul>
                     </div>}
@@ -96,9 +96,9 @@ export default function Template3({ privacy, courses, education, experience, hob
                                 <h5 className="mb-2 font-bold text-xs">
                                     {course.institution}
                                 </h5>
-                                <p className="text-[10px] text-gray-700 dark:text-gray-300">
+                                <div className="text-[10px] text-gray-700 dark:text-gray-300">
                                     {course.grade && <p className="">{course.grade}</p>}
-                                </p>
+                                </div>
                             </li>))}
                         </ul>
                     </div>}

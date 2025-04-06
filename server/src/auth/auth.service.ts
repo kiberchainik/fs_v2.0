@@ -24,7 +24,7 @@ export class AuthService {
     async register(dto: RegisterDto) {
         const isExist = await this.user.findByEmail(dto.email) //if !user, returned throw
         if (isExist) {
-            throw new BadRequestException('Польхователь с такими данными уже существует!')
+            throw new BadRequestException('Un utente con questi dati esiste già!')
         }
 
         const login = dto.email.split('@')[0]
@@ -41,7 +41,7 @@ export class AuthService {
         await this.emailConfirm.sendVerificationToken(newUser)
 
         return {
-            message: 'Registration successfully. Please open you email for verified code!'
+            message: 'Registrazione avvenuta con successo. Per favore controlla la tua email per il codice di verifica!'
         }
     }
 
@@ -49,15 +49,15 @@ export class AuthService {
         const user = await this.validateUser(dto.email) //if !user, returned throw
 
         if (user.method !== AuthMethod.CREDENTIALS)
-            throw new UnauthorizedException('You registered via social. To login, use the social and specify the password for access in the account settings!')
+            throw new UnauthorizedException('Ti sei registrato tramite social. Per accedere, utilizza il social e specifica la password per l\'accesso nelle impostazioni dell\'account!')
 
         const isValidPass = await verify(user.password, dto.password)
 
-        if (!isValidPass) throw new UnauthorizedException('Email or password is wrong!')
+        if (!isValidPass) throw new UnauthorizedException('Email o password errati!')
 
         if (!user.isVerified) {
             await this.emailConfirm.sendVerificationToken(user)
-            throw new UnauthorizedException('Your email is not vrified. Please try against!')
+            throw new UnauthorizedException('La tua email non è verificata. Per favore riprova!')
         }
 
         // if(user.isTwoFactorEnabled) {
@@ -81,9 +81,9 @@ export class AuthService {
 
         const isValidPass = await verify(password, dto.password)
 
-        if (!isValidPass) throw new UnauthorizedException('Email or password is wrong!')
+        if (!isValidPass) throw new UnauthorizedException('Email o password errati!')
 
-        if (role !== UserRole.AGENCY) throw new UnauthorizedException('You are not an agency!')
+        if (role !== UserRole.AGENCY) throw new UnauthorizedException('Tu non sei agenzia!')
 
         const tokens = this.issueTokens(user.id, user.email, user.login, role)
         return { ...user, ...tokens }
@@ -111,7 +111,7 @@ export class AuthService {
     private async validateUser(email: string) {
         const user = await this.user.findByEmail(email)
 
-        if (!user) throw new NotFoundException('Check your login credentials!')
+        if (!user) throw new NotFoundException('Controlla le tue credenziali di accesso!')
 
         return user
     }
@@ -137,7 +137,7 @@ export class AuthService {
 
     async getNewTokens(refreshToken: string) {
         const result = await this.jwt.verifyAsync(refreshToken)
-        if (!result) throw new UnauthorizedException('Невалидный refresh токен')
+        if (!result) throw new UnauthorizedException('Refresh token non valido!')
 
         const user = await this.user.findById(result.id)
 

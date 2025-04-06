@@ -41,6 +41,10 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: SITE_NAME,
     emails: ['support@findsol.it']
+  },
+  other: {
+    'facebook-domain-verification': 'ykvbo5lqufom689mxmyogtm0d5zc17',
+    'google-site-verification': '0-SxUnlXdEVnRnkqTLYNePgGLKVpLL3EL8O-klP3r_I'
   }
 };
 

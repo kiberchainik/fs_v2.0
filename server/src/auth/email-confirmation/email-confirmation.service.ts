@@ -25,12 +25,12 @@ export class EmailConfirmationService {
         })
 
         if (!existToken) {
-            throw new NotFoundException('Token verified not found')
+            throw new NotFoundException('Token verified non trovato')
         }
 
         const hasExpired = new Date(existToken.expiresIn) < new Date()
         if (hasExpired) {
-            throw new BadRequestException('Токен для верификации eamil просрочен, авторизутесь для получения письма с новой сылкой верификации!')
+            throw new BadRequestException('Il token di verifica email è scaduto, accedi per ricevere un nuovo link di verifica via email!')
         }
 
         const existingUser = await this.user.findByEmail(existToken.email)

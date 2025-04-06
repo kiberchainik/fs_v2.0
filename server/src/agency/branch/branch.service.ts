@@ -11,7 +11,7 @@ export class BranchService {
   async create(userId: string, createBranchDto: CreateBranchDto) {
     const { id } = await this.getAgencyDataId(userId)
 
-    if (!id) throw new BadRequestException('Для добавления филиалов и объявлений заполните полнотью профиль!')
+    if (!id) throw new BadRequestException('Per aggiungere filiali e annunci, completa completamente il profilo!')
     return await this.prisma.branch.create({
       data: {
         adId: id,
@@ -26,7 +26,7 @@ export class BranchService {
     const startIndex: number = 0 // Индекс начала добавления
     const { id } = await this.getAgencyDataId(userId)
 
-    if (!id) throw new BadRequestException('Для добавления филиалов и объявлений заполните полнотью профиль!')
+    if (!id) throw new BadRequestException('Per aggiungere filiali e annunci, completa completamente il profilo!')
 
     for (let i = startIndex; i < arrayBranch.length; i += batchSize) {
       const batch = arrayBranch.slice(i, i + batchSize)
@@ -44,7 +44,7 @@ export class BranchService {
         // Таймаут между запросами
         await new Promise(resolve => setTimeout(resolve, delay));
       } catch (error) {
-        console.error(`Ошибка при добавлении пользователей на индексе ${i}:`, error);
+        console.error(`Errore durante l'aggiunta degli filiali all'indice ${i}:`, error);
 
         // Сохраняем индекс, с которого нужно продолжить
         await this.prisma.$disconnect();

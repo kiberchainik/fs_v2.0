@@ -45,7 +45,7 @@ export class JoboffersController {
   @ApiExcludeEndpoint()
   @Get('carousel/:limit')
   getJobsForMainCarousel(
-    @Param('limit') limit: string
+    @Param('limit') limit: number
   ) {
     return this.joboffersService.getJobsForMainCarousel(limit)
   }

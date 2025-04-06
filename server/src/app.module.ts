@@ -58,7 +58,7 @@ import { SitemapModule } from './admin/sitemap/sitemap.module';
   providers: [],
 })
 export class AppModule {
-    configure(consumer: MiddlewareConsumer) {
-      consumer.apply(RestrictAccessMiddleware).forRoutes({ path: '*', method: RequestMethod.ALL })
-    }
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(RestrictAccessMiddleware).forRoutes({ path: '*', method: RequestMethod.ALL })
+  }
 }

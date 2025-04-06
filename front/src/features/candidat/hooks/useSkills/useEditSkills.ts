@@ -14,7 +14,7 @@ export const useSkillsLogic = () => {
     const { skill, isPendingUpdate } = useUpdSkill()
     const { deleteSkill, isPendingDelete } = useDeleteSkill()
 
-    const addForm = useForm<TypeSkillSchema>({
+    const addForm = useForm<TypeSkillSchema, any, TypeSkillSchema>({
         mode: 'onChange',
         resolver: zodResolver(SkillSchema),
         values: {
@@ -23,7 +23,7 @@ export const useSkillsLogic = () => {
         }
     })
 
-    const editForm = useForm<TypeSkillSchema>({
+    const editForm = useForm<TypeSkillSchema, any, TypeSkillSchema>({
         mode: 'onChange',
         resolver: zodResolver(SkillSchema)
     })

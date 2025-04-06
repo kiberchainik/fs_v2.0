@@ -13,7 +13,7 @@ export const useHobbiesLogic = () => {
     const { hobbie, isPendingUpdate } = useUpdHobbie()
     const { deleteHobbie, isPendingDelete } = useDeleteHobbie()
 
-    const addForm = useForm<TypeHobbieSchema>({
+    const addForm = useForm<TypeHobbieSchema, any, TypeHobbieSchema>({
         mode: 'onChange',
         resolver: zodResolver(HobbieSchema),
         values: {
@@ -21,7 +21,7 @@ export const useHobbiesLogic = () => {
         }
     })
 
-    const editForm = useForm<TypeHobbieSchema>({
+    const editForm = useForm<TypeHobbieSchema, any, TypeHobbieSchema>({
         mode: 'onChange',
         resolver: zodResolver(HobbieSchema)
     })

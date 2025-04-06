@@ -44,7 +44,7 @@ export class BranchController {
   async uploadFile(
     @UploadedFiles(
       new ParseFilePipe({
-        validators: [new MaxFileSizeValidator({ maxSize: 2 * 1024 * 1024, message: "Файл должен быть не более 2mb" })]
+        validators: [new MaxFileSizeValidator({ maxSize: 5 * 1024 * 1024, message: "Il file deve essere di massimo 5 MB" })]
       })
     ) files: Express.Multer.File[],
     @CurrentUser('id') id: string,

@@ -16,7 +16,7 @@ export class CandidatLifeStateService {
       }
     })
 
-    if (!cdId) throw new BadRequestException('Complite privacy please!')
+    if (!cdId) throw new BadRequestException('Completa la privacy, per favore!')
 
     return await this.prisma.candidatLifeState.upsert({
       where: {

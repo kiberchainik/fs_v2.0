@@ -17,7 +17,7 @@ export const useExperienceLogic = () => {
     const { updExperience, isPendingUpdate } = useUpdExperience()
     const { deleteExperience, isPendingDelete } = useDeleteExperience()
 
-    const addForm = useForm<TypeExperienceSchema>({
+    const addForm = useForm<TypeExperienceSchema, any, TypeExperienceSchema>({
         mode: 'onChange',
         resolver: zodResolver(ExperienceSchema),
         defaultValues: {
@@ -34,7 +34,7 @@ export const useExperienceLogic = () => {
         }
     })
 
-    const editForm = useForm<TypeExperienceSchema>({
+    const editForm = useForm<TypeExperienceSchema, any, TypeExperienceSchema>({
         mode: 'onChange',
         resolver: zodResolver(ExperienceSchema)
     })

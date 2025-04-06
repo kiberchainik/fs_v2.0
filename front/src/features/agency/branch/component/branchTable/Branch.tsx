@@ -9,7 +9,7 @@ import styles from './branch.module.scss'
 import DataTableLoading from "@/shared/components/data-table/DataTableLoading"
 import { AGENCY_URL } from "@/shared/config"
 import { Plus } from "lucide-react"
-import { branchColumns } from "./BranchColumns"
+import { useBranchColumns } from "./BranchColumns"
 import { useState } from "react"
 import { CiTrash } from "react-icons/ci"
 import { useTranslations } from "next-intl"
@@ -19,6 +19,7 @@ export function Branch() {
     const { deleteManyBranch } = useDeleteManyBranch()
     const [selectedIds, setSelectedIds] = useState<string[]>([])
     const t = useTranslations('branch')
+    const columns = useBranchColumns()
 
 
     const handleDeleteMany = () => {
@@ -60,7 +61,7 @@ export function Branch() {
                     </div>
                     <div className={styles.table}>
                         <DataTable
-                            columns={branchColumns}
+                            columns={columns}
                             data={formattedBrancesData}
                             filterKey='name'
                             onSelectionChange={setSelectedIds}

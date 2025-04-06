@@ -11,26 +11,23 @@ export function AuthSocial() {
     return <>
         <div className='flex justify-between items-center gap-x-1'>
             <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('google')}`)}>
-                <FaGoogle />
+                <FaGoogle /> Google
             </Button>
             <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('facebook')}`)}>
-                <FaFacebook />
+                <FaFacebook /> Facebook
             </Button>
-            <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('linkedin')}`)}>
+            {/* <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('linkedin')}`)}>
                 <FaLinkedin />
-            </Button>
-            <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('instagram')}`)}>
-                <FaInstagram />
             </Button>
             <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('telegram')}`)}>
                 <FaTelegram />
             </Button>
             <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('discord')}`)}>
                 <FaDiscord />
-            </Button>
+            </Button> 
             <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('github')}`)}>
                 <FaGithub />
-            </Button>
+            </Button>*/}
         </div>
         <div className='relative my-3 space-y-4'>
             <div className='absolute inset-0 flex items-center mt-1'>

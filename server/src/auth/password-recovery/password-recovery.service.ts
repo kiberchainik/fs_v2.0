@@ -17,7 +17,7 @@ export class PasswordRecoveryService {
 
   async reset(dto: ResetPasswordDto) {
     const existingUser = await this.user.findByEmail(dto.email)
-    if (!existingUser) throw new NotFoundException('User not found')
+    if (!existingUser) throw new NotFoundException('Utente non trovato')
 
     const passwordResetToken = await this.generatePasswordResetToken(existingUser.email)
 
@@ -39,11 +39,11 @@ export class PasswordRecoveryService {
     const hasExpired = new Date(existingToken.expiresIn) < new Date()
 
     if (hasExpired) {
-      throw new BadRequestException('Token invalid naher!')
+      throw new BadRequestException('Token invalid!')
     }
 
     const existingUser = await this.user.findByEmail(existingToken.email)
-    if (!existingUser) throw new NotFoundException('User not found')
+    if (!existingUser) throw new NotFoundException('Utente non trovato')
 
     await this.prisma.user.update({
       where: {

@@ -3,15 +3,19 @@ import * as fs from 'fs'
 import * as path from 'path'
 import { PrismaService } from '@/prisma/prisma.service'
 import { Cron } from '@nestjs/schedule'
+import { ConfigService } from '@nestjs/config'
 
 @Injectable()
 export class SitemapService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly configService: ConfigService
+  ) { }
 
-@Cron('0 0 */3 * *') // Раз в сутки в 00:00
-async updateSitemap() {
-  await this.generateSitemap();
-}
+  @Cron('0 0 */3 * *') // Раз в сутки в 00:00
+  async updateSitemap() {
+    await this.generateSitemap();
+  }
 
 
   async generateSitemap() {
@@ -36,22 +40,26 @@ async updateSitemap() {
     }
 
     const urls = [
-      `<url><loc>https://example.com</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>`,
+      `<url><loc>${this.configService.get('ALLOWED_ORIGIN')}</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>`,
       ...categories.map(category => {
         const path = getCategoryPath(category);
-        return `<url><loc>https://example.com/${path}</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>`;
+        return `<url><loc>${this.configService.get('ALLOWED_ORIGIN')}/${path}</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>`;
       }),
       ...vacancies.map(job => {
         const categoryPath = job.categories ? getCategoryPath(job.categories) : '';
-        return `<url><loc>https://example.com/${categoryPath}/${job.slug}</loc><lastmod>${job.updatedAt.toISOString()}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>`;
+        return `<url><loc>${this.configService.get('ALLOWED_ORIGIN')}/${categoryPath}/${job.slug}</loc><lastmod>${job.updatedAt.toISOString()}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>`;
       }),
     ];
 
     const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>`;
 
-    const filePath = path.join(__dirname, '../../public/sitemap.xml');
-    fs.writeFileSync(filePath, sitemapContent);
+    const filePath = path.join(__dirname, '../../public/sitemap.xml')
+    const dirPath = path.dirname(filePath)
+    if (!fs.existsSync(dirPath)) {
+      fs.mkdirSync(dirPath, { recursive: true })
+    }
+    fs.writeFileSync(filePath, sitemapContent)
 
-    console.log('Sitemap generated:', filePath);
+    console.log('Sitemap generated:', filePath)
   }
 }

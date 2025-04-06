@@ -7,9 +7,9 @@ import { Strategy, Profile, VerifyCallback } from 'passport-instagram';
 export class InstagramStrategy extends PassportStrategy(Strategy, 'instagram') {
     constructor(private configService: ConfigService) {
         super({
-            clientID: configService.get('INSTAGRAM_CLIENT_ID'), // ID приложения Instagram
-            clientSecret: configService.get('INSTAGRAM_CLIENT_SECRET'), // Секретный ключ
-            callbackURL: configService.get('INSTAGRAM_CALLBACK_URL'), // URL возврата после авторизации
+            clientID: configService.get('INSTAGRAM_CLIENT_ID'),
+            clientSecret: configService.get('INSTAGRAM_CLIENT_SECRET'),
+            callbackURL: configService.get('INSTAGRAM_CALLBACK_URL'),
         });
     }
 

@@ -2,9 +2,7 @@ import { useBreadcrumbs } from '@/features/breadcrumbs/hooks/useBreadcrumbs';
 import CategoryMenu from '@/features/category/components/Categories';
 import { categoryService } from '@/features/category/services'
 import VacancyList from '@/features/vacancy/components/vacancyList/VacancyList';
-import { vacancyPageServices } from '@/features/vacancy/services';
 import { CATEGORY_DESCRIPTION, CATEGORY_NAME, CATEGORY_NOT_FOUND } from '@/shared/constants/seo.constants';
-import { LoaderCircle } from 'lucide-react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { cache } from 'react';
@@ -47,9 +45,9 @@ export default async function CategoryPage({ params, searchParams }: Props) {
 
     const breadcrumbs = useBreadcrumbs({
         category: params.category,
-        currentCategory: { 
-            name: vacancies.name, 
-            slug: vacancies.slug 
+        currentCategory: {
+            name: vacancies.name,
+            slug: vacancies.slug
         },
     })
 

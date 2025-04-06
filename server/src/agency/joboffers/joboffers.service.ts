@@ -7,6 +7,7 @@ import { returnAgencyBaseObject } from 'src/agency/dto'
 import { PrismaService } from '@/prisma/prisma.service';
 import { LastProcessIndexService, slugify } from '@/libs/common/utils';
 import { FilterJobsDto } from './dto/filterJobs.dto';
+import { handlePrismaError } from '@/libs/common/prisma/prismaErrors';
 
 @Injectable()
 export class JoboffersService {
@@ -96,11 +97,13 @@ export class JoboffersService {
       workingTimeJob: workingTimeId ? ({ connect: { id: workingTimeId } }) : {}
     }
 
+    const formattedReallyUpTo = reallyUpTo ? new Date(reallyUpTo).toISOString() : null
+
     const newJob = await this.prisma.jobOffers.create({
       data: {
         ...jobOffers,
         slug: slugify(createJobofferDto.slug ? createJobofferDto.slug : createJobofferDto.title),
-        reallyUpTo: reallyUpTo ? new Date(reallyUpTo).toISOString() : null,
+        reallyUpTo: formattedReallyUpTo,
         categories: {
           connect: { id: categories }
         },
@@ -173,7 +176,9 @@ export class JoboffersService {
     } catch (error) {
       await this.lastProcessIndex.updateLastProcessedIndex(userId, lastProcessedIndex)
       await this.prisma.$disconnect()
-      throw new BadRequestException(`Errore durante l'aggiunta degli utenti all'indice ${lastProcessedIndex}: ${error}`)
+      console.log(error);
+
+      throw new BadRequestException(`Errore durante l'aggiunta degli utenti all'indice ${lastProcessedIndex}! Assicurati che l'array, chiave: valore, siano compilati correttamente!`)
     }
   }
 
@@ -438,7 +443,7 @@ export class JoboffersService {
     })
   }
 
-  async getJobsForMainCarousel(userId: string) {
+  async getJobsForMainCarousel(limit: number) {
     return await this.prisma.jobOffers.findMany({
       where: {
         isValidate: true
@@ -465,7 +470,11 @@ export class JoboffersService {
         modeJob: true,
         workingTimeJob: true,
         reallyUpTo: true
-      }
+      },
+      orderBy: {
+        createdAt: 'desc'
+      },
+      take: limit
     })
   }
 

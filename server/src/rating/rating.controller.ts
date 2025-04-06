@@ -1,8 +1,6 @@
 import { Controller, Get, Post, Body, Param } from "@nestjs/common";
 import { RatingService } from "./rating.service";
 import { CreateRatingDto } from "./dto/create-rating.dto";
-import { Authorization } from "@/auth/decorators";
-import { UserRole } from "@prisma/client";
 import { ApiExcludeController } from "@nestjs/swagger";
 
 @ApiExcludeController()
