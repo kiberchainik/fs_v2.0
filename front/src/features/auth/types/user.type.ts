@@ -30,6 +30,8 @@ export interface IUser {
     email: string
     login: string
     role: UserRole
+    name?: string
+    avatar?: string
     isVerified: boolean
     isTwoFactorEnabled: boolean
     method: AuthMethod

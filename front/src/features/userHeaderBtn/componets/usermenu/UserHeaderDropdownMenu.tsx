@@ -12,7 +12,7 @@ import { useTranslations } from "next-intl"
 export const UserHeaderMenu: FC = () => {
     const { data: user, isLoading, error } = useAppSelector(state => state.reducer.user)
     const { refetch } = useGetUserHeaderData()
-        const account_header_btns = useTranslations('header.account_header_btns')
+    const account_header_btns = useTranslations('header.account_header_btns')
 
     useEffect(() => {
         refetch()

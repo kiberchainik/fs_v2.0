@@ -5,7 +5,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { AuthWrapper } from ".";
 import { LoginSchema, TypeLoginSchema } from "../schemes";
 import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from "@/shared/components/ui";
-import { useTheme } from "next-themes";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useLoginMutation } from "../hooks";
@@ -14,7 +13,6 @@ import { useReCaptcha } from "@/shared/providers/ReCaptchaProvider";
 import { useTranslations } from "next-intl";
 
 export function LoginForm({ isShowSocial }: { isShowSocial: boolean }) {
-    const { theme } = useTheme()
     const t = useTranslations('authPage.login')
     const { executeRecaptcha } = useReCaptcha()
     const [isTwoFactor, setTowFactor] = useState<boolean>(false)
@@ -45,7 +43,7 @@ export function LoginForm({ isShowSocial }: { isShowSocial: boolean }) {
             isShowSocial={isShowSocial}
         >
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2 ">
                     {isTwoFactor && (
                         <FormField control={form.control} name="code"
                             render={({ field }) => (

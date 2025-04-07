@@ -19,7 +19,7 @@ export function AuthWrapper({
                     <CardDescription>{description}</CardDescription>
                 )}
             </CardHeader>
-            <CardContent>
+            <CardContent className="w-full">
                 {isShowSocial && <AuthSocial />}
                 {children}
             </CardContent>

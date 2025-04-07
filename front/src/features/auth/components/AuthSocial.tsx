@@ -9,12 +9,12 @@ export function AuthSocial() {
     const router = useRouter()
 
     return <>
-        <div className='flex justify-between items-center gap-x-1'>
-            <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('google')}`)}>
-                <FaGoogle /> Google
+        <div className='flex justify-center items-center gap-x-1'>
+            <Button variant='outline' className="flax gap-1 items-center" onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('google')}`)}>
+                <FaGoogle /> <span>Google</span>
             </Button>
-            <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('facebook')}`)}>
-                <FaFacebook /> Facebook
+            <Button variant='outline' className="flax gap-1 items-center" onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('facebook')}`)}>
+                <FaFacebook /> <span>Facebook</span>
             </Button>
             {/* <Button variant='outline' onClick={() => router.push(`${SERVER_URL}${API_URL.authSocial('linkedin')}`)}>
                 <FaLinkedin />
