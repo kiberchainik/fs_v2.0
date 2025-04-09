@@ -11,7 +11,7 @@ type TAuthProps = {
     isShowSocial: boolean
 }
 
-export async function UserAuth({ role, isShowSocial }: TAuthProps) {
+export function UserAuth({ role, isShowSocial }: TAuthProps) {
     const t = useTranslations('authPage')
     return (
         <div className='flex justify-center items-center mt-5'>
