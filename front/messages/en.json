@@ -427,7 +427,9 @@
             "descriptionEmpty": "Description is required",
             "saveBtn": "Save",
             "national": "Nationality",
-            "birthday": "Date of birth"
+            "birthday": "Date of birth",
+            "deleteAccount": "Delete account",
+            "deleteAccountDescription": "By deleting your account, you will permanently delete your resume and search history. You will no longer be able to apply for the job offers you are interested in."
         },
         "candidature": {
             "cancel_candidature": "Cancel application",

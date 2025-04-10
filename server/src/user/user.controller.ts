@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, Patch } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch } from '@nestjs/common';
 import { UserService } from './user.service';
 import { Authorization, CurrentUser } from '@/auth/decorators'
 import { UpdateUserDto } from './dto';
@@ -37,7 +37,6 @@ export class UserController {
   @Get('profile/:id')
   async getProfileById(@Param('id') id: string) {
     const { password, ...user } = await this.userService.findById(id)
-
     return user
   }
 
@@ -49,7 +48,14 @@ export class UserController {
     @Body() dto: UpdateUserDto
   ) {
     const { password, ...user } = await this.userService.update(id, dto)
-
     return user
+  }
+
+  @Authorization()
+  @HttpCode(HttpStatus.OK)
+  @Delete('delete')
+  async deleteProfile(@CurrentUser('id') id: string) {
+    await this.userService.deleteProfile(id)
+    return true
   }
 }

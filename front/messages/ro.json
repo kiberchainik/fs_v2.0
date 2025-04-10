@@ -427,7 +427,9 @@
             "descriptionEmpty": "Descrierea este obligatorie",
             "saveBtn": "Salvează",
             "national": "Naționalitate",
-            "birthday": "Data nașterii"
+            "birthday": "Data nașterii",
+            "deleteAccount": "Șterge contul",
+            "deleteAccountDescription": "Ștergând contul tău, vei elimina definitiv CV-ul și istoricul căutărilor. Nu vei mai putea aplica pentru ofertele de muncă care te interesează."
         },
         "candidature": {
             "cancel_candidature": "Anulează candidatura",

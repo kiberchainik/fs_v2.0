@@ -2,6 +2,8 @@ import { PrismaService } from '@/prisma/prisma.service';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDto, CreateAuthAccountDto, UpdateUserDto } from './dto';
 import { hash } from 'argon2';
+import { access, unlink } from 'fs/promises';
+import { join } from 'path';
 
 @Injectable()
 export class UserService {
@@ -68,19 +70,19 @@ export class UserService {
 
     async getCandidatPrivacy(id: string) {
         return await this.prisma.candidatData.findUnique({
-          where: {
-            userId: id
-          }
+            where: {
+                userId: id
+            }
         })
     }
 
     async findByEmail(email: string) {
         const login = email.split('@')[0]
         const user = await this.prisma.user.findFirst({
-            where: { 
+            where: {
                 OR: [
-                    {email},
-                    {login}
+                    { email },
+                    { login }
                 ]
             },
             include: {
@@ -137,5 +139,52 @@ export class UserService {
         })
 
         return updatedUser
+    }
+
+    async deleteProfile(id: string) {
+        const userAvatar = await this.prisma.candidatData.findUnique({
+            where: {
+                id
+            },
+            select: {
+                avatar: true
+            }
+        })
+
+        userAvatar.avatar.map(file => {
+            try {
+                access(join(__dirname, '..', '../src', file)).then(() => {
+                    unlink(join(__dirname, '..', '../src', file))
+                })
+            } catch (error) {
+                console.log(error);
+            }
+        })
+
+        await this.prisma.user.delete({
+            where: {
+                id
+            },
+            include: {
+                agencydata: true,
+                candidatdata: {
+                    include: {
+                        candidatLifeState: true,
+                        courses: true,
+                        education: true,
+                        experience: true,
+                        hobbies: true,
+                        languages: true,
+                        skills: true,
+                        sendCandidature: true,
+                        savedJobs: true,
+                    }
+                },
+                authAccounts: true,
+                messages: true,
+                social: true,
+                reviews: true,
+            }
+        });
     }
 }

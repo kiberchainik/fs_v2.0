@@ -23,6 +23,7 @@ export const API_URL = {
     candidatEducation: (id: string = '') => API_URL.root(`/education/${id}`),
     candidatExperience: (id: string = '') => API_URL.root(`/experience/${id}`),
     candidatLifeStatus: () => API_URL.root(`/life-state`),
+    candidatDelete: () => API_URL.root(`/users/delete`),
 
     savedJobs: (id: string = '') => API_URL.root(`/saved-jobs/${id}`),
     sendedCanidature: (id: string = '') => API_URL.root(`/send-candidature/${id}`),

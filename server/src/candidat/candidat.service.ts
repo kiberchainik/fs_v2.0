@@ -195,9 +195,8 @@ export class CandidatService {
   }
 
   async update(id: string, updateCandidatDto: UpdateCandidatDto) {
-    if (updateCandidatDto.avatar.length === 0) {
-      throw new BadRequestException('Ricarica imagine')
-    }
+    console.log(updateCandidatDto);
+
     if (
       updateCandidatDto.name === undefined ||
       updateCandidatDto.lastname === undefined ||
@@ -222,10 +221,6 @@ export class CandidatService {
     const oldData = await this.prisma.candidatData.findFirst({
       where: { userId: id }
     })
-
-    if (oldData && oldData.avatar.length > 0 && updateCandidatDto.avatar === undefined) {
-      _data.avatar = oldData.avatar
-    }
     const candidat = await this.prisma.candidatData.upsert({
       where: {
         userId: id
@@ -238,10 +233,14 @@ export class CandidatService {
       throw new BadRequestException('I dati non sono stati aggiornati')
     }
 
-    if (oldData && oldData.avatar !== undefined && updateCandidatDto.avatar.length > 0) oldData.avatar.map(file => {
-      access(join(__dirname, '..', '../src', file)).then(() => {
-        unlink(join(__dirname, '..', '../src', file))
-      })
+    if (oldData && oldData.avatar[0] !== updateCandidatDto.avatar[0]) oldData.avatar.map(file => {
+      try {
+        access(join(__dirname, '..', '../src', file)).then(() => {
+          unlink(join(__dirname, '..', '../src', file))
+        })
+      } catch (error) {
+        console.log(error);
+      }
     })
 
     return candidat

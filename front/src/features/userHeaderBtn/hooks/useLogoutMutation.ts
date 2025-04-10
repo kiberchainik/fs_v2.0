@@ -3,7 +3,7 @@
 import { authService } from "@/features/auth/services";
 import { useAppDispatch } from "@/shared/hooks";
 import { toastMessageHandler } from "@/shared/utils";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation"
 import { setLoading, setUser } from "../slice/userSlice";
 

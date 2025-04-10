@@ -427,7 +427,9 @@
             "descriptionEmpty": "Descrizione è obbligatorio",
             "saveBtn": "Salva",
             "national": "Nazionalità",
-            "birthday": "Data di nascita"
+            "birthday": "Data di nascita",
+            "deleteAccount": "Elimina account",
+            "deleteAccountDescription": "Eliminando il tuo account, eliminerai definitivamente il tuo curriculum e la cronologia delle ricerche. Non potrai più candidarti per le offerte di lavoro che ti interessano"
         },
         "candidature": {
             "cancel_candidature": "Annulla candidatura",

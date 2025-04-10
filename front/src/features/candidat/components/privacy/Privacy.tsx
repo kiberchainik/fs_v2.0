@@ -1,7 +1,7 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 
 import {
 	Button,
@@ -24,11 +24,12 @@ import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import { EnumTokens, saveTokenStorage } from '@/shared/services'
 import { DateTimePicker } from '@/shared/components/datapicker/Datapicker'
-import { useGetPrivacy } from '../../hooks'
+import { useDeleteProfile, useGetPrivacy } from '../../hooks'
 import { useAppSelector } from '@/shared/hooks'
 import { ImageUpload } from '../image-upload/ImageUpload'
 import TextEditor from '@/shared/components/ui/TextEditor'
 import { useTranslations } from 'next-intl'
+import { ConfirmModal } from '@/shared/components/modals/ConfirmModals'
 
 export function Privacy() {
 	const searchParams = useSearchParams()
@@ -40,6 +41,7 @@ export function Privacy() {
 
 	const { data: user, isLoading, error } = useAppSelector(state => state.reducer.user)
 	const { privacy, isFetching } = useGetPrivacy()
+	const { deleteProfile } = useDeleteProfile()
 
 	const form = useForm<TypePrivacySchema>({
 		resolver: zodResolver(PrivacySchema),
@@ -183,7 +185,7 @@ export function Privacy() {
 								</FormItem>
 							)}
 						/>
-						<FormField
+						<Controller
 							control={form.control}
 							name='about_my'
 							render={({ field }) => (
@@ -214,10 +216,23 @@ export function Privacy() {
 								</FormItem>
 							)}
 						/>
-						<Button type='submit' disabled={isFetching}>{t('saveBtn')}</Button>
+						<div className='flex flex-col md:flex-row gap-2 justify-between'>
+							<Button type='submit' disabled={isFetching}>{t('saveBtn')}</Button>
+						</div>
 					</form>
 				</Form>
 				}
+				<div className='flex flex-col md:flex-row items-center justify-between mt-5 border-t'>
+					<span className='text-lg font-bold text-red-700 p-5'>{t('deleteAccountDescription')}</span>
+					<ConfirmModal
+						title={t('deleteAccount')}
+						description={t('deleteAccountDescription')}
+						handleClick={() => deleteProfile()}
+					>
+
+						<Button variant='destructive'>{t('deleteAccount')}</Button>
+					</ConfirmModal>
+				</div>
 			</CardContent>
 		</Card>
 	)
