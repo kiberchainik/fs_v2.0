@@ -4,16 +4,19 @@ import { userService } from "../services";
 import { toast } from "sonner";
 import { toastMessageHandler } from "@/shared/utils";
 import { useMemo } from "react";
+import { useRouter } from "next/navigation";
 
 export function useUpdProfileMutation() {
     const queryClient = useQueryClient()
+    const router = useRouter()
 
     const { mutate: updProfile, isPending } = useMutation({
         mutationKey: ['upd profile'],
         mutationFn: (data: TypePrivacySchema) => userService.updateProfile(data),
         onSuccess() {
-            toast.success('Profile updated')
-            queryClient.invalidateQueries({ queryKey: ['getUserHeaderData'] })
+            toast.success('Il Suo profilo è stato aggiornato con successo')
+            queryClient.refetchQueries({ queryKey: ['getUserHeaderData'] })
+            router.refresh()
         },
         onError(error) {
             toastMessageHandler(error)

@@ -195,21 +195,37 @@ export class CandidatService {
   }
 
   async update(id: string, updateCandidatDto: UpdateCandidatDto) {
+    if (updateCandidatDto.avatar.length === 0) {
+      throw new BadRequestException('Ricarica imagine')
+    }
+    if (
+      updateCandidatDto.name === undefined ||
+      updateCandidatDto.lastname === undefined ||
+      updateCandidatDto.birthday === undefined ||
+      updateCandidatDto.phone === undefined ||
+      updateCandidatDto.resident === undefined ||
+      updateCandidatDto.about_my === undefined) {
+      throw new BadRequestException('Tutti i campi sono obbligatori')
+    }
+
     const _data = {
       firstname: updateCandidatDto.name,
       surname: updateCandidatDto.lastname,
       birthday: updateCandidatDto.birthday,
-      avatar: updateCandidatDto.avatar,
       phone: updateCandidatDto.phone,
       resident: updateCandidatDto.resident,
       about_my: updateCandidatDto.about_my,
-      userId: id
+      userId: id,
+      avatar: updateCandidatDto.avatar
     }
 
     const oldData = await this.prisma.candidatData.findFirst({
       where: { userId: id }
     })
 
+    if (oldData && oldData.avatar.length > 0 && updateCandidatDto.avatar === undefined) {
+      _data.avatar = oldData.avatar
+    }
     const candidat = await this.prisma.candidatData.upsert({
       where: {
         userId: id
@@ -222,7 +238,7 @@ export class CandidatService {
       throw new BadRequestException('I dati non sono stati aggiornati')
     }
 
-    if (oldData && oldData.avatar !== undefined) oldData.avatar.map(file => {
+    if (oldData && oldData.avatar !== undefined && updateCandidatDto.avatar.length > 0) oldData.avatar.map(file => {
       access(join(__dirname, '..', '../src', file)).then(() => {
         unlink(join(__dirname, '..', '../src', file))
       })

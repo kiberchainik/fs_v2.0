@@ -7,19 +7,19 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation"
 import { setLoading, setUser } from "../slice/userSlice";
 
-export function useLogoutMutation () {
+export function useLogoutMutation() {
     const router = useRouter()
     //const queryClient = useQueryClient()
     const dispatch = useAppDispatch()
 
-    const {mutate: logout, isPending: isLoader} = useMutation({
+    const { mutate: logout, isPending: isLoader } = useMutation({
         mutationKey: ['logout'],
         mutationFn: () => authService.logout(),
         onSuccess() {
             dispatch(setLoading(true))
             dispatch(setUser(null))
             router.push('/')
-            //queryClient.invalidateQueries({queryKey: ['getUserHeaderData']})
+            //window.location.replace('/')
         },
         onError(error) {
             toastMessageHandler(error)

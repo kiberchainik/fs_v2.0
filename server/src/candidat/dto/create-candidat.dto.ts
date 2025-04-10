@@ -1,34 +1,34 @@
 import { ArrayMinSize, IsDateString, IsEmail, IsNotEmpty, IsOptional, IsPhoneNumber, IsString } from "class-validator";
 
 export class CreateCandidatDto {
-    @IsNotEmpty({ message: 'Email обязателен для указания' })
-    @IsEmail({}, { message: 'Не верный формат email' })
+    @IsNotEmpty({ message: 'Email è obbligatorio' })
+    @IsEmail({}, { message: 'Formato email non valido' })
     email: string
 
-    @IsNotEmpty({ message: 'Email обязателен для указания' })
-    @IsString({ message: 'Не верный формат email' })
+    @IsNotEmpty({ message: 'Il nome è obbligatorio' })
+    @IsString({ message: 'Formato nome non valido' })
     name: string
 
-    @IsNotEmpty({ message: 'Email обязателен для указания' })
-    @IsString({ message: 'Не верный формат email' })
+    @IsNotEmpty({ message: 'Il cognome è obbligatorio' })
+    @IsString({ message: 'Formato cognome non valido' })
     lastname: string
 
-    @IsNotEmpty({ message: 'Email обязателен для указания' })
-    @IsDateString({}, { message: 'Не верный формат date' })
+    @IsNotEmpty({ message: 'La data di nascita è obbligatoria' })
+    @IsDateString({}, { message: 'Formato data non valido' })
     birthday: string
 
     @IsString({
-        message: 'Укажите хотя бы одну картинку',
+        message: 'Fornire almeno un\'immagine',
         each: true
     })
-    @ArrayMinSize(1, { message: 'Должна быть хотя бы одна картинка' })
+    @ArrayMinSize(1, { message: 'Deve esserci almeno un\'immagine' })
     @IsNotEmpty({
         each: true,
-        message: 'Путь к картинке не может быть пустым'
+        message: 'Il percorso dell\'immagine non può essere vuoto'
     })
     avatar: string[]
 
-    @IsNotEmpty({ message: 'Номер телефона нужно указать обязательно' })
+    @IsNotEmpty({ message: 'Il numero di telefono è obbligatorio' })
     @IsPhoneNumber('IT')
     phone: string
 
