@@ -26,7 +26,7 @@ export function useUpdLifeStatusMutation() {
         mutationKey: ['upd candidat life status'],
         mutationFn: (data: TypeLifeStatusSchema) => lifestatusService.updateLifeStatus(data),
         onSuccess() {
-            toast.success('Profile updated')
+            toast.success('Profilo aggiornato con successo')
             queryClient.invalidateQueries({ queryKey: ['get candidat life status'] })
         },
         onError(error) {

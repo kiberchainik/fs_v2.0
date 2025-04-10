@@ -9,9 +9,7 @@ export const useSubmitRating = () => {
   const { mutate: submitRating, isSuccess: isSubmitted } = useMutation({
     mutationKey: ['submitRating'],
     mutationFn: (data: SubmitRatingProps) => ratingService.submitRating(data),
-    onSuccess: () => {
-      toast.success('Cпасибо за вашу оценку')
-    },
+    onSuccess: () => { },
     onError: (error) => {
       toastMessageHandler(error)
     }

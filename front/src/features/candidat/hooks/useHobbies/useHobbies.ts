@@ -53,7 +53,7 @@ export function useCreateHobbie() {
     const { mutate: newHobbie, isPending: isPendingCreate } = useHobbieMutation({
         mutationKey: ['create new hobbie'],
         mutationFn: ({ data }) => hobbiesService.createHobbie(data!),
-        successMsg: 'Hobbie created successfully'
+        successMsg: 'Hobby creato con successo'
     })
 
     return { newHobbie, isPendingCreate }
@@ -63,7 +63,7 @@ export function useUpdHobbie() {
     const { mutate: hobbie, isPending: isPendingUpdate } = useHobbieMutation({
         mutationKey: ['update candidat hobbie'],
         mutationFn: ({ id, data }) => hobbiesService.updateHobbie(id!, data!),
-        successMsg: 'Hobbie edited successfully'
+        successMsg: 'Hobby modificato con successo'
     })
 
     return { hobbie, isPendingUpdate }
@@ -73,7 +73,7 @@ export function useDeleteHobbie() {
     const { mutate: deleteHobbie, isPending: isPendingDelete } = useHobbieMutation({
         mutationKey: ['delete candidat hobbie'],
         mutationFn: ({ id }) => hobbiesService.deleteHobbie(id!),
-        successMsg: 'Hobbie deleted successfully',
+        successMsg: 'Hobby cancelato con successo',
     })
 
     return { deleteHobbie, isPendingDelete }

@@ -17,7 +17,7 @@ export const useDeleteVacancy = () => {
         mutationFn: () => vacancyService.deleteVacancy(editjobId),
         onSuccess() {
             queryClient.invalidateQueries({ queryKey: ['get all vacancy'] })
-            toast.success('Vacancy deleted successfully')
+            toast.success('Offerta di lavoro eliminata con successo')
             router.push(AGENCY_URL.vacancies())
         },
         onError(error: any) {

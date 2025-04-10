@@ -5,16 +5,16 @@ import { branchService } from "../services";
 import { useMemo } from "react";
 import { TypeBranchSchema } from "../schemes";
 
-export function useNewBranchMutation () {
+export function useNewBranchMutation() {
     const queryClient = useQueryClient()
-    const {mutate: createBranch, isPending, isSuccess} = useMutation({
+    const { mutate: createBranch, isPending, isSuccess } = useMutation({
         mutationKey: ['create vacancy data'],
         mutationFn: (data: TypeBranchSchema) => branchService.createBranch(data),
         onSuccess() {
-            queryClient.invalidateQueries({queryKey: ['get all branch']})
-            toast.success('New filial created succesfully!')
+            queryClient.invalidateQueries({ queryKey: ['get all branch'] })
+            toast.success('Nuova filiale creata con successo!')
         },
-        onError(error:any) {
+        onError(error: any) {
             toastMessageHandler(error)
         }
     })

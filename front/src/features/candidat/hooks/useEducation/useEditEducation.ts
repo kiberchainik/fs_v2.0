@@ -80,7 +80,7 @@ export const useEducationLogic = () => {
             })
             setEditEducationId(null)
         } catch (error) {
-            toast.error(`Failed to update education`)
+            toast.error(`Aggiornamento dell'istruzione non riuscito`)
         }
     }
 

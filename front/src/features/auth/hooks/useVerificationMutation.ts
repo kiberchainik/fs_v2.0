@@ -2,8 +2,10 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { verificationService } from "../services";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 export function useVerificationMutation() {
+    const t = useTranslations('hooks')
     const router = useRouter()
     const queryClient = useQueryClient()
 
@@ -11,7 +13,7 @@ export function useVerificationMutation() {
         mutationKey: ['varifacation email'],
         mutationFn: (token: string | null) => verificationService.newVerification(token),
         onSuccess({ data }) {
-            toast.success('Email confirmated successfully')
+            toast.success(t('confirmated_email'))
             queryClient.invalidateQueries({ queryKey: ['getUserHeaderData'] })
             router.push(`/${data.existingUser.role.toLocaleLowerCase()}`)
         },

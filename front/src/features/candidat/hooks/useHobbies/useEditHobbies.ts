@@ -46,7 +46,7 @@ export const useHobbiesLogic = () => {
             hobbie({ id, data: hobbieData })
             setEditingHobbieId(null)
         } catch (error) {
-            console.error('Failed to update hobbie:', error)
+            console.error('Impossibile aggiornare l\'hobby')
         }
     }
 

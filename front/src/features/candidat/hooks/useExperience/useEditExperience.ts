@@ -85,7 +85,7 @@ export const useExperienceLogic = () => {
             })
             setEditExperienceId(null)
         } catch (error) {
-            toast.error(`Failed to update experience`)
+            toast.error(`Impossibile aggiornare l'esperienza`)
         }
     }
 

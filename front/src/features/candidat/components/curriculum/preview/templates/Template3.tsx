@@ -40,7 +40,7 @@ export default function Template3({ privacy, courses, education, experience, hob
                         </div>
                         <div className="flex items-center gap-1">
                             <MdOutlineMailOutline className="inline-block size-3 flex-none text-purple-600 dark:text-purple-500" />
-                            <span className="font-medium truncate">{user.email}</span>
+                            <span className="font-medium truncate">{user && user.email}</span>
                         </div>
                     </div>
                 </div>

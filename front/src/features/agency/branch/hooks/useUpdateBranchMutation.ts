@@ -6,18 +6,18 @@ import { branchService } from "../services";
 import { useParams } from "next/navigation";
 import { useMemo } from "react";
 
-export function useUpdateBranchMutation () {
-    const {editBranchId} = useParams<{editBranchId: string}>()
+export function useUpdateBranchMutation() {
+    const { editBranchId } = useParams<{ editBranchId: string }>()
     const queryClient = useQueryClient()
-    
-    const {mutate: updateBranch, isPending, isSuccess} = useMutation({
+
+    const { mutate: updateBranch, isPending, isSuccess } = useMutation({
         mutationKey: ['update branch data'],
         mutationFn: (data: IBranchEdit) => branchService.updateBranch(editBranchId, data),
         onSuccess() {
-            queryClient.invalidateQueries({queryKey: ['get all branch']})
-            toast.success('New filial created succesfully!')
+            queryClient.invalidateQueries({ queryKey: ['get all branch'] })
+            toast.success('Il filiale aggiornato con successo!')
         },
-        onError(error:any) {
+        onError(error: any) {
             toastMessageHandler(error)
         }
     })

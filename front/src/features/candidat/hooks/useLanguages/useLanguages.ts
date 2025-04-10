@@ -53,7 +53,7 @@ export function useCreateLanguage() {
     const { mutate: newLanguage, isPending: isPendingCreate } = useLanguageMutation({
         mutationKey: ['create new language'],
         mutationFn: ({ data }) => languagesService.createLanguage(data!),
-        successMsg: 'Language created successfully'
+        successMsg: 'Lingua creata con successo'
     })
 
     return { newLanguage, isPendingCreate }
@@ -63,7 +63,7 @@ export function useUpdLanguage() {
     const { mutate: language, isPending: isPendingUpdate } = useLanguageMutation({
         mutationKey: ['update candidat language'],
         mutationFn: ({ id, data }) => languagesService.updateLanguage(id!, data!),
-        successMsg: 'Language edited successfully'
+        successMsg: 'Lingua modificata con successo'
     })
 
     return { language, isPendingUpdate }
@@ -73,7 +73,7 @@ export function useDeleteLanguage() {
     const { mutate: deleteLanguage, isPending: isPendingDelete } = useLanguageMutation({
         mutationKey: ['delete candidat language'],
         mutationFn: ({ id }) => languagesService.deleteLanguage(id!),
-        successMsg: 'Language deleted successfully',
+        successMsg: 'Lingua cancelata con successo',
     })
 
     return { deleteLanguage, isPendingDelete }

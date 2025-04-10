@@ -48,7 +48,7 @@ export const useSkillsLogic = () => {
             skill({ id, data: skillData })
             setEditingSkillId(null)
         } catch (error) {
-            console.error('Failed to update skill:', error)
+            console.error('Impossibile aggiornare la competenza')
         }
     }
 

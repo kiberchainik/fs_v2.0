@@ -53,7 +53,7 @@ export function useCreateSkill() {
     const { mutate: newSkill, isPending: isPendingCreate } = useSkillMutation({
         mutationKey: ['create new skill'],
         mutationFn: ({ data }) => skillsService.createSkill(data!),
-        successMsg: 'Skill created successfully'
+        successMsg: 'Competenza creata con successo'
     })
 
     return { newSkill, isPendingCreate }
@@ -63,7 +63,7 @@ export function useUpdSkill() {
     const { mutate: skill, isPending: isPendingUpdate } = useSkillMutation({
         mutationKey: ['update candidat skill'],
         mutationFn: ({ id, data }) => skillsService.updateSkill(id!, data!),
-        successMsg: 'Skill edited successfully'
+        successMsg: 'Competenza modificata con successo'
     })
 
     return { skill, isPendingUpdate }
@@ -73,7 +73,7 @@ export function useDeleteSkill() {
     const { mutate: deleteSkill, isPending: isPendingDelete } = useSkillMutation({
         mutationKey: ['delete candidat skill'],
         mutationFn: ({ id }) => skillsService.deleteSkill(id!),
-        successMsg: 'Skill deleted successfully',
+        successMsg: 'Competenza cancelata con successo',
     })
 
     return { deleteSkill, isPendingDelete }

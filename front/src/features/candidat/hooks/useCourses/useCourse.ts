@@ -51,7 +51,7 @@ export function useCreateCourse() {
     const { mutate: newCourse, isPending: isPendingCreate, isError } = useCourseMutation({
         mutationKey: ['create new cours'],
         mutationFn: ({ data }) => coursesService.createCourses(data!),
-        successMsg: 'Cours created successfully'
+        successMsg: 'Corso creato con successo'
     })
 
     return { newCourse, isPendingCreate, isError }
@@ -61,7 +61,7 @@ export function useUpdCourse() {
     const { mutate: course, isPending: isPendingUpdate } = useCourseMutation({
         mutationKey: ['update candidat cours'],
         mutationFn: ({ id, data }) => coursesService.updateCourses(id!, data!),
-        successMsg: 'Cours edited successfully'
+        successMsg: 'Corso modificato con successo'
     })
 
     return { course, isPendingUpdate }
@@ -71,7 +71,7 @@ export function useDeleteCourse() {
     const { mutate: deleteCourse, isPending: isPendingDelete } = useCourseMutation({
         mutationKey: ['delete candidat cours'],
         mutationFn: ({ id }) => coursesService.deleteCourses(id!),
-        successMsg: 'Cours deleted successfully',
+        successMsg: 'Corso eliminato con successo',
     })
 
     return { deleteCourse, isPendingDelete }

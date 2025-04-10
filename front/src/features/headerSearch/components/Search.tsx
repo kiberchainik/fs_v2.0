@@ -33,8 +33,8 @@ export function HeaderSearch() {
                         </div>
                     </Link>
                 ))}
-                {!searchTerm && <div className={styles.seqrchQueryNotFound}>Что вы хотите найти?</div>}
-                {!searchResult?.length && searchTerm && <div className={styles.seqrchQueryNotFound}>По запросу <b>{searchTerm}</b> ничего не найдено!</div>}
+                {!searchTerm && <div className={styles.seqrchQueryNotFound}>Cosa vuoi cercare?</div>}
+                {!searchResult?.length && searchTerm && <div className={styles.seqrchQueryNotFound}>Nessun risultato trovato per <b>{searchTerm}</b>!</div>}
                 <div className='cursor-pointer' onClick={() => onClickSearch()}><GrClose /></div>
             </div>}
         </>

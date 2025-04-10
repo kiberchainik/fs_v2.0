@@ -86,7 +86,7 @@ export default function VacancyPage({
                 </div>
               }
               <Button variant='outline'>
-                <Link href={generatePostUrl(categories)}>Altre offerte</Link>
+                <Link href={generatePostUrl(categories)}>{t('other_vacancies')}</Link>
               </Button>
             </div>
             <div className="mb-2">
@@ -111,52 +111,52 @@ export default function VacancyPage({
             <div className="job-information border-t mt-2 bg-white dark:bg-neutral-800 p-4 rounded-3xl mb-4">
               <ul className="job-information-list">
                 <li className="border-dashed border-b mb-2 py-2 flex flex-row gap-x-3 items-center justify-between">
-                  <span className="flex gap-x-2 items-center"><IoCalendarClear /> Date Posted</span>
+                  <span className="flex gap-x-2 items-center"><IoCalendarClear />{t('date_posted')}</span>
                   <span> {formatDate(createdAt)}</span>
                 </li>
                 {reallyUpTo && <li className="border-dashed border-b mb-2 py-2 flex flex-row gap-x-3 items-center justify-between">
-                  <span className="flex gap-x-2 items-center"><FaRedo /> Expiration Date</span>
+                  <span className="flex gap-x-2 items-center"><FaRedo /> {t('date_experation')}</span>
                   <span> {formatDate(reallyUpTo)}</span>
                 </li>}
 
                 <li className="border-dashed border-b mb-2 py-2 flex flex-row gap-x-3 items-center justify-between">
-                  <span className="flex gap-x-2 items-center"><IoLocationSharp /> Location</span>
+                  <span className="flex gap-x-2 items-center"><IoLocationSharp /> {t('location')}</span>
                   <span> {location}</span>
                 </li>
 
                 {experienceMinimalJob && <li className="border-dashed border-b mb-2 py-2 flex flex-row gap-x-3 items-center justify-between">
-                  <span className="flex gap-x-2 items-center"><FaLayerGroup /> Experience</span>
+                  <span className="flex gap-x-2 items-center"><FaLayerGroup /> {t('experienceMinimal')}</span>
                   <span>{experienceMinimalJob.name}</span>
                 </li>}
 
                 {levelEducation && <li className="border-dashed border-b mb-2 py-2 flex flex-row gap-x-3 items-center justify-between">
-                  <span className="flex gap-x-2 items-center"><FaUserGraduate /> Qualification</span>
+                  <span className="flex gap-x-2 items-center"><FaUserGraduate /> {t('levelEducation')}</span>
                   <span>{levelEducation.name}</span>
                 </li>}
 
                 {salary !== 0 && <li className="border-dashed border-b mb-2 py-2 flex flex-row gap-x-3 items-center justify-between">
-                  <span className="flex gap-x-2 items-center"><GiTakeMyMoney /> Contract type</span>
+                  <span className="flex gap-x-2 items-center"><GiTakeMyMoney /> {t('salary')}</span>
                   <span>{salary}</span>
                 </li>}
 
                 {contractType && <li className="border-dashed border-b mb-2 py-2 flex flex-row gap-x-3 items-center justify-between">
-                  <span className="flex gap-x-2 items-center"><FaFileContract /> Contract type</span>
+                  <span className="flex gap-x-2 items-center"><FaFileContract /> {t('contractType')}</span>
                   <span>{contractType.name}</span>
                 </li>}
 
                 {modeJob && <li className="border-dashed border-b mb-2 py-2 flex flex-row gap-x-3 items-center justify-between">
-                  <span className="flex gap-x-2 items-center"><GrUserWorker /> Mode job</span>
+                  <span className="flex gap-x-2 items-center"><GrUserWorker /> {t('modeJob')}</span>
                   <span>{modeJob.name}</span>
                 </li>}
 
                 {workingTimeJob && <li className="border-dashed border-b mb-2 py-2 flex flex-row gap-x-3 items-center justify-between">
-                  <span className="flex gap-x-2 items-center"><IoIosTime /> Working time</span>
+                  <span className="flex gap-x-2 items-center"><IoIosTime /> {t('workingTime')}</span>
                   <span>{workingTimeJob.name}</span>
                 </li>}
               </ul>
             </div>
             <div className="sidebar-contact bg-white dark:bg-neutral-800 p-4 rounded-3xl">
-              <h4 className="text-2xl mb-2">Contact Info</h4>
+              <h4 className="text-2xl mb-2">{t('contact_info')}</h4>
               <Image src="/map.jpg" alt="map" height={152} width={305} className="rounded-2xl mb-2 w-[305px] h-[152px]" />
               <div className="info-address">
                 <ul>

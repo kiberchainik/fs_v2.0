@@ -17,7 +17,7 @@ export const useDeleteBranch = () => {
         mutationFn: () => branchService.deleteBranch(editBranchId),
         onSuccess() {
             queryClient.invalidateQueries({ queryKey: ['get all branch'] })
-            toast.success('Filial deleted successfully')
+            toast.success('Filiale eliminata con successo')
             router.push(AGENCY_URL.branches())
         },
         onError(error: any) {
@@ -41,7 +41,7 @@ export const useDeleteManyBranch = () => {
         mutationFn: (ids: string[]) => branchService.deleteManyBranch(ids),
         onSuccess() {
             queryClient.invalidateQueries({ queryKey: ['get all branch'] })
-            toast.success('Filial deleted successfully')
+            toast.success('Filiali eliminate con successo')
         },
         onError(error: any) {
             toastMessageHandler(error)

@@ -11,7 +11,7 @@ import { MAIN_URL } from "@/shared/config"
 
 export const VacancyCard: FC<ICarouselJobs> = ({ categories, createdAt, slug, title, views, agency, description, contractType, experienceMinimalJob, levelEducation, modeJob, reallyUpTo, workingTimeJob }) => {
     return (
-        <div className="md:w-[400px] w-96 mb-4">
+        <div className="md:w-[400px] w-80 mb-4">
             <div className="shadow-2xl shadow-sky-300/20 rounded-3xl bg-white dark:bg-neutral-800 p-6">
                 <div className="flex flex-row items-center gap-x-5">
                     <div className="shadow-2xl shadow-slate-700-500/20 rounded-2xl p-5">

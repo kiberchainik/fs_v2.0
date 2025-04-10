@@ -434,5 +434,40 @@
             "send_candidature": "Candidati"
         }
     },
-    "vacancy_page": {}
+    "vacancy_page": {
+        "other_vacancies": "Altre offerte di lavoro",
+        "date_posted": "Data di pubblicazione",
+        "date_experation": "Data di scadenza",
+        "location": "Località di lavoro",
+        "contractType": "Tipo di contratto",
+        "modeJob": "Modalità di lavoro",
+        "workingTime": "Orario di lavoro",
+        "levelEducation": "Livello di istruzione",
+        "experienceMinimal": "Esperienza minima richiesta",
+        "salary": "Stipendio",
+        "contact_info": "Contatti"
+    },
+    "sorted": {
+        "sortBy": "Ordina per",
+        "sortByDate": "Data di pubblicazione",
+        "sortBySalary": "Stipendio",
+        "sortByViews": "Visite",
+        "sortByTitle": "Titolo"
+    },
+    "hooks": {
+        "deletecandidature": "La tua candidatura è stata rimossa dall'elenco dei candidati per questa posizione",
+        "candidatureSended": "La tua candidatura è stata inviata con successo",
+        "candidatureError": "Si è verificato un errore durante l'invio della candidatura. Riprova più tardi.",
+        "addCandidatInFavorite": "La tua candidatura è stata aggiunta ai preferiti",
+        "removeCandidatInFavorite": "La tua candidatura è stata rimossa dai preferiti",
+        "profile_updated": "Il tuo profilo è stato aggiornato con successo",
+        "login_success": "Accesso effettuato con successo",
+        "new_passwrd": "Password cambiata con successo",
+        "new_passwrd_description": "Apri l'account con la nuova password",
+        "registration": "Registrato con successo",
+        "registration_description": "Per favore apri la tua email per verificare la registrazione!",
+        "reset_password": "Apri email",
+        "reset_password_description": "Link per la conferma inviato all'email",
+        "confirmated_email": "Email confermata con successo"
+    }
 }

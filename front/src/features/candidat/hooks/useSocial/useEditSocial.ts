@@ -46,7 +46,7 @@ export const useSocialLogic = () => {
             social({ id, data: socialData })
             setEditingSocialId(null)
         } catch (error) {
-            console.error('Failed to update social:', error)
+            console.error('Impossibile aggiornare il social')
         }
     }
 

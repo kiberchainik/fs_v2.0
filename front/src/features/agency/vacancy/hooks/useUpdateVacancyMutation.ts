@@ -17,7 +17,7 @@ export function useUpdateVacancyMutation() {
             queryClient.invalidateQueries({
                 queryKey: ['get all vacancy']
             })
-            toast.success('Vacancy updated succesfully!')
+            toast.success('Offerta di lavoro aggiornata con successo!')
         },
         onError(error: any) {
             toastMessageHandler(error)

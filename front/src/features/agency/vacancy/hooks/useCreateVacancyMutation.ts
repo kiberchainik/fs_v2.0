@@ -10,7 +10,7 @@ export function useCreateVacancyMutation() {
         mutationKey: ['create vacancy data'],
         mutationFn: (data: IVacanciaes) => vacancyService.createVacancyData(data),
         onSuccess() {
-            toast.success('Vacancy created succesfully!')
+            toast.success('Offerta di lavoro creata con successo!')
         },
         onError(error: any) {
             toastMessageHandler(error)

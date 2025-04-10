@@ -53,7 +53,7 @@ export function useCreateSocial() {
     const { mutate: newSocial, isPending: isPendingCreate } = useSocialMutation({
         mutationKey: ['create new social'],
         mutationFn: ({ data }) => socialService.createSocial(data!),
-        successMsg: 'social created successfully'
+        successMsg: 'Social link creato con successo'
     })
 
     return { newSocial, isPendingCreate }
@@ -63,7 +63,7 @@ export function useUpdSocial() {
     const { mutate: social, isPending: isPendingUpdate } = useSocialMutation({
         mutationKey: ['update candidat social'],
         mutationFn: ({ id, data }) => socialService.updateSocial(id!, data!),
-        successMsg: 'social edited successfully'
+        successMsg: 'Social link modificato con successo'
     })
 
     return { social, isPendingUpdate }
@@ -73,7 +73,7 @@ export function useDeleteSocial() {
     const { mutate: deleteSocial, isPending: isPendingDelete } = useSocialMutation({
         mutationKey: ['delete candidat social'],
         mutationFn: ({ id }) => socialService.deleteSocial(id!),
-        successMsg: 'social deleted successfully',
+        successMsg: 'Social link cancelato con successo',
     })
 
     return { deleteSocial, isPendingDelete }

@@ -428,6 +428,46 @@
             "saveBtn": "Save",
             "national": "Nationality",
             "birthday": "Date of birth"
+        },
+        "candidature": {
+            "cancel_candidature": "Cancel application",
+            "send_candidature": "Apply"
         }
+    },
+    "vacancy_page": {
+        "other_vacancies": "Other job offers",
+        "date_posted": "Date posted",
+        "date_experation": "Expiration date",
+        "location": "Work location",
+        "contractType": "Contract type",
+        "modeJob": "Work mode",
+        "workingTime": "Working hours",
+        "levelEducation": "Education level",
+        "experienceMinimal": "Minimum required experience",
+        "salary": "Salary",
+        "contact_info": "Contacts"
+    },
+    "sorted": {
+        "sortBy": "Sort by",
+        "sortByDate": "Date posted",
+        "sortBySalary": "Salary",
+        "sortByViews": "Views",
+        "sortByTitle": "Title"
+    },
+    "hooks": {
+        "deletecandidature": "Your application has been removed from the candidate list for this position",
+        "candidatureSended": "Your application has been successfully sent",
+        "candidatureError": "An error occurred while sending the application. Please try again later.",
+        "addCandidatInFavorite": "Your application has been added to favorites",
+        "removeCandidatInFavorite": "Your application has been removed from favorites",
+        "profile_updated": "Your profile has been successfully updated",
+        "login_success": "Login successful",
+        "new_passwrd": "Password successfully changed",
+        "new_passwrd_description": "Open the account with the new password",
+        "registration": "Successfully registered",
+        "registration_description": "Please open your email to verify the registration!",
+        "reset_password": "Open email",
+        "reset_password_description": "Confirmation link sent to email",
+        "confirmated_email": "Email successfully confirmed"
     }
 }

@@ -428,6 +428,46 @@
             "saveBtn": "Salvează",
             "national": "Naționalitate",
             "birthday": "Data nașterii"
+        },
+        "candidature": {
+            "cancel_candidature": "Anulează candidatura",
+            "send_candidature": "Aplică"
         }
+    },
+    "vacancy_page": {
+        "other_vacancies": "Alte oferte de muncă",
+        "date_posted": "Data publicării",
+        "date_experation": "Data expirării",
+        "location": "Localitate",
+        "contractType": "Tip de contract",
+        "modeJob": "Mod de lucru",
+        "workingTime": "Program de lucru",
+        "levelEducation": "Nivel de educație",
+        "experienceMinimal": "Experiență minimă necesară",
+        "salary": "Salariu",
+        "contact_info": "Contacte"
+    },
+    "sorted": {
+        "sortBy": "Sortează după",
+        "sortByDate": "Data publicării",
+        "sortBySalary": "Salariu",
+        "sortByViews": "Vizualizări",
+        "sortByTitle": "Titlu"
+    },
+    "hooks": {
+        "deletecandidature": "Candidatura ta a fost eliminată din lista candidaților pentru această poziție",
+        "candidatureSended": "Candidatura ta a fost trimisă cu succes",
+        "candidatureError": "A apărut o eroare la trimiterea candidaturii. Încearcă din nou mai târziu.",
+        "addCandidatInFavorite": "Candidatura ta a fost adăugată la favorite",
+        "removeCandidatInFavorite": "Candidatura ta a fost eliminată din favorite",
+        "profile_updated": "Profilul tău a fost actualizat cu succes",
+        "login_success": "Autentificare reușită",
+        "new_passwrd": "Parolă schimbată cu succes",
+        "new_passwrd_description": "Deschide contul cu noua parolă",
+        "registration": "Înregistrare reușită",
+        "registration_description": "Te rugăm să-ți verifici emailul pentru confirmarea înregistrării!",
+        "reset_password": "Deschide emailul",
+        "reset_password_description": "Linkul de confirmare a fost trimis pe email",
+        "confirmated_email": "Email confirmat cu succes"
     }
 }

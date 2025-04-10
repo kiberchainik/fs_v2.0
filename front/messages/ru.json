@@ -428,6 +428,46 @@
             "saveBtn": "Сохранить",
             "national": "Национальность",
             "birthday": "Дата рождения"
+        },
+        "candidature": {
+            "cancel_candidature": "Отменить заявку",
+            "send_candidature": "Подать заявку"
         }
+    },
+    "vacancy_page": {
+        "other_vacancies": "Другие вакансии",
+        "date_posted": "Дата публикации",
+        "date_experation": "Дата окончания",
+        "location": "Местоположение",
+        "contractType": "Тип контракта",
+        "modeJob": "Режим работы",
+        "workingTime": "Рабочее время",
+        "levelEducation": "Уровень образования",
+        "experienceMinimal": "Минимальный опыт работы",
+        "salary": "Зарплата",
+        "contact_info": "Контактная информация"
+    },
+    "sorted": {
+        "sortBy": "Сортировать по",
+        "sortByDate": "Дате публикации",
+        "sortBySalary": "Зарплате",
+        "sortByViews": "Просмотрам",
+        "sortByTitle": "Названию"
+    },
+    "hooks": {
+        "deletecandidature": "Ваша заявка была удалена из списка кандидатов на эту позицию",
+        "candidatureSended": "Ваша заявка успешно отправлена",
+        "candidatureError": "Произошла ошибка при отправке заявки. Попробуйте позже.",
+        "addCandidatInFavorite": "Ваша заявка добавлена в избранное",
+        "removeCandidatInFavorite": "Ваша заявка удалена из избранного",
+        "profile_updated": "Ваш профиль успешно обновлен",
+        "login_success": "Успешный вход в систему",
+        "new_passwrd": "Пароль успешно изменен",
+        "new_passwrd_description": "Откройте аккаунт с новым паролем",
+        "registration": "Успешная регистрация",
+        "registration_description": "Пожалуйста, откройте вашу электронную почту для подтверждения регистрации!",
+        "reset_password": "Откройте электронную почту",
+        "reset_password_description": "Ссылка для подтверждения отправлена на электронную почту",
+        "confirmated_email": "Электронная почта успешно подтверждена"
     }
 }

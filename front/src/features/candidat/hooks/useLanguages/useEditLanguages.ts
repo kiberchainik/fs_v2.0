@@ -47,7 +47,7 @@ export const useLanguagesLogic = () => {
             language({ id, data: languageData })
             setEditingLanguageId(null)
         } catch (error) {
-            console.error('Failed to update language:', error)
+            console.error('Impossibile aggiornare la lingua')
         }
     }
 

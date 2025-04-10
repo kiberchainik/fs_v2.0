@@ -53,7 +53,7 @@ export function useCreateEducation() {
     const { mutate: newEducation, isPending: isPendingCreate, isError } = useEducationMutation({
         mutationKey: ['create new education'],
         mutationFn: ({ data }) => educationService.createEducation(data!),
-        successMsg: 'Education created successfully'
+        successMsg: 'Istruzione creata con successo'
     })
 
     return { newEducation, isPendingCreate, isError }
@@ -63,7 +63,7 @@ export function useUpdEducation() {
     const { mutate: updEducation, isPending: isPendingUpdate } = useEducationMutation({
         mutationKey: ['update candidat education'],
         mutationFn: ({ id, data }) => educationService.updateEducation(id!, data!),
-        successMsg: 'education edited successfully'
+        successMsg: 'Istruzione modificata con successo'
     })
 
     return { updEducation, isPendingUpdate }
@@ -73,7 +73,7 @@ export function useDeleteEducation() {
     const { mutate: deleteEducation, isPending: isPendingDelete } = useEducationMutation({
         mutationKey: ['delete candidat education'],
         mutationFn: ({ id }) => educationService.deleteEducation(id!),
-        successMsg: 'education deleted successfully',
+        successMsg: 'Istruzione cancelata con successo',
     })
 
     return { deleteEducation, isPendingDelete }

@@ -10,7 +10,7 @@ interface VacancySlice {
     page?: string
     totalPages: number
     totalCountJobs: number
-    sortBy: "title" | "createdAt" | "views";
+    sortBy: "title" | "createdAt" | "views" | "salary";
 }
 
 const initialState: VacancySlice = {
@@ -45,7 +45,7 @@ const vacancySlice = createSlice({
         setError(state, action: PayloadAction<string | null>) {
             state.error = action.payload
         },
-        setSortBy(state, action: PayloadAction<"title" | "createdAt" | "views">) {
+        setSortBy(state, action: PayloadAction<"title" | "createdAt" | "views" | "salary">) {
             state.sortBy = action.payload;
         },
         sortJobs(state) {
@@ -56,6 +56,9 @@ const vacancySlice = createSlice({
                         return a.title.localeCompare(b.title);
                     } else if (sortBy === "createdAt") {
                         return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+                    } else if (sortBy === "salary") {
+                        if (a.salary === null || b.salary === null) return 0
+                        return Number(b.salary) - Number(a.salary);
                     } else {
                         return Number(b.views) - Number(a.views);
                     }

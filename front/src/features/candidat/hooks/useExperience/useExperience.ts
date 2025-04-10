@@ -53,7 +53,7 @@ export function useCreateExperience() {
     const { mutate: newExperience, isPending: isPendingCreate, isError } = useExperienceMutation({
         mutationKey: ['create new experience'],
         mutationFn: ({ data }) => experienceService.createExperience(data!),
-        successMsg: 'Experience created successfully'
+        successMsg: 'Esperienza creata con successo'
     })
 
     return { newExperience, isPendingCreate, isError }
@@ -63,7 +63,7 @@ export function useUpdExperience() {
     const { mutate: updExperience, isPending: isPendingUpdate } = useExperienceMutation({
         mutationKey: ['update candidat experience'],
         mutationFn: ({ id, data }) => experienceService.updateExperience(id!, data!),
-        successMsg: 'experience edited successfully'
+        successMsg: 'Esperienza modificata con successo'
     })
 
     return { updExperience, isPendingUpdate }
@@ -73,7 +73,7 @@ export function useDeleteExperience() {
     const { mutate: deleteExperience, isPending: isPendingDelete } = useExperienceMutation({
         mutationKey: ['delete candidat experience'],
         mutationFn: ({ id }) => experienceService.deleteExperience(id!),
-        successMsg: 'experience deleted successfully',
+        successMsg: 'Esperienza cancelata con successo',
     })
 
     return { deleteExperience, isPendingDelete }
