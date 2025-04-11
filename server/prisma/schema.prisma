@@ -65,17 +65,28 @@ model CandidatData {
   sendCandidature   SendCandidature[]
   user              User               @relation(fields: [userId], references: [id], onDelete: Cascade)
   candidatLifeState CandidatLifeState?
+  candidatSettings  CandidatSettings?
 
   @@map("candidat_data")
 }
 
+model CandidatSettings {
+  id               String       @id @default(uuid())
+  isShowCVInSearch Boolean      @default(true) @map("is_public_cv")
+  isOpenForAgency  Boolean      @default(true) @map("is_open_for_agency")
+  cdId             String       @unique @map("candidate_id")
+  candidate        CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
+
+  @@map("candidat_settings")
+}
+
 model CandidatLifeState {
-  id                    String        @id @default(uuid())
-  availabilityTransport Boolean       @default(false) @map("availability_transport")
-  maritalStatus         MaritalStatus @default(NONE) @map("marital_status")
-  cdId                  String        @unique @map("candidate_id")
-  driverCategory        Json?         @map("driver_license_category")
-  candidate             CandidatData  @relation(fields: [cdId], references: [id], onDelete: Cascade)
+  id                    String       @id @default(uuid())
+  availabilityTransport Boolean      @default(false) @map("availability_transport")
+  maritalStatus         String       @map("marital_status")
+  cdId                  String       @unique @map("candidate_id")
+  driverCategory        Json?        @map("driver_license_category")
+  candidate             CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
 
   @@map("candidat_life_state")
 }
@@ -105,7 +116,7 @@ model Education {
 model Skills {
   id        String       @id @default(uuid())
   skill     String
-  level     SkillsLevel  @default(NONE)
+  level     String
   cdId      String       @map("candidate_id")
   candidate CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
 }
@@ -126,11 +137,11 @@ model Experience {
 }
 
 model Languages {
-  id        String        @id @default(uuid())
+  id        String       @id @default(uuid())
   language  String
-  level     LanguageLevel @default(BASIC)
-  cdId      String        @map("candidate_id")
-  candidate CandidatData  @relation(fields: [cdId], references: [id], onDelete: Cascade)
+  level     String
+  cdId      String       @map("candidate_id")
+  candidate CandidatData @relation(fields: [cdId], references: [id], onDelete: Cascade)
 }
 
 model Courses {
@@ -403,14 +414,6 @@ enum TokenType {
   PASSWORD_RESET
 }
 
-enum MaritalStatus {
-  NONE
-  NOT_MARRIED
-  MARRIEDNOCHILDREN
-  MARRIEDHAVECHILDREN
-  DIVORCET
-}
-
 enum DriverCategory {
   AM
   A1
@@ -445,18 +448,4 @@ enum UserRole {
   MODERATOR
   CANDIDATE
   AGENCY
-}
-
-enum SkillsLevel {
-  NONE
-  BEGINNER
-  EXPERIENCED
-  EXPERT
-}
-
-enum LanguageLevel {
-  NATIVESPEAKER
-  FLUENT
-  VERYGOOD
-  BASIC
 }

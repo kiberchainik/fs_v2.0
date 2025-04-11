@@ -9,12 +9,15 @@ import { returnTagsObject } from '@/agency/joboffers/dto';
 export class SendCandidatureService {
   constructor(private readonly prisma: PrismaService) { }
 
-  async sendCandidature(userId: string, jobId: CreateSendCandidatureDto) {
+  async sendCandidature(id: string, jobId: CreateSendCandidatureDto) {
     const candidateData = await this.prisma.candidatData.findFirst({
       where: {
-        user: {
-          id: userId
-        }
+        AND: [{
+          user: { id },
+          candidatSettings: {
+            isOpenForAgency: true
+          }
+        }]
       },
       select: {
         id: true
@@ -22,7 +25,7 @@ export class SendCandidatureService {
     });
 
     if (!candidateData) {
-      throw new NotFoundException('Данные кандидата не найдены');
+      throw new NotFoundException('Il candidato non è stato trovato oppure ha chiuso il suo CV per le agenzie di lavoro.');
     }
 
     // Проверяем существование вакансии

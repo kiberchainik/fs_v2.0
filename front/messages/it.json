@@ -235,14 +235,16 @@
     "agencySettings": {
         "formTitle": "I dati dell'agenzia",
         "labelLogo": "Carica logo",
-        "labelLogoEmpty": "Carica almeno un imagine",
+        "labelLogoEmpty": "Carica almeno un'immagine",
         "labelAgencyName": "Nome dell'agenzia",
         "labelAgencyAdress": "Indirizzo",
         "labelAgencyAbout": "Descrizione dell'agenzia",
         "labelAgencyContacts": "Telefono",
         "labelAgencyCF": "P.IVA/CF",
         "labelAgencyURL": "Link dell'agenzia",
-        "labelAgencyBtn": "Salva"
+        "labelAgencyBtn": "Salva",
+        "deleteAccount": "Elimina account",
+        "deleteAccountDescription": "Dopo l'eliminazione dell'account perderai tutti i dati associati al tuo profilo, incluse le tue offerte di lavoro e i candidati. Non sarà possibile recuperare il tuo account dopo l'eliminazione."
     },
     "agencyVacancy": {
         "createVacancy": {
@@ -434,6 +436,12 @@
         "candidature": {
             "cancel_candidature": "Annulla candidatura",
             "send_candidature": "Candidati"
+        },
+        "settingsCV": {
+            "isShowCVInSearchLabel": "Rendi il curriculum visibile sul sito",
+            "isShowCVInSearch": "Il curriculum sarà disponibile per la visualizzazione da parte dei reclutatori e delle agenzie sulle pagine del sito e nella ricerca",
+            "isOpenForAgency": "Proibisci l'accesso al curriculum per le agenzie",
+            "isOpenForAgencyLabel": "Le agenzie non potranno visualizzare il curriculum e non potrai candidarti per le offerte di lavoro"
         }
     },
     "vacancy_page": {

@@ -212,15 +212,44 @@ export class AgencyService {
     }
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} agency`;
-  }
+  async remove(id: string) {
+    const userAvatar = await this.prisma.agencyData.findUnique({
+      where: {
+        id
+      },
+      select: {
+        logo: true
+      }
+    })
 
-  update(id: string, updateAgencyDto: UpdateAgencyDto) {
-    return `This action updates a #${id} agency`;
-  }
+    userAvatar.logo.map(file => {
+      try {
+        access(join(__dirname, '..', '../src', file)).then(() => {
+          unlink(join(__dirname, '..', '../src', file))
+        })
+      } catch (error) {
+        console.log(error);
+      }
+    })
 
-  remove(id: string) {
-    return `This action removes a #${id} agency`;
+    await this.prisma.user.delete({
+      where: {
+        id
+      },
+      include: {
+        agencydata: {
+          include: {
+            branch: true,
+            jobOffers: true
+          }
+        },
+        authAccounts: true,
+        messages: true,
+        social: true,
+        reviews: true,
+        ratings: true,
+      }
+    })
+    return true
   }
 }

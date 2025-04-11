@@ -242,7 +242,9 @@
         "labelAgencyContacts": "Telefon",
         "labelAgencyCF": "CUI",
         "labelAgencyURL": "Link-ul agenției",
-        "labelAgencyBtn": "Salvează"
+        "labelAgencyBtn": "Salvează",
+        "deleteAccount": "Șterge contul",
+        "deleteAccountDescription": "După ștergerea contului, vei pierde toate datele asociate profilului tău, inclusiv ofertele de muncă și candidații. Nu va fi posibil să recuperezi contul după ștergere."
     },
     "agencyVacancy": {
         "createVacancy": {
@@ -434,6 +436,12 @@
         "candidature": {
             "cancel_candidature": "Anulează candidatura",
             "send_candidature": "Aplică"
+        },
+        "settingsCV": {
+            "isShowCVInSearchLabel": "Fă CV-ul vizibil pe site",
+            "isShowCVInSearch": "CV-ul va fi disponibil pentru vizualizare de către recrutori și agenții pe paginile site-ului și în căutare",
+            "isOpenForAgency": "Interzice accesul la CV pentru agenții",
+            "isOpenForAgencyLabel": "Agențiile nu vor putea vizualiza CV-ul și nu veți putea trimite candidatura pentru posturi vacante"
         }
     },
     "vacancy_page": {

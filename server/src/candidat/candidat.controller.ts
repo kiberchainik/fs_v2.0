@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, MaxFileSizeValidator, ParseFilePipe, Query, UploadedFiles } from '@nestjs/common';
 import { CandidatService } from './candidat.service';
-import { UpdateCandidatDto, OpenAPICandidatsResponse, OpenAPICandidatFullDateResponse } from './dto'
+import { UpdateCandidatDto, OpenAPICandidatsResponse, OpenAPICandidatFullDateResponse, CandidateSettingsDto } from './dto'
 import { Authorization, CurrentUser } from '@/auth/decorators';
 import { UserRole } from '@prisma/client';
 import { FilesInterceptor } from '@nestjs/platform-express';
@@ -45,7 +45,6 @@ export class CandidatController {
     return this.candidatService.findAll(searchTerm)
   }
 
-
   @ApiExcludeEndpoint()
   @Get(':login')
   getCandidatByEmail(@Param('login') login: string) {
@@ -85,6 +84,17 @@ export class CandidatController {
   }
 
   @ApiExcludeEndpoint()
+  @Patch('settings')
+  @Authorization(UserRole.CANDIDATE)
+  candidateSettings(
+    @Body() candidateSettingsDto: CandidateSettingsDto,
+    @CurrentUser('id') id: string
+  ) {
+    return this.candidatService.candidateSettings(id, candidateSettingsDto);
+  }
+
+  @ApiExcludeEndpoint()
+  @Authorization(UserRole.CANDIDATE)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.candidatService.remove(id);

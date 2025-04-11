@@ -23,6 +23,8 @@ export const API_URL = {
     candidatEducation: (id: string = '') => API_URL.root(`/education/${id}`),
     candidatExperience: (id: string = '') => API_URL.root(`/experience/${id}`),
     candidatLifeStatus: () => API_URL.root(`/life-state`),
+    candidateSettingsCV: () => API_URL.root(`/users/settings`),
+    candidateUpdSettingsCV: () => API_URL.root(`/candidat/settings`),
     candidatDelete: () => API_URL.root(`/users/delete`),
 
     savedJobs: (id: string = '') => API_URL.root(`/saved-jobs/${id}`),
@@ -33,7 +35,6 @@ export const API_URL = {
     agencyMetadataBySlug: (slug: string) => API_URL.root(`/agency/metadata-by-slug/${slug}`),
     agencyProfile: () => API_URL.root('/agency/profile'),
     agenciesCarousel: (limit: number) => API_URL.root(`/agency/carousel/${limit}`),
-    //agencyEditProfile: () => API_URL.root('/agency'),
 
     vacancy: (id: string = '') => API_URL.root(`/joboffers/${id}`),
     contacts: () => API_URL.root('/contacts'),

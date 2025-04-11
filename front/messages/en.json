@@ -240,9 +240,11 @@
         "labelAgencyAdress": "Address",
         "labelAgencyAbout": "Agency description",
         "labelAgencyContacts": "Phone",
-        "labelAgencyCF": "P.IVA/CF",
+        "labelAgencyCF": "VAT/Tax Code",
         "labelAgencyURL": "Agency link",
-        "labelAgencyBtn": "Save"
+        "labelAgencyBtn": "Save",
+        "deleteAccount": "Delete account",
+        "deleteAccountDescription": "After deleting the account, you will lose all data associated with your profile, including your job offers and candidates. It will not be possible to recover your account after deletion."
     },
     "agencyVacancy": {
         "createVacancy": {
@@ -434,6 +436,12 @@
         "candidature": {
             "cancel_candidature": "Cancel application",
             "send_candidature": "Apply"
+        },
+        "settingsCV": {
+            "isShowCVInSearchLabel": "Make the resume visible on the site",
+            "isShowCVInSearch": "The resume will be available for viewing by recruiters and agencies on the site pages and in search",
+            "isOpenForAgency": "Restrict access to the resume for agencies",
+            "isOpenForAgencyLabel": "Agencies will not be able to view the resume, and you will not be able to apply for vacancies"
         }
     },
     "vacancy_page": {

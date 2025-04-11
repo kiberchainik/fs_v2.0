@@ -24,10 +24,13 @@ import { useGetAgencyData, useUpdProfileMutation } from '../hooks'
 import { SettingsSchema, TypeSettingsSchema } from '../schemes'
 import { ImageUpload } from './image-upload/ImageUpload'
 import { useTranslations } from 'next-intl'
+import { useDeleteAgency } from '../hooks/useDeleteAgency'
+import { ConfirmModal } from '@/shared/components/modals/ConfirmModals'
 
 export function AgencySettings() {
 	const t = useTranslations('agencySettings')
 	const { user, isLoading, error } = useGetAgencyData()
+	const { deleteAgency } = useDeleteAgency()
 
 	const form = useForm<TypeSettingsSchema>({
 		mode: 'onChange',
@@ -196,6 +199,16 @@ export function AgencySettings() {
 						</form>
 					</Form>
 				}
+				<div className='flex flex-col md:flex-row items-center justify-between mt-5 border-t'>
+					<span className='text-lg font-bold text-red-700 p-5'>{t('deleteAccountDescription')}</span>
+					<ConfirmModal
+						title={t('deleteAccount')}
+						description={t('deleteAccountDescription')}
+						handleClick={() => deleteAgency()}
+					>
+						<Button variant='destructive'>{t('deleteAccount')}</Button>
+					</ConfirmModal>
+				</div>
 			</CardContent>
 		</Card>
 	)

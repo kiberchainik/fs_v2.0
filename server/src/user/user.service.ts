@@ -126,6 +126,16 @@ export class UserService {
         })
     }
 
+    async getSettings(id: string) {
+        return await this.prisma.candidatSettings.findFirst({
+            where: {
+                candidate: {
+                    userId: id
+                }
+            }
+        })
+    }
+
     async update(userId: string, dto: UpdateUserDto) {
         const user = await this.findById(userId)
 
@@ -144,7 +154,7 @@ export class UserService {
     async deleteProfile(id: string) {
         const userAvatar = await this.prisma.candidatData.findUnique({
             where: {
-                id
+                userId: id
             },
             select: {
                 avatar: true
@@ -166,10 +176,10 @@ export class UserService {
                 id
             },
             include: {
-                agencydata: true,
                 candidatdata: {
                     include: {
                         candidatLifeState: true,
+                        candidatSettings: true,
                         courses: true,
                         education: true,
                         experience: true,
@@ -185,6 +195,6 @@ export class UserService {
                 social: true,
                 reviews: true,
             }
-        });
+        })
     }
 }

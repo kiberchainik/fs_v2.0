@@ -6,6 +6,7 @@ import { unlink, access } from 'fs/promises'
 import { FileResponse } from '@/libs/file/file.service'
 import { PaginationQueryDto } from '@/libs/common/utils'
 import { UserRole } from '@prisma/client'
+import { CandidateSettingsDto } from './dto'
 
 @Injectable()
 export class CandidatService {
@@ -16,6 +17,11 @@ export class CandidatService {
   async findAll({ page, limit }: PaginationQueryDto) {
     const [candidats, candidatCount] = await this.prisma.$transaction([
       this.prisma.candidatData.findMany({
+        where: {
+          candidatSettings: {
+            isShowCVInSearch: true
+          }
+        },
         select: {
           id: true,
           birthday: true,
@@ -66,6 +72,11 @@ export class CandidatService {
 
   async getCarouselCandidats(limit: number) {
     return await this.prisma.candidatData.findMany({
+      where: {
+        candidatSettings: {
+          isShowCVInSearch: true
+        }
+      },
       take: limit,
       select: {
         avatar: true,
@@ -95,9 +106,14 @@ export class CandidatService {
   async getCandidatByEmail(login: string) {
     return await this.prisma.candidatData.findMany({
       where: {
-        user: {
-          login
-        }
+        AND: [{
+          user: {
+            login
+          },
+          candidatSettings: {
+            isShowCVInSearch: true
+          }
+        }]
       },
       select: {
         about_my: true,
@@ -195,8 +211,6 @@ export class CandidatService {
   }
 
   async update(id: string, updateCandidatDto: UpdateCandidatDto) {
-    console.log(updateCandidatDto);
-
     if (
       updateCandidatDto.name === undefined ||
       updateCandidatDto.lastname === undefined ||
@@ -218,15 +232,25 @@ export class CandidatService {
       avatar: updateCandidatDto.avatar
     }
 
-    const oldData = await this.prisma.candidatData.findFirst({
+    const oldData = await this.prisma.candidatData.findUnique({
       where: { userId: id }
     })
+
+
     const candidat = await this.prisma.candidatData.upsert({
       where: {
         userId: id
       },
       update: _data,
-      create: _data
+      create: {
+        ..._data,
+        candidatSettings: {
+          create: {
+            isOpenForAgency: true,
+            isShowCVInSearch: true
+          }
+        }
+      }
     })
 
     if (!candidat) {
@@ -261,6 +285,17 @@ export class CandidatService {
     }
 
     return avatar
+  }
+
+  async candidateSettings(id: string, settings: CandidateSettingsDto) {
+    return await this.prisma.candidatSettings.updateMany({
+      where: {
+        candidate: {
+          userId: id
+        }
+      },
+      data: { ...settings }
+    })
   }
 
   remove(id: string) {

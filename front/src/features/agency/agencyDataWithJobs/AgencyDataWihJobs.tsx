@@ -26,7 +26,7 @@ export default function AgencyDataWithJobs({ agencyData, count, pageCount }: TAg
                     </div>
                     <div className="flext flex-col gap-2">
                         <div className="flex flex-col md:flex-row gap-3 items-end">
-                            <Heading>{agencyData.agency_name}</Heading>
+                            <h3 className="text-3xl">{agencyData.agency_name}</h3>
                             <small className="flex flex-row items-center"><IoLocationSharp /> {agencyData.address}</small>
                         </div>
                         <small>P.IVA/CF: {agencyData.p_iva_c_f}</small>

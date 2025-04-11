@@ -81,13 +81,10 @@ export class AgencyController {
     return await this.agencyService.getAgenciesForCarousel(limit);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAgencyDto: UpdateAgencyDto) {
-    return this.agencyService.update(id, updateAgencyDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
+  @Delete()
+  @Authorization(UserRole.AGENCY)
+  @HttpCode(HttpStatus.OK)
+  remove(@CurrentUser('id') id: string) {
     return this.agencyService.remove(id);
   }
 }

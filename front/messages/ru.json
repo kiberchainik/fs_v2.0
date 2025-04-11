@@ -242,7 +242,9 @@
         "labelAgencyContacts": "Телефон",
         "labelAgencyCF": "ИНН/КПП",
         "labelAgencyURL": "Ссылка на агентство",
-        "labelAgencyBtn": "Сохранить"
+        "labelAgencyBtn": "Сохранить",
+        "deleteAccount": "Удалить аккаунт",
+        "deleteAccountDescription": "После удаления аккаунта вы потеряете все данные, связанные с вашим профилем, включая ваши вакансии и кандидатов. Восстановить аккаунт после удаления будет невозможно."
     },
     "agencyVacancy": {
         "createVacancy": {
@@ -434,6 +436,12 @@
         "candidature": {
             "cancel_candidature": "Отменить заявку",
             "send_candidature": "Подать заявку"
+        },
+        "settingsCV": {
+            "isShowCVInSearchLabel": "Сделать резюме видимым на сайте",
+            "isShowCVInSearch": "Резюме будет доступно для просмотра рекрутерами и агентствами на страницах сайта а в поиске",
+            "isOpenForAgency": "Запретить доступ к резюме для агентств",
+            "isOpenForAgencyLabel": "Агентства не смогут просматривать резюме и Вы не сможете отправлять кандидатуру на вакансии"
         }
     },
     "vacancy_page": {

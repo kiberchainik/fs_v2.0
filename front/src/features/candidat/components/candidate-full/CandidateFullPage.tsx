@@ -53,7 +53,7 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                                 <RatingStars userId={user.id} reviewerId={authUser.id} />
                             </div>}
                         </div>
-                        <ul className="mt-3 flex flex-row gap-3 items-center">
+                        {candidatLifeState && <ul className="mt-3 flex flex-row gap-3 items-center">
                             {candidatLifeState.availabilityTransport && <li>
                                 <span className="bg-[#e7eae2] dark:bg-opacity-20 rounded-full p-2 px-3 mb-1">
                                     {t('availabilityTransport')}
@@ -70,7 +70,7 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                                     {candidatLifeState.maritalStatus}
                                 </span>
                             </li>}
-                        </ul>
+                        </ul>}
                     </div>
                     <div className="">
                         <Button variant='outline'>{t('downloadCV')}</Button>
@@ -150,7 +150,7 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                     <div className="mt-5 pt-5">
                         <Heading className="pb-2 inline-block p-3">{t('experienceStory')}</Heading>
                         <div className="flex flex-col gap-y-5">
-                            {experience.length > 0 && experience.map((exp, idx) => (
+                            {experience.length > 0 ? experience.map((exp, idx) => (
                                 <div key={exp.company + idx} className="w-full border border-solid border-neutral-900/20 bg-white dark:bg-neutral-900 dark:border-neutral-800 p-5 rounded-3xl">
                                     <div className="flex flex-col flex-wrap md:flex-row items-center gap-7">
                                         <div className="flex flex-row gap-x-4 items-center">
@@ -174,29 +174,35 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                                         </div>
                                     </div>
                                 </div>
-                            ))}
+                            )) : (
+                                <div className="w-full border-t border-dashed border-neutral-900/20 dark:border-neutral-800 p-5">
+                                    <div className="flex flex-col gap-y-2">
+                                        <span className="text-base italic">Anchora devo creare la mia storia ...</span>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="w-full h-full lg:w-2/6 p-5 bg-[#e7eae2] dark:bg-[#484841] rounded">
+            <div className="w-full h-full lg:w-2/6 p-5 bg-[#e7eae2] dark:bg-neutral-900 rounded-3xl">
                 <div className="sidebar-list bg-grey p-4 rounded">
-                    <div className="grid gap-y-4 bg-white p-4 rounded-3xl">
-                        <h4 className="small-heading">{t('contacts')}</h4>
+                    <div className="grid gap-y-4 bg-white dark:bg-neutral-800 dark:text-white p-4 rounded-3xl">
+                        <h3 className="text-3xl">{t('contacts')}</h3>
                         <Image src="/map.jpg" alt="contact" height={152} width={305} className="rounded-3xl mb-2 w-full h-[152px]" />
                         <div className="info-address">
                             <ul>
-                                <li className="d-block border-b mb-1 pb-1 flex flex-row gap-x-2 items-center">
+                                <li className="border-b mb-1 py-2 flex flex-row gap-x-2 items-center">
                                     <MdOutlineLocationOn /> {resident}
                                 </li>
-                                <li className="d-block border-b mb-1 pb-1 flex flex-row gap-x-2 items-center">
+                                <li className="border-b mb-1 py-2 flex flex-row gap-x-2 items-center">
                                     <MdOutlineLocalPhone /> {phone}
                                 </li>
-                                <li className="d-block border-b mb-1 pb-1 flex flex-row gap-x-2 items-center">
+                                <li className="border-b mb-1 py-2 flex flex-row gap-x-2 items-center">
                                     <MdOutlineMarkEmailRead /> {user.email}
                                 </li>
-                                <li className="d-block flex flex-row gap-x-2 items-center">
+                                <li className="flex flex-row py-2 gap-x-2 items-center">
                                     <LiaBirthdayCakeSolid /> {formatDate(birthday, { dateFormat: 'dd/mm/yyyy' })}
                                 </li>
                             </ul>

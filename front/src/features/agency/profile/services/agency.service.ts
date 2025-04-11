@@ -33,6 +33,10 @@ class AgencyService {
     public async updateProfile(data: TypeSettingsSchema) {
         return await axiosPrivate.post<IAgencyData>('agency/settings', data)
     }
+
+    public async deleteAgency() {
+        return await axiosPrivate.delete(API_URL.agency())
+    }
 }
 
 export const agencyService = new AgencyService()

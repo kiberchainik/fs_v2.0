@@ -13,9 +13,6 @@ export default function ContactsPage() {
   return (
     <div className='grid gap-3 m-5'>
       <Card>
-        <Branch />
-      </Card>
-      <Card>
         <Vacancies />
       </Card>
     </div>

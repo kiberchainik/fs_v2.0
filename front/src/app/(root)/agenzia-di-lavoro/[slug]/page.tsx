@@ -51,7 +51,7 @@ export default async function AgencyFullPage({ params, searchParams }: Props) {
                             pageCount={pageCount}
                         />
                     </div>
-                    <div className="w-full h-full lg:w-2/6 p-5 bg-[#e7eae2] dark:bg-[#484841] rounded-3xl">
+                    <div className="w-full h-full lg:w-2/6 p-5 bg-[#e7eae2] dark:bg-neutral-900 rounded-3xl">
                         <AgencyInfo agency={agencyData} vacancies={agencyData.jobOffers.length} />
                     </div>
                 </div>

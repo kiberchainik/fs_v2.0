@@ -1,5 +1,4 @@
 import { IsNotEmpty, IsString } from "class-validator"
-import { LanguageLevel } from "@prisma/client"
 
 export class CreateLanguageDto {
     @IsNotEmpty({ message: 'Language обязателен для указания' })
@@ -7,5 +6,5 @@ export class CreateLanguageDto {
     language: string
 
     @IsString({ message: 'Вы регистируетесь как кандидат или как агентвоство? ' })
-    level: LanguageLevel
+    level: string
 }
