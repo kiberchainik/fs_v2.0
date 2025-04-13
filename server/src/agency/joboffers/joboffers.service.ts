@@ -5,7 +5,7 @@ import { Prisma } from '@prisma/client';
 import { returnCategoryBaseObject } from 'src/admin/category/dto'
 import { returnAgencyBaseObject } from 'src/agency/dto'
 import { PrismaService } from '@/prisma/prisma.service';
-import { LastProcessIndexService, slugify } from '@/libs/common/utils';
+import { LastProcessIndexService, sanitizeHtml, slugify } from '@/libs/common/utils';
 import { FilterJobsDto } from './dto/filterJobs.dto';
 import { handlePrismaError } from '@/libs/common/prisma/prismaErrors';
 
@@ -75,11 +75,9 @@ export class JoboffersService {
       modeJobId,
       workingTimeId,
       reallyUpTo,
+      description,
       ...jobOffers
     } = createJobofferDto
-
-    //const existsCategories = await this.categoryService.getById(categoryIds)
-    //const categoriesIds = existsCategories.map((catId) =>({id: catId.id}))
 
     const jobTags = tags?.map((tag) => ({
       name: tag, slug: slugify(tag)
@@ -102,6 +100,7 @@ export class JoboffersService {
     const newJob = await this.prisma.jobOffers.create({
       data: {
         ...jobOffers,
+        description: sanitizeHtml(description),
         slug: slugify(createJobofferDto.slug ? createJobofferDto.slug : createJobofferDto.title),
         reallyUpTo: formattedReallyUpTo,
         categories: {

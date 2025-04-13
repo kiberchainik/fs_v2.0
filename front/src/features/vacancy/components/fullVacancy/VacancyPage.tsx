@@ -75,7 +75,9 @@ export default function VacancyPage({
           </div>
           <div className="mb-2">
             {isClient && (
-              <div className="prose max-w-none text-slate-400"><Description>{description}</Description></div>
+              <div className="prose max-w-none text-slate-400">
+                <Description>{description}</Description>
+              </div>
             )}
           </div>
           <div className='flex flex-col 2xl:flex-row w-full gap-3 pt-3 border-t border-dashed border-neutral-200'>
