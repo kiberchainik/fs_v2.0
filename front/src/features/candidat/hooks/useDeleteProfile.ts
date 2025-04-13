@@ -23,6 +23,7 @@ export const useDeleteProfile = () => {
             })
             dispatch(setLoading(true))
             dispatch(setUser(null))
+            router.refresh()
             router.push(MAIN_URL.home())
         },
         onError(error: any) {

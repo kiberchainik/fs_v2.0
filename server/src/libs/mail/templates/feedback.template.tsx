@@ -4,7 +4,6 @@ import * as React from 'react'
 
 export function FeedbackTemplate({ emailFrom, name, message }: { emailFrom: string, name: string, message: string }) {
     return (
-
         <Html>
             <Body className="bg-slate-300 p-10">
                 <Heading>New message from Findsolution</Heading>
@@ -15,6 +14,5 @@ export function FeedbackTemplate({ emailFrom, name, message }: { emailFrom: stri
                 </Text>
             </Body>
         </Html>
-
     )
 }

@@ -7,7 +7,7 @@ import { Header } from "@/shared/components"
 import { HeaderMenu } from "@/features/headerMenu/components/HeaderMenu"
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
-import Head from "next/head";
+import Script from "next/script"
 
 const manrope = localFont({
   src: [
@@ -30,7 +30,7 @@ const manrope = localFont({
   ],
   variable: '--font-manrope'
 });
-//<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3626047805353694" crossorigin="anonymous"></script>
+
 export const metadata: Metadata = {
   title: {
     absolute: SITE_NAME
@@ -59,14 +59,12 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <Head>
-        <script
+      <body className={`${manrope.variable} font-sans`}>
+        <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3626047805353694"
           crossOrigin="anonymous"
-        ></script>
-      </Head>
-      <body className={`${manrope.variable} font-sans`}>
+        />
         <NextIntlClientProvider messages={messages}>
           <MainProvider>
             <div className="flex min-h-screen flex-col">

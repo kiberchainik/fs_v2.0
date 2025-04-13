@@ -15,14 +15,14 @@ export function useSettingsCVMutation() {
         mutationFn: (data: TypeSettingsCVSchema) => settingsService.updateSettingsCV(data),
         onSuccess() {
             toast.success('Impostazione è stato aggiornato con successo')
-            queryClient.refetchQueries({ queryKey: ['get candidats for carousel', 'get settings-cv'] })
+            queryClient.refetchQueries({ queryKey: ['get candidats for carousel'] })
         },
         onError(error) {
             toastMessageHandler(error)
         }
     })
 
-    return useMemo(() => ({ updSettingsCV, isPending }), [updSettingsCV, isPending])
+    return { updSettingsCV, isPending }
 }
 
 export function useGetSettingsCV() {
@@ -31,11 +31,11 @@ export function useGetSettingsCV() {
         queryFn: () => settingsService.getSettingsCV()
     })
 
-    return useMemo(() => ({
+    return {
         settings,
         isFetching,
         refetch
-    }), [settings, isFetching])
+    }
 }
 
 export function useSettingsCV() {
@@ -51,7 +51,7 @@ export function useSettingsCV() {
         },
     })
 
-useEffect(() => {
+    useEffect(() => {
         if (settings) {
             form.reset({
                 isShowCVInSearch: settings.isShowCVInSearch,
@@ -62,12 +62,11 @@ useEffect(() => {
 
     function onSubmit(data: TypeSettingsCVSchema) {
         updSettingsCV(data)
-        console.log(data);
     }
 
     return {
         form,
-isFetching,
+        isFetching,
         onSubmit
     }
 }

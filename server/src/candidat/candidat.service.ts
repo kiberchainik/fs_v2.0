@@ -291,7 +291,9 @@ export class CandidatService {
     return await this.prisma.candidatSettings.updateMany({
       where: {
         candidate: {
-          userId: id
+          user: {
+            id
+          }
         }
       },
       data: { ...settings }

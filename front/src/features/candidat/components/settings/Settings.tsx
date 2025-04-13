@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl"
 
 export function Settings() {
     const t = useTranslations('candidat.settingsCV')
-    const { form, onSubmit } = useSettingsCV()
+    const { form, onSubmit, isFetching } = useSettingsCV()
     return (
         <Card className="p-5">{<Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -25,7 +25,7 @@ export function Settings() {
                                     <FormControl>
                                         <Switch
                                             checked={field.value}
-disabled={isFetching}
+                                            disabled={isFetching}
                                             onCheckedChange={field.onChange}
                                         />
                                     </FormControl>
@@ -44,7 +44,7 @@ disabled={isFetching}
                                     <FormControl>
                                         <Switch
                                             checked={field.value}
-disabled={isFetching}
+                                            disabled={isFetching}
                                             onCheckedChange={field.onChange}
                                             aria-readonly
                                         />
