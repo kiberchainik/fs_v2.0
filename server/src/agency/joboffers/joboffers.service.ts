@@ -7,7 +7,7 @@ import { returnAgencyBaseObject } from 'src/agency/dto'
 import { PrismaService } from '@/prisma/prisma.service';
 import { LastProcessIndexService, slugify } from '@/libs/common/utils';
 import { FilterJobsDto } from './dto/filterJobs.dto';
-import { handlePrismaError } from '@/libs/common/prisma/prismaErrors';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 @Injectable()
 export class JoboffersService {
@@ -77,9 +77,6 @@ export class JoboffersService {
       reallyUpTo,
       ...jobOffers
     } = createJobofferDto
-
-    //const existsCategories = await this.categoryService.getById(categoryIds)
-    //const categoriesIds = existsCategories.map((catId) =>({id: catId.id}))
 
     const jobTags = tags?.map((tag) => ({
       name: tag, slug: slugify(tag)
@@ -176,7 +173,32 @@ export class JoboffersService {
     } catch (error) {
       await this.lastProcessIndex.updateLastProcessedIndex(userId, lastProcessedIndex)
       await this.prisma.$disconnect()
-      console.log(error);
+
+      if (error instanceof PrismaClientKnownRequestError) {
+        if (error.message.includes('Category')) {
+          throw new BadRequestException('Проверьте, правильно ли указан ID категории.');
+        }
+
+        if (error.message.includes('ContractTypeJob')) {
+          throw new BadRequestException('Controlla se ID del contratto è corretto.');
+        }
+
+        if (error.message.includes('WorkingTimeJob')) {
+          throw new BadRequestException('Controlla se ID dell\'orario di lavoro è corretto.');
+        }
+
+        if (error.message.includes('ExperienceMinimalJob')) {
+          throw new BadRequestException('Controlla se ID dell\'esperienza minima lavorativa è corretto.');
+        }
+
+        if (error.message.includes('LevelEducation')) {
+          throw new BadRequestException('Controlla se ID del livello minimo di istruzione è corretto.');
+        }
+
+        if (error.message.includes('ModeJob')) {
+          throw new BadRequestException('Controlla se ID del tipo di attività è corretto.');
+        }
+      }
 
       throw new BadRequestException(`Errore durante l'aggiunta degli utenti all'indice ${lastProcessedIndex}! Assicurati che l'array, chiave: valore, siano compilati correttamente!`)
     }
