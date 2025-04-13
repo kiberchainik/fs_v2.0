@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { settingsCVSchema, TypeSettingsCVSchema } from "../schemes/settings-cv.schema"
 import { toast } from "sonner"
 import { toastMessageHandler } from "@/shared/utils"
-import { useMemo } from "react"
+import { useMemo, useEffect } from "react"
 import { settingsService } from "../services"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -40,16 +40,25 @@ export function useGetSettingsCV() {
 
 export function useSettingsCV() {
     const { updSettingsCV, isPending } = useSettingsCVMutation()
-    const { settings } = useGetSettingsCV()
+    const { settings, isFetching } = useGetSettingsCV()
 
     const form = useForm<TypeSettingsCVSchema>({
         resolver: zodResolver(settingsCVSchema),
         mode: 'onChange',
         defaultValues: {
-            isShowCVInSearch: settings ? settings.isShowCVInSearch : true,
-            isOpenForAgency: settings ? settings.isOpenForAgency : true,
+            isShowCVInSearch: true,
+            isOpenForAgency: true,
         },
     })
+
+useEffect(() => {
+        if (settings) {
+            form.reset({
+                isShowCVInSearch: settings.isShowCVInSearch,
+                isOpenForAgency: settings.isOpenForAgency,
+            })
+        }
+    }, [settings, form])
 
     function onSubmit(data: TypeSettingsCVSchema) {
         updSettingsCV(data)
@@ -58,6 +67,7 @@ export function useSettingsCV() {
 
     return {
         form,
+isFetching,
         onSubmit
     }
 }
