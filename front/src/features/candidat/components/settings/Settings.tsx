@@ -25,6 +25,7 @@ export function Settings() {
                                     <FormControl>
                                         <Switch
                                             checked={field.value}
+disabled={isFetching}
                                             onCheckedChange={field.onChange}
                                         />
                                     </FormControl>
@@ -43,6 +44,7 @@ export function Settings() {
                                     <FormControl>
                                         <Switch
                                             checked={field.value}
+disabled={isFetching}
                                             onCheckedChange={field.onChange}
                                             aria-readonly
                                         />
