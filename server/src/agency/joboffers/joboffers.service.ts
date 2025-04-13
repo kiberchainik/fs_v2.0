@@ -97,7 +97,7 @@ export class JoboffersService {
       workingTimeJob: workingTimeId ? ({ connect: { id: workingTimeId } }) : {}
     }
 
-    const formattedReallyUpTo = reallyUpTo ? new Date(reallyUpTo).toISOString() : null
+    const formattedReallyUpTo = reallyUpTo && !isNaN(Date.parse(reallyUpTo)) ? new Date(reallyUpTo).toISOString() : null
 
     const newJob = await this.prisma.jobOffers.create({
       data: {

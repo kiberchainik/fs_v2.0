@@ -12,7 +12,7 @@ import { errorCatch } from '@/shared/api'
 
 const options: CreateAxiosDefaults = {
 	baseURL: SERVER_URL,
-	headers: {'Content-type': 'application/json'},
+	headers: { 'Content-type': 'application/json' },
 	withCredentials: true
 }
 

@@ -14,7 +14,7 @@ export default function Agencies() {
     const { agencies, isFetching } = useGetAgencies()
 
     return (
-        <div className="bg-[#f4d2ba] dark:bg-neutral-900 py-16 px-10 m-10 rounded-3xl bg-opacity-50">
+        <div className="bg-[#f4d2ba] dark:bg-neutral-900 py-16 px-2 md:px-10 m-0 md:m-10 md:rounded-3xl bg-opacity-50">
             <CarouselMain titleCarousel={title} subText={subText}>
                 {isFetching && <div className="w-full text-center p-5"><AgencySkeleton /></div>}
                 {agencies && agencies.map((agency) => (

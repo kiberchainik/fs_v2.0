@@ -52,10 +52,11 @@ export class UserController {
   }
 
   @ApiExcludeEndpoint()
+  @HttpCode(HttpStatus.OK)
   @Get('settings')
   @Authorization(UserRole.CANDIDATE)
   async getSettings(@CurrentUser('id') id: string) {
-    return await this.userService.getSettings(id);
+    return await this.userService.getSettings(id)
   }
 
   @Authorization()
