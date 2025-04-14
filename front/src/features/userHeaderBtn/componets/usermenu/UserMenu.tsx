@@ -19,7 +19,7 @@ export const UserMenu: FC<IUserMenuHeaderData> = ({ email, isVerified, role, ava
             <DropdownMenuTrigger>
                 <Avatar>
                     <AvatarImage src={avatar && avatar[0]} />
-                    <AvatarFallback>{email.slice(0, 1)}</AvatarFallback>
+                    <AvatarFallback>{email.slice(0, 1)}</AvatarFallback> Crea CV
                 </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent className='w-full' align='end'>
