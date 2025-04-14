@@ -1,11 +1,9 @@
-import createDOMPurify from 'dompurify'
-import { JSDOM } from 'jsdom'
-import type { WindowLike } from 'dompurify'
+const createDOMPurify = require('dompurify');
+const { JSDOM } = require('jsdom');
 
-const window = new JSDOM('').window as unknown as WindowLike
-const DOMPurify = createDOMPurify(window)
+const window = new JSDOM('').window;
+const DOMPurify = createDOMPurify(window);
 
 export const sanitizeHtml = (dirty: string) => {
-    if (!dirty) return ''
-    return DOMPurify.sanitize(dirty)
+    return DOMPurify.sanitize(dirty);
 }
