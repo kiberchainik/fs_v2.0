@@ -29,7 +29,7 @@ export function AboutUs() {
                     </div>
                     <div className="mb-4 relative">
                         <div className="">
-                            <Image src="/about-us.png" width={507} height={500} alt="about-lavidea" className="w-full" />
+                            <Image src="/about-us.webp" width={507} height={500} alt="about-lavidea" className="w-full" />
                         </div>
                     </div>
                 </div>

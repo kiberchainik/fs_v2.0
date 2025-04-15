@@ -57,7 +57,7 @@ export const TopSector = () => {
                 <div className={styles.hero_banner__image}>
                     <div className={styles.hero_banner__image__img}>
                         <Image
-                            src="/ban-image1.png"
+                            src="/ban-image1.webp"
                             alt="lavoro-ideale"
                             quality={100}
                             width={500}

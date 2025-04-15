@@ -8,6 +8,7 @@ import { HeaderMenu } from "@/features/headerMenu/components/HeaderMenu"
 import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 import Script from "next/script"
+import { Footer } from "@/features/footer/components/Footer";
 
 const manrope = localFont({
   src: [
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     images: [{ url: '/public/favicon.ico' }],
     type: 'website',
     siteName: SITE_NAME,
-    emails: ['support@findsol.it']
+    emails: ['support@lavidea.it']
   },
   other: {
     'facebook-domain-verification': 'ykvbo5lqufom689mxmyogtm0d5zc17',
@@ -72,7 +73,7 @@ export default async function RootLayout({
                 <HeaderMenu />
               </Header>
               <main className='flex-grow md:m-5'>{children}</main>
-              <footer className='bg-white dark:bg-neutral-900 py-5 mt-10 items-center italic text-zinc-500 font-extralight text-sm text-center'>2025 FindSolution 2.0</footer>
+              <Footer />
             </div>
           </MainProvider>
         </NextIntlClientProvider>

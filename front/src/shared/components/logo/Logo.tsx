@@ -10,6 +10,6 @@ interface IStyles {
 
 export const Logo: FC<PropsWithChildren<IStyles>> = ({ className }) => {
     return <Link href='/' className={cn(styles.wrapper, className)}>
-        <Image src='/logo.png' alt='lavidea.it' fill className={styles.logo} />
+        <Image src='/logo.webp' alt='lavidea.it' fill className={styles.logo} />
     </Link>
 }

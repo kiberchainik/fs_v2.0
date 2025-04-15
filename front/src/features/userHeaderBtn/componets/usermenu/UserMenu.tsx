@@ -16,14 +16,12 @@ export const UserMenu: FC<IUserMenuHeaderData> = ({ email, isVerified, role, ava
 
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger>
+            <DropdownMenuTrigger className="flex flex-row items-center gap-x-2 w-full border rounded-full">
                 <Avatar>
                     <AvatarImage src={avatar && avatar[0]} />
                     <AvatarFallback>{email.slice(0, 1)}</AvatarFallback>
                 </Avatar>
-<div className="flex flex-col">
-        <span className="font-semibold tracking-tight">Crea Cv</span>
-      </div>
+                <span className="font-semibold tracking-tight">Crea Cv</span>
             </DropdownMenuTrigger>
             <DropdownMenuContent className='w-full' align='end'>
                 <div className='flex flex-row p-3 gap-3'>

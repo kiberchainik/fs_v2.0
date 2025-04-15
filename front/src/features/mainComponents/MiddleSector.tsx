@@ -13,7 +13,7 @@ export const MiddleSector = () => {
             <div className="flex flex-col md:flex-row gap-2 items-center justify-between">
                 <div className="md:w-1/2">
                     <div className="">
-                        <Image src="/job-01.png" width={620} height={500} alt="about" />
+                        <Image src="/job-01.webp" width={620} height={500} alt="about" />
                     </div>
                 </div>
                 <div className="md:w-1/2 m-4">
