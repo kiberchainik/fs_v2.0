@@ -12,7 +12,7 @@ export function AuthWrapper({
     heading, children, description, isShowSocial
 }: PropsWithChildren<AuthWrapperProps>) {
     return (
-        <Card className="flex flex-col justify-between items-center w-[400px]">
+        <Card className="flex flex-col justify-between items-center md:w-[400px]">
             <CardHeader className="space-y-2">
                 <CardTitle>{heading}</CardTitle>
                 {description && (

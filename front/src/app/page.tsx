@@ -1,7 +1,7 @@
 import Agencies from "@/features/carousel/components/agencies/Agencies"
 import Candidats from "@/features/carousel/components/candidats/Candidats"
 import Vacancies from "@/features/carousel/components/vacancies/Vacancies"
-import { MiddleSector, TopSector } from "@/features/mainComponents"
+import { BottomCategory, BottomRegions, MiddleSector, TopSector } from "@/features/mainComponents"
 
 export default function Home() {
   return (
@@ -11,6 +11,8 @@ export default function Home() {
       <MiddleSector />
       <Agencies />
       <Vacancies />
+      <BottomCategory />
+      {/* <BottomRegions /> */}
     </div>
   )
 }

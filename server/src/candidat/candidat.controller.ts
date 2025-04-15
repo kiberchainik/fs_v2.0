@@ -7,6 +7,7 @@ import { FilesInterceptor } from '@nestjs/platform-express';
 import { FileService } from '@/libs/file/file.service';
 import { ApiBearerAuth, ApiExcludeEndpoint, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
 import { PaginationQueryDto } from '@/libs/common/utils';
+import { FileFormatValidator } from '@/libs/file/ImageFormatValidator';
 
 @ApiBearerAuth('JWT-auth')
 @ApiTags('Candidats')
@@ -24,12 +25,17 @@ export class CandidatController {
   async caricaFile(
     @UploadedFiles(
       new ParseFilePipe({
-        validators: [new MaxFileSizeValidator({ maxSize: 5 * 1024 * 1024, message: "Il file non deve essere più di 5MB" })]
+        validators: [
+          new MaxFileSizeValidator({ maxSize: 5 * 1024 * 1024, message: "Il file non deve essere più di 5MB" })
+        ]
       })
     ) files: Express.Multer.File[],
     @CurrentUser('id') id: string,
     @Query('folder') folder?: string
   ) {
+    const fileFormatValidator = new FileFormatValidator();
+    fileFormatValidator.validate(files)
+
     const nuoviFile = await this.file.filterFiles(files)
     const datiFile = await this.file.saveFiles(nuoviFile, id)
 

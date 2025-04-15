@@ -7,7 +7,7 @@ import { v4 } from 'uuid'
 import { path } from "app-root-path";
 
 export interface FileResponse {
-    url:string
+    url: string
     name: string
 }
 
@@ -19,15 +19,15 @@ export class FileService {
         try {
             await access(uploadFolder)
         } catch (err) {
-            await mkdir(uploadFolder, {recursive: true})
+            await mkdir(uploadFolder, { recursive: true })
         }
 
-        const res:FileResponse[] = await Promise.all(
-            files.map(async(file):Promise<FileResponse> => {
+        const res: FileResponse[] = await Promise.all(
+            files.map(async (file): Promise<FileResponse> => {
                 try {
                     await writeFile(`${uploadFolder}/${file.originalname}`, file.buffer)
                 } catch (err) {
-                    throw new InternalServerErrorException('Ошибка при загрузке файла')
+                    throw new InternalServerErrorException('Errore durante il caricamento del file')
                 }
 
                 return {
@@ -39,7 +39,7 @@ export class FileService {
         return res
     }
 
-    convertToWebP(file:Buffer):Promise<Buffer> {
+    convertToWebP(file: Buffer): Promise<Buffer> {
         return sharp(file).webp().toBuffer()
     }
 
@@ -51,8 +51,8 @@ export class FileService {
                 const newName = v4()
                 const type = file.originalname.split('.')[1]
 
-                if(mimetype.includes('image')) {
-                    if(currentFileType != 'svg+xtml'){
+                if (mimetype.includes('image')) {
+                    if (currentFileType != 'svg+xtml') {
                         const buffer = await this.convertToWebP(file.buffer)
 
                         return new MFile({
@@ -77,7 +77,7 @@ export class FileService {
         return newFiles
     }
 
-    async exists(path:string) {
+    async exists(path: string) {
         try {
             await access(path)
             return true
@@ -86,7 +86,7 @@ export class FileService {
         }
     }
 
-    async delete (path: string) {
+    async delete(path: string) {
         try {
             const [dir, file] = path.split('/')
             const pathFile = join(__dirname, '..', '../static', `/${dir}`, file)

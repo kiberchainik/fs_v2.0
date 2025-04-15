@@ -3,11 +3,11 @@
 import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/shared/components"
 import { zodResolver } from "@hookform/resolvers/zod"
 import Image from "next/image"
-import { FilterVacancySchema, TypeFilterVacancies } from "../filter/schemes/filter.schema"
+import { FilterVacancySchema, TypeFilterVacancies } from "../../filter/schemes/filter.schema"
 import { useForm } from "react-hook-form";
-import { useCategory } from "../category/hooks"
-import { useGetOptionsContractTypes } from "../agency/vacancy/hooks"
-import { useFilterVacancy } from "../filter/hooks/useFilterVacancy"
+import { useCategory } from "../../category/hooks"
+import { useGetOptionsContractTypes } from "../../agency/vacancy/hooks"
+import { useFilterVacancy } from "../../filter/hooks/useFilterVacancy"
 import { useTranslations } from "next-intl"
 
 import styles from './maincomponents.module.scss'

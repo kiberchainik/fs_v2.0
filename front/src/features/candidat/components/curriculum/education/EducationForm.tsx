@@ -21,6 +21,7 @@ export default function EducationForm({ formData, levelEducation }: FormProps) {
                     rules={{ required: t('fieldEmpty') }}
                     render={({ field }) => (
                         <FormItem className='w-full'>
+                            <FormLabel>{t('fieldEducation')}</FormLabel>
                             <Select
                                 defaultValue={field.value}
                                 onValueChange={field.onChange}

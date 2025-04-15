@@ -9,7 +9,7 @@ import { MdOutlineLocalPhone, MdOutlineMailOutline } from "react-icons/md"
 export default function Template3({ privacy, courses, education, experience, hobbies, languages, lifestatus, skills, user }: IPreviewTemplates) {
     const t = useTranslations('curriculum.previews')
     return (<>
-        <div className="container">
+        <div className="container bg-white">
             <div className="grid grid-cols-1 md:grid-cols-12">
                 <div className="bg-gray-100 p-3 text-left dark:bg-gray-900 md:col-span-4 h-auto w-full">
                     <h1 className="leading-tighter mt-5 text-sm font-extrabold lg:text-sm">
@@ -19,7 +19,7 @@ export default function Template3({ privacy, courses, education, experience, hob
                     <h2 className="mt-2 text-[7px] text-purple-600 dark:text-purple-500 flex flex-row flex-wrap gap-1">
                         {education.length > 0 && education.map(ed => <span key={ed.id}>{ed.grade}</span>)}
                     </h2>
-                    <div className="-mx-5 mt-10 w-32 h-32">
+                    <div className="mt-10 w-32 h-32">
                         <Image
                             height={128}
                             width={128}

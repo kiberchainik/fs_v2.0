@@ -1,0 +1,31 @@
+.footer {
+    @apply bg-white dark:bg-neutral-900 p-5 mt-10;
+
+    > .foter_content {
+        @apply grid grid-cols-1 md:grid-cols-4 gap-5;
+
+        > .footer_about_lavidea {
+            @apply flex flex-col gap-5;
+
+            > .footer_about_lavidea_logo {
+                @apply h-16 w-16;
+            }
+
+            > .footer_about_lavidea_description {
+                @apply text-xs text-justify grid gap-2;
+            }
+        }
+
+        > .footer_menu {
+            @apply p-5;
+
+            > ul li {
+                @apply py-2;
+            }
+        }
+    }
+
+    > .footer_copyright {
+        @apply flex flex-row gap-1 items-center italic text-zinc-500 font-extralight text-sm mt-5 py-3 justify-center border-t border-dashed;
+    }
+}

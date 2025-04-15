@@ -35,6 +35,7 @@ export default function ExperienceForm({ formData, contractType }: FormProps) {
                     rules={{ required: t('fieldEmpty') }}
                     render={({ field }) => (
                         <FormItem className='w-full'>
+                            <FormLabel>{t('fieldContractType')}</FormLabel>
                             <Select
                                 value={field.value}
                                 onValueChange={field.onChange}
@@ -75,6 +76,7 @@ export default function ExperienceForm({ formData, contractType }: FormProps) {
                     name='description'
                     render={({ field }) => (
                         <FormItem className='w-full'>
+                            <FormLabel>{t('fieldDescription')}</FormLabel>
                             <FormControl>
                                 <Input placeholder={t('fieldDescription')} {...field} />
                             </FormControl>

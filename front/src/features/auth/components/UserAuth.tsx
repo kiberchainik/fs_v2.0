@@ -14,8 +14,8 @@ type TAuthProps = {
 export function UserAuth({ role, isShowSocial }: TAuthProps) {
     const t = useTranslations('authPage')
     return (
-        <div className='flex justify-center items-center mt-5'>
-            <Tabs defaultValue="login" className="w-[400px]">
+        <div className='md:flex md:justify-center md:items-center m-5'>
+            <Tabs defaultValue="login" className="">
                 <TabsList>
                     <TabsTrigger value="login">{t('tabLogin')}</TabsTrigger>
                     <TabsTrigger value="registration">{t('tabRegister')}</TabsTrigger>

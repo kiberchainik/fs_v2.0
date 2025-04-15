@@ -8,6 +8,7 @@ import { FilesInterceptor } from '@nestjs/platform-express';
 import { PaginationQueryDto } from '@/libs/common/utils';
 
 import { ApiBody, ApiConsumes, ApiExcludeController, ApiExcludeEndpoint, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { FileFormatValidator } from '@/libs/file/ImageFormatValidator';
 
 @ApiExcludeController()
 @Controller('agency')
@@ -42,6 +43,9 @@ export class AgencyController {
     @CurrentUser('id') id: string,
     @Query('folder') folder?: string
   ) {
+    const fileFormatValidator = new FileFormatValidator();
+    fileFormatValidator.validate(files)
+
     const newFiles = await this.file.filterFiles(files)
     const fileData = await this.file.saveFiles(newFiles, id)
 

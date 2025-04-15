@@ -310,7 +310,7 @@
             "fieldStartDate": "Data inizio"
         },
         "education": {
-            "EducationTitle": "Elenco dei corsi",
+            "EducationTitle": "Elenco dei istruzioni",
             "CreateEducationBtn": "Nuovo",
             "SaveEducationBtn": "Salva",
             "CancelEducationBtn": "Annulla",

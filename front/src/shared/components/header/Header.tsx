@@ -17,7 +17,7 @@ export const Header: FC<PropsWithChildren<IStyles>> = ({ children, className }) 
             <div className='flex w-full items-center'>
                 {children}
             </div>
-            <div className='flex gap-x-2 items-center'>
+            <div className='flex flex-row gap-x-2 items-center'>
                 <UserHeaderMenu />
                 <LanguageSwitcher />
                 <ToggleTheme />

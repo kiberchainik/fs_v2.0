@@ -1,34 +1,37 @@
 export interface ICarouselCandidate {
-    firstname: string;
-    surname: string;
-    avatar: string[];
-    about_my: string;
+    id: string
+    firstname: string
+    surname: string
+    avatar: string[]
+    about_my: string
     skills: {
         skill: string
     }[]
     user: {
-        email: string;
-        login: string;
+        email: string
+        login: string
     }
     education: {
-        grade: string;
+        grade: string
     }[]
 }
 
 export interface ICarouselAgencies {
-    agency_name: string,
-    logo: string[],
-    slug: string,
-    url: string,
-    about: string,
-    address: string,
-    phone: string,
+    id: string
+    agency_name: string
+    logo: string[]
+    slug: string
+    url: string
+    about: string
+    address: string
+    phone: string
     user: {
         email: string
     }
 }
 
 export interface ICarouselJobs {
+    id: string
     slug?: string
     title: string
     description: string

@@ -23,7 +23,7 @@ export const LanguageSwitcher = () => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="icon" className='!w-16'>
+                <Button variant="outline" size="icon">
                     <IoLanguageOutline />
                 </Button>
             </DropdownMenuTrigger>

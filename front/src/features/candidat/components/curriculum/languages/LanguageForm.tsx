@@ -31,6 +31,7 @@ export default function LanguageForm({ formData }: FormProps) {
                 rules={{ required: t('fieldEmpty') }}
                 render={({ field }) => (
                     <FormItem className='w-full'>
+                        <FormLabel>{t('fieldLevel')}</FormLabel>
                         <Select
                             value={field.value}
                             onValueChange={field.onChange}

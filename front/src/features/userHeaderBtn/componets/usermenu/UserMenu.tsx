@@ -9,14 +9,14 @@ import { useRouter } from "next/navigation"
 import { useLogoutMutation } from "../../hooks"
 import { HeaderUserMenu } from "@/shared/config"
 
-export const UserMenu: FC<IUserMenuHeaderData> = ({ email, isVerified, role, avatar, name }) => {
+export const UserMenu: FC<IUserMenuHeaderData> = ({ email, role, avatar, name }) => {
     const router = useRouter()
     const { isLoader, logout } = useLogoutMutation()
     const userMenu = HeaderUserMenu(role)
 
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger className="flex flex-row items-center gap-x-2 w-full border rounded-full">
+            <DropdownMenuTrigger className="flex flex-row items-center gap-x-2 border rounded-full w-28">
                 <Avatar>
                     <AvatarImage src={avatar && avatar[0]} />
                     <AvatarFallback>{email.slice(0, 1)}</AvatarFallback>

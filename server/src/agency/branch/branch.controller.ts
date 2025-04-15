@@ -7,6 +7,7 @@ import { FileService } from '@/libs/file/file.service';
 import { Authorization, CurrentUser } from '@/auth/decorators';
 import { UserRole } from '@prisma/client'
 import { ApiBearerAuth, ApiExcludeEndpoint } from '@nestjs/swagger';
+import { FileFormatValidator } from '@/libs/file/ImageFormatValidator';
 
 @ApiBearerAuth('JWT-auth')
 @Controller('branch')
@@ -50,6 +51,9 @@ export class BranchController {
     @CurrentUser('id') id: string,
     @Query('folder') folder: string
   ) {
+    const fileFormatValidator = new FileFormatValidator();
+    fileFormatValidator.validate(files)
+
     const newFiles = await this.file.filterFiles(files)
     const fileData = await this.file.saveFiles(newFiles, folder + id)
     return fileData[0]

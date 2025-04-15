@@ -46,7 +46,7 @@ export const CarouselMain: FC<PropsWithChildren<CarouselProps>> = ({ children, t
                     {subText && <p className="text-lg text-[#069cd0] px-4 mb-10">{subText}</p>}
                     <div>
                         <CarouselContent className="-ml-2 md:-ml-4">
-                            {children}
+                            {React.Children.toArray(children)}
                         </CarouselContent>
                     </div>
                 </Carousel>

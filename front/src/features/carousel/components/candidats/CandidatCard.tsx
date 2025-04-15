@@ -1,9 +1,9 @@
 import { FC } from "react"
 import { ICarouselCandidate } from "../../types/carousel.type"
-import { CarouselItem, Description } from "@/shared/components"
+import { Description } from "@/shared/components"
 import Image from "next/image"
 import Link from "next/link"
-import { API_URL, MAIN_URL } from "@/shared/config"
+import { MAIN_URL } from "@/shared/config"
 
 export const CandidatCard: FC<ICarouselCandidate> = ({ avatar, education, firstname, surname, about_my, skills, user }) => {
     return (
