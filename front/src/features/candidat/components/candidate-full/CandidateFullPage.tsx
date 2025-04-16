@@ -6,13 +6,15 @@ import Image from "next/image"
 import { Button, Description, Heading } from "@/shared/components"
 import { IoLocationSharp } from "react-icons/io5"
 import { useAppSelector } from "@/shared/hooks"
-import { RatingStars } from "@/features/rating/components/RatingStars"
 import { UserRole } from "@/features/auth/types"
 import { formatDate } from "@/shared/utils"
 import { GiOrganigram } from "react-icons/gi"
 import { LiaBirthdayCakeSolid } from "react-icons/lia"
 import { MdOutlineLocalPhone, MdOutlineLocationOn, MdOutlineMarkEmailRead } from "react-icons/md"
 import { useTranslations } from "next-intl"
+import Link from "next/link"
+import { MAIN_URL } from "@/shared/config"
+import PDFwithJsPDF from "../curriculum/preview/pdf/ResumePDF"
 
 export const CandidateFull: FC<ICandidatFullData> = ({
     avatar,
@@ -35,24 +37,21 @@ export const CandidateFull: FC<ICandidatFullData> = ({
 }) => {
     const t = useTranslations('contactsPage.candidatFullData')
     const authUser = useAppSelector(state => state.reducer.user.data)
+    const show: boolean = ((authUser && authUser.id === user.id) || (authUser && authUser.role === UserRole.Agency)) ? true : false
+
     return (
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row m-10">
             <div className="w-full md:w-4/6 md:p-5">
                 <div className="w-full flex flex-col md:flex-row items-center justify-between gap-x-5">
-                    <div className="shadow-2xl shadow-slate-700-500/50 dark:shadow-gray-300-100 w-[130px] rounded-3xl">
+                    <div className="shadow-2xl shadow-slate-700-500/50 dark:shadow-gray-300-100 rounded-3xl">
                         <Image src={avatar[0]} alt={firstname + surname} height={100} width={100} className="w-[100px] h-[100px] rounded-3xl" />
                     </div>
-                    <div className="flext flex-col gap-2 w-full">
-                        <div className="flex flex-col md:flex-row gap-3 items-end">
+                    <div className="flext flex-col gap-2 w-full mb-3 md:mb-0">
+                        <div className="flex flex-col md:flex-row gap-3 items-start md:items-end mb-2 md:mb-0">
                             <Heading>{surname} {firstname}</Heading>
-                            <small className="flex flex-row items-center"><IoLocationSharp /> {resident}</small>
+                            {show && <small className="flex flex-row items-center"><IoLocationSharp /> {resident}</small>}
                         </div>
                         <div className="flex flex-row gap-2 items-center">{education && education.map((edu, idx) => <small key={edu.school + idx} className="text-base">{edu.grade}</small>)}</div>
-                        <div className="flex flex-row gap-2 items-center">
-                            {authUser?.role === UserRole.Agency && <div className="rating me-1">
-                                <RatingStars userId={user.id} reviewerId={authUser.id} />
-                            </div>}
-                        </div>
                         {candidatLifeState && <ul className="mt-3 flex flex-row gap-3 items-center">
                             {candidatLifeState.availabilityTransport && <li>
                                 <span className="bg-[#e7eae2] dark:bg-opacity-20 rounded-full p-2 px-3 mb-1">
@@ -72,9 +71,36 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                             </li>}
                         </ul>}
                     </div>
-                    <div className="">
-                        <Button variant='outline'>{t('downloadCV')}</Button>
-                    </div>
+                    {authUser?.role === UserRole.Agency ?
+                        <div className="">
+                            <PDFwithJsPDF
+                                email={user.email!}
+                                privacy={{
+                                    about_my,
+                                    avatar,
+                                    birthday,
+                                    firstname,
+                                    phone,
+                                    resident,
+                                    surname
+                                }!}
+                                education={education!}
+                                courses={courses!}
+                                experience={experience!}
+                                skills={skills!}
+                                languages={languages!}
+                                hobbies={hobbies!}
+                                lifestatus={candidatLifeState!}
+                            //socialLinks={socialLinks!}
+                            />
+                        </div>
+                        :
+                        <div className="">
+                            <Button variant='outline'>
+                                <Link href={MAIN_URL.authAgency()}>{t('downloadCV')}</Link>
+                            </Button>
+                        </div>
+                    }
                 </div>
 
                 <div className="border-neutral-200 dark:border-neutral-800 border-t-2 border-dashed mt-5 pt-5">
@@ -127,7 +153,7 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                     </div>}
 
                     {(education.length > 0 || courses.length > 0) && <div className="w-full border border-solid border-neutral-900/20 dark:border-neutral-800 p-5 rounded-3xl mt-10">
-                        <div className="grid grid-cols-2 lg:grid-rows-2 gap-5 h-full">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-rows-2 gap-5 h-full">
                             <div className="flex flex-col gap-y-2">
                                 <Heading className="pb-2 inline-block p-3">{t('eduacation')}</Heading>
                                 <ul className="list-disc flex flex-col gap-y-2 pl-7 text-[#335371] text-lg">
@@ -147,7 +173,7 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                         </div>
                     </div>}
 
-                    <div className="mt-5 pt-5">
+                    <div className="mt-5 mb-10 pt-5">
                         <Heading className="pb-2 inline-block p-3">{t('experienceStory')}</Heading>
                         <div className="flex flex-col gap-y-5">
                             {experience.length > 0 ? experience.map((exp, idx) => (
@@ -166,7 +192,7 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                                                 <span className="text-sm">{formatDate(exp.startDate, { 'locale': 'it', 'dateFormat': 'mm/yyyy' })} | {formatDate(exp.endDate, { 'locale': 'it', 'dateFormat': 'mm/yyyy' })}</span>
                                             </div>
                                             <div className="mb-2">
-                                                <span className="rounded-full dark:bg-opacity-10 bg-[#dcf6fc] text-[#249ab2] py-2 px-3">{t('contractType')}</span>
+                                                <span className="rounded-full dark:bg-opacity-10 bg-[#dcf6fc] text-[#249ab2] py-2 px-3">{exp.contractTypeJob?.name}</span>
                                             </div>
                                             <div className="mb-2">
                                                 <span className="text-base">{exp.description}</span>
@@ -186,24 +212,34 @@ export const CandidateFull: FC<ICandidatFullData> = ({
                 </div>
             </div>
 
-            <div className="w-full h-full lg:w-2/6 p-5 bg-[#e7eae2] dark:bg-neutral-900 rounded-3xl">
-                <div className="sidebar-list bg-grey p-4 rounded">
+            <div className="w-full h-full lg:w-2/6 p-2 md:p-5 bg-[#e7eae2] dark:bg-neutral-900 rounded-3xl">
+                <div className="sidebar-list bg-grey p-2 md:p-4 rounded">
                     <div className="grid gap-y-4 bg-white dark:bg-neutral-800 dark:text-white p-4 rounded-3xl">
                         <h3 className="text-3xl">{t('contacts')}</h3>
                         <Image src="/map.jpg" alt="contact" height={152} width={305} className="rounded-3xl mb-2 w-full h-[152px]" />
                         <div className="info-address">
                             <ul>
                                 <li className="border-b mb-1 py-2 flex flex-row gap-x-2 items-center">
-                                    <MdOutlineLocationOn /> {resident}
+                                    <MdOutlineLocationOn /> {show ? resident : (
+                                        <Link href={MAIN_URL.authAgency()}>Agenzia di lavoro</Link>
+                                    )}
                                 </li>
                                 <li className="border-b mb-1 py-2 flex flex-row gap-x-2 items-center">
-                                    <MdOutlineLocalPhone /> {phone}
+                                    <MdOutlineLocalPhone /> {show ? phone : (
+                                        <Link href={MAIN_URL.authAgency()}>Agenzia di lavoro</Link>
+                                    )}
                                 </li>
                                 <li className="border-b mb-1 py-2 flex flex-row gap-x-2 items-center">
-                                    <MdOutlineMarkEmailRead /> {user.email}
+                                    <MdOutlineMarkEmailRead /> {show ? user.email : (
+                                        <Link href={MAIN_URL.authAgency()}>Agenzia di lavoro</Link>
+                                    )}
                                 </li>
                                 <li className="flex flex-row py-2 gap-x-2 items-center">
-                                    <LiaBirthdayCakeSolid /> {formatDate(birthday, { dateFormat: 'dd/mm/yyyy' })}
+                                    <LiaBirthdayCakeSolid /> {show ?
+                                        formatDate(birthday, { dateFormat: 'dd/mm/yyyy' }) :
+                                        (
+                                            <Link href={MAIN_URL.authAgency()}>Agenzia di lavoro</Link>
+                                        )}
                                 </li>
                             </ul>
                         </div>

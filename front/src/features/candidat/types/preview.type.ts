@@ -10,7 +10,7 @@ import { IUserMenuHeaderData } from "@/features/userHeaderBtn/types/userMenuData
 import { ISocial } from "./social.type"
 
 export interface IPreviewTemplates {
-    user: IUserMenuHeaderData
+    email: string
     privacy: IPrivacy
     education: IEducation[]
     courses: ICourses[]
@@ -19,5 +19,5 @@ export interface IPreviewTemplates {
     languages: ILanguages[]
     hobbies: IHobbies[]
     lifestatus: ILifeStatus
-    socialLinks: ISocial[]
+    socialLinks?: ISocial[]
 }

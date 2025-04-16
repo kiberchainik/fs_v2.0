@@ -27,12 +27,12 @@ export interface ICandidatFullData extends IPrivacy {
     user: {
         id: string,
         email: string,
-        social: Omit<ISocial, 'id'>[]
+        social: ISocial[] //Omit<ISocial, 'id'>[]
     },
-    education: Omit<IEducation, 'id' | 'levelId'>[],
-    experience: Omit<IExperience, 'id' | 'contractTypeId'>[],
-    skills: Omit<ISkills, 'id'>[],
-    courses: Omit<ICourses, 'id'>[],
-    hobbies: Omit<IHobbies, 'id'>[],
-    languages: Omit<ILanguages, 'id'>[]
+    education: IEducation[] //Omit<IEducation, 'id' | 'levelId'>[],
+    experience: IExperience[] //Omit<IExperience, 'id' | 'contractTypeId'>[],
+    skills: ISkills[] //Omit<ISkills, 'id'>[],
+    courses: ICourses[] //Omit<ICourses, 'id'>[],
+    hobbies: IHobbies[] //Omit<IHobbies, 'id'>[],
+    languages: ILanguages[] //Omit<ILanguages, 'id'>[]
 }

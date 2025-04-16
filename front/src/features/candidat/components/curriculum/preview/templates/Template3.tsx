@@ -6,7 +6,7 @@ import Image from "next/image";
 import { GrMapLocation } from "react-icons/gr"
 import { MdOutlineLocalPhone, MdOutlineMailOutline } from "react-icons/md"
 
-export default function Template3({ privacy, courses, education, experience, hobbies, languages, lifestatus, skills, user }: IPreviewTemplates) {
+export default function Template3({ privacy, courses, education, experience, hobbies, languages, lifestatus, skills, email }: IPreviewTemplates) {
     const t = useTranslations('curriculum.previews')
     return (<>
         <div className="container bg-white">
@@ -40,7 +40,7 @@ export default function Template3({ privacy, courses, education, experience, hob
                         </div>
                         <div className="flex items-center gap-1">
                             <MdOutlineMailOutline className="inline-block size-3 flex-none text-purple-600 dark:text-purple-500" />
-                            <span className="font-medium truncate">{user && user.email}</span>
+                            <span className="font-medium truncate">{email}</span>
                         </div>
                     </div>
                 </div>

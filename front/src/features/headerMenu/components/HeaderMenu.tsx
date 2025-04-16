@@ -35,7 +35,7 @@ export function HeaderMenu() {
             <nav className={cn(styles.headerNav, isMenuOpen ? styles.toggleOpen : styles.toggleClose, 'min-[920px]:opacity-100 min-[920px]:scale-100 min-[920px]:pointer-events-auto')}>
                 <ul className={styles.list}>
                     {headerMenu.map((menu) => (
-                        <Link href={menu.href} key={menu.href}>
+                        <Link href={menu.href} key={menu.href} onClick={toggleMenu}>
                             {menu.title}
                         </Link>
                     ))}

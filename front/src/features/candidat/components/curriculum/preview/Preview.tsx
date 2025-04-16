@@ -29,7 +29,7 @@ export default function PreviewsPortfolio() {
     return (
         <div className="">
             <PDFwithPdfMake
-                user={user!}
+                email={user?.email!}
                 privacy={privacy!}
                 education={education!}
                 courses={courses!}
@@ -38,11 +38,11 @@ export default function PreviewsPortfolio() {
                 languages={languages!}
                 hobbies={hobbies!}
                 lifestatus={lifestatus!}
-                socialLinks={socialLinks!}
+                socialLinks={socialLinks}
             />
 
             <Template3
-                user={user!}
+                email={user?.email!}
                 privacy={privacy!}
                 education={education!}
                 courses={courses!}
@@ -51,7 +51,7 @@ export default function PreviewsPortfolio() {
                 languages={languages!}
                 hobbies={hobbies!}
                 lifestatus={lifestatus!}
-                socialLinks={socialLinks!}
+                socialLinks={socialLinks}
             />
         </div>
     )

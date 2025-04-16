@@ -8,6 +8,8 @@ import { IoIosLogOut } from "react-icons/io"
 import { useRouter } from "next/navigation"
 import { useLogoutMutation } from "../../hooks"
 import { HeaderUserMenu } from "@/shared/config"
+import { UserRole } from "@/features/auth/types";
+import { cn } from "@/shared/utils";
 
 export const UserMenu: FC<IUserMenuHeaderData> = ({ email, role, avatar, name }) => {
     const router = useRouter()
@@ -16,12 +18,12 @@ export const UserMenu: FC<IUserMenuHeaderData> = ({ email, role, avatar, name })
 
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger className="flex flex-row items-center gap-x-2 border rounded-full w-28">
+            <DropdownMenuTrigger className={role === UserRole.Candidat ? 'flex flex-row items-center gap-x-2 border rounded-full w-28' : ''}>
                 <Avatar>
                     <AvatarImage src={avatar && avatar[0]} />
                     <AvatarFallback>{email.slice(0, 1)}</AvatarFallback>
                 </Avatar>
-                <span className="font-semibold tracking-tight">Crea Cv</span>
+                {role === UserRole.Candidat && <span className="font-semibold tracking-tight">Crea Cv</span>}
             </DropdownMenuTrigger>
             <DropdownMenuContent className='w-full' align='end'>
                 <div className='flex flex-row p-3 gap-3'>

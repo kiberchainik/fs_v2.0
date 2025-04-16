@@ -13,7 +13,7 @@ export default function PDFwithJsPDF({
     languages,
     lifestatus,
     skills,
-    user,
+    email,
 }: IPreviewTemplates) {
     const t = useTranslations("curriculum.previews");
 
@@ -38,10 +38,12 @@ export default function PDFwithJsPDF({
         doc.text(`${privacy.firstname} ${privacy.surname}`, 5, 15, { maxWidth: leftColWidth - 10 });
 
         const infoItems: { icon: string; text: string }[] = [
-            { icon: "/pdficons/email.png", text: user.email },
+            { icon: "/pdficons/email.png", text: email },
             { icon: "/pdficons/mobile.png", text: privacy.phone },
             { icon: "/pdficons/location.png", text: privacy.resident },
-            { icon: "/pdficons/birthday.png", text: formatDate(privacy.birthday, { dateFormat: "full" }) }
+            { icon: "/pdficons/birthday.png", text: formatDate(privacy.birthday, { dateFormat: "full" }) },
+            { icon: "", text: lifestatus.maritalStatus },
+            { icon: "", text: `Categorya ${lifestatus.driverCategory}` }
         ];
 
         const loadImage = (src: string): Promise<HTMLImageElement> => {
@@ -86,7 +88,7 @@ export default function PDFwithJsPDF({
                 }
             } else {
                 doc.text(lines, 5, y);
-                y += blockHeight + blockSpacing;
+                y += blockHeight
             }
         }
 
@@ -237,27 +239,33 @@ export default function PDFwithJsPDF({
                 rightY += spacing;
 
                 // Школа
-                doc.setFont("helvetica", "bold");
-                doc.setFontSize(11);
-                doc.setTextColor(0);
-                doc.text(ed.school, rightColStart + 5, rightY);
-                rightY += spacing;
+                if (ed.school) {
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(11);
+                    doc.setTextColor(0);
+                    doc.text(ed.school, rightColStart + 5, rightY);
+                    rightY += spacing;
+                }
 
                 // Специальность
-                doc.setFont("helvetica", "normal");
-                doc.setFontSize(10);
-                doc.setTextColor(80);
-                const gradeLines = doc.splitTextToSize(ed.grade || '', pageWidth - rightColStart - 10);
-                doc.text(ed.grade || '', rightColStart + 5, rightY);
-                rightY += gradeLines.length * spacing;
+                if (ed.grade) {
+                    doc.setFont("helvetica", "normal");
+                    doc.setFontSize(10);
+                    doc.setTextColor(80);
+                    const gradeLines = doc.splitTextToSize(ed.grade || '', pageWidth - rightColStart - 10);
+                    doc.text(ed.grade || '', rightColStart + 5, rightY);
+                    rightY += gradeLines.length * spacing;
+                }
 
                 //Описание
-                doc.setFont("helvetica", "normal");
-                doc.setFontSize(10);
-                doc.setTextColor(80);
-                const descriptionLines = doc.splitTextToSize(ed.description || '', pageWidth - rightColStart - 10);
-                doc.text(ed.description || '', rightColStart + 5, rightY);
-                rightY += descriptionLines.length * spacing + spacing;
+                if (ed.description) {
+                    doc.setFont("helvetica", "normal");
+                    doc.setFontSize(10);
+                    doc.setTextColor(80);
+                    const descriptionLines = doc.splitTextToSize(ed.description || '', pageWidth - rightColStart - 10);
+                    doc.text(ed.description || '', rightColStart + 5, rightY);
+                    rightY += descriptionLines.length * spacing + spacing;
+                }
             });
 
             doc.setTextColor(0);
@@ -318,8 +326,9 @@ export default function PDFwithJsPDF({
                 doc.setFont("helvetica", "bold");
                 doc.setFontSize(11);
                 doc.setTextColor(0);
+                const courseLines = doc.splitTextToSize(course.grade || '', pageWidth - rightColStart - 10);
                 doc.text(`${course.institution} — ${course.grade}`, rightColStart + 5, rightY);
-                rightY += spacing;
+                rightY += courseLines * spacing + 2;
             })
 
             doc.setTextColor(0);

@@ -28,8 +28,8 @@ export async function middleware(request: NextRequest) {
 			}
 
 			const isAgencyProfile = request.url.includes(AGENCY_URL.profile())
-			if (!user.isVerified && !isAgencyProfile) {
-				return NextResponse.redirect(new URL(CANDIDAT_URL.profileEdit(), request.url))
+			if ((!user.isVerified || !user.name || !user.avatar) && !isAgencyProfile) {
+				return NextResponse.redirect(new URL(AGENCY_URL.profile(), request.url))
 			}
 
 			return NextResponse.next()
