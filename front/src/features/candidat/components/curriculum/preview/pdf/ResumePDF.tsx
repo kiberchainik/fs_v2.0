@@ -41,10 +41,11 @@ export default function PDFwithJsPDF({
             { icon: "/pdficons/email.png", text: email },
             { icon: "/pdficons/mobile.png", text: privacy.phone },
             { icon: "/pdficons/location.png", text: privacy.resident },
-            { icon: "/pdficons/birthday.png", text: formatDate(privacy.birthday, { dateFormat: "full" }) },
-            { icon: "", text: lifestatus.maritalStatus },
-            { icon: "", text: `Patente ${lifestatus.driverCategory.map(item => item.toUpperCase() + ' ')}` }
+            { icon: "/pdficons/birthday.png", text: formatDate(privacy.birthday, { dateFormat: "full" }) }
         ];
+
+        if (lifestatus.maritalStatus) infoItems.push({ icon: '', text: lifestatus.maritalStatus })
+        if (lifestatus.driverCategory) infoItems.push({ icon: '', text: `Patente ${lifestatus.driverCategory.map(item => item.toUpperCase() + ' ')}` })
 
         const loadImage = (src: string): Promise<HTMLImageElement> => {
             return new Promise((resolve, reject) => {
@@ -334,13 +335,21 @@ export default function PDFwithJsPDF({
             doc.setTextColor(0);
         }
 
-        // Отдельный блок "О себе" внизу
-        const aboutMyText = htmlToPlainText(privacy.about_my)
+        // Отдельный блок "О себе" в верхней части правой колонки
+        const rightColWidth = 210 - rightColStart - 10;
+        const aboutMyText = htmlToPlainText(privacy.about_my);
         doc.setFont("helvetica", "normal");
-        const aboutLines = doc.splitTextToSize(aboutMyText, rightColStart + 50, 0);
+
+        // Разбиваем текст по ширине колонки
+        const aboutLines = doc.splitTextToSize(aboutMyText, rightColWidth);
+
+        // Отображаем текст в правой колонке
         doc.text(aboutLines, rightColStart, rightY);
-        y += aboutLines.length * lineHeight + 10;
-        rightY += 5
+
+        // Добавляем отступ снизу после блока "О себе"
+        rightY += aboutLines.length * lineHeight - 5;
+
+        rightY += 10
         addEducationSection()
         rightY += 5
         addExperienceSection()
