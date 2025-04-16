@@ -5,10 +5,11 @@ import { MainProvider } from "@/shared/providers"
 import { SITE_DESCRIPTION, SITE_NAME } from "@/shared/constants/seo.constants"
 import { Header } from "@/shared/components"
 import { HeaderMenu } from "@/features/headerMenu/components/HeaderMenu"
-import { NextIntlClientProvider } from 'next-intl'
 import { getLocale, getMessages } from 'next-intl/server'
 import Script from "next/script"
 import { Footer } from "@/features/footer/components/Footer";
+import { Suspense } from "react";
+import I18nLoader from "@/shared/loaders/I18nLoader";
 
 const manrope = localFont({
   src: [
@@ -55,29 +56,34 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const locale = await getLocale()
-  const messages = await getMessages()
-
   return (
-    <html lang={locale}>
+    <html lang='it'>
       <body className={`${manrope.variable} font-sans`}>
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3626047805353694"
           crossOrigin="anonymous"
         />
-        <NextIntlClientProvider messages={messages}>
-          <MainProvider>
-            <div className="flex min-h-screen flex-col">
-              <Header>
-                <HeaderMenu />
-              </Header>
-              <main className='flex-grow md:m-5'>{children}</main>
-              <Footer />
-            </div>
-          </MainProvider>
-        </NextIntlClientProvider>
+        <Suspense fallback={<div>Загрузка...</div>}>
+          <I18nLoader>
+            <MainProvider>
+              <LayoutWithHeader>{children}</LayoutWithHeader>
+            </MainProvider>
+          </I18nLoader>
+        </Suspense>
       </body>
     </html>
-  );
+  )
+
+  function LayoutWithHeader({ children }: { children: React.ReactNode }) {
+    return (
+      <div className="flex min-h-screen flex-col">
+        <Header>
+          <HeaderMenu />
+        </Header>
+        <main className="flex-grow md:m-5">{children}</main>
+        <Footer />
+      </div>
+    )
+  }
 }
