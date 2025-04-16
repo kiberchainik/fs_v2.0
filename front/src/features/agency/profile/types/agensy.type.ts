@@ -15,7 +15,7 @@ export interface IAgencyData {
     logo: string[]
 }
 
-export type TAgencyCard = Omit<IAgencyData, 'id' | 'userId' | 'p_iva_c_f'> & {
+export type TAgencyCard = Omit<IAgencyData, 'userId' | 'p_iva_c_f'> & {
     user: Pick<IUser, 'email'>
 }
 

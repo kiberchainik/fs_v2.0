@@ -4,14 +4,14 @@ import { formatDate } from "@/shared/utils";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
-export default function Template2({ privacy, courses, education, experience, hobbies, languages, lifestatus, skills, user }: IPreviewTemplates) {
+export default function Template2({ privacy, courses, education, experience, hobbies, languages, lifestatus, skills, email }: IPreviewTemplates) {
     const t = useTranslations('curriculum.previews')
     return (
         <div className="flex flex-row gap-2">
             <div className="w-2/6">
                 <div className="bg-white shadow rounded-lg p-2">
                     <div className="flex flex-col items-center">
-                        <Image src={user.avatar![0]} alt={`${privacy.firstname}`} height={80} width={80} className="w-10 h-10 bg-gray-300 rounded-full mb-4 shrink-0" />
+                        <Image src={privacy.avatar![0]} alt={`${privacy.firstname}`} height={80} width={80} className="w-10 h-10 bg-gray-300 rounded-full mb-4 shrink-0" />
                         <h1 className="text-xs font-bold">{privacy.firstname} {privacy.surname}</h1>
                         <p className="text-gray-700 text-[8px]">{education.map(item => <span key={item.id}>{item.description}</span>)}</p>
                     </div>

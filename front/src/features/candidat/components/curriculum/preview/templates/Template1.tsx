@@ -13,7 +13,7 @@ export default function Template1({
     languages,
     lifestatus,
     skills,
-    user
+    email
 }: IPreviewTemplates) {
     const t = useTranslations('curriculum.previews')
     return (
@@ -43,7 +43,7 @@ export default function Template1({
                                     </div>
                                     <div className="flex flex-row gap-x-1 items-center">
                                         <span><CiAt /></span>
-                                        <span>{user?.email}</span>
+                                        <span>{email}</span>
                                     </div>
                                     <div className="flex flex-row gap-x-1 items-center">
                                         <span><CiMobile3 /></span>

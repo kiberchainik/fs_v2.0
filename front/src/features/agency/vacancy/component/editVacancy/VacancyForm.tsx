@@ -51,6 +51,7 @@ export function VacancyEditForm({ vacancy }: VacancyFromProps) {
 		const { tags, ...value } = values
 		const newVals = {
 			...value,
+			id: vacancy.id,
 			tags: splitTagsWithComa(values.tags)
 		}
 

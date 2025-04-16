@@ -1,6 +1,6 @@
 import { axiosPrivate, axiosPublic } from "@/shared/api"
 import { API_URL } from "@/shared/config"
-import { IVacanciaes, IVacanciaesEdit, IVacanciaesFullDate } from "../types"
+import { IVacanciaes, IVacanciaesCreate, IVacanciaesEdit, IVacanciaesFullDate } from "../types"
 
 class VacancyService {
     async getAgencyVacancyList() {
@@ -27,7 +27,7 @@ class VacancyService {
         return data
     }
 
-    async createVacancyData(data: IVacanciaes) {
+    async createVacancyData(data: IVacanciaesCreate) {
         const { data: vacancy } = await axiosPrivate.post<IVacanciaes>(API_URL.vacancy(), data)
 
         return vacancy

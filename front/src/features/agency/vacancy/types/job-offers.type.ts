@@ -23,7 +23,7 @@ export interface ISendCadidature {
 }
 
 export interface IVacanciaes extends IVacancyOptions {
-    id?: string,
+    id: string,
     title: string,
     slug?: string,
     description: string,
@@ -48,6 +48,8 @@ export interface IVacanciaes extends IVacancyOptions {
     views?: number
     isValidate?: boolean
 }
+
+export type IVacanciaesCreate = Omit<IVacanciaes, 'id'>
 
 export type IVacanciaesFullDate = Pick<IVacanciaes, 'id' | 'slug' | 'title' | 'description' | 'branchId' | 'savedBy' | 'sendCandidature' | 'location' | 'region' | 'province' | 'salary'> & {
     breadcrumbs: TBreadcrumbr

@@ -44,7 +44,7 @@ export const CandidateFull: FC<ICandidatFullData> = ({
             <div className="w-full md:w-4/6 md:p-5">
                 <div className="w-full flex flex-col md:flex-row items-center justify-between gap-x-5">
                     <div className="shadow-2xl shadow-slate-700-500/50 dark:shadow-gray-300-100 rounded-3xl">
-                        <Image src={avatar[0]} alt={firstname + surname} height={100} width={100} className="w-[100px] h-[100px] rounded-3xl" />
+                        <Image src={avatar[0]} alt={firstname + surname} height={180} width={180} className="w-[100px] h-[100px] rounded-3xl" />
                     </div>
                     <div className="flext flex-col gap-2 w-full mb-3 md:mb-0">
                         <div className="flex flex-col md:flex-row gap-3 items-start md:items-end mb-2 md:mb-0">

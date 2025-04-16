@@ -43,7 +43,7 @@ export default function PDFwithJsPDF({
             { icon: "/pdficons/location.png", text: privacy.resident },
             { icon: "/pdficons/birthday.png", text: formatDate(privacy.birthday, { dateFormat: "full" }) },
             { icon: "", text: lifestatus.maritalStatus },
-            { icon: "", text: `Categorya ${lifestatus.driverCategory}` }
+            { icon: "", text: `Patente ${lifestatus.driverCategory.map(item => item.toUpperCase() + ' ')}` }
         ];
 
         const loadImage = (src: string): Promise<HTMLImageElement> => {
@@ -337,10 +337,10 @@ export default function PDFwithJsPDF({
         // Отдельный блок "О себе" внизу
         const aboutMyText = htmlToPlainText(privacy.about_my)
         doc.setFont("helvetica", "normal");
-        const aboutLines = doc.splitTextToSize(aboutMyText, rightColStart + 40, 0);
+        const aboutLines = doc.splitTextToSize(aboutMyText, rightColStart + 50, 0);
         doc.text(aboutLines, rightColStart, rightY);
-        y += aboutLines.length * lineHeight;
-        rightY += 11
+        y += aboutLines.length * lineHeight + 10;
+        rightY += 5
         addEducationSection()
         rightY += 5
         addExperienceSection()
