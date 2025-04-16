@@ -222,7 +222,7 @@ export class AgencyService {
       }
     })
 
-    userAvatar.logo.map(file => {
+    userAvatar && userAvatar.logo.map(file => {
       try {
         access(join(__dirname, '..', '../src', file)).then(() => {
           unlink(join(__dirname, '..', '../src', file))

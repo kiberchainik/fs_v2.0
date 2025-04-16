@@ -161,7 +161,7 @@ export class UserService {
             }
         })
 
-        userAvatar.avatar.map(file => {
+        userAvatar && userAvatar.avatar.map(file => {
             try {
                 access(join(__dirname, '..', '../src', file)).then(() => {
                     unlink(join(__dirname, '..', '../src', file))
