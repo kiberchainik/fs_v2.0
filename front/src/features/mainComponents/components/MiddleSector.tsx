@@ -1,13 +1,12 @@
 'use client'
 
+import { TranslationFunc } from '@/i18n'
 import { Button } from '@/shared/components'
 import { MAIN_URL } from '@/shared/config'
-import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const MiddleSector = () => {
-    const t = useTranslations('homePage.middleSector')
+export const MiddleSector = ({ t }: { t: TranslationFunc }) => {
     return (
         <div className="flex my-10 px-10 -ml-5">
             <div className="flex flex-col md:flex-row gap-2 items-center justify-between">

@@ -1,15 +1,15 @@
 'use client'
 
+import { TranslationFunc } from "@/i18n"
 import { useGetCandidats } from "../../hooks/useCandidatCarousel"
 import { CarouselMain } from "../CarouselMain"
 import { CandidatCard } from "./CandidatCard"
 import { CandidatSkeleton } from "./CandidatSkeleton"
 import { CarouselItem } from "@/shared/components"
-import { useTranslations } from "next-intl"
 
-export default function Candidats() {
+export default function Candidats({ t }: { t: TranslationFunc }) {
     const { candidats, isFetching } = useGetCandidats()
-    const t = useTranslations('homePage.candidatsSector')
+
     return (
         <div className="bg-[#cee5ec] dark:bg-[#091b20] flex flex-col md:flex-row gap-5 mx-0 md:-mx-5">
             <div className="bg-[#b1dbe9] dark:bg-[#082933] p-10 md:w-2/6">

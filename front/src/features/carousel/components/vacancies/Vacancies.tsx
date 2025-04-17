@@ -1,12 +1,11 @@
 'use client'
 
-import { useTranslations } from "next-intl"
 import { useJobsCarousel } from "../../hooks/useJobsCarousel"
 import { VacancyCard } from "./VacancyCard"
 import { VacancySkeleton } from "./VacancySkeleton"
+import { TranslationFunc } from "@/i18n"
 
-export default function Vacancies() {
-    const t = useTranslations('homePage.vacanciesSector')
+export default function Vacancies({ t }: { t: TranslationFunc }) {
     const title = t('title')
     const subtext = t('subTitle')
     const { jobs, isFetching } = useJobsCarousel()

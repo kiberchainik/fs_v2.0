@@ -1,3 +1,5 @@
 export * from './config'
 export * from './language'
 export * from './request'
+export * from './I18nLoader'
+export * from './i18n.types'

@@ -1,5 +1,3 @@
-'use client'
-
 import { useGetOptionsContractTypes } from "@/features/agency/vacancy/hooks"
 import { useCategory } from "@/features/category/hooks"
 import { useFilterVacancy } from "@/features/filter/hooks/useFilterVacancy"

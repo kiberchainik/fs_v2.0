@@ -1,10 +1,8 @@
-import { getTranslations } from 'next-intl/server'
 import Image from "next/image"
-
 import styles from './maincomponents.module.scss'
+import { TranslationFunc } from "@/i18n/i18n.types"
 
-export async function HeroHeading() {
-    const t = await getTranslations('homePage.topSector')
+export function HeroHeading({ t }: { t: TranslationFunc }) {
 
     return (
         <div className={styles.hero_banner}>
@@ -36,7 +34,6 @@ export async function HeroHeading() {
                         quality={100}
                         width={500}
                         height={500}
-                        priority
                         className="!w-[500px] !h-[500px]"
                     />
                 </div>
