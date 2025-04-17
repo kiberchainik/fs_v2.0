@@ -14,9 +14,18 @@ export const metadata: Metadata = {
     absolute: SITE_NAME
   },
   description: SITE_DESCRIPTION,
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   metadataBase: new URL(process.env.APP_URL as string),
   openGraph: {
-    images: [{ url: '/public/favicon.ico' }],
+    images: [{ url: '/favicon.ico' }],
     type: 'website',
     siteName: SITE_NAME,
     emails: ['support@lavidea.it']

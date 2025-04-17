@@ -1,0 +1,9 @@
+# Разрешаем всем поисковым системам доступ ко всем страницам
+User-agent: *
+Disallow: /api/
+Disallow: /auth/
+Disallow: /agency/
+Disallow: /candidate/
+Allow: /
+
+Sitemap: https://lavidea.it/sitemap.xml
