@@ -1,37 +1,13 @@
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "@/shared/styles/globals.scss";
+import type { Metadata } from "next"
+import "@/shared/styles/globals.scss"
 import { MainProvider } from "@/shared/providers"
 import { SITE_DESCRIPTION, SITE_NAME } from "@/shared/constants/seo.constants"
 import { Header } from "@/shared/components"
 import { HeaderMenu } from "@/features/headerMenu/components/HeaderMenu"
-import { getLocale, getMessages } from 'next-intl/server'
 import Script from "next/script"
-import { Footer } from "@/features/footer/components/Footer";
-import { Suspense } from "react";
-import I18nLoader from "@/shared/loaders/I18nLoader";
-
-const manrope = localFont({
-  src: [
-    {
-      path: './fonts/Manrope-Regular.ttf',
-      weight: '400'
-    },
-    {
-      path: './fonts/Manrope-Light.ttf',
-      weight: '300'
-    },
-    {
-      path: './fonts/Manrope-Bold.ttf',
-      weight: '700'
-    },
-    {
-      path: './fonts/Manrope-ExtraBold.ttf',
-      weight: '900'
-    }
-  ],
-  variable: '--font-manrope'
-});
+import { Footer } from "@/features/footer/components/Footer"
+import I18nLoader from "@/i18n/I18nLoader"
+import { getLocale } from "next-intl/server"
 
 export const metadata: Metadata = {
   title: {
@@ -56,34 +32,51 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const locale = await getLocale()
   return (
-    <html lang='it'>
-      <body className={`${manrope.variable} font-sans`}>
+    <html lang={locale}>
+      <head>
+        <link
+          rel="preload"
+          href="/fonts/Manrope-Regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/Manrope-Bold.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/Manrope-Light.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <body className='font-[Manrope]'>
         <Script
           async
+          strategy="lazyOnload"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3626047805353694"
           crossOrigin="anonymous"
         />
-        <Suspense fallback={<div>Загрузка...</div>}>
-          <I18nLoader>
-            <MainProvider>
-              <LayoutWithHeader>{children}</LayoutWithHeader>
-            </MainProvider>
-          </I18nLoader>
-        </Suspense>
+        <I18nLoader>
+          <MainProvider>
+            <div className="flex min-h-screen flex-col">
+              <Header>
+                <HeaderMenu />
+              </Header>
+              <main className="flex-grow md:m-5">{children}</main>
+              <Footer />
+            </div>
+          </MainProvider>
+        </I18nLoader>
       </body>
     </html>
   )
-
-  function LayoutWithHeader({ children }: { children: React.ReactNode }) {
-    return (
-      <div className="flex min-h-screen flex-col">
-        <Header>
-          <HeaderMenu />
-        </Header>
-        <main className="flex-grow md:m-5">{children}</main>
-        <Footer />
-      </div>
-    )
-  }
 }
