@@ -6,19 +6,17 @@ import styles from '@/features/mainComponents/components/maincomponents.module.s
 import { getTranslations } from "next-intl/server"
 
 export default async function Home() {
-  const t = await getTranslations('homePage')
-
-  const getSectionT = (section: string) => (key: string, ...args: any[]) => t(`${section}.${key}`, ...args)
+  //const t = await getTranslations('homePage')
   return (
     <div className='flex flex-col gap-y-3'>
       <div className={styles.wrapper_sector}>
-        <HeroHeading t={getSectionT('topSector')} />
-        <TopSector t={getSectionT('topSector')} />
+        <HeroHeading />
+        <TopSector />
       </div>
-      <Candidats t={getSectionT('candidatsSector')} />
-      <MiddleSector t={getSectionT('middleSector')} />
-      <Agencies t={getSectionT('agencySector')} />
-      <Vacancies t={getSectionT('vacanciesSector')} />
+      <Candidats />
+      <MiddleSector />
+      <Agencies />
+      <Vacancies />
       <BottomCategory />
       {/* <BottomRegions /> */}
     </div>

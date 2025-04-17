@@ -1,13 +1,14 @@
 'use client'
 
+import { useTranslations } from "next-intl";
 import { useGetAgencies } from "../../hooks/useAgencyCarousel";
 import { CarouselMain } from "../CarouselMain"
 import { AgencyCard } from "./AgencyCard";
 import { AgencySkeleton } from "./AgencySkeleton";
 import { CarouselItem } from "@/shared/components";
-import { TranslationFunc } from "@/i18n";
 
-export default function Agencies({ t }: { t: TranslationFunc }) {
+export default function Agencies() {
+    const t = useTranslations('homePage.agencySector')
     const title = t('title')
     const subText = t('subTitle')
     const { agencies, isFetching } = useGetAgencies()

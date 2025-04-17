@@ -1,12 +1,13 @@
 'use client'
 
 import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/shared/components"
+import { useTranslations } from "next-intl"
 
 import styles from './maincomponents.module.scss'
 import { useTopSector } from "../hooks/useTopSector"
-import { TranslationFunc } from "@/i18n/i18n.types"
 
-export const TopSector = ({ t }: { t: TranslationFunc }) => {
+export const TopSector = () => {
+    const t = useTranslations('homePage.topSector')
     const { form, categories, isFetching, onSubmit, isFCT, contractType } = useTopSector()
     return (
         <div className={styles.hero_form}>
