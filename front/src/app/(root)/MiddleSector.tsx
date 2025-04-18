@@ -4,7 +4,7 @@ import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const MiddleSector = async () => {
+export async function MiddleSector() {
     const t = await getTranslations('homePage.middleSector')
     return (
         <div className="flex my-10 px-10 -ml-5">
