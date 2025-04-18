@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     metadataBase: new URL(process.env.APP_URL as string),
     openGraph: {
-        images: [{ url: '/public/favicon.ico' }],
+        images: [{ url: '/favicon.ico' }],
         type: 'website',
         siteName: SITE_NAME,
-        emails: ['support@findsol.it']
+        emails: ['support@lavidea.it']
     }
 };
 

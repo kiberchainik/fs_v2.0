@@ -1,12 +1,9 @@
 'use client'
 
 import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/shared/components"
-import { useTranslations } from "next-intl"
-
 import { useTopSector } from "../hooks/useTopSector"
 
-export function MainFilterVacancy() {
-    const t = useTranslations('homePage.topSector')
+export function MainFilterVacancy({ sector, locationForm, contractTypeForm, btn }: { sector: string, locationForm: string, contractTypeForm: string, btn: string }) {
     const { form, categories, isFetching, onSubmit, isFCT, contractType } = useTopSector()
     return (
         <>
@@ -21,11 +18,11 @@ export function MainFilterVacancy() {
                                             control={form.control}
                                             name='categoryId'
                                             rules={{
-                                                required: 'Selezina settore'
+                                                required: 'Seleziona settore'
                                             }}
                                             render={({ field }) => (
                                                 <FormItem className="border-none">
-                                                    <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>{t('sector')}</FormLabel>
+                                                    <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>{sector}</FormLabel>
                                                     <Select
                                                         disabled={isFetching}
                                                         onValueChange={field.onChange}
@@ -33,7 +30,7 @@ export function MainFilterVacancy() {
                                                     >
                                                         <FormControl>
                                                             <SelectTrigger className="!border-none !shadow-none">
-                                                                <SelectValue placeholder={t('sector')} />
+                                                                <SelectValue placeholder={sector} />
                                                             </SelectTrigger>
                                                         </FormControl>
                                                         <SelectContent>
@@ -70,10 +67,10 @@ export function MainFilterVacancy() {
                                             name='location'
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>{t('località')}</FormLabel>
+                                                    <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>{locationForm}</FormLabel>
                                                     <FormControl>
                                                         <Input
-                                                            placeholder={t('località')}
+                                                            placeholder={locationForm}
                                                             type='text'
                                                             {...field}
                                                             className="!border-none !shadow-none"
@@ -94,7 +91,7 @@ export function MainFilterVacancy() {
                                             name='contractTypeId'
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>{t('contractType')}</FormLabel>
+                                                    <FormLabel className='text-lg font-bold text-[#17233e] dark:text-slate-300'>{contractTypeForm}</FormLabel>
                                                     <Select
                                                         onValueChange={field.onChange}
                                                         defaultValue={field.value}
@@ -102,14 +99,14 @@ export function MainFilterVacancy() {
                                                     >
                                                         <FormControl>
                                                             <SelectTrigger className="!border-none !shadow-none">
-                                                                <SelectValue placeholder={t('contractType')} />
+                                                                <SelectValue placeholder={contractTypeForm} />
                                                             </SelectTrigger>
                                                         </FormControl>
                                                         <SelectContent>
                                                             <SelectGroup>
-                                                                {contractType ? contractType.map(type => (
+                                                                {contractType && contractType.map(type => (
                                                                     <SelectItem value={type.id} key={type.id}>{type.name}</SelectItem>
-                                                                )) : <SelectItem value='0' key={'without_branch'}>{t('without_branch')}</SelectItem>}
+                                                                ))}
                                                             </SelectGroup>
                                                         </SelectContent>
                                                     </Select>
@@ -119,7 +116,7 @@ export function MainFilterVacancy() {
                                     </div>
                                 </div>
                             </div>
-                            <Button type='submit'>{t('search_btn')}</Button>
+                            <Button type='submit'>{btn}</Button>
                         </div>
                     </div>
                 </form>
