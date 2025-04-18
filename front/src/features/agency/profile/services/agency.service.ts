@@ -3,6 +3,7 @@ import { TypeSettingsSchema } from "../schemes";
 import { IAgencyData, IAgencyResponce, TAgencyDataResponse } from "../types/agensy.type";
 import { API_URL } from "@/shared/config";
 import { ISearchTerm } from "@/features/vacancy/types/searchTerm.type";
+import { removeFromStorage } from "@/shared/services";
 
 class AgencyService {
     public async getAgencyData() {
@@ -35,7 +36,11 @@ class AgencyService {
     }
 
     public async deleteAgency() {
-        return await axiosPrivate.delete(API_URL.agency())
+        const { data } = await axiosPrivate.delete(API_URL.agency())
+
+        if (data) removeFromStorage()
+
+        return data
     }
 }
 
