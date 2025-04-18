@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import Image from "next/image"
 
-import styles from './maincomponents.module.scss'
+import styles from '@/features/mainComponents/components/maincomponents.module.scss'
 
 export async function HeroHeading() {
     const t = await getTranslations('homePage.topSector')

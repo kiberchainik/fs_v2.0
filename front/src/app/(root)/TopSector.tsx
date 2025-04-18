@@ -1,5 +1,5 @@
-import styles from './maincomponents.module.scss'
-import { MainFilterVacancy } from '../../features/mainComponents/components/MainFilterVacancy'
+import styles from '@/features/mainComponents/components/maincomponents.module.scss'
+import { MainFilterVacancy } from '../../features/mainComponents'
 
 export const TopSector = () => {
     return (

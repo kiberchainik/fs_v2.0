@@ -12,7 +12,7 @@ export function MainFilterVacancy() {
         <>
             {<Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
-                    <div className='shadow-2xl shadow-sky-300/20 p-10 bg-white mb-2 rounded-3xl  dark:bg-neutral-900 dark:shadow-sky-600/10'>
+                    <div className='shadow-2xl shadow-sky-300/20 p-10 bg-white mb-2 rounded-3xl dark:bg-neutral-900 dark:shadow-sky-600/10'>
                         <div className='flex md:flex-row flex-col gap-5 items-center justify-between'>
                             <div className='w-full border-none md:border-r md:border-solid border-gray-100 dark:border-gray-700 md:pr-5'>
                                 <div className="form-group">

@@ -1,5 +1,4 @@
 export * from './components/MiddleSector'
-export * from '../../app/(root)/TopSector'
 export * from './components/BottomCategory'
 export * from './components/BottomRegions'
-export * from '../../app/(root)/HeroHeading'
+export * from './components/MainFilterVacancy'

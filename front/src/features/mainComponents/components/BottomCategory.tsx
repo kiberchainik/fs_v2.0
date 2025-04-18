@@ -7,7 +7,7 @@ export function BottomCategory() {
     const { categories } = useCategory()
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-10 mt-10 border-t dark:border-white border-neutral-900 border-dashed">
             {categories?.map((category) => (
                 <div key={category.id}>
                     <Link
