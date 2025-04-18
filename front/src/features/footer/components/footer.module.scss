@@ -1,5 +1,5 @@
 .footer {
-    @apply bg-white dark:bg-neutral-900 p-5 mt-10;
+    @apply bg-white p-5 mt-10;
 
     > .foter_content {
         @apply grid grid-cols-1 md:grid-cols-4 gap-5;

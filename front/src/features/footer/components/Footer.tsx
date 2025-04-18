@@ -1,5 +1,5 @@
 import { headerMainMenu, MAIN_URL } from "@/shared/config"
-import { formatDate } from "@/shared/utils"
+import { cn, formatDate } from "@/shared/utils"
 import Link from "next/link"
 import Image from "next/image"
 import { PiCopyrightThin } from "react-icons/pi"
@@ -9,7 +9,7 @@ import styles from './footer.module.scss'
 export function Footer() {
     const headerMenu = headerMainMenu()
     return (
-        <footer className={styles.footer}>
+        <footer className={cn('dark:bg-neutral-900', styles.footer)}>
             <div className={styles.foter_content}>
                 <div className={styles.footer_about_lavidea}>
                     <div className={styles.footer_about_lavidea_logo}>
