@@ -1,53 +1,53 @@
 .wrapper_sector {
     @apply max-w-screen-xl mt-5 px-8 xl:px-16 mx-auto;
 
-    > .hero_banner {
+    >.hero_banner {
         @apply flex lg:flex-row flex-col gap-8 sm:py-6 py-16;
 
-        > .hero_banner__content {
+        >.hero_banner__content {
             @apply flex flex-col justify-center items-start lg:w-1/2;
 
-            > h1 {
+            >h1 {
                 @apply text-3xl lg:text-4xl xl:text-5xl font-medium dark:text-slate-300 leading-normal;
             }
 
-            > p {
+            >p {
                 @apply dark:text-slate-300 mt-4 mb-6;
             }
 
-            > .hero_banner__content__tags {
-                @apply mt-5 flex flex-wrap sm:gap-4 md:gap-2;
+            >.hero_banner__content__tags {
+                @apply mt-5 flex flex-wrap gap-4 md:gap-3;
 
-                > span {
-                    > a {
+                >span {
+                    >a {
                         @apply text-[#17233e] bg-[#f3f5f0] py-2 px-4 rounded-full text-sm dark:text-slate-500 dark:bg-zinc-800;
                     }
                 }
             }
         }
 
-        > .hero_banner__image {
+        >.hero_banner__image {
             @apply sm:flex w-full lg:w-1/2 hidden;
 
-            > .hero_banner__image__img img {
+            >.hero_banner__image__img img {
                 @apply h-full w-full;
             }
         }
     }
 
-    > .hero_form {
+    >.hero_form {
         @apply relative w-full flex;
 
-        > .hero_form__content {
+        >.hero_form__content {
             @apply shadow-2xl shadow-sky-300/20 p-10 bg-white mb-2 rounded-3xl;
 
-            > .hero_form__content__block {
+            >.hero_form__content__block {
                 @apply flex md:flex-row flex-col gap-5 items-center justify-between;
 
-                > .hero_form__content__elements {
+                >.hero_form__content__elements {
                     @apply w-full border-none md:border-r md:border-solid border-gray-100 md:pr-5;
 
-                    > .hero_form__content__elements__label {
+                    >.hero_form__content__elements__label {
                         @apply text-lg font-bold text-[#17233e];
                     }
                 }
