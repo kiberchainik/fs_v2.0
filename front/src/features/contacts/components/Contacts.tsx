@@ -5,7 +5,6 @@ import { useContacts } from '../hooks/useContacts'
 import { Textarea } from '@/shared/components/ui'
 import Spinner from '@/shared/components/Spinner/Spinner'
 import { useTheme } from 'next-themes'
-import { MiddleSector } from '@/features/mainComponents'
 import { useTranslations } from 'next-intl'
 
 export default function Contacts() {
@@ -13,7 +12,7 @@ export default function Contacts() {
     const { form, onSubmit, isPending } = useContacts()
     const t = useTranslations('contactsPage')
 
-    return (<>
+    return (
         <section className="w-full flex flex-col gap-10">
             <div className="border-b border-dashed mb-5 pb-5 text-center w-3/4 mx-auto">
                 <h2 className="text-5xl leading-[5rem] font-semibold">{t('h2_p1')} <span className="text-[#1967D3] text-5xl">{t('h2_p2')}</span></h2>
@@ -84,7 +83,5 @@ export default function Contacts() {
                 </Form>
             </div>
         </section>
-        <MiddleSector />
-    </>
     );
 }
