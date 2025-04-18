@@ -1,11 +1,11 @@
 import AgencyDataWithJobs from "@/features/agency/agencyDataWithJobs/AgencyDataWihJobs"
 import { AgencyInfo } from "@/features/agency/agencyDataWithJobs/AgencyInfo"
 import { agencyService } from "@/features/agency/profile/services"
-import { MiddleSector } from "@/features/mainComponents"
 import { AGENSY_NOT_FOUND } from "@/shared/constants/seo.constants"
 import { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
 import { cache } from "react"
+import { MiddleSector } from "../../MiddleSector"
 
 export const revalidate = 60
 

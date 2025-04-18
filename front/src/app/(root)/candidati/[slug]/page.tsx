@@ -1,10 +1,10 @@
 import { CandidateFull } from "@/features/candidat/components/candidate-full/CandidateFullPage"
 import { candidatService } from "@/features/candidat/services"
-import { MiddleSector } from "@/features/mainComponents"
 import { CANDIDAT_PAGE_DESCRIPTION, CANDIDAT_PAGE_NAME } from "@/shared/constants/seo.constants"
 import { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
 import { cache } from "react"
+import { MiddleSector } from "../../MiddleSector"
 
 export const revalidate = 60
 
