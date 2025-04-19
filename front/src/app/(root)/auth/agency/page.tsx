@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function AgencyLoginPage() {
   return (
-    <div className='flex flex-col md:flex-row gap-10'>
+    <div className='flex flex-col md:flex-row gap-10 md:justify-center md:items-center'>
       <UserAuth role={UserRole.Agency} isShowSocial={false} />
       <AuthDescription />
     </div>

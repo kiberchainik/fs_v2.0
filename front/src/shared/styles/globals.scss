@@ -2,66 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope-ExtraLight.woff2') format('woff2');
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope-ExtraBold.woff2') format('woff2');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Manrope';
-  src: url('/fonts/Manrope-SemiBold.woff2') format('woff2');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-body {
-  font-family: 'Manrope', sans-serif;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -130,8 +70,9 @@ body {
   * {
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply font-sans bg-background text-foreground;
   }
 }
 
@@ -141,6 +82,11 @@ body {
 }
 
 @keyframes candidatSection {
-  100% {transform: translateX(0);}
-  0% {transform: translateY(150%);}
+  100% {
+    transform: translateX(0);
+  }
+
+  0% {
+    transform: translateY(150%);
+  }
 }

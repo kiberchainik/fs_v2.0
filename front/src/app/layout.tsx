@@ -8,6 +8,7 @@ import Script from "next/script"
 import { Footer } from "@/features/footer/components/Footer"
 import I18nLoader from "@/i18n/I18nLoader"
 import { getLocale } from "next-intl/server"
+import { Manrope_Bold, Manrope_Light, Manrope_Regular } from "@/shared/fonts"
 
 export const metadata: Metadata = {
   title: {
@@ -44,30 +45,7 @@ export default async function RootLayout({
   const locale = await getLocale()
   return (
     <html lang={locale}>
-      <head>
-        <link
-          rel="preload"
-          href="/fonts/Manrope-Regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/Manrope-Bold.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/Manrope-Light.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-      </head>
-      <body className='font-[Manrope]'>
+      <body className={`${Manrope_Bold.variable} ${Manrope_Regular.variable}`}>
         <Script
           async
           strategy="lazyOnload"

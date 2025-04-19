@@ -59,6 +59,15 @@ const config: Config = {
 				sm: 'calc(var(--radius) - 4px)'
 			}
 		},
+		fontFamily: {
+			sans: ["var(--font-manrope)", "sans-serif"],
+			Manrope_Bold: ["var(--font-manrope-bold)", "serif"],
+			Manrope_ExtraBold: ["var(--font-manrope-extrabold)", "sans-serif"],
+			Manrope_ExtraLight: ["var(--font-manrope-extralight)", "sans-serif"],
+			Manrope_Light: ["var(--font-manrope-light)", "sans-serif"],
+			Manrope_Medium: ["var(--font-manrope-medium)", "sans-serif"],
+			Manrope_SemiBold: ["var(--font-manrope-semibold)", "sans-serif"],
+		},
 		screens: {
 			'sx': '480px', // => @media (min-width: 480px) { ... }
 			'sm': '640px', // => @media (min-width: 640px) { ... }
